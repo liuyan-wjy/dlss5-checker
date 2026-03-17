@@ -226,6 +226,9 @@ export default function Home() {
           <a href="#faq" className="hover:text-foreground transition-colors">
             FAQ
           </a>
+          <a href="/pt" className="hover:text-foreground transition-colors">
+            Português
+          </a>
         </nav>
       </footer>
     </>

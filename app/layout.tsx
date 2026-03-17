@@ -41,6 +41,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/",
+    languages: {
+      "en": "https://dlss5.net",
+      "pt-BR": "https://dlss5.net/pt",
+      "x-default": "https://dlss5.net",
+    },
   },
   robots: {
     index: true,
