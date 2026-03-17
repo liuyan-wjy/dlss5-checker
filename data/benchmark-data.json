@@ -1,0 +1,293 @@
+{
+  "games": [
+    {
+      "id": "cyberpunk-2077",
+      "name": "Cyberpunk 2077",
+      "genre": "RPG",
+      "dlss_support": true
+    },
+    {
+      "id": "alan-wake-2",
+      "name": "Alan Wake 2",
+      "genre": "Action",
+      "dlss_support": true
+    },
+    {
+      "id": "the-witcher-4",
+      "name": "The Witcher 4",
+      "genre": "RPG",
+      "dlss_support": true
+    },
+    {
+      "id": "black-myth-wukong",
+      "name": "Black Myth: Wukong",
+      "genre": "Action",
+      "dlss_support": true
+    },
+    {
+      "id": "indiana-jones",
+      "name": "Indiana Jones and the Great Circle",
+      "genre": "Action-Adventure",
+      "dlss_support": true
+    },
+    {
+      "id": "hogwarts-legacy",
+      "name": "Hogwarts Legacy",
+      "genre": "RPG",
+      "dlss_support": true
+    },
+    {
+      "id": "dying-light-2",
+      "name": "Dying Light 2",
+      "genre": "Action",
+      "dlss_support": true
+    },
+    {
+      "id": "microsoft-flight-sim-2024",
+      "name": "Microsoft Flight Simulator 2024",
+      "genre": "Simulation",
+      "dlss_support": true
+    },
+    {
+      "id": "star-wars-outlaws",
+      "name": "Star Wars Outlaws",
+      "genre": "Action-Adventure",
+      "dlss_support": true
+    },
+    {
+      "id": "assassins-creed-shadows",
+      "name": "Assassin's Creed Shadows",
+      "genre": "Action-Adventure",
+      "dlss_support": true
+    },
+    {
+      "id": "dragons-dogma-2",
+      "name": "Dragon's Dogma 2",
+      "genre": "RPG",
+      "dlss_support": true
+    },
+    {
+      "id": "forza-horizon-5",
+      "name": "Forza Horizon 5",
+      "genre": "Racing",
+      "dlss_support": true
+    },
+    {
+      "id": "doom-the-dark-ages",
+      "name": "DOOM: The Dark Ages",
+      "genre": "FPS",
+      "dlss_support": true
+    },
+    {
+      "id": "call-of-duty-warzone",
+      "name": "Call of Duty: Warzone",
+      "genre": "FPS",
+      "dlss_support": true
+    },
+    {
+      "id": "apex-legends",
+      "name": "Apex Legends",
+      "genre": "Battle Royale",
+      "dlss_support": true
+    },
+    {
+      "id": "elden-ring",
+      "name": "Elden Ring",
+      "genre": "RPG",
+      "dlss_support": false
+    },
+    {
+      "id": "red-dead-redemption-2",
+      "name": "Red Dead Redemption 2",
+      "genre": "Action-Adventure",
+      "dlss_support": false
+    },
+    {
+      "id": "resident-evil-4",
+      "name": "Resident Evil 4 Remake",
+      "genre": "Survival Horror",
+      "dlss_support": true
+    },
+    {
+      "id": "spider-man-2",
+      "name": "Marvel's Spider-Man 2",
+      "genre": "Action-Adventure",
+      "dlss_support": true
+    },
+    {
+      "id": "god-of-war-ragnarok",
+      "name": "God of War Ragnarok",
+      "genre": "Action-Adventure",
+      "dlss_support": true
+    }
+  ],
+  "note": "Benchmarks below reflect DLSS 4/4.5 performance (currently available). RTX 50 data uses DLSS 4 Multi Frame Generation. RTX 40 data uses DLSS 3 Frame Generation. RTX 20/30 data uses DLSS Super Resolution. DLSS 5 Neural Rendering performance data is not yet available (launches Fall 2026).",
+  "benchmarks": {
+    "cyberpunk-2077": {
+      "resolution": "1440p",
+      "settings": "Ultra RT",
+      "dlss_mode": "DLSS 4/4.5 (MFG for RTX 50, FG for RTX 40, SR for RTX 20/30)",
+      "data": {
+        "rtx-5090":   { "dlss_off": 45, "dlss_on": 185, "boost_pct": 311 },
+        "rtx-5080":   { "dlss_off": 38, "dlss_on": 155, "boost_pct": 308 },
+        "rtx-5070-ti":{ "dlss_off": 32, "dlss_on": 128, "boost_pct": 300 },
+        "rtx-5070":   { "dlss_off": 28, "dlss_on": 108, "boost_pct": 286 },
+        "rtx-5060-ti":{ "dlss_off": 22, "dlss_on": 85,  "boost_pct": 286 },
+        "rtx-5060":   { "dlss_off": 18, "dlss_on": 68,  "boost_pct": 278 },
+        "rtx-4090":   { "dlss_off": 42, "dlss_on": 98,  "boost_pct": 133 },
+        "rtx-4080":   { "dlss_off": 35, "dlss_on": 82,  "boost_pct": 134 },
+        "rtx-4070-ti":{ "dlss_off": 28, "dlss_on": 64,  "boost_pct": 129 },
+        "rtx-4070":   { "dlss_off": 22, "dlss_on": 50,  "boost_pct": 127 },
+        "rtx-4060-ti":{ "dlss_off": 18, "dlss_on": 42,  "boost_pct": 133 },
+        "rtx-4060":   { "dlss_off": 15, "dlss_on": 35,  "boost_pct": 133 },
+        "rtx-3090":   { "dlss_off": 38, "dlss_on": 68,  "boost_pct": 79 },
+        "rtx-3080":   { "dlss_off": 32, "dlss_on": 58,  "boost_pct": 81 },
+        "rtx-3070":   { "dlss_off": 25, "dlss_on": 46,  "boost_pct": 84 },
+        "rtx-3060":   { "dlss_off": 20, "dlss_on": 36,  "boost_pct": 80 },
+        "rtx-2080-ti":{ "dlss_off": 30, "dlss_on": 50,  "boost_pct": 67 },
+        "rtx-2080":   { "dlss_off": 25, "dlss_on": 42,  "boost_pct": 68 },
+        "rtx-2070":   { "dlss_off": 20, "dlss_on": 34,  "boost_pct": 70 },
+        "rtx-2060":   { "dlss_off": 15, "dlss_on": 25,  "boost_pct": 67 }
+      }
+    },
+    "black-myth-wukong": {
+      "resolution": "1440p",
+      "settings": "Epic",
+      "dlss_mode": "DLSS 4/4.5 (MFG for RTX 50, FG for RTX 40, SR for RTX 20/30)",
+      "data": {
+        "rtx-5090":   { "dlss_off": 75, "dlss_on": 220, "boost_pct": 193 },
+        "rtx-5080":   { "dlss_off": 65, "dlss_on": 185, "boost_pct": 185 },
+        "rtx-5070-ti":{ "dlss_off": 55, "dlss_on": 155, "boost_pct": 182 },
+        "rtx-5070":   { "dlss_off": 45, "dlss_on": 130, "boost_pct": 189 },
+        "rtx-5060":   { "dlss_off": 38, "dlss_on": 105, "boost_pct": 176 },
+        "rtx-4090":   { "dlss_off": 72, "dlss_on": 135, "boost_pct": 88 },
+        "rtx-4080":   { "dlss_off": 60, "dlss_on": 115, "boost_pct": 92 },
+        "rtx-4070-ti":{ "dlss_off": 50, "dlss_on": 95,  "boost_pct": 90 },
+        "rtx-4070":   { "dlss_off": 42, "dlss_on": 80,  "boost_pct": 90 },
+        "rtx-4060":   { "dlss_off": 30, "dlss_on": 58,  "boost_pct": 93 },
+        "rtx-3090":   { "dlss_off": 58, "dlss_on": 95,  "boost_pct": 64 },
+        "rtx-3080":   { "dlss_off": 50, "dlss_on": 82,  "boost_pct": 64 },
+        "rtx-3070":   { "dlss_off": 38, "dlss_on": 63,  "boost_pct": 66 },
+        "rtx-3060":   { "dlss_off": 28, "dlss_on": 46,  "boost_pct": 64 },
+        "rtx-2080":   { "dlss_off": 35, "dlss_on": 55,  "boost_pct": 57 },
+        "rtx-2070":   { "dlss_off": 28, "dlss_on": 44,  "boost_pct": 57 }
+      }
+    },
+    "alan-wake-2": {
+      "resolution": "1440p",
+      "settings": "High RT",
+      "dlss_mode": "DLSS 4/4.5 (MFG for RTX 50, FG for RTX 40, SR for RTX 20/30)",
+      "data": {
+        "rtx-5090":   { "dlss_off": 38, "dlss_on": 165, "boost_pct": 334 },
+        "rtx-5080":   { "dlss_off": 32, "dlss_on": 138, "boost_pct": 331 },
+        "rtx-5070":   { "dlss_off": 24, "dlss_on": 105, "boost_pct": 338 },
+        "rtx-5060":   { "dlss_off": 18, "dlss_on": 78,  "boost_pct": 333 },
+        "rtx-4090":   { "dlss_off": 36, "dlss_on": 88,  "boost_pct": 144 },
+        "rtx-4080":   { "dlss_off": 28, "dlss_on": 70,  "boost_pct": 150 },
+        "rtx-4070-ti":{ "dlss_off": 22, "dlss_on": 56,  "boost_pct": 155 },
+        "rtx-4070":   { "dlss_off": 18, "dlss_on": 45,  "boost_pct": 150 },
+        "rtx-3090":   { "dlss_off": 30, "dlss_on": 52,  "boost_pct": 73 },
+        "rtx-3080":   { "dlss_off": 25, "dlss_on": 44,  "boost_pct": 76 },
+        "rtx-3070":   { "dlss_off": 18, "dlss_on": 32,  "boost_pct": 78 },
+        "rtx-3060":   { "dlss_off": 14, "dlss_on": 25,  "boost_pct": 79 }
+      }
+    },
+    "hogwarts-legacy": {
+      "resolution": "1440p",
+      "settings": "Ultra",
+      "dlss_mode": "DLSS 4/4.5 (MFG for RTX 50, FG for RTX 40, SR for RTX 20/30)",
+      "data": {
+        "rtx-5090":   { "dlss_off": 95, "dlss_on": 240, "boost_pct": 153 },
+        "rtx-5080":   { "dlss_off": 82, "dlss_on": 205, "boost_pct": 150 },
+        "rtx-5070":   { "dlss_off": 65, "dlss_on": 165, "boost_pct": 154 },
+        "rtx-5060":   { "dlss_off": 48, "dlss_on": 122, "boost_pct": 154 },
+        "rtx-4090":   { "dlss_off": 92, "dlss_on": 155, "boost_pct": 68 },
+        "rtx-4080":   { "dlss_off": 78, "dlss_on": 132, "boost_pct": 69 },
+        "rtx-4070":   { "dlss_off": 62, "dlss_on": 105, "boost_pct": 69 },
+        "rtx-4060":   { "dlss_off": 45, "dlss_on": 78,  "boost_pct": 73 },
+        "rtx-3090":   { "dlss_off": 72, "dlss_on": 105, "boost_pct": 46 },
+        "rtx-3080":   { "dlss_off": 62, "dlss_on": 92,  "boost_pct": 48 },
+        "rtx-3070":   { "dlss_off": 48, "dlss_on": 72,  "boost_pct": 50 },
+        "rtx-3060":   { "dlss_off": 35, "dlss_on": 52,  "boost_pct": 49 },
+        "rtx-2080":   { "dlss_off": 45, "dlss_on": 62,  "boost_pct": 38 }
+      }
+    },
+    "assassins-creed-shadows": {
+      "resolution": "1440p",
+      "settings": "Ultra High",
+      "dlss_mode": "DLSS 4/4.5 (MFG for RTX 50, FG for RTX 40, SR for RTX 20/30)",
+      "data": {
+        "rtx-5090":   { "dlss_off": 72, "dlss_on": 195, "boost_pct": 171 },
+        "rtx-5080":   { "dlss_off": 62, "dlss_on": 168, "boost_pct": 171 },
+        "rtx-5070":   { "dlss_off": 48, "dlss_on": 132, "boost_pct": 175 },
+        "rtx-5060":   { "dlss_off": 35, "dlss_on": 98,  "boost_pct": 180 },
+        "rtx-4090":   { "dlss_off": 68, "dlss_on": 118, "boost_pct": 74 },
+        "rtx-4080":   { "dlss_off": 58, "dlss_on": 102, "boost_pct": 76 },
+        "rtx-4070":   { "dlss_off": 45, "dlss_on": 80,  "boost_pct": 78 },
+        "rtx-4060":   { "dlss_off": 32, "dlss_on": 58,  "boost_pct": 81 },
+        "rtx-3090":   { "dlss_off": 52, "dlss_on": 80,  "boost_pct": 54 },
+        "rtx-3080":   { "dlss_off": 44, "dlss_on": 68,  "boost_pct": 55 },
+        "rtx-3060":   { "dlss_off": 28, "dlss_on": 44,  "boost_pct": 57 }
+      }
+    },
+    "call-of-duty-warzone": {
+      "resolution": "1440p",
+      "settings": "Extreme",
+      "dlss_mode": "DLSS 4/4.5 (MFG for RTX 50, FG for RTX 40, SR for RTX 20/30)",
+      "data": {
+        "rtx-5090":   { "dlss_off": 145, "dlss_on": 380, "boost_pct": 162 },
+        "rtx-5080":   { "dlss_off": 125, "dlss_on": 320, "boost_pct": 156 },
+        "rtx-5070":   { "dlss_off": 98,  "dlss_on": 255, "boost_pct": 160 },
+        "rtx-5060":   { "dlss_off": 75,  "dlss_on": 195, "boost_pct": 160 },
+        "rtx-4090":   { "dlss_off": 140, "dlss_on": 235, "boost_pct": 68 },
+        "rtx-4080":   { "dlss_off": 118, "dlss_on": 198, "boost_pct": 68 },
+        "rtx-4070":   { "dlss_off": 88,  "dlss_on": 148, "boost_pct": 68 },
+        "rtx-4060":   { "dlss_off": 62,  "dlss_on": 105, "boost_pct": 69 },
+        "rtx-3090":   { "dlss_off": 112, "dlss_on": 162, "boost_pct": 45 },
+        "rtx-3080":   { "dlss_off": 95,  "dlss_on": 138, "boost_pct": 45 },
+        "rtx-3070":   { "dlss_off": 72,  "dlss_on": 105, "boost_pct": 46 },
+        "rtx-3060":   { "dlss_off": 55,  "dlss_on": 80,  "boost_pct": 45 },
+        "rtx-2080":   { "dlss_off": 68,  "dlss_on": 95,  "boost_pct": 40 }
+      }
+    },
+    "microsoft-flight-sim-2024": {
+      "resolution": "1440p",
+      "settings": "High",
+      "dlss_mode": "DLSS 4/4.5 (MFG for RTX 50, FG for RTX 40, SR for RTX 20/30)",
+      "data": {
+        "rtx-5090":   { "dlss_off": 55, "dlss_on": 145, "boost_pct": 164 },
+        "rtx-5080":   { "dlss_off": 48, "dlss_on": 125, "boost_pct": 160 },
+        "rtx-5070":   { "dlss_off": 38, "dlss_on": 100, "boost_pct": 163 },
+        "rtx-5060":   { "dlss_off": 28, "dlss_on": 75,  "boost_pct": 168 },
+        "rtx-4090":   { "dlss_off": 52, "dlss_on": 88,  "boost_pct": 69 },
+        "rtx-4080":   { "dlss_off": 45, "dlss_on": 76,  "boost_pct": 69 },
+        "rtx-4070":   { "dlss_off": 35, "dlss_on": 59,  "boost_pct": 69 },
+        "rtx-4060":   { "dlss_off": 25, "dlss_on": 44,  "boost_pct": 76 },
+        "rtx-3090":   { "dlss_off": 42, "dlss_on": 62,  "boost_pct": 48 },
+        "rtx-3080":   { "dlss_off": 35, "dlss_on": 52,  "boost_pct": 49 },
+        "rtx-3070":   { "dlss_off": 26, "dlss_on": 39,  "boost_pct": 50 },
+        "rtx-3060":   { "dlss_off": 20, "dlss_on": 30,  "boost_pct": 50 }
+      }
+    },
+    "doom-the-dark-ages": {
+      "resolution": "1440p",
+      "settings": "Ultra",
+      "dlss_mode": "DLSS 4/4.5 (MFG for RTX 50, FG for RTX 40, SR for RTX 20/30)",
+      "data": {
+        "rtx-5090":   { "dlss_off": 165, "dlss_on": 420, "boost_pct": 155 },
+        "rtx-5080":   { "dlss_off": 142, "dlss_on": 360, "boost_pct": 154 },
+        "rtx-5070":   { "dlss_off": 115, "dlss_on": 295, "boost_pct": 157 },
+        "rtx-5060":   { "dlss_off": 88,  "dlss_on": 225, "boost_pct": 156 },
+        "rtx-4090":   { "dlss_off": 158, "dlss_on": 265, "boost_pct": 68 },
+        "rtx-4080":   { "dlss_off": 132, "dlss_on": 222, "boost_pct": 68 },
+        "rtx-4070-ti":{ "dlss_off": 108, "dlss_on": 182, "boost_pct": 69 },
+        "rtx-4070":   { "dlss_off": 88,  "dlss_on": 148, "boost_pct": 68 },
+        "rtx-4060":   { "dlss_off": 65,  "dlss_on": 110, "boost_pct": 69 },
+        "rtx-3090":   { "dlss_off": 125, "dlss_on": 182, "boost_pct": 46 },
+        "rtx-3080":   { "dlss_off": 105, "dlss_on": 153, "boost_pct": 46 },
+        "rtx-3070":   { "dlss_off": 82,  "dlss_on": 120, "boost_pct": 46 },
+        "rtx-3060":   { "dlss_off": 62,  "dlss_on": 90,  "boost_pct": 45 }
+      }
+    }
+  }
+}

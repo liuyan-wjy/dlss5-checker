@@ -8,23 +8,25 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "DLSS 5 GPU Compatibility Checker — Is Your GPU Ready for DLSS 5?",
+  title: "DLSS 5 GPU Compatibility Checker -- Is Your GPU Ready for DLSS 5 Neural Rendering?",
   description:
-    "Instantly check if your NVIDIA GPU supports DLSS 5. See FPS boost estimates for top games, compare DLSS 5 vs DLSS 4, and find the best upgrade path.",
+    "Check if your NVIDIA GPU is confirmed for DLSS 5 Neural Rendering (coming Fall 2026). See current DLSS 4/4.5 performance data, compare DLSS 3 vs 4 vs 4.5 vs 5, and find the best upgrade path.",
   keywords: [
     "DLSS 5",
-    "DLSS 5 supported cards",
-    "DLSS 5 compatible GPUs",
-    "DLSS 5 GPU list",
+    "DLSS 5 neural rendering",
+    "DLSS 5 supported GPUs",
+    "DLSS 5 release date",
     "DLSS 5 vs DLSS 4",
     "RTX 5090 DLSS 5",
-    "multi frame generation",
+    "DLSS 4 multi frame generation",
+    "DLSS 4.5 dynamic MFG",
+    "NVIDIA neural rendering",
     "NVIDIA DLSS checker",
   ],
   metadataBase: new URL("https://dlss5.net"),
   openGraph: {
     title: "DLSS 5 GPU Compatibility Checker",
-    description: "Check if your GPU supports DLSS 5 and how much FPS boost you can expect.",
+    description: "Check if your GPU is confirmed for DLSS 5 Neural Rendering (Fall 2026) and see current DLSS 4/4.5 performance.",
     type: "website",
     locale: "en_US",
     url: "https://dlss5.net",
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "DLSS 5 GPU Compatibility Checker",
-    description: "Instantly check DLSS 5 support for your NVIDIA GPU.",
+    description: "Check DLSS 5 Neural Rendering compatibility for your NVIDIA GPU. Coming Fall 2026.",
   },
   alternates: {
     canonical: "/",

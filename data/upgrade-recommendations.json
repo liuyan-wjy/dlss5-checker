@@ -1,0 +1,34 @@
+{
+  "tiers": [
+    {
+      "label": "Budget Pick",
+      "price_range": "~$299",
+      "gpu_id": "rtx-5060",
+      "gpu_name": "RTX 5060",
+      "fps_boost": "+85%",
+      "dlss5_support": "confirmed",
+      "highlight": "DLSS 4 MFG today + confirmed for DLSS 5 Neural Rendering (Fall 2026)",
+      "vram": "8GB"
+    },
+    {
+      "label": "Sweet Spot",
+      "price_range": "~$549",
+      "gpu_id": "rtx-5070",
+      "gpu_name": "RTX 5070",
+      "fps_boost": "+140%",
+      "dlss5_support": "confirmed",
+      "highlight": "DLSS 4.5 Dynamic 6X MFG today + confirmed for DLSS 5 Neural Rendering (Fall 2026)",
+      "vram": "12GB"
+    },
+    {
+      "label": "High-End",
+      "price_range": "~$999",
+      "gpu_id": "rtx-5080",
+      "gpu_name": "RTX 5080",
+      "fps_boost": "+210%",
+      "dlss5_support": "confirmed",
+      "highlight": "DLSS 4.5 Dynamic 6X MFG at 4K today + confirmed for DLSS 5 Neural Rendering (Fall 2026)",
+      "vram": "16GB"
+    }
+  ]
+}

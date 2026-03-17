@@ -14,23 +14,23 @@ export default function Home() {
         name: "What is DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "DLSS 5 (Deep Learning Super Sampling 5) is NVIDIA's latest AI rendering technology. It uses a Transformer AI model to upscale lower-resolution frames to higher resolutions with minimal quality loss. The flagship feature is Multi Frame Generation, which generates up to 3 AI frames per rendered frame, dramatically boosting FPS.",
+          text: "DLSS 5 is NVIDIA's next-generation AI rendering technology, announced at GTC on March 16, 2026, launching Fall 2026. Unlike DLSS 4/4.5 which focus on performance, DLSS 5 is about visual fidelity through Real-time Neural Rendering -- AI-powered enhancement of lighting and materials.",
         },
       },
       {
         "@type": "Question",
-        name: "Which GPUs support DLSS 5?",
+        name: "Which GPUs will support DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "All NVIDIA RTX series GPUs (RTX 20, 30, 40, and 50) support at least basic DLSS 5 Super Resolution. However, Multi Frame Generation requires an RTX 50 series GPU. Frame Generation requires RTX 40 or newer. GTX series GPUs have no DLSS support.",
+          text: "NVIDIA has confirmed DLSS 5 Neural Rendering for RTX 50 series GPUs. RTX 40 series support has been hinted at but is not confirmed. RTX 20/30 series support is unlikely. DLSS 5 launches Fall 2026.",
         },
       },
       {
         "@type": "Question",
-        name: "Do I need an RTX 50 GPU for DLSS 5?",
+        name: "How is DLSS 5 different from DLSS 4?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. RTX 20, 30, and 40 series GPUs support DLSS 5 Super Resolution and DLAA. But the new Multi Frame Generation (which multiplies frame output by up to 4x) is exclusive to RTX 50 series GPUs.",
+          text: "DLSS 4 introduced Multi Frame Generation (up to 3 additional AI frames per rendered frame) for performance. DLSS 5 is completely different -- it adds Neural Rendering for visual fidelity, using AI to enhance lighting and materials with photorealistic quality. DLSS 5 runs on top of DLSS 4.5.",
         },
       },
       {
@@ -38,39 +38,39 @@ export default function Home() {
         name: "Does DLSS 5 work on AMD or Intel GPUs?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. DLSS 5 is an NVIDIA-exclusive technology. AMD users should use FSR 4 (FidelityFX Super Resolution 4), and Intel users should use XeSS (Xe Super Sampling) as alternatives.",
+          text: "No. DLSS is an NVIDIA-exclusive technology. AMD users should use FSR 4 (FidelityFX Super Resolution 4), and Intel users should use XeSS (Xe Super Sampling) as alternatives.",
         },
       },
       {
         "@type": "Question",
-        name: "How much FPS boost can I expect from DLSS 5?",
+        name: "Is DLSS 5 available now?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "It varies by GPU and game. RTX 50 series users with Multi Frame Generation can see 150-330% FPS boosts. RTX 40 series users typically see 60-130% gains. RTX 30/20 series users with Super Resolution only see 40-85% improvements.",
+          text: "No. DLSS 5 was announced at GTC on March 16, 2026 and launches Fall 2026. What is available now: DLSS 4/4.5 with Multi Frame Generation for RTX 50, Frame Generation for RTX 40, and Super Resolution for RTX 20/30/40/50.",
         },
       },
       {
         "@type": "Question",
-        name: "What is Multi Frame Generation in DLSS 5?",
+        name: "What is Multi Frame Generation?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Multi Frame Generation (MFG) is DLSS 5's most powerful feature, exclusive to RTX 50 GPUs. For every frame your GPU renders, MFG generates up to 3 additional AI frames, effectively multiplying your frame rate by 4x.",
+          text: "Multi Frame Generation (MFG) is a DLSS 4 feature (not DLSS 5), exclusive to RTX 50 GPUs. It generates up to 3 additional AI frames per rendered frame for 4X output. DLSS 4.5 extended this to Dynamic 6X MFG with 5 additional frames.",
         },
       },
       {
         "@type": "Question",
-        name: "Does DLSS 5 affect image quality?",
+        name: "What games will support DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "DLSS 5 uses a Transformer AI model that significantly improves image reconstruction quality compared to DLSS 4's CNN model. Most users find DLSS 5 Quality mode comparable to native resolution.",
+          text: "NVIDIA confirmed 16+ titles for DLSS 5 including Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem, and The Elder Scrolls IV: Oblivion Remastered.",
         },
       },
       {
         "@type": "Question",
-        name: "What is the difference between DLSS 5 and FSR 4?",
+        name: "What is the difference between DLSS and FSR?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "DLSS 5 (NVIDIA) and FSR 4 (AMD) are competing technologies. DLSS 5 is hardware-accelerated on NVIDIA Tensor Cores, giving it an edge in quality and performance on NVIDIA GPUs. FSR 4 works on any GPU including AMD, Intel, and even NVIDIA.",
+          text: "DLSS (NVIDIA) uses dedicated Tensor Cores and AI models for upscaling, frame generation, and now neural rendering. FSR (AMD) works on any GPU. For NVIDIA GPU owners, DLSS generally provides better results. Neither AMD nor Intel has announced a neural rendering feature comparable to DLSS 5.",
         },
       },
     ],
@@ -82,7 +82,7 @@ export default function Home() {
     name: "DLSS 5 GPU Compatibility Checker",
     url: "https://dlss5.net",
     description:
-      "Check if your NVIDIA GPU supports DLSS 5. See FPS boost estimates, compare DLSS 5 vs DLSS 4, and find the best GPU upgrade path.",
+      "Check if your NVIDIA GPU is confirmed for DLSS 5 Neural Rendering (Fall 2026). See current DLSS 4/4.5 performance data and find the best GPU upgrade path.",
     applicationCategory: "UtilityApplication",
     operatingSystem: "Any",
     offers: {
@@ -108,9 +108,9 @@ export default function Home() {
         <section className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-background via-background to-muted/20 px-4">
           <div className="max-w-3xl mx-auto w-full text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold px-3 py-1 rounded-full mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              DLSS 5 · RTX 50 Series Ready
+            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+              DLSS 5 Neural Rendering · Announced GTC 2026 · Coming Fall 2026
             </div>
 
             {/* H1 */}
@@ -122,11 +122,11 @@ export default function Home() {
             </h1>
 
             <p className="text-muted-foreground text-lg sm:text-xl mb-8 max-w-xl mx-auto">
-              Enter your GPU model to check DLSS 5 support, see FPS boost estimates, and find
-              out if it&apos;s worth upgrading.
+              Check if your GPU is confirmed for DLSS 5 Neural Rendering, see current
+              DLSS 4/4.5 performance data, and find the best upgrade path.
             </p>
 
-            {/* Tool — main interactive area */}
+            {/* Tool -- main interactive area */}
             <GPUChecker />
           </div>
         </section>
@@ -139,26 +139,34 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-4">What is DLSS 5?</h2>
           <div className="space-y-4 text-foreground/80 leading-relaxed">
             <p>
-              <strong>DLSS 5 (Deep Learning Super Sampling 5)</strong> is NVIDIA&apos;s most
-              advanced AI rendering technology, introduced alongside the GeForce RTX 50 series.
-              Unlike previous versions that used convolutional neural networks (CNN), DLSS 5
-              employs a large <strong>Transformer AI model</strong> — the same architecture
-              powering modern large language models — to achieve dramatically better image quality
-              and performance.
+              <strong>DLSS 5</strong> is NVIDIA&apos;s next-generation AI rendering technology,
+              announced by Jensen Huang at GTC on March 16, 2026. Unlike DLSS 4 and 4.5, which
+              focused on <em>performance</em> through upscaling and frame generation, DLSS 5 is
+              about <strong>visual fidelity</strong>. Jensen called it{" "}
+              <strong>&quot;the GPT moment for graphics.&quot;</strong>
             </p>
             <p>
-              The headline feature of DLSS 5 is <strong>Multi Frame Generation (MFG)</strong>,
-              exclusive to RTX 50 GPUs. Instead of generating one AI frame per rendered frame
-              (like DLSS 4&apos;s Frame Generation), MFG generates up to{" "}
-              <strong>3 AI frames per rendered frame</strong>, effectively multiplying your frame
-              rate by 4x. A GPU rendering 60 FPS can output 240 FPS with DLSS 5 Multi Frame
-              Generation.
+              The core feature of DLSS 5 is <strong>Real-time Neural Rendering</strong> --
+              AI-powered enhancement of lighting and materials. DLSS 5 analyzes scene semantics
+              (characters, hair, fabric, translucent skin, environmental lighting) and generates
+              photoreal lighting and material responses in real time. It runs <em>on top of</em>{" "}
+              DLSS 4.5, meaning you get upscaling + frame generation underneath, with neural
+              rendering enhancing visual quality on top.
             </p>
             <p>
-              DLSS 5 is backward compatible — RTX 20, 30, and 40 series GPUs can use DLSS 5
-              Super Resolution and DLAA, while RTX 40 series adds Frame Generation support.
-              The full DLSS 5 experience with Multi Frame Generation requires an RTX 50 series
-              GPU.
+              DLSS 5 is <strong>not yet released</strong> -- it launches in <strong>Fall 2026</strong>.
+              NVIDIA has confirmed RTX 50 series support. The GTC demo used two RTX 5090s (one
+              for the game, one for DLSS 5), but the shipping version will run on a single GPU.
+              There are 16+ confirmed game titles including Starfield, Hogwarts Legacy,
+              Assassin&apos;s Creed Shadows, Phantom Blade Zero, and more. Developers will have
+              controls for intensity, color grading, and masking.
+            </p>
+            <p>
+              <strong>What&apos;s available today:</strong> RTX 50 series GPUs already benefit
+              from DLSS 4/4.5, which includes Multi Frame Generation (up to 4X with DLSS 4,
+              up to 6X with DLSS 4.5), 2nd-generation Transformer Super Resolution, and Ray
+              Reconstruction. RTX 40 gets Frame Generation, and RTX 20/30 get Transformer-based
+              Super Resolution. Over 250 games support current DLSS versions.
             </p>
           </div>
         </section>
@@ -167,18 +175,19 @@ export default function Home() {
 
         {/* Supported GPUs */}
         <section id="supported-gpus">
-          <h2 className="text-3xl font-bold mb-2">DLSS 5 Supported GPUs</h2>
+          <h2 className="text-3xl font-bold mb-2">DLSS 5 GPU Compatibility</h2>
           <p className="text-muted-foreground mb-6">
-            Complete list of NVIDIA GPUs and their DLSS 5 compatibility level.
+            DLSS 5 Neural Rendering is confirmed for RTX 50 series (Fall 2026). Other architectures are unconfirmed.
+            Current DLSS 4/4.5 features shown for reference.
           </p>
           <SupportedGPUsTable />
         </section>
 
-        {/* DLSS 5 vs DLSS 4 */}
+        {/* DLSS Comparison */}
         <section id="dlss5-vs-dlss4">
-          <h2 className="text-3xl font-bold mb-2">DLSS 5 vs DLSS 4</h2>
+          <h2 className="text-3xl font-bold mb-2">DLSS 3 vs 4 vs 4.5 vs 5</h2>
           <p className="text-muted-foreground mb-6">
-            Key differences between DLSS 5 and its predecessor.
+            How each DLSS generation compares. MFG is a DLSS 4 feature. Neural Rendering is the DLSS 5 feature.
           </p>
           <ComparisonTable />
         </section>
@@ -196,11 +205,12 @@ export default function Home() {
       {/* ===== FOOTER ===== */}
       <footer className="border-t border-border/50 py-8 px-4 text-center text-muted-foreground text-sm">
         <p className="mb-2">
-          <strong className="text-foreground">DLSS Checker</strong> — Independent DLSS 5
+          <strong className="text-foreground">DLSS Checker</strong> -- Independent DLSS 5
           compatibility resource. Not affiliated with NVIDIA.
         </p>
         <p className="text-xs">
-          Benchmark data is estimated based on public sources. Actual performance may vary by
+          Performance data reflects current DLSS 4/4.5 benchmarks (estimated). DLSS 5 Neural Rendering
+          is not yet released and has no benchmark data. Actual performance may vary by
           system configuration, game version, and driver updates.
         </p>
         <nav aria-label="Footer navigation" className="flex justify-center gap-6 mt-4 text-xs">
@@ -208,10 +218,10 @@ export default function Home() {
             What is DLSS 5
           </a>
           <a href="#supported-gpus" className="hover:text-foreground transition-colors">
-            Supported GPUs
+            GPU Compatibility
           </a>
           <a href="#dlss5-vs-dlss4" className="hover:text-foreground transition-colors">
-            DLSS 5 vs 4
+            DLSS 3 vs 4 vs 4.5 vs 5
           </a>
           <a href="#faq" className="hover:text-foreground transition-colors">
             FAQ
