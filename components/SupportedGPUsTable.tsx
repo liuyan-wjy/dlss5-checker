@@ -87,7 +87,7 @@ export default function SupportedGPUsTable() {
                         ? "DLSS 3 Frame Generation"
                         : "DLSS Super Resolution"
                       : gpu.dlss5_support === "unlikely"
-                      ? "DLSS Super Resolution only"
+                      ? "DLSS 3.5 (Super Resolution + Ray Reconstruction)"
                       : gpu.brand === "AMD"
                       ? "Use FSR 4 instead"
                       : gpu.brand === "Intel"
