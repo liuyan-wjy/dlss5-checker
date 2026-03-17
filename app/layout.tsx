@@ -11,22 +11,7 @@ export const metadata: Metadata = {
   title: "DLSS 5 Supported Cards & GPU Compatibility Checker | NVIDIA DLSS5",
   description:
     "Check if your NVIDIA GPU is confirmed for DLSS 5 Neural Rendering (coming Fall 2026). Find all DLSS 5 supported cards, see current DLSS 4/4.5 performance data, and compare DLSS 3 vs 4 vs 4.5 vs 5.",
-  keywords: [
-    "DLSS 5",
-    "dlss5",
-    "DLSS 5 supported cards",
-    "DLSS 5 supported GPUs",
-    "nvidia dlss5",
-    "DLSS 5 neural rendering",
-    "DLSS 5 release date",
-    "DLSS 5 vs DLSS 4",
-    "RTX 5090 DLSS 5",
-    "DLSS 4 multi frame generation",
-    "DLSS 4.5 dynamic MFG",
-    "NVIDIA neural rendering",
-    "NVIDIA DLSS checker",
-  ],
-  metadataBase: new URL("https://dlss5.net"),
+metadataBase: new URL("https://dlss5.net"),
   openGraph: {
     title: "DLSS 5 GPU Compatibility Checker",
     description: "Check if your GPU is confirmed for DLSS 5 Neural Rendering (Fall 2026) and see current DLSS 4/4.5 performance.",

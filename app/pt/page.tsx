@@ -8,19 +8,7 @@ export const metadata: Metadata = {
   title: "DLSS 5: Quais Placas São Suportadas? Verificador de Compatibilidade GPU",
   description:
     "Verifique se sua placa de vídeo NVIDIA suporta DLSS 5 Neural Rendering (lançamento outono 2026). Descubra quais placas são compatíveis com DLSS 5, compare DLSS 3 vs 4 vs 4.5 vs 5.",
-  keywords: [
-    "dlss 5 quais placas",
-    "dlss 5 placas suportadas",
-    "dlss 5 compatibilidade",
-    "dlss5 placas de vídeo",
-    "nvidia dlss 5 brasil",
-    "dlss 5 rtx 50",
-    "dlss 5 lançamento",
-    "dlss 5 neural rendering",
-    "verificador dlss 5",
-    "dlss 5 rtx 4090",
-  ],
-  alternates: {
+alternates: {
     canonical: "/pt",
     languages: {
       "en": "https://dlss5.net",
