@@ -8,9 +8,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Supported Cards & GPU Compatibility Checker | NVIDIA DLSS5",
+  title: "DLSS 5 Supported Cards & GPU Compatibility Checker",
   description:
-    "Check if your NVIDIA GPU is confirmed for DLSS 5 Neural Rendering (coming Fall 2026). Find all DLSS 5 supported cards, see current DLSS 4/4.5 performance data, and compare DLSS 3 vs 4 vs 4.5 vs 5.",
+    "Check if your NVIDIA GPU supports DLSS 5 Neural Rendering (Fall 2026). Find supported cards, see DLSS 4/4.5 performance data, and compare DLSS 3 vs 4 vs 4.5 vs 5.",
 metadataBase: new URL("https://dlss5.net"),
   openGraph: {
     title: "DLSS 5 GPU Compatibility Checker",
