@@ -22,7 +22,7 @@ export default function Home() {
         name: "Which GPUs will support DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "NVIDIA has confirmed DLSS 5 Neural Rendering for RTX 50 series GPUs. RTX 40 series support has been hinted at but is not confirmed. RTX 20/30 series support is unlikely. DLSS 5 launches Fall 2026.",
+          text: "NVIDIA has confirmed DLSS 5 Neural Rendering for RTX 50 series GPUs and cards. RTX 40 series support has been hinted at but is not confirmed. RTX 20/30 series support is unlikely. DLSS 5 (DLSS5) launches Fall 2026.",
         },
       },
       {
@@ -115,15 +115,15 @@ export default function Home() {
 
             {/* H1 */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 leading-tight">
-              DLSS 5 GPU Compatibility{" "}
+              DLSS 5 Supported Cards &amp;{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
-                Checker
+                GPU Checker
               </span>
             </h1>
 
             <p className="text-muted-foreground text-lg sm:text-xl mb-8 max-w-xl mx-auto">
-              Check if your GPU is confirmed for DLSS 5 Neural Rendering, see current
-              DLSS 4/4.5 performance data, and find the best upgrade path.
+              Check which NVIDIA cards support DLSS 5 Neural Rendering (Fall 2026),
+              see current DLSS 4/4.5 performance, and find the best upgrade path.
             </p>
 
             {/* Tool -- main interactive area */}
@@ -175,9 +175,9 @@ export default function Home() {
 
         {/* Supported GPUs */}
         <section id="supported-gpus">
-          <h2 className="text-3xl font-bold mb-2">DLSS 5 GPU Compatibility</h2>
+          <h2 className="text-3xl font-bold mb-2">DLSS 5 Supported Cards &amp; GPU Compatibility</h2>
           <p className="text-muted-foreground mb-6">
-            DLSS 5 Neural Rendering is confirmed for RTX 50 series (Fall 2026). Other architectures are unconfirmed.
+            DLSS5 Neural Rendering is confirmed for RTX 50 series cards (Fall 2026). Other architectures are unconfirmed.
             Current DLSS 4/4.5 features shown for reference.
           </p>
           <SupportedGPUsTable />

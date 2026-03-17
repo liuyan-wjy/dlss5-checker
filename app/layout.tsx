@@ -8,13 +8,16 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "DLSS 5 GPU Compatibility Checker -- Is Your GPU Ready for DLSS 5 Neural Rendering?",
+  title: "DLSS 5 Supported Cards & GPU Compatibility Checker | NVIDIA DLSS5",
   description:
-    "Check if your NVIDIA GPU is confirmed for DLSS 5 Neural Rendering (coming Fall 2026). See current DLSS 4/4.5 performance data, compare DLSS 3 vs 4 vs 4.5 vs 5, and find the best upgrade path.",
+    "Check if your NVIDIA GPU is confirmed for DLSS 5 Neural Rendering (coming Fall 2026). Find all DLSS 5 supported cards, see current DLSS 4/4.5 performance data, and compare DLSS 3 vs 4 vs 4.5 vs 5.",
   keywords: [
     "DLSS 5",
-    "DLSS 5 neural rendering",
+    "dlss5",
+    "DLSS 5 supported cards",
     "DLSS 5 supported GPUs",
+    "nvidia dlss5",
+    "DLSS 5 neural rendering",
     "DLSS 5 release date",
     "DLSS 5 vs DLSS 4",
     "RTX 5090 DLSS 5",
