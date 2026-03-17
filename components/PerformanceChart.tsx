@@ -59,6 +59,9 @@ export default function PerformanceChart({ gpu }: PerformanceChartProps) {
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2 text-xl">
           <span>📊</span> Performance Boost Estimate
+          <span className="ml-auto text-[10px] font-normal text-yellow-500/80 bg-yellow-500/10 border border-yellow-500/20 px-2 py-0.5 rounded-full">
+            Estimated
+          </span>
         </CardTitle>
         <div className="flex items-center gap-3 mt-2">
           <span className="text-sm text-muted-foreground whitespace-nowrap">Select game:</span>
@@ -131,6 +134,9 @@ export default function PerformanceChart({ gpu }: PerformanceChartProps) {
               {selectedGameInfo?.name} · {gameData.resolution} · {gameData.settings} settings
               {gpu.dlss5_support === "partial" &&
                 " · Results reflect available DLSS 5 features for your GPU"}
+            </p>
+            <p className="text-[10px] text-yellow-500/60 mt-1 text-center">
+              * FPS data is estimated based on public benchmarks and may differ from actual performance.
             </p>
           </>
         )}
