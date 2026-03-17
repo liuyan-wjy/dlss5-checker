@@ -12,7 +12,7 @@ const rows: { feature: string; dlss3: CellValue; dlss4: CellValue; dlss45: CellV
   { feature: "Dynamic MFG 6X (5 AI frames)", dlss3: false, dlss4: false, dlss45: true, dlss5: true },
   { feature: "Neural Rendering (AI lighting & materials)", dlss3: false, dlss4: false, dlss45: false, dlss5: true },
   { feature: "Focus", dlss3: "Performance", dlss4: "Performance", dlss45: "Performance", dlss5: "Visual Fidelity" },
-  { feature: "Min. GPU for full features", dlss3: "RTX 40", dlss4: "RTX 50", dlss45: "RTX 50", dlss5: "RTX 50 (confirmed)" },
+  { feature: "Min. GPU for full features", dlss3: "RTX 40", dlss4: "RTX 50", dlss45: "RTX 50", dlss5: "TBD (NVIDIA pending)" },
   { feature: "Status", dlss3: "Released", dlss4: "Released (CES 2025)", dlss45: "Released (CES 2026)", dlss5: "Coming Fall 2026" },
 ];
 
