@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geist = Geist({
@@ -47,6 +48,18 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${geist.variable} antialiased bg-background text-foreground`}>
         {children}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-PH9DM6B4MD"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PH9DM6B4MD');
+          `}
+        </Script>
       </body>
     </html>
   );
