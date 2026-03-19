@@ -53,11 +53,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-        <Script
-          src="https://pl28945057.profitablecpmratenetwork.com/a3/5d/50/a35d50052b82b8088ad1d9c2090368a6.js"
-          strategy="afterInteractive"
-        />
-        <Script
+<Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PH9DM6B4MD"
           strategy="afterInteractive"
         />
