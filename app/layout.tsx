@@ -49,6 +49,11 @@ export default function RootLayout({
       <body className={`${geist.variable} antialiased bg-background text-foreground`}>
         {children}
         <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5442184426795655"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PH9DM6B4MD"
           strategy="afterInteractive"
         />
