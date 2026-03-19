@@ -229,6 +229,15 @@ export default function Home() {
           <a href="/pt" className="hover:text-foreground transition-colors">
             Português
           </a>
+          <a href="/about" className="hover:text-foreground transition-colors">
+            About
+          </a>
+          <a href="/contact" className="hover:text-foreground transition-colors">
+            Contact
+          </a>
+          <a href="/privacy" className="hover:text-foreground transition-colors">
+            Privacy Policy
+          </a>
         </nav>
       </footer>
     </>
