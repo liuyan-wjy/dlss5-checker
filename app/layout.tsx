@@ -11,7 +11,7 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "DLSS 5 Supported Cards & GPU Compatibility Checker",
   description:
-    "Check if your NVIDIA GPU supports DLSS 5 Neural Rendering (Fall 2026). Find supported cards, see DLSS 4/4.5 performance data, and compare DLSS 3 vs 4 vs 4.5 vs 5.",
+    "What GPUs support DLSS 5? RTX 5090/5080/5070 confirmed. Check if your RTX 4070, RTX 4080, or RTX 50-series GPU is on the list.",
 metadataBase: new URL("https://dlss5.net"),
   openGraph: {
     title: "DLSS 5 GPU Compatibility Checker",
