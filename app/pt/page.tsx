@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import GPUChecker from "@/components/GPUChecker";
 import SupportedGPUsTable from "@/components/SupportedGPUsTable";
 import ComparisonTable from "@/components/ComparisonTable";
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   title: "DLSS 5: Quais Placas São Suportadas? Verificador de Compatibilidade GPU",
   description:
     "Verifique se sua placa de vídeo NVIDIA suporta DLSS 5 Neural Rendering (lançamento outono 2026). Descubra quais placas são compatíveis com DLSS 5, compare DLSS 3 vs 4 vs 4.5 vs 5.",
-alternates: {
+  alternates: {
     canonical: "/pt",
     languages: {
       "en": "https://dlss5.net",
@@ -158,7 +159,7 @@ export default function PtHome() {
               DLSS 5 Neural Rendering está confirmado para a série RTX 50 (outono 2026).
               Outras arquiteturas não foram confirmadas. Recursos atuais do DLSS 4/4.5 mostrados para referência.
             </p>
-            <SupportedGPUsTable />
+            <SupportedGPUsTable locale="pt" />
           </section>
 
           {/* Comparação DLSS */}
@@ -203,9 +204,9 @@ export default function PtHome() {
           <a href="/pt#perguntas-frequentes" className="hover:text-foreground transition-colors">
             FAQ
           </a>
-          <a href="/" className="hover:text-foreground transition-colors">
+          <Link href="/" className="hover:text-foreground transition-colors">
             English
-          </a>
+          </Link>
         </nav>
       </footer>
     </>

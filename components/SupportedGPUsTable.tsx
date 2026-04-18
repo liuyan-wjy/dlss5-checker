@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { ALL_GPUS, type DlssSupport } from "@/lib/gpu-search";
-
-const GPU_PAGES = new Set(["rtx-4070", "rtx-4080"]);
+import { getGpuPageHref, isEnabledGpuSlug, type SupportedLocale } from "@/lib/gpu-page-config";
 
 const SERIES_OPTIONS = [
   "All",
@@ -24,7 +24,13 @@ const supportConfig: Record<DlssSupport, { label: string; className: string }> =
   none: { label: "None", className: "bg-red-500/20 text-red-400 border-red-500/30" },
 };
 
-export default function SupportedGPUsTable() {
+interface SupportedGPUsTableProps {
+  locale?: SupportedLocale;
+}
+
+export default function SupportedGPUsTable({
+  locale = "en",
+}: SupportedGPUsTableProps) {
   const [selectedSeries, setSelectedSeries] = useState("All");
 
   const filtered =
@@ -72,10 +78,13 @@ export default function SupportedGPUsTable() {
                   className={`border-b border-border/50 ${i % 2 === 0 ? "" : "bg-muted/20"} hover:bg-muted/40 transition-colors`}
                 >
                   <td className="px-4 py-3 font-medium">
-                    {GPU_PAGES.has(gpu.id) ? (
-                      <a href={`/gpu/${gpu.id}`} className="hover:text-blue-400 hover:underline transition-colors">
+                    {isEnabledGpuSlug(locale, gpu.id) ? (
+                      <Link
+                        href={getGpuPageHref(locale, gpu.id)}
+                        className="hover:text-blue-400 hover:underline transition-colors"
+                      >
                         {gpu.name}
-                      </a>
+                      </Link>
                     ) : gpu.name}
                   </td>
                   <td className="px-4 py-3 text-muted-foreground">{gpu.series}</td>

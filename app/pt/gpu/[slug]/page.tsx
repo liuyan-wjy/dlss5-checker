@@ -9,7 +9,7 @@ import {
 } from "@/lib/gpu-page-config";
 
 export function generateStaticParams() {
-  return GPU_DETAIL_SLUGS.en.map((slug) => ({ slug }));
+  return GPU_DETAIL_SLUGS.pt.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -19,26 +19,26 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const gpu = getGpuBySlug(slug);
-  if (!gpu || !isEnabledGpuSlug("en", slug)) {
+  if (!gpu || !isEnabledGpuSlug("pt", slug)) {
     return {};
   }
 
-  const statusText = getLocalizedSupportText("en", gpu.dlss5_support);
+  const statusText = getLocalizedSupportText("pt", gpu.dlss5_support);
 
   return {
-    title: `${gpu.name} & DLSS 5: ${statusText} [2026]`,
-    description: `Does the ${gpu.name} support DLSS 5 Neural Rendering? Status: ${statusText}. See current DLSS features and whether the card is worth upgrading.`,
-    alternates: { canonical: `/gpu/${slug}` },
+    title: `${gpu.name}: ${statusText} no DLSS 5 [2026]`,
+    description: `A ${gpu.name} suporta DLSS 5? Veja o status, os recursos atuais de DLSS e se faz sentido pensar em upgrade.`,
+    alternates: { canonical: `/pt/gpu/${slug}` },
   };
 }
 
-export default async function GPUPage({
+export default async function PtGPUPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (!isEnabledGpuSlug("en", slug)) {
+  if (!isEnabledGpuSlug("pt", slug)) {
     notFound();
   }
 
@@ -47,5 +47,5 @@ export default async function GPUPage({
     notFound();
   }
 
-  return <GPUDetailPage gpu={gpu} locale="en" />;
+  return <GPUDetailPage gpu={gpu} locale="pt" />;
 }
