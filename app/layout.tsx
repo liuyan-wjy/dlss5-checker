@@ -12,10 +12,11 @@ export const metadata: Metadata = {
   title: "DLSS 5 Supported Cards & GPU Compatibility Checker",
   description:
     "What GPUs support DLSS 5? RTX 5090/5080/5070 confirmed. Check if your RTX 4070, RTX 4080, or RTX 50-series GPU is on the list.",
-metadataBase: new URL("https://dlss5.net"),
+  metadataBase: new URL("https://dlss5.net"),
   openGraph: {
     title: "DLSS 5 GPU Compatibility Checker",
-    description: "Check if your GPU is confirmed for DLSS 5 Neural Rendering (Fall 2026) and see current DLSS 4/4.5 performance.",
+    description:
+      "Check if your GPU is confirmed for DLSS 5 Neural Rendering (Fall 2026) and see current DLSS 4/4.5 performance.",
     type: "website",
     locale: "en_US",
     url: "https://dlss5.net",
@@ -53,7 +54,12 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-<Script
+        <Script
+          id="profitable-cpm-global"
+          src="https://pl28945057.profitablecpmratenetwork.com/a3/5d/50/a35d50052b82b8088ad1d9c2090368a6.js"
+          strategy="afterInteractive"
+        />
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PH9DM6B4MD"
           strategy="afterInteractive"
         />
