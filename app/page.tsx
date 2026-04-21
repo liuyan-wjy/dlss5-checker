@@ -1,3 +1,4 @@
+import Link from "next/link";
 import GPUChecker from "@/components/GPUChecker";
 import SupportedGPUsTable from "@/components/SupportedGPUsTable";
 import ComparisonTable from "@/components/ComparisonTable";
@@ -128,6 +129,28 @@ export default function Home() {
 
             {/* Tool -- main interactive area */}
             <GPUChecker />
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm">
+              <span className="text-muted-foreground">Popular checks:</span>
+              <Link
+                href="/gpu/rtx-5090"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                RTX 5090
+              </Link>
+              <Link
+                href="/gpu/rtx-3070"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                RTX 3070
+              </Link>
+              <Link
+                href="/dlss-5-system-requirements"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                DLSS 5 system requirements
+              </Link>
+            </div>
           </div>
         </section>
 

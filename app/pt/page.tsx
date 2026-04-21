@@ -112,6 +112,22 @@ export default function PtHome() {
             </p>
 
             <GPUChecker />
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm">
+              <span className="text-muted-foreground">Consultas populares:</span>
+              <Link
+                href="/pt/gpu/rtx-4090"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                RTX 4090
+              </Link>
+              <Link
+                href="/pt/gpu/gtx-1060"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                GTX 1060
+              </Link>
+            </div>
           </div>
         </section>
 

@@ -3,7 +3,7 @@ import { ALL_GPUS, getFeatureLabel, type DlssSupport, type GPU } from "@/lib/gpu
 export type SupportedLocale = "en" | "pt";
 
 export const GPU_DETAIL_SLUGS: Record<SupportedLocale, string[]> = {
-  en: ["rtx-4070", "rtx-4080", "rtx-5090", "rtx-3060"],
+  en: ["rtx-4070", "rtx-4080", "rtx-5090", "rtx-3070", "rtx-3060"],
   pt: ["rtx-4090", "gtx-1060"],
 };
 
