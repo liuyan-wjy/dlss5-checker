@@ -21,6 +21,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.85,
     },
+    {
+      url: "https://dlss5.net/dlss-5-supported-cards",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: "https://dlss5.net/dlss-5-rtx-40-series",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: "https://dlss5.net/pt/dlss-5-quais-placas",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
   ];
 
   const gpuRoutes = (["en", "pt"] as const).flatMap((locale) =>

@@ -133,6 +133,18 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm">
               <span className="text-muted-foreground">Popular checks:</span>
               <Link
+                href="/dlss-5-supported-cards"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Supported cards list
+              </Link>
+              <Link
+                href="/dlss-5-rtx-40-series"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                RTX 40 series
+              </Link>
+              <Link
                 href="/gpu/rtx-5090"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >

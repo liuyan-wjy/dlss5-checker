@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { type GPU, getFeatureLabel } from "@/lib/gpu-search";
@@ -46,21 +45,10 @@ const CONFIG = {
 };
 
 export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
-  const [visible, setVisible] = useState(false);
   const cfg = CONFIG[gpu.dlss5_support];
 
-  useEffect(() => {
-    setVisible(false);
-    const t = setTimeout(() => setVisible(true), 50);
-    return () => clearTimeout(t);
-  }, [gpu.id]);
-
   return (
-    <div
-      className={`transition-all duration-500 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      }`}
-    >
+    <div key={gpu.id} className="animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
       <Card className={`${cfg.cardBorder} ${cfg.cardBg} border`}>
         <CardContent className="pt-6">
           {/* Header */}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | DLSS 5 GPU Compatibility Checker",
@@ -112,7 +113,9 @@ export default function PrivacyPage() {
       </div>
 
       <div className="mt-12 pt-8 border-t border-border">
-        <a href="/" className="text-blue-400 hover:underline text-sm">← Back to DLSS 5 Checker</a>
+        <Link href="/" className="text-blue-400 hover:underline text-sm">
+          ← Back to DLSS 5 Checker
+        </Link>
       </div>
     </main>
   );

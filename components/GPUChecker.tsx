@@ -12,17 +12,6 @@ export default function GPUChecker() {
   const [result, setResult] = useState<GPU | null>(null);
   const [notFound, setNotFound] = useState(false);
 
-  const handleResult = (gpu: GPU | null) => {
-    if (gpu === null) {
-      // Only show "not found" if user had typed something
-      setNotFound(false);
-      setResult(null);
-    } else {
-      setNotFound(false);
-      setResult(gpu);
-    }
-  };
-
   const handleSearch = (gpu: GPU | null) => {
     if (gpu === null) {
       setNotFound(true);

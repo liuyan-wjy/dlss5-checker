@@ -128,6 +128,74 @@ const COPY = {
   },
 } as const;
 
+const MODEL_INSIGHTS: Partial<
+  Record<
+    string,
+    Partial<
+      Record<
+        SupportedLocale,
+        {
+          title: string;
+          intro: string;
+          rows: Array<{ label: string; value: string }>;
+          link: { href: string; label: string };
+        }
+      >
+    >
+  >
+> = {
+  "rtx-4070": {
+    en: {
+      title: "What this means for RTX 4070 owners",
+      intro:
+        "The RTX 4070 is a strong current DLSS card, but its confirmed feature class is still RTX 40. That matters because NVIDIA separates RTX 40 Frame Generation from RTX 50 Multi Frame Generation in the public hardware table.",
+      rows: [
+        {
+          label: "Current useful features",
+          value: "Frame Generation, Super Resolution, Ray Reconstruction, and DLAA",
+        },
+        {
+          label: "Not in the RTX 40 column",
+          value: "Multi Frame Generation and Dynamic Multi Frame Generation",
+        },
+        {
+          label: "DLSS 5 reading",
+          value: "Possible, but not confirmed for Neural Rendering",
+        },
+      ],
+      link: {
+        href: "/dlss-5-rtx-40-series",
+        label: "Read the RTX 40 series support breakdown",
+      },
+    },
+  },
+  "rtx-3070": {
+    en: {
+      title: "What this means for RTX 3070 owners",
+      intro:
+        "The RTX 3070 still has useful DLSS image-quality features, but it does not have the RTX 40 Frame Generation path or the RTX 50 Multi Frame Generation path. That makes DLSS 5 Neural Rendering a long-shot until NVIDIA says otherwise.",
+      rows: [
+        {
+          label: "Current useful features",
+          value: "Super Resolution, Ray Reconstruction, and DLAA",
+        },
+        {
+          label: "Missing newer frame generation",
+          value: "No Frame Generation, Multi Frame Generation, or Dynamic MFG support",
+        },
+        {
+          label: "DLSS 5 reading",
+          value: "Unlikely based on the current public hardware split",
+        },
+      ],
+      link: {
+        href: "/dlss-5-supported-cards",
+        label: "Compare all card support tiers",
+      },
+    },
+  },
+};
+
 function getRelatedGPUs(gpu: GPU, locale: SupportedLocale): GPU[] {
   return GPU_DETAIL_SLUGS[locale]
     .filter((slug) => slug !== gpu.id)
@@ -142,6 +210,7 @@ export default function GPUDetailPage({ gpu, locale }: GPUDetailPageProps) {
   const Icon = cfg.icon;
   const copy = COPY[locale];
   const relatedGPUs = getRelatedGPUs(gpu, locale);
+  const modelInsight = MODEL_INSIGHTS[gpu.id]?.[locale];
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -230,6 +299,32 @@ export default function GPUDetailPage({ gpu, locale }: GPUDetailPageProps) {
             <p className="text-sm text-foreground/80">{copy.noFeatures(gpu)}</p>
           )}
         </section>
+
+        {modelInsight && (
+          <section className="mb-8 rounded-lg border border-border p-5">
+            <h2 className="text-xl font-bold mb-3">{modelInsight.title}</h2>
+            <p className="text-sm text-foreground/80 leading-relaxed mb-4">
+              {modelInsight.intro}
+            </p>
+            <div className="grid gap-3">
+              {modelInsight.rows.map((row) => (
+                <div
+                  key={row.label}
+                  className="rounded-md bg-muted/30 p-3 text-sm"
+                >
+                  <div className="font-semibold mb-1">{row.label}</div>
+                  <div className="text-foreground/80">{row.value}</div>
+                </div>
+              ))}
+            </div>
+            <Link
+              href={modelInsight.link.href}
+              className="mt-4 inline-block text-sm font-semibold text-blue-400 hover:underline"
+            >
+              {modelInsight.link.label}
+            </Link>
+          </section>
+        )}
 
         <section className="mb-8">
           <h2 className="text-xl font-bold mb-4">{copy.whatIsTitle}</h2>

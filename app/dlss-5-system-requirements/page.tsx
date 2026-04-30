@@ -62,17 +62,42 @@ export default function Dlss5SystemRequirementsPage() {
           DLSS 5 System Requirements: What We Know So Far
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
-          The short version: RTX 50 series is the only confirmed hardware family for
-          DLSS 5 Neural Rendering. Everything else still sits in the TBD zone.
+          The short version: confirmed support currently sits in the RTX 50 family,
+          while lower-tier SKUs and older generations still need final launch details.
         </p>
+
+        <section className="mb-10 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-lg border border-border p-5">
+            <h2 className="text-xl font-bold mb-2">Requirements are not the same as a card list</h2>
+            <p className="text-sm text-foreground/80 leading-relaxed">
+              A requirement page should answer what the PC needs to run the feature. A
+              supported-card page should answer which GPU families are confirmed, possible,
+              or outside the DLSS path. Right now, the confirmed requirement is the GPU
+              family, not a full public spec sheet.
+            </p>
+          </div>
+          <div className="rounded-lg border border-border p-5">
+            <h2 className="text-xl font-bold mb-2">Best page for card-by-card status</h2>
+            <p className="text-sm text-foreground/80 leading-relaxed mb-3">
+              If your question is about a specific model or generation, use the compatibility
+              list instead of treating this as a full desktop build checklist.
+            </p>
+            <Link
+              href="/dlss-5-supported-cards"
+              className="text-sm font-semibold text-blue-400 hover:underline"
+            >
+              View the DLSS 5 supported cards list
+            </Link>
+          </div>
+        </section>
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
           <h2 className="text-2xl font-bold text-foreground">Confirmed requirement today</h2>
           <p>
-            NVIDIA has confirmed <strong>RTX 50 series GPUs</strong> for DLSS 5 Neural
-            Rendering. That covers cards such as the RTX 5090, RTX 5080, RTX 5070 Ti,
-            and RTX 5070. If you want the safest hardware path for DLSS 5, this is the
-            only fully confirmed answer today.
+            NVIDIA has confirmed <strong>RTX 50 family support</strong> for DLSS 5 Neural
+            Rendering. In this guide, the safest listed cards are the RTX 5090, RTX 5080,
+            RTX 5070 Ti, and RTX 5070. Lower-tier models should still be checked against
+            final launch requirements before you buy only for DLSS 5.
           </p>
           <p>
             What NVIDIA has <strong>not</strong> fully published yet is the complete
@@ -88,7 +113,8 @@ export default function Dlss5SystemRequirementsPage() {
             <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-4">
               <h3 className="font-semibold text-green-400 mb-2">RTX 50</h3>
               <p className="text-sm">
-                Confirmed for DLSS 5. Best fit if your goal is guaranteed compatibility.
+                Confirmed family for DLSS 5. Check individual SKUs if you are buying a
+                lower-tier card only for this feature.
               </p>
             </div>
             <div className="rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-4">
@@ -151,7 +177,46 @@ export default function Dlss5SystemRequirementsPage() {
                 Useful if you are checking whether RTX 30 can stretch into DLSS 5.
               </p>
             </Link>
+            <Link
+              href="/dlss-5-rtx-40-series"
+              className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">Will RTX 40 support DLSS 5?</div>
+              <p className="text-sm text-muted-foreground">
+                Better page for RTX 4090, 4080, 4070, and 4060 owners.
+              </p>
+            </Link>
+            <Link
+              href="/dlss-5-supported-cards"
+              className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">All supported cards</div>
+              <p className="text-sm text-muted-foreground">
+                Full status table grouped by confirmed, possible, unlikely, and none.
+              </p>
+            </Link>
           </div>
+        </section>
+
+        <section className="mb-10 text-sm text-muted-foreground leading-relaxed">
+          <h2 className="text-xl font-bold text-foreground mb-3">Sources and limits</h2>
+          <p>
+            Sources:{" "}
+            <a
+              href="https://nvidianews.nvidia.com/news/nvidia-dlss-5-delivers-ai-powered-breakthrough-in-visual-fidelity-for-games"
+              className="text-blue-400 hover:underline"
+            >
+              NVIDIA DLSS 5 announcement
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://www.nvidia.com/en-us/geforce/technologies/dlss/"
+              className="text-blue-400 hover:underline"
+            >
+              NVIDIA DLSS supported hardware
+            </a>
+            . Driver, game, and launch requirements can still change before public release.
+          </p>
         </section>
 
         <section className="mb-10">
