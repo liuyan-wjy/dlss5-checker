@@ -28,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://dlss5.net/dlss-5-games",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
       url: "https://dlss5.net/dlss-5-rtx-40-series",
       lastModified: new Date(),
       changeFrequency: "weekly",

@@ -139,6 +139,12 @@ export default function Home() {
                 Supported cards list
               </Link>
               <Link
+                href="/dlss-5-games"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                DLSS 5 games
+              </Link>
+              <Link
                 href="/dlss-5-rtx-40-series"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >

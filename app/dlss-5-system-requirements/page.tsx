@@ -195,6 +195,15 @@ export default function Dlss5SystemRequirementsPage() {
                 Full status table grouped by confirmed, possible, unlikely, and none.
               </p>
             </Link>
+            <Link
+              href="/dlss-5-games"
+              className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">DLSS 5 games list</div>
+              <p className="text-sm text-muted-foreground">
+                Announced titles, release timing, and support caveats.
+              </p>
+            </Link>
           </div>
         </section>
 

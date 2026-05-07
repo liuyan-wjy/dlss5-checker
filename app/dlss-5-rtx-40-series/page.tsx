@@ -221,6 +221,15 @@ export default function Dlss5Rtx40SeriesPage() {
                 See the broader hardware picture beyond one GPU generation.
               </p>
             </Link>
+            <Link
+              href="/dlss-5-games"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">DLSS 5 games list</div>
+              <p className="text-sm text-muted-foreground">
+                Check announced titles without mixing them up with GPU support.
+              </p>
+            </Link>
           </div>
         </section>
 
