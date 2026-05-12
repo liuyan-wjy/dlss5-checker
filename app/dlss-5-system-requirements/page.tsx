@@ -7,6 +7,10 @@ export const metadata: Metadata = {
     "Looking for DLSS 5 system requirements? See the confirmed GPU requirements, what NVIDIA has not confirmed yet, and whether RTX 40, RTX 30, or GTX cards can realistically expect support.",
   alternates: {
     canonical: "/dlss-5-system-requirements",
+    languages: {
+      en: "https://dlss5.net/dlss-5-system-requirements",
+      "pt-BR": "https://dlss5.net/pt/dlss-5-requisitos",
+    },
   },
 };
 

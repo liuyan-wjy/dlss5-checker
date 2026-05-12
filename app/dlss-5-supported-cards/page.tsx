@@ -9,6 +9,10 @@ export const metadata: Metadata = {
     "See which GPUs are confirmed, possible, unlikely, or not supported for DLSS 5. Includes RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel status notes.",
   alternates: {
     canonical: "/dlss-5-supported-cards",
+    languages: {
+      en: "https://dlss5.net/dlss-5-supported-cards",
+      "pt-BR": "https://dlss5.net/pt/dlss-5-quais-placas",
+    },
   },
 };
 

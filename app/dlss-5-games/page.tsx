@@ -7,6 +7,10 @@ export const metadata: Metadata = {
     "Track DLSS 5 games NVIDIA has announced so far, what support means, what still needs per-game verification, and how to separate game support from GPU support.",
   alternates: {
     canonical: "/dlss-5-games",
+    languages: {
+      en: "https://dlss5.net/dlss-5-games",
+      "pt-BR": "https://dlss5.net/pt/dlss-5-jogos",
+    },
   },
 };
 

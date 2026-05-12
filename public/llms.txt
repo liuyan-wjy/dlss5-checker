@@ -33,6 +33,10 @@
 
 - [Verificador DLSS 5 em portugues](https://dlss5.net/pt): Portuguese homepage and compatibility checker entry.
 - [DLSS 5 quais placas](https://dlss5.net/pt/dlss-5-quais-placas): Portuguese card-support guide.
+- [Requisitos DLSS 5 em portugues](https://dlss5.net/pt/dlss-5-requisitos): Portuguese requirements guide using local terms such as requisitos, placas compativeis, and suporte.
+- [Jogos com DLSS 5 em portugues](https://dlss5.net/pt/dlss-5-jogos): Portuguese games tracker for announced versus verified game support.
+- [DLSS 5 esta confirmado em portugues](https://dlss5.net/pt/dlss-5-confirmado): Portuguese evidence page for confirmed, announced, possible, and unknown DLSS 5 claims.
+- [DLSS 5 vs DLSS 4.5 em portugues](https://dlss5.net/pt/dlss-5-vs-dlss-4-5): Portuguese comparison page for Neural Rendering versus current DLSS 4.5 features.
 - [RTX 4090 DLSS 5 em portugues](https://dlss5.net/pt/gpu/rtx-4090): Portuguese RTX 4090 status page.
 - [GTX 1060 DLSS 5 em portugues](https://dlss5.net/pt/gpu/gtx-1060): Portuguese no-DLSS support explanation for GTX 1060 users.
 

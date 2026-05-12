@@ -6,9 +6,9 @@ import ComparisonTable from "@/components/ComparisonTable";
 import AdSlot from "@/components/AdSlot";
 
 export const metadata: Metadata = {
-  title: "DLSS 5: Quais Placas São Suportadas? Verificador de Compatibilidade GPU",
+  title: "DLSS 5: quais placas suportam? Verificador GPU",
   description:
-    "Verifique se sua placa de vídeo NVIDIA suporta DLSS 5 Neural Rendering (lançamento outono 2026). Descubra quais placas são compatíveis com DLSS 5, compare DLSS 3 vs 4 vs 4.5 vs 5.",
+    "Verifique se sua placa NVIDIA suporta DLSS 5, veja placas compatíveis, requisitos, jogos anunciados e diferenças entre DLSS 4.5 e DLSS 5.",
   alternates: {
     canonical: "/pt",
     languages: {
@@ -75,7 +75,7 @@ export default function PtHome() {
         name: "Quais jogos vão suportar DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "A NVIDIA confirmou mais de 16 títulos para o DLSS 5, incluindo Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem e The Elder Scrolls IV: Oblivion Remastered.",
+          text: "A NVIDIA anunciou um grupo inicial de jogos para DLSS 5, incluindo Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem e The Elder Scrolls IV: Oblivion Remastered. Cada jogo ainda precisa de patch notes e detalhes finais.",
         },
       },
     ],
@@ -120,6 +120,30 @@ export default function PtHome() {
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 Quais placas suportam
+              </Link>
+              <Link
+                href="/pt/dlss-5-requisitos"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Requisitos
+              </Link>
+              <Link
+                href="/pt/dlss-5-jogos"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Jogos
+              </Link>
+              <Link
+                href="/pt/dlss-5-confirmado"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Está confirmado?
+              </Link>
+              <Link
+                href="/pt/dlss-5-vs-dlss-4-5"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                DLSS 5 vs 4.5
               </Link>
               <Link
                 href="/pt/gpu/rtx-4090"
@@ -227,6 +251,15 @@ export default function PtHome() {
           <a href="/pt#perguntas-frequentes" className="hover:text-foreground transition-colors">
             FAQ
           </a>
+          <Link href="/pt/dlss-5-requisitos" className="hover:text-foreground transition-colors">
+            Requisitos
+          </Link>
+          <Link href="/pt/dlss-5-jogos" className="hover:text-foreground transition-colors">
+            Jogos
+          </Link>
+          <Link href="/pt/dlss-5-confirmado" className="hover:text-foreground transition-colors">
+            Confirmado
+          </Link>
           <Link href="/" className="hover:text-foreground transition-colors">
             English
           </Link>

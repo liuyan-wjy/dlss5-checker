@@ -9,6 +9,10 @@ export const metadata: Metadata = {
     "Veja quais placas estão confirmadas, possíveis, improváveis ou sem suporte para DLSS 5, com status para RTX 50, RTX 40, RTX 30, GTX, AMD e Intel.",
   alternates: {
     canonical: "/pt/dlss-5-quais-placas",
+    languages: {
+      en: "https://dlss5.net/dlss-5-supported-cards",
+      "pt-BR": "https://dlss5.net/pt/dlss-5-quais-placas",
+    },
   },
 };
 
@@ -46,6 +50,24 @@ const STATUS_COPY: Record<
     className: "border-red-500/30 bg-red-500/5 text-red-300",
   },
 };
+
+const faqItems = [
+  {
+    question: "Quais placas suportam DLSS 5?",
+    answer:
+      "As placas confirmadas neste guia são modelos RTX 50. A série RTX 40 ainda deve ser tratada como possível, mas sem confirmação final.",
+  },
+  {
+    question: "RTX 4090 suporta DLSS 5?",
+    answer:
+      "O suporte da RTX 4090 ao DLSS 5 ainda não foi confirmado. Hoje ela roda recursos atuais como Frame Generation, Super Resolution, Ray Reconstruction e DLAA.",
+  },
+  {
+    question: "GTX 1060 suporta DLSS 5?",
+    answer:
+      "Não. A GTX 1060 não suporta NVIDIA DLSS porque DLSS requer hardware RTX.",
+  },
+];
 
 function cardsByStatus(status: DlssSupport): GPU[] {
   return ALL_GPUS.filter((gpu) => gpu.dlss5_support === status);
@@ -139,32 +161,14 @@ export default function PtDlss5QuaisPlacasPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Quais placas suportam DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "As placas confirmadas neste guia são modelos RTX 50. A série RTX 40 ainda deve ser tratada como possível, mas sem confirmação final.",
-        },
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
       },
-      {
-        "@type": "Question",
-        name: "RTX 4090 suporta DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "O suporte da RTX 4090 ao DLSS 5 ainda não foi confirmado. Hoje ela roda recursos atuais como Frame Generation, Super Resolution, Ray Reconstruction e DLAA.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "GTX 1060 suporta DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Não. A GTX 1060 não suporta NVIDIA DLSS porque DLSS requer hardware RTX.",
-        },
-      },
-    ],
+    })),
   };
 
   return (
@@ -254,7 +258,7 @@ export default function PtDlss5QuaisPlacasPage() {
               </p>
             </Link>
             <Link
-              href="/dlss-5-system-requirements"
+              href="/pt/dlss-5-requisitos"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
             >
               <div className="font-semibold mb-1">Requisitos do sistema</div>
@@ -262,6 +266,36 @@ export default function PtDlss5QuaisPlacasPage() {
                 Entenda a diferença entre requisitos e lista de placas.
               </p>
             </Link>
+            <Link
+              href="/pt/dlss-5-jogos"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">Jogos com DLSS 5</div>
+              <p className="text-sm text-muted-foreground">
+                Veja títulos anunciados e o que ainda precisa de confirmação.
+              </p>
+            </Link>
+            <Link
+              href="/pt/dlss-5-confirmado"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">DLSS 5 está confirmado?</div>
+              <p className="text-sm text-muted-foreground">
+                Separe confirmação oficial, anúncio e incertezas de suporte.
+              </p>
+            </Link>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">Perguntas frequentes</h2>
+          <div className="space-y-5">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="font-semibold mb-1">{item.question}</h3>
+                <p className="text-sm text-foreground/80 leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
           </div>
         </section>
 

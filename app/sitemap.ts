@@ -57,6 +57,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.85,
     },
+    {
+      url: "https://dlss5.net/pt/dlss-5-requisitos",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://dlss5.net/pt/dlss-5-jogos",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://dlss5.net/pt/dlss-5-confirmado",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.78,
+    },
+    {
+      url: "https://dlss5.net/pt/dlss-5-vs-dlss-4-5",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.78,
+    },
   ];
 
   const gpuRoutes = (["en", "pt"] as const).flatMap((locale) =>

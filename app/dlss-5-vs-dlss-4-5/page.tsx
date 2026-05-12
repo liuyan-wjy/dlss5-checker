@@ -8,6 +8,10 @@ export const metadata: Metadata = {
     "Compare DLSS 5 and DLSS 4.5 without mixing up neural rendering, Super Resolution, Multi Frame Generation, hardware support, and release timing.",
   alternates: {
     canonical: "/dlss-5-vs-dlss-4-5",
+    languages: {
+      en: "https://dlss5.net/dlss-5-vs-dlss-4-5",
+      "pt-BR": "https://dlss5.net/pt/dlss-5-vs-dlss-4-5",
+    },
   },
 };
 

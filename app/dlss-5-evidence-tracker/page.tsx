@@ -7,6 +7,10 @@ export const metadata: Metadata = {
     "Track what is confirmed, announced, possible, and still unknown for DLSS 5, including GPU support, games, release timing, and DLSS 4.5 differences.",
   alternates: {
     canonical: "/dlss-5-evidence-tracker",
+    languages: {
+      en: "https://dlss5.net/dlss-5-evidence-tracker",
+      "pt-BR": "https://dlss5.net/pt/dlss-5-confirmado",
+    },
   },
 };
 
