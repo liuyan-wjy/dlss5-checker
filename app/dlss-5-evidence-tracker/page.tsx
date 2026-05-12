@@ -122,6 +122,24 @@ const relatedPages = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "What is confirmed about DLSS 5 right now?",
+    answer:
+      "The safest confirmed points are that NVIDIA has announced DLSS 5, framed it around real-time neural rendering for visual fidelity, and named a Fall 2026 launch window plus an initial group of game partners and titles.",
+  },
+  {
+    question: "Is RTX 40 confirmed for DLSS 5?",
+    answer:
+      "No. RTX 40 cards support current DLSS features, but NVIDIA has not published a final DLSS 5 support matrix that confirms RTX 40 for the new neural rendering layer.",
+  },
+  {
+    question: "Why use an evidence tracker for DLSS 5?",
+    answer:
+      "Many DLSS 5 searches mix confirmed facts, preview footage, current DLSS 4.5 features, and upgrade guesses. The tracker separates each claim by source, confidence, and what would change the answer.",
+  },
+];
+
 function confidenceClass(confidence: Confidence): string {
   if (confidence === "High") {
     return "border-green-500/30 bg-green-500/10 text-green-300";
@@ -138,32 +156,14 @@ export default function Dlss5EvidenceTrackerPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is confirmed about DLSS 5 right now?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The safest confirmed points are that NVIDIA has announced DLSS 5, framed it around real-time neural rendering for visual fidelity, and named a Fall 2026 launch window plus an initial group of game partners and titles.",
-        },
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
       },
-      {
-        "@type": "Question",
-        name: "Is RTX 40 confirmed for DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. RTX 40 cards support current DLSS features, but NVIDIA has not published a final DLSS 5 support matrix that confirms RTX 40 for the new neural rendering layer.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Why use an evidence tracker for DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Many DLSS 5 searches mix confirmed facts, preview footage, current DLSS 4.5 features, and upgrade guesses. The tracker separates each claim by source, confidence, and what would change the answer.",
-        },
-      },
-    ],
+    })),
   };
 
   const breadcrumbJsonLd = {
@@ -218,6 +218,16 @@ export default function Dlss5EvidenceTrackerPage() {
             not have to guess which answer is solid.
           </p>
         </header>
+
+        <section className="mb-10 rounded-lg border border-green-500/30 bg-green-500/5 p-5">
+          <h2 className="text-2xl font-bold mb-3">Is DLSS 5 confirmed?</h2>
+          <p className="text-foreground/80 leading-relaxed">
+            Yes, NVIDIA has announced DLSS 5 as a real-time neural rendering feature for
+            visual fidelity. What is not fully confirmed yet is the final launch matrix:
+            exact game patches, driver requirements, per-GPU support, and visible in-game
+            settings still need public documentation.
+          </p>
+        </section>
 
         <section className="mb-10 grid gap-4 md:grid-cols-3">
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
@@ -332,6 +342,18 @@ export default function Dlss5EvidenceTrackerPage() {
                 <div className="font-semibold mb-1">{page.title}</div>
                 <p className="text-sm text-muted-foreground">{page.copy}</p>
               </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">Frequently asked questions</h2>
+          <div className="space-y-5">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="font-semibold mb-1">{item.question}</h3>
+                <p className="text-sm text-foreground/80 leading-relaxed">{item.answer}</p>
+              </div>
             ))}
           </div>
         </section>

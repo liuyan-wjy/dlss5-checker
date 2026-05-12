@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Games Tracker: Announced Titles and Verification Status [2026]",
+  title: "DLSS 5 Games Tracker: Announced vs Verified Titles",
   description:
     "Track DLSS 5 games NVIDIA has announced so far, what support means, what still needs per-game verification, and how to separate game support from GPU support.",
   alternates: {

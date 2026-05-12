@@ -57,36 +57,36 @@ const misconceptionRows = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "What is the difference between DLSS 5 and DLSS 4.5?",
+    answer:
+      "DLSS 4.5 is the current DLSS stack focused on Super Resolution quality and Dynamic Multi Frame Generation. DLSS 5 is an announced neural rendering layer focused on visual fidelity, especially lighting and materials.",
+  },
+  {
+    question: "Is DLSS 5 available now?",
+    answer:
+      "No. DLSS 5 has been announced for Fall 2026. DLSS 4.5 and current DLSS features are available today in supported games and app paths.",
+  },
+  {
+    question: "Should I upgrade from RTX 40 to RTX 50 for DLSS 5?",
+    answer:
+      "If DLSS 5 is the only reason, it is safer to wait for NVIDIA's final support matrix and real game patch notes. RTX 50 is the safest current path, but launch behavior is not fully documented yet.",
+  },
+];
+
 export default function Dlss5VsDlss45Page() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is the difference between DLSS 5 and DLSS 4.5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "DLSS 4.5 is the current DLSS stack focused on Super Resolution quality and Dynamic Multi Frame Generation. DLSS 5 is an announced neural rendering layer focused on visual fidelity, especially lighting and materials.",
-        },
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
       },
-      {
-        "@type": "Question",
-        name: "Is DLSS 5 available now?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. DLSS 5 has been announced for Fall 2026. DLSS 4.5 and current DLSS features are available today in supported games and app paths.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Should I upgrade from RTX 40 to RTX 50 for DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "If DLSS 5 is the only reason, it is safer to wait for NVIDIA's final support matrix and real game patch notes. RTX 50 is the safest current path, but launch behavior is not fully documented yet.",
-        },
-      },
-    ],
+    })),
   };
 
   const breadcrumbJsonLd = {
@@ -139,6 +139,15 @@ export default function Dlss5VsDlss45Page() {
             why so many compatibility answers feel contradictory.
           </p>
         </header>
+
+        <section className="mb-10 rounded-lg border border-blue-500/30 bg-blue-500/5 p-5">
+          <h2 className="text-2xl font-bold mb-3">Is DLSS 5 the same as DLSS 4.5?</h2>
+          <p className="text-foreground/80 leading-relaxed">
+            No. DLSS 4.5 is the current DLSS feature stack for Super Resolution quality and
+            Dynamic Multi Frame Generation. DLSS 5 is the announced neural rendering layer
+            aimed at visual fidelity, with final game and GPU behavior still pending.
+          </p>
+        </section>
 
         <section className="mb-10 grid gap-4 md:grid-cols-2">
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
@@ -257,6 +266,18 @@ export default function Dlss5VsDlss45Page() {
                 A model-specific answer for one of the most common RTX 40 searches.
               </p>
             </Link>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">Frequently asked questions</h2>
+          <div className="space-y-5">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="font-semibold mb-1">{item.question}</h3>
+                <p className="text-sm text-foreground/80 leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
           </div>
         </section>
 
