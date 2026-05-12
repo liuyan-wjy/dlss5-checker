@@ -204,6 +204,24 @@ export default function Dlss5SystemRequirementsPage() {
                 Announced titles, release timing, and support caveats.
               </p>
             </Link>
+            <Link
+              href="/dlss-5-evidence-tracker"
+              className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">Evidence tracker</div>
+              <p className="text-sm text-muted-foreground">
+                A claim-by-claim source table for what is confirmed and still unknown.
+              </p>
+            </Link>
+            <Link
+              href="/dlss-5-vs-dlss-4-5"
+              className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">DLSS 5 vs DLSS 4.5</div>
+              <p className="text-sm text-muted-foreground">
+                Clarify what belongs to the current DLSS stack versus the announced layer.
+              </p>
+            </Link>
           </div>
         </section>
 

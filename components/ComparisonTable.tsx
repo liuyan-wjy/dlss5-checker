@@ -3,16 +3,16 @@ import { CheckCircle2, XCircle } from "lucide-react";
 type CellValue = boolean | string;
 
 const rows: { feature: string; dlss3: CellValue; dlss4: CellValue; dlss45: CellValue; dlss5: CellValue }[] = [
-  { feature: "Super Resolution (AI Upscaling)", dlss3: true, dlss4: true, dlss45: true, dlss5: true },
-  { feature: "DLAA (Anti-Aliasing)", dlss3: true, dlss4: true, dlss45: true, dlss5: true },
-  { feature: "Ray Reconstruction", dlss3: true, dlss4: true, dlss45: true, dlss5: true },
-  { feature: "Frame Generation (1 AI frame)", dlss3: true, dlss4: true, dlss45: true, dlss5: true },
-  { feature: "AI Model", dlss3: "CNN", dlss4: "Transformer v1", dlss45: "Transformer v2", dlss5: "Transformer v2+" },
-  { feature: "Multi Frame Generation 4X (3 AI frames)", dlss3: false, dlss4: true, dlss45: true, dlss5: true },
-  { feature: "Dynamic MFG 6X (5 AI frames)", dlss3: false, dlss4: false, dlss45: true, dlss5: true },
+  { feature: "Super Resolution (AI Upscaling)", dlss3: true, dlss4: true, dlss45: true, dlss5: "Via current stack" },
+  { feature: "DLAA (Anti-Aliasing)", dlss3: true, dlss4: true, dlss45: true, dlss5: "Via current stack" },
+  { feature: "Ray Reconstruction", dlss3: true, dlss4: true, dlss45: true, dlss5: "Via current stack" },
+  { feature: "Frame Generation (1 AI frame)", dlss3: true, dlss4: true, dlss45: true, dlss5: "Via current stack" },
+  { feature: "AI Model", dlss3: "CNN", dlss4: "Transformer", dlss45: "2nd-gen Transformer", dlss5: "Neural rendering layer" },
+  { feature: "Multi Frame Generation 4X (3 AI frames)", dlss3: false, dlss4: true, dlss45: true, dlss5: "Via current stack" },
+  { feature: "Dynamic MFG 6X (5 AI frames)", dlss3: false, dlss4: false, dlss45: true, dlss5: "Via current stack" },
   { feature: "Neural Rendering (AI lighting & materials)", dlss3: false, dlss4: false, dlss45: false, dlss5: true },
   { feature: "Focus", dlss3: "Performance", dlss4: "Performance", dlss45: "Performance", dlss5: "Visual Fidelity" },
-  { feature: "Min. GPU for full features", dlss3: "RTX 40", dlss4: "RTX 50", dlss45: "RTX 50", dlss5: "TBD (NVIDIA pending)" },
+  { feature: "Min. GPU for full features", dlss3: "RTX 40", dlss4: "RTX 50", dlss45: "RTX 50", dlss5: "RTX 50 safest" },
   { feature: "Status", dlss3: "Released", dlss4: "Released (CES 2025)", dlss45: "Released (CES 2026)", dlss5: "Coming Fall 2026" },
 ];
 

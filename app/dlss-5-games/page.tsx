@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Games List and Release Date: Confirmed Titles So Far [2026]",
+  title: "DLSS 5 Games Tracker: Announced Titles and Verification Status [2026]",
   description:
-    "See the DLSS 5 games NVIDIA has announced so far, the Fall 2026 release timing, what game support means, and what is still unknown before launch.",
+    "Track DLSS 5 games NVIDIA has announced so far, what support means, what still needs per-game verification, and how to separate game support from GPU support.",
   alternates: {
     canonical: "/dlss-5-games",
   },
@@ -113,6 +113,16 @@ const previewExamples = [
 
 const relatedLinks = [
   {
+    href: "/dlss-5-evidence-tracker",
+    title: "Evidence tracker",
+    description: "See which DLSS 5 claims are confirmed, announced, or still open.",
+  },
+  {
+    href: "/dlss-5-vs-dlss-4-5",
+    title: "DLSS 5 vs DLSS 4.5",
+    description: "Separate the new visual layer from current performance features.",
+  },
+  {
     href: "/dlss-5-supported-cards",
     title: "DLSS 5 supported cards",
     description: "Check whether the GPU question is confirmed, possible, or unlikely.",
@@ -144,7 +154,7 @@ export default function Dlss5GamesPage() {
         name: "What games support DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "NVIDIA has announced an initial DLSS 5 game list including Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Hogwarts Legacy, Phantom Blade Zero, Delta Force, AION 2, and more. DLSS 5 is still planned for Fall 2026, so final per-game settings may change before launch.",
+          text: "NVIDIA has announced an initial DLSS 5 game list including Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Hogwarts Legacy, Phantom Blade Zero, Delta Force, AION 2, and more. Treat these as announced titles until each game publishes final patch notes, settings, and GPU behavior.",
         },
       },
       {
@@ -206,14 +216,17 @@ export default function Dlss5GamesPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Updated May 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">
+            Tracker updated May 12, 2026
+          </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-            DLSS 5 Games List and Release Date
+            DLSS 5 Games Tracker
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             NVIDIA has announced the first wave of titles planned for DLSS 5, but the
-            feature is not public yet. This page tracks the confirmed game names, what
-            support actually means, and what still needs final launch documentation.
+            feature is not public yet. This page tracks the named games, what support
+            actually means, and what still needs final launch documentation before a title
+            should be called verified.
           </p>
         </header>
 
@@ -221,8 +234,8 @@ export default function Dlss5GamesPage() {
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
             <h2 className="font-bold mb-2">Fast answer</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              NVIDIA says DLSS 5 will arrive in Fall 2026 and has named 15 games so far,
-              plus additional examples shown in early previews.
+              NVIDIA has named an initial wave of games and partners. The public proof for
+              each title still needs patch notes, driver support, and visible settings.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
@@ -242,11 +255,12 @@ export default function Dlss5GamesPage() {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">Confirmed DLSS 5 games so far</h2>
+          <h2 className="text-2xl font-bold mb-4">Announced DLSS 5 games so far</h2>
           <p className="text-foreground/80 leading-relaxed mb-5">
-            The table below uses NVIDIA&apos;s announcement as the source of truth. Treat
-            the status as an announced plan until each title publishes its own patch notes,
-            driver notes, or in-game graphics menu.
+            The table below uses NVIDIA&apos;s announcement as the source of truth. The
+            important distinction is evidence level: announced support is useful, but
+            verified support requires public game notes or a graphics menu that players can
+            actually inspect.
           </p>
 
           <div className="overflow-x-auto rounded-lg border border-border">
@@ -255,8 +269,8 @@ export default function Dlss5GamesPage() {
                 <tr className="border-b border-border bg-muted/40">
                   <th className="px-4 py-3 text-left font-semibold">Game</th>
                   <th className="px-4 py-3 text-left font-semibold">Publisher / studio signal</th>
-                  <th className="px-4 py-3 text-left font-semibold">Status</th>
-                  <th className="px-4 py-3 text-left font-semibold">What to watch</th>
+                  <th className="px-4 py-3 text-left font-semibold">Evidence level</th>
+                  <th className="px-4 py-3 text-left font-semibold">Next verification step</th>
                 </tr>
               </thead>
               <tbody>
@@ -269,7 +283,7 @@ export default function Dlss5GamesPage() {
                     <td className="px-4 py-3 text-muted-foreground">{game.publisherSignal}</td>
                     <td className="px-4 py-3">
                       <span className="rounded-full border border-green-500/30 bg-green-500/10 px-2.5 py-1 text-xs text-green-300">
-                        {game.status}
+                        Announced
                       </span>
                     </td>
                     <td className="px-4 py-3 text-muted-foreground">{game.note}</td>
@@ -310,6 +324,36 @@ export default function Dlss5GamesPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="mb-10 rounded-lg border border-border p-5">
+          <h2 className="text-2xl font-bold mb-4">How this tracker verifies a game</h2>
+          <div className="grid gap-4 md:grid-cols-4">
+            <div>
+              <h3 className="font-semibold mb-1">1. Announcement</h3>
+              <p className="text-sm text-muted-foreground">
+                NVIDIA or the studio names the game in public material.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-1">2. Patch notes</h3>
+              <p className="text-sm text-muted-foreground">
+                The game publisher documents the exact feature in an update.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-1">3. Driver path</h3>
+              <p className="text-sm text-muted-foreground">
+                NVIDIA App or driver notes expose the required support path.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-1">4. Player setting</h3>
+              <p className="text-sm text-muted-foreground">
+                The graphics menu shows the mode and compatible hardware behavior.
+              </p>
+            </div>
           </div>
         </section>
 

@@ -63,7 +63,7 @@ export default function Home() {
         name: "What games will support DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "NVIDIA confirmed 16+ titles for DLSS 5 including Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem, and The Elder Scrolls IV: Oblivion Remastered.",
+          text: "NVIDIA has announced an initial group of DLSS 5 games including Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem, and The Elder Scrolls IV: Oblivion Remastered. Final per-game settings still need launch documentation.",
         },
       },
       {
@@ -145,6 +145,18 @@ export default function Home() {
                 DLSS 5 games
               </Link>
               <Link
+                href="/dlss-5-evidence-tracker"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Evidence tracker
+              </Link>
+              <Link
+                href="/dlss-5-vs-dlss-4-5"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                DLSS 5 vs 4.5
+              </Link>
+              <Link
                 href="/dlss-5-rtx-40-series"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
@@ -198,7 +210,7 @@ export default function Home() {
               DLSS 5 is <strong>not yet released</strong> -- it launches in <strong>Fall 2026</strong>.
               NVIDIA has confirmed RTX 50 series support. The GTC demo used two RTX 5090s (one
               for the game, one for DLSS 5), but the shipping version will run on a single GPU.
-              There are 16+ confirmed game titles including Starfield, Hogwarts Legacy,
+              NVIDIA has announced an initial group of game titles including Starfield, Hogwarts Legacy,
               Assassin&apos;s Creed Shadows, Phantom Blade Zero, and more. Developers will have
               controls for intensity, color grading, and masking.
             </p>

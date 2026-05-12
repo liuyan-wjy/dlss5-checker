@@ -160,8 +160,9 @@ export default function PtHome() {
               <p>
                 O DLSS 5 <strong>ainda não foi lançado</strong> — será lançado no{" "}
                 <strong>outono de 2026</strong>. A NVIDIA confirmou suporte para a série RTX 50.
-                Há 16+ títulos confirmados incluindo Starfield, Hogwarts Legacy e
-                Assassin&apos;s Creed Shadows.
+                A NVIDIA anunciou um grupo inicial de títulos, incluindo Starfield, Hogwarts
+                Legacy e Assassin&apos;s Creed Shadows, mas os detalhes finais ainda dependem
+                de cada jogo.
               </p>
               <p>
                 <strong>O que está disponível hoje:</strong> As GPUs da série RTX 50 já se
@@ -259,7 +260,7 @@ function PtFAQ() {
     },
     {
       q: "Quais jogos vão ter DLSS 5?",
-      a: "A NVIDIA confirmou mais de 16 títulos para o DLSS 5 Neural Rendering no lançamento, incluindo Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem e The Elder Scrolls IV: Oblivion Remastered. Mais títulos devem ser anunciados antes do lançamento no outono de 2026.",
+      a: "A NVIDIA anunciou um grupo inicial de jogos para o DLSS 5 Neural Rendering, incluindo Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem e The Elder Scrolls IV: Oblivion Remastered. Trate isso como suporte anunciado até cada jogo publicar notas de patch, configurações e detalhes de GPU.",
     },
     {
       q: "Vale a pena comprar RTX 50 para o DLSS 5?",

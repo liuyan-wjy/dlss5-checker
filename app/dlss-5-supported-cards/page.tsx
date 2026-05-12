@@ -256,6 +256,24 @@ export default function Dlss5SupportedCardsPage() {
               </p>
             </Link>
             <Link
+              href="/dlss-5-evidence-tracker"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">Evidence tracker</div>
+              <p className="text-sm text-muted-foreground">
+                Check which compatibility claims are confirmed, announced, or still open.
+              </p>
+            </Link>
+            <Link
+              href="/dlss-5-vs-dlss-4-5"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">DLSS 5 vs DLSS 4.5</div>
+              <p className="text-sm text-muted-foreground">
+                Separate the upcoming visual layer from current DLSS features.
+              </p>
+            </Link>
+            <Link
               href="/gpu/rtx-4070"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
             >

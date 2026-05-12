@@ -34,6 +34,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.88,
     },
     {
+      url: "https://dlss5.net/dlss-5-evidence-tracker",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.86,
+    },
+    {
+      url: "https://dlss5.net/dlss-5-vs-dlss-4-5",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.84,
+    },
+    {
       url: "https://dlss5.net/dlss-5-rtx-40-series",
       lastModified: new Date(),
       changeFrequency: "weekly",

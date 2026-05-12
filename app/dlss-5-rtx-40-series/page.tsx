@@ -230,6 +230,24 @@ export default function Dlss5Rtx40SeriesPage() {
                 Check announced titles without mixing them up with GPU support.
               </p>
             </Link>
+            <Link
+              href="/dlss-5-evidence-tracker"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">Evidence tracker</div>
+              <p className="text-sm text-muted-foreground">
+                See why RTX 40 is possible but not confirmed.
+              </p>
+            </Link>
+            <Link
+              href="/dlss-5-vs-dlss-4-5"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">DLSS 5 vs DLSS 4.5</div>
+              <p className="text-sm text-muted-foreground">
+                Understand which current DLSS features RTX 40 already has.
+              </p>
+            </Link>
           </div>
         </section>
 

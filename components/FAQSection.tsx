@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: "What games will support DLSS 5?",
-    a: "NVIDIA has confirmed 16+ titles for DLSS 5 Neural Rendering at launch, including Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem, and The Elder Scrolls IV: Oblivion Remastered. Developers will have controls for intensity, color grading, and masking. More titles are expected to be announced before the Fall 2026 launch.",
+    a: "NVIDIA has announced an initial group of games for DLSS 5 Neural Rendering, including Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem, and The Elder Scrolls IV: Oblivion Remastered. Treat those as announced titles until each game publishes patch notes, settings, and GPU support details.",
   },
   {
     q: "Should I buy an RTX 50 GPU for DLSS 5?",
