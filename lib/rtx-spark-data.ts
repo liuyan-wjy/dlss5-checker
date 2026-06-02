@@ -169,7 +169,7 @@ export const rtxSparkPageMeta: Record<
       caveat:
         "Devices are announced for fall 2026, not broadly available today. Treat prices, benchmarks, and exact model configurations as pending until OEM pages and reviews ship.",
       thirdPoint:
-        "This is not an ordinary discrete RTX graphics card page and not a DGX Spark workstation replacement guide.",
+        "This is not an ordinary discrete RTX graphics card listing and not a DGX Spark workstation replacement guide.",
     },
     pt: {
       breadcrumb: "NVIDIA RTX Spark",
@@ -435,7 +435,7 @@ export const rtxSparkNavItems: Record<
   hub: {
     en: {
       title: "RTX Spark hub",
-      description: "Start with the overview, confirmed facts, and best next pages.",
+      description: "Start with the overview, confirmed facts, and recommended next guides.",
     },
     pt: {
       title: "Hub RTX Spark",

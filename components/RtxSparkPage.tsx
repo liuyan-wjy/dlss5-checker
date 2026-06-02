@@ -35,12 +35,12 @@ const text = {
     home: "DLSS 5 Checker",
     source: "Source",
     sources: "Sources and limits",
-    related: "Related RTX Spark pages",
+    related: "Related RTX Spark guides",
     faq: "Frequently asked questions",
     fastAnswer: "Fast answer",
     caveat: "Important caveat",
     whatChanges: "What to watch next",
-    readMore: "Open page",
+    readMore: "Open guide",
     spec: "Spec",
     value: "Current value",
     status: "Status",
@@ -61,18 +61,18 @@ const text = {
     event: "Event",
     meaning: "Meaning",
     latestUpdate:
-      "Update this page only when NVIDIA, Microsoft, an OEM, or a first-party benchmark/review publishes stronger evidence.",
+      "Update this guide only when NVIDIA, Microsoft, an OEM, or a first-party benchmark/review publishes stronger evidence.",
   },
   pt: {
     home: "DLSS 5 Checker",
     source: "Fonte",
     sources: "Fontes e limites",
-    related: "Páginas relacionadas sobre RTX Spark",
+    related: "Guias relacionados sobre RTX Spark",
     faq: "Perguntas frequentes",
     fastAnswer: "Resposta rápida",
     caveat: "Cautela importante",
     whatChanges: "O que acompanhar",
-    readMore: "Abrir página",
+    readMore: "Abrir guia",
     spec: "Especificação",
     value: "Valor atual",
     status: "Status",
@@ -93,7 +93,7 @@ const text = {
     event: "Evento",
     meaning: "Significado",
     latestUpdate:
-      "Atualize esta página apenas quando NVIDIA, Microsoft, um OEM ou uma análise de primeira mão publicar evidência mais forte.",
+      "Atualize este guia apenas quando NVIDIA, Microsoft, um OEM ou uma análise de primeira mão publicar evidência mais forte.",
   },
 };
 
@@ -564,7 +564,7 @@ function HubContent({ locale }: { locale: RtxSparkLocale }) {
       <section className="mb-10 grid gap-4 md:grid-cols-3">
         <div className="rounded-lg border border-border p-5">
           <h2 className="font-bold mb-2">
-            {locale === "pt" ? "Não é uma GPU comum" : "Not a normal GPU page"}
+            {locale === "pt" ? "Não é uma GPU comum" : "Not a normal GPU listing"}
           </h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
             {locale === "pt"
@@ -578,7 +578,7 @@ function HubContent({ locale }: { locale: RtxSparkLocale }) {
           </h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
             {locale === "pt"
-              ? "DGX Spark é um produto de outro nível. Esta página cobre RTX Spark para PCs Windows pessoais."
+              ? "DGX Spark é um produto de outro nível. Este hub cobre RTX Spark para PCs Windows pessoais."
               : "DGX Spark is a different class of product. This hub covers RTX Spark for personal Windows PCs."}
           </p>
         </div>
@@ -715,7 +715,7 @@ function GamingContent({ locale }: { locale: RtxSparkLocale }) {
         <p className="text-sm text-foreground/80 leading-relaxed">
           {locale === "pt"
             ? "Sem hardware de varejo e benchmarks independentes, esta página deve ser um guia de status, não uma recomendação de compra gamer."
-            : "Without retail hardware and independent benchmarks, this page should remain a status guide, not a gaming purchase recommendation."}
+            : "Without retail hardware and independent benchmarks, this guide should remain a status guide, not a gaming purchase recommendation."}
         </p>
       </section>
     </>
