@@ -200,6 +200,15 @@ export default function PtDlss5ConfirmadoPage() {
                 Lista de jogos anunciados e critérios de verificação.
               </p>
             </Link>
+            <Link
+              href="/pt/ai-pc/nvidia-rtx-spark"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">RTX Spark AI PC</div>
+              <p className="text-sm text-muted-foreground">
+                Novo hub para a plataforma Windows AI PC da NVIDIA.
+              </p>
+            </Link>
           </div>
         </section>
 

@@ -124,6 +124,11 @@ const relatedPages = [
     title: "System requirements",
     copy: "Use this when the question is minimum PC readiness rather than one card.",
   },
+  {
+    href: "/ai-pc/nvidia-rtx-spark",
+    title: "RTX Spark AI PC hub",
+    copy: "Use this for NVIDIA's new Windows AI PC chip rather than DLSS compatibility.",
+  },
 ];
 
 const faqItems = [

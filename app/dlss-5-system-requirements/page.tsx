@@ -218,6 +218,15 @@ export default function Dlss5SystemRequirementsPage() {
               </p>
             </Link>
             <Link
+              href="/ai-pc/nvidia-rtx-spark"
+              className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">RTX Spark AI PCs</div>
+              <p className="text-sm text-muted-foreground">
+                Separate DLSS requirements from NVIDIA&apos;s new Windows AI PC platform.
+              </p>
+            </Link>
+            <Link
               href="/dlss-5-vs-dlss-4-5"
               className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
             >

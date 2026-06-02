@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { GPU_DETAIL_SLUGS, getGpuPageHref } from "@/lib/gpu-page-config";
+import { rtxSparkRoutes, type RtxSparkRouteKey } from "@/lib/rtx-spark-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -38,6 +39,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.86,
+    },
+    {
+      url: "https://dlss5.net/dlss-5-release-date",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.86,
+    },
+    {
+      url: "https://dlss5.net/dlss-5-neural-rendering",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.84,
+    },
+    {
+      url: "https://dlss5.net/dlss-4-5-dynamic-mfg-6x",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.82,
     },
     {
       url: "https://dlss5.net/dlss-5-vs-dlss-4-5",
@@ -92,5 +111,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticRoutes, ...gpuRoutes];
+  const rtxSparkSitemapRoutes = (Object.keys(rtxSparkRoutes) as RtxSparkRouteKey[]).flatMap(
+    (routeKey) =>
+      (["en", "pt"] as const).map((locale) => ({
+        url: `https://dlss5.net${rtxSparkRoutes[routeKey][locale]}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly" as const,
+        priority: routeKey === "hub" ? 0.86 : 0.78,
+      }))
+  );
+
+  return [...staticRoutes, ...gpuRoutes, ...rtxSparkSitemapRoutes];
 }

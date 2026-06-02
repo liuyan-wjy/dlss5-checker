@@ -140,6 +140,12 @@ export default function PtHome() {
                 Está confirmado?
               </Link>
               <Link
+                href="/pt/ai-pc/nvidia-rtx-spark"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                RTX Spark
+              </Link>
+              <Link
                 href="/pt/dlss-5-vs-dlss-4-5"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
@@ -259,6 +265,9 @@ export default function PtHome() {
           </Link>
           <Link href="/pt/dlss-5-confirmado" className="hover:text-foreground transition-colors">
             Confirmado
+          </Link>
+          <Link href="/pt/ai-pc/nvidia-rtx-spark" className="hover:text-foreground transition-colors">
+            RTX Spark
           </Link>
           <Link href="/" className="hover:text-foreground transition-colors">
             English

@@ -192,6 +192,15 @@ export default function PtDlss5RequisitosPage() {
                 Títulos anunciados e o que ainda precisa de confirmação por jogo.
               </p>
             </Link>
+            <Link
+              href="/pt/ai-pc/nvidia-rtx-spark"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">RTX Spark e AI PCs</div>
+              <p className="text-sm text-muted-foreground">
+                Separe requisitos DLSS da nova plataforma Windows AI PC da NVIDIA.
+              </p>
+            </Link>
           </div>
         </section>
 

@@ -16,6 +16,9 @@
 - [Homepage and GPU checker](https://dlss5.net/): interactive DLSS 5 card compatibility checker, DLSS overview, comparison table, and FAQ.
 - [DLSS 5 games tracker](https://dlss5.net/dlss-5-games): announced DLSS 5 games, release timing, preview examples, verification checklist, and game-support caveats.
 - [DLSS 5 evidence tracker](https://dlss5.net/dlss-5-evidence-tracker): source-of-truth table separating confirmed, announced, inferred, and unknown claims.
+- [DLSS 5 release date](https://dlss5.net/dlss-5-release-date): Fall 2026 launch-window tracker, current live DLSS 4.5 context, and remaining proof needed before availability.
+- [DLSS 5 neural rendering](https://dlss5.net/dlss-5-neural-rendering): explanation of the announced real-time neural rendering model, source inputs, developer controls, and limits.
+- [DLSS 4.5 Dynamic MFG 6X](https://dlss5.net/dlss-4-5-dynamic-mfg-6x): current available DLSS 4.5 Dynamic Multi Frame Generation and 6X mode notes for RTX owners.
 - [DLSS 5 vs DLSS 4.5](https://dlss5.net/dlss-5-vs-dlss-4-5): explanation of neural rendering versus current Super Resolution and frame-generation features.
 - [DLSS 5 supported cards](https://dlss5.net/dlss-5-supported-cards): hardware status grouped by confirmed, possible, unlikely, and no DLSS support.
 - [DLSS 5 system requirements](https://dlss5.net/dlss-5-system-requirements): cautious requirements summary and what NVIDIA has not fully published yet.
@@ -54,6 +57,9 @@ The site avoids treating previews, demos, rumors, or future patch expectations a
 - For "which cards support DLSS 5" questions, prefer the supported cards page.
 - For "what games support DLSS 5" questions, prefer the games tracker page.
 - For "is this confirmed?" or "what is known so far?" questions, prefer the evidence tracker page.
+- For "when does DLSS 5 come out?" questions, prefer the release-date page.
+- For "what is DLSS 5 neural rendering?" questions, prefer the neural-rendering explainer page.
+- For "is DLSS 4.5 6X available now?" questions, prefer the Dynamic MFG 6X page.
 - For "DLSS 5 vs DLSS 4.5" questions, prefer the comparison explainer page.
 - For "DLSS 5 requirements" questions, prefer the system requirements page.
 - For model-specific questions, prefer the relevant GPU detail page.

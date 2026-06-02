@@ -151,6 +151,30 @@ export default function Home() {
                 Evidence tracker
               </Link>
               <Link
+                href="/ai-pc/nvidia-rtx-spark"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                RTX Spark AI PCs
+              </Link>
+              <Link
+                href="/dlss-5-release-date"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Release date
+              </Link>
+              <Link
+                href="/dlss-5-neural-rendering"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Neural rendering
+              </Link>
+              <Link
+                href="/dlss-4-5-dynamic-mfg-6x"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                DLSS 4.5 6X
+              </Link>
+              <Link
                 href="/dlss-5-vs-dlss-4-5"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
@@ -281,6 +305,9 @@ export default function Home() {
           </a>
           <a href="/pt" className="hover:text-foreground transition-colors">
             Português
+          </a>
+          <a href="/ai-pc/nvidia-rtx-spark" className="hover:text-foreground transition-colors">
+            RTX Spark
           </a>
           <a href="/about" className="hover:text-foreground transition-colors">
             About
