@@ -235,6 +235,15 @@ export default function Dlss5VsDlss45Page() {
           <h2 className="text-2xl font-bold mb-4">Related checks</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
+              href="/dlss-frame-generation-vs-multi-frame-generation"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">Frame Generation vs MFG</div>
+              <p className="text-sm text-muted-foreground">
+                Compare Frame Generation, Multi Frame Generation, Dynamic mode, and 6X.
+              </p>
+            </Link>
+            <Link
               href="/dlss-5-evidence-tracker"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
             >

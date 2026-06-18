@@ -208,6 +208,24 @@ export default function Dlss45DynamicMfg6xPage() {
 
         <section className="mb-10 grid gap-3 sm:grid-cols-2">
           <Link
+            href="/dlss-4-5-dynamic-mfg-settings"
+            className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
+          >
+            <div className="font-semibold mb-1">Dynamic MFG settings</div>
+            <p className="text-sm text-muted-foreground">
+              See how Dynamic, Fixed, Max refresh rate, and Custom targets work in the app.
+            </p>
+          </Link>
+          <Link
+            href="/dlss-4-5-games"
+            className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
+          >
+            <div className="font-semibold mb-1">Current DLSS 4.5 games</div>
+            <p className="text-sm text-muted-foreground">
+              Track game-level support signals and verification caveats.
+            </p>
+          </Link>
+          <Link
             href="/dlss-5-release-date"
             className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
           >

@@ -59,6 +59,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.82,
     },
     {
+      url: "https://dlss5.net/dlss-4-5-games",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://dlss5.net/dlss-4-5-dynamic-mfg-settings",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://dlss5.net/dlss-frame-generation-vs-multi-frame-generation",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://dlss5.net/dlss-5-unreal-engine",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.78,
+    },
+    {
       url: "https://dlss5.net/dlss-5-vs-dlss-4-5",
       lastModified: new Date(),
       changeFrequency: "weekly",

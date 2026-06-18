@@ -211,6 +211,15 @@ export default function Dlss5NeuralRenderingPage() {
 
         <section className="mb-10 grid gap-3 sm:grid-cols-2">
           <Link
+            href="/dlss-5-unreal-engine"
+            className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
+          >
+            <div className="font-semibold mb-1">Unreal Engine status</div>
+            <p className="text-sm text-muted-foreground">
+              Check current plugin support and what is still unconfirmed for developers.
+            </p>
+          </Link>
+          <Link
             href="/dlss-5-release-date"
             className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
           >

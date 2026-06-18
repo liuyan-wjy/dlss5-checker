@@ -175,6 +175,30 @@ export default function Home() {
                 DLSS 4.5 6X
               </Link>
               <Link
+                href="/dlss-4-5-games"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                DLSS 4.5 games
+              </Link>
+              <Link
+                href="/dlss-4-5-dynamic-mfg-settings"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Dynamic MFG settings
+              </Link>
+              <Link
+                href="/dlss-frame-generation-vs-multi-frame-generation"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Frame Gen vs MFG
+              </Link>
+              <Link
+                href="/dlss-5-unreal-engine"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Unreal Engine status
+              </Link>
+              <Link
                 href="/dlss-5-vs-dlss-4-5"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >

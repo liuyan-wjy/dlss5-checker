@@ -117,6 +117,11 @@ const previewExamples = [
 
 const relatedLinks = [
   {
+    href: "/dlss-4-5-games",
+    title: "Current DLSS 4.5 games",
+    description: "Separate live and announced 4.5 support from Fall 2026 game support.",
+  },
+  {
     href: "/dlss-5-evidence-tracker",
     title: "Evidence tracker",
     description: "See which DLSS 5 claims are confirmed, announced, or still open.",
