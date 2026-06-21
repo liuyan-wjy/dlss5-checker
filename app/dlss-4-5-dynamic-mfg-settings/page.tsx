@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "DLSS 4.5 Dynamic MFG Settings: NVIDIA App Guide 2026",
@@ -143,13 +144,13 @@ export default function Dlss45DynamicMfgSettingsPage() {
         "@type": "ListItem",
         position: 1,
         name: "DLSS 5 Checker",
-        item: "https://dlss5.net",
+        item: "https://www.dlss5.net",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Dynamic MFG Settings",
-        item: "https://dlss5.net/dlss-4-5-dynamic-mfg-settings",
+        item: "https://www.dlss5.net/dlss-4-5-dynamic-mfg-settings",
       },
     ],
   };
@@ -403,6 +404,7 @@ export default function Dlss45DynamicMfgSettingsPage() {
             ))}
           </div>
         </section>
+        <ArticleTrustBlock />
       </main>
     </>
   );

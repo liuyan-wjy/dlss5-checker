@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Evidence Tracker: Confirmed vs Unknown Facts [2026]",
   description:
-    "Track what is confirmed, announced, possible, and still unknown for DLSS 5, including GPU support, games, release timing, and DLSS 4.5 differences.",
+    "Track what is confirmed, announced, expected, unknown, and unlikely for DLSS 5, including GPU support, games, release timing, and DLSS 4.5 differences.",
   alternates: {
     canonical: "/dlss-5-evidence-tracker",
     languages: {
-      en: "https://dlss5.net/dlss-5-evidence-tracker",
-      "pt-BR": "https://dlss5.net/pt/dlss-5-confirmado",
+      en: "https://www.dlss5.net/dlss-5-evidence-tracker",
+      "pt-BR": "https://www.dlss5.net/pt/dlss-5-confirmado",
     },
   },
 };
@@ -64,7 +65,7 @@ const evidenceRows: {
   {
     question: "Are RTX 40 cards confirmed for DLSS 5?",
     currentAnswer:
-      "No. RTX 40 cards remain strong current DLSS cards, but this site keeps them in the possible, not confirmed, bucket for the new neural rendering layer.",
+      "No. RTX 40 cards remain strong current DLSS cards, but this site keeps them in the unknown bucket for the new neural rendering layer until final launch documentation exists.",
     evidence: "NVIDIA DLSS hardware table",
     sourceHref: NVIDIA_DLSS_TECH,
     status: "Not confirmed",
@@ -183,13 +184,13 @@ export default function Dlss5EvidenceTrackerPage() {
         "@type": "ListItem",
         position: 1,
         name: "DLSS 5 Checker",
-        item: "https://dlss5.net",
+        item: "https://www.dlss5.net",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Evidence Tracker",
-        item: "https://dlss5.net/dlss-5-evidence-tracker",
+        item: "https://www.dlss5.net/dlss-5-evidence-tracker",
       },
     ],
   };
@@ -216,7 +217,7 @@ export default function Dlss5EvidenceTrackerPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Last checked May 12, 2026
+            Last checked June 22, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Evidence Tracker
@@ -386,6 +387,7 @@ export default function Dlss5EvidenceTrackerPage() {
             definitive compatibility claims.
           </p>
         </section>
+        <ArticleTrustBlock />
       </main>
     </>
   );

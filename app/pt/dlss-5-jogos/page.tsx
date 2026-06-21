@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "Jogos com DLSS 5: lista anunciada e status por título",
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/pt/dlss-5-jogos",
     languages: {
-      en: "https://dlss5.net/dlss-5-games",
-      "pt-BR": "https://dlss5.net/pt/dlss-5-jogos",
+      en: "https://www.dlss5.net/dlss-5-games",
+      "pt-BR": "https://www.dlss5.net/pt/dlss-5-jogos",
     },
   },
 };
@@ -187,7 +188,7 @@ export default function PtDlss5JogosPage() {
             >
               <div className="font-semibold mb-1">Placas compatíveis</div>
               <p className="text-sm text-muted-foreground">
-                Confirme se sua GPU entra no grupo confirmado, possível ou improvável.
+                Confirme se sua GPU entra no grupo confirmado, esperado, desconhecido ou improvável.
               </p>
             </Link>
             <Link
@@ -216,6 +217,7 @@ export default function PtDlss5JogosPage() {
             lançamento.
           </p>
         </section>
+        <ArticleTrustBlock locale="pt" />
       </main>
     </>
   );

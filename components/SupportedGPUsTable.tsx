@@ -19,7 +19,8 @@ const SERIES_OPTIONS = [
 
 const supportConfig: Record<DlssSupport, { label: string; className: string }> = {
   confirmed: { label: "Confirmed", className: "bg-green-500/20 text-green-400 border-green-500/30" },
-  possible: { label: "Possible", className: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
+  expected: { label: "Expected", className: "bg-lime-500/20 text-lime-300 border-lime-500/30" },
+  unknown: { label: "Unknown", className: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
   unlikely: { label: "Unlikely", className: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
   none: { label: "None", className: "bg-red-500/20 text-red-400 border-red-500/30" },
 };
@@ -99,7 +100,9 @@ export default function SupportedGPUsTable({
                       ? gpu.current_dlss_features.includes("dynamic_mfg_6x")
                         ? "DLSS 4.5 Dynamic 6X MFG"
                         : "DLSS 4 Multi Frame Generation"
-                      : gpu.dlss5_support === "possible"
+                      : gpu.dlss5_support === "expected"
+                      ? "RTX 50 path, per-model DLSS 5 docs pending"
+                      : gpu.dlss5_support === "unknown"
                       ? gpu.current_dlss_features.includes("frame_generation")
                         ? "DLSS 3 Frame Generation"
                         : "DLSS Super Resolution"
@@ -118,7 +121,7 @@ export default function SupportedGPUsTable({
         </table>
       </div>
       <p className="text-xs text-muted-foreground mt-2">
-        Showing {filtered.length} GPUs. DLSS 5 Neural Rendering is confirmed for RTX 50 series (Fall 2026). Other architectures are unconfirmed.
+        Showing {filtered.length} GPUs. DLSS 5 Neural Rendering status is split into confirmed, expected, unknown, unlikely, and unsupported groups.
       </p>
     </div>
   );

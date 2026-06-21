@@ -14,7 +14,7 @@ export type RtxSparkRouteKey =
 
 export type RtxSparkStatus = "confirmed" | "announced" | "expected" | "unknown";
 
-export const RTX_SPARK_BASE_URL = "https://dlss5.net";
+export const RTX_SPARK_BASE_URL = "https://www.dlss5.net";
 
 export const rtxSparkRoutes: Record<RtxSparkRouteKey, Record<RtxSparkLocale, string>> = {
   hub: {

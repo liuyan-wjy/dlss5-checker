@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import ComparisonTable from "@/components/ComparisonTable";
 
 export const metadata: Metadata = {
@@ -9,8 +10,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/dlss-5-vs-dlss-4-5",
     languages: {
-      en: "https://dlss5.net/dlss-5-vs-dlss-4-5",
-      "pt-BR": "https://dlss5.net/pt/dlss-5-vs-dlss-4-5",
+      en: "https://www.dlss5.net/dlss-5-vs-dlss-4-5",
+      "pt-BR": "https://www.dlss5.net/pt/dlss-5-vs-dlss-4-5",
     },
   },
 };
@@ -101,13 +102,13 @@ export default function Dlss5VsDlss45Page() {
         "@type": "ListItem",
         position: 1,
         name: "DLSS 5 Checker",
-        item: "https://dlss5.net",
+        item: "https://www.dlss5.net",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "DLSS 5 vs DLSS 4.5",
-        item: "https://dlss5.net/dlss-5-vs-dlss-4-5",
+        item: "https://www.dlss5.net/dlss-5-vs-dlss-4-5",
       },
     ],
   };
@@ -322,6 +323,7 @@ export default function Dlss5VsDlss45Page() {
             and GPU-specific support.
           </p>
         </section>
+        <ArticleTrustBlock />
       </main>
     </>
   );

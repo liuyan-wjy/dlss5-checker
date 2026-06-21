@@ -1,51 +1,51 @@
 # DLSS 5 Checker
 
-> DLSS 5 Checker is an independent compatibility and release-tracking resource for NVIDIA DLSS 5 Neural Rendering. It helps users separate confirmed support, possible support, unlikely support, and unsupported hardware or games. The site is not affiliated with NVIDIA.
+> DLSS 5 Checker is an independent compatibility and release-tracking resource for NVIDIA DLSS 5 Neural Rendering. It helps users separate confirmed support, expected support, unknown support, unlikely support, and unsupported hardware or games. The site is not affiliated with NVIDIA.
 
 ## Site Scope
 
-- Domain: https://dlss5.net
+- Domain: https://www.dlss5.net
 - Primary language: English.
 - Secondary language: Portuguese for Brazil and Portugal search demand.
 - Main user intent: check whether a GPU, game, or PC setup is ready for DLSS 5.
-- Editorial rule: clearly label announced, confirmed, possible, unlikely, and unknown information.
+- Editorial rule: clearly label announced, confirmed, expected, unknown, unlikely, and unsupported information.
 - Important limitation: DLSS 5 is announced for Fall 2026. Final behavior can still depend on NVIDIA drivers, GPU tier, game patches, and in-game settings.
 
 ## Core Pages
 
-- [Homepage and GPU checker](https://dlss5.net/): interactive DLSS 5 card compatibility checker, DLSS overview, comparison table, and FAQ.
-- [DLSS 5 games tracker](https://dlss5.net/dlss-5-games): announced DLSS 5 games, release timing, preview examples, verification checklist, and game-support caveats.
-- [DLSS 5 evidence tracker](https://dlss5.net/dlss-5-evidence-tracker): source-of-truth table separating confirmed, announced, inferred, and unknown claims.
-- [DLSS 5 release date](https://dlss5.net/dlss-5-release-date): Fall 2026 launch-window tracker, current live DLSS 4.5 context, and remaining proof needed before availability.
-- [DLSS 5 neural rendering](https://dlss5.net/dlss-5-neural-rendering): explanation of the announced real-time neural rendering model, source inputs, developer controls, and limits.
-- [DLSS 4.5 Dynamic MFG 6X](https://dlss5.net/dlss-4-5-dynamic-mfg-6x): current available DLSS 4.5 Dynamic Multi Frame Generation and 6X mode notes for RTX owners.
-- [DLSS 4.5 games](https://dlss5.net/dlss-4-5-games): current and announced DLSS 4.5 game support signals, verification caveats, and how this differs from DLSS 5 game support.
-- [DLSS 4.5 Dynamic MFG settings](https://dlss5.net/dlss-4-5-dynamic-mfg-settings): NVIDIA App guide for Dynamic, Fixed, Max refresh rate, Custom targets, 6X, and V-Sync caveats.
-- [Frame Generation vs Multi Frame Generation](https://dlss5.net/dlss-frame-generation-vs-multi-frame-generation): comparison of Frame Generation, MFG, Dynamic MFG, 6X, and the separate DLSS 5 visual layer.
-- [DLSS 5 Unreal Engine status](https://dlss5.net/dlss-5-unreal-engine): developer-focused status page for current DLSS 4.5 Unreal Engine plugin support and unconfirmed DLSS 5 integration details.
-- [DLSS 5 vs DLSS 4.5](https://dlss5.net/dlss-5-vs-dlss-4-5): explanation of neural rendering versus current Super Resolution and frame-generation features.
-- [DLSS 5 supported cards](https://dlss5.net/dlss-5-supported-cards): hardware status grouped by confirmed, possible, unlikely, and no DLSS support.
-- [DLSS 5 system requirements](https://dlss5.net/dlss-5-system-requirements): cautious requirements summary and what NVIDIA has not fully published yet.
-- [DLSS 5 on RTX 40 series](https://dlss5.net/dlss-5-rtx-40-series): RTX 4090, RTX 4080, RTX 4070, and RTX 4060 status guidance.
+- [Homepage and GPU checker](https://www.dlss5.net/): interactive DLSS 5 card compatibility checker, DLSS overview, comparison table, and FAQ.
+- [DLSS 5 games tracker](https://www.dlss5.net/dlss-5-games): announced DLSS 5 games, release timing, preview examples, verification checklist, and game-support caveats.
+- [DLSS 5 evidence tracker](https://www.dlss5.net/dlss-5-evidence-tracker): source-of-truth table separating confirmed, announced, inferred, and unknown claims.
+- [DLSS 5 release date](https://www.dlss5.net/dlss-5-release-date): Fall 2026 launch-window tracker, current live DLSS 4.5 context, and remaining proof needed before availability.
+- [DLSS 5 neural rendering](https://www.dlss5.net/dlss-5-neural-rendering): explanation of the announced real-time neural rendering model, source inputs, developer controls, and limits.
+- [DLSS 4.5 Dynamic MFG 6X](https://www.dlss5.net/dlss-4-5-dynamic-mfg-6x): current available DLSS 4.5 Dynamic Multi Frame Generation and 6X mode notes for RTX owners.
+- [DLSS 4.5 games](https://www.dlss5.net/dlss-4-5-games): current and announced DLSS 4.5 game support signals, verification caveats, and how this differs from DLSS 5 game support.
+- [DLSS 4.5 Dynamic MFG settings](https://www.dlss5.net/dlss-4-5-dynamic-mfg-settings): NVIDIA App guide for Dynamic, Fixed, Max refresh rate, Custom targets, 6X, and V-Sync caveats.
+- [Frame Generation vs Multi Frame Generation](https://www.dlss5.net/dlss-frame-generation-vs-multi-frame-generation): comparison of Frame Generation, MFG, Dynamic MFG, 6X, and the separate DLSS 5 visual layer.
+- [DLSS 5 Unreal Engine status](https://www.dlss5.net/dlss-5-unreal-engine): developer-focused status page for current DLSS 4.5 Unreal Engine plugin support and unconfirmed DLSS 5 integration details.
+- [DLSS 5 vs DLSS 4.5](https://www.dlss5.net/dlss-5-vs-dlss-4-5): explanation of neural rendering versus current Super Resolution and frame-generation features.
+- [DLSS 5 supported cards](https://www.dlss5.net/dlss-5-supported-cards): hardware status grouped by confirmed, expected, unknown, unlikely, and no DLSS support.
+- [DLSS 5 system requirements](https://www.dlss5.net/dlss-5-system-requirements): cautious requirements summary and what NVIDIA has not fully published yet.
+- [DLSS 5 on RTX 40 series](https://www.dlss5.net/dlss-5-rtx-40-series): RTX 4090, RTX 4080, RTX 4070, and RTX 4060 status guidance.
 
 ## GPU Detail Pages
 
-- [RTX 5090 DLSS 5 support](https://dlss5.net/gpu/rtx-5090): safest individual-card page for the confirmed RTX 50 path.
-- [RTX 4080 DLSS 5 support](https://dlss5.net/gpu/rtx-4080): high-end RTX 40 status with current DLSS feature context.
-- [RTX 4070 DLSS 5 support](https://dlss5.net/gpu/rtx-4070): common RTX 40 query, currently possible but not confirmed for DLSS 5.
-- [RTX 3070 DLSS 5 support](https://dlss5.net/gpu/rtx-3070): RTX 30 status and why the new DLSS 5 layer is unlikely.
-- [RTX 3060 DLSS 5 support](https://dlss5.net/gpu/rtx-3060): RTX 30 entry-level status and upgrade context.
+- [RTX 5090 DLSS 5 support](https://www.dlss5.net/gpu/rtx-5090): safest individual-card page for the confirmed RTX 50 path.
+- [RTX 4080 DLSS 5 support](https://www.dlss5.net/gpu/rtx-4080): high-end RTX 40 status with current DLSS feature context.
+- [RTX 4070 DLSS 5 support](https://www.dlss5.net/gpu/rtx-4070): common RTX 40 query, currently unknown until final DLSS 5 launch documentation.
+- [RTX 3070 DLSS 5 support](https://www.dlss5.net/gpu/rtx-3070): RTX 30 status and why the new DLSS 5 layer is unlikely.
+- [RTX 3060 DLSS 5 support](https://www.dlss5.net/gpu/rtx-3060): RTX 30 entry-level status and upgrade context.
 
 ## Portuguese Pages
 
-- [Verificador DLSS 5 em portugues](https://dlss5.net/pt): Portuguese homepage and compatibility checker entry.
-- [DLSS 5 quais placas](https://dlss5.net/pt/dlss-5-quais-placas): Portuguese card-support guide.
-- [Requisitos DLSS 5 em portugues](https://dlss5.net/pt/dlss-5-requisitos): Portuguese requirements guide using local terms such as requisitos, placas compativeis, and suporte.
-- [Jogos com DLSS 5 em portugues](https://dlss5.net/pt/dlss-5-jogos): Portuguese games tracker for announced versus verified game support.
-- [DLSS 5 esta confirmado em portugues](https://dlss5.net/pt/dlss-5-confirmado): Portuguese evidence page for confirmed, announced, possible, and unknown DLSS 5 claims.
-- [DLSS 5 vs DLSS 4.5 em portugues](https://dlss5.net/pt/dlss-5-vs-dlss-4-5): Portuguese comparison page for Neural Rendering versus current DLSS 4.5 features.
-- [RTX 4090 DLSS 5 em portugues](https://dlss5.net/pt/gpu/rtx-4090): Portuguese RTX 4090 status page.
-- [GTX 1060 DLSS 5 em portugues](https://dlss5.net/pt/gpu/gtx-1060): Portuguese no-DLSS support explanation for GTX 1060 users.
+- [Verificador DLSS 5 em portugues](https://www.dlss5.net/pt): Portuguese homepage and compatibility checker entry.
+- [DLSS 5 quais placas](https://www.dlss5.net/pt/dlss-5-quais-placas): Portuguese card-support guide.
+- [Requisitos DLSS 5 em portugues](https://www.dlss5.net/pt/dlss-5-requisitos): Portuguese requirements guide using local terms such as requisitos, placas compativeis, and suporte.
+- [Jogos com DLSS 5 em portugues](https://www.dlss5.net/pt/dlss-5-jogos): Portuguese games tracker for announced versus verified game support.
+- [DLSS 5 esta confirmado em portugues](https://www.dlss5.net/pt/dlss-5-confirmado): Portuguese evidence page for confirmed, announced, expected, and unknown DLSS 5 claims.
+- [DLSS 5 vs DLSS 4.5 em portugues](https://www.dlss5.net/pt/dlss-5-vs-dlss-4-5): Portuguese comparison page for Neural Rendering versus current DLSS 4.5 features.
+- [RTX 4090 DLSS 5 em portugues](https://www.dlss5.net/pt/gpu/rtx-4090): Portuguese RTX 4090 status page.
+- [GTX 1060 DLSS 5 em portugues](https://www.dlss5.net/pt/gpu/gtx-1060): Portuguese no-DLSS support explanation for GTX 1060 users.
 
 ## Source Policy
 

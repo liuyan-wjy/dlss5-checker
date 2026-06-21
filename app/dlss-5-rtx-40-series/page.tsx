@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type GPU } from "@/lib/gpu-search";
 import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 
@@ -75,14 +76,14 @@ export default function Dlss5Rtx40SeriesPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Updated April 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked June 22, 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Will DLSS 5 Be on RTX 40 Series?
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            The honest answer is: not confirmed yet. RTX 40 cards are excellent current
-            DLSS cards, but the new neural rendering feature has not been officially
-            promised for RTX 4090, 4080, 4070, or 4060 models.
+            The honest answer is: unknown until final launch documentation. RTX 40 cards
+            are excellent current DLSS cards, but the new neural rendering feature has not
+            been officially promised for RTX 4090, 4080, 4070, or 4060 models.
           </p>
         </header>
 
@@ -100,7 +101,7 @@ export default function Dlss5Rtx40SeriesPage() {
             <p className="text-sm text-foreground/80 leading-relaxed">
               DLSS 5 Neural Rendering has been announced for a fall 2026 launch, but NVIDIA
               has not released a complete per-generation matrix for older cards. That is why
-              this site labels RTX 40 as possible rather than confirmed.
+              this site labels RTX 40 as unknown rather than confirmed.
             </p>
           </div>
         </section>
@@ -132,7 +133,7 @@ export default function Dlss5Rtx40SeriesPage() {
                     </td>
                     <td className="px-4 py-3">
                       <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 text-xs text-yellow-300">
-                        Possible, not confirmed
+                        Unknown
                       </span>
                     </td>
                   </tr>
@@ -143,7 +144,7 @@ export default function Dlss5Rtx40SeriesPage() {
         </section>
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
-          <h2 className="text-2xl font-bold text-foreground">RTX 4070 searchers: what matters</h2>
+          <h2 className="text-2xl font-bold text-foreground">RTX 4070 owners: what matters</h2>
           <p>
             If you searched for RTX 4070 specifically, the useful split is simple: your card
             already has the main RTX 40 DLSS stack, but it is not in the RTX 50-only group
@@ -236,7 +237,7 @@ export default function Dlss5Rtx40SeriesPage() {
             >
               <div className="font-semibold mb-1">Evidence tracker</div>
               <p className="text-sm text-muted-foreground">
-                See why RTX 40 is possible but not confirmed.
+                See why RTX 40 is unknown until final launch documentation.
               </p>
             </Link>
             <Link
@@ -272,6 +273,7 @@ export default function Dlss5Rtx40SeriesPage() {
             requirements for DLSS 5.
           </p>
         </section>
+        <ArticleTrustBlock />
       </main>
     </>
   );

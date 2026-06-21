@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: "Which GPUs will support DLSS 5?",
-    a: "NVIDIA has confirmed DLSS 5 Neural Rendering for RTX 50 series GPUs. Support for RTX 40 series has been hinted at but is NOT confirmed. RTX 20/30 series support is unlikely based on current information. DLSS 5 has not shipped yet -- it launches Fall 2026. The GTC demo used two RTX 5090s (one for the game, one for DLSS 5), but the shipping version will run on a single GPU.",
+    a: "The clearest DLSS 5 Neural Rendering path is RTX 50. This site treats RTX 5090, 5080, 5070 Ti, and 5070 as confirmed, RTX 5060 Ti / 5060 as expected pending final per-model documentation, RTX 40 as unknown, and RTX 20/30 as unlikely. DLSS 5 has not shipped yet -- it launches Fall 2026.",
   },
   {
     q: "How is DLSS 5 different from DLSS 4 and 4.5?",
@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     q: "Should I buy an RTX 50 GPU for DLSS 5?",
-    a: "RTX 50 series GPUs are the only confirmed architecture for DLSS 5. But you don't need to wait for Fall 2026 to benefit -- RTX 50 GPUs already run DLSS 4/4.5 with Multi Frame Generation (up to 6X), delivering massive performance gains in 250+ games today. When DLSS 5 ships, RTX 50 owners will get the Neural Rendering upgrade on top of these existing benefits.",
+    a: "RTX 50 is the safest path for DLSS 5, but lower-tier models should still be checked against final per-model launch documentation. You don't need to wait for Fall 2026 to benefit from current features: RTX 50 GPUs already run DLSS 4/4.5 with Multi Frame Generation in supported games.",
   },
 ];
 

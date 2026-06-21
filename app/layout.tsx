@@ -1,31 +1,32 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { SiteFooter, SiteHeader } from "@/components/SiteNavigation";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Supported Cards & GPU Compatibility Checker",
   description:
-    "What GPUs support DLSS 5? RTX 5090/5080/5070 confirmed. Check if your RTX 4070, RTX 4080, or RTX 50-series GPU is on the list.",
-  metadataBase: new URL("https://dlss5.net"),
+    "Check DLSS 5 GPU support with an evidence-based tracker for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel cards. See confirmed, expected, unknown, and unsupported status.",
+  metadataBase: new URL("https://www.dlss5.net"),
   openGraph: {
     title: "DLSS 5 GPU Compatibility Checker",
     description:
-      "Check if your GPU is confirmed for DLSS 5 Neural Rendering (Fall 2026) and see current DLSS 4/4.5 performance.",
+      "Check DLSS 5 GPU support with an evidence-based tracker for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel cards.",
     type: "website",
     locale: "en_US",
-    url: "https://dlss5.net",
+    url: "https://www.dlss5.net",
   },
   twitter: {
     card: "summary_large_image",
     title: "DLSS 5 GPU Compatibility Checker",
-    description: "Check DLSS 5 Neural Rendering compatibility for your NVIDIA GPU. Coming Fall 2026.",
+    description: "Check confirmed, expected, unknown, and unsupported DLSS 5 GPU status.",
   },
   alternates: {
     canonical: "/",
     languages: {
-      "en": "https://dlss5.net",
-      "pt-BR": "https://dlss5.net/pt",
-      "x-default": "https://dlss5.net",
+      "en": "https://www.dlss5.net",
+      "pt-BR": "https://www.dlss5.net/pt",
+      "x-default": "https://www.dlss5.net",
     },
   },
   robots: {
@@ -42,15 +43,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="antialiased bg-background text-foreground">
+        <SiteHeader />
         {children}
+        <SiteFooter />
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5442184426795655"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="profitable-cpm-global"
-          src="https://pl28945057.profitablecpmratenetwork.com/a3/5d/50/a35d50052b82b8088ad1d9c2090368a6.js"
           strategy="afterInteractive"
         />
         <Script

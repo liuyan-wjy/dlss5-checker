@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Unreal Engine Status: What Developers Know Now",
@@ -94,13 +95,13 @@ export default function Dlss5UnrealEnginePage() {
         "@type": "ListItem",
         position: 1,
         name: "DLSS 5 Checker",
-        item: "https://dlss5.net",
+        item: "https://www.dlss5.net",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "DLSS 5 Unreal Engine",
-        item: "https://dlss5.net/dlss-5-unreal-engine",
+        item: "https://www.dlss5.net/dlss-5-unreal-engine",
       },
     ],
   };
@@ -283,7 +284,7 @@ export default function Dlss5UnrealEnginePage() {
           >
             <div className="font-semibold mb-1">Evidence tracker</div>
             <p className="text-sm text-muted-foreground">
-              Check what is confirmed, announced, possible, or still unknown.
+              Check what is confirmed, announced, expected, or still unknown.
             </p>
           </Link>
           <Link
@@ -338,6 +339,7 @@ export default function Dlss5UnrealEnginePage() {
             ))}
           </div>
         </section>
+        <ArticleTrustBlock />
       </main>
     </>
   );

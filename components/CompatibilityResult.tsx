@@ -18,10 +18,18 @@ const CONFIG = {
     cardBorder: "border-green-500/30",
     cardBg: "bg-green-500/5",
   },
-  possible: {
+  expected: {
+    icon: <Clock className="w-8 h-8 text-lime-400" />,
+    badge: <Badge className="bg-lime-600 text-white text-sm px-3 py-1">Expected</Badge>,
+    heading: "DLSS 5 Expected, Per-Model Docs Pending",
+    headingColor: "text-lime-400",
+    cardBorder: "border-lime-500/30",
+    cardBg: "bg-lime-500/5",
+  },
+  unknown: {
     icon: <Clock className="w-8 h-8 text-yellow-500" />,
-    badge: <Badge className="bg-yellow-500 text-white text-sm px-3 py-1">Possible</Badge>,
-    heading: "DLSS 5 Support Possible (Unconfirmed)",
+    badge: <Badge className="bg-yellow-500 text-white text-sm px-3 py-1">Unknown</Badge>,
+    heading: "DLSS 5 Support Unknown",
     headingColor: "text-yellow-500",
     cardBorder: "border-yellow-500/30",
     cardBg: "bg-yellow-500/5",

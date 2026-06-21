@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import ComparisonTable from "@/components/ComparisonTable";
 
 export const metadata: Metadata = {
@@ -9,8 +10,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/pt/dlss-5-vs-dlss-4-5",
     languages: {
-      en: "https://dlss5.net/dlss-5-vs-dlss-4-5",
-      "pt-BR": "https://dlss5.net/pt/dlss-5-vs-dlss-4-5",
+      en: "https://www.dlss5.net/dlss-5-vs-dlss-4-5",
+      "pt-BR": "https://www.dlss5.net/pt/dlss-5-vs-dlss-4-5",
     },
   },
 };
@@ -208,6 +209,7 @@ export default function PtDlss5VsDlss45Page() {
             .
           </p>
         </section>
+        <ArticleTrustBlock locale="pt" />
       </main>
     </>
   );

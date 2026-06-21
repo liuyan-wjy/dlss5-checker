@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Games Tracker: Announced vs Verified Titles",
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/dlss-5-games",
     languages: {
-      en: "https://dlss5.net/dlss-5-games",
-      "pt-BR": "https://dlss5.net/pt/dlss-5-jogos",
+      en: "https://www.dlss5.net/dlss-5-games",
+      "pt-BR": "https://www.dlss5.net/pt/dlss-5-jogos",
     },
   },
 };
@@ -134,7 +135,7 @@ const relatedLinks = [
   {
     href: "/dlss-5-supported-cards",
     title: "DLSS 5 supported cards",
-    description: "Check whether the GPU question is confirmed, possible, or unlikely.",
+    description: "Check whether the GPU question is confirmed, expected, unknown, or unlikely.",
   },
   {
     href: "/dlss-5-system-requirements",
@@ -193,13 +194,13 @@ export default function Dlss5GamesPage() {
         "@type": "ListItem",
         position: 1,
         name: "DLSS 5 Checker",
-        item: "https://dlss5.net",
+        item: "https://www.dlss5.net",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "DLSS 5 Games",
-        item: "https://dlss5.net/dlss-5-games",
+        item: "https://www.dlss5.net/dlss-5-games",
       },
     ],
   };
@@ -489,6 +490,7 @@ export default function Dlss5GamesPage() {
             Back to GPU Checker
           </Link>
         </div>
+        <ArticleTrustBlock />
       </main>
     </>
   );

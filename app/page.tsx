@@ -23,7 +23,7 @@ export default function Home() {
         name: "Which GPUs will support DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "NVIDIA has confirmed DLSS 5 Neural Rendering for RTX 50 series GPUs and cards. RTX 40 series support has been hinted at but is not confirmed. RTX 20/30 series support is unlikely. DLSS 5 (DLSS5) launches Fall 2026.",
+          text: "The clearest DLSS 5 Neural Rendering path is RTX 50, with RTX 5090, 5080, 5070 Ti, and 5070 treated as confirmed in this tracker and RTX 5060 Ti / 5060 treated as expected pending final per-model documentation. RTX 40 support is unknown, RTX 20/30 support is unlikely, and DLSS 5 launches Fall 2026.",
         },
       },
       {
@@ -81,9 +81,9 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: "DLSS 5 GPU Compatibility Checker",
-    url: "https://dlss5.net",
+    url: "https://www.dlss5.net",
     description:
-      "Check if your NVIDIA GPU is confirmed for DLSS 5 Neural Rendering (Fall 2026). See current DLSS 4/4.5 performance data and find the best GPU upgrade path.",
+      "Check DLSS 5 GPU support with an evidence-based tracker for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel cards. See confirmed, expected, unknown, and unsupported status.",
     applicationCategory: "UtilityApplication",
     operatingSystem: "Any",
     offers: {
@@ -256,8 +256,10 @@ export default function Home() {
             </p>
             <p>
               DLSS 5 is <strong>not yet released</strong> -- it launches in <strong>Fall 2026</strong>.
-              NVIDIA has confirmed RTX 50 series support. The GTC demo used two RTX 5090s (one
-              for the game, one for DLSS 5), but the shipping version will run on a single GPU.
+              NVIDIA has confirmed the RTX 50 path for DLSS 5, while lower-tier RTX 50
+              models should still be checked against final per-model launch documentation.
+              The GTC demo used two RTX 5090s, but the shipping version is expected to run
+              on a single supported GPU.
               NVIDIA has announced an initial group of game titles including Starfield, Hogwarts Legacy,
               Assassin&apos;s Creed Shadows, Phantom Blade Zero, and more. Developers will have
               controls for intensity, color grading, and masking.
@@ -278,8 +280,8 @@ export default function Home() {
         <section id="supported-gpus">
           <h2 className="text-3xl font-bold mb-2">DLSS 5 Supported Cards &amp; GPU Compatibility</h2>
           <p className="text-muted-foreground mb-6">
-            DLSS5 Neural Rendering is confirmed for RTX 50 series cards (Fall 2026). Other architectures are unconfirmed.
-            Current DLSS 4/4.5 features shown for reference.
+            DLSS 5 Neural Rendering status is tracked as confirmed, expected, unknown,
+            unlikely, or unsupported. Current DLSS 4/4.5 features are shown for reference.
           </p>
           <SupportedGPUsTable />
         </section>
@@ -303,47 +305,6 @@ export default function Home() {
         </div>
       </main>
 
-      {/* ===== FOOTER ===== */}
-      <footer className="border-t border-border/50 py-8 px-4 text-center text-muted-foreground text-sm">
-        <p className="mb-2">
-          <strong className="text-foreground">DLSS Checker</strong> -- Independent DLSS 5
-          compatibility resource. Not affiliated with NVIDIA.
-        </p>
-        <p className="text-xs">
-          Performance data reflects current DLSS 4/4.5 benchmarks (estimated). DLSS 5 Neural Rendering
-          is not yet released and has no benchmark data. Actual performance may vary by
-          system configuration, game version, and driver updates.
-        </p>
-        <nav aria-label="Footer navigation" className="flex justify-center gap-6 mt-4 text-xs">
-          <a href="#what-is-dlss-5" className="hover:text-foreground transition-colors">
-            What is DLSS 5
-          </a>
-          <a href="#supported-gpus" className="hover:text-foreground transition-colors">
-            GPU Compatibility
-          </a>
-          <a href="#dlss5-vs-dlss4" className="hover:text-foreground transition-colors">
-            DLSS 3 vs 4 vs 4.5 vs 5
-          </a>
-          <a href="#faq" className="hover:text-foreground transition-colors">
-            FAQ
-          </a>
-          <a href="/pt" className="hover:text-foreground transition-colors">
-            Português
-          </a>
-          <a href="/ai-pc/nvidia-rtx-spark" className="hover:text-foreground transition-colors">
-            RTX Spark
-          </a>
-          <a href="/about" className="hover:text-foreground transition-colors">
-            About
-          </a>
-          <a href="/contact" className="hover:text-foreground transition-colors">
-            Contact
-          </a>
-          <a href="/privacy" className="hover:text-foreground transition-colors">
-            Privacy Policy
-          </a>
-        </nav>
-      </footer>
     </>
   );
 }

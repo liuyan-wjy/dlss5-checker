@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Neural Rendering: How It Works in Modern Games",
@@ -102,13 +103,13 @@ export default function Dlss5NeuralRenderingPage() {
         "@type": "ListItem",
         position: 1,
         name: "DLSS 5 Checker",
-        item: "https://dlss5.net",
+        item: "https://www.dlss5.net",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Neural Rendering",
-        item: "https://dlss5.net/dlss-5-neural-rendering",
+        item: "https://www.dlss5.net/dlss-5-neural-rendering",
       },
     ],
   };
@@ -171,7 +172,7 @@ export default function Dlss5NeuralRenderingPage() {
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
           <h2 className="text-2xl font-bold text-foreground">
-            Why this is useful information for searchers
+            Why this matters for players and developers
           </h2>
           <p>
             Most short answers say the feature improves graphics, but that does not tell a
@@ -287,6 +288,7 @@ export default function Dlss5NeuralRenderingPage() {
             ))}
           </div>
         </section>
+        <ArticleTrustBlock />
       </main>
     </>
   );

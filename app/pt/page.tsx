@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/pt",
     languages: {
-      "en": "https://dlss5.net",
-      "pt-BR": "https://dlss5.net/pt",
+      "en": "https://www.dlss5.net",
+      "pt-BR": "https://www.dlss5.net/pt",
     },
   },
   openGraph: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: "Verifique a compatibilidade da sua GPU com DLSS 5 Neural Rendering (outono 2026).",
     type: "website",
     locale: "pt_BR",
-    url: "https://dlss5.net/pt",
+    url: "https://www.dlss5.net/pt",
   },
 };
 
@@ -43,7 +43,7 @@ export default function PtHome() {
         name: "Quais placas de vídeo suportam o DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "A NVIDIA confirmou o DLSS 5 Neural Rendering para as GPUs da série RTX 50. O suporte para a série RTX 40 foi sugerido, mas não confirmado. O suporte para RTX 20/30 é improvável. O DLSS 5 será lançado no outono de 2026.",
+          text: "O caminho mais claro para o DLSS 5 Neural Rendering é a série RTX 50. Este site trata RTX 5090, 5080, 5070 Ti e 5070 como confirmadas, RTX 5060 Ti / 5060 como esperadas com documentação final pendente por modelo, RTX 40 como desconhecida e RTX 20/30 como improvável.",
         },
       },
       {
@@ -189,8 +189,9 @@ export default function PtHome() {
               </p>
               <p>
                 O DLSS 5 <strong>ainda não foi lançado</strong> — será lançado no{" "}
-                <strong>outono de 2026</strong>. A NVIDIA confirmou suporte para a série RTX 50.
-                A NVIDIA anunciou um grupo inicial de títulos, incluindo Starfield, Hogwarts
+                <strong>outono de 2026</strong>. A NVIDIA confirmou o caminho RTX 50,
+                enquanto modelos de entrada ainda devem ser verificados na documentação final
+                por modelo. A NVIDIA anunciou um grupo inicial de títulos, incluindo Starfield, Hogwarts
                 Legacy e Assassin&apos;s Creed Shadows, mas os detalhes finais ainda dependem
                 de cada jogo.
               </p>
@@ -209,8 +210,9 @@ export default function PtHome() {
           <section id="placas-suportadas">
             <h2 className="text-3xl font-bold mb-2">Quais Placas Suportam DLSS 5?</h2>
             <p className="text-muted-foreground mb-6">
-              DLSS 5 Neural Rendering está confirmado para a série RTX 50 (outono 2026).
-              Outras arquiteturas não foram confirmadas. Recursos atuais do DLSS 4/4.5 mostrados para referência.
+              O status do DLSS 5 Neural Rendering é separado em confirmado, esperado,
+              desconhecido, improvável ou sem suporte. Recursos atuais do DLSS 4/4.5 são
+              mostrados para referência.
             </p>
             <SupportedGPUsTable locale="pt" />
           </section>
@@ -234,46 +236,6 @@ export default function PtHome() {
         </div>
       </main>
 
-      {/* ===== FOOTER ===== */}
-      <footer className="border-t border-border/50 py-8 px-4 text-center text-muted-foreground text-sm">
-        <p className="mb-2">
-          <strong className="text-foreground">DLSS Checker</strong> — Recurso independente de
-          compatibilidade DLSS 5. Não afiliado à NVIDIA.
-        </p>
-        <p className="text-xs">
-          Os dados de desempenho refletem os benchmarks atuais do DLSS 4/4.5 (estimados).
-          O DLSS 5 Neural Rendering ainda não foi lançado e não há dados de benchmark disponíveis.
-        </p>
-        <nav aria-label="Navegação do rodapé" className="flex justify-center gap-6 mt-4 text-xs flex-wrap">
-          <a href="/pt#o-que-e-dlss-5" className="hover:text-foreground transition-colors">
-            O que é DLSS 5
-          </a>
-          <a href="/pt#placas-suportadas" className="hover:text-foreground transition-colors">
-            Placas Suportadas
-          </a>
-          <a href="/pt#comparacao-dlss" className="hover:text-foreground transition-colors">
-            DLSS 3 vs 4 vs 4.5 vs 5
-          </a>
-          <a href="/pt#perguntas-frequentes" className="hover:text-foreground transition-colors">
-            FAQ
-          </a>
-          <Link href="/pt/dlss-5-requisitos" className="hover:text-foreground transition-colors">
-            Requisitos
-          </Link>
-          <Link href="/pt/dlss-5-jogos" className="hover:text-foreground transition-colors">
-            Jogos
-          </Link>
-          <Link href="/pt/dlss-5-confirmado" className="hover:text-foreground transition-colors">
-            Confirmado
-          </Link>
-          <Link href="/pt/ai-pc/nvidia-rtx-spark" className="hover:text-foreground transition-colors">
-            RTX Spark
-          </Link>
-          <Link href="/" className="hover:text-foreground transition-colors">
-            English
-          </Link>
-        </nav>
-      </footer>
     </>
   );
 }
@@ -286,7 +248,7 @@ function PtFAQ() {
     },
     {
       q: "Quais placas de vídeo suportam o DLSS 5?",
-      a: "A NVIDIA confirmou o DLSS 5 Neural Rendering para as GPUs da série RTX 50 (RTX 5090, 5080, 5070 Ti, 5070, 5060 Ti, 5060). O suporte para RTX 40 foi sugerido, mas NÃO confirmado. O suporte para RTX 20/30 é improvável. O DLSS 5 ainda não foi lançado — será lançado no outono de 2026.",
+      a: "O caminho mais claro é RTX 50: RTX 5090, 5080, 5070 Ti e 5070 são tratadas como confirmadas neste tracker; RTX 5060 Ti e 5060 ficam como esperadas, mas pendentes da documentação final por modelo. RTX 40 é desconhecida e RTX 20/30 é improvável.",
     },
     {
       q: "Qual a diferença entre DLSS 5 e DLSS 4?",
@@ -294,7 +256,7 @@ function PtFAQ() {
     },
     {
       q: "RTX 4090 vai suportar DLSS 5?",
-      a: "Não está confirmado. A NVIDIA confirmou DLSS 5 apenas para a série RTX 50. Para RTX 40 (incluindo RTX 4090), o suporte foi 'sugerido' mas não anunciado oficialmente. Se você tem uma RTX 40, pode usar DLSS 3 Frame Generation e DLSS Super Resolution hoje, mas DLSS 5 Neural Rendering é incerto.",
+      a: "Ainda é desconhecido. Se você tem uma RTX 40, pode usar DLSS 3 Frame Generation, Super Resolution e Ray Reconstruction hoje, mas DLSS 5 Neural Rendering deve esperar a documentação final da NVIDIA.",
     },
     {
       q: "O DLSS 5 já está disponível no Brasil?",
@@ -306,7 +268,7 @@ function PtFAQ() {
     },
     {
       q: "Vale a pena comprar RTX 50 para o DLSS 5?",
-      a: "A série RTX 50 é a única arquitetura confirmada para o DLSS 5. Mas não precisa esperar até o outono de 2026 — as GPUs RTX 50 já rodam DLSS 4/4.5 com Geração Multi-Frame (até 6X), entregando ganhos massivos de desempenho em 250+ jogos hoje. Quando o DLSS 5 for lançado, os donos de RTX 50 receberão a atualização de Neural Rendering.",
+      a: "RTX 50 é o caminho mais seguro para DLSS 5, mas modelos específicos ainda devem ser conferidos na documentação final. Hoje, as GPUs RTX 50 já rodam recursos do DLSS 4/4.5 com Geração Multi-Frame em jogos compatíveis.",
     },
   ];
 

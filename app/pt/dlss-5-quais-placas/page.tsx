@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type DlssSupport, type GPU } from "@/lib/gpu-search";
 import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 
 export const metadata: Metadata = {
   title: "DLSS 5: Quais Placas Suportam? Lista por GPU [2026]",
   description:
-    "Veja quais placas estão confirmadas, possíveis, improváveis ou sem suporte para DLSS 5, com status para RTX 50, RTX 40, RTX 30, GTX, AMD e Intel.",
+    "Veja quais placas estão confirmadas, esperadas, desconhecidas, improváveis ou sem suporte para DLSS 5, com status para RTX 50, RTX 40, RTX 30, GTX, AMD e Intel.",
   alternates: {
     canonical: "/pt/dlss-5-quais-placas",
     languages: {
-      en: "https://dlss5.net/dlss-5-supported-cards",
-      "pt-BR": "https://dlss5.net/pt/dlss-5-quais-placas",
+      en: "https://www.dlss5.net/dlss-5-supported-cards",
+      "pt-BR": "https://www.dlss5.net/pt/dlss-5-quais-placas",
     },
   },
 };
@@ -28,13 +29,19 @@ const STATUS_COPY: Record<
   confirmed: {
     title: "Placas confirmadas",
     label: "Confirmada",
-    note: "Os modelos RTX 50 neste grupo confirmado são o caminho mais seguro para quem quer a nova camada de Neural Rendering.",
+    note: "Os modelos RTX 50 neste grupo têm o caminho público mais claro para a nova camada de Neural Rendering.",
     className: "border-green-500/30 bg-green-500/5 text-green-300",
   },
-  possible: {
-    title: "Possíveis, mas sem confirmação",
-    label: "Possível",
-    note: "As placas RTX 40 já rodam recursos atuais fortes de DLSS, mas ainda não há uma matriz final para DLSS 5 nessa geração.",
+  expected: {
+    title: "Esperadas, pendentes por modelo",
+    label: "Esperada",
+    note: "Esses modelos RTX 50 fazem parte do caminho da geração RTX 50, mas ainda devem ser verificados na documentação final por modelo.",
+    className: "border-lime-500/30 bg-lime-500/5 text-lime-300",
+  },
+  unknown: {
+    title: "Desconhecidas até a documentação final",
+    label: "Desconhecida",
+    note: "As placas RTX 40 rodam recursos atuais fortes de DLSS, mas o DLSS 5 Neural Rendering ainda não deve ser tratado como confirmado nessa geração.",
     className: "border-yellow-500/30 bg-yellow-500/5 text-yellow-300",
   },
   unlikely: {
@@ -55,7 +62,7 @@ const faqItems = [
   {
     question: "Quais placas suportam DLSS 5?",
     answer:
-      "As placas confirmadas neste guia são modelos RTX 50. A série RTX 40 ainda deve ser tratada como possível, mas sem confirmação final.",
+      "As placas confirmadas neste guia são modelos RTX 50 com caminho público claro. RTX 5060 e RTX 5060 Ti ficam como esperadas, mas pendentes por modelo; RTX 40 fica como desconhecida até a documentação final.",
   },
   {
     question: "RTX 4090 suporta DLSS 5?",
@@ -188,14 +195,14 @@ export default function PtDlss5QuaisPlacasPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Atualizado em abril de 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Última verificação em 22 de junho de 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5: Quais Placas Suportam?
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             A resposta curta: os modelos confirmados nesta lista são RTX 50. RTX 40 ainda
-            merece atenção, mas não deve ser tratada como garantida até a NVIDIA publicar
-            os requisitos finais de lançamento.
+            merece atenção, mas deve ser tratada como desconhecida até a NVIDIA publicar
+            os requisitos finais por geração e por modelo.
           </p>
         </header>
 
@@ -223,7 +230,8 @@ export default function PtDlss5QuaisPlacasPage() {
         </section>
 
         <StatusSection status="confirmed" />
-        <StatusSection status="possible" />
+        <StatusSection status="expected" />
+        <StatusSection status="unknown" />
         <StatusSection status="unlikely" />
         <StatusSection status="none" />
 
@@ -320,6 +328,7 @@ export default function PtDlss5QuaisPlacasPage() {
             de suporte antes do lançamento.
           </p>
         </section>
+        <ArticleTrustBlock locale="pt" />
       </main>
     </>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "Requisitos DLSS 5: placas compatíveis e pendências",
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/pt/dlss-5-requisitos",
     languages: {
-      en: "https://dlss5.net/dlss-5-system-requirements",
-      "pt-BR": "https://dlss5.net/pt/dlss-5-requisitos",
+      en: "https://www.dlss5.net/dlss-5-system-requirements",
+      "pt-BR": "https://www.dlss5.net/pt/dlss-5-requisitos",
     },
   },
 };
@@ -23,7 +24,7 @@ const faqItems = [
   {
     question: "RTX 40 vai rodar DLSS 5?",
     answer:
-      "Ainda não está confirmado. RTX 40 roda recursos atuais de DLSS, como Frame Generation, Super Resolution e Ray Reconstruction, mas a nova camada de Neural Rendering deve ser tratada como possível, não garantida.",
+      "Ainda é desconhecido. RTX 40 roda recursos atuais de DLSS, como Frame Generation, Super Resolution e Ray Reconstruction, mas a nova camada de Neural Rendering deve esperar a documentação final.",
   },
   {
     question: "RTX 30 ou GTX entram nos requisitos?",
@@ -35,12 +36,12 @@ const faqItems = [
 const generationRows = [
   {
     group: "RTX 50",
-    status: "Melhor aposta",
-    note: "Família mais segura para quem quer comprar pensando especificamente em DLSS 5.",
+    status: "Confirmada / esperada",
+    note: "Modelos RTX 50 superiores têm o caminho mais claro; modelos de entrada ainda precisam de documentação por modelo.",
   },
   {
     group: "RTX 40",
-    status: "Possível, sem confirmação",
+    status: "Desconhecida",
     note: "Boa para DLSS atual, mas ainda precisa de matriz oficial para a nova camada.",
   },
   {
@@ -103,7 +104,7 @@ export default function PtDlss5RequisitosPage() {
           <h2 className="text-2xl font-bold mb-3">Resposta rápida</h2>
           <p className="text-foreground/80 leading-relaxed">
             A série RTX 50 é o caminho mais seguro para DLSS 5. RTX 40 ainda deve ser
-            tratada como possível, mas não confirmada. RTX 30, RTX 20 e GTX não devem ser
+            tratada como desconhecida até a documentação final. RTX 30, RTX 20 e GTX não devem ser
             compradas com a expectativa de receber a nova camada de Neural Rendering.
           </p>
         </section>
@@ -180,7 +181,7 @@ export default function PtDlss5RequisitosPage() {
             >
               <div className="font-semibold mb-1">Quais placas suportam DLSS 5?</div>
               <p className="text-sm text-muted-foreground">
-                Lista por GPU com status confirmado, possível, improvável ou sem suporte.
+                Lista por GPU com status confirmado, esperado, desconhecido, improvável ou sem suporte.
               </p>
             </Link>
             <Link
@@ -224,6 +225,7 @@ export default function PtDlss5RequisitosPage() {
             . Esta página evita inventar requisitos finais que a NVIDIA ainda não publicou.
           </p>
         </section>
+        <ArticleTrustBlock locale="pt" />
       </main>
     </>
   );

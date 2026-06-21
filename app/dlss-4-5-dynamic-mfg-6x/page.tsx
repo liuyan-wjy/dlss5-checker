@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "DLSS 4.5 Dynamic MFG 6X: What Is Available Now for RTX",
@@ -83,13 +84,13 @@ export default function Dlss45DynamicMfg6xPage() {
         "@type": "ListItem",
         position: 1,
         name: "DLSS 5 Checker",
-        item: "https://dlss5.net",
+        item: "https://www.dlss5.net",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "DLSS 4.5 Dynamic MFG 6X",
-        item: "https://dlss5.net/dlss-4-5-dynamic-mfg-6x",
+        item: "https://www.dlss5.net/dlss-4-5-dynamic-mfg-6x",
       },
     ],
   };
@@ -144,10 +145,10 @@ export default function Dlss45DynamicMfg6xPage() {
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
-            <h2 className="font-bold mb-2">SEO reason</h2>
+            <h2 className="font-bold mb-2">Why this page exists</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              This page answers current availability queries so the release-date and
-              hardware pages do not need to over-explain DLSS 4.5.
+              Dynamic MFG is available today, while DLSS 5 Neural Rendering is still a
+              future launch. Keeping those timelines separate prevents upgrade mistakes.
             </p>
           </div>
         </section>
@@ -293,6 +294,7 @@ export default function Dlss45DynamicMfg6xPage() {
             ))}
           </div>
         </section>
+        <ArticleTrustBlock />
       </main>
     </>
   );

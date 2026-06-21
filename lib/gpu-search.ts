@@ -1,7 +1,7 @@
 import Fuse from "fuse.js";
 import gpuData from "@/data/gpu-data.json";
 
-export type DlssSupport = "confirmed" | "possible" | "unlikely" | "none";
+export type DlssSupport = "confirmed" | "expected" | "unknown" | "unlikely" | "none";
 
 export interface GPU {
   id: string;

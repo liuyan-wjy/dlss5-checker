@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Release Date: Fall 2026 Launch Status Guide",
@@ -129,13 +130,13 @@ export default function Dlss5ReleaseDatePage() {
         "@type": "ListItem",
         position: 1,
         name: "DLSS 5 Checker",
-        item: "https://dlss5.net",
+        item: "https://www.dlss5.net",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Release Date",
-        item: "https://dlss5.net/dlss-5-release-date",
+        item: "https://www.dlss5.net/dlss-5-release-date",
       },
     ],
   };
@@ -162,7 +163,7 @@ export default function Dlss5ReleaseDatePage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Last checked May 22, 2026
+            Last checked June 22, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Release Date: Fall 2026 Status
@@ -287,6 +288,7 @@ export default function Dlss5ReleaseDatePage() {
             ))}
           </div>
         </section>
+        <ArticleTrustBlock />
       </main>
     </>
   );

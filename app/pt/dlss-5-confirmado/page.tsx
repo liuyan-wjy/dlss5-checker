@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "DLSS 5 está confirmado? Evidências, placas e jogos",
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/pt/dlss-5-confirmado",
     languages: {
-      en: "https://dlss5.net/dlss-5-evidence-tracker",
-      "pt-BR": "https://dlss5.net/pt/dlss-5-confirmado",
+      en: "https://www.dlss5.net/dlss-5-evidence-tracker",
+      "pt-BR": "https://www.dlss5.net/pt/dlss-5-confirmado",
     },
   },
 };
@@ -36,8 +37,8 @@ const evidenceRows = [
   {
     question: "RTX 40 está confirmada?",
     answer:
-      "Não. RTX 40 deve ser tratada como possível, mas sem confirmação final para a nova camada.",
-    status: "Possível, sem garantia",
+      "Não. RTX 40 deve ser tratada como desconhecida até a documentação final para a nova camada.",
+    status: "Desconhecida, sem confirmação",
   },
   {
     question: "Os jogos anunciados já estão verificados?",
@@ -59,7 +60,7 @@ const faqItems = [
       "Ainda faltam matriz final de GPUs, versão mínima de driver, comportamento por jogo, opções no menu gráfico e possíveis limites por placa.",
   },
   {
-    question: "Por que separar confirmado, anunciado e possível?",
+    question: "Por que separar confirmado, anunciado, esperado e desconhecido?",
     answer:
       "Porque buscas sobre DLSS 5 misturam fatos oficiais, demonstrações, rumores e decisões de compra. Separar esses níveis evita prometer suporte que ainda não foi publicado.",
   },
@@ -160,7 +161,7 @@ export default function PtDlss5ConfirmadoPage() {
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
-            <h2 className="font-bold mb-2">Possível</h2>
+            <h2 className="font-bold mb-2">Desconhecido</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
               RTX 40 merece acompanhamento, mas não deve ser vendida como suporte garantido.
             </p>
@@ -232,6 +233,7 @@ export default function PtDlss5ConfirmadoPage() {
             .
           </p>
         </section>
+        <ArticleTrustBlock locale="pt" />
       </main>
     </>
   );

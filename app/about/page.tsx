@@ -17,8 +17,8 @@ export default function AboutPage() {
           <p>
             On March 16, 2026, NVIDIA announced DLSS 5 at GTC — and within hours,
             the internet was flooded with misinformation. Sites were marking every RTX 50
-            GPU as &quot;confirmed&quot; for DLSS 5 without noting VRAM concerns on the
-            RTX 5060. Others were confusing DLSS 5 (Neural Rendering) with DLSS 4
+            GPU as &quot;confirmed&quot; for DLSS 5 without noting that lower-tier models such
+            as RTX 5060 still need final per-model documentation. Others were confusing DLSS 5 (Neural Rendering) with DLSS 4
             (Multi Frame Generation). Some sources even claimed DLSS 5 was &quot;already
             available&quot; when it doesn&apos;t launch until Fall 2026.
           </p>
@@ -26,8 +26,8 @@ export default function AboutPage() {
             We built DLSS 5 Checker to cut through the noise with a single, accurate,
             regularly updated source of truth. Every data point on this site is sourced
             from NVIDIA&apos;s official announcements and press releases — and where
-            information is genuinely uncertain, we say so clearly (e.g., &quot;TBD&quot;
-            or &quot;Unlikely&quot;) rather than guessing.
+            information is genuinely uncertain, we say so clearly (e.g., &quot;Expected&quot;,
+            &quot;Unknown&quot;, or &quot;Unlikely&quot;) rather than guessing.
           </p>
         </section>
 
@@ -36,7 +36,7 @@ export default function AboutPage() {
           <ul className="space-y-3 list-none">
             <li className="flex items-start gap-3">
               <span className="text-green-400 mt-0.5">✓</span>
-              <span><strong className="text-foreground">Accuracy over clicks</strong> — We changed RTX 5060/5060 Ti from &quot;Confirmed&quot; to &quot;Unlikely&quot; because the VRAM evidence doesn&apos;t support the optimistic claim, even though &quot;Confirmed&quot; would drive more traffic.</span>
+              <span><strong className="text-foreground">Accuracy over clicks</strong> — We changed RTX 5060/5060 Ti from &quot;Confirmed&quot; to &quot;Expected&quot; because RTX 50 is the right generation path, but final per-model DLSS 5 documentation still matters.</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-green-400 mt-0.5">✓</span>

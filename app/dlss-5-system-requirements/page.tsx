@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "DLSS 5 System Requirements: What We Know So Far [2026]",
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/dlss-5-system-requirements",
     languages: {
-      en: "https://dlss5.net/dlss-5-system-requirements",
-      "pt-BR": "https://dlss5.net/pt/dlss-5-requisitos",
+      en: "https://www.dlss5.net/dlss-5-system-requirements",
+      "pt-BR": "https://www.dlss5.net/pt/dlss-5-requisitos",
     },
   },
 };
@@ -32,7 +33,7 @@ export default function Dlss5SystemRequirementsPage() {
         name: "Will RTX 40 cards support DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "RTX 40 support has been hinted at, but NVIDIA has not officially confirmed DLSS 5 support for RTX 40 GPUs. At the moment they should be treated as possible but unconfirmed.",
+          text: "NVIDIA has not officially confirmed DLSS 5 Neural Rendering support for RTX 40 GPUs. At the moment they should be treated as unknown until final launch documentation is public.",
         },
       },
       {
@@ -75,8 +76,8 @@ export default function Dlss5SystemRequirementsPage() {
             <h2 className="text-xl font-bold mb-2">Requirements are not the same as a card list</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
               A requirement page should answer what the PC needs to run the feature. A
-              supported-card page should answer which GPU families are confirmed, possible,
-              or outside the DLSS path. Right now, the confirmed requirement is the GPU
+              supported-card page should answer which GPU families are confirmed, expected,
+              unknown, unlikely, or outside the DLSS path. Right now, the confirmed requirement is the GPU
               family, not a full public spec sheet.
             </p>
           </div>
@@ -124,8 +125,8 @@ export default function Dlss5SystemRequirementsPage() {
             <div className="rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-4">
               <h3 className="font-semibold text-yellow-400 mb-2">RTX 40</h3>
               <p className="text-sm">
-                Possible, but not officially confirmed. Good current DLSS 4 cards, but
-                still a wait-and-see story for DLSS 5.
+                Unknown until final launch documentation. Good current DLSS 4 cards, but
+                not confirmed for DLSS 5 Neural Rendering.
               </p>
             </div>
             <div className="rounded-lg border border-orange-500/30 bg-orange-500/5 p-4">
@@ -146,12 +147,11 @@ export default function Dlss5SystemRequirementsPage() {
         </section>
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
-          <h2 className="text-2xl font-bold text-foreground">What searchers usually mean by this query</h2>
+          <h2 className="text-2xl font-bold text-foreground">What users usually need from this page</h2>
           <p>
-            When people search for <em>DLSS 5 system requirements</em>, they usually are
-            not looking for a full PC spec sheet. They want to know one of three things:
-            does their current GPU qualify, do they need RTX 50, and should they upgrade now
-            or wait for official confirmation.
+            Most readers are not looking for a full PC spec sheet yet. They want to know
+            one of three things: whether their current GPU qualifies, whether they need
+            RTX 50, and whether they should upgrade now or wait for official confirmation.
           </p>
           <p>
             That means the most useful answer is not a fake checklist. It is a clear status
@@ -196,7 +196,7 @@ export default function Dlss5SystemRequirementsPage() {
             >
               <div className="font-semibold mb-1">All supported cards</div>
               <p className="text-sm text-muted-foreground">
-                Full status table grouped by confirmed, possible, unlikely, and none.
+                Full status table grouped by confirmed, expected, unknown, unlikely, and none.
               </p>
             </Link>
             <Link
@@ -272,7 +272,7 @@ export default function Dlss5SystemRequirementsPage() {
             <div>
               <h3 className="font-semibold mb-1">Will RTX 40 support DLSS 5?</h3>
               <p className="text-sm text-foreground/80">
-                Maybe, but not confirmed. Treat RTX 40 as possible, not guaranteed.
+                Treat RTX 40 as unknown until NVIDIA publishes final launch documentation.
               </p>
             </div>
             <div>
@@ -295,6 +295,7 @@ export default function Dlss5SystemRequirementsPage() {
             ← Back to GPU Checker
           </Link>
         </div>
+        <ArticleTrustBlock />
       </main>
     </>
   );

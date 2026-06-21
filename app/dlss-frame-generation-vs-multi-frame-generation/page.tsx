@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "Frame Generation vs Multi Frame Generation in DLSS",
@@ -107,13 +108,13 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
         "@type": "ListItem",
         position: 1,
         name: "DLSS 5 Checker",
-        item: "https://dlss5.net",
+        item: "https://www.dlss5.net",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Frame Generation vs Multi Frame Generation",
-        item: "https://dlss5.net/dlss-frame-generation-vs-multi-frame-generation",
+        item: "https://www.dlss5.net/dlss-frame-generation-vs-multi-frame-generation",
       },
     ],
   };
@@ -169,10 +170,10 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
-            <h2 className="font-bold mb-2">SEO reason</h2>
+            <h2 className="font-bold mb-2">Why the distinction matters</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              Search results often merge these names. A clean comparison helps readers avoid
-              buying or waiting for the wrong feature.
+              These names are easy to merge together. A clean comparison helps readers avoid
+              buying hardware or waiting for a feature their GPU tier does not expose.
             </p>
           </div>
         </section>
@@ -335,6 +336,7 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
             ))}
           </div>
         </section>
+        <ArticleTrustBlock />
       </main>
     </>
   );
