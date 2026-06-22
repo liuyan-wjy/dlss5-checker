@@ -17,22 +17,129 @@ const SERIES_OPTIONS = [
   "Intel Arc Battlemage",
 ];
 
-const supportConfig: Record<DlssSupport, { label: string; className: string }> = {
-  confirmed: { label: "Confirmed", className: "bg-green-500/20 text-green-400 border-green-500/30" },
-  expected: { label: "Expected", className: "bg-lime-500/20 text-lime-300 border-lime-500/30" },
-  unknown: { label: "Unknown", className: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
-  unlikely: { label: "Unlikely", className: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
-  none: { label: "None", className: "bg-red-500/20 text-red-400 border-red-500/30" },
+const supportConfig: Record<DlssSupport, { label: Record<SupportedLocale, string>; className: string }> = {
+  confirmed: {
+    label: { en: "Confirmed", pt: "Confirmada" },
+    className: "bg-green-500/20 text-green-400 border-green-500/30",
+  },
+  expected: {
+    label: { en: "Expected", pt: "Esperada" },
+    className: "bg-lime-500/20 text-lime-300 border-lime-500/30",
+  },
+  unknown: {
+    label: { en: "Unknown", pt: "Desconhecida" },
+    className: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+  },
+  unlikely: {
+    label: { en: "Unlikely", pt: "Improvável" },
+    className: "bg-orange-500/20 text-orange-400 border-orange-500/30",
+  },
+  none: {
+    label: { en: "None", pt: "Sem DLSS" },
+    className: "bg-red-500/20 text-red-400 border-red-500/30",
+  },
+};
+
+const tableCopy = {
+  en: {
+    all: "All",
+    gpu: "GPU",
+    series: "Series",
+    vram: "VRAM",
+    status: "DLSS 5 Status",
+    currentFeature: "Current DLSS Feature",
+    showing: (count: number) =>
+      `Showing ${count} GPUs. DLSS 5 Neural Rendering status is split into confirmed, expected, unknown, unlikely, and unsupported groups.`,
+  },
+  pt: {
+    all: "Todas",
+    gpu: "GPU",
+    series: "Série",
+    vram: "VRAM",
+    status: "Status do DLSS 5",
+    currentFeature: "Recurso DLSS atual",
+    showing: (count: number) =>
+      `Mostrando ${count} GPUs. O status do DLSS 5 Neural Rendering é dividido em confirmada, esperada, desconhecida, improvável e sem suporte.`,
+  },
 };
 
 interface SupportedGPUsTableProps {
   locale?: SupportedLocale;
 }
 
+function getSeriesLabel(series: string, locale: SupportedLocale) {
+  return series === "All" ? tableCopy[locale].all : series;
+}
+
+function getCurrentFeatureText(gpu: (typeof ALL_GPUS)[number], locale: SupportedLocale) {
+  if (locale === "pt") {
+    if (gpu.dlss5_support === "confirmed") {
+      return gpu.current_dlss_features.includes("dynamic_mfg_6x")
+        ? "DLSS 4.5 Dynamic 6X MFG"
+        : "DLSS 4 Multi Frame Generation";
+    }
+
+    if (gpu.dlss5_support === "expected") {
+      return "Caminho RTX 50, docs finais por modelo pendentes";
+    }
+
+    if (gpu.dlss5_support === "unknown") {
+      return gpu.current_dlss_features.includes("frame_generation")
+        ? "DLSS 3 Frame Generation"
+        : "DLSS Super Resolution";
+    }
+
+    if (gpu.dlss5_support === "unlikely") {
+      return "DLSS 3.5 (Super Resolution + Ray Reconstruction)";
+    }
+
+    if (gpu.brand === "AMD") {
+      return "Use FSR 4 como alternativa";
+    }
+
+    if (gpu.brand === "Intel") {
+      return "Use XeSS como alternativa";
+    }
+
+    return "Sem suporte ao DLSS";
+  }
+
+  if (gpu.dlss5_support === "confirmed") {
+    return gpu.current_dlss_features.includes("dynamic_mfg_6x")
+      ? "DLSS 4.5 Dynamic 6X MFG"
+      : "DLSS 4 Multi Frame Generation";
+  }
+
+  if (gpu.dlss5_support === "expected") {
+    return "RTX 50 path, per-model DLSS 5 docs pending";
+  }
+
+  if (gpu.dlss5_support === "unknown") {
+    return gpu.current_dlss_features.includes("frame_generation")
+      ? "DLSS 3 Frame Generation"
+      : "DLSS Super Resolution";
+  }
+
+  if (gpu.dlss5_support === "unlikely") {
+    return "DLSS 3.5 (Super Resolution + Ray Reconstruction)";
+  }
+
+  if (gpu.brand === "AMD") {
+    return "Use FSR 4 instead";
+  }
+
+  if (gpu.brand === "Intel") {
+    return "Use XeSS instead";
+  }
+
+  return "No DLSS support";
+}
+
 export default function SupportedGPUsTable({
   locale = "en",
 }: SupportedGPUsTableProps) {
   const [selectedSeries, setSelectedSeries] = useState("All");
+  const copy = tableCopy[locale];
 
   const filtered =
     selectedSeries === "All"
@@ -53,7 +160,7 @@ export default function SupportedGPUsTable({
                 : "border-border text-muted-foreground hover:border-green-500/50"
             }`}
           >
-            {s}
+            {getSeriesLabel(s, locale)}
           </button>
         ))}
       </div>
@@ -63,11 +170,11 @@ export default function SupportedGPUsTable({
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-muted/50 border-b border-border">
-              <th className="text-left px-4 py-3 font-semibold">GPU</th>
-              <th className="text-left px-4 py-3 font-semibold">Series</th>
-              <th className="text-left px-4 py-3 font-semibold">VRAM</th>
-              <th className="text-left px-4 py-3 font-semibold">DLSS 5 Status</th>
-              <th className="text-left px-4 py-3 font-semibold hidden md:table-cell">Current DLSS Feature</th>
+              <th className="text-left px-4 py-3 font-semibold">{copy.gpu}</th>
+              <th className="text-left px-4 py-3 font-semibold">{copy.series}</th>
+              <th className="text-left px-4 py-3 font-semibold">{copy.vram}</th>
+              <th className="text-left px-4 py-3 font-semibold">{copy.status}</th>
+              <th className="text-left px-4 py-3 font-semibold hidden md:table-cell">{copy.currentFeature}</th>
             </tr>
           </thead>
           <tbody>
@@ -92,27 +199,11 @@ export default function SupportedGPUsTable({
                   <td className="px-4 py-3 text-muted-foreground">{gpu.vram}</td>
                   <td className="px-4 py-3">
                     <Badge variant="outline" className={`${cfg.className} text-xs`}>
-                      {cfg.label}
+                      {cfg.label[locale]}
                     </Badge>
                   </td>
                   <td className="px-4 py-3 text-muted-foreground text-xs hidden md:table-cell">
-                    {gpu.dlss5_support === "confirmed"
-                      ? gpu.current_dlss_features.includes("dynamic_mfg_6x")
-                        ? "DLSS 4.5 Dynamic 6X MFG"
-                        : "DLSS 4 Multi Frame Generation"
-                      : gpu.dlss5_support === "expected"
-                      ? "RTX 50 path, per-model DLSS 5 docs pending"
-                      : gpu.dlss5_support === "unknown"
-                      ? gpu.current_dlss_features.includes("frame_generation")
-                        ? "DLSS 3 Frame Generation"
-                        : "DLSS Super Resolution"
-                      : gpu.dlss5_support === "unlikely"
-                      ? "DLSS 3.5 (Super Resolution + Ray Reconstruction)"
-                      : gpu.brand === "AMD"
-                      ? "Use FSR 4 instead"
-                      : gpu.brand === "Intel"
-                      ? "Use XeSS instead"
-                      : "No DLSS support"}
+                    {getCurrentFeatureText(gpu, locale)}
                   </td>
                 </tr>
               );
@@ -121,7 +212,7 @@ export default function SupportedGPUsTable({
         </table>
       </div>
       <p className="text-xs text-muted-foreground mt-2">
-        Showing {filtered.length} GPUs. DLSS 5 Neural Rendering status is split into confirmed, expected, unknown, unlikely, and unsupported groups.
+        {copy.showing(filtered.length)}
       </p>
     </div>
   );

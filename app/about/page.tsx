@@ -32,6 +32,32 @@ export default function AboutPage() {
         </section>
 
         <section>
+          <h2 className="text-xl font-semibold mb-3 text-foreground">Who Maintains This Site</h2>
+          <p>
+            DLSS 5 Checker is maintained by an independent editorial team focused on GPU
+            compatibility, DLSS release status, and user-facing hardware guidance. We write
+            for players, creators, and PC builders who need to know what is usable now,
+            what is announced for Fall 2026, and what still depends on final documentation.
+          </p>
+          <p className="mt-4">
+            The site is not an NVIDIA publication, reseller page, or download portal. Our job
+            is to organize public evidence, explain uncertainty clearly, and correct outdated
+            compatibility language when better official sources appear.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold mb-3 text-foreground">How We Review Sources</h2>
+          <p>
+            We prioritize NVIDIA newsroom posts, NVIDIA DLSS technology pages, official driver
+            notes, game patch notes, and OEM documentation. Media reports can help identify
+            what to watch, but they do not override primary sources. If a claim affects buying
+            decisions, release timing, or GPU support, we keep it in the cautious status system
+            until a primary source is clear.
+          </p>
+        </section>
+
+        <section>
           <h2 className="text-xl font-semibold mb-3 text-foreground">What We Stand For</h2>
           <ul className="space-y-3 list-none">
             <li className="flex items-start gap-3">
@@ -63,7 +89,8 @@ export default function AboutPage() {
         <section>
           <h2 className="text-xl font-semibold mb-3 text-foreground">Get in Touch</h2>
           <p>
-            Found a data error? Have a GPU we should add? Reach us at{" "}
+            Found a data error? Have a GPU we should add? Send the GPU or game name, the
+            claim that should change, and the source URL we should review to{" "}
             <a href="mailto:support@dlss5.net" className="text-blue-400 hover:underline">
               support@dlss5.net
             </a>

@@ -32,9 +32,15 @@ export default function ContactPage() {
           <h2 className="text-lg font-semibold mb-2">Report a Data Error</h2>
           <p className="text-muted-foreground text-sm mb-3">
             If you believe any GPU compatibility status or benchmark data is incorrect,
-            please email us with the GPU name, the issue, and a source link if available.
-            We take accuracy seriously and will update the data promptly.
+            please email us with the GPU or game name, the exact claim that should change,
+            the source URL, and why the current answer may be outdated. We prioritize fixes
+            that affect buying decisions, release timing, GPU support, or claims that could
+            be mistaken for official NVIDIA guidance.
           </p>
+          <div className="mb-3 rounded-md bg-muted/30 p-3 text-xs leading-relaxed text-muted-foreground">
+            Suggested format: GPU/game name; page URL; current claim; source URL; what the
+            source proves.
+          </div>
           <a
             href="mailto:support@dlss5.net?subject=Data Error Report"
             className="text-blue-400 hover:underline font-medium"
@@ -46,7 +52,9 @@ export default function ContactPage() {
         <div className="border border-border rounded-lg p-6">
           <h2 className="text-lg font-semibold mb-2">Request a GPU</h2>
           <p className="text-muted-foreground text-sm mb-3">
-            Don&apos;t see your GPU in our database? Let us know and we&apos;ll add it.
+            Don&apos;t see your GPU in our database? Send the model name, vendor, generation,
+            and any official product page you want us to check. We add models when they are
+            useful for DLSS support decisions and can be described without guessing.
           </p>
           <a
             href="mailto:support@dlss5.net?subject=GPU Request"

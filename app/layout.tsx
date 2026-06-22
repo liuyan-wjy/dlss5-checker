@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     title: "DLSS 5 GPU Compatibility Checker",
     description: "Check confirmed, expected, unknown, and unsupported DLSS 5 GPU status.",
   },
+  other: {
+    "google-adsense-account": "ca-pub-5442184426795655",
+  },
   alternates: {
     canonical: "/",
     languages: {
@@ -46,11 +49,6 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5442184426795655"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PH9DM6B4MD"
           strategy="afterInteractive"

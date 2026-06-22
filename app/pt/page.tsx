@@ -223,7 +223,7 @@ export default function PtHome() {
             <p className="text-muted-foreground mb-6">
               Como cada geração do DLSS se compara. MFG é um recurso do DLSS 4. Neural Rendering é o recurso do DLSS 5.
             </p>
-            <ComparisonTable />
+            <ComparisonTable locale="pt" />
           </section>
 
           <AdSlot slot="content-mid" />

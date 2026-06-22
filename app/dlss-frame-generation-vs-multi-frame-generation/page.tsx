@@ -62,7 +62,7 @@ const decisionCards = [
       "You can watch for Dynamic MFG, 4X, and 6X options, but the exact menu still depends on the game, driver, and app profile.",
   },
   {
-    title: "DLSS 5 searcher",
+    title: "If you are checking DLSS 5",
     copy:
       "The next visual layer is a different question. A frame-generation feature being live today does not mean the Fall 2026 feature is available.",
   },

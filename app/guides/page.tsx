@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 const guideGroups = [
   {
     title: "Compatibility and requirements",
+    description:
+      "Use these pages when the main question is whether a GPU is a safe DLSS 5 choice, what can be used today, and which claims still need final NVIDIA launch documentation.",
     links: [
       {
         href: "/dlss-5-supported-cards",
@@ -31,6 +33,8 @@ const guideGroups = [
   },
   {
     title: "Release and evidence",
+    description:
+      "Start here when you need dates, source quality, game lists, and the difference between announced, available, and still unverified claims.",
     links: [
       {
         href: "/dlss-5-release-date",
@@ -51,6 +55,8 @@ const guideGroups = [
   },
   {
     title: "Feature explainers",
+    description:
+      "These guides separate current DLSS 4.5 features from the future DLSS 5 neural rendering layer, so users do not mix frame generation with visual rendering claims.",
     links: [
       {
         href: "/dlss-5-neural-rendering",
@@ -71,6 +77,8 @@ const guideGroups = [
   },
   {
     title: "Developer and platform notes",
+    description:
+      "These pages are for readers comparing engines, AI PC hardware, and platform-level support rather than checking one GPU model.",
     links: [
       {
         href: "/dlss-5-unreal-engine",
@@ -91,6 +99,24 @@ const guideGroups = [
   },
 ];
 
+const startPaths = [
+  {
+    title: "If you are buying a GPU",
+    href: "/dlss-5-supported-cards",
+    copy: "Start with the support table, then check the RTX 40 and system requirement guides before treating any upgrade as final.",
+  },
+  {
+    title: "If you are checking a rumor",
+    href: "/dlss-5-evidence-tracker",
+    copy: "Use the evidence tracker to see whether the claim is confirmed, expected, unknown, or only inferred from current DLSS behavior.",
+  },
+  {
+    title: "If you are comparing features",
+    href: "/dlss-5-vs-dlss-4-5",
+    copy: "Read the DLSS 5 vs 4.5 guide to separate Neural Rendering from Super Resolution, Frame Generation, and Dynamic MFG.",
+  },
+];
+
 export default function GuidesPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-12">
@@ -107,16 +133,45 @@ export default function GuidesPage() {
         <h1 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
           DLSS 5 Guides
         </h1>
-        <p className="text-lg leading-relaxed text-muted-foreground">
+        <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
           Start here when you need a structured path through DLSS 5 compatibility, release
           timing, current DLSS 4.5 features, and the evidence behind each claim.
         </p>
+        <p className="leading-relaxed text-foreground/80">
+          This guide index is organized for real decisions rather than keyword browsing.
+          DLSS 5 has been announced, but the final launch matrix, per-game settings, and
+          generation-by-generation feature limits still need official proof. Use the cards
+          below to check the most relevant source first: hardware support if you are
+          considering an upgrade, release and evidence pages if you are verifying a claim,
+          or feature explainers if you are trying to understand what is available now.
+        </p>
       </header>
+
+      <section className="mb-10 rounded-lg border border-border p-5">
+        <h2 className="mb-4 text-2xl font-bold">Start here if...</h2>
+        <div className="grid gap-3 md:grid-cols-3">
+          {startPaths.map((path) => (
+            <Link
+              key={path.href}
+              href={path.href}
+              className="rounded-lg bg-muted/25 p-4 transition-colors hover:bg-muted/40"
+            >
+              <div className="mb-2 font-semibold text-blue-400">{path.title}</div>
+              <p className="text-sm leading-relaxed text-muted-foreground">{path.copy}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <div className="grid gap-8">
         {guideGroups.map((group) => (
           <section key={group.title}>
-            <h2 className="mb-4 text-2xl font-bold">{group.title}</h2>
+            <div className="mb-4">
+              <h2 className="text-2xl font-bold">{group.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {group.description}
+              </p>
+            </div>
             <div className="grid gap-3 md:grid-cols-3">
               {group.links.map((link) => (
                 <Link
@@ -127,6 +182,9 @@ export default function GuidesPage() {
                   <div className="mb-2 font-semibold">{link.title}</div>
                   <p className="text-sm leading-relaxed text-muted-foreground">
                     {link.description}
+                  </p>
+                  <p className="mt-3 text-xs text-muted-foreground/80">
+                    Last checked June 22, 2026
                   </p>
                 </Link>
               ))}

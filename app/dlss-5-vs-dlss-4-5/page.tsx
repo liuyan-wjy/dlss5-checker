@@ -46,17 +46,17 @@ const comparisonRows = [
 
 const misconceptionRows = [
   {
-    myth: "DLSS 5 is just DLSS 4.5 with a bigger number.",
+    myth: "Myth: DLSS 5 is just DLSS 4.5 with a bigger number.",
     reality:
       "The naming is close, but the useful split is different: DLSS 4.5 is the current performance and image-quality stack; DLSS 5 is the announced neural rendering layer.",
   },
   {
-    myth: "A game on the DLSS 5 list means every RTX card can use it.",
+    myth: "Myth: A game on the DLSS 5 list means every RTX card can use it.",
     reality:
       "Game integration and GPU eligibility are separate. A title can support the feature while only some hardware tiers expose it.",
   },
   {
-    myth: "RTX 4070 or RTX 4080 support is guaranteed because they support DLSS today.",
+    myth: "Myth: RTX 4070 or RTX 4080 support is guaranteed because they support DLSS today.",
     reality:
       "They support current DLSS features, but NVIDIA has not published final DLSS 5 support details for RTX 40.",
   },

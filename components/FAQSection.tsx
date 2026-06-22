@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
@@ -39,33 +36,24 @@ const faqs = [
 ];
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   return (
     <div className="space-y-2">
       {faqs.map((item, i) => (
-        <div
+        <details
           key={i}
-          className="border border-border rounded-lg overflow-hidden"
+          className="group border border-border rounded-lg overflow-hidden"
+          open={i === 0}
         >
-          <button
-            className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-muted/30 transition-colors"
-            onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            aria-expanded={openIndex === i}
-          >
+          <summary className="flex w-full cursor-pointer list-none items-center justify-between px-5 py-4 text-left hover:bg-muted/30 transition-colors">
             <span className="font-semibold text-sm sm:text-base pr-4">{item.q}</span>
             <ChevronDown
-              className={`w-4 h-4 shrink-0 text-muted-foreground transition-transform ${
-                openIndex === i ? "rotate-180" : ""
-              }`}
+              className="w-4 h-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180"
             />
-          </button>
-          {openIndex === i && (
-            <div className="px-5 pb-4 text-muted-foreground text-sm leading-relaxed">
-              {item.a}
-            </div>
-          )}
-        </div>
+          </summary>
+          <div className="px-5 pb-4 text-muted-foreground text-sm leading-relaxed">
+            {item.a}
+          </div>
+        </details>
       ))}
     </div>
   );

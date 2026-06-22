@@ -58,7 +58,7 @@ const faqItems = [
   {
     question: "Why cover DLSS 4.5 on a DLSS 5 site?",
     answer:
-      "Searchers often mix the current feature set with the next launch. Explaining the available 4.5 update prevents people from mistaking it for the unreleased DLSS 5 layer.",
+      "Players often mix the current feature set with the next launch. Explaining the available 4.5 update prevents people from mistaking it for the unreleased DLSS 5 layer.",
   },
 ];
 
