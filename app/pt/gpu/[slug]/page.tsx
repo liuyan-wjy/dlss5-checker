@@ -8,6 +8,8 @@ import {
   isEnabledGpuSlug,
 } from "@/lib/gpu-page-config";
 
+const SITE_URL = "https://www.dlss5.net";
+
 export function generateStaticParams() {
   return GPU_DETAIL_SLUGS.pt.map((slug) => ({ slug }));
 }
@@ -24,11 +26,18 @@ export async function generateMetadata({
   }
 
   const statusText = getLocalizedSupportText("pt", gpu.dlss5_support);
+  const languages: Record<string, string> = {
+    "pt-BR": `${SITE_URL}/pt/gpu/${slug}`,
+  };
+
+  if (isEnabledGpuSlug("en", slug)) {
+    languages.en = `${SITE_URL}/gpu/${slug}`;
+  }
 
   return {
     title: `${gpu.name}: ${statusText} no DLSS 5 [2026]`,
     description: `A ${gpu.name} suporta DLSS 5? Veja o status, os recursos atuais de DLSS e se faz sentido pensar em upgrade.`,
-    alternates: { canonical: `/pt/gpu/${slug}` },
+    alternates: { canonical: `/pt/gpu/${slug}`, languages },
   };
 }
 

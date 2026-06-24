@@ -6,8 +6,11 @@ import {
   getGpuBySlug,
   getGpuPageHref,
   getLocalizedFeatureLabel,
+  getLocalizedSupportText,
   type SupportedLocale,
 } from "@/lib/gpu-page-config";
+
+const SITE_URL = "https://www.dlss5.net";
 
 interface GPUDetailPageProps {
   gpu: GPU;
@@ -194,11 +197,28 @@ const MODEL_INSIGHTS: Partial<Record<string, Partial<Record<SupportedLocale, Mod
       ],
       link: { href: "/dlss-5-rtx-40-series", label: "Read the RTX 40 series support breakdown" },
       comparison: [
-        { label: "Versus RTX 4090", value: "Lower raw headroom, but the same unknown DLSS 5 status bucket." },
+        { label: "Versus RTX 4090", value: "Lower raw headroom, but both are still unconfirmed for DLSS 5." },
         { label: "Versus RTX 4070", value: "More performance and VRAM, but no clearer public DLSS 5 confirmation today." },
       ],
       changeAnswer:
         "A final NVIDIA support table or driver note listing RTX 40 cards for DLSS 5 Neural Rendering would move this from unknown to confirmed.",
+    },
+    pt: {
+      title: "O que isso significa para donos de RTX 4080",
+      intro:
+        "A RTX 4080 continua sendo uma placa forte para o DLSS atual, mas a pergunta sobre DLSS 5 Neural Rendering ainda fica em aberto porque a NVIDIA não publicou uma matriz final para RTX 40.",
+      rows: [
+        { label: "Recursos úteis hoje", value: "Frame Generation, Super Resolution, Ray Reconstruction e DLAA" },
+        { label: "Fora da coluna RTX 40", value: "Multi Frame Generation e Dynamic Multi Frame Generation" },
+        { label: "Leitura para DLSS 5", value: "Desconhecida até documentação final, não confirmada e não descartada" },
+      ],
+      link: { href: "/pt/dlss-5-quais-placas", label: "Comparar todas as placas em português" },
+      comparison: [
+        { label: "Versus RTX 4090", value: "Menos desempenho bruto, mas o mesmo status desconhecido para DLSS 5." },
+        { label: "Versus RTX 4070", value: "Mais desempenho e VRAM, mas sem confirmação pública mais clara para DLSS 5 hoje." },
+      ],
+      changeAnswer:
+        "Uma tabela final da NVIDIA ou nota de driver listando RTX 40 para DLSS 5 Neural Rendering mudaria este status para confirmado.",
     },
   },
   "rtx-4070": {
@@ -225,11 +245,28 @@ const MODEL_INSIGHTS: Partial<Record<string, Partial<Record<SupportedLocale, Mod
         label: "Read the RTX 40 series support breakdown",
       },
       comparison: [
-        { label: "Versus RTX 4080", value: "Less raw headroom, but both remain in the same unknown DLSS 5 bucket." },
+        { label: "Versus RTX 4080", value: "Less raw headroom, but both are still unconfirmed for DLSS 5." },
         { label: "Versus RTX 3070", value: "Adds Frame Generation today; RTX 3070 does not have that path." },
       ],
       changeAnswer:
         "A final NVIDIA launch note confirming or excluding RTX 4070 for DLSS 5 Neural Rendering would replace this unknown status.",
+    },
+    pt: {
+      title: "O que isso significa para donos de RTX 4070",
+      intro:
+        "A RTX 4070 é uma placa forte para o DLSS atual, mas sua classe pública ainda é RTX 40. Isso importa porque a NVIDIA separa Frame Generation na RTX 40 de Multi Frame Generation na RTX 50.",
+      rows: [
+        { label: "Recursos úteis hoje", value: "Frame Generation, Super Resolution, Ray Reconstruction e DLAA" },
+        { label: "Fora da coluna RTX 40", value: "Multi Frame Generation e Dynamic Multi Frame Generation" },
+        { label: "Leitura para DLSS 5", value: "Desconhecida até documentação final, sem confirmação para Neural Rendering" },
+      ],
+      link: { href: "/pt/dlss-5-quais-placas", label: "Ver a lista completa de placas" },
+      comparison: [
+        { label: "Versus RTX 4080", value: "Menos desempenho bruto, mas ambas ficam no mesmo grupo desconhecido para DLSS 5." },
+        { label: "Versus RTX 3060", value: "A RTX 4070 tem Frame Generation hoje; a RTX 3060 não tem esse caminho." },
+      ],
+      changeAnswer:
+        "Uma nota final da NVIDIA confirmando ou excluindo RTX 4070 para DLSS 5 Neural Rendering substituiria este status desconhecido.",
     },
   },
   "rtx-3070": {
@@ -280,6 +317,23 @@ const MODEL_INSIGHTS: Partial<Record<string, Partial<Record<SupportedLocale, Mod
       ],
       changeAnswer:
         "The answer would change only if NVIDIA lists RTX 30 cards in final DLSS 5 Neural Rendering requirements.",
+    },
+    pt: {
+      title: "O que isso significa para donos de RTX 3060",
+      intro:
+        "A RTX 3060 ainda é útil para DLSS Super Resolution, mas não tem o caminho de Frame Generation da RTX 40 nem o caminho de MFG da RTX 50. Por isso o DLSS 5 Neural Rendering fica como pouco provável.",
+      rows: [
+        { label: "Recursos úteis hoje", value: "Super Resolution, DLAA e Ray Reconstruction em jogos compatíveis" },
+        { label: "Geração de quadros mais nova", value: "Sem Frame Generation, Multi Frame Generation ou Dynamic MFG" },
+        { label: "Leitura para DLSS 5", value: "Pouco provável, a menos que a NVIDIA amplie a matriz final para RTX 30" },
+      ],
+      link: { href: "/pt/dlss-5-requisitos", label: "Ler os requisitos do DLSS 5" },
+      comparison: [
+        { label: "Versus RTX 3070", value: "Status parecido, com menos folga de desempenho em jogos pesados." },
+        { label: "Versus RTX 4070", value: "A RTX 4070 adiciona Frame Generation hoje, mas DLSS 5 ainda segue desconhecido nela." },
+      ],
+      changeAnswer:
+        "A resposta só mudaria se a NVIDIA listasse placas RTX 30 nos requisitos finais do DLSS 5 Neural Rendering.",
     },
   },
   "rtx-4090": {
@@ -363,6 +417,8 @@ export default function GPUDetailPage({ gpu, locale }: GPUDetailPageProps) {
   const copy = COPY[locale];
   const relatedGPUs = getRelatedGPUs(gpu, locale);
   const modelInsight = MODEL_INSIGHTS[gpu.id]?.[locale];
+  const homeUrl = `${SITE_URL}${copy.homeHref === "/" ? "" : copy.homeHref}`;
+  const pageHref = `${SITE_URL}${getGpuPageHref(locale, gpu.id)}`;
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -403,11 +459,57 @@ export default function GPUDetailPage({ gpu, locale }: GPUDetailPageProps) {
     ],
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "DLSS 5 Checker",
+        item: homeUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: gpu.name,
+        item: pageHref,
+      },
+    ],
+  };
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: copy.title(gpu),
+    url: pageHref,
+    inLanguage: locale === "pt" ? "pt-BR" : "en",
+    dateModified: "2026-06-22",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "DLSS 5 Checker",
+      url: homeUrl,
+    },
+    about: [
+      gpu.name,
+      "DLSS 5 compatibility",
+      "GPU support status",
+      getLocalizedSupportText(locale, gpu.dlss5_support),
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
 
       <main className="max-w-3xl mx-auto px-4 py-12">

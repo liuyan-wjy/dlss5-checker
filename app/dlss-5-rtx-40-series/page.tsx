@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 };
 
 const rtx40Cards = ALL_GPUS.filter((gpu) => gpu.series === "RTX 40");
+const PAGE_URL = "https://www.dlss5.net/dlss-5-rtx-40-series";
 
 function CardName({ gpu }: { gpu: GPU }) {
   if (isEnabledGpuSlug("en", gpu.id)) {
@@ -58,12 +59,57 @@ export default function Dlss5Rtx40SeriesPage() {
       },
     ],
   };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "DLSS 5 Checker",
+        item: "https://www.dlss5.net",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "RTX 40 Series DLSS 5 Status",
+        item: PAGE_URL,
+      },
+    ],
+  };
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Will DLSS 5 Be on RTX 40 Series?",
+    url: PAGE_URL,
+    inLanguage: "en",
+    dateModified: "2026-06-22",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "DLSS 5 Checker",
+      url: "https://www.dlss5.net",
+    },
+    about: [
+      "DLSS 5 RTX 40 series support",
+      "RTX 4090 DLSS 5",
+      "RTX 4080 DLSS 5",
+      "RTX 4070 DLSS 5",
+    ],
+  };
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
 
       <main className="max-w-4xl mx-auto px-4 py-12">

@@ -154,6 +154,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.78,
     },
+    {
+      url: "https://www.dlss5.net/de/dlss-5-grafikkarten",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.72,
+    },
   ];
 
   const gpuRoutes = (["en", "pt"] as const).flatMap((locale) =>

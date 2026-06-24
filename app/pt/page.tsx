@@ -152,6 +152,24 @@ export default function PtHome() {
                 DLSS 5 vs 4.5
               </Link>
               <Link
+                href="/pt/gpu/rtx-4070"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                RTX 4070
+              </Link>
+              <Link
+                href="/pt/gpu/rtx-4080"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                RTX 4080
+              </Link>
+              <Link
+                href="/pt/gpu/rtx-3060"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                RTX 3060
+              </Link>
+              <Link
                 href="/pt/gpu/rtx-4090"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >

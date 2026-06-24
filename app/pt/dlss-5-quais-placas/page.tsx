@@ -13,9 +13,12 @@ export const metadata: Metadata = {
     languages: {
       en: "https://www.dlss5.net/dlss-5-supported-cards",
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-quais-placas",
+      de: "https://www.dlss5.net/de/dlss-5-grafikkarten",
     },
   },
 };
+
+const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-quais-placas";
 
 const STATUS_COPY: Record<
   DlssSupport,
@@ -121,7 +124,7 @@ function StatusSection({ status }: { status: DlssSupport }) {
   const cards = cardsByStatus(status);
 
   return (
-    <section className="mb-10">
+    <section id={`status-${status}`} className="mb-10 scroll-mt-24">
       <div className={`rounded-lg border p-5 mb-4 ${copy.className}`}>
         <h2 className="text-2xl font-bold text-foreground mb-2">{copy.title}</h2>
         <p className="text-sm text-foreground/80 leading-relaxed">{copy.note}</p>
@@ -177,12 +180,57 @@ export default function PtDlss5QuaisPlacasPage() {
       },
     })),
   };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "DLSS 5 Checker",
+        item: "https://www.dlss5.net/pt",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "DLSS 5: Quais Placas Suportam",
+        item: PAGE_URL,
+      },
+    ],
+  };
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "DLSS 5: Quais Placas Suportam",
+    url: PAGE_URL,
+    inLanguage: "pt-BR",
+    dateModified: "2026-06-22",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "DLSS 5 Checker",
+      url: "https://www.dlss5.net/pt",
+    },
+    about: [
+      "placas com DLSS 5",
+      "quais placas suportam DLSS 5",
+      "compatibilidade RTX 50",
+      "status RTX 40",
+    ],
+  };
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
 
       <main className="max-w-5xl mx-auto px-4 py-12">
@@ -205,6 +253,37 @@ export default function PtDlss5QuaisPlacasPage() {
             os requisitos finais por geração e por modelo.
           </p>
         </header>
+
+        <section
+          id="resposta-curta"
+          className="mb-10 rounded-lg border border-blue-500/30 bg-blue-500/5 p-5 scroll-mt-24"
+        >
+          <h2 className="text-xl font-bold mb-3">Quais placas suportam DLSS 5? Resposta curta</h2>
+          <p className="text-sm text-foreground/80 leading-relaxed">
+            Última verificação em 22 de junho de 2026: RTX 50 é o caminho mais claro para
+            DLSS 5. RTX 5090, RTX 5080, RTX 5070 Ti e RTX 5070 ficam como confirmadas;
+            RTX 5060 Ti e RTX 5060 ficam como esperadas até documentação final por modelo.
+            RTX 40 segue desconhecida, RTX 30 é pouco provável para a nova camada de
+            Neural Rendering, e GTX, AMD e Intel não rodam NVIDIA DLSS.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2 text-sm">
+            <a href="#status-confirmed" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 50 confirmadas
+            </a>
+            <a href="#status-expected" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 50 esperadas
+            </a>
+            <a href="#status-unknown" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 40 desconhecidas
+            </a>
+            <a href="#status-unlikely" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 30 pouco prováveis
+            </a>
+            <a href="#status-none" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              GTX, AMD, Intel sem DLSS
+            </a>
+          </div>
+        </section>
 
         <section className="mb-10 grid gap-4 md:grid-cols-3">
           <div className="rounded-lg border border-border p-5">
@@ -254,6 +333,33 @@ export default function PtDlss5QuaisPlacasPage() {
               <div className="font-semibold mb-1">GTX 1060 e DLSS</div>
               <p className="text-sm text-muted-foreground">
                 Resposta direta para quem usa uma placa GTX antiga.
+              </p>
+            </Link>
+            <Link
+              href="/pt/gpu/rtx-4070"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">RTX 4070 e DLSS 5</div>
+              <p className="text-sm text-muted-foreground">
+                Status específico para uma das placas RTX 40 mais pesquisadas.
+              </p>
+            </Link>
+            <Link
+              href="/pt/gpu/rtx-4080"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">RTX 4080 e DLSS 5</div>
+              <p className="text-sm text-muted-foreground">
+                Entenda por que a RTX 4080 segue como desconhecida para DLSS 5.
+              </p>
+            </Link>
+            <Link
+              href="/pt/gpu/rtx-3060"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">RTX 3060 e DLSS 5</div>
+              <p className="text-sm text-muted-foreground">
+                Resposta direta para RTX 30, DLSS atual e upgrade.
               </p>
             </Link>
             <Link

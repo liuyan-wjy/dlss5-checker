@@ -23,7 +23,7 @@ export default function Home() {
         name: "Which GPUs will support DLSS 5?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The clearest DLSS 5 Neural Rendering path is RTX 50, with RTX 5090, 5080, 5070 Ti, and 5070 treated as confirmed in this tracker and RTX 5060 Ti / 5060 treated as expected pending final per-model documentation. RTX 40 support is unknown, RTX 20/30 support is unlikely, and DLSS 5 launches Fall 2026.",
+          text: "The clearest DLSS 5 Neural Rendering path is RTX 50. RTX 5090, 5080, 5070 Ti, and 5070 are in the confirmed group, while RTX 5060 Ti and RTX 5060 are expected but still need final per-model documentation. RTX 40 support is unknown, RTX 20/30 support is unlikely, and DLSS 5 launches Fall 2026.",
         },
       },
       {
@@ -85,7 +85,16 @@ export default function Home() {
     description:
       "Check DLSS 5 GPU support with an evidence-based tracker for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel cards. See confirmed, expected, unknown, and unsupported status.",
     applicationCategory: "UtilityApplication",
+    applicationSubCategory: "GPU compatibility checker",
     operatingSystem: "Any",
+    inLanguage: "en",
+    isAccessibleForFree: true,
+    featureList: [
+      "DLSS 5 supported cards status",
+      "RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel GPU checks",
+      "Current DLSS 4 and DLSS 4.5 feature notes",
+      "Evidence-based upgrade guidance",
+    ],
     offers: {
       "@type": "Offer",
       price: "0",
@@ -136,7 +145,7 @@ export default function Home() {
                 href="/dlss-5-supported-cards"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
-                Supported cards list
+                DLSS 5 supported cards list
               </Link>
               <Link
                 href="/dlss-5-games"
@@ -160,7 +169,7 @@ export default function Home() {
                 href="/dlss-5-release-date"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
-                Release date
+                DLSS 5 release date
               </Link>
               <Link
                 href="/dlss-5-neural-rendering"
@@ -208,7 +217,7 @@ export default function Home() {
                 href="/dlss-5-rtx-40-series"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
-                RTX 40 series
+                DLSS 5 on RTX 40 series
               </Link>
               <Link
                 href="/gpu/rtx-5090"

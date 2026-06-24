@@ -13,9 +13,12 @@ export const metadata: Metadata = {
     languages: {
       en: "https://www.dlss5.net/dlss-5-supported-cards",
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-quais-placas",
+      de: "https://www.dlss5.net/de/dlss-5-grafikkarten",
     },
   },
 };
+
+const PAGE_URL = "https://www.dlss5.net/dlss-5-supported-cards";
 
 const STATUS_COPY: Record<
   DlssSupport,
@@ -103,7 +106,7 @@ function StatusTable({ status }: { status: DlssSupport }) {
   const cards = getCardsByStatus(status);
 
   return (
-    <section className="mb-10">
+    <section id={`status-${status}`} className="mb-10 scroll-mt-24">
       <div className={`rounded-lg border p-5 mb-4 ${copy.className}`}>
         <h2 className="text-2xl font-bold text-foreground mb-2">{copy.title}</h2>
         <p className="text-sm text-foreground/80 leading-relaxed">{copy.note}</p>
@@ -177,12 +180,57 @@ export default function Dlss5SupportedCardsPage() {
       },
     ],
   };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "DLSS 5 Checker",
+        item: "https://www.dlss5.net",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "DLSS 5 Supported Cards",
+        item: PAGE_URL,
+      },
+    ],
+  };
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "DLSS 5 Supported Cards",
+    url: PAGE_URL,
+    inLanguage: "en",
+    dateModified: "2026-06-22",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "DLSS 5 Checker",
+      url: "https://www.dlss5.net",
+    },
+    about: [
+      "DLSS 5 supported cards",
+      "RTX 50 DLSS 5 support",
+      "RTX 40 DLSS 5 status",
+      "GPU compatibility",
+    ],
+  };
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
 
       <main className="max-w-5xl mx-auto px-4 py-12">
@@ -206,13 +254,44 @@ export default function Dlss5SupportedCardsPage() {
           </p>
         </header>
 
+        <section
+          id="dlss-5-supported-cards-short-answer"
+          className="mb-10 rounded-lg border border-blue-500/30 bg-blue-500/5 p-5 scroll-mt-24"
+        >
+          <h2 className="text-xl font-bold mb-3">DLSS 5 supported cards short answer</h2>
+          <p className="text-sm text-foreground/80 leading-relaxed">
+            Last checked June 22, 2026: RTX 50 is the clearest DLSS 5 path. RTX 5090,
+            RTX 5080, RTX 5070 Ti, and RTX 5070 are in the confirmed group. RTX 5060 Ti
+            and RTX 5060 are expected, but still need final per-model documentation from
+            NVIDIA. RTX 40 is unknown, RTX 30 is unlikely for the new neural rendering
+            layer, and GTX, AMD, and Intel cards are unsupported for NVIDIA DLSS.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2 text-sm">
+            <a href="#status-confirmed" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 50 confirmed
+            </a>
+            <a href="#status-expected" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 50 expected
+            </a>
+            <a href="#status-unknown" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 40 unknown
+            </a>
+            <a href="#status-unlikely" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 30 unlikely
+            </a>
+            <a href="#status-none" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              GTX, AMD, Intel unsupported
+            </a>
+          </div>
+        </section>
+
         <section className="mb-10 grid gap-4 md:grid-cols-3">
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Fast answer</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              The confirmed group below is made of RTX 50 models. RTX 40 is worth watching,
-              but should be treated as unknown until NVIDIA publishes final launch support
-              documentation.
+              DLSS 5 supported cards are currently safest in the RTX 50 generation. Use
+              the status sections below for confirmed, expected, unknown, unlikely, and
+              unsupported groups.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
@@ -301,6 +380,15 @@ export default function Dlss5SupportedCardsPage() {
               <div className="font-semibold mb-1">Portuguese card list</div>
               <p className="text-sm text-muted-foreground">
                 Lista em português para consultas do Brasil e Portugal.
+              </p>
+            </Link>
+            <Link
+              href="/de/dlss-5-grafikkarten"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">German card list</div>
+              <p className="text-sm text-muted-foreground">
+                Kurze deutsche Antwort auf welche Grafikkarten DLSS 5 unterstützen.
               </p>
             </Link>
           </div>
