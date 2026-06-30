@@ -13,7 +13,6 @@ export const metadata: Metadata = {
     languages: {
       en: "https://www.dlss5.net/dlss-5-supported-cards",
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-quais-placas",
-      de: "https://www.dlss5.net/de/dlss-5-grafikkarten",
     },
   },
 };
@@ -132,6 +131,7 @@ function StatusSection({ status }: { status: DlssSupport }) {
 
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
+          <caption className="sr-only">{copy.title}</caption>
           <thead>
             <tr className="border-b border-border bg-muted/40">
               <th className="px-4 py-3 text-left font-semibold">Placa</th>
@@ -396,6 +396,15 @@ export default function PtDlss5QuaisPlacasPage() {
               <div className="font-semibold mb-1">DLSS 5 está confirmado?</div>
               <p className="text-sm text-muted-foreground">
                 Separe confirmação oficial, anúncio e incertezas de suporte.
+              </p>
+            </Link>
+            <Link
+              href="/pt/dlss-5-vs-dlss-4-5"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">DLSS 5 vs DLSS 4.5</div>
+              <p className="text-sm text-muted-foreground">
+                Compare a nova camada visual com os recursos atuais de desempenho.
               </p>
             </Link>
           </div>

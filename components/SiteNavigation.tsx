@@ -36,6 +36,15 @@ export function SiteHeader() {
           </Link>
         </nav>
       </div>
+      <div className="border-t border-border/40 px-4 py-2">
+        <p className="author mx-auto max-w-6xl text-xs text-foreground/80">
+          By{" "}
+          <Link href="/about" rel="author" className="text-blue-400 hover:underline">
+            DLSS 5 Checker Editorial Team
+          </Link>
+          .
+        </p>
+      </div>
     </header>
   );
 }

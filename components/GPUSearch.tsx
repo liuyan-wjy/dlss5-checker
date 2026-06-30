@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
-import { getSuggestions, searchGPU, type GPU } from "@/lib/gpu-search";
+import { getSuggestions, searchGPU, type DlssSupport, type GPU } from "@/lib/gpu-search";
 import { Search } from "lucide-react";
 
 interface GPUSearchProps {
@@ -90,24 +90,32 @@ export default function GPUSearch({ onResult }: GPUSearchProps) {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  const supportBadgeColor: Record<string, string> = {
-    full: "text-green-500",
-    partial: "text-yellow-500",
+  const supportBadgeColor: Record<DlssSupport, string> = {
+    confirmed: "text-green-500",
+    expected: "text-lime-400",
+    unknown: "text-yellow-500",
+    unlikely: "text-orange-500",
     none: "text-red-500",
   };
 
-  const supportLabel: Record<string, string> = {
-    full: "✅ Full",
-    partial: "⚠️ Partial",
-    none: "❌ No Support",
+  const supportLabel: Record<DlssSupport, string> = {
+    confirmed: "Confirmed",
+    expected: "Expected",
+    unknown: "Unknown",
+    unlikely: "Unlikely",
+    none: "No DLSS",
   };
 
   return (
     <div className="gpu-search-wrapper relative w-full max-w-xl mx-auto">
       <div className="flex gap-2">
         <div className="relative flex-1">
+          <label htmlFor="gpu-search" className="sr-only">
+            GPU model
+          </label>
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
           <Input
+            id="gpu-search"
             ref={inputRef}
             type="text"
             value={query}
@@ -123,6 +131,7 @@ export default function GPUSearch({ onResult }: GPUSearchProps) {
           />
         </div>
         <button
+          type="button"
           onClick={handleSearch}
           className="px-6 h-12 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md transition-colors"
         >

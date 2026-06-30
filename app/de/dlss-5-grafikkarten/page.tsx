@@ -22,6 +22,10 @@ export const metadata: Metadata = {
     locale: "de_DE",
     url: "https://www.dlss5.net/de/dlss-5-grafikkarten",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 const PAGE_URL = "https://www.dlss5.net/de/dlss-5-grafikkarten";
@@ -108,6 +112,7 @@ function StatusSection({ status }: { status: DlssSupport }) {
 
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
+          <caption className="sr-only">{copy.heading}</caption>
           <thead>
             <tr className="border-b border-border bg-muted/40">
               <th className="px-4 py-3 text-left font-semibold">Grafikkarte</th>

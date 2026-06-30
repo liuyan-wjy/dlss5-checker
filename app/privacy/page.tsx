@@ -3,6 +3,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | DLSS 5 GPU Compatibility Checker",
+  description:
+    "Privacy policy for DLSS 5 Checker, covering analytics, advertising cookies, consent, third-party links, and contact details.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -36,16 +38,8 @@ export default function PrivacyPage() {
             >
               Privacy Policy
             </a>
-            . You can opt out via the{" "}
-            <a
-              href="https://tools.google.com/dlpage/gaoptout"
-              className="text-blue-400 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Google Analytics Opt-out Browser Add-on
-            </a>
-            .
+            . You can limit analytics tracking with browser privacy controls and Google
+            account settings where available.
           </p>
         </section>
 
@@ -152,10 +146,7 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold mb-3 text-foreground">11. Contact</h2>
           <p>
             If you have questions about this Privacy Policy, contact us at{" "}
-            <a href="mailto:support@dlss5.net" className="text-blue-400 hover:underline">
-              support@dlss5.net
-            </a>
-            .
+            <span className="font-medium text-foreground">support [at] dlss5.net</span>.
           </p>
         </section>
       </div>

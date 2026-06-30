@@ -62,6 +62,7 @@ export default function ComparisonTable({ locale = "en" }: { locale?: Comparison
   return (
     <div className="overflow-x-auto rounded-lg border border-border">
       <table className="w-full text-sm">
+        <caption className="sr-only">DLSS feature comparison</caption>
         <thead>
           <tr className="bg-muted/50 border-b border-border">
             <th className="text-left px-4 py-3 font-semibold">{copy.feature}</th>

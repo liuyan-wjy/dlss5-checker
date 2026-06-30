@@ -168,6 +168,7 @@ export default function SupportedGPUsTable({
       {/* Table */}
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
+          <caption className="sr-only">{copy.status} by GPU model</caption>
           <thead>
             <tr className="bg-muted/50 border-b border-border">
               <th className="text-left px-4 py-3 font-semibold">{copy.gpu}</th>

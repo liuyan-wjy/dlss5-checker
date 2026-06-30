@@ -178,64 +178,10 @@ export default function Home() {
                 Neural rendering
               </Link>
               <Link
-                href="/dlss-4-5-dynamic-mfg-6x"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                DLSS 4.5 6X
-              </Link>
-              <Link
-                href="/dlss-4-5-games"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                DLSS 4.5 games
-              </Link>
-              <Link
-                href="/dlss-4-5-dynamic-mfg-settings"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                Dynamic MFG settings
-              </Link>
-              <Link
-                href="/dlss-frame-generation-vs-multi-frame-generation"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                Frame Gen vs MFG
-              </Link>
-              <Link
-                href="/dlss-5-unreal-engine"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                Unreal Engine status
-              </Link>
-              <Link
                 href="/dlss-5-vs-dlss-4-5"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 DLSS 5 vs 4.5
-              </Link>
-              <Link
-                href="/dlss-5-rtx-40-series"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                DLSS 5 on RTX 40 series
-              </Link>
-              <Link
-                href="/gpu/rtx-5090"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                RTX 5090
-              </Link>
-              <Link
-                href="/gpu/rtx-3070"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                RTX 3070
-              </Link>
-              <Link
-                href="/dlss-5-system-requirements"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                DLSS 5 system requirements
               </Link>
             </div>
           </div>

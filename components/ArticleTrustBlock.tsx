@@ -7,7 +7,9 @@ interface ArticleTrustBlockProps {
 const copy = {
   en: {
     title: "Sources, review status, and related pages",
+    byline: "Author: DLSS 5 Checker Editorial Team",
     lastChecked: "Last checked June 22, 2026",
+    reviewNote: "Reviewed against primary NVIDIA sources and corrected when launch documentation changes.",
     primarySources: "Primary sources",
     changeTitle: "What would change this answer",
     change:
@@ -20,7 +22,9 @@ const copy = {
   },
   pt: {
     title: "Fontes, revisão e páginas relacionadas",
+    byline: "Autor: DLSS 5 Checker Editorial Team",
     lastChecked: "Última verificação em 22 de junho de 2026",
+    reviewNote: "Revisado contra fontes primárias da NVIDIA e corrigido quando a documentação muda.",
     primarySources: "Fontes principais",
     changeTitle: "O que mudaria esta resposta",
     change:
@@ -41,7 +45,15 @@ export default function ArticleTrustBlock({ locale = "en" }: ArticleTrustBlockPr
   return (
     <section className="mt-12 rounded-lg border border-border p-5 text-sm">
       <h2 className="mb-2 text-xl font-bold">{t.title}</h2>
-      <p className="mb-5 text-muted-foreground">{t.lastChecked}</p>
+      <p className="author mb-1 font-medium text-foreground/90">
+        {t.byline.replace("DLSS 5 Checker Editorial Team", "")}
+        <Link href="/about" rel="author" className="text-blue-400 hover:underline">
+          DLSS 5 Checker Editorial Team
+        </Link>
+      </p>
+      <p className="mb-5 text-muted-foreground">
+        {t.lastChecked}. {t.reviewNote}
+      </p>
 
       <div className="grid gap-4 md:grid-cols-3">
         <div>

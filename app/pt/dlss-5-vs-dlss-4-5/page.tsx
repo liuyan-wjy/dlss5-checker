@@ -114,6 +114,7 @@ export default function PtDlss5VsDlss45Page() {
           <h2 className="text-2xl font-bold mb-4">Comparação direta</h2>
           <div className="overflow-x-auto rounded-lg border border-border">
             <table className="w-full text-sm">
+              <caption className="sr-only">Comparação entre DLSS 4.5 e DLSS 5</caption>
               <thead>
                 <tr className="border-b border-border bg-muted/40">
                   <th className="px-4 py-3 text-left font-semibold">Pergunta</th>

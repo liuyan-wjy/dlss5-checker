@@ -90,9 +90,9 @@ export default function EditorialPolicyPage() {
         <div className="rounded-lg border border-border p-5">
           <h2 className="mb-2 text-xl font-bold">Corrections</h2>
           <p className="text-sm leading-relaxed text-foreground/80">
-            If a page is wrong or missing a source, contact support@dlss5.net. We prioritize
-            corrections that affect buying decisions, compatibility status, release timing,
-            or claims that could be mistaken for official NVIDIA guidance.
+            If a page is wrong or missing a source, contact support [at] dlss5.net. We
+            prioritize corrections that affect buying decisions, compatibility status,
+            release timing, or claims that could be mistaken for official NVIDIA guidance.
           </p>
         </div>
         <div className="rounded-lg border border-border p-5">
@@ -109,6 +109,23 @@ export default function EditorialPolicyPage() {
             DLSS 5 Checker is not affiliated with NVIDIA. Product names and trademarks belong
             to their respective owners. We may monetize the site with ads if enabled, but ad
             placement does not determine compatibility labels.
+          </p>
+        </div>
+      </section>
+
+      <section className="mb-10 rounded-lg border border-border p-5">
+        <h2 className="mb-3 text-xl font-bold">How corrections are handled</h2>
+        <div className="space-y-3 text-sm leading-relaxed text-foreground/80">
+          <p>
+            A correction request should include the page URL, the current claim, the source
+            that changes the answer, and whether the change affects hardware support, game
+            support, driver requirements, release timing, or wording clarity.
+          </p>
+          <p>
+            When a primary source changes a status label, we update the relevant article,
+            the evidence tracker, related GPU pages, and any structured data that repeats
+            the same answer. If a claim is plausible but not proven, it stays in the
+            expected, unknown, or unlikely bucket instead of being promoted to confirmed.
           </p>
         </div>
       </section>

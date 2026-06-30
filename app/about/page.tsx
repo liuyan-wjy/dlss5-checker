@@ -3,6 +3,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About Us | DLSS 5 GPU Compatibility Checker",
+  description:
+    "Learn who maintains DLSS 5 Checker, how compatibility claims are sourced, and how the site corrects GPU support information.",
   alternates: { canonical: "/about" },
 };
 
@@ -91,10 +93,7 @@ export default function AboutPage() {
           <p>
             Found a data error? Have a GPU we should add? Send the GPU or game name, the
             claim that should change, and the source URL we should review to{" "}
-            <a href="mailto:support@dlss5.net" className="text-blue-400 hover:underline">
-              support@dlss5.net
-            </a>
-            .
+            <span className="font-medium text-foreground">support [at] dlss5.net</span>.
           </p>
         </section>
       </div>

@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   description:
     "Check DLSS 5 GPU support with an evidence-based tracker for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel cards. See confirmed, expected, unknown, and unsupported status.",
   metadataBase: new URL("https://www.dlss5.net"),
+  authors: [{ name: "DLSS 5 Checker Editorial Team", url: "https://www.dlss5.net/about" }],
+  creator: "DLSS 5 Checker Editorial Team",
+  publisher: "DLSS 5 Checker",
   openGraph: {
     title: "DLSS 5 GPU Compatibility Checker",
     description:
