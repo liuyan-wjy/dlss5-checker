@@ -1400,11 +1400,8 @@ export function createRtxSparkMetadata(routeKey: RtxSparkRouteKey, locale: RtxSp
     description: page.metaDescription,
     alternates: {
       canonical: route,
-      languages: {
-        en: `${RTX_SPARK_BASE_URL}${rtxSparkRoutes[routeKey].en}`,
-        "pt-BR": `${RTX_SPARK_BASE_URL}${rtxSparkRoutes[routeKey].pt}`,
-      },
     },
+    robots: { index: false, follow: true },
     openGraph: {
       title: page.metaTitle,
       description: page.metaDescription,

@@ -8,8 +8,6 @@ import {
   isEnabledGpuSlug,
 } from "@/lib/gpu-page-config";
 
-const SITE_URL = "https://www.dlss5.net";
-
 export function generateStaticParams() {
   return GPU_DETAIL_SLUGS.en.map((slug) => ({ slug }));
 }
@@ -26,18 +24,11 @@ export async function generateMetadata({
   }
 
   const statusText = getLocalizedSupportText("en", gpu.dlss5_support);
-  const languages: Record<string, string> = {
-    en: `${SITE_URL}/gpu/${slug}`,
-  };
-
-  if (isEnabledGpuSlug("pt", slug)) {
-    languages["pt-BR"] = `${SITE_URL}/pt/gpu/${slug}`;
-  }
-
   return {
     title: `${gpu.name} & DLSS 5: ${statusText} [2026]`,
     description: `Does the ${gpu.name} support DLSS 5 Neural Rendering? Status: ${statusText}. See current DLSS features and whether the card is worth upgrading.`,
-    alternates: { canonical: `/gpu/${slug}`, languages },
+    alternates: { canonical: `/gpu/${slug}` },
+    robots: { index: false, follow: true },
   };
 }
 
