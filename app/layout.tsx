@@ -84,6 +84,17 @@ export default function RootLayout({
             gtag('config', 'G-PH9DM6B4MD');
           `}
         </Script>
+        <Script
+          id="plausible-analytics"
+          src="https://plausible-ly-005.pages.dev/js/pa-VclqONE0bFW-1okXx2CnS.js"
+          strategy="afterInteractive"
+        />
+        <Script id="plausible-init" strategy="afterInteractive">
+          {`
+            window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+            plausible.init();
+          `}
+        </Script>
       </body>
     </html>
   );
