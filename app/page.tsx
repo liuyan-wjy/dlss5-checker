@@ -1,9 +1,26 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import GPUChecker from "@/components/GPUChecker";
 import SupportedGPUsTable from "@/components/SupportedGPUsTable";
 import ComparisonTable from "@/components/ComparisonTable";
 import FAQSection from "@/components/FAQSection";
 import AdSlot from "@/components/AdSlot";
+
+export const metadata: Metadata = {
+  openGraph: {
+    title: "DLSS 5 GPU Compatibility Checker",
+    description:
+      "Check DLSS 5 GPU support with an evidence-based tracker for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel cards.",
+    type: "website",
+    locale: "en_US",
+    url: "https://www.dlss5.net",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DLSS 5 GPU Compatibility Checker",
+    description: "Check confirmed, expected, unknown, and unsupported DLSS 5 GPU status.",
+  },
+};
 
 export default function Home() {
   const faqJsonLd = {

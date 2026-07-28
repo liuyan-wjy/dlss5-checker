@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "DLSS 4.5 Ray Reconstruction: Release Date, GPUs, Games",
@@ -8,6 +7,19 @@ export const metadata: Metadata = {
     "DLSS 4.5 Ray Reconstruction explained: August 2026 release, all RTX GPU support, 27 announced games, NVIDIA App setup, image quality, and performance.",
   alternates: {
     canonical: "/dlss-4-5-ray-reconstruction",
+  },
+  openGraph: {
+    title: "DLSS 4.5 Ray Reconstruction: Release Date, GPUs, Games",
+    description:
+      "DLSS 4.5 Ray Reconstruction explained: August 2026 release, all RTX GPU support, 27 announced games, NVIDIA App setup, image quality, and performance.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-4-5-ray-reconstruction",
+  },
+  twitter: {
+    card: "summary",
+    title: "DLSS 4.5 Ray Reconstruction: Release Date, GPUs, Games",
+    description:
+      "DLSS 4.5 Ray Reconstruction explained: August 2026 release, all RTX GPU support, 27 announced games, NVIDIA App setup, image quality, and performance.",
   },
 };
 
@@ -461,7 +473,6 @@ export default function Dlss45RayReconstructionPage() {
           </div>
         </section>
 
-        <ArticleTrustBlock />
       </main>
     </>
   );

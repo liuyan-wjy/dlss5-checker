@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export type Dlss5GameGuideKey =
   | "resident-evil-requiem"
@@ -296,70 +295,26 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
   },
 };
 
-const featureRows = [
-  {
-    feature: "DLSS 5 Neural Rendering",
-    purpose: "Enhances lighting and material appearance using game data and an AI model.",
-    currentStatus: "Announced for Fall 2026; per-game settings still need verification.",
-  },
-  {
-    feature: "DLSS 4.5 Ray Reconstruction",
-    purpose: "Replaces multiple denoisers in supported ray-traced and path-traced scenes.",
-    currentStatus: "Second-generation model announced for August 2026 on GeForce RTX GPUs.",
-  },
-  {
-    feature: "DLSS Super Resolution",
-    purpose: "Reconstructs a higher-resolution image from a lower internal render resolution.",
-    currentStatus: "Already available in many games; model and override support vary.",
-  },
-  {
-    feature: "Frame Generation / Multi Frame Generation",
-    purpose: "Generates additional frames to improve displayed smoothness.",
-    currentStatus: "Hardware tier and game support determine which modes are available.",
-  },
-];
-
-const verificationSteps = [
-  {
-    title: "Confirm the game build",
-    detail:
-      "Read the publisher's patch notes and record the version number. A general NVIDIA announcement is not proof that your installed build contains the feature.",
-  },
-  {
-    title: "Confirm the driver path",
-    detail:
-      "Install the compatible Game Ready Driver and check whether NVIDIA documents a native integration or NVIDIA App override.",
-  },
-  {
-    title: "Find the exact setting",
-    detail:
-      "Look for a named DLSS 5, Neural Rendering, or related developer control. Do not infer it from a generic DLSS preset.",
-  },
-  {
-    title: "Hold other settings steady",
-    detail:
-      "Compare the same resolution, camera position, ray-tracing preset, and Frame Generation mode so one variable changes at a time.",
-  },
-  {
-    title: "Check motion and latency",
-    detail:
-      "A still image can hide ghosting, shimmer, delayed detail, and responsiveness issues. Test normal play, not only photo mode.",
-  },
-  {
-    title: "Save the evidence",
-    detail:
-      "Keep the patch note, menu screenshot, driver version, GPU model, and test scene together so the result can be reproduced later.",
-  },
-];
-
 export function createDlss5GameMetadata(key: Dlss5GameGuideKey): Metadata {
   const guide = gameGuides[key];
+  const url = `https://www.dlss5.net${guide.canonical}`;
 
   return {
     title: guide.metaTitle,
     description: guide.metaDescription,
     alternates: {
       canonical: guide.canonical,
+    },
+    openGraph: {
+      title: guide.metaTitle,
+      description: guide.metaDescription,
+      type: "article",
+      url,
+    },
+    twitter: {
+      card: "summary",
+      title: guide.metaTitle,
+      description: guide.metaDescription,
     },
   };
 }
@@ -491,54 +446,6 @@ export default function Dlss5GameGuide({ gameKey }: { gameKey: Dlss5GameGuideKey
           </div>
         </section>
 
-        <section className="mb-10">
-          <h2 className="mb-3 text-2xl font-bold">Do not confuse the DLSS controls</h2>
-          <p className="mb-5 leading-relaxed text-foreground/80">
-            The DLSS name covers several technologies that solve different problems. Read
-            the exact menu label before deciding what changed in {guide.name}.
-          </p>
-          <div className="overflow-x-auto rounded-lg border border-border">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/40 text-left">
-                <tr>
-                  <th className="p-3 font-semibold">Feature</th>
-                  <th className="p-3 font-semibold">What it does</th>
-                  <th className="p-3 font-semibold">Status to verify</th>
-                </tr>
-              </thead>
-              <tbody>
-                {featureRows.map((row) => (
-                  <tr key={row.feature} className="border-t border-border align-top">
-                    <td className="p-3 font-medium">{row.feature}</td>
-                    <td className="p-3 leading-relaxed text-foreground/80">{row.purpose}</td>
-                    <td className="p-3 leading-relaxed text-muted-foreground">
-                      {row.currentStatus}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section className="mb-10 rounded-lg border border-border p-5">
-          <h2 className="mb-4 text-2xl font-bold">
-            How to verify the {guide.name} update
-          </h2>
-          <div className="grid gap-5 md:grid-cols-2">
-            {verificationSteps.map((step, index) => (
-              <div key={step.title}>
-                <h3 className="mb-1 font-semibold">
-                  {index + 1}. {step.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {step.detail}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section className="mb-10 space-y-4 text-foreground/80">
           <h2 className="text-2xl font-bold text-foreground">Practical advice for players</h2>
           {guide.playerAdvice.map((paragraph) => (
@@ -629,8 +536,6 @@ export default function Dlss5GameGuide({ gameKey }: { gameKey: Dlss5GameGuideKey
             ))}
           </div>
         </section>
-
-        <ArticleTrustBlock />
       </main>
     </>
   );

@@ -1409,5 +1409,10 @@ export function createRtxSparkMetadata(routeKey: RtxSparkRouteKey, locale: RtxSp
       locale: locale === "pt" ? "pt_BR" : "en_US",
       url: `${RTX_SPARK_BASE_URL}${route}`,
     },
+    twitter: {
+      card: "summary",
+      title: page.metaTitle,
+      description: page.metaDescription,
+    },
   };
 }

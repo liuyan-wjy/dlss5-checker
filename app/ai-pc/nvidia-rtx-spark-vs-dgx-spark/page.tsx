@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
   title: "NVIDIA RTX Spark vs DGX Spark: Which One Should You Buy?",
@@ -8,6 +7,19 @@ export const metadata: Metadata = {
     "Compare RTX Spark vs DGX Spark for Windows, Linux AI development, 128GB memory, local LLMs, gaming, networking, portability, and buying timing.",
   alternates: {
     canonical: "/ai-pc/nvidia-rtx-spark-vs-dgx-spark",
+  },
+  openGraph: {
+    title: "NVIDIA RTX Spark vs DGX Spark: Which One Should You Buy?",
+    description:
+      "Compare RTX Spark vs DGX Spark for Windows, Linux AI development, 128GB memory, local LLMs, gaming, networking, portability, and buying timing.",
+    type: "article",
+    url: "https://www.dlss5.net/ai-pc/nvidia-rtx-spark-vs-dgx-spark",
+  },
+  twitter: {
+    card: "summary",
+    title: "NVIDIA RTX Spark vs DGX Spark: Which One Should You Buy?",
+    description:
+      "Compare RTX Spark vs DGX Spark for Windows, Linux AI development, 128GB memory, local LLMs, gaming, networking, portability, and buying timing.",
   },
 };
 
@@ -54,7 +66,8 @@ const comparisonRows = [
     area: "Unified memory",
     rtx: "Up to 128GB; exact device configurations are set by each laptop or desktop maker.",
     dgx: "128GB LPDDR5x coherent unified memory with a documented 273 GB/s bandwidth.",
-    decision: "DGX Spark has a fixed documented configuration; verify the exact RTX Spark SKU before buying.",
+    decision:
+      "DGX Spark has a documented reference platform; verify its storage SKU and the exact RTX Spark system before buying.",
   },
   {
     area: "Model guidance",
@@ -99,7 +112,7 @@ const workloadRows = [
     workload: "Dedicated AI prototyping at a desk",
     bestFit: "DGX Spark",
     why:
-      "The fixed system has documented memory bandwidth, storage, networking, DGX OS, and an AI stack ready for development.",
+      "The compact system has documented memory bandwidth, storage options, networking, DGX OS, and an AI stack ready for development.",
   },
   {
     workload: "Fine-tuning a large model",
@@ -125,7 +138,7 @@ const faqItems = [
   {
     question: "Is RTX Spark the same as DGX Spark?",
     answer:
-      "No. RTX Spark is an announced Windows PC platform for laptops and small desktops, combining local agents, creator tools, gaming, and everyday use. DGX Spark is a shipping compact desktop AI development system with DGX OS and a documented fixed configuration.",
+      "No. RTX Spark is an announced Windows PC platform for laptops and small desktops, combining local agents, creator tools, gaming, and everyday use. DGX Spark is a shipping compact desktop AI development system with DGX OS, a documented platform design, and storage choices that depend on the SKU.",
   },
   {
     question: "Which is faster, RTX Spark or DGX Spark?",
@@ -246,7 +259,7 @@ export default function NvidiaRtxSparkVsDgxSparkPage() {
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
             <h2 className="mb-2 font-bold">Choose DGX Spark if...</h2>
             <p className="text-sm leading-relaxed text-foreground/80">
-              You want a dedicated desktop AI system with DGX OS, fixed specifications,
+              You want a dedicated desktop AI system with DGX OS, published specifications,
               documented high-speed networking, and a preinstalled AI software stack.
             </p>
           </div>
@@ -274,10 +287,10 @@ export default function NvidiaRtxSparkVsDgxSparkPage() {
           </p>
           <p className="leading-relaxed">
             DGX Spark is a specific small-form-factor AI computer. NVIDIA publishes its
-            128GB LPDDR5x memory, 273 GB/s bandwidth, 4TB storage configuration, 10 GbE,
-            ConnectX-7 networking, 140W GB10 TDP, physical dimensions, and DGX OS. It is
-            easier to evaluate as an AI development appliance because the hardware and
-            software baseline are defined.
+            128GB LPDDR5x memory, 273 GB/s bandwidth, 1TB or 4TB NVMe storage depending
+            on the SKU, 10 GbE, ConnectX-7 networking, 140W GB10 TDP, physical
+            dimensions, and DGX OS. It is easier to evaluate as an AI development
+            appliance because the hardware and software baseline are defined.
           </p>
           <p className="leading-relaxed">
             If your real goal is one portable machine for Windows software, gaming, and
@@ -400,7 +413,7 @@ export default function NvidiaRtxSparkVsDgxSparkPage() {
             </p>
             <p>
               Consider DGX Spark now only when a dedicated desktop AI system, DGX software,
-              published networking, and its fixed configuration solve a current
+              published networking, and its documented platform solve a current
               development need. Do not buy it as a substitute for an unreleased gaming
               laptop, and do not wait for RTX Spark if Windows adds no value to the
               workload.
@@ -498,7 +511,6 @@ export default function NvidiaRtxSparkVsDgxSparkPage() {
           </div>
         </section>
 
-        <ArticleTrustBlock />
       </main>
     </>
   );
