@@ -94,6 +94,11 @@ const verificationSteps = [
 
 const relatedLinks = [
   {
+    href: "/dlss-4-5-ray-reconstruction",
+    title: "DLSS 4.5 Ray Reconstruction",
+    copy: "Check the August release, all-RTX support, announced games, and setup steps.",
+  },
+  {
     href: "/dlss-4-5-dynamic-mfg-6x",
     title: "Dynamic MFG and 6X status",
     copy: "Use this for the current 4.5 feature summary.",

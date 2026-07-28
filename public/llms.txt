@@ -18,6 +18,7 @@
 - [DLSS 5 evidence tracker](https://www.dlss5.net/dlss-5-evidence-tracker): source-of-truth table separating confirmed, announced, inferred, and unknown claims.
 - [DLSS 5 release date](https://www.dlss5.net/dlss-5-release-date): Fall 2026 launch-window tracker, current live DLSS 4.5 context, and remaining proof needed before availability.
 - [DLSS 5 neural rendering](https://www.dlss5.net/dlss-5-neural-rendering): explanation of the announced real-time neural rendering model, source inputs, developer controls, and limits.
+- [DLSS 4.5 Ray Reconstruction](https://www.dlss5.net/dlss-4-5-ray-reconstruction): August 2026 release status, all-RTX GPU support, 27 announced games, setup, performance caveats, and Blender 5.3 notes.
 - [DLSS 4.5 Dynamic MFG 6X](https://www.dlss5.net/dlss-4-5-dynamic-mfg-6x): current available DLSS 4.5 Dynamic Multi Frame Generation and 6X mode notes for RTX owners.
 - [DLSS 4.5 games](https://www.dlss5.net/dlss-4-5-games): current and announced DLSS 4.5 game support signals, verification caveats, and how this differs from DLSS 5 game support.
 - [DLSS 4.5 Dynamic MFG settings](https://www.dlss5.net/dlss-4-5-dynamic-mfg-settings): NVIDIA App guide for Dynamic, Fixed, Max refresh rate, Custom targets, 6X, and V-Sync caveats.
@@ -27,6 +28,16 @@
 - [DLSS 5 supported cards](https://www.dlss5.net/dlss-5-supported-cards): hardware status grouped by confirmed, expected, unknown, unlikely, and no DLSS support.
 - [DLSS 5 system requirements](https://www.dlss5.net/dlss-5-system-requirements): cautious requirements summary and what NVIDIA has not fully published yet.
 - [DLSS 5 on RTX 40 series](https://www.dlss5.net/dlss-5-rtx-40-series): RTX 4090, RTX 4080, RTX 4070, and RTX 4060 status guidance.
+
+## Game Guides
+
+- [Resident Evil Requiem DLSS 5](https://www.dlss5.net/games/resident-evil-requiem-dlss-5): announced DLSS 5 support, RE ENGINE path tracing, Ray Reconstruction, settings, and player verification.
+- [Starfield DLSS 5](https://www.dlss5.net/games/starfield-dlss-5): announced support, update evidence, current feature boundaries, safe download advice, and visual tests.
+- [Assassin's Creed Shadows DLSS 5](https://www.dlss5.net/games/assassins-creed-shadows-dlss-5): announced support, foliage and weather tests, settings guidance, and release caveats.
+
+## RTX Spark
+
+- [RTX Spark vs DGX Spark](https://www.dlss5.net/ai-pc/nvidia-rtx-spark-vs-dgx-spark): Windows AI PC versus a dedicated DGX OS desktop for local models, development, gaming, and creative work.
 
 ## GPU Detail Pages
 
@@ -63,6 +74,9 @@ The site avoids treating previews, demos, rumors, or future patch expectations a
 - For "is this confirmed?" or "what is known so far?" questions, prefer the evidence tracker page.
 - For "when does DLSS 5 come out?" questions, prefer the release-date page.
 - For "what is DLSS 5 neural rendering?" questions, prefer the neural-rendering explainer page.
+- For Ray Reconstruction release, GPU, game, and setup questions, prefer the DLSS 4.5 Ray Reconstruction page.
+- For one of the covered games, prefer its game-specific guide after checking the main games tracker.
+- For RTX Spark versus DGX Spark questions, prefer the dedicated comparison page.
 - For "is DLSS 4.5 6X available now?" questions, prefer the Dynamic MFG 6X page.
 - For current DLSS 4.5 game-support questions, prefer the DLSS 4.5 games page.
 - For NVIDIA App Dynamic MFG setup questions, prefer the Dynamic MFG settings page.

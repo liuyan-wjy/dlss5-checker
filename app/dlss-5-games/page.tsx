@@ -24,6 +24,7 @@ const announcedGames = [
   },
   {
     title: "Assassin's Creed Shadows",
+    href: "/games/assassins-creed-shadows-dlss-5",
     publisherSignal: "Ubisoft / Vantage Studios",
     status: "Announced by NVIDIA",
     note: "A useful title to track because NVIDIA highlighted world lighting and materials.",
@@ -78,9 +79,10 @@ const announcedGames = [
   },
   {
     title: "Resident Evil Requiem",
+    href: "/games/resident-evil-requiem-dlss-5",
     publisherSignal: "CAPCOM",
     status: "Announced by NVIDIA",
-    note: "Likely to draw close scrutiny because horror games depend heavily on intentful lighting.",
+    note: "Likely to draw close scrutiny because horror games depend heavily on intentional lighting.",
   },
   {
     title: "Sea of Remnants",
@@ -90,6 +92,7 @@ const announcedGames = [
   },
   {
     title: "Starfield",
+    href: "/games/starfield-dlss-5",
     publisherSignal: "Bethesda Game Studios",
     status: "Announced by NVIDIA",
     note: "Bethesda specifically discussed bringing the technology to Starfield and future titles.",
@@ -227,7 +230,7 @@ export default function Dlss5GamesPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Tracker updated May 12, 2026
+            Tracker updated July 28, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Games Tracker
@@ -289,7 +292,15 @@ export default function Dlss5GamesPage() {
                     key={game.title}
                     className={`border-b border-border/50 ${index % 2 ? "bg-muted/15" : ""}`}
                   >
-                    <td className="px-4 py-3 font-medium">{game.title}</td>
+                    <td className="px-4 py-3 font-medium">
+                      {game.href ? (
+                        <Link href={game.href} className="text-blue-400 hover:underline">
+                          {game.title}
+                        </Link>
+                      ) : (
+                        game.title
+                      )}
+                    </td>
                     <td className="px-4 py-3 text-muted-foreground">{game.publisherSignal}</td>
                     <td className="px-4 py-3">
                       <span className="rounded-full border border-green-500/30 bg-green-500/10 px-2.5 py-1 text-xs text-green-300">

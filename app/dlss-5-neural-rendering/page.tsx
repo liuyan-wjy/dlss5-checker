@@ -3,9 +3,9 @@ import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Neural Rendering: How It Works in Modern Games",
+  title: "DLSS 5 Neural Rendering: What 3D-Guided Rendering Means",
   description:
-    "Learn what DLSS 5 Neural Rendering does, how color frames and motion vectors guide the model, and why it differs from DLSS 4.5 frame generation today.",
+    "Learn what DLSS 5 3D-guided Neural Rendering means, how game frames and motion vectors guide the model, and why it differs from video generation.",
   alternates: {
     canonical: "/dlss-5-neural-rendering",
   },
@@ -57,6 +57,11 @@ const boundaryRows = [
       "NVIDIA distinguishes the feature from prompt-based video models because game output needs to be real-time, predictable, and tied to the 3D scene.",
   },
   {
+    label: "Not a replacement for the game engine",
+    detail:
+      "The engine still supplies geometry, animation, materials, color frames, and motion data. The model enhances the rendered result rather than inventing a playable world from a blank prompt.",
+  },
+  {
     label: "Not a final GPU matrix",
     detail:
       "The technical explanation does not replace a launch support table. Hardware support still needs a separate source.",
@@ -68,6 +73,11 @@ const faqItems = [
     question: "What is DLSS 5 Neural Rendering?",
     answer:
       "It is NVIDIA's announced real-time visual-fidelity layer that uses game color frames, motion vectors, and an AI model to improve lighting and material appearance while staying anchored to the source scene.",
+  },
+  {
+    question: "What does 3D-guided Neural Rendering mean?",
+    answer:
+      "It means the AI output is guided by data produced by the real game scene, including rendered color and motion information. The engine remains responsible for the playable world, camera, geometry, animation, and interaction.",
   },
   {
     question: "Is neural rendering the same as DLSS 4.5?",
@@ -136,10 +146,10 @@ export default function Dlss5NeuralRenderingPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Technical explainer updated May 22, 2026
+            Technical explainer updated July 28, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-            DLSS 5 Neural Rendering: How It Works in Games
+            DLSS 5 Neural Rendering: What “3D-Guided” Means
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             The important shift is not only more frames. NVIDIA describes the new layer as
@@ -168,6 +178,33 @@ export default function Dlss5NeuralRenderingPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
+          <h2 className="text-2xl font-bold text-foreground">
+            What “3D-guided Neural Rendering” means
+          </h2>
+          <p>
+            The phrase can sound as if an AI model is generating the entire game, but that
+            is not the useful interpretation. The real-time game engine still determines
+            the camera, geometry, animation, object positions, interactions, base
+            materials, and rendered color. The neural model receives data from that
+            controlled 3D scene and enhances the visual result.
+          </p>
+          <p>
+            NVIDIA has publicly described color frames and motion vectors as important
+            inputs. Motion vectors tell the system where game elements move between frames,
+            helping details remain attached to the correct surfaces. That grounding is
+            essential in a game: a reflection, strand of hair, patch of fabric, or light
+            source cannot drift simply because an AI model finds another image plausible.
+          </p>
+          <p>
+            For players, the phrase should therefore mean <strong>scene-aware and
+            temporally controlled</strong>, not prompt-generated. The important launch
+            tests will be motion stability, input responsiveness, preservation of art
+            direction, performance cost, and whether materials remain consistent across
+            gameplay, cutscenes, weather changes, and camera movement.
+          </p>
         </section>
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">

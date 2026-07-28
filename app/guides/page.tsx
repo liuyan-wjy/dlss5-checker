@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Guides: Compatibility, Release Status, Dynamic MFG",
+  title: "DLSS 5 Guides: Games, Compatibility, Ray Reconstruction",
   description:
-    "Browse DLSS 5 and DLSS 4.5 guides for GPU support, RTX 40 status, release timing, Dynamic MFG, games, and evidence tracking.",
+    "Browse DLSS 5 and DLSS 4.5 guides for game support, GPUs, release timing, Ray Reconstruction, Dynamic MFG, RTX Spark, and evidence tracking.",
   alternates: { canonical: "/guides" },
 };
 
@@ -61,7 +61,12 @@ const guideGroups = [
       {
         href: "/dlss-5-neural-rendering",
         title: "DLSS 5 Neural Rendering",
-        description: "What the visual-quality layer is expected to change.",
+        description: "What 3D-guided rendering means and how game data controls the output.",
+      },
+      {
+        href: "/dlss-4-5-ray-reconstruction",
+        title: "DLSS 4.5 Ray Reconstruction",
+        description: "August release, all-RTX support, 27 announced games, and setup.",
       },
       {
         href: "/dlss-4-5-dynamic-mfg-6x",
@@ -72,6 +77,28 @@ const guideGroups = [
         href: "/dlss-frame-generation-vs-multi-frame-generation",
         title: "Frame Generation vs Multi Frame Generation",
         description: "Separate RTX 40 Frame Generation from RTX 50 MFG and Dynamic MFG.",
+      },
+    ],
+  },
+  {
+    title: "Game-specific DLSS 5 guides",
+    description:
+      "Use these pages for one game's confirmed announcement, current rendering features, visual test areas, update evidence, and player-focused settings advice.",
+    links: [
+      {
+        href: "/games/resident-evil-requiem-dlss-5",
+        title: "Resident Evil Requiem DLSS 5",
+        description: "Path tracing, Ray Reconstruction, Neural Rendering, and player checks.",
+      },
+      {
+        href: "/games/starfield-dlss-5",
+        title: "Starfield DLSS 5",
+        description: "Update status, feature differences, safe downloads, and test scenes.",
+      },
+      {
+        href: "/games/assassins-creed-shadows-dlss-5",
+        title: "Assassin's Creed Shadows DLSS 5",
+        description: "Support status, foliage and weather tests, and settings guidance.",
       },
     ],
   },
@@ -94,6 +121,11 @@ const guideGroups = [
         href: "/ai-pc/nvidia-rtx-spark",
         title: "NVIDIA RTX Spark hub",
         description: "Separate Windows AI PC hardware tracking from DLSS game features.",
+      },
+      {
+        href: "/ai-pc/nvidia-rtx-spark-vs-dgx-spark",
+        title: "RTX Spark vs DGX Spark",
+        description: "Windows AI PC versus a dedicated desktop AI development system.",
       },
     ],
   },
@@ -184,7 +216,7 @@ export default function GuidesPage() {
                     {link.description}
                   </p>
                   <p className="mt-3 text-xs text-muted-foreground/80">
-                    Last checked June 22, 2026
+                    Last checked July 28, 2026
                   </p>
                 </Link>
               ))}

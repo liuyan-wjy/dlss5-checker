@@ -244,6 +244,17 @@ function RelatedPages({
     <section className="mb-10">
       <h2 className="text-2xl font-bold mb-4">{text[locale].related}</h2>
       <div className="grid gap-3 sm:grid-cols-2">
+        {locale === "en" && (
+          <Link
+            href="/ai-pc/nvidia-rtx-spark-vs-dgx-spark"
+            className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
+          >
+            <div className="font-semibold mb-1">RTX Spark vs DGX Spark</div>
+            <p className="text-sm text-muted-foreground">
+              Compare Windows PC use with a dedicated desktop AI development system.
+            </p>
+          </Link>
+        )}
         {pages.map((key) => {
           const item = rtxSparkNavItems[key][locale];
           return (

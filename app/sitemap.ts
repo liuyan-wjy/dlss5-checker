@@ -63,6 +63,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.88,
     },
     {
+      url: "https://www.dlss5.net/games/resident-evil-requiem-dlss-5",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.84,
+    },
+    {
+      url: "https://www.dlss5.net/games/starfield-dlss-5",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.82,
+    },
+    {
+      url: "https://www.dlss5.net/games/assassins-creed-shadows-dlss-5",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.82,
+    },
+    {
       url: "https://www.dlss5.net/dlss-5-evidence-tracker",
       lastModified: new Date(),
       changeFrequency: "weekly",
@@ -79,6 +97,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.84,
+    },
+    {
+      url: "https://www.dlss5.net/dlss-4-5-ray-reconstruction",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.86,
     },
     {
       url: "https://www.dlss5.net/dlss-4-5-dynamic-mfg-6x",
@@ -121,6 +145,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.85,
+    },
+    {
+      url: "https://www.dlss5.net/ai-pc/nvidia-rtx-spark-vs-dgx-spark",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.78,
     },
     {
       url: "https://www.dlss5.net/pt/dlss-5-quais-placas",
