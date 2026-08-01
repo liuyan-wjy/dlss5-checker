@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Us | DLSS 5 GPU Compatibility Checker",
+  title: "About the Publisher | DLSS 5 GPU Compatibility Checker",
   description:
     "Learn who maintains DLSS 5 Checker, how compatibility claims are sourced, and how the site corrects GPU support information.",
   alternates: { canonical: "/about" },
@@ -12,6 +12,7 @@ export default function AboutPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <h1 className="text-3xl font-bold mb-8">About DLSS 5 Checker</h1>
+      <p className="-mt-5 mb-8 text-sm text-muted-foreground">Last reviewed: August 1, 2026</p>
 
       <div className="space-y-8 text-foreground/80 leading-relaxed">
         <section>
@@ -34,18 +35,32 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold mb-3 text-foreground">Who Maintains This Site</h2>
+          <h2 className="text-xl font-semibold mb-3 text-foreground">Who Publishes This Site</h2>
           <p>
-            DLSS 5 Checker is maintained by an independent editorial team focused on GPU
-            compatibility, DLSS release status, and user-facing hardware guidance. We write
-            for players, creators, and PC builders who need to know what is usable now,
-            what is announced for Fall 2026, and what still depends on final documentation.
+            DLSS 5 Checker is an independently operated publication at dlss5.net. The site
+            uses the byline <strong className="text-foreground">DLSS 5 Checker Editor</strong>
+            {" "}for the editor responsible for researching, writing, reviewing, and correcting
+            its compatibility guidance. We write for players, creators, and PC builders who
+            need to know what is usable now, what is announced for Fall 2026, and what still
+            depends on final documentation.
           </p>
           <p className="mt-4">
             The site is not an NVIDIA publication, reseller page, or download portal. Our job
             is to organize public evidence, explain uncertainty clearly, and correct outdated
             compatibility language when better official sources appear.
           </p>
+          <dl className="mt-5 grid gap-3 rounded-lg border border-border p-4 text-sm sm:grid-cols-[10rem_1fr]">
+            <dt className="font-semibold text-foreground">Publisher</dt>
+            <dd>DLSS 5 Checker (dlss5.net)</dd>
+            <dt className="font-semibold text-foreground">Responsible editor</dt>
+            <dd>DLSS 5 Checker Editor</dd>
+            <dt className="font-semibold text-foreground">Editorial contact</dt>
+            <dd>
+              <a href="mailto:support@dlss5.net" className="text-blue-400 hover:underline">
+                support@dlss5.net
+              </a>
+            </dd>
+          </dl>
         </section>
 
         <section>
@@ -93,7 +108,10 @@ export default function AboutPage() {
           <p>
             Found a data error? Have a GPU we should add? Send the GPU or game name, the
             claim that should change, and the source URL we should review to{" "}
-            <span className="font-medium text-foreground">support [at] dlss5.net</span>.
+            <a href="mailto:support@dlss5.net" className="font-medium text-blue-400 hover:underline">
+              support@dlss5.net
+            </a>
+            .
           </p>
         </section>
       </div>

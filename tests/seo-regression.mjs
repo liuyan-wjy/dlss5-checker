@@ -35,6 +35,17 @@ function readRoute(route) {
   return fs.readFileSync(path.join(appOutput, `${route}.html`), "utf8");
 }
 
+function readGeneratedHtml(directory = appOutput) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name);
+    return entry.isDirectory()
+      ? readGeneratedHtml(entryPath)
+      : entry.name.endsWith(".html")
+        ? fs.readFileSync(entryPath, "utf8")
+        : [];
+  });
+}
+
 function metadataValue(html, pattern, label) {
   const match = html.match(pattern);
   assert.ok(match, `Missing ${label}`);
@@ -46,6 +57,34 @@ assert.equal(
   metadataValue(homepage, /<meta property="og:url" content="([^"]+)"/, "homepage og:url"),
   "https://www.dlss5.net",
 );
+assert.match(
+  homepage,
+  /<meta name="google-adsense-account" content="ca-pub-5442184426795655"/,
+  "Homepage must retain AdSense ownership verification",
+);
+assert.doesNotMatch(homepage, /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/);
+assert.doesNotMatch(homepage, /googletagmanager\.com\/gtag\/js/);
+assert.match(homepage, /plausible-ly-005\.pages\.dev\/js\/pa-VclqONE0bFW-1okXx2CnS\.js/);
+assert.match(homepage, /plausible\.init/);
+
+const generatedHtml = readGeneratedHtml().join("\n");
+assert.doesNotMatch(generatedHtml, /DLSS 5 Checker Editorial Team/);
+assert.doesNotMatch(generatedHtml, /support \[at\] dlss5\.net/);
+assert.doesNotMatch(
+  generatedHtml,
+  /(?:last checked|updated|checked) (?:may|june)(?: \d{1,2},)? 2026|última (?:verificação em|checagem:) \d{1,2} de (?:maio|junho) de 2026/i,
+);
+
+const privacy = readRoute("privacy");
+assert.match(privacy, /AdSense ad-serving code and Auto ads are not loaded/);
+assert.doesNotMatch(privacy, /we use a Google-certified consent management platform/i);
+assert.doesNotMatch(privacy, /We use Google Analytics/i);
+
+for (const route of ["about", "contact"]) {
+  const html = readRoute(route);
+  assert.match(html, /mailto:support@dlss5\.net/);
+  assert.match(html, /DLSS 5 Checker Editor/);
+}
 
 for (const route of newRoutes) {
   const html = readRoute(route);

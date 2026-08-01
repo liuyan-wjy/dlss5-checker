@@ -128,7 +128,7 @@ export default function Dlss5UnrealEnginePage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Developer status checked June 2026
+            Developer status checked August 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Unreal Engine Status: What Developers Know

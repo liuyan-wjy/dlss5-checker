@@ -243,7 +243,7 @@ export default function Dlss5SupportedCardsPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked June 22, 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked August 1, 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Supported Cards: Confirmed, Expected, Unknown, and Unlikely GPUs
           </h1>
@@ -260,7 +260,7 @@ export default function Dlss5SupportedCardsPage() {
         >
           <h2 className="text-xl font-bold mb-3">DLSS 5 supported cards short answer</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            Last checked June 22, 2026: RTX 50 is the clearest DLSS 5 path. RTX 5090,
+            Last checked August 1, 2026: RTX 50 is the clearest DLSS 5 path. RTX 5090,
             RTX 5080, RTX 5070 Ti, and RTX 5070 are in the confirmed group. RTX 5060 Ti
             and RTX 5060 are expected, but still need final per-model documentation from
             NVIDIA. RTX 40 is unknown, RTX 30 is unlikely for the new neural rendering

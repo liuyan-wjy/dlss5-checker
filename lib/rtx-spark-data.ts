@@ -87,8 +87,8 @@ export const rtxSparkSources = {
 };
 
 export const rtxSparkLastChecked: Record<RtxSparkLocale, string> = {
-  en: "Last checked June 2, 2026",
-  pt: "Última checagem: 2 de junho de 2026",
+  en: "Last checked August 1, 2026",
+  pt: "Última checagem: 1 de agosto de 2026",
 };
 
 export const statusCopy: Record<

@@ -117,7 +117,7 @@ export default function Dlss45DynamicMfg6xPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Current feature status checked May 22, 2026
+            Current feature status checked August 1, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 4.5 Dynamic MFG 6X: What Is Available Now

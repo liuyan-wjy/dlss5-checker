@@ -134,7 +134,7 @@ export default function Dlss5VsDlss45Page() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Updated May 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Updated August 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 vs DLSS 4.5: What Actually Changes?
           </h1>

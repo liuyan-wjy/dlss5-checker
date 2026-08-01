@@ -40,7 +40,7 @@ export function SiteHeader() {
         <p className="author mx-auto max-w-6xl text-xs text-foreground/80">
           By{" "}
           <Link href="/about" rel="author" className="text-blue-400 hover:underline">
-            DLSS 5 Checker Editorial Team
+            DLSS 5 Checker Editor
           </Link>
           .
         </p>

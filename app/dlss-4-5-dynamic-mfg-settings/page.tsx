@@ -177,7 +177,7 @@ export default function Dlss45DynamicMfgSettingsPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            NVIDIA App guide updated June 2026
+            NVIDIA App guide updated August 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 4.5 Dynamic MFG Settings: NVIDIA App Guide

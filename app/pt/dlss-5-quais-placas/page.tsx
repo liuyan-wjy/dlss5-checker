@@ -243,7 +243,7 @@ export default function PtDlss5QuaisPlacasPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Última verificação em 22 de junho de 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Última verificação em 1 de agosto de 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5: Quais Placas Suportam?
           </h1>
@@ -260,7 +260,7 @@ export default function PtDlss5QuaisPlacasPage() {
         >
           <h2 className="text-xl font-bold mb-3">Quais placas suportam DLSS 5? Resposta curta</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            Última verificação em 22 de junho de 2026: RTX 50 é o caminho mais claro para
+            Última verificação em 1 de agosto de 2026: RTX 50 é o caminho mais claro para
             DLSS 5. RTX 5090, RTX 5080, RTX 5070 Ti e RTX 5070 ficam como confirmadas;
             RTX 5060 Ti e RTX 5060 ficam como esperadas até documentação final por modelo.
             RTX 40 segue desconhecida, RTX 30 é pouco provável para a nova camada de

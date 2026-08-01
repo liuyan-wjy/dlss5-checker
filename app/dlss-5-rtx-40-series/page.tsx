@@ -122,7 +122,7 @@ export default function Dlss5Rtx40SeriesPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked June 22, 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked August 1, 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Will DLSS 5 Be on RTX 40 Series?
           </h1>

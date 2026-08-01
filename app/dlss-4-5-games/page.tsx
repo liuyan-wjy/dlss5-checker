@@ -193,7 +193,7 @@ export default function Dlss45GamesPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Current feature tracker updated June 2026
+            Current feature tracker updated August 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 4.5 Games: Current Support and Verification

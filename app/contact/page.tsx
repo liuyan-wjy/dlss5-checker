@@ -14,7 +14,7 @@ export default function ContactPage() {
       <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
       <p className="text-muted-foreground mb-12">
         Have a question, found a data error, or want to suggest a GPU? This page explains
-        what to send so we can review the claim without guessing.
+        what to send so the DLSS 5 Checker Editor can review the claim without guessing.
       </p>
 
       <div className="grid gap-6">
@@ -24,7 +24,12 @@ export default function ContactPage() {
             For all inquiries including data corrections, GPU requests, source updates,
             and general feedback, write to:
           </p>
-          <p className="font-medium text-foreground">support [at] dlss5.net</p>
+          <a
+            href="mailto:support@dlss5.net"
+            className="font-medium text-blue-400 hover:underline"
+          >
+            support@dlss5.net
+          </a>
         </div>
 
         <div className="border border-border rounded-lg p-6">

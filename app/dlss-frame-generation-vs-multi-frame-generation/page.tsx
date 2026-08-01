@@ -141,7 +141,7 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Feature comparison updated June 2026
+            Feature comparison updated August 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Frame Generation vs Multi Frame Generation in DLSS

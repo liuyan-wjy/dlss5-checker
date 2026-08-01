@@ -46,7 +46,7 @@ export default function EditorialPolicyPage() {
       </nav>
 
       <header className="mb-10 max-w-3xl">
-        <p className="mb-3 text-sm font-semibold text-blue-400">Last checked June 22, 2026</p>
+        <p className="mb-3 text-sm font-semibold text-blue-400">Last checked August 1, 2026</p>
         <h1 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
           Editorial Policy
         </h1>
@@ -90,8 +90,11 @@ export default function EditorialPolicyPage() {
         <div className="rounded-lg border border-border p-5">
           <h2 className="mb-2 text-xl font-bold">Corrections</h2>
           <p className="text-sm leading-relaxed text-foreground/80">
-            If a page is wrong or missing a source, contact support [at] dlss5.net. We
-            prioritize corrections that affect buying decisions, compatibility status,
+            If a page is wrong or missing a source, contact{" "}
+            <a href="mailto:support@dlss5.net" className="text-blue-400 hover:underline">
+              support@dlss5.net
+            </a>
+            . We prioritize corrections that affect buying decisions, compatibility status,
             release timing, or claims that could be mistaken for official NVIDIA guidance.
           </p>
         </div>
