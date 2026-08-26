@@ -392,6 +392,15 @@ export default function Dlss45RayReconstructionPage() {
 
         <section className="mb-10 grid gap-3 sm:grid-cols-2">
           <Link
+            href="/dlss-4-5-supported-cards"
+            className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400"
+          >
+            <div className="mb-1 font-semibold">DLSS 4.5 supported cards</div>
+            <p className="text-sm text-muted-foreground">
+              Check which reconstruction and frame-generation features work on your RTX generation.
+            </p>
+          </Link>
+          <Link
             href="/dlss-4-5-games"
             className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400"
           >

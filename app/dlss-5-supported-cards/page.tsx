@@ -320,6 +320,24 @@ export default function Dlss5SupportedCardsPage() {
           <h2 className="text-2xl font-bold mb-4">Related pages</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
+              href="/dlss-supported-cards"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">All current DLSS supported cards</div>
+              <p className="text-sm text-muted-foreground">
+                Compare today&apos;s Super Resolution, Ray Reconstruction, Frame Generation, and MFG support.
+              </p>
+            </Link>
+            <Link
+              href="/dlss-4-5-supported-cards"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">DLSS 4.5 supported cards</div>
+              <p className="text-sm text-muted-foreground">
+                Check which parts of DLSS 4.5 work on each GeForce RTX generation.
+              </p>
+            </Link>
+            <Link
               href="/dlss-5-rtx-40-series"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
             >

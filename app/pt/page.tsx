@@ -122,6 +122,12 @@ export default function PtHome() {
                 Quais placas suportam
               </Link>
               <Link
+                href="/pt/dlss-4-5-quais-placas"
+                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+              >
+                Placas para DLSS 4.5
+              </Link>
+              <Link
                 href="/pt/dlss-5-requisitos"
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >

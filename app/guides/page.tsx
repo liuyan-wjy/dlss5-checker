@@ -15,6 +15,16 @@ const guideGroups = [
       "Use these pages when the main question is whether a GPU is a safe DLSS 5 choice, what can be used today, and which claims still need final NVIDIA launch documentation.",
     links: [
       {
+        href: "/dlss-supported-cards",
+        title: "All DLSS supported cards",
+        description: "Compare Super Resolution, Ray Reconstruction, Frame Generation, and MFG by RTX generation.",
+      },
+      {
+        href: "/dlss-4-5-supported-cards",
+        title: "DLSS 4.5 supported cards",
+        description: "Check the exact DLSS 4.5 features available on RTX 20, 30, 40, and 50.",
+      },
+      {
         href: "/dlss-5-supported-cards",
         title: "DLSS 5 supported cards",
         description: "Confirmed, expected, unknown, unlikely, and unsupported GPU groups.",
@@ -134,8 +144,8 @@ const guideGroups = [
 const startPaths = [
   {
     title: "If you are buying a GPU",
-    href: "/dlss-5-supported-cards",
-    copy: "Start with the support table, then check the RTX 40 and system requirement guides before treating any upgrade as final.",
+    href: "/dlss-supported-cards",
+    copy: "Start with the current feature matrix, then check DLSS 4.5 or DLSS 5 status before treating any upgrade as final.",
   },
   {
     title: "If you are checking a rumor",

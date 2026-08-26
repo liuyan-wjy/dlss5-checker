@@ -12,6 +12,12 @@ const newRoutes = [
   "ai-pc/nvidia-rtx-spark-vs-dgx-spark",
 ];
 
+const compatibilityRoutes = [
+  "dlss-supported-cards",
+  "dlss-4-5-supported-cards",
+  "pt/dlss-4-5-quais-placas",
+];
+
 const noindexRtxSparkRoutes = [
   "ai-pc/nvidia-rtx-spark",
   "ai-pc/nvidia-rtx-spark-specs",
@@ -127,6 +133,49 @@ for (const route of newRoutes) {
   }
 }
 
+for (const route of compatibilityRoutes) {
+  const html = readRoute(route);
+  const title = metadataValue(html, /<title>([^<]+)<\/title>/, `${route} title`);
+  const description = metadataValue(
+    html,
+    /<meta name="description" content="([^"]+)"/,
+    `${route} description`,
+  );
+  const canonical = metadataValue(
+    html,
+    /<link rel="canonical" href="([^"]+)"/,
+    `${route} canonical`,
+  );
+  const visibleHtml = html
+    .replace(/<script[\s\S]*?<\/script>/g, " ")
+    .replace(/<style[\s\S]*?<\/style>/g, " ");
+  const visibleWords = visibleHtml
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&[^;]+;/g, " ")
+    .trim()
+    .split(/\s+/);
+
+  assert.ok(title.length >= 45 && title.length <= 60, `${route} title must remain 45–60 characters`);
+  assert.ok(
+    description.length >= 140 && description.length <= 160,
+    `${route} description must remain 140–160 characters`,
+  );
+  assert.equal(
+    canonical,
+    `https://www.dlss5.net/${route}`,
+    `${route} must use a self-referencing canonical`,
+  );
+  assert.equal((visibleHtml.match(/<h1(?:\s|>)/g) || []).length, 1, `${route} must have one H1`);
+  assert.match(visibleHtml, /Frequently asked questions|Perguntas frequentes/);
+  assert.ok(visibleWords.length >= 1500, `${route} must contain at least 1,500 visible words`);
+  assert.doesNotMatch(html, /name="robots" content="noindex/);
+}
+
+const dlss45English = readRoute("dlss-4-5-supported-cards");
+const dlss45Portuguese = readRoute("pt/dlss-4-5-quais-placas");
+assert.match(dlss45English, /hrefLang="pt-BR" href="https:\/\/www\.dlss5\.net\/pt\/dlss-4-5-quais-placas"/);
+assert.match(dlss45Portuguese, /hrefLang="en" href="https:\/\/www\.dlss5\.net\/dlss-4-5-supported-cards"/);
+
 const sitemap = fs.readFileSync(path.join(appOutput, "sitemap.xml.body"), "utf8");
 assert.doesNotMatch(sitemap, /<lastmod>/, "Sitemap must not publish deployment time as lastmod");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
@@ -135,6 +184,13 @@ assert.equal(
   sitemapUrls.length,
   "Sitemap must not contain duplicate URLs",
 );
+
+for (const route of compatibilityRoutes) {
+  assert.ok(
+    sitemapUrls.includes(`https://www.dlss5.net/${route}`),
+    `${route} must be present in the sitemap`,
+  );
+}
 
 for (const route of noindexRtxSparkRoutes) {
   const html = readRoute(route);
