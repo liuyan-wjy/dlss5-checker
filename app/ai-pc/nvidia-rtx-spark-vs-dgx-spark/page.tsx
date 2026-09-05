@@ -26,6 +26,8 @@ export const metadata: Metadata = {
 const NVIDIA_RTX_SPARK_PRODUCT = "https://www.nvidia.com/en-us/products/rtx-spark/";
 const NVIDIA_RTX_SPARK_NEWS =
   "https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark";
+const NVIDIA_RTX_SPARK_IFA =
+  "https://blogs.nvidia.com/blog/local-ai-ifa-next-gen-agents-nv-pair-rtx-spark/";
 const NVIDIA_DGX_SPARK_PRODUCT =
   "https://www.nvidia.com/en-us/products/workstations/dgx-spark/";
 const NVIDIA_DGX_SPARK_HARDWARE =
@@ -89,7 +91,7 @@ const comparisonRows = [
   },
   {
     area: "Availability",
-    rtx: "Announced for Fall 2026; individual prices, regions, and configurations are still pending.",
+    rtx: "NVIDIA now says RTX Spark Windows PCs arrive in October 2026; individual prices, regions, and configurations are still pending.",
     dgx: "Shipping product with published hardware documentation and purchase channels.",
     decision: "Buy DGX Spark only if its current platform solves the need; otherwise wait for RTX Spark reviews and OEM specifications.",
   },
@@ -163,7 +165,7 @@ const faqItems = [
   {
     question: "Should I wait for RTX Spark?",
     answer:
-      "Wait if you need Windows, a laptop, gaming, Adobe applications, or one general-purpose PC and can delay the purchase until Fall 2026 reviews. Buy a current system only when it already meets a real workload and the cost of waiting is higher than the uncertainty.",
+      "Wait if you need Windows, a laptop, gaming, Adobe applications, or one general-purpose PC and can delay the purchase until reviews and OEM listings are available around the October 2026 launch window. Buy a current system only when it already meets a real workload and the cost of waiting is higher than the uncertainty.",
   },
 ];
 
@@ -235,7 +237,7 @@ export default function NvidiaRtxSparkVsDgxSparkPage() {
 
         <header className="mb-10 max-w-3xl">
           <p className="mb-3 text-sm font-semibold text-blue-400">
-            Buyer comparison · Updated July 28, 2026
+            Buyer comparison · Updated September 5, 2026
           </p>
           <h1 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
             NVIDIA RTX Spark vs DGX Spark: Which One Fits Your Work?
@@ -455,7 +457,7 @@ export default function NvidiaRtxSparkVsDgxSparkPage() {
           >
             <div className="mb-1 font-semibold">RTX Spark release date</div>
             <p className="text-sm text-muted-foreground">
-              Track Fall 2026 availability, announced OEMs, prices, and regions.
+              Track October 2026 availability, announced OEMs, prices, and regions.
             </p>
           </Link>
         </section>
@@ -481,6 +483,13 @@ export default function NvidiaRtxSparkVsDgxSparkPage() {
               rel="noreferrer"
             >
               NVIDIA RTX Spark announcement
+            </a>
+            <a
+              href={NVIDIA_RTX_SPARK_IFA}
+              className="text-blue-400 hover:underline"
+              rel="noreferrer"
+            >
+              NVIDIA IFA 2026 RTX Spark update
             </a>
             <a
               href={NVIDIA_DGX_SPARK_PRODUCT}

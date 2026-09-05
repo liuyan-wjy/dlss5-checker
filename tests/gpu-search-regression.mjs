@@ -3,21 +3,26 @@ import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
 import ts from "typescript";
+import { renderToStaticMarkup } from "react-dom/server";
 
 // Exercise the actual TypeScript module without adding a test runtime dependency.
 const require = createRequire(import.meta.url);
-const filename = path.resolve("lib/gpu-search.ts");
-const compiled = ts.transpileModule(fs.readFileSync(filename, "utf8"), {
-  compilerOptions: { module: ts.ModuleKind.CommonJS, esModuleInterop: true },
-  fileName: filename,
-}).outputText;
-const testModule = { exports: {} };
-new Function("require", "module", "exports", compiled)(
-  (specifier) => require(specifier.startsWith("@/") ? path.resolve(specifier.slice(2)) : specifier),
-  testModule,
-  testModule.exports,
-);
-const { searchGPU, getSuggestions, ALL_GPUS } = testModule.exports;
+function loadTs(relativePath) {
+  const filename = path.resolve(relativePath);
+  const compiled = ts.transpileModule(fs.readFileSync(filename, "utf8"), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, esModuleInterop: true, jsx: ts.JsxEmit.ReactJSX },
+    fileName: filename,
+  }).outputText;
+  const testModule = { exports: {} };
+  new Function("require", "module", "exports", compiled)((specifier) => {
+    if (!specifier.startsWith("@/")) return require(specifier);
+    const localPath = specifier.slice(2);
+    if (localPath.endsWith(".json")) return require(path.resolve(localPath));
+    return loadTs([`${localPath}.ts`, `${localPath}.tsx`].find((file) => fs.existsSync(file)));
+  }, testModule, testModule.exports);
+  return testModule.exports;
+}
+const { searchGPU, getSuggestions, ALL_GPUS } = loadTs("lib/gpu-search.ts");
 
 const cases = [
   ["RTX 5050", "rtx-5050"],
@@ -58,6 +63,7 @@ for (const gpu of ALL_GPUS) {
   if (gpu.series === "RTX 40") {
     assert.equal(gpu.dlss5_support, "planned", gpu.id);
     assert.ok(gpu.current_dlss_features.includes("frame_generation"), gpu.id);
+    assert.ok(gpu.current_dlss_features.includes("ray_reconstruction"), `${gpu.id} supports Ray Reconstruction`);
   }
   if (["RTX 20", "RTX 30"].includes(gpu.series)) {
     assert.equal(gpu.dlss5_support, "unsupported", gpu.id);
@@ -70,13 +76,33 @@ for (const model of ["5090", "5080", "5070-ti", "5070", "5060", "5050"]) {
 const laptopVram = searchGPU("RTX 5070 Laptop").vram;
 assert.match(laptopVram, /8/);
 assert.match(laptopVram, /12/, "RTX 5070 Laptop must retain both official memory variants");
-const benchmarks = JSON.parse(fs.readFileSync("data/benchmark-data.json", "utf8"));
-assert.match(benchmarks.note, /not DLSS 5/);
-for (const benchmark of Object.values(benchmarks.benchmarks)) {
-  assert.equal(benchmark.data["rtx-5050"], undefined, "No unverified desktop 5050 benchmark");
-  for (const model of ["5090", "5080", "5070-ti", "5070", "5060", "5050"]) {
-    assert.equal(benchmark.data[`rtx-${model}-laptop`], undefined, "No borrowed laptop benchmark");
+for (const query of ["RTX 5060 Ti", "RTX 4060 Ti"]) {
+  assert.equal(searchGPU(query).vram, "8GB / 16GB", `${query} must show both official memory variants`);
+}
+assert.doesNotMatch(fs.readFileSync("components/GPUChecker.tsx", "utf8"), /PerformanceChart|UpgradeRecommendations/,
+  "The checker must not serve unsourced FPS estimates or generic upgrade boosts");
+const CompatibilityResult = loadTs("components/CompatibilityResult.tsx").default;
+for (const gpu of ALL_GPUS) {
+  const html = renderToStaticMarkup(CompatibilityResult({ gpu }));
+  assert.match(html, /What to do next/);
+  assert.match(html, /not an FPS prediction/);
+  assert.match(html, /href="\/dlss-5-evidence-tracker"/);
+  assert.doesNotMatch(html, /avg\. FPS boost|FPS \(Off\)|\+85%|\+140%|\+210%/);
+  if (gpu.dlss5_support === "confirmed") {
+    assert.match(html, /href="\/games\/nba-2k27-dlss-5#how-to-enable"/);
+    assert.match(html, /616\.64/);
+  } else if (gpu.dlss5_support === "planned") {
+    assert.match(html, /no public date/);
+    assert.match(html, /do not need to replace/i);
+  } else if (gpu.dlss5_support === "unsupported") {
+    assert.match(html, /href="\/dlss-supported-cards"/);
+  } else {
+    assert.match(html, /href="\/dlss-5-system-requirements"/);
+  }
+  if (gpu.brand === "AMD") {
+    assert.match(html, /available FSR version depends on the GPU and game/);
+    assert.doesNotMatch(html, /similar quality improvements/);
   }
 }
 
-console.log(`GPU search regression checks passed (${cases.length} queries).`);
+console.log(`GPU regression checks passed (${cases.length} queries; ${ALL_GPUS.length} result renders).`);

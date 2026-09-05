@@ -52,7 +52,7 @@ export default function Home() {
       "DLSS 5 supported cards status",
       "RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel GPU checks",
       "Current DLSS 4 and DLSS 4.5 feature notes",
-      "Evidence-based upgrade guidance",
+      "GPU-specific setup advice and support sources",
     ],
     offers: {
       "@type": "Offer",
@@ -92,7 +92,7 @@ export default function Home() {
 
             <p className="text-muted-foreground text-lg sm:text-xl mb-8 max-w-xl mx-auto">
               Check which NVIDIA cards support DLSS 5 Neural Rendering now,
-              see RTX 40 planned status, and find the best upgrade path.
+              see RTX 40 planned status, and find out what you can enable in your games.
             </p>
 
             {/* Tool -- main interactive area */}

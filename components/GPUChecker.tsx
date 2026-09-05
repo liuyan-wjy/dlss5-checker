@@ -3,8 +3,6 @@
 import { useState } from "react";
 import GPUSearch from "@/components/GPUSearch";
 import CompatibilityResult from "@/components/CompatibilityResult";
-import PerformanceChart from "@/components/PerformanceChart";
-import UpgradeRecommendations from "@/components/UpgradeRecommendations";
 import AdSlot from "@/components/AdSlot";
 import { type GPU } from "@/lib/gpu-search";
 
@@ -25,6 +23,10 @@ export default function GPUChecker() {
   return (
     <div className="space-y-6">
       <GPUSearch onResult={handleSearch} />
+      <p className="text-xs text-muted-foreground">
+        Matches the model you enter against our compatibility list. It does not scan
+        your hardware, installed driver, or games. Include Laptop or Ti when applicable.
+      </p>
 
       {notFound && !result && (
         <div className="text-center text-muted-foreground text-sm py-4">
@@ -36,8 +38,6 @@ export default function GPUChecker() {
       {result && (
         <div className="space-y-6">
           <CompatibilityResult gpu={result} />
-          <PerformanceChart gpu={result} />
-          <UpgradeRecommendations gpu={result} />
           <AdSlot slot="result-below" />
         </div>
       )}

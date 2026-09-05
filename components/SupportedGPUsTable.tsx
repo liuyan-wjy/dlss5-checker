@@ -86,7 +86,7 @@ function getCurrentFeatureText(gpu: (typeof ALL_GPUS)[number], locale: Supported
     }
 
     if (gpu.brand === "AMD") {
-      return "Use FSR 4 como alternativa";
+      return "AMD FSR; versão depende do jogo e do driver";
     }
 
     if (gpu.brand === "Intel") {
@@ -113,7 +113,7 @@ function getCurrentFeatureText(gpu: (typeof ALL_GPUS)[number], locale: Supported
   }
 
   if (gpu.brand === "AMD") {
-    return "Use FSR 4 instead";
+    return "AMD FSR; version depends on game and driver";
   }
 
   if (gpu.brand === "Intel") {

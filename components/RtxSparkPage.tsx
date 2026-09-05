@@ -61,7 +61,7 @@ const text = {
     event: "Event",
     meaning: "Meaning",
     latestUpdate:
-      "Update this guide only when NVIDIA, Microsoft, an OEM, or a first-party benchmark/review publishes stronger evidence.",
+      "We update this guide when NVIDIA, Microsoft, an OEM, or a first-party benchmark/review publishes stronger evidence.",
   },
   pt: {
     home: "DLSS 5 Checker",
@@ -93,7 +93,7 @@ const text = {
     event: "Evento",
     meaning: "Significado",
     latestUpdate:
-      "Atualize este guia apenas quando NVIDIA, Microsoft, um OEM ou uma análise de primeira mão publicar evidência mais forte.",
+      "Atualizamos este guia quando NVIDIA, Microsoft, um OEM ou uma análise de primeira mão publica evidência mais forte.",
   },
 };
 
@@ -595,12 +595,12 @@ function HubContent({ locale }: { locale: RtxSparkLocale }) {
         </div>
         <div className="rounded-lg border border-border p-5">
           <h2 className="font-bold mb-2">
-            {locale === "pt" ? "Não prometa benchmarks" : "Do not promise benchmarks"}
+            {locale === "pt" ? "Sem benchmarks independentes" : "No independent benchmarks yet"}
           </h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
             {locale === "pt"
-              ? "Antes do lançamento, a resposta honesta é separar afirmações oficiais de testes independentes ainda ausentes."
-              : "Before launch, the honest answer is to separate official statements from independent tests that do not exist yet."}
+              ? "Ainda não temos testes independentes de modelos de varejo para comparar. Antes de comprar, confira análises do modelo exato e dos aplicativos que você pretende usar."
+              : "We do not yet have independent tests of retail models to compare. Before buying, check reviews of the exact device and the applications you plan to use."}
           </p>
         </div>
       </section>
@@ -721,12 +721,12 @@ function GamingContent({ locale }: { locale: RtxSparkLocale }) {
       </section>
       <section className="mb-10 rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-5">
         <h2 className="text-xl font-bold mb-3">
-          {locale === "pt" ? "Não use como ranking de FPS ainda" : "Do not use this as an FPS ranking yet"}
+          {locale === "pt" ? "Ainda não é ranking de FPS" : "Not an FPS ranking yet"}
         </h2>
         <p className="text-sm text-foreground/80 leading-relaxed">
           {locale === "pt"
-            ? "Sem hardware de varejo e benchmarks independentes, esta página deve ser um guia de status, não uma recomendação de compra gamer."
-            : "Without retail hardware and independent benchmarks, this guide should remain a status guide, not a gaming purchase recommendation."}
+            ? "Sem hardware de varejo e benchmarks independentes, use estes dados para entender o status do RTX Spark, não para escolher um notebook gamer pelo maior FPS."
+            : "Without retail hardware and independent benchmarks, use these details to understand RTX Spark status, not to choose a gaming laptop by the highest FPS."}
         </p>
       </section>
     </>
@@ -748,8 +748,8 @@ function ReleaseDateContent({ locale }: { locale: RtxSparkLocale }) {
         </h2>
         <p className="text-sm text-foreground/80 leading-relaxed">
           {locale === "pt"
-            ? "A data segura é outono de 2026. Qualquer mês, dia ou preço específico precisa de fonte da NVIDIA ou do OEM."
-            : "The safe date answer is fall 2026. Any specific month, day, or price needs NVIDIA or OEM evidence."}
+            ? "A NVIDIA prevê a chegada dos primeiros PCs em outubro de 2026. Confira a página do fabricante para saber o dia de venda, o preço e a disponibilidade no seu país."
+            : "NVIDIA expects the first PCs in October 2026. Check the manufacturer's listing for the sale date, price, and availability in your country."}
         </p>
       </section>
     </>

@@ -128,7 +128,7 @@
       ],
       "missing_features": [],
       "summary": "RTX 5060 Ti is part of the RTX 50 generation and is confirmed for DLSS 5 Neural Rendering in supported games. It supports current DLSS 4.5 Dynamic MFG features today.",
-      "vram": "16GB",
+      "vram": "8GB / 16GB",
       "tier": "mid"
     },
     {
@@ -536,13 +536,14 @@
       "current_dlss_features": [
         "dlss_super_resolution",
         "dlaa",
+        "ray_reconstruction",
         "frame_generation"
       ],
       "missing_features": [
         "neural_rendering"
       ],
       "summary": "RTX 4060 Ti DLSS 5 Neural Rendering support is planned after RTX 50 optimization, with no public date. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
-      "vram": "8GB",
+      "vram": "8GB / 16GB",
       "tier": "mid"
     },
     {
@@ -560,6 +561,7 @@
       "current_dlss_features": [
         "dlss_super_resolution",
         "dlaa",
+        "ray_reconstruction",
         "frame_generation"
       ],
       "missing_features": [
@@ -1059,7 +1061,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "AMD GPUs do not support DLSS (NVIDIA exclusive). However, FSR 4 (FidelityFX Super Resolution 4) is AMD's alternative upscaling technology.",
+      "summary": "AMD GPUs do not support DLSS, which requires NVIDIA RTX hardware. Check the game's AMD FSR options; the available version depends on the GPU, driver, and game integration.",
       "vram": "24GB",
       "tier": "flagship",
       "brand": "AMD"
@@ -1081,7 +1083,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "AMD GPUs do not support DLSS (NVIDIA exclusive). FSR 4 is AMD's alternative upscaling technology.",
+      "summary": "AMD GPUs do not support DLSS, which requires NVIDIA RTX hardware. Check the game's AMD FSR options; the available version depends on the GPU, driver, and game integration.",
       "vram": "16GB",
       "tier": "mid-high",
       "brand": "AMD"
@@ -1102,7 +1104,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "AMD GPUs do not support DLSS (NVIDIA exclusive). FSR 4 is AMD's alternative upscaling technology.",
+      "summary": "AMD GPUs do not support DLSS, which requires NVIDIA RTX hardware. Check the game's AMD FSR options; the available version depends on the GPU, driver, and game integration.",
       "vram": "12GB",
       "tier": "mid",
       "brand": "AMD"

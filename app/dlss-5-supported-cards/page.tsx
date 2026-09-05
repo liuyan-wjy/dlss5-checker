@@ -255,8 +255,8 @@ export default function Dlss5SupportedCardsPage() {
             DLSS 5 Supported Cards: Confirmed, Planned, and Unsupported GPUs
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            This page separates confirmed hardware from planned, unsupported, and no-DLSS
-            unsupported groups. The goal is not to guess every future driver update, but to
+            This page separates GPUs into confirmed, planned, unsupported, and no-DLSS
+            groups. The goal is not to guess every future driver update, but to
             show what is official today and what each GPU generation can already do.
           </p>
         </header>
@@ -295,7 +295,7 @@ export default function Dlss5SupportedCardsPage() {
             <p className="text-sm text-foreground/80 leading-relaxed">
               DLSS 5 supported cards are currently safest in the RTX 50 generation. Use
               the status sections below for confirmed, planned, unsupported, and
-              unsupported groups.
+              no-DLSS groups.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">

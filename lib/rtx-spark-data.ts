@@ -60,6 +60,10 @@ export const rtxSparkSources = {
     label: "NVIDIA Newsroom release",
     href: "https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark",
   },
+  nvidiaIfa: {
+    label: "NVIDIA IFA 2026 RTX Spark update",
+    href: "https://blogs.nvidia.com/blog/local-ai-ifa-next-gen-agents-nv-pair-rtx-spark/",
+  },
   appleM5: {
     label: "Apple MacBook Air with M5 announcement",
     href: "https://www.apple.com/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5/",
@@ -87,8 +91,8 @@ export const rtxSparkSources = {
 };
 
 export const rtxSparkLastChecked: Record<RtxSparkLocale, string> = {
-  en: "Last checked August 1, 2026",
-  pt: "Última checagem: 1 de agosto de 2026",
+  en: "Last checked September 5, 2026",
+  pt: "Última checagem: 5 de setembro de 2026",
 };
 
 export const statusCopy: Record<
@@ -167,7 +171,7 @@ export const rtxSparkPageMeta: Record<
       fastAnswer:
         "RTX Spark is NVIDIA's new Windows AI PC superchip for slim laptops and small desktops, built around Blackwell RTX graphics, an efficient CPU, CUDA, and up to 128GB of unified memory.",
       caveat:
-        "Devices are announced for fall 2026, not broadly available today. Treat prices, benchmarks, and exact model configurations as pending until OEM pages and reviews ship.",
+        "NVIDIA now says RTX Spark Windows PCs are arriving in October 2026, but exact retail days, regions, prices, benchmarks, and configurations still need OEM pages and reviews.",
       thirdPoint:
         "This is not an ordinary discrete RTX graphics card listing and not a DGX Spark workstation replacement guide.",
     },
@@ -183,7 +187,7 @@ export const rtxSparkPageMeta: Record<
       fastAnswer:
         "RTX Spark é o novo superchip da NVIDIA para PCs Windows com IA, combinando GPU Blackwell RTX, CPU eficiente, CUDA e até 128GB de memória unificada.",
       caveat:
-        "Os dispositivos foram anunciados para o outono de 2026. Preços, benchmarks e configurações finais ainda precisam de páginas de OEM e testes reais.",
+        "A NVIDIA agora diz que PCs Windows com RTX Spark chegam em outubro de 2026, mas dia exato de varejo, regiões, preços, benchmarks e configurações ainda dependem dos OEMs.",
       thirdPoint:
         "Não é uma placa RTX discreta comum e também não deve ser tratado como uma página de DGX Spark.",
     },
@@ -230,7 +234,7 @@ export const rtxSparkPageMeta: Record<
         "Track announced RTX Spark Windows laptops and compact desktops from ASUS, Dell, HP, Lenovo, Microsoft Surface, MSI, Acer, GIGABYTE, and more.",
       metaTitle: "NVIDIA RTX Spark Laptops and Desktop PCs Guide",
       metaDescription:
-        "See announced RTX Spark laptops and desktops, fall 2026 availability status, OEM partners, and what still needs confirmation before buying.",
+        "See announced RTX Spark laptops and desktops, October 2026 availability status, OEM partners, and what still needs confirmation before buying.",
       eyebrow: "Availability guide",
       fastAnswer:
         "NVIDIA lists RTX Spark slim laptops from ASUS, Dell, HP, Lenovo, Microsoft Surface, and MSI, plus compact desktops from major PC makers.",
@@ -246,7 +250,7 @@ export const rtxSparkPageMeta: Record<
         "Acompanhe notebooks Windows e desktops compactos RTX Spark anunciados por ASUS, Dell, HP, Lenovo, Microsoft Surface, MSI, Acer, GIGABYTE e outros.",
       metaTitle: "NVIDIA RTX Spark: notebooks e desktops anunciados",
       metaDescription:
-        "Veja notebooks e desktops RTX Spark anunciados, janela de lançamento no outono de 2026, parceiros OEM e pendências antes da compra.",
+        "Veja notebooks e desktops RTX Spark anunciados, janela de outubro de 2026, parceiros OEM e pendências antes da compra.",
       eyebrow: "Guia de disponibilidade",
       fastAnswer:
         "A NVIDIA lista notebooks RTX Spark de ASUS, Dell, HP, Lenovo, Microsoft Surface e MSI, além de desktops compactos de grandes fabricantes.",
@@ -395,15 +399,15 @@ export const rtxSparkPageMeta: Record<
   releaseDate: {
     en: {
       breadcrumb: "Release date",
-      title: "NVIDIA RTX Spark Release Date: Fall 2026 Availability Guide",
+      title: "NVIDIA RTX Spark Release Date: October 2026 Availability Guide",
       description:
-        "Track RTX Spark release timing, official May 31, 2026 announcement, fall 2026 device window, OEM partners, and what would make availability confirmed.",
-      metaTitle: "NVIDIA RTX Spark Release Date: Fall 2026 Guide",
+        "Track RTX Spark release timing, official May 31, 2026 announcement, October 2026 device window, OEM partners, and what would make availability confirmed.",
+      metaTitle: "NVIDIA RTX Spark Release Date: October 2026 Guide",
       metaDescription:
-        "RTX Spark release date guide: official announcement, fall 2026 availability, listed OEM partners, and what is still not confirmed.",
+        "RTX Spark release date guide: official announcement, October 2026 availability, listed OEM partners, and what is still not confirmed.",
       eyebrow: "Release guide",
       fastAnswer:
-        "The safest RTX Spark release-date answer is fall 2026 for announced slim Windows laptops and compact desktop PCs.",
+        "NVIDIA says RTX Spark Windows PCs arrive in October 2026, with slim laptops and compact desktops in the announced lineup.",
       caveat:
         "There is no confirmed day-one retail date, price list, regional rollout table, or review embargo information yet.",
       thirdPoint:
@@ -411,15 +415,15 @@ export const rtxSparkPageMeta: Record<
     },
     pt: {
       breadcrumb: "Data de lançamento",
-      title: "Data de lançamento do NVIDIA RTX Spark: guia outono 2026",
+      title: "Data de lançamento do NVIDIA RTX Spark: outubro de 2026",
       description:
-        "Acompanhe data do RTX Spark, anúncio oficial de 31 de maio de 2026, janela no outono de 2026, OEMs, preços e o que falta confirmar.",
-      metaTitle: "Data de lançamento do NVIDIA RTX Spark: outono 2026",
+        "Acompanhe data do RTX Spark, anúncio oficial de 31 de maio de 2026, janela em outubro de 2026, OEMs, preços e o que falta confirmar.",
+      metaTitle: "Data de lançamento do NVIDIA RTX Spark: outubro de 2026",
       metaDescription:
-        "Guia de data do RTX Spark: anúncio oficial, disponibilidade no outono de 2026, parceiros OEM, preços, SKUs e lacunas a confirmar.",
+        "Guia de data do RTX Spark: anúncio oficial, disponibilidade em outubro de 2026, parceiros OEM, preços, SKUs e lacunas a confirmar.",
       eyebrow: "Guia de lançamento",
       fastAnswer:
-        "A resposta mais segura para a data do RTX Spark é outono de 2026 para notebooks Windows finos e desktops compactos anunciados.",
+        "Segundo a NVIDIA, os PCs Windows com RTX Spark chegam em outubro de 2026. A linha anunciada inclui notebooks finos e desktops compactos.",
       caveat:
         "Ainda não há data de varejo, lista de preços, lançamento regional ou informação de embargo de análises.",
       thirdPoint:
@@ -455,7 +459,7 @@ export const rtxSparkNavItems: Record<
   laptops: {
     en: {
       title: "Laptops and desktops",
-      description: "Track announced RTX Spark devices and fall 2026 availability.",
+      description: "Track announced RTX Spark devices and October 2026 availability.",
     },
     pt: {
       title: "Notebooks e desktops",
@@ -505,11 +509,11 @@ export const rtxSparkNavItems: Record<
   releaseDate: {
     en: {
       title: "Release date",
-      description: "Fall 2026 timing, OEM partners, and proof needed.",
+      description: "October 2026 timing, OEM partners, and proof needed.",
     },
     pt: {
       title: "Data de lançamento",
-      description: "Janela no outono de 2026, OEMs e provas pendentes.",
+      description: "Janela em outubro de 2026, OEMs e provas pendentes.",
     },
   },
 };
@@ -653,7 +657,7 @@ export const rtxSparkDeviceRows: Record<
       category: "Slim Windows laptop",
       maker: "ASUS",
       status: "announced",
-      availability: "Fall 2026 window",
+      availability: "October 2026 window",
       note: "Listed on NVIDIA's product page. Final RTX Spark SKU details still need ASUS confirmation.",
     },
     {
@@ -661,7 +665,7 @@ export const rtxSparkDeviceRows: Record<
       category: "Slim Windows laptop",
       maker: "Dell",
       status: "announced",
-      availability: "Fall 2026 window",
+      availability: "October 2026 window",
       note: "Listed on NVIDIA's product page. Watch for memory, storage, and display options.",
     },
     {
@@ -669,7 +673,7 @@ export const rtxSparkDeviceRows: Record<
       category: "Slim Windows laptop",
       maker: "HP",
       status: "announced",
-      availability: "Fall 2026 window",
+      availability: "October 2026 window",
       note: "Listed by NVIDIA; regional availability and price are not published.",
     },
     {
@@ -677,15 +681,23 @@ export const rtxSparkDeviceRows: Record<
       category: "Slim Windows laptop",
       maker: "Lenovo",
       status: "announced",
-      availability: "Fall 2026 window",
-      note: "Listed by NVIDIA. Exact chassis, battery, and thermal behavior need review units.",
+      availability: "October 2026 window",
+      note: "Newly announced at IFA 2026. Exact chassis, battery, and thermal behavior need Lenovo pages or review units.",
+    },
+    {
+      device: "Lenovo Yoga 9n 2-in-1",
+      category: "Convertible Windows laptop",
+      maker: "Lenovo",
+      status: "announced",
+      availability: "October 2026 window",
+      note: "Newly announced at IFA 2026. Confirm final display, memory, pen, and regional SKU details before buying.",
     },
     {
       device: "Microsoft Surface Laptop Ultra",
       category: "Slim Windows laptop",
       maker: "Microsoft Surface",
       status: "announced",
-      availability: "Fall 2026 window",
+      availability: "October 2026 window",
       note: "Listed by NVIDIA and important for the Windows-native agent story.",
     },
     {
@@ -693,7 +705,7 @@ export const rtxSparkDeviceRows: Record<
       category: "Convertible Windows laptop",
       maker: "MSI",
       status: "announced",
-      availability: "Fall 2026 window",
+      availability: "October 2026 window",
       note: "Listed by NVIDIA; confirm screen, memory, and thermal limits when MSI publishes details.",
     },
     {
@@ -701,8 +713,8 @@ export const rtxSparkDeviceRows: Record<
       category: "Compact desktop",
       maker: "Acer, ASUS, Dell, GIGABYTE, HP, Lenovo, MSI",
       status: "announced",
-      availability: "Fall 2026 window; some models to follow",
-      note: "NVIDIA says compact desktops are part of the RTX Spark platform; exact builders and SKUs need launch pages.",
+      availability: "October 2026 window; some models may follow later",
+      note: "NVIDIA says compact desktops are part of the RTX Spark platform. Acer showed a concept at IFA, so exact retail builders and SKUs still need launch pages.",
     },
   ],
   pt: [
@@ -711,7 +723,7 @@ export const rtxSparkDeviceRows: Record<
       category: "Notebook Windows fino",
       maker: "ASUS",
       status: "announced",
-      availability: "Janela no outono de 2026",
+      availability: "Janela em outubro de 2026",
       note: "Listado na página da NVIDIA. Detalhes finais do SKU ainda dependem da ASUS.",
     },
     {
@@ -719,7 +731,7 @@ export const rtxSparkDeviceRows: Record<
       category: "Notebook Windows fino",
       maker: "Dell",
       status: "announced",
-      availability: "Janela no outono de 2026",
+      availability: "Janela em outubro de 2026",
       note: "Listado pela NVIDIA. Memória, armazenamento e tela ainda precisam de página da Dell.",
     },
     {
@@ -727,7 +739,7 @@ export const rtxSparkDeviceRows: Record<
       category: "Notebook Windows fino",
       maker: "HP",
       status: "announced",
-      availability: "Janela no outono de 2026",
+      availability: "Janela em outubro de 2026",
       note: "Listado pela NVIDIA; preço e regiões ainda não foram publicados.",
     },
     {
@@ -735,15 +747,23 @@ export const rtxSparkDeviceRows: Record<
       category: "Notebook Windows fino",
       maker: "Lenovo",
       status: "announced",
-      availability: "Janela no outono de 2026",
-      note: "Listado pela NVIDIA. Chassi, bateria e térmica precisam de análises.",
+      availability: "Janela em outubro de 2026",
+      note: "Anunciado na IFA 2026. Chassi, bateria e térmica ainda precisam de página da Lenovo ou análises.",
+    },
+    {
+      device: "Lenovo Yoga 9n 2-in-1",
+      category: "Notebook Windows conversível",
+      maker: "Lenovo",
+      status: "announced",
+      availability: "Janela em outubro de 2026",
+      note: "Anunciado na IFA 2026. Confirme tela, memória, caneta e SKU regional antes de comprar.",
     },
     {
       device: "Microsoft Surface Laptop Ultra",
       category: "Notebook Windows fino",
       maker: "Microsoft Surface",
       status: "announced",
-      availability: "Janela no outono de 2026",
+      availability: "Janela em outubro de 2026",
       note: "Importante para a narrativa de agentes nativos no Windows.",
     },
     {
@@ -751,7 +771,7 @@ export const rtxSparkDeviceRows: Record<
       category: "Notebook Windows conversível",
       maker: "MSI",
       status: "announced",
-      availability: "Janela no outono de 2026",
+      availability: "Janela em outubro de 2026",
       note: "Listado pela NVIDIA; tela, memória e limites térmicos dependem da MSI.",
     },
     {
@@ -759,8 +779,8 @@ export const rtxSparkDeviceRows: Record<
       category: "Desktop compacto",
       maker: "Acer, ASUS, Dell, GIGABYTE, HP, Lenovo, MSI",
       status: "announced",
-      availability: "Outono de 2026; alguns modelos depois",
-      note: "A NVIDIA diz que desktops compactos fazem parte da plataforma; SKUs finais precisam de páginas de lançamento.",
+      availability: "Janela em outubro de 2026; alguns modelos podem chegar depois",
+      note: "A NVIDIA diz que desktops compactos fazem parte da plataforma. A Acer mostrou um conceito na IFA; fabricantes e SKUs de varejo ainda precisam de páginas de lançamento.",
     },
   ],
 };
@@ -797,7 +817,7 @@ export const rtxSparkComparisonRows: Record<
       },
       {
         angle: "Availability",
-        rtxSpark: "Announced for fall 2026 devices.",
+        rtxSpark: "Announced for October 2026 devices.",
         competitor: "M5 MacBook Air availability began March 2026; M5 Pro/Max systems have their own Apple launch path.",
         status: "confirmed",
       },
@@ -829,7 +849,7 @@ export const rtxSparkComparisonRows: Record<
       },
       {
         angle: "Disponibilidade",
-        rtxSpark: "Dispositivos anunciados para outono de 2026.",
+        rtxSpark: "Dispositivos anunciados para outubro de 2026.",
         competitor: "MacBook Air M5 com disponibilidade iniciada em março de 2026; M5 Pro/Max tem sua própria linha.",
         status: "confirmed",
       },
@@ -863,7 +883,7 @@ export const rtxSparkComparisonRows: Record<
       },
       {
         angle: "Buying timing",
-        rtxSpark: "Fall 2026 device window.",
+        rtxSpark: "October 2026 device window.",
         competitor: "Snapdragon X devices are already a broader Windows AI PC category, with next-gen models continuing in 2026.",
         status: "confirmed",
       },
@@ -895,7 +915,7 @@ export const rtxSparkComparisonRows: Record<
       },
       {
         angle: "Momento de compra",
-        rtxSpark: "Janela de dispositivos no outono de 2026.",
+        rtxSpark: "Janela de dispositivos em outubro de 2026.",
         competitor: "Snapdragon X já é uma categoria mais ampla de AI PC Windows, com nova geração em 2026.",
         status: "confirmed",
       },
@@ -1051,11 +1071,11 @@ export const rtxSparkTimelineRows: Record<
       sourceKey: "nvidiaProduct",
     },
     {
-      date: "Fall 2026",
-      event: "Public availability window",
-      meaning: "NVIDIA says RTX Spark-powered laptops and compact desktops are available this fall.",
+      date: "September 3, 2026",
+      event: "IFA availability update",
+      meaning: "NVIDIA says RTX Spark Windows PCs are coming in October 2026, with new Lenovo designs and an Acer compact desktop concept shown at IFA.",
       status: "announced",
-      sourceKey: "nvidiaNews",
+      sourceKey: "nvidiaIfa",
     },
     {
       date: "After OEM pages publish",
@@ -1081,11 +1101,11 @@ export const rtxSparkTimelineRows: Record<
       sourceKey: "nvidiaProduct",
     },
     {
-      date: "Outono de 2026",
-      event: "Janela de disponibilidade",
-      meaning: "A NVIDIA diz que notebooks e desktops compactos RTX Spark chegam no outono.",
+      date: "3 de setembro de 2026",
+      event: "Atualização de disponibilidade na IFA",
+      meaning: "A NVIDIA diz que PCs Windows com RTX Spark chegam em outubro de 2026, com novos modelos da Lenovo e um conceito de desktop compacto da Acer mostrado na IFA.",
       status: "announced",
-      sourceKey: "nvidiaNews",
+      sourceKey: "nvidiaIfa",
     },
     {
       date: "Depois das páginas de OEM",
@@ -1111,7 +1131,7 @@ export const rtxSparkFaqs: Record<
       {
         question: "Is RTX Spark available now?",
         answer:
-          "No broad retail availability has been confirmed yet. NVIDIA announced a fall 2026 availability window for RTX Spark-powered devices.",
+          "Broad retail availability is not confirmed yet. NVIDIA's latest public window says RTX Spark Windows PCs arrive in October 2026.",
       },
       {
         question: "Is RTX Spark the same as a normal RTX graphics card?",
@@ -1128,7 +1148,7 @@ export const rtxSparkFaqs: Record<
       {
         question: "RTX Spark já está disponível?",
         answer:
-          "Ainda não há ampla disponibilidade confirmada. A NVIDIA anunciou janela no outono de 2026 para dispositivos RTX Spark.",
+          "Ainda não há ampla disponibilidade confirmada. A janela pública mais recente da NVIDIA diz que PCs Windows com RTX Spark chegam em outubro de 2026.",
       },
       {
         question: "RTX Spark é igual a uma placa RTX comum?",
@@ -1358,12 +1378,12 @@ export const rtxSparkFaqs: Record<
       {
         question: "When will NVIDIA RTX Spark devices launch?",
         answer:
-          "NVIDIA's safest public window is fall 2026 for RTX Spark-powered slim laptops and compact desktop PCs.",
+          "NVIDIA says RTX Spark Windows PCs arrive in October 2026. The announced lineup includes slim laptops and compact desktop PCs; exact retail dates vary by manufacturer and region.",
       },
       {
         question: "Which companies will make RTX Spark PCs?",
         answer:
-          "NVIDIA names ASUS, Dell, HP, Lenovo, Microsoft Surface, MSI, and also shows compact desktop partners including Acer and GIGABYTE.",
+          "NVIDIA names ASUS, Dell, HP, Lenovo, Microsoft Surface, MSI, and compact desktop partners including GIGABYTE. Acer showed a compact desktop concept at IFA 2026, so wait for retail confirmation before treating it as a buyable SKU.",
       },
       {
         question: "Is there an exact RTX Spark release date?",
@@ -1375,12 +1395,12 @@ export const rtxSparkFaqs: Record<
       {
         question: "Quando dispositivos NVIDIA RTX Spark chegam?",
         answer:
-          "A janela pública mais segura da NVIDIA é outono de 2026 para notebooks finos e desktops compactos RTX Spark.",
+          "Segundo a NVIDIA, os PCs Windows com RTX Spark chegam em outubro de 2026. A linha anunciada inclui notebooks finos e desktops compactos; as datas de venda dependem do fabricante e da região.",
       },
       {
         question: "Quais empresas farão PCs RTX Spark?",
         answer:
-          "A NVIDIA cita ASUS, Dell, HP, Lenovo, Microsoft Surface, MSI e também mostra parceiros de desktop como Acer e GIGABYTE.",
+          "A NVIDIA cita ASUS, Dell, HP, Lenovo, Microsoft Surface, MSI e parceiros de desktop como GIGABYTE. A Acer mostrou um conceito de desktop compacto na IFA 2026, então vale esperar confirmação de varejo antes de tratar como SKU comprável.",
       },
       {
         question: "Existe data exata para RTX Spark?",

@@ -47,7 +47,7 @@ export default function ContactPage() {
         <div className="border border-border rounded-lg p-6">
           <h2 className="text-lg font-semibold mb-2">Report a Data Error</h2>
           <p className="text-muted-foreground text-sm mb-3">
-            If you believe any GPU compatibility status or benchmark data is incorrect,
+            If you believe any GPU compatibility status or hardware specification is incorrect,
             please email us with the GPU or game name, the exact claim that should change,
             the source URL, and why the current answer may be outdated. We prioritize fixes
             that affect buying decisions, release timing, GPU support, or claims that could

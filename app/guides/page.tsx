@@ -79,7 +79,7 @@ const guideGroups = [
   {
     title: "Feature explainers",
     description:
-      "These guides separate current DLSS 4.5 features from the future DLSS 5 neural rendering layer, so users do not mix frame generation with visual rendering claims.",
+      "These guides separate current DLSS 4.5 features from the DLSS 5 neural rendering layer, so users do not mix frame generation with visual rendering claims.",
     links: [
       {
         href: "/dlss-5-neural-rendering",

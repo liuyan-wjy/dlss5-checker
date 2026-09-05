@@ -39,11 +39,11 @@ export default function AboutPage() {
             status to every announced game or older GPU before sources support it.
           </p>
           <p className="mt-4">
-            We built DLSS 5 Checker to cut through the noise with a single, accurate,
-            regularly updated source of truth. Every data point on this site is sourced
-            from NVIDIA&apos;s official announcements and press releases — and where
-            information is genuinely uncertain, we say so clearly (e.g., &quot;Confirmed&quot;,
-            &quot;Planned&quot;, &quot;Unsupported&quot;, or &quot;No DLSS&quot;) rather than guessing.
+            The checker brings GPU support, available features, and game requirements
+            into one result. It matches the model you enter against a maintained list;
+            it does not inspect your computer or measure performance. Support labels
+            distinguish what is usable now from a future plan or an unsupported setup.
+            The linked evidence lets you check the announcement behind a result.
           </p>
         </section>
 
@@ -85,6 +85,17 @@ export default function AboutPage() {
             decisions, release timing, or GPU support, we keep it in the cautious status system
             until a primary source is clear.
           </p>
+          <p className="mt-4">
+            GPU memory configurations come from manufacturer specifications, including
+            separate desktop and laptop listings. Our explanations and setup checklists
+            are editorial guidance, not quotations or certification from NVIDIA. For
+            example, both the{" "}
+            <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">RTX 5060 Ti</a>
+            {" "}and{" "}
+            <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4060-4060ti/" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">RTX 4060 Ti</a>
+            {" "}have 8GB and 16GB variants. A family-level compatibility label does not
+            tell you which memory configuration is installed in your PC.
+          </p>
         </section>
 
         <section>
@@ -110,9 +121,9 @@ export default function AboutPage() {
           <p>
             DLSS 5 Checker is an independent resource and is <strong className="text-foreground">not
             affiliated with NVIDIA Corporation</strong>. All product names, logos, and brands
-            are property of their respective owners. Performance data shown reflects
-            estimated DLSS 4/4.5 benchmarks, not independent DLSS 5 Neural Rendering test
-            data.
+            are property of their respective owners. We have not performed independent
+            per-GPU DLSS performance tests. The checker does not publish estimated FPS
+            or promise a percentage improvement from a graphics-card upgrade.
           </p>
         </section>
 

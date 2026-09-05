@@ -139,6 +139,13 @@ const notFoundHtml = fs.readFileSync(path.join(appOutput, "404.html"), "utf8");
 assert.match(visibleText(notFoundHtml), /404|not found|could not be found/i, "Static export must not fall back unknown paths to the homepage");
 
 const homepage = readRoute("index");
+const llms = fs.readFileSync(path.join(appOutput, "llms.txt"), "utf8");
+assert.match(llms, /NBA 2K27/);
+assert.match(llms, /September 3, 2026/);
+assert.match(llms, /confirmed, planned, unsupported, and none/);
+assert.match(llms, /RTX 40.*planned.*no public date/);
+assert.match(llms, /dlss-5-3d-guided-neural-rendering\//);
+assert.doesNotMatch(llms, /announced for Fall 2026|Fall 2026 launch-window|currently unknown until final|expected support|unlikely support/);
 assert.equal(
   metadataValue(homepage, /<meta property="og:url" content="([^"]+)"/, "homepage og:url"),
   "https://www.dlss5.net",
@@ -154,6 +161,11 @@ assert.match(homepage, /plausible-ly-005\.pages\.dev\/js\/pa-VclqONE0bFW-1okXx2C
 assert.match(homepage, /plausible\.init/);
 assert.match(visibleText(homepage), /NBA 2K27/);
 assert.match(visibleText(homepage), /available now|live now|now available/i);
+assert.doesNotMatch(visibleText(homepage), /Use FSR 4 instead|AMD users should look at FSR 4/);
+assert.doesNotMatch(visibleText(readRoute("pt")), /Use FSR 4 como alternativa/);
+assert.doesNotMatch(visibleText(readRoute("guides")), /future DLSS 5 neural rendering layer/);
+assert.doesNotMatch(visibleText(readRoute("pt/dlss-5-quais-placas")), /mudar a matriz de suporte antes do lançamento/);
+assert.doesNotMatch(visibleText(readRoute("dlss-5-supported-cards")), /no-DLSS unsupported|unsupported, and unsupported/);
 checkFaq(homepage, "homepage");
 
 const generatedHtml = readGeneratedHtml().join("\n");
@@ -168,6 +180,10 @@ const privacy = readRoute("privacy");
 assert.match(privacy, /AdSense ad-serving code and Auto ads are not loaded/);
 assert.doesNotMatch(privacy, /we use a Google-certified consent management platform/i);
 assert.doesNotMatch(privacy, /We use Google Analytics/i);
+assert.match(visibleText(privacy), /Cloudflare Web Analytics/);
+assert.match(visibleText(privacy), /real.user monitoring|RUM/i);
+assert.match(privacy, /https:\/\/developers.cloudflare.com\/web-analytics\//);
+assert.doesNotMatch(visibleText(readRoute("about")), /Every data point on this site is sourced|estimated DLSS 4\/4\.5 benchmarks/);
 
 for (const route of ["about", "contact"]) {
   const html = readRoute(route);
@@ -325,11 +341,19 @@ for (const route of noindexRtxSparkRoutes) {
   const html = readRoute(route);
   assert.match(html, /name="robots" content="noindex/, `${route} must remain noindex`);
   assert.doesNotMatch(sitemap, new RegExp(`<loc>https://www\\.dlss5\\.net/${route}</loc>`));
+  assert.match(visibleText(html), route.startsWith("pt/") ? /outubro de 2026/i : /October 2026/);
+  assert.match(html, /local-ai-ifa-next-gen-agents-nv-pair-rtx-spark/);
+  assert.doesNotMatch(visibleText(html), /Fall 2026|outono de 2026/i);
+  assert.doesNotMatch(visibleText(html), /Do not promise benchmarks|Não prometa benchmarks|this guide should remain|esta página deve ser/i);
+  checkFaq(html, route);
 }
 
 const dgxComparisonRoute = "ai-pc/nvidia-rtx-spark-vs-dgx-spark";
 const dgxComparisonHtml = readRoute(dgxComparisonRoute);
 assert.doesNotMatch(dgxComparisonHtml, /name="robots" content="noindex/);
+assert.match(visibleText(dgxComparisonHtml), /October 2026/);
+assert.doesNotMatch(visibleText(dgxComparisonHtml), /Fall 2026/);
+assert.ok(mainWords(dgxComparisonHtml) >= 1500, "DGX comparison must retain its substantive main content");
 assert.match(
   sitemap,
   new RegExp(`<loc>https://www\\.dlss5\\.net/${dgxComparisonRoute}</loc>`),

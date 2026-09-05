@@ -15,7 +15,7 @@ export const faqs = [
   },
   {
     q: "Does DLSS 5 work on AMD or Intel GPUs?",
-    a: "No. DLSS is an NVIDIA-exclusive technology. AMD users should look at FSR 4 (FidelityFX Super Resolution 4), and Intel users should look at XeSS (Xe Super Sampling) -- both are competing upscaling technologies, though neither has announced a neural rendering equivalent to DLSS 5.",
+    a: "No. DLSS requires NVIDIA RTX hardware for local play. AMD users can check the game's FSR options, and Intel users can check for XeSS. Availability and version support depend on the GPU, driver, and game integration. These upscaling options do not enable DLSS 5 Neural Rendering.",
   },
   {
     q: "What is Multi Frame Generation and which DLSS version introduced it?",

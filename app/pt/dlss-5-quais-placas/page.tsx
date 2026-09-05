@@ -431,10 +431,10 @@ export default function PtDlss5QuaisPlacasPage() {
           <p>
             Fontes:{" "}
             <a
-              href="https://nvidianews.nvidia.com/news/nvidia-dlss-5-delivers-ai-powered-breakthrough-in-visual-fidelity-for-games"
+              href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/"
               className="text-blue-400 hover:underline"
             >
-              anúncio oficial do DLSS 5
+              lançamento verificado do DLSS 5
             </a>{" "}
             e{" "}
             <a
@@ -443,8 +443,8 @@ export default function PtDlss5QuaisPlacasPage() {
             >
               tabela oficial de hardware DLSS
             </a>
-            . Esta é uma página independente e deve ser atualizada se a NVIDIA mudar a matriz
-            de suporte antes do lançamento.
+            . Esta é uma página independente e deve ser atualizada se novos drivers,
+            páginas de produto ou notas oficiais mudarem a matriz de suporte.
           </p>
         </section>
         <ArticleTrustBlock locale="pt" reviewedAt="2026-09-05" />

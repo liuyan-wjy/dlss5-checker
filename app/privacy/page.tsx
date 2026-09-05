@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <h1 className="text-3xl font-bold mb-8">Privacy Policy</h1>
-      <p className="text-muted-foreground text-sm mb-8">Last updated: August 1, 2026</p>
+      <p className="text-muted-foreground text-sm mb-8">Last updated: September 5, 2026</p>
 
       <div className="space-y-8 text-foreground/80 leading-relaxed">
         <section>
@@ -40,6 +40,16 @@ export default function PrivacyPage() {
             reports to find useful pages and technical problems, not to build personalized
             advertising profiles. Google Analytics code is not currently loaded on this site.
           </p>
+          <p className="mt-3">
+            Cloudflare Web Analytics also collects aggregate traffic and real-user
+            monitoring (RUM) measurements through a browser beacon. These reports help
+            us identify slow loading, delayed interactions, and layout shifts. They can
+            include the visited page, referrer, browser or device category, and page
+            performance measurements. Cloudflare states that Web Analytics does not use
+            cookies or local storage to track visitors. See{" "}
+            <a href="https://developers.cloudflare.com/web-analytics/" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Cloudflare&apos;s Web Analytics documentation</a>
+            {" "}for its collection methods and privacy details.
+          </p>
         </section>
 
         <section>
@@ -47,7 +57,8 @@ export default function PrivacyPage() {
             3. Hosting, Delivery, and Security
           </h2>
           <p>
-            Hosting, content-delivery, and security providers may process ordinary request
+            Cloudflare hosts and delivers this site. Hosting, content-delivery, and security
+            services may process ordinary request
             data such as IP address, browser details, requested URL, timestamps, and security
             signals. This processing is used to deliver pages, diagnose failures, prevent
             abuse, and protect the site. Those providers handle data under their own terms
