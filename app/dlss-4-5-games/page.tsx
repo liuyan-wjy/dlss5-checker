@@ -9,6 +9,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/dlss-4-5-games",
   },
+  openGraph: {
+    title: "DLSS 4.5 Games: Current Support and Verification [2026]",
+    description:
+      "Track DLSS 4.5 games, current feature support, NVIDIA App override caveats, verification steps, and how to avoid confusing current support with DLSS 5.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-4-5-games",
+  },
+  twitter: {
+    card: "summary",
+    title: "DLSS 4.5 Games: Current Support and Verification [2026]",
+    description:
+      "Track DLSS 4.5 games, current feature support, NVIDIA App override caveats, verification steps, and how to avoid confusing current support with DLSS 5.",
+  },
 };
 
 const NVIDIA_DLSS45_NOW =
@@ -20,14 +33,20 @@ const NVIDIA_RTX_GAMES =
 
 const gameRows = [
   {
+    title: "NBA 2K27",
+    signal: "Available now",
+    feature: "DLSS Super Resolution, Frame Generation paths, and separate DLSS 5 Neural Rendering on RTX 50",
+    caveat: "Use the NBA guide for the 616.64 WHQL driver, Video Settings path, and F9 toggle.",
+  },
+  {
     title: "007 First Light",
-    signal: "Launch support announced",
+    signal: "September 15 support announced",
     feature: "Path tracing and 4.5 feature set",
     caveat: "Wait for launch settings and performance notes.",
   },
   {
     title: "CONTROL Resonant",
-    signal: "Coming this year",
+    signal: "September 24 support planned",
     feature: "Path tracing and current-generation image features",
     caveat: "Needs final release notes before calling it verified.",
   },
@@ -47,7 +66,7 @@ const gameRows = [
     title: "Starfield",
     signal: "Listed in enhanced model examples",
     feature: "Frame Generation model upgrade signal",
-    caveat: "This is not the same as Fall 2026 neural-rendering support.",
+    caveat: "This is not the same as DLSS 5 Neural Rendering support.",
   },
   {
     title: "Hogwarts Legacy",
@@ -116,7 +135,12 @@ const relatedLinks = [
   {
     href: "/dlss-5-games",
     title: "DLSS 5 games tracker",
-    copy: "Use this for announced Fall 2026 titles, not current 4.5 support.",
+    copy: "Use this for NBA 2K27 status and other announced DLSS 5 titles.",
+  },
+  {
+    href: "/games/nba-2k27-dlss-5",
+    title: "NBA 2K27 DLSS 5 guide",
+    copy: "Driver, menu path, F9 toggle, RTX 40 status, and cloud-vs-local notes.",
   },
 ];
 
@@ -129,7 +153,7 @@ const faqItems = [
   {
     question: "Is a DLSS 4.5 game the same as a DLSS 5 game?",
     answer:
-      "No. The 4.5 stack is available through current game, driver, plugin, and NVIDIA App paths. The next visual layer is announced for Fall 2026 and still needs final game documentation.",
+      "No. The 4.5 stack is available through current game, driver, plugin, and NVIDIA App paths. DLSS 5 Neural Rendering is separate; NBA 2K27 has documented support, while other titles need their own patch or menu proof.",
   },
   {
     question: "How do I verify support in a specific game?",
@@ -193,14 +217,14 @@ export default function Dlss45GamesPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Current feature tracker updated August 2026
+            Current feature tracker updated September 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 4.5 Games: Current Support and Verification
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             For DLSS 4.5 games, this page tracks the current support story separately from
-            the Fall 2026 feature. The goal is to show which support signals are live,
+            DLSS 5 Neural Rendering. The goal is to show which support signals are live,
             announced, or still waiting for a patch note.
           </p>
         </header>
@@ -215,10 +239,10 @@ export default function Dlss45GamesPage() {
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
-            <h2 className="font-bold mb-2">Why this is separate</h2>
+            <h2 className="font-bold mb-2">Why players should separate them</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              DLSS 4.5 games answer a different search intent than the next neural
-              rendering launch. Mixing the two creates bad upgrade advice.
+              A DLSS 4.5 game can improve frame rate or reconstruction without exposing
+              DLSS 5 Neural Rendering. Mixing the two can lead to a bad upgrade choice.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
@@ -304,14 +328,14 @@ export default function Dlss45GamesPage() {
             What current support does not prove
           </h2>
           <p>
-            A current 4.5 title does not prove that the same game has the Fall 2026 visual
-            layer. It also does not prove that every RTX card receives the same menu. RTX
+            A current 4.5 title does not prove that the same game has DLSS 5 Neural
+            Rendering. It also does not prove that every RTX card receives the same menu. RTX
             50, RTX 40, and older cards sit in different feature tiers.
           </p>
           <p>
             The useful reader answer is therefore conditional: the current stack can improve
             frame rate, image reconstruction, UI handling, and ray-traced output in supported
-            games, while the next layer still needs launch documentation.
+            games, while DLSS 5 still needs game-by-game launch documentation outside NBA 2K27.
           </p>
         </section>
 
@@ -330,6 +354,17 @@ export default function Dlss45GamesPage() {
 
         <section className="mb-10 text-sm text-muted-foreground leading-relaxed">
           <h2 className="text-xl font-bold text-foreground mb-3">Sources and limits</h2>
+          <p className="mb-3">
+            The announced September dates and Ray Reconstruction rollout are covered in NVIDIA&apos;s{" "}
+            <a href="https://www.nvidia.com/en-gb/geforce/news/gamescom-2026-dlss-4-5-ray-reconstruction-release-announcements-trailers/" className="text-blue-400 hover:underline">Gamescom 2026 update</a>.
+          </p>
+          <p className="mb-3">
+            NVIDIA&apos;s{" "}
+            <a href="https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/" className="text-blue-400 hover:underline">
+              September 3, 2026 driver update
+            </a>{" "}
+            documents NBA 2K27 support and the newer Dynamic MFG requirements for V-Sync and frame limiters.
+          </p>
           <p>
             Primary sources:{" "}
             <a href={NVIDIA_DLSS45_NOW} className="text-blue-400 hover:underline">
@@ -360,7 +395,7 @@ export default function Dlss45GamesPage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

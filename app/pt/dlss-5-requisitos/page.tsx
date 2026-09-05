@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
+const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-requisitos";
+
 export const metadata: Metadata = {
-  title: "Requisitos DLSS 5: placas compatíveis e pendências",
+  title: "Requisitos DLSS 5: placas, driver e jogos",
   description:
-    "Veja os requisitos do DLSS 5 em português: placas compatíveis, status RTX 50, RTX 40 e RTX 30, jogos, drivers e o que ainda não foi confirmado.",
+    "Veja requisitos atuais do DLSS 5 no Brasil: RTX 50 desktop e notebook, driver 616.64 no NBA 2K27, RTX 40 planejada sem data definida e limites RTX 20/30.",
   alternates: {
     canonical: "/pt/dlss-5-requisitos",
     languages: {
@@ -13,41 +15,55 @@ export const metadata: Metadata = {
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-requisitos",
     },
   },
+  openGraph: {
+    title: "Requisitos DLSS 5: placas, driver e jogos",
+    description:
+      "Veja requisitos atuais do DLSS 5 no Brasil: RTX 50 desktop e notebook, driver 616.64 no NBA 2K27, RTX 40 planejada sem data definida e limites RTX 20/30.",
+    type: "article",
+    locale: "pt_BR",
+    url: PAGE_URL,
+  },
+  twitter: {
+    card: "summary",
+    title: "Requisitos DLSS 5: placas, driver e jogos",
+    description:
+      "Veja requisitos atuais do DLSS 5 no Brasil: RTX 50 desktop e notebook, driver 616.64 no NBA 2K27, RTX 40 planejada sem data definida e limites RTX 20/30.",
+  },
 };
 
 const faqItems = [
   {
     question: "Quais são os requisitos do DLSS 5?",
     answer:
-      "O requisito confirmado mais importante é a família de GPU: a série RTX 50 é o caminho mais seguro para DLSS 5. A NVIDIA ainda não publicou uma ficha final com driver mínimo, VRAM mínima e limites por jogo.",
+      "Para rodar DLSS 5 localmente hoje, o requisito confirmado é uma GPU GeForce RTX Série 50, um jogo com suporte publicado e driver compatível. No NBA 2K27, a NVIDIA indicou o driver GeForce Game Ready 616.64 WHQL.",
   },
   {
     question: "RTX 40 vai rodar DLSS 5?",
     answer:
-      "Ainda é desconhecido. RTX 40 roda recursos atuais de DLSS, como Frame Generation, Super Resolution e Ray Reconstruction, mas a nova camada de Neural Rendering deve esperar a documentação final.",
+      "Ainda não. A NVIDIA disse que pretende expandir o DLSS 5 para RTX 40 depois, mas não publicou data de disponibilidade anunciada. Até lá, RTX 40 continua com Super Resolution, Ray Reconstruction e Frame Generation em jogos compatíveis.",
   },
   {
     question: "RTX 30 ou GTX entram nos requisitos?",
     answer:
-      "RTX 30 ainda pode usar recursos atuais como Super Resolution e Ray Reconstruction em jogos compatíveis, mas não está confirmada para DLSS 5. Placas GTX não têm suporte a DLSS.",
+      "RTX 30 e RTX 20 ainda podem usar Super Resolution e Ray Reconstruction em jogos compatíveis, mas não têm suporte oficial atual ao DLSS 5 Neural Rendering. Placas GTX não têm suporte a DLSS.",
   },
 ];
 
 const generationRows = [
   {
     group: "RTX 50",
-    status: "Confirmada / esperada",
-    note: "Modelos RTX 50 superiores têm o caminho mais claro; modelos de entrada ainda precisam de documentação por modelo.",
+    status: "Confirmada",
+    note: "No desktop: RTX 5090, 5080, 5070 Ti, 5070, 5060 Ti, 5060 e 5050. Em notebook: Laptop GPU RTX 5090, 5080, 5070 Ti, 5070, 5060 e 5050.",
   },
   {
     group: "RTX 40",
-    status: "Desconhecida",
-    note: "Boa para DLSS atual, mas ainda precisa de matriz oficial para a nova camada.",
+    status: "Planejada, sem data",
+    note: "Boa para DLSS atual; o DLSS 5 depende da futura expansão planejada pela NVIDIA.",
   },
   {
     group: "RTX 30 / RTX 20",
-    status: "Improvável para DLSS 5",
-    note: "Útil para recursos atuais de DLSS, mas não para assumir compatibilidade futura.",
+    status: "Sem suporte oficial atual",
+    note: "Útil para recursos atuais de DLSS, mas não deve ser comprada esperando DLSS 5.",
   },
   {
     group: "GTX / AMD / Intel",
@@ -88,24 +104,25 @@ export default function PtDlss5RequisitosPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Atualizado em maio de 2026
+            Revisado em 5 de setembro de 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Requisitos do DLSS 5: placas compatíveis e o que falta confirmar
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Se você procura &quot;requisitos DLSS 5&quot;, a resposta útil não é uma lista
-            genérica de PC. O ponto principal é saber quais placas são compatíveis, quais
-            jogos vão expor o recurso e o que ainda depende de driver e patch.
+            A resposta prática começa pela GPU, pelo jogo e pelo driver: sua placa precisa
+            estar no grupo RTX 50 confirmado, o jogo precisa ter suporte publicado e o driver
+            deve ser o indicado para aquele título.
           </p>
         </header>
 
         <section className="mb-10 rounded-lg border border-green-500/30 bg-green-500/5 p-5">
           <h2 className="text-2xl font-bold mb-3">Resposta rápida</h2>
           <p className="text-foreground/80 leading-relaxed">
-            A série RTX 50 é o caminho mais seguro para DLSS 5. RTX 40 ainda deve ser
-            tratada como desconhecida até a documentação final. RTX 30, RTX 20 e GTX não devem ser
-            compradas com a expectativa de receber a nova camada de Neural Rendering.
+            Para jogar localmente hoje, DLSS 5 exige uma GeForce RTX Série 50 e um jogo
+            com suporte publicado. NBA 2K27 é o primeiro exemplo confirmado e usa o driver
+            GeForce Game Ready 616.64 WHQL. RTX 40 está planejada para depois, mas ainda
+            não tem data. RTX 30, RTX 20 e GTX não devem ser compradas esperando DLSS 5.
           </p>
         </section>
 
@@ -154,8 +171,8 @@ export default function PtDlss5RequisitosPage() {
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Requisito de driver</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              A versão final deve depender de um driver ou NVIDIA App compatível no
-              lançamento.
+              No NBA 2K27, use o driver GeForce Game Ready 616.64 WHQL; outros jogos devem
+              ser conferidos nas próprias notas de patch.
             </p>
           </div>
         </section>
@@ -181,7 +198,7 @@ export default function PtDlss5RequisitosPage() {
             >
               <div className="font-semibold mb-1">Quais placas suportam DLSS 5?</div>
               <p className="text-sm text-muted-foreground">
-                Lista por GPU com status confirmado, esperado, desconhecido, improvável ou sem suporte.
+                Lista por GPU com status confirmado, planejado, sem suporte oficial atual ou fora do DLSS.
               </p>
             </Link>
             <Link
@@ -210,10 +227,10 @@ export default function PtDlss5RequisitosPage() {
           <p>
             Fontes:{" "}
             <a
-              href="https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/"
+              href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/"
               className="text-blue-400 hover:underline"
             >
-              anúncio oficial do DLSS 5
+              anúncio oficial de lançamento do DLSS 5
             </a>{" "}
             e{" "}
             <a
@@ -222,10 +239,11 @@ export default function PtDlss5RequisitosPage() {
             >
               página oficial de tecnologias DLSS
             </a>
-            . Esta página evita inventar requisitos finais que a NVIDIA ainda não publicou.
+            . Esta página separa jogo local em RTX 50 de streaming via GeForce NOW Ultimate,
+            onde o processamento roda nos servidores RTX 5080 da NVIDIA.
           </p>
         </section>
-        <ArticleTrustBlock locale="pt" />
+        <ArticleTrustBlock locale="pt" reviewedAt="2026-09-05" />
       </main>
     </>
   );

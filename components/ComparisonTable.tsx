@@ -17,8 +17,8 @@ const rows: Record<
     { feature: "Dynamic MFG 6X (5 AI frames)", dlss3: false, dlss4: false, dlss45: true, dlss5: "Via current stack" },
     { feature: "Neural Rendering (AI lighting & materials)", dlss3: false, dlss4: false, dlss45: false, dlss5: true },
     { feature: "Focus", dlss3: "Performance", dlss4: "Performance", dlss45: "Performance", dlss5: "Visual Fidelity" },
-    { feature: "Min. GPU for full features", dlss3: "RTX 40", dlss4: "RTX 50", dlss45: "RTX 50", dlss5: "RTX 50 safest" },
-    { feature: "Status", dlss3: "Released", dlss4: "Released (CES 2025)", dlss45: "Released (CES 2026)", dlss5: "Coming Fall 2026" },
+    { feature: "Min. GPU for full features", dlss3: "RTX 40", dlss4: "RTX 50", dlss45: "RTX 50", dlss5: "RTX 50 confirmed" },
+    { feature: "Status", dlss3: "Released", dlss4: "Released (CES 2025)", dlss45: "Released (CES 2026)", dlss5: "Live first in NBA 2K27" },
   ],
   pt: [
     { feature: "Super Resolution (upscaling por IA)", dlss3: true, dlss4: true, dlss45: true, dlss5: "Pela pilha atual" },
@@ -30,8 +30,8 @@ const rows: Record<
     { feature: "Dynamic MFG 6X (5 quadros por IA)", dlss3: false, dlss4: false, dlss45: true, dlss5: "Pela pilha atual" },
     { feature: "Neural Rendering (iluminação e materiais por IA)", dlss3: false, dlss4: false, dlss45: false, dlss5: true },
     { feature: "Foco", dlss3: "Desempenho", dlss4: "Desempenho", dlss45: "Desempenho", dlss5: "Fidelidade visual" },
-    { feature: "GPU mínima para recursos completos", dlss3: "RTX 40", dlss4: "RTX 50", dlss45: "RTX 50", dlss5: "RTX 50 é o caminho mais seguro" },
-    { feature: "Status", dlss3: "Lançado", dlss4: "Lançado (CES 2025)", dlss45: "Lançado (CES 2026)", dlss5: "Chega no outono de 2026" },
+    { feature: "GPU mínima para recursos completos", dlss3: "RTX 40", dlss4: "RTX 50", dlss45: "RTX 50", dlss5: "RTX 50 confirmada" },
+    { feature: "Status", dlss3: "Lançado", dlss4: "Lançado (CES 2025)", dlss45: "Lançado (CES 2026)", dlss5: "Estreou em NBA 2K27" },
   ],
 };
 

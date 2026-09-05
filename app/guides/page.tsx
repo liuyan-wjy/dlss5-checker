@@ -2,10 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Guides: Games, Compatibility, Ray Reconstruction",
+  title: "DLSS 5 Guides: NBA 2K27, Games, Compatibility, Ray Reconstruction",
   description:
-    "Browse DLSS 5 and DLSS 4.5 guides for game support, GPUs, release timing, Ray Reconstruction, Dynamic MFG, RTX Spark, and evidence tracking.",
+    "Browse DLSS 5 and DLSS 4.5 guides for NBA 2K27, game support, GPUs, release status, Ray Reconstruction, Dynamic MFG, RTX Spark, and evidence tracking.",
   alternates: { canonical: "/guides" },
+  openGraph: {
+    title: "DLSS 5 Guides: NBA 2K27, Games, Compatibility, Ray Reconstruction",
+    description:
+      "Browse DLSS 5 and DLSS 4.5 guides for NBA 2K27, game support, GPUs, release status, Ray Reconstruction, Dynamic MFG, RTX Spark, and evidence tracking.",
+    url: "https://www.dlss5.net/guides",
+    type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "DLSS 5 Guides: NBA 2K27, Games, Compatibility, Ray Reconstruction",
+    description:
+      "Browse DLSS 5 and DLSS 4.5 guides for NBA 2K27, game support, GPUs, release status, Ray Reconstruction, Dynamic MFG, RTX Spark, and evidence tracking.",
+  },
 };
 
 const guideGroups = [
@@ -27,7 +40,7 @@ const guideGroups = [
       {
         href: "/dlss-5-supported-cards",
         title: "DLSS 5 supported cards",
-        description: "Confirmed, expected, unknown, unlikely, and unsupported GPU groups.",
+        description: "Confirmed, planned, unsupported, and no-DLSS GPU groups.",
       },
       {
         href: "/dlss-5-system-requirements",
@@ -49,7 +62,7 @@ const guideGroups = [
       {
         href: "/dlss-5-release-date",
         title: "DLSS 5 release date",
-        description: "Fall 2026 launch window, availability caveats, and proof needed.",
+        description: "Launch status, rollout dates, availability caveats, and proof needed.",
       },
       {
         href: "/dlss-5-evidence-tracker",
@@ -101,6 +114,11 @@ const guideGroups = [
         description: "Path tracing, Ray Reconstruction, Neural Rendering, and player checks.",
       },
       {
+        href: "/games/nba-2k27-dlss-5",
+        title: "NBA 2K27 DLSS 5",
+        description: "Driver 616.64, DLSS Neural Rendering, F9, RTX 50 support, and RTX 40 status.",
+      },
+      {
         href: "/games/starfield-dlss-5",
         title: "Starfield DLSS 5",
         description: "Update status, feature differences, safe downloads, and test scenes.",
@@ -150,7 +168,7 @@ const startPaths = [
   {
     title: "If you are checking a rumor",
     href: "/dlss-5-evidence-tracker",
-    copy: "Use the evidence tracker to see whether the claim is confirmed, expected, unknown, or only inferred from current DLSS behavior.",
+    copy: "Use the evidence tracker to see whether the claim is confirmed, planned, unsupported, or only inferred from current DLSS behavior.",
   },
   {
     title: "If you are comparing features",
@@ -181,8 +199,8 @@ export default function GuidesPage() {
         </p>
         <p className="leading-relaxed text-foreground/80">
           This guide index is organized for real decisions rather than keyword browsing.
-          DLSS 5 has been announced, but the final launch matrix, per-game settings, and
-          generation-by-generation feature limits still need official proof. Use the cards
+          DLSS 5 has launched first in NBA 2K27, while many announced games still need
+          their own patch evidence and generation-by-generation feature limits. Use the cards
           below to check the most relevant source first: hardware support if you are
           considering an upgrade, release and evidence pages if you are verifying a claim,
           or feature explainers if you are trying to understand what is available now.
@@ -226,7 +244,7 @@ export default function GuidesPage() {
                     {link.description}
                   </p>
                   <p className="mt-3 text-xs text-muted-foreground/80">
-                    Last checked July 28, 2026
+                    Last checked September 5, 2026
                   </p>
                 </Link>
               ))}

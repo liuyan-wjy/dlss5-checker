@@ -9,7 +9,7 @@ const NVIDIA_DLSS_BR = "https://www.nvidia.com/pt-br/geforce/technologies/dlss/"
 const NVIDIA_DLSS_45_BR =
   "https://www.nvidia.com/pt-br/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/";
 const NVIDIA_RR_NEWS =
-  "https://www.nvidia.com/en-us/geforce/news/gamescom-2026-nvidia-geforce-rtx-dlss-4-5-announcements/";
+  "https://www.nvidia.com/en-gb/geforce/news/gamescom-2026-dlss-4-5-ray-reconstruction-release-announcements-trailers/";
 
 export const metadata: Metadata = {
   title: META_TITLE,
@@ -103,7 +103,7 @@ const faqItems = [
   {
     question: "DLSS 4.5 e DLSS 5 são a mesma coisa?",
     answer:
-      "Não. O DLSS 4.5 reúne recursos atuais de reconstrução de imagem e geração de quadros. O DLSS 5 Neural Rendering foi anunciado separadamente para o segundo semestre de 2026 e trabalha com renderização neural de iluminação e materiais.",
+      "Não. O DLSS 4.5 reúne recursos atuais de reconstrução de imagem e geração de quadros. O DLSS 5 Neural Rendering foi lançado separadamente em setembro de 2026 e trabalha com renderização neural de iluminação e materiais.",
   },
 ];
 
@@ -131,7 +131,7 @@ export default function Dlss45QuaisPlacasPage() {
     headline: "DLSS 4.5: quais placas de vídeo são compatíveis?",
     url: PAGE_URL,
     datePublished: "2026-08-26",
-    dateModified: "2026-08-26",
+    dateModified: "2026-09-05",
     inLanguage: "pt-BR",
     author: { "@type": "Person", name: "Editor do DLSS 5 Checker" },
     publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
@@ -151,7 +151,7 @@ export default function Dlss45QuaisPlacasPage() {
         </nav>
 
         <header className="mb-10 max-w-3xl">
-          <p className="mb-3 text-sm font-semibold text-blue-400">Guia de compatibilidade · Atualizado em 26 de agosto de 2026</p>
+          <p className="mb-3 text-sm font-semibold text-blue-400">Guia de compatibilidade · Revisado em 5 de setembro de 2026</p>
           <h1 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
             DLSS 4.5: Quais Placas de Vídeo São Compatíveis?
           </h1>
@@ -333,15 +333,16 @@ export default function Dlss45QuaisPlacasPage() {
             <p>
               A NVIDIA anunciou o modelo de segunda geração do DLSS 4.5 Ray Reconstruction para
               todas as placas GeForce RTX. Em agosto de 2026, o acesso começou pelo canal Early
-              Access do NVIDIA App, enquanto a distribuição regular foi indicada para setembro.
-              Ter uma RTX compatível é necessário, mas o perfil do game também precisa aceitar o modelo.
+              Access do NVIDIA App, com driver 580.88 ou mais recente, enquanto a distribuição
+              regular foi indicada para setembro. Ter uma RTX compatível é necessário, mas o perfil
+              do game também precisa aceitar o modelo.
             </p>
             <p>
-              No NVIDIA App, o caminho divulgado passa por Configurações, Sobre e Early Access. No
-              perfil do game, abra Gráficos, localize DLSS Override Model Presets, escolha Custom e
-              selecione a recomendação de Ray Reconstruction quando ela estiver disponível. Os nomes
-              podem aparecer em inglês no aplicativo mesmo com o Windows em português, por isso vale
-              procurar também por “Graphics” e “Driver Settings”.
+              No NVIDIA App, o caminho divulgado passa por Graphics, Driver Settings, DLSS Override
+              Model Presets, Custom e o preset recomendado para Ray Reconstruction quando o perfil
+              do jogo oferece esse controle. Os nomes podem aparecer em inglês no aplicativo mesmo
+              com o Windows em português, por isso vale procurar exatamente por esses rótulos antes
+              de concluir que sua placa não é compatível.
             </p>
             <p>
               Ray Reconstruction só tem função quando existe um sinal de ray tracing ou path tracing
@@ -436,7 +437,8 @@ export default function Dlss45QuaisPlacasPage() {
             <a href={NVIDIA_DLSS_45_BR} rel="noreferrer" className="text-blue-400 hover:underline">modelos e recursos do DLSS 4.5</a>{" "}
             e a atualização oficial de{" "}
             <a href={NVIDIA_RR_NEWS} rel="noreferrer" className="text-blue-400 hover:underline">Ray Reconstruction na Gamescom 2026</a>.
-            Publicado e conferido pelo Editor do DLSS 5 Checker em 26 de agosto de 2026. A
+            Publicado pelo Editor do DLSS 5 Checker em 26 de agosto de 2026 e revisado em 5 de
+            setembro de 2026. A
             compatibilidade da placa não garante o recurso em todos os games. Perfis, drivers e
             disponibilidade em Early Access podem mudar depois desta revisão.
           </p>

@@ -8,7 +8,7 @@ import AdSlot from "@/components/AdSlot";
 export const metadata: Metadata = {
   title: "DLSS 5: quais placas suportam? Verificador GPU",
   description:
-    "Verifique se sua placa NVIDIA suporta DLSS 5, veja placas compatíveis, requisitos, jogos anunciados e diferenças entre DLSS 4.5 e DLSS 5.",
+    "Verifique se sua placa NVIDIA suporta DLSS 5, veja placas compatíveis, requisitos, jogos confirmados e diferenças entre DLSS 4.5 e DLSS 5.",
   alternates: {
     canonical: "/pt",
     languages: {
@@ -17,68 +17,64 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "DLSS 5: Quais Placas São Suportadas?",
-    description: "Verifique a compatibilidade da sua GPU com DLSS 5 Neural Rendering (outono 2026).",
+    title: "DLSS 5: quais placas suportam? Verificador GPU",
+    description:
+      "Verifique se sua placa NVIDIA suporta DLSS 5, veja placas compatíveis, requisitos, jogos confirmados e diferenças entre DLSS 4.5 e DLSS 5.",
     type: "website",
     locale: "pt_BR",
     url: "https://www.dlss5.net/pt",
   },
+  twitter: {
+    card: "summary",
+    title: "DLSS 5: quais placas suportam? Verificador GPU",
+    description:
+      "Verifique se sua placa NVIDIA suporta DLSS 5, veja placas compatíveis, requisitos, jogos confirmados e diferenças entre DLSS 4.5 e DLSS 5.",
+  },
 };
+
+const ptFaqs = [
+  {
+    q: "O que é o DLSS 5?",
+    a: "DLSS 5 é a tecnologia de renderização com IA de próxima geração da NVIDIA, anunciada na GTC em 16 de março de 2026 e liberada publicamente em 4 de setembro de 2026 no Brasil. Ao contrário do DLSS 4/4.5, que focam em desempenho, o DLSS 5 mira fidelidade visual. Seu recurso principal é o Real-time Neural Rendering — aprimoramento com IA de iluminação e materiais. Jensen Huang chamou de 'o momento GPT para gráficos.'",
+  },
+  {
+    q: "Quais placas de vídeo suportam o DLSS 5?",
+    a: "O suporte local confirmado é RTX 50. No desktop, isso cobre RTX 5090, 5080, 5070 Ti, 5070, 5060 Ti, 5060 e 5050. Em notebook, cobre Laptop GPU RTX 5090, 5080, 5070 Ti, 5070, 5060 e 5050. RTX 40 está planejada para uma etapa futura, mas sem data de disponibilidade anunciada. RTX 20/30 não têm suporte oficial atual ao DLSS 5 Neural Rendering.",
+  },
+  {
+    q: "Qual a diferença entre DLSS 5 e DLSS 4?",
+    a: "DLSS 4 (CES 2025) introduziu a Geração Multi-Frame (até 3 frames adicionais de IA) e o primeiro modelo Transformer para Super Resolution. DLSS 4.5 (CES 2026) adicionou Dynamic 6X MFG (5 frames adicionais). DLSS 5 é completamente diferente — é sobre fidelidade visual, não desempenho. Adiciona Neural Rendering que analisa a semântica da cena e gera respostas fotorrealistas de materiais.",
+  },
+  {
+    q: "RTX 4090 vai suportar DLSS 5?",
+    a: "Ainda não. Se você tem uma RTX 40, pode usar DLSS Frame Generation, Super Resolution e Ray Reconstruction hoje, mas o DLSS 5 Neural Rendering está apenas no plano futuro da NVIDIA para essa geração, sem data de disponibilidade anunciada.",
+  },
+  {
+    q: "O DLSS 5 já está disponível no Brasil?",
+    a: "Sim. O DLSS 5 foi liberado globalmente em 3 de setembro de 2026 no Pacífico, o que corresponde a 4 de setembro de 2026 no Brasil. O primeiro jogo confirmado é NBA 2K27 em hardware RTX 50 com o driver 616.64 WHQL.",
+  },
+  {
+    q: "Quais jogos vão ter DLSS 5?",
+    a: "NBA 2K27 é o primeiro jogo confirmado como disponível. Outros jogos citados pela NVIDIA seguem como anunciados ou em verificação até aparecerem patch notes, driver ou opção visível no menu do título.",
+  },
+  {
+    q: "Vale a pena comprar RTX 50 para o DLSS 5?",
+    a: "RTX 50 é o caminho local confirmado para DLSS 5 hoje. Se você joga via GeForce NOW Ultimate, o DLSS 5 roda na infraestrutura RTX 5080 da NVIDIA; isso é diferente de ter suporte no seu PC ou notebook.",
+  },
+];
 
 export default function PtHome() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "O que é o DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "DLSS 5 é a tecnologia de renderização com IA de próxima geração da NVIDIA, anunciada na GTC em 16 de março de 2026, com lançamento previsto para o outono de 2026. Ao contrário do DLSS 4/4.5, que focam em desempenho, o DLSS 5 é sobre fidelidade visual através do Real-time Neural Rendering — aprimoramento com IA de iluminação e materiais.",
-        },
+    mainEntity: ptFaqs.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
       },
-      {
-        "@type": "Question",
-        name: "Quais placas de vídeo suportam o DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "O caminho mais claro para o DLSS 5 Neural Rendering é a série RTX 50. Este site trata RTX 5090, 5080, 5070 Ti e 5070 como confirmadas, RTX 5060 Ti / 5060 como esperadas com documentação final pendente por modelo, RTX 40 como desconhecida e RTX 20/30 como improvável.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Qual é a diferença entre DLSS 5 e DLSS 4?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "O DLSS 4 introduziu a Geração Multi-Frame (até 3 quadros adicionais de IA) para desempenho. O DLSS 5 é completamente diferente — ele adiciona Neural Rendering para fidelidade visual, usando IA para aprimorar iluminação e materiais com qualidade fotorrealista. O DLSS 5 roda sobre o DLSS 4.5.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "O DLSS 5 funciona em placas AMD ou Intel?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Não. O DLSS é uma tecnologia exclusiva da NVIDIA. Usuários AMD devem usar FSR 4, e usuários Intel devem usar XeSS como alternativas.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "O DLSS 5 já está disponível?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Não. O DLSS 5 foi anunciado na GTC em 16 de março de 2026 e será lançado no outono de 2026. O que está disponível agora: DLSS 4/4.5 com Geração Multi-Frame para RTX 50, Geração de Quadros para RTX 40, e Super Resolution para RTX 20/30/40/50.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Quais jogos vão suportar DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "A NVIDIA anunciou um grupo inicial de jogos para DLSS 5, incluindo Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem e The Elder Scrolls IV: Oblivion Remastered. Cada jogo ainda precisa de patch notes e detalhes finais.",
-        },
-      },
-    ],
+    })),
   };
 
   return (
@@ -95,7 +91,7 @@ export default function PtHome() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              DLSS 5 Neural Rendering · Anunciado GTC 2026 · Lançamento Outono 2026
+              DLSS 5 Neural Rendering · Disponível desde 4 de setembro de 2026
             </div>
 
             {/* H1 */}
@@ -182,18 +178,19 @@ export default function PtHome() {
                 respostas fotorrealistas de iluminação e material em tempo real.
               </p>
               <p>
-                O DLSS 5 <strong>ainda não foi lançado</strong> — será lançado no{" "}
-                <strong>outono de 2026</strong>. A NVIDIA confirmou o caminho RTX 50,
-                enquanto modelos de entrada ainda devem ser verificados na documentação final
-                por modelo. A NVIDIA anunciou um grupo inicial de títulos, incluindo Starfield, Hogwarts
-                Legacy e Assassin&apos;s Creed Shadows, mas os detalhes finais ainda dependem
-                de cada jogo.
+                O DLSS 5 <strong>já foi lançado</strong>: a liberação pública aconteceu em{" "}
+                <strong>4 de setembro de 2026 no Brasil</strong>. O suporte local confirmado
+                é para PCs e notebooks GeForce RTX Série 50, incluindo RTX 5060 Ti, RTX 5060
+                e RTX 5050, além das Laptop GPU RTX 5090, 5080, 5070 Ti, 5070, 5060 e 5050.
+                A RTX 40 está no plano da NVIDIA, mas sem data de disponibilidade anunciada;
+                por isso, não deve ser tratada como compatível hoje.
               </p>
               <p>
-                <strong>O que está disponível hoje:</strong> As GPUs da série RTX 50 já se
-                beneficiam do DLSS 4/4.5, que inclui Geração Multi-Frame (até 6X com DLSS 4.5),
-                Super Resolution baseado em Transformer de 2ª geração, e Ray Reconstruction.
-                Mais de 250 jogos suportam as versões atuais do DLSS.
+                <strong>O que está disponível hoje:</strong> NBA 2K27 é o primeiro jogo com
+                DLSS 5 disponível localmente para RTX 50 usando o driver GeForce Game Ready
+                616.64 WHQL. Em GeForce NOW Ultimate, o processamento acontece nas máquinas
+                RTX 5080 da NVIDIA; isso não significa que o seu PC local sem RTX 50 ganhou
+                suporte ao DLSS 5.
               </p>
             </div>
           </section>
@@ -204,8 +201,8 @@ export default function PtHome() {
           <section id="placas-suportadas">
             <h2 className="text-3xl font-bold mb-2">Quais Placas Suportam DLSS 5?</h2>
             <p className="text-muted-foreground mb-6">
-              O status do DLSS 5 Neural Rendering é separado em confirmado, esperado,
-              desconhecido, improvável ou sem suporte. Recursos atuais do DLSS 4/4.5 são
+              O status do DLSS 5 Neural Rendering é separado em confirmado, planejado,
+              sem suporte oficial atual ou fora do DLSS. Recursos atuais do DLSS 4/4.5 são
               mostrados para referência.
             </p>
             <SupportedGPUsTable locale="pt" />
@@ -235,40 +232,9 @@ export default function PtHome() {
 }
 
 function PtFAQ() {
-  const faqs = [
-    {
-      q: "O que é o DLSS 5?",
-      a: "DLSS 5 é a tecnologia de renderização com IA de próxima geração da NVIDIA, anunciada na GTC em 16 de março de 2026, com lançamento previsto para o outono de 2026. Ao contrário do DLSS 4/4.5, que focam em desempenho, o DLSS 5 é sobre fidelidade visual. Seu recurso principal é o Real-time Neural Rendering — aprimoramento com IA de iluminação e materiais. Jensen Huang chamou de 'o momento GPT para gráficos.'",
-    },
-    {
-      q: "Quais placas de vídeo suportam o DLSS 5?",
-      a: "O caminho mais claro é RTX 50: RTX 5090, 5080, 5070 Ti e 5070 são tratadas como confirmadas neste tracker; RTX 5060 Ti e 5060 ficam como esperadas, mas pendentes da documentação final por modelo. RTX 40 é desconhecida e RTX 20/30 é improvável.",
-    },
-    {
-      q: "Qual a diferença entre DLSS 5 e DLSS 4?",
-      a: "DLSS 4 (CES 2025) introduziu a Geração Multi-Frame (até 3 frames adicionais de IA) e o primeiro modelo Transformer para Super Resolution. DLSS 4.5 (CES 2026) adicionou Dynamic 6X MFG (5 frames adicionais). DLSS 5 é completamente diferente — é sobre fidelidade visual, não desempenho. Adiciona Neural Rendering que analisa a semântica da cena e gera respostas fotorrealistas de materiais.",
-    },
-    {
-      q: "RTX 4090 vai suportar DLSS 5?",
-      a: "Ainda é desconhecido. Se você tem uma RTX 40, pode usar DLSS 3 Frame Generation, Super Resolution e Ray Reconstruction hoje, mas DLSS 5 Neural Rendering deve esperar a documentação final da NVIDIA.",
-    },
-    {
-      q: "O DLSS 5 já está disponível no Brasil?",
-      a: "Não. O DLSS 5 foi anunciado na GTC em 16 de março de 2026 e será lançado globalmente no outono de 2026. O que está disponível agora: DLSS 4/4.5 com Geração Multi-Frame para RTX 50, Geração de Frames para RTX 40, e Super Resolution para RTX 20/30/40/50 em mais de 250 jogos.",
-    },
-    {
-      q: "Quais jogos vão ter DLSS 5?",
-      a: "A NVIDIA anunciou um grupo inicial de jogos para o DLSS 5 Neural Rendering, incluindo Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem e The Elder Scrolls IV: Oblivion Remastered. Trate isso como suporte anunciado até cada jogo publicar notas de patch, configurações e detalhes de GPU.",
-    },
-    {
-      q: "Vale a pena comprar RTX 50 para o DLSS 5?",
-      a: "RTX 50 é o caminho mais seguro para DLSS 5, mas modelos específicos ainda devem ser conferidos na documentação final. Hoje, as GPUs RTX 50 já rodam recursos do DLSS 4/4.5 com Geração Multi-Frame em jogos compatíveis.",
-    },
-  ];
-
   return (
     <div className="space-y-4">
-      {faqs.map((item, i) => (
+      {ptFaqs.map((item, i) => (
         <div key={i} className="border border-border rounded-lg p-5">
           <h3 className="font-semibold text-sm sm:text-base mb-2">{item.q}</h3>
           <p className="text-muted-foreground text-sm leading-relaxed">{item.a}</p>

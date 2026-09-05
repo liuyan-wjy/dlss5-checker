@@ -5,16 +5,49 @@ import { ALL_GPUS, type GPU } from "@/lib/gpu-search";
 import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 
 export const metadata: Metadata = {
-  title: "Will DLSS 5 Be on RTX 40 Series? RTX 4090, 4080, 4070 Status",
+  title: "DLSS 5 on RTX 40 Series: Planned, Not Available Yet",
   description:
-    "See what is confirmed, what is not confirmed, and what RTX 40 cards can already do with DLSS today, including RTX 4090, RTX 4080, RTX 4070, and RTX 4060.",
+    "See RTX 40 DLSS 5 planned status, why it is not available yet, and what RTX 4090, RTX 4080, RTX 4070, and RTX 4060 cards can already do with DLSS.",
   alternates: {
     canonical: "/dlss-5-rtx-40-series",
+  },
+  openGraph: {
+    title: "DLSS 5 on RTX 40 Series: Planned, Not Available Yet",
+    description:
+      "See RTX 40 DLSS 5 planned status, why it is not available yet, and what RTX 4090, RTX 4080, RTX 4070, and RTX 4060 cards can already do with DLSS.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-5-rtx-40-series",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DLSS 5 on RTX 40 Series: Planned, Not Available Yet",
+    description:
+      "See RTX 40 DLSS 5 planned status, why it is not available yet, and what RTX 4090, RTX 4080, RTX 4070, and RTX 4060 cards can already do with DLSS.",
   },
 };
 
 const rtx40Cards = ALL_GPUS.filter((gpu) => gpu.series === "RTX 40");
 const PAGE_URL = "https://www.dlss5.net/dlss-5-rtx-40-series";
+const NVIDIA_RTX40_PLAN =
+  "https://www.reddit.com/r/nvidia/comments/1w4bcvp/nvidia_dlss_5_available_september_3rd_dlss/?sort=new";
+
+const faqItems = [
+  {
+    question: "Will DLSS 5 be on RTX 40 series?",
+    answer:
+      "NVIDIA has said RTX 40 support is planned after RTX 50 optimization, but it is not available yet and has no public release date. RTX 40 cards still support current features such as Frame Generation, Super Resolution, Ray Reconstruction, and DLAA.",
+  },
+  {
+    question: "Does RTX 4070 support DLSS 5?",
+    answer:
+      "RTX 4070 is in the planned RTX 40 bucket, not the currently supported bucket. It currently supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA.",
+  },
+  {
+    question: "Should RTX 40 owners upgrade only for DLSS 5?",
+    answer:
+      "If DLSS 5 is the only reason to upgrade, wait for NVIDIA's RTX 40 release details. RTX 40 cards are still strong for current DLSS features.",
+  },
+];
 
 function CardName({ gpu }: { gpu: GPU }) {
   if (isEnabledGpuSlug("en", gpu.id)) {
@@ -32,32 +65,14 @@ export default function Dlss5Rtx40SeriesPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Will DLSS 5 be on RTX 40 series?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "NVIDIA has not published a final DLSS 5 support matrix for RTX 40 series cards. RTX 40 cards support current features such as Frame Generation, Super Resolution, Ray Reconstruction, and DLAA, but DLSS 5 Neural Rendering should be treated as unconfirmed.",
-        },
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
       },
-      {
-        "@type": "Question",
-        name: "Does RTX 4070 support DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "RTX 4070 support for DLSS 5 is unconfirmed. It currently supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Should RTX 40 owners upgrade only for DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "If DLSS 5 is the only reason to upgrade, it is safer to wait for NVIDIA's final launch support details. RTX 40 cards are still strong for current DLSS features.",
-        },
-      },
-    ],
+    })),
   };
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -80,10 +95,10 @@ export default function Dlss5Rtx40SeriesPage() {
   const webPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Will DLSS 5 Be on RTX 40 Series?",
+    name: "DLSS 5 on RTX 40 Series",
     url: PAGE_URL,
     inLanguage: "en",
-    dateModified: "2026-06-22",
+    dateModified: "2026-09-05",
     isPartOf: {
       "@type": "WebSite",
       name: "DLSS 5 Checker",
@@ -122,14 +137,14 @@ export default function Dlss5Rtx40SeriesPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked August 1, 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked September 5, 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-            Will DLSS 5 Be on RTX 40 Series?
+            DLSS 5 on RTX 40 Series: Planned, Not Available Yet
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            The honest answer is: unknown until final launch documentation. RTX 40 cards
-            are excellent current DLSS cards, but the new neural rendering feature has not
-            been officially promised for RTX 4090, 4080, 4070, or 4060 models.
+            The honest answer is: planned, but not available yet. RTX 40 cards are
+            excellent current DLSS cards, but DLSS 5 Neural Rendering is only live for
+            RTX 50 desktop and laptop GPUs in NBA 2K27 today.
           </p>
         </header>
 
@@ -138,16 +153,16 @@ export default function Dlss5Rtx40SeriesPage() {
             <h2 className="text-xl font-bold mb-2">What is known</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
               RTX 40 supports DLSS Frame Generation, Super Resolution, Ray Reconstruction,
-              and DLAA in supported games. NVIDIA&apos;s current public hardware table keeps
-              Multi Frame Generation and Dynamic Multi Frame Generation on RTX 50.
+              and DLAA in supported games. NVIDIA has also said RTX 40 DLSS 5 support is
+              planned after RTX 50 optimization.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
             <h2 className="text-xl font-bold mb-2">What is still open</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              DLSS 5 Neural Rendering has been announced for a fall 2026 launch, but NVIDIA
-              has not released a complete per-generation matrix for older cards. That is why
-              this site labels RTX 40 as unknown rather than confirmed.
+              RTX 40 does not have a public DLSS 5 player release date, driver path, or
+              in-game setting yet. That is why this site labels RTX 40 as planned rather
+              than confirmed.
             </p>
           </div>
         </section>
@@ -179,7 +194,7 @@ export default function Dlss5Rtx40SeriesPage() {
                     </td>
                     <td className="px-4 py-3">
                       <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 text-xs text-yellow-300">
-                        Unknown
+                        Planned
                       </span>
                     </td>
                   </tr>
@@ -193,9 +208,9 @@ export default function Dlss5Rtx40SeriesPage() {
           <h2 className="text-2xl font-bold text-foreground">RTX 4070 owners: what matters</h2>
           <p>
             If you searched for RTX 4070 specifically, the useful split is simple: your card
-            already has the main RTX 40 DLSS stack, but it is not in the RTX 50-only group
-            for Multi Frame Generation or Dynamic MFG. For the new DLSS 5 visual layer, wait
-            for launch documentation before buying or selling hardware around one feature.
+            already has the main RTX 40 DLSS stack, but it is not in the live RTX 50 DLSS 5
+            group. For the new DLSS 5 visual layer, wait for RTX 40 release documentation
+            before buying or selling hardware around one feature.
           </p>
           <p>
             The same logic applies across the generation. RTX 4090 and RTX 4080 have more raw
@@ -217,13 +232,13 @@ export default function Dlss5Rtx40SeriesPage() {
             <div>
               <h3 className="font-semibold mb-1">Wait</h3>
               <p className="text-sm text-muted-foreground">
-                Best choice if DLSS 5 is the only reason you are considering a new GPU.
+                Best choice if DLSS 5 on RTX 40 is the only reason you are considering a new GPU.
               </p>
             </div>
             <div>
               <h3 className="font-semibold mb-1">Buy RTX 50</h3>
               <p className="text-sm text-muted-foreground">
-                Safest path if confirmed DLSS 5 compatibility matters more than price.
+                Current path if confirmed DLSS 5 compatibility matters more than price.
               </p>
             </div>
           </div>
@@ -283,7 +298,7 @@ export default function Dlss5Rtx40SeriesPage() {
             >
               <div className="font-semibold mb-1">Evidence tracker</div>
               <p className="text-sm text-muted-foreground">
-                See why RTX 40 is unknown until final launch documentation.
+                See why RTX 40 is planned but not live yet.
               </p>
             </Link>
             <Link
@@ -295,6 +310,18 @@ export default function Dlss5Rtx40SeriesPage() {
                 Understand which current DLSS features RTX 40 already has.
               </p>
             </Link>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">Frequently asked questions</h2>
+          <div className="space-y-5">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="font-semibold mb-1">{item.question}</h3>
+                <p className="text-sm text-foreground/80 leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -310,16 +337,20 @@ export default function Dlss5Rtx40SeriesPage() {
             </a>{" "}
             and{" "}
             <a
-              href="https://nvidianews.nvidia.com/news/nvidia-dlss-5-delivers-ai-powered-breakthrough-in-visual-fidelity-for-games"
+              href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/"
               className="text-blue-400 hover:underline"
             >
               DLSS 5 announcement
             </a>
-            . Treat the RTX 40 answer as provisional until NVIDIA publishes final launch
-            requirements for DLSS 5.
+            , and{" "}
+            <a href={NVIDIA_RTX40_PLAN} className="text-blue-400 hover:underline">
+              NVIDIA&apos;s RTX 40 support plan update
+            </a>
+            . Treat the RTX 40 answer as provisional until NVIDIA publishes driver,
+            setting, and release-date details for RTX 40 DLSS 5 support.
           </p>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

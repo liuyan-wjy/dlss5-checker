@@ -3,6 +3,8 @@ import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import ComparisonTable from "@/components/ComparisonTable";
 
+const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-vs-dlss-4-5";
+
 export const metadata: Metadata = {
   title: "DLSS 5 vs DLSS 4.5: diferença real para jogos e placas",
   description:
@@ -13,6 +15,20 @@ export const metadata: Metadata = {
       en: "https://www.dlss5.net/dlss-5-vs-dlss-4-5",
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-vs-dlss-4-5",
     },
+  },
+  openGraph: {
+    title: "DLSS 5 vs DLSS 4.5: diferença real para jogos e placas",
+    description:
+      "Compare DLSS 5 vs DLSS 4.5 em português: Neural Rendering, Super Resolution, geração de quadros, jogos compatíveis e suporte de placas RTX.",
+    type: "article",
+    locale: "pt_BR",
+    url: PAGE_URL,
+  },
+  twitter: {
+    card: "summary",
+    title: "DLSS 5 vs DLSS 4.5: diferença real para jogos e placas",
+    description:
+      "Compare DLSS 5 vs DLSS 4.5 em português: Neural Rendering, Super Resolution, geração de quadros, jogos compatíveis e suporte de placas RTX.",
   },
 };
 
@@ -25,7 +41,7 @@ const comparisonRows = [
   {
     angle: "Disponibilidade",
     dlss45: "Disponível em jogos compatíveis hoje.",
-    dlss5: "Anunciado para outono de 2026, ainda sem detalhes finais por jogo.",
+    dlss5: "Disponível desde 4 de setembro de 2026 no Brasil, começando por NBA 2K27 em RTX 50.",
   },
   {
     angle: "O que o jogador percebe",
@@ -35,7 +51,7 @@ const comparisonRows = [
   {
     angle: "Compra de GPU",
     dlss45: "RTX 50 aproveita os recursos mais novos; RTX 40 continua forte no DLSS atual.",
-    dlss5: "RTX 50 é o caminho mais seguro. RTX 40 ainda precisa de confirmação.",
+    dlss5: "RTX 50 é o suporte local confirmado. RTX 40 está planejada para uma fase futura, sem data.",
   },
 ];
 
@@ -43,17 +59,17 @@ const faqItems = [
   {
     question: "DLSS 5 é a mesma coisa que DLSS 4.5?",
     answer:
-      "Não. DLSS 4.5 faz parte da pilha atual de Super Resolution e geração de quadros. DLSS 5 é a camada anunciada de Neural Rendering para fidelidade visual.",
+      "Não. DLSS 4.5 faz parte da pilha de Super Resolution, Ray Reconstruction e geração de quadros. DLSS 5 é a camada de Neural Rendering lançada para fidelidade visual.",
   },
   {
     question: "DLSS 4.5 já está disponível?",
     answer:
-      "Sim, recursos atuais de DLSS 4.5 estão disponíveis em jogos e caminhos compatíveis. Já o DLSS 5 ainda depende do lançamento público previsto para outono de 2026.",
+      "Sim. DLSS 4.5 segue disponível em jogos e perfis compatíveis, enquanto DLSS 5 começou em NBA 2K27 para RTX 50. São camadas diferentes.",
   },
   {
     question: "Vale comprar RTX 50 só por causa do DLSS 5?",
     answer:
-      "RTX 50 é o caminho mais seguro para quem quer DLSS 5, mas se esse for o único motivo da compra, vale esperar a matriz final de suporte e testes reais em jogos.",
+      "RTX 50 é o caminho local confirmado para DLSS 5 hoje. Se o único motivo da compra for RTX 40 ganhar DLSS 5 no futuro, espere a NVIDIA publicar uma data.",
   },
 ];
 
@@ -89,15 +105,15 @@ export default function PtDlss5VsDlss45Page() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Atualizado em maio de 2026
+            Revisado em 5 de setembro de 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 vs DLSS 4.5: diferença real para jogos e placas
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            A comparação mais importante é simples: DLSS 4.5 é a pilha atual de
-            desempenho e qualidade de imagem. DLSS 5 é a camada anunciada de Neural
-            Rendering para fidelidade visual.
+            A comparação mais importante é simples: DLSS 4.5 continua sendo a pilha de
+            desempenho e reconstrução de imagem; DLSS 5 é a camada de Neural Rendering
+            lançada para fidelidade visual em jogos específicos.
           </p>
         </header>
 
@@ -105,8 +121,9 @@ export default function PtDlss5VsDlss45Page() {
           <h2 className="text-2xl font-bold mb-3">DLSS 5 é igual ao DLSS 4.5?</h2>
           <p className="text-foreground/80 leading-relaxed">
             Não. DLSS 4.5 melhora a pilha atual de upscaling e geração de quadros. DLSS 5
-            adiciona uma camada de Neural Rendering para iluminação e materiais, mas ainda
-            precisa de confirmação final em jogos e placas.
+            adiciona uma camada de Neural Rendering para iluminação e materiais. Hoje ele
+            está confirmado localmente na Série RTX 50, com NBA 2K27 como primeiro jogo
+            disponível; RTX 40 está planejada para depois, sem data pública.
           </p>
         </section>
 
@@ -202,7 +219,7 @@ export default function PtDlss5VsDlss45Page() {
             </a>{" "}
             e{" "}
             <a
-              href="https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/"
+              href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/"
               className="text-blue-400 hover:underline"
             >
               anúncio do DLSS 5
@@ -210,7 +227,7 @@ export default function PtDlss5VsDlss45Page() {
             .
           </p>
         </section>
-        <ArticleTrustBlock locale="pt" />
+        <ArticleTrustBlock locale="pt" reviewedAt="2026-09-05" />
       </main>
     </>
   );

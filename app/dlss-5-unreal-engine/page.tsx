@@ -5,15 +5,28 @@ import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 export const metadata: Metadata = {
   title: "DLSS 5 Unreal Engine Status: What Developers Know Now",
   description:
-    "See DLSS 5 Unreal Engine status, current DLSS 4.5 UE plugin support, Streamline details, and what remains unconfirmed for developers before public launch.",
+    "See DLSS 5 Unreal Engine status, current DLSS 4.5 UE plugin support, Streamline details, and what remains separate from the NBA 2K27 player launch.",
   alternates: {
     canonical: "/dlss-5-unreal-engine",
+  },
+  openGraph: {
+    title: "DLSS 5 Unreal Engine Status: What Developers Know Now",
+    description:
+      "See DLSS 5 Unreal Engine status, current DLSS 4.5 UE plugin support, Streamline details, and what remains separate from the NBA 2K27 player launch.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-5-unreal-engine",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DLSS 5 Unreal Engine Status: What Developers Know Now",
+    description:
+      "See DLSS 5 Unreal Engine status, current DLSS 4.5 UE plugin support, Streamline details, and what remains separate from the NBA 2K27 player launch.",
   },
 };
 
 const NVIDIA_DEVELOPER_DLSS = "https://developer.nvidia.com/rtx/dlss";
 const NVIDIA_DLSS5 =
-  "https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/";
+  "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/";
 const NVIDIA_DLSS45_NOW =
   "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-generation-6x-mode-released/";
 
@@ -35,8 +48,8 @@ const pluginRows = [
   },
   {
     item: "DLSS 5 integration",
-    currentStatus: "Announced, not fully documented for shipping UE games",
-    developerMeaning: "Do not promise final settings, GPU behavior, or release date before NVIDIA publishes launch details.",
+    currentStatus: "Live in NBA 2K27; UE developer package details still separate",
+    developerMeaning: "Do not infer a downloadable DLSS 5 UE plugin solely from the NBA 2K27 player launch.",
   },
 ];
 
@@ -45,11 +58,11 @@ const implementationChecklist = [
   "Decide whether the project needs native plugin integration, Streamline, or both.",
   "Test Super Resolution, Frame Generation, Reflex, and Ray Reconstruction separately.",
   "Record which settings are exposed in the shipping graphics menu.",
-  "Track launch notes for the Fall 2026 visual layer before making public promises.",
+  "Track each game's launch notes before making public DLSS 5 promises.",
 ];
 
 const openQuestions = [
-  "Which UE plugin package will expose the Fall 2026 feature first?",
+  "Which public UE plugin package will expose the DLSS 5 feature first?",
   "Will the new visual layer require a new engine-side buffer path?",
   "Which GPU tiers will expose the mode in shipping games?",
   "How will developers tune intensity, masks, and color grading in public tools?",
@@ -59,7 +72,7 @@ const faqItems = [
   {
     question: "What is the DLSS 5 Unreal Engine status now?",
     answer:
-      "The DLSS 5 Unreal Engine status is announced but not final for shipping games. NVIDIA's public developer page currently documents the official DLSS 4.5 Unreal Engine plugin. The next visual layer has been announced, but final Unreal Engine integration details still need launch documentation.",
+      "DLSS 5 is live for players in NBA 2K27, but NVIDIA's public developer page currently documents the official DLSS 4.5 Unreal Engine plugin. Treat public UE integration details as separate from one game's player launch.",
   },
   {
     question: "What does the current Unreal Engine plugin include?",
@@ -69,7 +82,7 @@ const faqItems = [
   {
     question: "Should developers market a game as DLSS 5 ready?",
     answer:
-      "Use cautious wording unless NVIDIA or the publisher has public launch documentation. Current 4.5 support is not the same as confirmed Fall 2026 visual-layer support.",
+      "Use cautious wording unless NVIDIA or the publisher has public game or developer documentation. Current 4.5 UE support is not the same as a confirmed DLSS 5 UE plugin package.",
   },
 ];
 
@@ -128,16 +141,16 @@ export default function Dlss5UnrealEnginePage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Developer status checked August 2026
+            Developer status checked September 5, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Unreal Engine Status: What Developers Know
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             This DLSS 5 Unreal Engine status page keeps the current official 4.5 plugin
-            separate from the next visual-fidelity layer. The new layer is announced, but
-            developers still need final launch documentation before treating it as a
-            shipping feature.
+            separate from the NBA 2K27 player launch. DLSS 5 is live in that game, but
+            developers still need public UE-specific documentation before treating a plugin
+            package as confirmed.
           </p>
         </header>
 
@@ -145,9 +158,9 @@ export default function Dlss5UnrealEnginePage() {
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
             <h2 className="font-bold mb-2">Quick answer</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              For DLSS 5 Unreal Engine work, NVIDIA lists an official 4.5 Unreal Engine
-              plugin today. It does not yet replace a final support matrix, UE integration
-              guide, or launch checklist.
+              For Unreal Engine work, NVIDIA lists an official DLSS 4.5 Unreal Engine
+              plugin today. NBA 2K27&apos;s DLSS 5 launch does not by itself confirm a public
+              DLSS 5 UE plugin package.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
@@ -155,14 +168,14 @@ export default function Dlss5UnrealEnginePage() {
             <p className="text-sm text-foreground/80 leading-relaxed">
               The developer page lists UE 5.7, 5.6, 5.5, and 5.4 downloads plus Streamline
               resources for current integrations. DLSS 5 Unreal Engine claims should still
-              wait for final developer notes.
+              wait for public developer notes.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Cautious wording</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              Say &quot;current plugin support&quot; for 4.5 features and &quot;announced&quot; for the Fall
-              2026 visual layer until NVIDIA publishes developer launch details.
+              Say &quot;current plugin support&quot; for 4.5 features and &quot;available in NBA 2K27&quot;
+              for the player launch. Do not merge those into a UE plugin claim.
             </p>
           </div>
         </section>
@@ -171,7 +184,7 @@ export default function Dlss5UnrealEnginePage() {
           <h2 className="text-2xl font-bold mb-4">Developer status table</h2>
           <p className="mb-5 text-foreground/80 leading-relaxed">
             The DLSS 5 Unreal Engine question has two layers: what the public plugin
-            supports now, and what the announced Fall 2026 feature will require later.
+            supports now, and what public DLSS 5 developer documentation still needs to cover.
           </p>
           <div className="overflow-x-auto rounded-lg border border-border">
             <table className="w-full text-sm">
@@ -233,8 +246,8 @@ export default function Dlss5UnrealEnginePage() {
           <p>
             That distinction matters for titles built in Unreal Engine. A game can use the
             current plugin for Super Resolution or Frame Generation without confirming the
-            next visual-fidelity feature. Good DLSS 5 Unreal Engine answers should keep
-            those states separate.
+            DLSS 5 Neural Rendering developer package. Good DLSS 5 Unreal Engine answers
+            should keep those states separate.
           </p>
         </section>
 
@@ -263,8 +276,8 @@ export default function Dlss5UnrealEnginePage() {
           </p>
           <p className="text-foreground/80 leading-relaxed">
             For now, the safest public documentation pattern is status-based: available for
-            current plugin features, announced for the next visual layer, and unconfirmed
-            for anything that lacks final NVIDIA or publisher launch notes.
+            current plugin features, available in NBA 2K27 for the player feature, and
+            unconfirmed for UE-specific package details that lack final NVIDIA notes.
           </p>
         </section>
 
@@ -284,7 +297,7 @@ export default function Dlss5UnrealEnginePage() {
           >
             <div className="font-semibold mb-1">Evidence tracker</div>
             <p className="text-sm text-muted-foreground">
-              Check what is confirmed, announced, expected, or still unknown.
+              Check confirmed support, future plans, and the evidence still missing.
             </p>
           </Link>
           <Link
@@ -293,7 +306,7 @@ export default function Dlss5UnrealEnginePage() {
           >
             <div className="font-semibold mb-1">DLSS 5 games</div>
             <p className="text-sm text-muted-foreground">
-              Track named Fall 2026 games separately from engine support.
+              Track NBA 2K27 and other named games separately from engine support.
             </p>
           </Link>
           <Link
@@ -302,7 +315,7 @@ export default function Dlss5UnrealEnginePage() {
           >
             <div className="font-semibold mb-1">Neural rendering explainer</div>
             <p className="text-sm text-muted-foreground">
-              Understand what the announced visual layer is supposed to change.
+              Understand what the neural rendering layer changes for players and developers.
             </p>
           </Link>
         </section>
@@ -322,7 +335,7 @@ export default function Dlss5UnrealEnginePage() {
             <a href={NVIDIA_DLSS45_NOW} className="text-blue-400 hover:underline">
               NVIDIA 4.5 release notes
             </a>
-            . This page does not treat announced technology as final shipping behavior.
+            . This page does not treat one game launch as final UE developer behavior.
             This DLSS 5 Unreal Engine page should therefore be treated as a status page, not
             as launch documentation.
           </p>
@@ -339,7 +352,7 @@ export default function Dlss5UnrealEnginePage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

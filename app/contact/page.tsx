@@ -6,6 +6,18 @@ export const metadata: Metadata = {
   description:
     "Contact DLSS 5 Checker for data corrections, GPU requests, source updates, and editorial feedback about DLSS compatibility pages.",
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact | DLSS 5 GPU Compatibility Checker",
+    description:
+      "Contact DLSS 5 Checker for data corrections, GPU requests, source updates, and editorial feedback about DLSS compatibility pages.",
+    url: "https://www.dlss5.net/contact",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact | DLSS 5 GPU Compatibility Checker",
+    description:
+      "Contact DLSS 5 Checker for data corrections, GPU requests, source updates, and editorial feedback about DLSS compatibility pages.",
+  },
 };
 
 export default function ContactPage() {
@@ -70,9 +82,9 @@ export default function ContactPage() {
           <h2 className="text-lg font-semibold mb-2">Editorial Feedback</h2>
           <p className="text-muted-foreground text-sm">
             Send feedback when a page is confusing, overstates a launch claim, misses an
-            important caveat, or should link to a stronger source. DLSS 5 is still unreleased,
-            so we keep uncertain hardware, game, and driver details labeled until primary
-            documentation is public.
+            important caveat, or should link to a stronger source. DLSS 5 is available in
+            NBA 2K27 on RTX 50 GPUs. We label other game updates and RTX 40 support as
+            planned or pending until their own release documentation confirms availability.
           </p>
         </div>
       </div>

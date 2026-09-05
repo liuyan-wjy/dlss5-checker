@@ -121,7 +121,7 @@
       "dlss_support": true
     }
   ],
-  "note": "Benchmarks below reflect DLSS 4/4.5 performance (currently available). RTX 50 data uses DLSS 4 Multi Frame Generation. RTX 40 data uses DLSS 3 Frame Generation. RTX 20/30 data uses DLSS Super Resolution. DLSS 5 Neural Rendering performance data is not yet available (launches Fall 2026).",
+  "note": "Benchmarks below reflect DLSS 4/4.5 performance estimates, not DLSS 5 Neural Rendering test data. RTX 50 data uses DLSS 4 Multi Frame Generation. RTX 40 data uses DLSS 3 Frame Generation. RTX 20/30 data uses DLSS Super Resolution. New GPUs without explicit rows show no data instead of borrowing a desktop or same-tier score.",
   "benchmarks": {
     "cyberpunk-2077": {
       "resolution": "1440p",

@@ -13,31 +13,23 @@ const CONFIG = {
   confirmed: {
     icon: <CheckCircle2 className="w-8 h-8 text-green-500" />,
     badge: <Badge className="bg-green-500 text-white text-sm px-3 py-1">Confirmed</Badge>,
-    heading: "DLSS 5 Confirmed (Coming Fall 2026)",
+    heading: "DLSS 5 Confirmed (Available now)",
     headingColor: "text-green-500",
     cardBorder: "border-green-500/30",
     cardBg: "bg-green-500/5",
   },
-  expected: {
-    icon: <Clock className="w-8 h-8 text-lime-400" />,
-    badge: <Badge className="bg-lime-600 text-white text-sm px-3 py-1">Expected</Badge>,
-    heading: "DLSS 5 Expected, Per-Model Docs Pending",
-    headingColor: "text-lime-400",
-    cardBorder: "border-lime-500/30",
-    cardBg: "bg-lime-500/5",
-  },
-  unknown: {
+  planned: {
     icon: <Clock className="w-8 h-8 text-yellow-500" />,
-    badge: <Badge className="bg-yellow-500 text-white text-sm px-3 py-1">Unknown</Badge>,
-    heading: "DLSS 5 Support Unknown",
+    badge: <Badge className="bg-yellow-500 text-white text-sm px-3 py-1">Planned</Badge>,
+    heading: "DLSS 5 Planned, Not Available Yet",
     headingColor: "text-yellow-500",
     cardBorder: "border-yellow-500/30",
     cardBg: "bg-yellow-500/5",
   },
-  unlikely: {
+  unsupported: {
     icon: <AlertCircle className="w-8 h-8 text-orange-500" />,
-    badge: <Badge className="bg-orange-500 text-white text-sm px-3 py-1">Unlikely</Badge>,
-    heading: "DLSS 5 Support Unlikely",
+    badge: <Badge className="bg-orange-500 text-white text-sm px-3 py-1">Unsupported</Badge>,
+    heading: "DLSS 5 Not Officially Supported",
     headingColor: "text-orange-500",
     cardBorder: "border-orange-500/30",
     cardBg: "bg-orange-500/5",
@@ -78,7 +70,7 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
           {/* DLSS 5 status */}
           {gpu.dlss5_features.length > 0 && (
             <div className="mb-4">
-              <h3 className="text-sm font-semibold mb-2 text-foreground/70">DLSS 5 (Coming Fall 2026):</h3>
+              <h3 className="text-sm font-semibold mb-2 text-foreground/70">DLSS 5 (Available now):</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {gpu.dlss5_features.map((feat) => (
                   <div key={feat} className="flex items-center gap-2 text-sm">
@@ -93,7 +85,7 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
           {/* Current DLSS features */}
           {gpu.current_dlss_features.length > 0 && (
             <div className="mb-4">
-              <h3 className="text-sm font-semibold mb-2 text-foreground/70">Available Now (DLSS 4/4.5):</h3>
+              <h3 className="text-sm font-semibold mb-2 text-foreground/70">Other DLSS features available now:</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {gpu.current_dlss_features.map((feat) => (
                   <div key={feat} className="flex items-center gap-2 text-sm">

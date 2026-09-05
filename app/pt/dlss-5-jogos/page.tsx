@@ -3,9 +3,9 @@ import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
-  title: "Jogos com DLSS 5: lista anunciada e status por título",
+  title: "Jogos com DLSS 5: NBA 2K27 disponível e status por título",
   description:
-    "Veja quais jogos com DLSS 5 foram anunciados, o que ainda precisa ser verificado e por que suporte de jogo não é igual a suporte da sua placa.",
+    "Veja NBA 2K27 com DLSS 5 já disponível em RTX 50, quais jogos seguem apenas anunciados e por que suporte do jogo não é igual ao suporte da sua placa.",
   alternates: {
     canonical: "/pt/dlss-5-jogos",
     languages: {
@@ -13,9 +13,23 @@ export const metadata: Metadata = {
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-jogos",
     },
   },
+  openGraph: {
+    title: "Jogos com DLSS 5: NBA 2K27 disponível e status por título",
+    description:
+      "Veja NBA 2K27 com DLSS 5 já disponível em RTX 50, quais jogos seguem apenas anunciados e por que suporte do jogo não é igual ao suporte da sua placa.",
+    url: "https://www.dlss5.net/pt/dlss-5-jogos",
+    type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "Jogos com DLSS 5: NBA 2K27 disponível e status por título",
+    description:
+      "Veja NBA 2K27 com DLSS 5 já disponível em RTX 50, quais jogos seguem apenas anunciados e por que suporte do jogo não é igual ao suporte da sua placa.",
+  },
 };
 
 const announcedGames = [
+  "NBA 2K27",
   "AION 2",
   "Assassin's Creed Shadows",
   "Black State",
@@ -37,12 +51,12 @@ const faqItems = [
   {
     question: "Quais jogos vão ter DLSS 5?",
     answer:
-      "A NVIDIA anunciou um grupo inicial de jogos com DLSS 5, incluindo Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Hogwarts Legacy, Phantom Blade Zero e Delta Force. Ainda é preciso esperar notas de patch e configurações visíveis em cada jogo.",
+      "NBA 2K27 já está disponível com DLSS 5 em GPUs GeForce RTX 50 desktop e notebook. A NVIDIA também anunciou um grupo inicial de jogos com DLSS 5, incluindo Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Hogwarts Legacy, Phantom Blade Zero e Delta Force. Para esses outros jogos, ainda é preciso esperar notas de patch e configurações visíveis.",
   },
   {
     question: "DLSS 5 já está disponível nesses jogos?",
     answer:
-      "Não. A NVIDIA anunciou o DLSS 5 para o outono de 2026. Até lá, jogos podem ter DLSS 4 ou DLSS 4.5, mas isso não significa que a camada de Neural Rendering do DLSS 5 já esteja disponível.",
+      "Sim, em NBA 2K27 com GPU RTX 50 compatível. Nos demais títulos anunciados, trate como anunciado ou pendente de verificação até aparecerem patch notes, driver e opção de menu.",
   },
   {
     question: "Um jogo com DLSS 5 funciona em qualquer RTX?",
@@ -83,24 +97,25 @@ export default function PtDlss5JogosPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Atualizado em maio de 2026
+            Revisado em 5 de setembro de 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-            Jogos com DLSS 5: lista anunciada e status por título
+            Jogos com DLSS 5: NBA 2K27 disponível e status por título
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Esta página separa jogo anunciado, patch confirmado e suporte da sua placa.
-            Essa distinção é importante porque muita busca por &quot;jogos DLSS 5&quot;
-            mistura três respostas diferentes.
+            Esta página separa jogo disponível, jogo anunciado, patch confirmado e suporte
+            da sua placa. Essa distinção é importante porque muita busca por &quot;jogos DLSS
+            5&quot; mistura três respostas diferentes.
           </p>
         </header>
 
         <section className="mb-10 rounded-lg border border-green-500/30 bg-green-500/5 p-5">
           <h2 className="text-2xl font-bold mb-3">Resposta rápida</h2>
           <p className="text-foreground/80 leading-relaxed">
-            A NVIDIA já anunciou uma primeira lista de jogos com DLSS 5, mas isso ainda
-            não é o mesmo que suporte verificado em cada jogo. A confirmação final precisa
-            vir de notas de patch, driver compatível e opção visível no menu gráfico.
+            NBA 2K27 já está disponível com DLSS 5 em placas GeForce RTX 50 desktop e
+            notebook, com driver 616.64 WHQL e opção DLSS Neural Rendering no menu Video
+            Settings. Os outros jogos da lista continuam exigindo prova por patch antes de
+            serem marcados como disponíveis.
           </p>
         </section>
 
@@ -124,11 +139,13 @@ export default function PtDlss5JogosPage() {
                     <td className="px-4 py-3 font-medium">{game}</td>
                     <td className="px-4 py-3">
                       <span className="rounded-full border border-green-500/30 bg-green-500/10 px-2.5 py-1 text-xs text-green-300">
-                        Anunciado
+                        {game === "NBA 2K27" ? "Disponível em RTX 50" : "Anunciado"}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-muted-foreground">
-                      Patch do jogo, driver, menu gráfico e limite por GPU.
+                      {game === "NBA 2K27"
+                        ? "Driver 616.64 WHQL, Video Settings → DLSS Neural Rendering; o F9 alterna Neural Rendering."
+                        : "Patch do jogo, driver, menu gráfico e limite por GPU."}
                     </td>
                   </tr>
                 ))}
@@ -183,12 +200,21 @@ export default function PtDlss5JogosPage() {
           <h2 className="text-2xl font-bold mb-4">Links úteis</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
+              href="/games/nba-2k27-dlss-5"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">Guia do NBA 2K27</div>
+              <p className="text-sm text-muted-foreground">
+                Veja driver, caminho do menu, função do F9, RTX 40 e GeForce NOW no guia em inglês.
+              </p>
+            </Link>
+            <Link
               href="/pt/dlss-5-quais-placas"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
             >
               <div className="font-semibold mb-1">Placas compatíveis</div>
               <p className="text-sm text-muted-foreground">
-                Confirme se sua GPU entra no grupo confirmado, esperado, desconhecido ou improvável.
+                Confirme se sua GPU entra no grupo confirmado, planejado, sem suporte oficial ou sem DLSS.
               </p>
             </Link>
             <Link
@@ -208,16 +234,23 @@ export default function PtDlss5JogosPage() {
           <p>
             Esta página usa o{" "}
             <a
-              href="https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/"
+              href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/"
               className="text-blue-400 hover:underline"
             >
               anúncio oficial do DLSS 5
             </a>{" "}
-            como base e evita tratar vídeos de demonstração como comportamento final de
-            lançamento.
+            e a{" "}
+            <a
+              href="https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/"
+              className="text-blue-400 hover:underline"
+            >
+              nota do driver do NBA 2K27
+            </a>{" "}
+            como base; evita tratar vídeos de demonstração
+            como comportamento final de cada jogo.
           </p>
         </section>
-        <ArticleTrustBlock locale="pt" />
+        <ArticleTrustBlock locale="pt" reviewedAt="2026-09-05" />
       </main>
     </>
   );

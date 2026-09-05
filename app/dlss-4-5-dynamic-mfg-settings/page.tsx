@@ -9,6 +9,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/dlss-4-5-dynamic-mfg-settings",
   },
+  openGraph: {
+    title: "DLSS 4.5 Dynamic MFG Settings: NVIDIA App Guide 2026",
+    description:
+      "Learn DLSS 4.5 Dynamic MFG settings in the NVIDIA App, including Dynamic, Fixed, Max refresh rate, Custom targets, 6X mode, V-Sync, and limiter caveats.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-4-5-dynamic-mfg-settings",
+  },
+  twitter: {
+    card: "summary",
+    title: "DLSS 4.5 Dynamic MFG Settings: NVIDIA App Guide 2026",
+    description:
+      "Learn DLSS 4.5 Dynamic MFG settings in the NVIDIA App, including Dynamic, Fixed, Max refresh rate, Custom targets, 6X mode, V-Sync, and limiter caveats.",
+  },
 };
 
 const NVIDIA_DLSS45_NOW =
@@ -21,7 +34,7 @@ const settingRows = [
     setting: "Dynamic",
     where: "DLSS Override - Frame Generation Mode",
     useCase: "Targets the display refresh rate or a custom frame-rate cap.",
-    caveat: "NVIDIA says Dynamic mode is not currently compatible with V-Sync or frame rate limiters.",
+    caveat: "Supported with V-Sync or frame limiters only on the newer NVIDIA App path with 616.64 WHQL+ and Streamline 2.14+.",
   },
   {
     setting: "Fixed",
@@ -50,12 +63,13 @@ const settingRows = [
 ];
 
 const setupSteps = [
-  "Update the NVIDIA App and install a current Game Ready Driver.",
+  "Update the NVIDIA App and install a current Game Ready Driver. For Dynamic MFG with V-Sync or frame limiters, use 616.64 WHQL or later.",
   "Open the Graphics tab and choose the game or global profile you want to test.",
   "Find DLSS Override - Frame Generation Mode.",
   "Choose Dynamic for automatic shifting or Fixed for a selected multiplier.",
   "If Dynamic is selected, choose Max refresh rate or type a Custom target.",
   "Launch the game and confirm Frame Generation is enabled in the game menu when required.",
+  "If the app tooltip still warns that Dynamic is not compatible with V-Sync or frame limiters, reboot and confirm the game has received the Streamline 2.14+ path.",
 ];
 
 const troubleRows = [
@@ -118,7 +132,7 @@ const faqItems = [
   {
     question: "Why does NVIDIA warn about V-Sync and frame limiters?",
     answer:
-      "Dynamic mode is meant to control the frame-generation target itself. External limiters or V-Sync can conflict with that behavior, so NVIDIA says they are not currently compatible with Dynamic mode.",
+      "Older Dynamic MFG paths warned that V-Sync and frame limiters were not compatible. NVIDIA's newer September 2026 driver note says support requires the new NVIDIA App path, 616.64 WHQL or later, and Streamline 2.14 or later; if the old tooltip remains, the setup is not current.",
   },
 ];
 
@@ -177,7 +191,7 @@ export default function Dlss45DynamicMfgSettingsPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            NVIDIA App guide updated August 2026
+            NVIDIA App guide updated September 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 4.5 Dynamic MFG Settings: NVIDIA App Guide
@@ -196,8 +210,8 @@ export default function Dlss45DynamicMfgSettingsPage() {
             game or global profile, then use{" "}
             <strong>DLSS Override - Frame Generation Mode</strong>. Dynamic mode can target
             Max refresh rate or a Custom number. Fixed mode uses the selected multiplier.
-            NVIDIA says Dynamic mode is not currently compatible with V-Sync or frame rate
-            limiters.
+            Dynamic MFG with V-Sync or frame rate limiters requires the newer NVIDIA App
+            path, 616.64 WHQL or later, and Streamline 2.14 or later.
           </p>
         </section>
 
@@ -267,7 +281,7 @@ export default function Dlss45DynamicMfgSettingsPage() {
           <h2 className="text-2xl font-bold text-foreground">How to test without fooling yourself</h2>
           <p>
             Compare one variable at a time. If you are testing Dynamic mode, do not also
-            change resolution, ray tracing, Reflex, V-Sync, and game quality presets during
+            change resolution, ray tracing, Reflex, V-Sync, frame limits, and game quality presets during
             the same run. Frame pacing can feel different even when average FPS looks good.
           </p>
           <p>
@@ -377,6 +391,13 @@ export default function Dlss45DynamicMfgSettingsPage() {
 
         <section className="mb-10 text-sm text-muted-foreground leading-relaxed">
           <h2 className="text-xl font-bold text-foreground mb-3">Sources and limits</h2>
+          <p className="mb-3">
+            NVIDIA&apos;s{" "}
+            <a href="https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/" className="text-blue-400 hover:underline">
+              September 3, 2026 driver update
+            </a>{" "}
+            documents NBA 2K27 support and the newer Dynamic MFG requirements for V-Sync and frame limiters.
+          </p>
           <p>
             Primary sources:{" "}
             <a href={NVIDIA_DLSS45_NOW} className="text-blue-400 hover:underline">
@@ -404,7 +425,7 @@ export default function Dlss45DynamicMfgSettingsPage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

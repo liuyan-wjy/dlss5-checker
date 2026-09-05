@@ -11,7 +11,7 @@ const NVIDIA_DLSS_45 =
 const NVIDIA_DYNAMIC_MFG =
   "https://www.nvidia.com/en-us/geforce/news/nvidia-app-dlss-4-5-dynamic-multi-frame-generation-available-now/";
 const NVIDIA_RR_NEWS =
-  "https://www.nvidia.com/en-us/geforce/news/gamescom-2026-nvidia-geforce-rtx-dlss-4-5-announcements/";
+  "https://www.nvidia.com/en-gb/geforce/news/gamescom-2026-dlss-4-5-ray-reconstruction-release-announcements-trailers/";
 
 export const metadata: Metadata = {
   title: META_TITLE,
@@ -122,7 +122,7 @@ const faqItems = [
   {
     question: "Is DLSS 4.5 the same as DLSS 5?",
     answer:
-      "No. DLSS 4.5 is the current reconstruction and frame-generation stack. DLSS 5 Neural Rendering is a separate Fall 2026 technology focused on real-time neural rendering of lighting and materials.",
+      "No. DLSS 4.5 is the reconstruction and frame-generation stack. DLSS 5 Neural Rendering launched separately in September 2026 for real-time neural rendering of lighting and materials.",
   },
 ];
 
@@ -150,7 +150,7 @@ export default function Dlss45SupportedCardsPage() {
     headline: "DLSS 4.5 Supported Cards: RTX 20 to RTX 50 GPU Guide",
     url: PAGE_URL,
     datePublished: "2026-08-26",
-    dateModified: "2026-08-26",
+    dateModified: "2026-09-05",
     inLanguage: "en",
     author: { "@type": "Person", name: "DLSS 5 Checker Editor" },
     publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
@@ -170,7 +170,7 @@ export default function Dlss45SupportedCardsPage() {
         </nav>
 
         <header className="mb-10 max-w-3xl">
-          <p className="mb-3 text-sm font-semibold text-blue-400">Hardware and setup guide · Updated August 26, 2026</p>
+          <p className="mb-3 text-sm font-semibold text-blue-400">Hardware and setup guide · Reviewed September 5, 2026</p>
           <h1 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
             DLSS 4.5 Supported Cards: What Every RTX Generation Can Use
           </h1>
@@ -355,13 +355,14 @@ export default function Dlss45SupportedCardsPage() {
             <p>
               NVIDIA announced that the second-generation DLSS 4.5 Ray Reconstruction model is
               available through NVIDIA App Early Access in August 2026, with the regular release
-              planned for September. It is an all-RTX feature, so RTX 20, 30, 40, and 50 cards are
+              planned for September. NVIDIA&apos;s Gamescom guidance lists driver 580.88 or newer for
+              this Early Access path. It is an all-RTX feature, so RTX 20, 30, 40, and 50 cards are
               within the stated hardware group.
             </p>
             <p>
               Early Access availability is not the same as every game switching models at once.
-              NVIDIA&apos;s current path is to opt into Early Access in the NVIDIA App, open the game&apos;s
-              Graphics profile, choose DLSS Override Model Presets, select Custom, and use the
+              NVIDIA&apos;s current path is to open the game&apos;s Graphics profile in the NVIDIA App, use
+              Driver Settings, choose DLSS Override Model Presets, select Custom, and apply the
               recommended Ray Reconstruction preset where the profile supports it. If those controls
               are absent, confirm the app version, driver, game profile, and regional rollout before
               assuming the GPU is incompatible.
@@ -373,7 +374,7 @@ export default function Dlss45SupportedCardsPage() {
           <h2 className="mb-4 text-2xl font-bold">How to enable DLSS 4.5 safely</h2>
           <ol className="space-y-4 text-foreground/80">
             <li><strong className="text-foreground">1. Confirm the GPU generation.</strong> Use the NVIDIA App or Windows Task Manager. The exact series determines which frame-generation controls can appear.</li>
-            <li><strong className="text-foreground">2. Update official software.</strong> Install the current NVIDIA Game Ready Driver and NVIDIA App. NVIDIA listed driver 595.97 or newer for the March Dynamic MFG rollout; later releases should use the current supported driver rather than an archived package.</li>
+            <li><strong className="text-foreground">2. Update official software.</strong> Install the current NVIDIA Game Ready Driver and NVIDIA App. NVIDIA listed driver 580.88 or newer for the August Ray Reconstruction Early Access path; later releases should use the current supported driver rather than an archived package.</li>
             <li><strong className="text-foreground">3. Update the game.</strong> Read the game&apos;s patch notes and look for the exact feature. “DLSS supported” may refer only to Super Resolution.</li>
             <li><strong className="text-foreground">4. Check the NVIDIA App profile.</strong> Use an override only when the game profile exposes it. Choose the game, open Graphics, and review the DLSS override controls.</li>
             <li><strong className="text-foreground">5. Set a healthy base frame rate.</strong> Lower the heaviest graphics settings before enabling Frame Generation or MFG. Generated frames do not repair slow input response from a very low base rate.</li>
@@ -426,7 +427,7 @@ export default function Dlss45SupportedCardsPage() {
           </Link>
           <Link href="/dlss-5-vs-dlss-4-5" className="rounded-lg border border-border p-4 hover:border-blue-400">
             <div className="mb-1 font-semibold">DLSS 5 vs DLSS 4.5</div>
-            <p className="text-sm text-muted-foreground">Separate current reconstruction features from Fall 2026 Neural Rendering.</p>
+            <p className="text-sm text-muted-foreground">Separate current reconstruction features from launched DLSS 5 Neural Rendering.</p>
           </Link>
         </section>
 
@@ -438,7 +439,8 @@ export default function Dlss45SupportedCardsPage() {
             <a href={NVIDIA_DLSS_45} rel="noreferrer" className="text-blue-400 hover:underline">DLSS 4.5 model announcement</a>,{" "}
             <a href={NVIDIA_DYNAMIC_MFG} rel="noreferrer" className="text-blue-400 hover:underline">Dynamic MFG release guidance</a>, and{" "}
             <a href={NVIDIA_RR_NEWS} rel="noreferrer" className="text-blue-400 hover:underline">Gamescom 2026 Ray Reconstruction update</a>.
-            Published and checked by the DLSS 5 Checker Editor on August 26, 2026. A supported GPU
+            Published by the DLSS 5 Checker Editor on August 26, 2026 and reviewed on September 5,
+            2026. A supported GPU
             does not guarantee a feature in every game, and app profiles, driver requirements, and
             Early Access availability can change after publication.
           </p>

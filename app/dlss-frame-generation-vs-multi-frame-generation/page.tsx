@@ -9,6 +9,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/dlss-frame-generation-vs-multi-frame-generation",
   },
+  openGraph: {
+    title: "Frame Generation vs Multi Frame Generation in DLSS",
+    description:
+      "Compare DLSS Frame Generation, Multi Frame Generation, Dynamic MFG, and 6X mode so RTX 40 and RTX 50 users can separate current features from DLSS 5 claims.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-frame-generation-vs-multi-frame-generation",
+  },
+  twitter: {
+    card: "summary",
+    title: "Frame Generation vs Multi Frame Generation in DLSS",
+    description:
+      "Compare DLSS Frame Generation, Multi Frame Generation, Dynamic MFG, and 6X mode so RTX 40 and RTX 50 users can separate current features from DLSS 5 claims.",
+  },
 };
 
 const NVIDIA_DLSS45_NOW =
@@ -45,7 +58,7 @@ const comparisonRows = [
   {
     feature: "Neural rendering",
     output: "Targets lighting and material fidelity rather than only more frames",
-    hardware: "Fall 2026 support matrix still pending",
+    hardware: "RTX 50 local support today; RTX 40 planned later without a public date",
     intent: "Improve visual realism while staying tied to the game scene",
   },
 ];
@@ -64,7 +77,7 @@ const decisionCards = [
   {
     title: "If you are checking DLSS 5",
     copy:
-      "The next visual layer is a different question. A frame-generation feature being live today does not mean the Fall 2026 feature is available.",
+      "The neural rendering layer is a different question. A frame-generation feature being live today does not mean a game exposes DLSS 5.",
   },
 ];
 
@@ -77,12 +90,12 @@ const faqItems = [
   {
     question: "Is 6X mode the same as DLSS 5?",
     answer:
-      "No. 6X mode belongs to the current 4.5 frame-generation story. The next visual layer is announced for Fall 2026 and focuses on lighting and materials rather than only frame count.",
+      "No. 6X mode belongs to the current 4.5 frame-generation story. DLSS 5 Neural Rendering focuses on lighting and materials rather than only frame count.",
   },
   {
     question: "Why does Dynamic MFG matter?",
     answer:
-      "Dynamic mode can shift between multipliers instead of staying fixed. That can help target a refresh rate, but it also means external frame limiters and V-Sync need careful handling.",
+      "Dynamic mode can shift between multipliers instead of staying fixed. With the newer NVIDIA App path, 616.64 WHQL or later, and Streamline 2.14 or later, NVIDIA now supports Dynamic MFG with V-Sync and frame limiters in compatible setups.",
   },
 ];
 
@@ -141,7 +154,7 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Feature comparison updated August 2026
+            Feature comparison updated September 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Frame Generation vs Multi Frame Generation in DLSS
@@ -149,7 +162,7 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
           <p className="text-lg text-muted-foreground leading-relaxed">
             Frame Generation vs Multi Frame Generation is now a real compatibility question,
             not just wording. This page separates the older one-frame path, the RTX 50
-            multi-frame path, Dynamic mode, 6X, and the upcoming visual-fidelity layer.
+            multi-frame path, Dynamic mode, 6X, and DLSS 5 Neural Rendering.
           </p>
         </header>
 
@@ -159,7 +172,7 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
             <p className="text-sm text-foreground/80 leading-relaxed">
               Frame Generation vs Multi Frame Generation comes down to one generated frame
               versus several. Dynamic mode changes the multiplier automatically. 6X is the
-              newest high-end target, not the Fall 2026 visual layer.
+              newest high-end target, not DLSS 5 Neural Rendering.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
@@ -242,9 +255,9 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
           <h2 className="text-xl font-bold mb-3">Bottom line for compatibility searches</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
             If your search is about FPS today, focus on the current frame features and your
-            GPU tier. If your search is about visual fidelity in Fall 2026, use the evidence
+            GPU tier. If your search is about DLSS 5 visual fidelity, use the evidence
             tracker and supported-cards pages instead. Frame Generation vs Multi Frame
-            Generation and the Fall 2026 visual layer answer different questions.
+            Generation and Neural Rendering answer different questions.
           </p>
         </section>
 
@@ -290,7 +303,7 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
           >
             <div className="font-semibold mb-1">DLSS 5 vs 4.5</div>
             <p className="text-sm text-muted-foreground">
-              Separate the upcoming visual layer from current frame features.
+              Separate Neural Rendering from current frame features.
             </p>
           </Link>
           <Link
@@ -306,6 +319,13 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
 
         <section className="mb-10 text-sm text-muted-foreground leading-relaxed">
           <h2 className="text-xl font-bold text-foreground mb-3">Sources and limits</h2>
+          <p className="mb-3">
+            NVIDIA&apos;s{" "}
+            <a href="https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/" className="text-blue-400 hover:underline">
+              September 3, 2026 driver update
+            </a>{" "}
+            documents NBA 2K27 support and the newer Dynamic MFG requirements for V-Sync and frame limiters.
+          </p>
           <p>
             Primary sources:{" "}
             <a href={NVIDIA_DLSS45_NOW} className="text-blue-400 hover:underline">
@@ -321,7 +341,7 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
             </a>
             . Final behavior can still depend on the game, driver, app profile, and GPU.
             This Frame Generation vs Multi Frame Generation guide uses current public
-            wording and avoids treating announced features as already available.
+            wording and avoids treating every announced game as already verified.
           </p>
         </section>
 
@@ -336,7 +356,7 @@ export default function DlssFrameGenerationVsMultiFrameGenerationPage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

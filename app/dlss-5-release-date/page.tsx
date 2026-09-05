@@ -3,18 +3,33 @@ import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Release Date: Fall 2026 Launch Status Guide",
+  title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
   description:
-    "See the DLSS 5 release date status, Fall 2026 window, what NVIDIA has confirmed, what DLSS 4.5 features are live now, and what still needs launch proof.",
+    "See the DLSS 5 release date, NBA 2K27 launch status, RTX 50 support, RTX 40 planned support, and what still needs per-game proof.",
   alternates: {
     canonical: "/dlss-5-release-date",
+  },
+  openGraph: {
+    title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
+    description:
+      "See the DLSS 5 release date, NBA 2K27 launch status, RTX 50 support, RTX 40 planned support, and what still needs per-game proof.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-5-release-date",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
+    description:
+      "See the DLSS 5 release date, NBA 2K27 launch status, RTX 50 support, RTX 40 planned support, and what still needs per-game proof.",
   },
 };
 
 const NVIDIA_DLSS5_NEWS =
-  "https://nvidianews.nvidia.com/news/nvidia-dlss-5-delivers-ai-powered-breakthrough-in-visual-fidelity-for-games";
-const NVIDIA_DLSS5_GAMES =
-  "https://www.nvidia.com/en-us/geforce/news/death-stranding-2-crimson-desert-dlss-4-multi-frame-gen/";
+  "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/";
+const NVIDIA_DLSS5_CN =
+  "https://www.nvidia.cn/geforce/news/dlss-5-3d-guided-neural-rendering/";
+const NVIDIA_DLSS5_DRIVER =
+  "https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/";
 const NVIDIA_DLSS45_NOW =
   "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-generation-6x-mode-released/";
 const NVIDIA_DLSS_DEVELOPER = "https://developer.nvidia.com/rtx/dlss";
@@ -34,7 +49,7 @@ const timelineRows = [
     meaning:
       "NVIDIA named the first wave of publishers, developers, and games, but those titles still need final patch notes.",
     proof: "NVIDIA GeForce article",
-    href: NVIDIA_DLSS5_GAMES,
+    href: NVIDIA_DLSS5_NEWS,
   },
   {
     date: "March 31, 2026",
@@ -53,12 +68,20 @@ const timelineRows = [
     href: NVIDIA_DLSS_DEVELOPER,
   },
   {
-    date: "Fall 2026",
-    signal: "Public launch window",
+    date: "September 3, 2026",
+    signal: "DLSS 5 player launch",
     meaning:
-      "This is the safest release-date wording until NVIDIA publishes a dated driver, app, or game update.",
-    proof: "Official launch window",
-    href: NVIDIA_DLSS5_NEWS,
+      "DLSS 5 became available in NBA 2K27 for RTX 50 desktop and laptop GPUs at 9 p.m. Pacific time, which is September 4 at noon in Beijing.",
+    proof: "NVIDIA China launch timing",
+    href: NVIDIA_DLSS5_CN,
+  },
+  {
+    date: "September 3, 2026",
+    signal: "Game Ready Driver",
+    meaning:
+      "NVIDIA published the 616.64 WHQL Game Ready Driver note for NBA 2K27. The F9 toggle is documented in NVIDIA's main DLSS 5 launch article, not this driver note.",
+    proof: "Official driver note",
+    href: NVIDIA_DLSS5_DRIVER,
   },
 ];
 
@@ -66,7 +89,12 @@ const relatedPages = [
   {
     href: "/dlss-5-games",
     title: "Games tracker",
-    copy: "Check which titles are announced and which details still need verification.",
+    copy: "Check NBA 2K27 as verified and keep other titles separate until their patch notes appear.",
+  },
+  {
+    href: "/games/nba-2k27-dlss-5",
+    title: "NBA 2K27 DLSS 5 guide",
+    copy: "See the driver, menu path, F9 toggle, RTX 40 boundary, and cloud notes.",
   },
   {
     href: "/dlss-5-neural-rendering",
@@ -94,17 +122,17 @@ const faqItems = [
   {
     question: "What is the DLSS 5 release date?",
     answer:
-      "NVIDIA's official wording is Fall 2026. There is no narrower public release date yet, so exact month or day claims should be treated as unconfirmed.",
+      "DLSS 5 launched for NBA 2K27 on September 3, 2026 at 9 p.m. Pacific time. In Beijing, that is September 4, 2026 at noon.",
   },
   {
     question: "Is DLSS 5 available to download now?",
     answer:
-      "No. Current downloads and NVIDIA app overrides are for DLSS 4.5 and the existing feature stack. The next generation still needs its launch driver, app support, and game updates.",
+      "The player-facing route is NVIDIA's 616.64 WHQL Game Ready Driver plus a supported game. For NBA 2K27, the option appears under Video Settings > DLSS Neural Rendering and F9 toggles it in gameplay or replay.",
   },
   {
     question: "What changed after the announcement?",
     answer:
-      "The most important live change is DLSS 4.5 Dynamic Multi Frame Generation and 6X mode becoming available for RTX 50 owners. That is useful context, but it is not the same as the Fall 2026 feature.",
+      "DLSS 5 moved from announced to available in one verified game. RTX 50 desktop and laptop GPUs are confirmed, RTX 40 is planned for later, and other games still need their own public patch notes.",
   },
 ];
 
@@ -163,15 +191,15 @@ export default function Dlss5ReleaseDatePage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Last checked August 1, 2026
+            Last checked September 5, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-            DLSS 5 Release Date: Fall 2026 Status
+            DLSS 5 Release Date: September 2026 Launch Status
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            NVIDIA has confirmed a Fall 2026 launch window, but not a public day-one
-            driver, app version, or final game patch list. This page keeps the launch
-            window separate from current DLSS 4.5 features that are already live.
+            NVIDIA moved DLSS 5 from an announced Fall 2026 window to a verified player
+            launch in NBA 2K27. This page keeps that launch separate from other announced
+            games that still need their own public patch notes.
           </p>
         </header>
 
@@ -179,22 +207,22 @@ export default function Dlss5ReleaseDatePage() {
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
             <h2 className="font-bold mb-2">Fast answer</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              The safest date answer is Fall 2026. Anything more precise still needs a
-              source from NVIDIA or a named game publisher.
+              DLSS 5 launched for NBA 2K27 on September 3, 2026 Pacific time, or
+              September 4, 2026 at noon in Beijing.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Available now</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              DLSS 4.5 Dynamic Multi Frame Generation, 6X mode, and the updated Super
-              Resolution model are current features, not the new visual-fidelity layer.
+              NBA 2K27 exposes DLSS Neural Rendering for RTX 50 desktop and laptop GPUs
+              with NVIDIA&apos;s 616.64 WHQL Game Ready Driver.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Still missing</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              Final proof will be a launch driver, visible game settings, release notes,
-              and a per-GPU support matrix.
+              RTX 40 support is planned but not available. Other games remain announced
+              or pending until their own patch notes name DLSS 5 settings.
             </p>
           </div>
         </section>
@@ -235,29 +263,26 @@ export default function Dlss5ReleaseDatePage() {
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
           <h2 className="text-2xl font-bold text-foreground">
-            Why the exact launch date is still open
+            Why the launch answer still needs context
           </h2>
           <p>
-            A broad season is useful, but it is not the same as a consumer-ready release.
-            For this feature to be usable, players still need a compatible driver or app
-            update, games that expose the setting, and documentation that explains GPU
-            behavior. Until those pieces are public, a narrower date would be guesswork.
+            The broad Fall 2026 window is now historical context, not the current answer.
+            The current answer is narrower because NVIDIA has published a launch article,
+            a Game Ready Driver note, and one named game path: NBA 2K27.
           </p>
           <p>
-            The March 31 update matters because it shows NVIDIA is actively moving the
-            current stack forward. Dynamic frame generation and the 6X mode answer a
-            performance question for RTX 50 owners today. The Fall release is a separate
-            visual-fidelity milestone, so the two should not be merged into one answer.
+            That does not mean every announced DLSS 5 game is already updated. Use
+            game-by-game proof: NBA 2K27 is verified; other titles need their own publisher
+            or NVIDIA patch notes before you expect the setting to appear.
           </p>
         </section>
 
         <section className="mb-10 rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-5">
           <h2 className="text-xl font-bold mb-3">What would change this page?</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            The next meaningful update would be one of these: a dated NVIDIA launch post,
-            a Game Ready Driver release note, an NVIDIA app version that exposes the
-            setting, or a first-party patch note from a named game such as Starfield,
-            Resident Evil Requiem, Hogwarts Legacy, or Assassin&apos;s Creed Shadows.
+            The next meaningful update would be RTX 40 availability details, another
+            game patch note, or a revised NVIDIA support matrix. A rumor, preview video,
+            or DLL download is not enough.
           </p>
         </section>
 
@@ -288,7 +313,7 @@ export default function Dlss5ReleaseDatePage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

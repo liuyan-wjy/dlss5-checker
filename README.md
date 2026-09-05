@@ -29,8 +29,32 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy on Cloudflare Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The site uses Next.js static export. `npm run build` writes the complete site to
+`out/`; no Worker, Pages Function, or Next.js server is required.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Connect the existing `liuyan-wjy/dlss5-checker` GitHub repository to a Pages
+project with these settings:
+
+- Production branch: `main`
+- Framework preset: Next.js (Static HTML Export)
+- Build command: `npm run build`
+- Output directory: `out`
+- Root directory: repository root
+- Node.js: 22
+
+Before publishing, run `npm run lint`, `npx tsc --noEmit`, `npm run test:gpu`,
+and `npm run test:seo`. The SEO regression checks inspect the exported files,
+including `404.html`, `robots.txt`, and `sitemap.xml`.
+
+Keep `https://www.dlss5.net` as the canonical origin. Verify the Pages deployment
+before adding `www.dlss5.net` in Pages custom domains and updating its DNS.
+Configure the apex-to-www permanent redirect in Cloudflare Redirect Rules,
+preserving the request path and query string. Pages `_redirects` does not support
+domain-level matching. Do not add an SPA fallback that turns missing pages into
+HTTP 200 responses.
+
+`vercel.json` disables automatic Vercel Git deployments. Retain the old deployment
+and record the old DNS targets until the Cloudflare cutover has been verified;
+the old Vercel project is not deleted by this configuration.

@@ -22,16 +22,12 @@ const supportConfig: Record<DlssSupport, { label: Record<SupportedLocale, string
     label: { en: "Confirmed", pt: "Confirmada" },
     className: "bg-green-500/20 text-green-400 border-green-500/30",
   },
-  expected: {
-    label: { en: "Expected", pt: "Esperada" },
-    className: "bg-lime-500/20 text-lime-300 border-lime-500/30",
-  },
-  unknown: {
-    label: { en: "Unknown", pt: "Desconhecida" },
+  planned: {
+    label: { en: "Planned", pt: "Planejada" },
     className: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
   },
-  unlikely: {
-    label: { en: "Unlikely", pt: "Improvável" },
+  unsupported: {
+    label: { en: "Unsupported", pt: "Sem suporte oficial" },
     className: "bg-orange-500/20 text-orange-400 border-orange-500/30",
   },
   none: {
@@ -49,7 +45,7 @@ const tableCopy = {
     status: "DLSS 5 Status",
     currentFeature: "Current DLSS Feature",
     showing: (count: number) =>
-      `Showing ${count} GPUs. DLSS 5 Neural Rendering status is split into confirmed, expected, unknown, unlikely, and unsupported groups.`,
+      `Showing ${count} GPUs. DLSS 5 Neural Rendering status is split into confirmed, planned, unsupported, and no-DLSS groups.`,
   },
   pt: {
     all: "Todas",
@@ -59,7 +55,7 @@ const tableCopy = {
     status: "Status do DLSS 5",
     currentFeature: "Recurso DLSS atual",
     showing: (count: number) =>
-      `Mostrando ${count} GPUs. O status do DLSS 5 Neural Rendering é dividido em confirmada, esperada, desconhecida, improvável e sem suporte.`,
+      `Mostrando ${count} GPUs. O status do DLSS 5 Neural Rendering é dividido em confirmado, planejado, sem suporte oficial e sem DLSS.`,
   },
 };
 
@@ -79,17 +75,13 @@ function getCurrentFeatureText(gpu: (typeof ALL_GPUS)[number], locale: Supported
         : "DLSS 4 Multi Frame Generation";
     }
 
-    if (gpu.dlss5_support === "expected") {
-      return "Caminho RTX 50, docs finais por modelo pendentes";
-    }
-
-    if (gpu.dlss5_support === "unknown") {
+    if (gpu.dlss5_support === "planned") {
       return gpu.current_dlss_features.includes("frame_generation")
         ? "DLSS 3 Frame Generation"
         : "DLSS Super Resolution";
     }
 
-    if (gpu.dlss5_support === "unlikely") {
+    if (gpu.dlss5_support === "unsupported") {
       return "DLSS 3.5 (Super Resolution + Ray Reconstruction)";
     }
 
@@ -110,17 +102,13 @@ function getCurrentFeatureText(gpu: (typeof ALL_GPUS)[number], locale: Supported
       : "DLSS 4 Multi Frame Generation";
   }
 
-  if (gpu.dlss5_support === "expected") {
-    return "RTX 50 path, per-model DLSS 5 docs pending";
-  }
-
-  if (gpu.dlss5_support === "unknown") {
+  if (gpu.dlss5_support === "planned") {
     return gpu.current_dlss_features.includes("frame_generation")
       ? "DLSS 3 Frame Generation"
       : "DLSS Super Resolution";
   }
 
-  if (gpu.dlss5_support === "unlikely") {
+  if (gpu.dlss5_support === "unsupported") {
     return "DLSS 3.5 (Super Resolution + Ray Reconstruction)";
   }
 

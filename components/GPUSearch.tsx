@@ -92,17 +92,15 @@ export default function GPUSearch({ onResult }: GPUSearchProps) {
 
   const supportBadgeColor: Record<DlssSupport, string> = {
     confirmed: "text-green-500",
-    expected: "text-lime-400",
-    unknown: "text-yellow-500",
-    unlikely: "text-orange-500",
+    planned: "text-yellow-500",
+    unsupported: "text-orange-500",
     none: "text-red-500",
   };
 
   const supportLabel: Record<DlssSupport, string> = {
     confirmed: "Confirmed",
-    expected: "Expected",
-    unknown: "Unknown",
-    unlikely: "Unlikely",
+    planned: "Planned",
+    unsupported: "Unsupported",
     none: "No DLSS",
   };
 

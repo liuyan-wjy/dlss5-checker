@@ -8,6 +8,8 @@ import {
   isEnabledGpuSlug,
 } from "@/lib/gpu-page-config";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return GPU_DETAIL_SLUGS.pt.map((slug) => ({ slug }));
 }
@@ -24,10 +26,14 @@ export async function generateMetadata({
   }
 
   const statusText = getLocalizedSupportText("pt", gpu.dlss5_support);
+  const title = `${gpu.name}: ${statusText} no DLSS 5 [2026]`;
+  const description = `A ${gpu.name} suporta DLSS 5? Status: ${statusText}. Veja os recursos atuais de DLSS e o que considerar antes de trocar de placa.`;
   return {
-    title: `${gpu.name}: ${statusText} no DLSS 5 [2026]`,
-    description: `A ${gpu.name} suporta DLSS 5? Veja o status, os recursos atuais de DLSS e se faz sentido pensar em upgrade.`,
+    title,
+    description,
     alternates: { canonical: `/pt/gpu/${slug}` },
+    openGraph: { title, description, type: "article", url: `https://www.dlss5.net/pt/gpu/${slug}` },
+    twitter: { card: "summary", title, description },
     robots: { index: false, follow: true },
   };
 }

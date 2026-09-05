@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
+const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-confirmado";
+
 export const metadata: Metadata = {
-  title: "DLSS 5 está confirmado? Evidências, placas e jogos",
+  title: "DLSS 5 está confirmado? Lançamento, placas e jogos",
   description:
-    "Entenda o que está confirmado sobre o DLSS 5, o que ainda é anúncio, quais placas são mais seguras e quais detalhes dependem da NVIDIA.",
+    "Entenda o DLSS 5 após o lançamento: RTX 50 confirmado, RTX 40 planejado sem data, NBA 2K27 disponível e outros jogos ainda em verificação.",
   alternates: {
     canonical: "/pt/dlss-5-confirmado",
     languages: {
@@ -13,38 +15,52 @@ export const metadata: Metadata = {
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-confirmado",
     },
   },
+  openGraph: {
+    title: "DLSS 5 está confirmado? Lançamento, placas e jogos",
+    description:
+      "Entenda o DLSS 5 após o lançamento: RTX 50 confirmado, RTX 40 planejado sem data, NBA 2K27 disponível e outros jogos ainda em verificação.",
+    type: "article",
+    locale: "pt_BR",
+    url: PAGE_URL,
+  },
+  twitter: {
+    card: "summary",
+    title: "DLSS 5 está confirmado? Lançamento, placas e jogos",
+    description:
+      "Entenda o DLSS 5 após o lançamento: RTX 50 confirmado, RTX 40 planejado sem data, NBA 2K27 disponível e outros jogos ainda em verificação.",
+  },
 };
 
 const evidenceRows = [
   {
     question: "DLSS 5 está confirmado?",
     answer:
-      "Sim, a NVIDIA anunciou o DLSS 5 como uma camada de Neural Rendering em tempo real para fidelidade visual.",
-    status: "Confirmado como anúncio oficial",
+      "Sim, a NVIDIA lançou o DLSS 5 como uma camada de Neural Rendering em tempo real para fidelidade visual.",
+    status: "Confirmado e lançado",
   },
   {
     question: "DLSS 5 já foi lançado?",
     answer:
-      "Não. A janela pública comunicada é outono de 2026. Até lá, cada jogo ainda precisa de patch e documentação.",
-    status: "Anunciado, não disponível",
+      "Sim. A liberação pública ocorreu em 3 de setembro de 2026 no Pacífico, equivalente a 4 de setembro de 2026 no Brasil.",
+    status: "Disponível",
   },
   {
     question: "RTX 50 é compatível?",
     answer:
-      "RTX 50 é o caminho mais seguro com base nos recursos atuais e no posicionamento público da NVIDIA.",
-    status: "Melhor aposta",
+      "Sim. O suporte local confirmado cobre GeForce RTX Série 50 no desktop e seis linhas de notebook: RTX 5090, 5080, 5070 Ti, 5070, 5060 e 5050 Laptop GPU.",
+    status: "Confirmada",
   },
   {
     question: "RTX 40 está confirmada?",
     answer:
-      "Não. RTX 40 deve ser tratada como desconhecida até a documentação final para a nova camada.",
-    status: "Desconhecida, sem confirmação",
+      "Ainda não está disponível. A NVIDIA falou em expansão futura para RTX 40, mas sem publicar uma data de disponibilidade anunciada.",
+    status: "Planejada, sem data",
   },
   {
     question: "Os jogos anunciados já estão verificados?",
     answer:
-      "Ainda não. Um jogo anunciado só fica verificado quando há patch notes, driver e opção visível.",
-    status: "Precisa de verificação",
+      "NBA 2K27 está verificado. Outros jogos anunciados continuam em acompanhamento até terem patch notes ou menu confirmado.",
+    status: "Misto",
   },
 ];
 
@@ -52,17 +68,17 @@ const faqItems = [
   {
     question: "DLSS 5 está confirmado oficialmente?",
     answer:
-      "Sim. A NVIDIA anunciou o DLSS 5 como uma tecnologia de Neural Rendering para melhorar iluminação e materiais. O que ainda falta é a documentação final de lançamento para placas, drivers e jogos específicos.",
+      "Sim. A NVIDIA lançou o DLSS 5 como uma tecnologia de Neural Rendering para melhorar iluminação e materiais. Hoje, o suporte local confirmado é para RTX 50 em jogos publicados com esse recurso.",
   },
   {
     question: "O que ainda não está confirmado sobre DLSS 5?",
     answer:
-      "Ainda faltam matriz final de GPUs, versão mínima de driver, comportamento por jogo, opções no menu gráfico e possíveis limites por placa.",
+      "Ainda faltam data para RTX 40, mais jogos com patch público e detalhes por título. NBA 2K27 já tem driver, menu e atalho documentados; isso não deve ser copiado automaticamente para todos os jogos.",
   },
   {
-    question: "Por que separar confirmado, anunciado, esperado e desconhecido?",
+    question: "Por que separar confirmado, planejado e sem suporte atual?",
     answer:
-      "Porque buscas sobre DLSS 5 misturam fatos oficiais, demonstrações, rumores e decisões de compra. Separar esses níveis evita prometer suporte que ainda não foi publicado.",
+      "Porque buscas sobre DLSS 5 misturam suporte local, streaming via GeForce NOW, jogos apenas anunciados e decisões de compra. Separar esses níveis evita prometer suporte que ainda não existe.",
   },
 ];
 
@@ -98,24 +114,25 @@ export default function PtDlss5ConfirmadoPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Última checagem: maio de 2026
+            Última checagem: 5 de setembro de 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 está confirmado? Evidências, placas e jogos
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Esta página é para a busca &quot;DLSS 5 está confirmado?&quot;. Ela separa o
-            que a NVIDIA já anunciou, o que é uma inferência cautelosa e o que ainda
-            precisa de documentação pública.
+            A resposta curta depende de onde você vai jogar. No PC local, DLSS 5 já vale
+            para RTX 50 em jogos com suporte. No GeForce NOW Ultimate, quem renderiza é a
+            infraestrutura RTX 5080 da NVIDIA. RTX 40 continua planejada, sem data definida.
           </p>
         </header>
 
         <section className="mb-10 rounded-lg border border-green-500/30 bg-green-500/5 p-5">
           <h2 className="text-2xl font-bold mb-3">Resposta rápida</h2>
           <p className="text-foreground/80 leading-relaxed">
-            DLSS 5 está confirmado como tecnologia anunciada pela NVIDIA, mas ainda não
-            está disponível ao público. A parte não confirmada é a lista final de GPUs,
-            jogos, drivers e configurações no lançamento.
+            Sim. DLSS 5 está lançado. A resposta prática em 5 de setembro de 2026 é:
+            RTX 50 roda localmente em jogos com suporte, NBA 2K27 já está disponível,
+            RTX 40 está planejada para depois sem data pública e RTX 20/30 não têm
+            suporte oficial atual ao DLSS 5 Neural Rendering.
           </p>
         </section>
 
@@ -150,20 +167,22 @@ export default function PtDlss5ConfirmadoPage() {
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Confirmado</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              A NVIDIA comunicou publicamente o recurso, a direção técnica e a janela de
-              lançamento.
+              A NVIDIA publicou o lançamento do DLSS 5, confirmou RTX 50 e documentou
+              NBA 2K27 com driver 616.64 WHQL.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Anunciado</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              Jogos e parceiros foram nomeados, mas ainda precisam de patch notes finais.
+              Alguns jogos continuam anunciados, mas sem patch notes ou menu visível
+              para serem tratados como disponíveis.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
-            <h2 className="font-bold mb-2">Desconhecido</h2>
+            <h2 className="font-bold mb-2">Planejado</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              RTX 40 merece acompanhamento, mas não deve ser vendida como suporte garantido.
+              RTX 40 merece acompanhamento, mas ainda não deve ser vendida como suporte
+              local disponível ao DLSS 5.
             </p>
           </div>
         </section>
@@ -218,10 +237,10 @@ export default function PtDlss5ConfirmadoPage() {
           <p>
             Baseado no{" "}
             <a
-              href="https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/"
+              href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/"
               className="text-blue-400 hover:underline"
             >
-              anúncio oficial do DLSS 5
+              anúncio oficial de lançamento do DLSS 5
             </a>{" "}
             e na{" "}
             <a
@@ -233,7 +252,7 @@ export default function PtDlss5ConfirmadoPage() {
             .
           </p>
         </section>
-        <ArticleTrustBlock locale="pt" />
+        <ArticleTrustBlock locale="pt" reviewedAt="2026-09-05" />
       </main>
     </>
   );

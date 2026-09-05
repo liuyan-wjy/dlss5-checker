@@ -4,10 +4,12 @@ import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type DlssSupport, type GPU } from "@/lib/gpu-search";
 import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 
+const PAGE_URL = "https://www.dlss5.net/dlss-5-supported-cards";
+
 export const metadata: Metadata = {
-  title: "DLSS 5 Supported Cards: Confirmed, Expected, Unknown GPUs [2026]",
+  title: "DLSS 5 Supported Cards: RTX 50 Confirmed, RTX 40 Planned [2026]",
   description:
-    "See which GPUs are confirmed, expected, unknown, unlikely, or not supported for DLSS 5. Includes RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel status notes.",
+    "See which GPUs are confirmed, planned, unsupported, or outside NVIDIA DLSS for DLSS 5. Includes RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel status notes.",
   alternates: {
     canonical: "/dlss-5-supported-cards",
     languages: {
@@ -15,9 +17,20 @@ export const metadata: Metadata = {
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-quais-placas",
     },
   },
+  openGraph: {
+    title: "DLSS 5 Supported Cards: RTX 50 Confirmed, RTX 40 Planned [2026]",
+    description:
+      "See which GPUs are confirmed, planned, unsupported, or outside NVIDIA DLSS for DLSS 5. Includes RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel status notes.",
+    type: "article",
+    url: PAGE_URL,
+  },
+  twitter: {
+    card: "summary",
+    title: "DLSS 5 Supported Cards: RTX 50 Confirmed, RTX 40 Planned [2026]",
+    description:
+      "See which GPUs are confirmed, planned, unsupported, or outside NVIDIA DLSS for DLSS 5. Includes RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel status notes.",
+  },
 };
-
-const PAGE_URL = "https://www.dlss5.net/dlss-5-supported-cards";
 
 const STATUS_COPY: Record<
   DlssSupport,
@@ -31,25 +44,19 @@ const STATUS_COPY: Record<
   confirmed: {
     title: "Confirmed cards",
     label: "Confirmed",
-    note: "These RTX 50 models have the clearest official DLSS 5 path today, with final driver and game documentation still relevant at launch.",
+    note: "These RTX 50 desktop and laptop GPUs support DLSS 5 Neural Rendering in NBA 2K27 with the compatible game update and driver.",
     className: "border-green-500/30 bg-green-500/5 text-green-300",
   },
-  expected: {
-    title: "Expected, per-model docs pending",
-    label: "Expected",
-    note: "These lower-tier RTX 50 models are on the RTX 50 generation path, but should still be checked against NVIDIA's final per-model launch documentation.",
-    className: "border-lime-500/30 bg-lime-500/5 text-lime-300",
-  },
-  unknown: {
-    title: "Unknown until final launch documentation",
-    label: "Unknown",
-    note: "RTX 40 cards already support strong current DLSS features, but DLSS 5 Neural Rendering support should not be treated as confirmed until NVIDIA publishes final launch details.",
+  planned: {
+    title: "Planned, not available yet",
+    label: "Planned",
+    note: "RTX 40 cards already support strong current DLSS features. NVIDIA has indicated a later DLSS 5 plan for RTX 40 after RTX 50 tuning, but there is no public date and no live support yet.",
     className: "border-yellow-500/30 bg-yellow-500/5 text-yellow-300",
   },
-  unlikely: {
-    title: "Unlikely for the new DLSS 5 layer",
-    label: "Unlikely",
-    note: "RTX 20 and RTX 30 cards remain useful for current DLSS features, but they lack the newer frame-generation hardware path used by RTX 40 and RTX 50.",
+  unsupported: {
+    title: "No current official DLSS 5 support",
+    label: "Unsupported",
+    note: "RTX 20 and RTX 30 cards remain useful for current DLSS features, but the sources checked here do not list them for current DLSS 5 Neural Rendering support.",
     className: "border-orange-500/30 bg-orange-500/5 text-orange-300",
   },
   none: {
@@ -149,36 +156,36 @@ function StatusTable({ status }: { status: DlssSupport }) {
   );
 }
 
+const faqItems = [
+  {
+    question: "Which cards support DLSS 5?",
+    answer:
+      "The confirmed cards in this guide are RTX 50 desktop and laptop models. RTX 40 support is planned but not live and has no public date. RTX 20 and RTX 30 have no current official DLSS 5 Neural Rendering support.",
+  },
+  {
+    question: "Does RTX 4070 support DLSS 5?",
+    answer:
+      "RTX 4070 is in the RTX 40 group: planned for later, not available today, and still without a public date. It supports current DLSS features such as Frame Generation, Super Resolution, Ray Reconstruction, and DLAA.",
+  },
+  {
+    question: "Do GTX cards support DLSS?",
+    answer:
+      "No. GTX cards do not support NVIDIA DLSS because DLSS relies on RTX hardware.",
+  },
+];
+
 export default function Dlss5SupportedCardsPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Which cards support DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The confirmed cards in this guide are RTX 50 models with clear public support. RTX 5060 and RTX 5060 Ti are treated as expected but pending per-model documentation, RTX 40 is unknown, and RTX 20/30 are unlikely for the new DLSS 5 layer.",
-        },
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
       },
-      {
-        "@type": "Question",
-        name: "Does RTX 4070 support DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "RTX 4070 support for DLSS 5 has not been confirmed. It supports current DLSS features such as Frame Generation, Super Resolution, Ray Reconstruction, and DLAA.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do GTX cards support DLSS?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. GTX cards do not support NVIDIA DLSS because DLSS relies on RTX hardware.",
-        },
-      },
-    ],
+    })),
   };
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -204,7 +211,7 @@ export default function Dlss5SupportedCardsPage() {
     name: "DLSS 5 Supported Cards",
     url: PAGE_URL,
     inLanguage: "en",
-    dateModified: "2026-06-22",
+    dateModified: "2026-09-05",
     isPartOf: {
       "@type": "WebSite",
       name: "DLSS 5 Checker",
@@ -243,12 +250,12 @@ export default function Dlss5SupportedCardsPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked August 1, 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked September 5, 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-            DLSS 5 Supported Cards: Confirmed, Expected, Unknown, and Unlikely GPUs
+            DLSS 5 Supported Cards: Confirmed, Planned, and Unsupported GPUs
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            This page separates confirmed hardware from expected, unknown, unlikely, and
+            This page separates confirmed hardware from planned, unsupported, and no-DLSS
             unsupported groups. The goal is not to guess every future driver update, but to
             show what is official today and what each GPU generation can already do.
           </p>
@@ -260,24 +267,21 @@ export default function Dlss5SupportedCardsPage() {
         >
           <h2 className="text-xl font-bold mb-3">DLSS 5 supported cards short answer</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            Last checked August 1, 2026: RTX 50 is the clearest DLSS 5 path. RTX 5090,
-            RTX 5080, RTX 5070 Ti, and RTX 5070 are in the confirmed group. RTX 5060 Ti
-            and RTX 5060 are expected, but still need final per-model documentation from
-            NVIDIA. RTX 40 is unknown, RTX 30 is unlikely for the new neural rendering
-            layer, and GTX, AMD, and Intel cards are unsupported for NVIDIA DLSS.
+            Last checked September 5, 2026: RTX 50 desktop and laptop GPUs are confirmed
+            for DLSS 5 Neural Rendering in NBA 2K27, including RTX 5090 through RTX 5050.
+            RTX 40 is planned but not available yet and has no public date. RTX 20 and
+            RTX 30 have no current official DLSS 5 support, while GTX, AMD, and Intel
+            cards are outside NVIDIA DLSS.
           </p>
           <div className="mt-4 flex flex-wrap gap-2 text-sm">
             <a href="#status-confirmed" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
               RTX 50 confirmed
             </a>
-            <a href="#status-expected" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
-              RTX 50 expected
+            <a href="#status-planned" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 40 planned
             </a>
-            <a href="#status-unknown" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
-              RTX 40 unknown
-            </a>
-            <a href="#status-unlikely" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
-              RTX 30 unlikely
+            <a href="#status-unsupported" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 20/30 unsupported
             </a>
             <a href="#status-none" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
               GTX, AMD, Intel unsupported
@@ -290,7 +294,7 @@ export default function Dlss5SupportedCardsPage() {
             <h2 className="font-bold mb-2">Fast answer</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
               DLSS 5 supported cards are currently safest in the RTX 50 generation. Use
-              the status sections below for confirmed, expected, unknown, unlikely, and
+              the status sections below for confirmed, planned, unsupported, and
               unsupported groups.
             </p>
           </div>
@@ -311,9 +315,8 @@ export default function Dlss5SupportedCardsPage() {
         </section>
 
         <StatusTable status="confirmed" />
-        <StatusTable status="expected" />
-        <StatusTable status="unknown" />
-        <StatusTable status="unlikely" />
+        <StatusTable status="planned" />
+        <StatusTable status="unsupported" />
         <StatusTable status="none" />
 
         <section className="mb-10 rounded-lg border border-border p-5">
@@ -379,7 +382,7 @@ export default function Dlss5SupportedCardsPage() {
             >
               <div className="font-semibold mb-1">DLSS 5 vs DLSS 4.5</div>
               <p className="text-sm text-muted-foreground">
-                Separate the upcoming visual layer from current DLSS features.
+                Separate Neural Rendering from current DLSS features.
               </p>
             </Link>
             <Link
@@ -403,6 +406,18 @@ export default function Dlss5SupportedCardsPage() {
           </div>
         </section>
 
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">Frequently asked questions</h2>
+          <div className="space-y-5">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="font-semibold mb-1">{item.question}</h3>
+                <p className="text-sm text-foreground/80 leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="text-sm text-muted-foreground leading-relaxed">
           <h2 className="text-xl font-bold text-foreground mb-3">Sources and limits</h2>
           <p>
@@ -421,10 +436,10 @@ export default function Dlss5SupportedCardsPage() {
               NVIDIA DLSS supported hardware
             </a>
             . This is an independent compatibility guide and will need updates if NVIDIA
-            expands or narrows official support before launch.
+            expands or narrows official support in a future driver or support note.
           </p>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

@@ -9,6 +9,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/dlss-4-5-dynamic-mfg-6x",
   },
+  openGraph: {
+    title: "DLSS 4.5 Dynamic MFG 6X: What Is Available Now for RTX",
+    description:
+      "DLSS 4.5 Dynamic Multi Frame Generation and 6X mode are live for RTX 50 owners. See requirements, driver notes, differences from DLSS 5, and game caveats.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-4-5-dynamic-mfg-6x",
+  },
+  twitter: {
+    card: "summary",
+    title: "DLSS 4.5 Dynamic MFG 6X: What Is Available Now for RTX",
+    description:
+      "DLSS 4.5 Dynamic Multi Frame Generation and 6X mode are live for RTX 50 owners. See requirements, driver notes, differences from DLSS 5, and game caveats.",
+  },
 };
 
 const NVIDIA_DLSS45_NOW =
@@ -48,7 +61,7 @@ const faqItems = [
   {
     question: "Is DLSS 4.5 Dynamic MFG the same as DLSS 5?",
     answer:
-      "No. DLSS 4.5 Dynamic Multi Frame Generation is a live performance feature in the current DLSS stack. DLSS 5 is the announced Fall 2026 visual-fidelity layer.",
+      "No. DLSS 4.5 Dynamic Multi Frame Generation is a live performance feature in the current DLSS stack. DLSS 5 Neural Rendering is a separate visual-fidelity feature, first documented in NBA 2K27 on RTX 50 GPUs.",
   },
   {
     question: "What GPU do I need for 6X Multi Frame Generation?",
@@ -56,9 +69,9 @@ const faqItems = [
       "NVIDIA describes the 6X mode as a GeForce RTX 50 series feature. You also need the NVIDIA app update, a compatible game, and a recent driver.",
   },
   {
-    question: "Why cover DLSS 4.5 on a DLSS 5 site?",
+    question: "Why should I separate DLSS 4.5 from DLSS 5?",
     answer:
-      "Players often mix the current feature set with the next launch. Explaining the available 4.5 update prevents people from mistaking it for the unreleased DLSS 5 layer.",
+      "Players often mix frame-generation features with Neural Rendering. Separating them prevents a 6X or Dynamic MFG option from being mistaken for DLSS 5 support.",
   },
 ];
 
@@ -117,15 +130,15 @@ export default function Dlss45DynamicMfg6xPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Current feature status checked August 1, 2026
+            Current feature status checked September 5, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 4.5 Dynamic MFG 6X: What Is Available Now
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            The newest live DLSS update is not DLSS 5. It is DLSS 4.5 Dynamic Multi
-            Frame Generation, 6X mode, and an updated model stack that helps RTX owners
-            before the Fall 2026 visual-fidelity launch.
+            DLSS 4.5 Dynamic Multi Frame Generation, 6X mode, and the updated model stack
+            are frame-performance features. DLSS 5 Neural Rendering is separate, so a game
+            can support one without automatically supporting the other.
           </p>
         </header>
 
@@ -140,15 +153,16 @@ export default function Dlss45DynamicMfg6xPage() {
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Driver note</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              NVIDIA lists GeForce Game Ready Driver 595.97 WHQL or newer as required
-              for all features in the March 31 release.
+              NVIDIA lists 595.97 WHQL for the March 31 release. Dynamic MFG with V-Sync
+              or frame limiters needs the newer NVIDIA App path, 616.64 WHQL or later, and
+              Streamline 2.14 or later.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
-            <h2 className="font-bold mb-2">Why this page exists</h2>
+            <h2 className="font-bold mb-2">Do not mix feature names</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              Dynamic MFG is available today, while DLSS 5 Neural Rendering is still a
-              future launch. Keeping those timelines separate prevents upgrade mistakes.
+              Dynamic MFG changes generated-frame behavior. DLSS 5 Neural Rendering changes
+              the final rendered image. Keep those decisions separate when tuning a game.
             </p>
           </div>
         </section>
@@ -192,18 +206,20 @@ export default function Dlss45DynamicMfg6xPage() {
             The practical use case is high-refresh gaming. If your display is 120Hz,
             144Hz, 240Hz, or higher, the setting tries to use only the amount of frame
             generation needed to reach the target while preserving clarity and latency.
-            NVIDIA also notes that Dynamic mode is not currently compatible with frame
-            rate limiters and V-Sync.
+            NVIDIA&apos;s newer guidance now supports Dynamic MFG with V-Sync and frame rate
+            limiters when the NVIDIA App, driver, game integration, and Streamline 2.14+
+            path are all current. If the app tooltip still says Dynamic is not compatible
+            with limiters or V-Sync, treat that setup as missing a required component.
           </p>
         </section>
 
         <section className="mb-10 rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-5">
-          <h2 className="text-xl font-bold mb-3">Why this matters for the next launch</h2>
+          <h2 className="text-xl font-bold mb-3">Why this matters when you tune a game</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
             DLSS 4.5 is the baseline users can test today. It tells us how NVIDIA is
             improving frame pacing, model quality, and app-level overrides before the
-            next visual layer ships. It does not prove which GPUs will support DLSS 5,
-            so hardware questions should still be checked separately.
+            DLSS 5 support. It does not prove which GPUs or games expose Neural Rendering,
+            so hardware and game questions should still be checked separately.
           </p>
         </section>
 
@@ -232,7 +248,7 @@ export default function Dlss45DynamicMfg6xPage() {
           >
             <div className="font-semibold mb-1">DLSS 5 release date</div>
             <p className="text-sm text-muted-foreground">
-              See the Fall 2026 window and what still needs proof.
+              See the current launch status and what still needs proof.
             </p>
           </Link>
           <Link
@@ -241,7 +257,7 @@ export default function Dlss45DynamicMfg6xPage() {
           >
             <div className="font-semibold mb-1">Neural rendering explainer</div>
             <p className="text-sm text-muted-foreground">
-              Understand the visual-fidelity feature that arrives later.
+              Understand the visual-fidelity feature that is separate from frame generation.
             </p>
           </Link>
           <Link
@@ -266,6 +282,13 @@ export default function Dlss45DynamicMfg6xPage() {
 
         <section className="mb-10 text-sm text-muted-foreground leading-relaxed">
           <h2 className="text-xl font-bold text-foreground mb-3">Sources</h2>
+          <p className="mb-3">
+            NVIDIA&apos;s{" "}
+            <a href="https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/" className="text-blue-400 hover:underline">
+              September 3, 2026 driver update
+            </a>{" "}
+            documents NBA 2K27 support and the newer Dynamic MFG requirements for V-Sync and frame limiters.
+          </p>
           <p>
             Primary sources:{" "}
             <a href={NVIDIA_DLSS45_NOW} className="text-blue-400 hover:underline">
@@ -294,7 +317,7 @@ export default function Dlss45DynamicMfg6xPage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

@@ -24,16 +24,14 @@ const PT_FEATURE_LABELS: Record<string, string> = {
 const SUPPORT_TEXT: Record<SupportedLocale, Record<DlssSupport, string>> = {
   en: {
     confirmed: "Confirmed for DLSS 5",
-    expected: "Expected, pending per-model confirmation",
-    unknown: "Unknown until final launch documentation",
-    unlikely: "Unlikely to Support DLSS 5",
+    planned: "Planned for DLSS 5, not available yet",
+    unsupported: "No official DLSS 5 support",
     none: "Not Supported",
   },
   pt: {
     confirmed: "Confirmada para DLSS 5",
-    expected: "Esperada, mas pendente por modelo",
-    unknown: "Desconhecida até a documentação final",
-    unlikely: "Pouco provável no DLSS 5",
+    planned: "Planejada para DLSS 5, ainda indisponível",
+    unsupported: "Sem suporte oficial ao DLSS 5",
     none: "Sem suporte",
   },
 };

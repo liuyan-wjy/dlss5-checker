@@ -2,20 +2,21 @@ import Link from "next/link";
 
 interface ArticleTrustBlockProps {
   locale?: "en" | "pt";
+  reviewedAt: string;
 }
 
 const copy = {
   en: {
     title: "Sources, review status, and related pages",
     byline: "Author: ",
-    lastChecked: "Last checked August 1, 2026",
+    lastChecked: "Last checked",
     reviewNote: "Reviewed against primary NVIDIA sources and corrected when launch documentation changes.",
     primarySources: "Primary sources",
     changeTitle: "What would change this answer",
     change:
       "A new NVIDIA launch post, driver note, game patch note, or official supported-hardware table can change the status labels on this page.",
     related: "Related pages",
-    sourceOne: "NVIDIA DLSS 5 announcement",
+    sourceOne: "NVIDIA DLSS 5 release and setup guide",
     sourceTwo: "NVIDIA DLSS technology and supported hardware",
     evidence: "DLSS 5 Evidence Tracker",
     cards: "Supported GPU list",
@@ -23,22 +24,26 @@ const copy = {
   pt: {
     title: "Fontes, revisão e páginas relacionadas",
     byline: "Autor: ",
-    lastChecked: "Última verificação em 1 de agosto de 2026",
+    lastChecked: "Última verificação em",
     reviewNote: "Revisado contra fontes primárias da NVIDIA e corrigido quando a documentação muda.",
     primarySources: "Fontes principais",
     changeTitle: "O que mudaria esta resposta",
     change:
       "Uma nova publicação da NVIDIA, nota de driver, patch de jogo ou tabela oficial de hardware pode mudar os status desta página.",
     related: "Páginas relacionadas",
-    sourceOne: "Anúncio do NVIDIA DLSS 5",
+    sourceOne: "Lançamento e configuração do NVIDIA DLSS 5",
     sourceTwo: "Tecnologia DLSS e hardware suportado",
     evidence: "Rastreador de evidências DLSS 5",
     cards: "Lista de GPUs suportadas",
   },
 } as const;
 
-export default function ArticleTrustBlock({ locale = "en" }: ArticleTrustBlockProps) {
+export default function ArticleTrustBlock({ locale = "en", reviewedAt }: ArticleTrustBlockProps) {
   const t = copy[locale];
+  const reviewDate = new Intl.DateTimeFormat(locale === "pt" ? "pt-BR" : "en-US", {
+    dateStyle: "long",
+    timeZone: "UTC",
+  }).format(new Date(`${reviewedAt}T00:00:00Z`));
   const evidenceHref = locale === "pt" ? "/pt/dlss-5-confirmado" : "/dlss-5-evidence-tracker";
   const cardsHref = locale === "pt" ? "/pt/dlss-5-quais-placas" : "/dlss-5-supported-cards";
 
@@ -52,7 +57,7 @@ export default function ArticleTrustBlock({ locale = "en" }: ArticleTrustBlockPr
         </Link>
       </p>
       <p className="mb-5 text-muted-foreground">
-        {t.lastChecked}. {t.reviewNote}
+        {t.lastChecked} <time dateTime={reviewedAt}>{reviewDate}</time>. {t.reviewNote}
       </p>
 
       <div className="grid gap-4 md:grid-cols-3">
@@ -60,7 +65,7 @@ export default function ArticleTrustBlock({ locale = "en" }: ArticleTrustBlockPr
           <h3 className="mb-2 font-semibold">{t.primarySources}</h3>
           <div className="space-y-2">
             <a
-              href="https://nvidianews.nvidia.com/news/nvidia-dlss-5-delivers-ai-powered-breakthrough-in-visual-fidelity-for-games"
+              href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/"
               className="block text-blue-400 hover:underline"
             >
               {t.sourceOne}

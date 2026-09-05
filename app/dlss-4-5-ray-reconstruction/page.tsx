@@ -4,14 +4,14 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "DLSS 4.5 Ray Reconstruction: Release Date, GPUs, Games",
   description:
-    "DLSS 4.5 Ray Reconstruction explained: August 2026 release, all RTX GPU support, 27 announced games, NVIDIA App setup, image quality, and performance.",
+    "DLSS 4.5 Ray Reconstruction is available: check all-RTX hardware support, 30 NVIDIA App game profiles, setup steps, image quality, and performance.",
   alternates: {
     canonical: "/dlss-4-5-ray-reconstruction",
   },
   openGraph: {
     title: "DLSS 4.5 Ray Reconstruction: Release Date, GPUs, Games",
     description:
-      "DLSS 4.5 Ray Reconstruction explained: August 2026 release, all RTX GPU support, 27 announced games, NVIDIA App setup, image quality, and performance.",
+      "DLSS 4.5 Ray Reconstruction is available: check all-RTX hardware support, 30 NVIDIA App game profiles, setup steps, image quality, and performance.",
     type: "article",
     url: "https://www.dlss5.net/dlss-4-5-ray-reconstruction",
   },
@@ -19,12 +19,12 @@ export const metadata: Metadata = {
     card: "summary",
     title: "DLSS 4.5 Ray Reconstruction: Release Date, GPUs, Games",
     description:
-      "DLSS 4.5 Ray Reconstruction explained: August 2026 release, all RTX GPU support, 27 announced games, NVIDIA App setup, image quality, and performance.",
+      "DLSS 4.5 Ray Reconstruction is available: check all-RTX hardware support, 30 NVIDIA App game profiles, setup steps, image quality, and performance.",
   },
 };
 
 const NVIDIA_RAY_RECONSTRUCTION =
-  "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-ray-reconstruction-1000-rtx-games-apps-out-now/";
+  "https://www.nvidia.com/en-gb/geforce/news/gamescom-2026-dlss-4-5-ray-reconstruction-release-announcements-trailers/";
 const NVIDIA_RTX_GAMES =
   "https://www.nvidia.com/en-us/geforce/news/nvidia-rtx-games-engines-apps/";
 const NVIDIA_DLSS_DEVELOPER = "https://developer.nvidia.com/rtx/dlss";
@@ -57,6 +57,9 @@ const announcedGames = [
   "DOOM: The Dark Ages",
   "NARAKA: BLADEPOINT",
   "The First Descendant",
+  "I Am Jesus Christ",
+  "Marvel's Spider-Man 2",
+  "War Thunder",
 ];
 
 const improvementRows = [
@@ -96,19 +99,19 @@ const improvementRows = [
 
 const setupSteps = [
   {
-    title: "Wait for the August release",
+    title: "Check the NVIDIA App release channel",
     detail:
-      "The second-generation model is announced for August 2026. Before that release, an existing Ray Reconstruction option is not automatically the new 4.5 model.",
+      "The model became available on August 25, 2026. NVIDIA's launch instructions use Settings > About > Early Access, with a regular-channel release planned for September. Check your installed app rather than assuming the calendar changed its release channel.",
   },
   {
     title: "Update through official channels",
     detail:
-      "Use the current NVIDIA App and compatible driver. Do not install a third-party DLL or executable advertised as an early DLSS 4.5 download.",
+      "Use the updated NVIDIA App and GeForce driver 580.88 WHQL or newer, as specified in the Ray Reconstruction release guide. Do not download replacement DLLs from unofficial sites.",
   },
   {
     title: "Check the game's support path",
     detail:
-      "Some titles may expose the model natively; others may receive an NVIDIA App override. Confirm the game version and profile before testing.",
+      "For a supported game, open Graphics > Driver Settings > DLSS Override - Model Presets > Custom. Set Ray Reconstruction to Recommended or Preset F and apply. A native integration can have a different path.",
   },
   {
     title: "Enable ray tracing or path tracing",
@@ -131,12 +134,12 @@ const faqItems = [
   {
     question: "When is DLSS 4.5 Ray Reconstruction released?",
     answer:
-      "NVIDIA says the second-generation DLSS 4.5 Ray Reconstruction model will be available in August 2026. A specific global rollout day has not been confirmed in the cited announcement.",
+      "It became available through NVIDIA App Early Access on August 25, 2026. NVIDIA's launch guide schedules the regular-channel release for September; availability of the model does not mean every game integrates it natively.",
   },
   {
     question: "Which GPUs support DLSS 4.5 Ray Reconstruction?",
     answer:
-      "NVIDIA says the new Ray Reconstruction model will be available for all GeForce RTX GPUs. That statement applies to Ray Reconstruction, not necessarily Dynamic Multi Frame Generation, 6X mode, or future DLSS 5 features.",
+      "The new Ray Reconstruction model supports all GeForce RTX generations. This does not extend the hardware support of Multi Frame Generation or DLSS 5 Neural Rendering, which have separate requirements.",
   },
   {
     question: "Does DLSS 4.5 Ray Reconstruction increase FPS?",
@@ -146,7 +149,7 @@ const faqItems = [
   {
     question: "Is DLSS 4.5 Ray Reconstruction the same as DLSS 5?",
     answer:
-      "No. Ray Reconstruction is a current-generation denoising and reconstruction feature for ray-traced and path-traced content. DLSS 5 is a separate Fall 2026 Neural Rendering layer focused on lighting and material appearance.",
+      "No. Ray Reconstruction denoises and reconstructs ray-traced content. DLSS 5 is a separate Neural Rendering stage for lighting and materials, now available in NBA 2K27 on RTX 50 GPUs. One feature does not enable the other.",
   },
   {
     question: "Can I use Ray Reconstruction without ray tracing?",
@@ -215,7 +218,7 @@ export default function Dlss45RayReconstructionPage() {
 
         <header className="mb-10 max-w-3xl">
           <p className="mb-3 text-sm font-semibold text-blue-400">
-            Release and compatibility guide · Updated July 28, 2026
+            Release and compatibility guide · Updated September 5, 2026
           </p>
           <h1 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
             DLSS 4.5 Ray Reconstruction: Release Date, GPUs, Games, and Setup
@@ -223,7 +226,7 @@ export default function Dlss45RayReconstructionPage() {
           <p className="text-lg leading-relaxed text-muted-foreground">
             The second-generation Ray Reconstruction model is one of the most useful DLSS
             4.5 updates for players who use ray tracing or path tracing. Here is what is
-            confirmed for August, which GPUs and games are included, and how to judge image
+            available now, which GPUs and game profiles are included, and how to judge image
             quality without confusing it with Frame Generation or DLSS 5.
           </p>
         </header>
@@ -232,21 +235,21 @@ export default function Dlss45RayReconstructionPage() {
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
             <h2 className="mb-2 font-bold">Release date</h2>
             <p className="text-sm leading-relaxed text-foreground/80">
-              NVIDIA says DLSS 4.5 Ray Reconstruction arrives in August 2026. The cited
-              announcement does not give a single worldwide release day.
+              Available since August 25, 2026 through NVIDIA App Early Access. The launch
+              guide places the regular-channel release in September.
             </p>
           </div>
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
             <h2 className="mb-2 font-bold">Supported GPUs</h2>
             <p className="text-sm leading-relaxed text-foreground/80">
-              The new model is announced for all GeForce RTX GPUs, including older RTX
+              The new model supports all GeForce RTX GPUs, including older RTX
               generations. Other DLSS 4.5 features can still have narrower requirements.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
             <h2 className="mb-2 font-bold">Supported games</h2>
             <p className="text-sm leading-relaxed text-foreground/80">
-              NVIDIA lists 27 games that the model can enhance at launch. Native support,
+              NVIDIA currently lists 30 supported NVIDIA App game profiles. Native support,
               app overrides, and individual rollout timing can still differ by title.
             </p>
           </div>
@@ -324,13 +327,12 @@ export default function Dlss45RayReconstructionPage() {
 
         <section className="mb-10">
           <h2 className="mb-3 text-2xl font-bold">
-            Announced DLSS 4.5 Ray Reconstruction games
+            DLSS 4.5 Ray Reconstruction game profiles
           </h2>
           <p className="mb-5 leading-relaxed text-foreground/80">
-            NVIDIA listed the following 27 games when it announced the model. This is a
-            launch-target list, not a promise that every title exposes the same switch on
-            the same day. Confirm the game patch, driver, and NVIDIA App profile before
-            treating one entry as active.
+            NVIDIA lists these 30 games for the model override in its updated release guide.
+            An app profile is not the same as a native in-game model selector. Check the
+            installed game version, driver, and profile before applying the override.
           </p>
           <div className="grid gap-2 rounded-lg border border-border p-5 sm:grid-cols-2 lg:grid-cols-3">
             {announcedGames.map((game) => (
@@ -424,7 +426,7 @@ export default function Dlss45RayReconstructionPage() {
           >
             <div className="mb-1 font-semibold">DLSS 5 vs DLSS 4.5</div>
             <p className="text-sm text-muted-foreground">
-              Keep the August Ray Reconstruction update separate from Fall Neural Rendering.
+              Compare Ray Reconstruction with the DLSS 5 Neural Rendering release.
             </p>
           </Link>
           <Link

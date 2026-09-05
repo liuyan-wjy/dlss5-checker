@@ -29,53 +29,38 @@ const STATUS_CONFIG = {
       pt: "Confirmada",
     },
     heading: {
-      en: "DLSS 5 Confirmed (Coming Fall 2026)",
-      pt: "DLSS 5 confirmado (chega no outono de 2026)",
+      en: "DLSS 5 Confirmed (Available now)",
+      pt: "DLSS 5 confirmado e disponível em jogos compatíveis",
     },
   },
-  expected: {
-    icon: Clock,
-    iconColor: "text-lime-400",
-    badgeClass: "bg-lime-500/10 border-lime-500/30 text-lime-300",
-    cardBorder: "border-lime-500/30",
-    cardBg: "bg-lime-500/5",
-    label: {
-      en: "Expected",
-      pt: "Esperada",
-    },
-    heading: {
-      en: "DLSS 5 Expected, Per-Model Docs Pending",
-      pt: "DLSS 5 esperado, com documentação por modelo pendente",
-    },
-  },
-  unknown: {
+  planned: {
     icon: Clock,
     iconColor: "text-yellow-500",
     badgeClass: "bg-yellow-500/10 border-yellow-500/30 text-yellow-400",
     cardBorder: "border-yellow-500/30",
     cardBg: "bg-yellow-500/5",
     label: {
-      en: "Unknown",
-      pt: "Desconhecida",
+      en: "Planned",
+      pt: "Planejada",
     },
     heading: {
-      en: "DLSS 5 Support Unknown",
-      pt: "Suporte ao DLSS 5 desconhecido",
+      en: "DLSS 5 Planned, Not Available Yet",
+      pt: "DLSS 5 planejado, ainda indisponível",
     },
   },
-  unlikely: {
+  unsupported: {
     icon: AlertCircle,
     iconColor: "text-orange-500",
     badgeClass: "bg-orange-500/10 border-orange-500/30 text-orange-400",
     cardBorder: "border-orange-500/30",
     cardBg: "bg-orange-500/5",
     label: {
-      en: "Unlikely",
-      pt: "Pouco provável",
+      en: "Unsupported",
+      pt: "Sem suporte oficial",
     },
     heading: {
-      en: "DLSS 5 Support Unlikely",
-      pt: "Suporte ao DLSS 5 é improvável",
+      en: "No Official DLSS 5 Support",
+      pt: "Sem suporte oficial ao DLSS 5",
     },
   },
   none: {
@@ -99,7 +84,7 @@ const COPY = {
   en: {
     homeLabel: "DLSS 5 Checker",
     homeHref: "/",
-    updatedLabel: "Last checked August 1, 2026",
+    updatedLabel: "Last checked September 5, 2026",
     title: (gpu: GPU) => `Does the ${gpu.name} Support DLSS 5?`,
     currentFeaturesTitle: (gpu: GPU) => `Current DLSS Features on ${gpu.name}`,
     noFeatures: (gpu: GPU) => `The ${gpu.name} does not support DLSS features today.`,
@@ -107,7 +92,7 @@ const COPY = {
     paragraph1:
       "DLSS 5 introduces Neural Rendering, AI-powered enhancement of lighting and materials in real time. Unlike DLSS 4, which focused on performance through frame generation, DLSS 5 is positioned as a visual-quality upgrade.",
     paragraph2:
-      "DLSS 5 was announced at GTC on March 16, 2026 and is scheduled for Fall 2026. This tracker separates confirmed RTX 50 models from expected lower-tier RTX 50 cards, unknown RTX 40 support, and unlikely RTX 20/30 support.",
+      "DLSS 5 Neural Rendering is available now in NBA 2K27 for GeForce RTX 50 desktop and laptop GPUs. This tracker separates confirmed RTX 50 models from RTX 40 planned support, RTX 20/30 with no current official DLSS 5 support, and non-RTX cards with no local DLSS path.",
     paragraph3:
       "That makes model-specific compatibility pages useful: users want to know whether their current GPU is confirmed, what it can do today with DLSS 4 or 4.5, and whether an upgrade is worth it.",
     faqTitle: "Frequently Asked Questions",
@@ -119,8 +104,10 @@ const COPY = {
     statusBasisTitle: "Status basis",
     sourceTitle: "Primary sources",
     changeTitle: "What would change this answer",
+    rtx40AvailabilityNote:
+      "An announced date alone does not make DLSS 5 available on RTX 40. This status changes to available only when NVIDIA confirms that support is live and the required game update and driver are publicly released.",
     comparisonTitle: "Adjacent model comparison",
-    lastChecked: "Last checked August 1, 2026",
+    lastChecked: "Last checked September 5, 2026",
     relatedTitle: "Related GPUs",
     ctaText: "Check any other GPU's DLSS 5 compatibility",
     ctaButton: "Back to GPU Checker",
@@ -128,7 +115,7 @@ const COPY = {
   pt: {
     homeLabel: "DLSS 5 Checker",
     homeHref: "/pt",
-    updatedLabel: "Última verificação em 1 de agosto de 2026",
+    updatedLabel: "Última verificação em 5 de setembro de 2026",
     title: (gpu: GPU) => `${gpu.name}: tem suporte ao DLSS 5?`,
     currentFeaturesTitle: (gpu: GPU) => `Recursos atuais de DLSS na ${gpu.name}`,
     noFeatures: (gpu: GPU) => `A ${gpu.name} não oferece recursos de DLSS hoje.`,
@@ -136,7 +123,7 @@ const COPY = {
     paragraph1:
       "O DLSS 5 introduz o Neural Rendering, uma camada de IA voltada para melhorar iluminação e materiais em tempo real. Ao contrário do DLSS 4, que focou em desempenho com geração de quadros, o DLSS 5 tenta elevar a fidelidade visual.",
     paragraph2:
-      "A NVIDIA anunciou o DLSS 5 na GTC de 16 de março de 2026, com lançamento previsto para o outono de 2026. Este tracker separa modelos RTX 50 confirmados, RTX 50 esperados, suporte RTX 40 desconhecido e RTX 20/30 improvável.",
+      "O DLSS 5 Neural Rendering já está disponível em NBA 2K27 para GPUs GeForce RTX 50 de desktop e notebook. Este tracker separa modelos RTX 50 confirmados, suporte RTX 40 planejado, RTX 20/30 sem suporte oficial atual ao DLSS 5 e placas fora da linha RTX sem DLSS local.",
     paragraph3:
       "Por isso as páginas por modelo ajudam tanto: quem pesquisa quer saber se a placa atual está confirmada, o que ela entrega hoje com DLSS 4 ou 4.5, e se vale gastar dinheiro em upgrade.",
     faqTitle: "Perguntas frequentes",
@@ -148,8 +135,10 @@ const COPY = {
     statusBasisTitle: "Base do status",
     sourceTitle: "Fontes principais",
     changeTitle: "O que mudaria esta resposta",
+    rtx40AvailabilityNote:
+      "Uma data anunciada, por si só, não significa que o DLSS 5 já esteja disponível nas RTX 40. O status só muda para disponível quando a NVIDIA confirma a liberação do suporte e as atualizações necessárias do jogo e do driver estão disponíveis ao público.",
     comparisonTitle: "Comparação com modelos próximos",
-    lastChecked: "Última verificação em 1 de agosto de 2026",
+    lastChecked: "Última verificação em 5 de setembro de 2026",
     relatedTitle: "GPUs relacionadas",
     ctaText: "Confira a compatibilidade de qualquer outra GPU com DLSS 5",
     ctaButton: "Voltar ao verificador",
@@ -182,43 +171,41 @@ const MODEL_INSIGHTS: Partial<Record<string, Partial<Record<SupportedLocale, Mod
         { label: "Versus RTX 5070 Ti", value: "Better fit for heavy 4K settings if DLSS 5 launch titles are demanding." },
       ],
       changeAnswer:
-        "NVIDIA would need to publish a final launch matrix excluding this model or limiting DLSS 5 to narrower configurations.",
+        "NVIDIA would need to update its public support table or driver notes to exclude this model or limit DLSS 5 to narrower configurations.",
     },
   },
   "rtx-4080": {
     en: {
       title: "What this means for RTX 4080 owners",
       intro:
-        "The RTX 4080 is still a very strong DLSS card, but the DLSS 5 Neural Rendering question is unknown because NVIDIA has not published a final RTX 40 launch matrix for the new visual layer.",
+        "The RTX 4080 is still a very strong DLSS card, but DLSS 5 Neural Rendering is not live on RTX 40 today. NVIDIA says RTX 40 support is planned later, with no public date.",
       rows: [
         { label: "Current useful features", value: "Frame Generation, Super Resolution, Ray Reconstruction, and DLAA" },
         { label: "Not in the RTX 40 column", value: "Multi Frame Generation and Dynamic Multi Frame Generation" },
-        { label: "DLSS 5 reading", value: "Unknown until final launch documentation, not confirmed and not ruled out" },
+        { label: "DLSS 5 reading", value: "Planned later for RTX 40, not available today and no public date" },
       ],
       link: { href: "/dlss-5-rtx-40-series", label: "Read the RTX 40 series support breakdown" },
       comparison: [
-        { label: "Versus RTX 4090", value: "Lower raw headroom, but both are still unconfirmed for DLSS 5." },
-        { label: "Versus RTX 4070", value: "More performance and VRAM, but no clearer public DLSS 5 confirmation today." },
+        { label: "Versus RTX 4090", value: "Lower raw headroom, but both share the same planned-not-live RTX 40 status." },
+        { label: "Versus RTX 4070", value: "More performance and VRAM, but no earlier DLSS 5 availability today." },
       ],
-      changeAnswer:
-        "A final NVIDIA support table or driver note listing RTX 40 cards for DLSS 5 Neural Rendering would move this from unknown to confirmed.",
+      changeAnswer: COPY.en.rtx40AvailabilityNote,
     },
     pt: {
       title: "O que isso significa para donos de RTX 4080",
       intro:
-        "A RTX 4080 continua sendo uma placa forte para o DLSS atual, mas a pergunta sobre DLSS 5 Neural Rendering ainda fica em aberto porque a NVIDIA não publicou uma matriz final para RTX 40.",
+        "A RTX 4080 continua sendo uma placa forte para o DLSS atual, mas o DLSS 5 Neural Rendering ainda não está disponível em RTX 40. A NVIDIA fala em suporte posterior, sem data pública.",
       rows: [
         { label: "Recursos úteis hoje", value: "Frame Generation, Super Resolution, Ray Reconstruction e DLAA" },
         { label: "Fora da coluna RTX 40", value: "Multi Frame Generation e Dynamic Multi Frame Generation" },
-        { label: "Leitura para DLSS 5", value: "Desconhecida até documentação final, não confirmada e não descartada" },
+        { label: "Leitura para DLSS 5", value: "Planejada para RTX 40 mais adiante, ainda indisponível e sem data pública" },
       ],
       link: { href: "/pt/dlss-5-quais-placas", label: "Comparar todas as placas em português" },
       comparison: [
-        { label: "Versus RTX 4090", value: "Menos desempenho bruto, mas o mesmo status desconhecido para DLSS 5." },
-        { label: "Versus RTX 4070", value: "Mais desempenho e VRAM, mas sem confirmação pública mais clara para DLSS 5 hoje." },
+        { label: "Versus RTX 4090", value: "Menos desempenho bruto, mas o mesmo status planejado e ainda indisponível para DLSS 5." },
+        { label: "Versus RTX 4070", value: "Mais desempenho e VRAM, mas sem disponibilidade de DLSS 5 antes das outras RTX 40." },
       ],
-      changeAnswer:
-        "Uma tabela final da NVIDIA ou nota de driver listando RTX 40 para DLSS 5 Neural Rendering mudaria este status para confirmado.",
+      changeAnswer: COPY.pt.rtx40AvailabilityNote,
     },
   },
   "rtx-4070": {
@@ -237,7 +224,7 @@ const MODEL_INSIGHTS: Partial<Record<string, Partial<Record<SupportedLocale, Mod
         },
         {
           label: "DLSS 5 reading",
-          value: "Unknown until final launch documentation, not confirmed for Neural Rendering",
+          value: "Planned later for RTX 40, not available today and no public date",
         },
       ],
       link: {
@@ -245,11 +232,10 @@ const MODEL_INSIGHTS: Partial<Record<string, Partial<Record<SupportedLocale, Mod
         label: "Read the RTX 40 series support breakdown",
       },
       comparison: [
-        { label: "Versus RTX 4080", value: "Less raw headroom, but both are still unconfirmed for DLSS 5." },
+        { label: "Versus RTX 4080", value: "Less raw headroom, but both share the same planned-not-live RTX 40 status." },
         { label: "Versus RTX 3070", value: "Adds Frame Generation today; RTX 3070 does not have that path." },
       ],
-      changeAnswer:
-        "A final NVIDIA launch note confirming or excluding RTX 4070 for DLSS 5 Neural Rendering would replace this unknown status.",
+      changeAnswer: COPY.en.rtx40AvailabilityNote,
     },
     pt: {
       title: "O que isso significa para donos de RTX 4070",
@@ -258,22 +244,21 @@ const MODEL_INSIGHTS: Partial<Record<string, Partial<Record<SupportedLocale, Mod
       rows: [
         { label: "Recursos úteis hoje", value: "Frame Generation, Super Resolution, Ray Reconstruction e DLAA" },
         { label: "Fora da coluna RTX 40", value: "Multi Frame Generation e Dynamic Multi Frame Generation" },
-        { label: "Leitura para DLSS 5", value: "Desconhecida até documentação final, sem confirmação para Neural Rendering" },
+        { label: "Leitura para DLSS 5", value: "Planejada para RTX 40 mais adiante, ainda indisponível e sem data pública" },
       ],
       link: { href: "/pt/dlss-5-quais-placas", label: "Ver a lista completa de placas" },
       comparison: [
-        { label: "Versus RTX 4080", value: "Menos desempenho bruto, mas ambas ficam no mesmo grupo desconhecido para DLSS 5." },
+        { label: "Versus RTX 4080", value: "Menos desempenho bruto, mas ambas ficam no mesmo grupo planejado e ainda indisponível para DLSS 5." },
         { label: "Versus RTX 3060", value: "A RTX 4070 tem Frame Generation hoje; a RTX 3060 não tem esse caminho." },
       ],
-      changeAnswer:
-        "Uma nota final da NVIDIA confirmando ou excluindo RTX 4070 para DLSS 5 Neural Rendering substituiria este status desconhecido.",
+      changeAnswer: COPY.pt.rtx40AvailabilityNote,
     },
   },
   "rtx-3070": {
     en: {
       title: "What this means for RTX 3070 owners",
       intro:
-        "The RTX 3070 still has useful DLSS image-quality features, but it does not have the RTX 40 Frame Generation path or the RTX 50 Multi Frame Generation path. That makes DLSS 5 Neural Rendering a long-shot until NVIDIA says otherwise.",
+        "The RTX 3070 still has useful DLSS image-quality features, but it does not have the RTX 40 Frame Generation path or the RTX 50 Multi Frame Generation path. It is currently unsupported for DLSS 5 Neural Rendering.",
       rows: [
         {
           label: "Current useful features",
@@ -285,7 +270,7 @@ const MODEL_INSIGHTS: Partial<Record<string, Partial<Record<SupportedLocale, Mod
         },
         {
           label: "DLSS 5 reading",
-          value: "Unlikely based on the current public hardware split",
+          value: "Unsupported for current DLSS 5 Neural Rendering",
         },
       ],
       link: {
@@ -294,65 +279,64 @@ const MODEL_INSIGHTS: Partial<Record<string, Partial<Record<SupportedLocale, Mod
       },
       comparison: [
         { label: "Versus RTX 4070", value: "RTX 4070 adds Frame Generation; RTX 3070 remains on the older DLSS image-quality stack." },
-        { label: "Versus RTX 3060", value: "More performance, but the same unlikely DLSS 5 Neural Rendering status." },
+        { label: "Versus RTX 3060", value: "More performance, but the same unsupported current DLSS 5 Neural Rendering status." },
       ],
       changeAnswer:
-        "NVIDIA would need to publish support for RTX 30 in the DLSS 5 Neural Rendering launch documentation.",
+        "NVIDIA would need to publish RTX 30 support for DLSS 5 Neural Rendering.",
     },
   },
   "rtx-3060": {
     en: {
       title: "What this means for RTX 3060 owners",
       intro:
-        "The RTX 3060 remains useful for DLSS Super Resolution, but it does not have the RTX 40 Frame Generation path or the RTX 50 MFG path. That keeps DLSS 5 Neural Rendering in the unlikely bucket.",
+        "The RTX 3060 remains useful for DLSS Super Resolution, but it does not have the RTX 40 Frame Generation path or the RTX 50 MFG path. It is currently unsupported for DLSS 5 Neural Rendering.",
       rows: [
         { label: "Current useful features", value: "Super Resolution, DLAA, and Ray Reconstruction in supported titles" },
         { label: "Missing newer frame generation", value: "No Frame Generation, Multi Frame Generation, or Dynamic MFG path" },
-        { label: "DLSS 5 reading", value: "Unlikely unless NVIDIA expands the launch matrix beyond the current public split" },
+        { label: "DLSS 5 reading", value: "Unsupported for current DLSS 5 Neural Rendering" },
       ],
       link: { href: "/dlss-5-system-requirements", label: "Read the requirements breakdown" },
       comparison: [
         { label: "Versus RTX 3070", value: "Similar status, less performance headroom in demanding DLSS titles." },
-        { label: "Versus RTX 4070", value: "RTX 4070 adds Frame Generation today but still has unknown DLSS 5 status." },
+        { label: "Versus RTX 4070", value: "RTX 4070 adds Frame Generation today and has planned, not-live DLSS 5 status." },
       ],
       changeAnswer:
-        "The answer would change only if NVIDIA lists RTX 30 cards in final DLSS 5 Neural Rendering requirements.",
+        "The answer would change only if NVIDIA lists RTX 30 cards for DLSS 5 Neural Rendering.",
     },
     pt: {
       title: "O que isso significa para donos de RTX 3060",
       intro:
-        "A RTX 3060 ainda é útil para DLSS Super Resolution, mas não tem o caminho de Frame Generation da RTX 40 nem o caminho de MFG da RTX 50. Por isso o DLSS 5 Neural Rendering fica como pouco provável.",
+        "A RTX 3060 ainda é útil para DLSS Super Resolution, mas não tem o caminho de Frame Generation da RTX 40 nem o caminho de MFG da RTX 50. No status atual, ela fica sem suporte oficial ao DLSS 5 Neural Rendering.",
       rows: [
         { label: "Recursos úteis hoje", value: "Super Resolution, DLAA e Ray Reconstruction em jogos compatíveis" },
         { label: "Geração de quadros mais nova", value: "Sem Frame Generation, Multi Frame Generation ou Dynamic MFG" },
-        { label: "Leitura para DLSS 5", value: "Pouco provável, a menos que a NVIDIA amplie a matriz final para RTX 30" },
+        { label: "Leitura para DLSS 5", value: "Sem suporte oficial atual ao DLSS 5 Neural Rendering" },
       ],
       link: { href: "/pt/dlss-5-requisitos", label: "Ler os requisitos do DLSS 5" },
       comparison: [
         { label: "Versus RTX 3070", value: "Status parecido, com menos folga de desempenho em jogos pesados." },
-        { label: "Versus RTX 4070", value: "A RTX 4070 adiciona Frame Generation hoje, mas DLSS 5 ainda segue desconhecido nela." },
+        { label: "Versus RTX 4070", value: "A RTX 4070 adiciona Frame Generation hoje e tem DLSS 5 planejado, mas ainda indisponível." },
       ],
       changeAnswer:
-        "A resposta só mudaria se a NVIDIA listasse placas RTX 30 nos requisitos finais do DLSS 5 Neural Rendering.",
+        "A resposta só mudaria se a NVIDIA listasse placas RTX 30 para DLSS 5 Neural Rendering.",
     },
   },
   "rtx-4090": {
     pt: {
       title: "O que isso significa para donos de RTX 4090",
       intro:
-        "A RTX 4090 continua muito forte no DLSS atual, mas a pergunta sobre DLSS 5 Neural Rendering ainda é desconhecida porque a NVIDIA não publicou uma matriz final para RTX 40.",
+        "A RTX 4090 continua muito forte no DLSS atual, mas o DLSS 5 Neural Rendering ainda não está disponível em RTX 40. A NVIDIA fala em suporte posterior, sem data pública.",
       rows: [
         { label: "Recursos úteis hoje", value: "Frame Generation, Super Resolution, Ray Reconstruction e DLAA" },
         { label: "Fora da coluna RTX 40", value: "Multi Frame Generation e Dynamic Multi Frame Generation" },
-        { label: "Leitura para DLSS 5", value: "Desconhecida até a documentação final de lançamento" },
+        { label: "Leitura para DLSS 5", value: "Planejada para RTX 40 mais adiante, ainda indisponível e sem data pública" },
       ],
       link: { href: "/dlss-5-rtx-40-series", label: "Ver análise da série RTX 40" },
       comparison: [
-        { label: "Versus RTX 4080", value: "Mais desempenho bruto, mas o mesmo status desconhecido para DLSS 5." },
+        { label: "Versus RTX 4080", value: "Mais desempenho bruto, mas o mesmo status planejado e ainda indisponível para DLSS 5." },
         { label: "Versus RTX 5090", value: "A RTX 5090 fica no caminho RTX 50 mais claro para DLSS 5." },
       ],
-      changeAnswer:
-        "Uma tabela final da NVIDIA listando RTX 40 para DLSS 5 Neural Rendering mudaria esta resposta.",
+      changeAnswer: COPY.pt.rtx40AvailabilityNote,
     },
   },
   "gtx-1060": {
@@ -367,7 +351,7 @@ const MODEL_INSIGHTS: Partial<Record<string, Partial<Record<SupportedLocale, Mod
       ],
       link: { href: "/pt/dlss-5-quais-placas", label: "Voltar para a lista de placas" },
       comparison: [
-        { label: "Versus RTX 2060", value: "RTX 2060 já entra na família RTX e pode usar Super Resolution, mas DLSS 5 ainda é improvável." },
+        { label: "Versus RTX 2060", value: "RTX 2060 já entra na família RTX e pode usar Super Resolution, mas também não tem suporte oficial atual ao DLSS 5." },
         { label: "Versus RTX 3060", value: "RTX 3060 tem DLSS atual; GTX 1060 não tem DLSS." },
       ],
       changeAnswer:
@@ -390,8 +374,11 @@ function getStatusBasis(gpu: GPU, locale: SupportedLocale): string {
     if (gpu.dlss5_support === "none") {
       return "A placa não pertence à família NVIDIA RTX, então não há caminho para NVIDIA DLSS.";
     }
-    if (gpu.dlss5_support === "unknown") {
-      return "A placa roda recursos atuais de DLSS, mas a NVIDIA ainda não publicou uma matriz final de DLSS 5 para esta geração.";
+    if (gpu.dlss5_support === "planned") {
+      return "A placa roda recursos atuais de DLSS e a NVIDIA comunicou planos para RTX 40, mas o DLSS 5 ainda não está disponível nessa geração e não há data pública.";
+    }
+    if (gpu.dlss5_support === "unsupported") {
+      return "A placa roda recursos atuais de DLSS, mas não tem suporte oficial atual ao DLSS 5 Neural Rendering.";
     }
     return "O status usa a geração da GPU, os recursos DLSS atuais e a documentação pública da NVIDIA como fonte primária.";
   }
@@ -399,14 +386,11 @@ function getStatusBasis(gpu: GPU, locale: SupportedLocale): string {
   if (gpu.dlss5_support === "confirmed") {
     return "This card is in the clearest RTX 50 DLSS 5 path, while final driver, game, and per-model launch documentation still matter.";
   }
-  if (gpu.dlss5_support === "expected") {
-    return "This card is part of the RTX 50 generation, but this tracker keeps it below confirmed until final per-model launch documentation is public.";
+  if (gpu.dlss5_support === "planned") {
+    return "This card has strong current DLSS support and RTX 40 is on NVIDIA's later DLSS 5 plan, but DLSS 5 is not available on it yet and no release date has been announced.";
   }
-  if (gpu.dlss5_support === "unknown") {
-    return "This card has strong current DLSS support, but NVIDIA has not published final DLSS 5 Neural Rendering support details for its generation.";
-  }
-  if (gpu.dlss5_support === "unlikely") {
-    return "This card lacks the newer frame-generation path shown for RTX 40 and RTX 50, so DLSS 5 Neural Rendering remains unlikely unless NVIDIA expands support.";
+  if (gpu.dlss5_support === "unsupported") {
+    return "This card supports older DLSS features, but it has no current official DLSS 5 Neural Rendering support.";
   }
   return "This card is outside NVIDIA RTX DLSS support. Use vendor alternatives such as AMD FSR or Intel XeSS where available.";
 }
@@ -483,7 +467,7 @@ export default function GPUDetailPage({ gpu, locale }: GPUDetailPageProps) {
     name: copy.title(gpu),
     url: pageHref,
     inLanguage: locale === "pt" ? "pt-BR" : "en",
-    dateModified: "2026-06-22",
+    dateModified: "2026-09-05",
     isPartOf: {
       "@type": "WebSite",
       name: "DLSS 5 Checker",

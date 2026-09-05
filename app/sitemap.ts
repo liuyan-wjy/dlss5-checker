@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://www.dlss5.net";
 
+export const dynamic = "force-static";
+
 type SitemapPage = {
   path: string;
   changeFrequency: "weekly" | "monthly";
@@ -21,6 +23,7 @@ const pages: SitemapPage[] = [
   { path: "/dlss-5-system-requirements", changeFrequency: "weekly", priority: 0.85 },
   { path: "/dlss-5-supported-cards", changeFrequency: "weekly", priority: 0.9 },
   { path: "/dlss-5-games", changeFrequency: "weekly", priority: 0.88 },
+  { path: "/games/nba-2k27-dlss-5", changeFrequency: "weekly", priority: 0.86 },
   {
     path: "/games/resident-evil-requiem-dlss-5",
     changeFrequency: "weekly",

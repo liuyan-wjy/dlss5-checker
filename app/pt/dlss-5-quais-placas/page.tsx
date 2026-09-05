@@ -4,10 +4,12 @@ import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type DlssSupport, type GPU } from "@/lib/gpu-search";
 import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 
+const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-quais-placas";
+
 export const metadata: Metadata = {
   title: "DLSS 5: Quais Placas Suportam? Lista por GPU [2026]",
   description:
-    "Veja quais placas estão confirmadas, esperadas, desconhecidas, improváveis ou sem suporte para DLSS 5, com status para RTX 50, RTX 40, RTX 30, GTX, AMD e Intel.",
+    "Veja quais placas estão confirmadas, planejadas, sem suporte oficial ou fora do NVIDIA DLSS para DLSS 5, com status para RTX 50, RTX 40, RTX 30, GTX, AMD e Intel.",
   alternates: {
     canonical: "/pt/dlss-5-quais-placas",
     languages: {
@@ -15,9 +17,21 @@ export const metadata: Metadata = {
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-quais-placas",
     },
   },
+  openGraph: {
+    title: "DLSS 5: Quais Placas Suportam? Lista por GPU [2026]",
+    description:
+      "Veja quais placas estão confirmadas, planejadas, sem suporte oficial ou fora do NVIDIA DLSS para DLSS 5, com status para RTX 50, RTX 40, RTX 30, GTX, AMD e Intel.",
+    type: "article",
+    url: PAGE_URL,
+    locale: "pt_BR",
+  },
+  twitter: {
+    card: "summary",
+    title: "DLSS 5: Quais Placas Suportam? Lista por GPU [2026]",
+    description:
+      "Veja quais placas estão confirmadas, planejadas, sem suporte oficial ou fora do NVIDIA DLSS para DLSS 5, com status para RTX 50, RTX 40, RTX 30, GTX, AMD e Intel.",
+  },
 };
-
-const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-quais-placas";
 
 const STATUS_COPY: Record<
   DlssSupport,
@@ -34,22 +48,16 @@ const STATUS_COPY: Record<
     note: "Os modelos RTX 50 neste grupo têm o caminho público mais claro para a nova camada de Neural Rendering.",
     className: "border-green-500/30 bg-green-500/5 text-green-300",
   },
-  expected: {
-    title: "Esperadas, pendentes por modelo",
-    label: "Esperada",
-    note: "Esses modelos RTX 50 fazem parte do caminho da geração RTX 50, mas ainda devem ser verificados na documentação final por modelo.",
-    className: "border-lime-500/30 bg-lime-500/5 text-lime-300",
-  },
-  unknown: {
-    title: "Desconhecidas até a documentação final",
-    label: "Desconhecida",
-    note: "As placas RTX 40 rodam recursos atuais fortes de DLSS, mas o DLSS 5 Neural Rendering ainda não deve ser tratado como confirmado nessa geração.",
+  planned: {
+    title: "Planejadas, mas ainda indisponíveis",
+    label: "Planejada",
+    note: "As placas RTX 40 rodam recursos atuais fortes de DLSS. A NVIDIA indicou plano posterior para RTX 40, mas ainda sem data pública e sem suporte ativo hoje.",
     className: "border-yellow-500/30 bg-yellow-500/5 text-yellow-300",
   },
-  unlikely: {
-    title: "Improváveis para a nova camada",
-    label: "Improvável",
-    note: "RTX 20 e RTX 30 continuam úteis para DLSS atual, mas não seguem o mesmo caminho de geração de quadros das gerações mais novas.",
+  unsupported: {
+    title: "Sem suporte oficial atual ao DLSS 5",
+    label: "Sem suporte oficial",
+    note: "RTX 20 e RTX 30 continuam úteis para recursos DLSS atuais, mas as fontes checadas aqui não listam suporte atual ao DLSS 5 Neural Rendering.",
     className: "border-orange-500/30 bg-orange-500/5 text-orange-300",
   },
   none: {
@@ -64,12 +72,12 @@ const faqItems = [
   {
     question: "Quais placas suportam DLSS 5?",
     answer:
-      "As placas confirmadas neste guia são modelos RTX 50 com caminho público claro. RTX 5060 e RTX 5060 Ti ficam como esperadas, mas pendentes por modelo; RTX 40 fica como desconhecida até a documentação final.",
+      "As placas confirmadas neste guia são GPUs RTX 50 de desktop e notebook. RTX 40 está planejada, mas ainda indisponível e sem data pública. RTX 20 e RTX 30 não têm suporte oficial atual ao DLSS 5 Neural Rendering.",
   },
   {
     question: "RTX 4090 suporta DLSS 5?",
     answer:
-      "O suporte da RTX 4090 ao DLSS 5 ainda não foi confirmado. Hoje ela roda recursos atuais como Frame Generation, Super Resolution, Ray Reconstruction e DLAA.",
+      "A RTX 4090 está no grupo RTX 40: suporte planejado para depois da otimização em RTX 50, mas ainda sem disponibilidade local e sem data pública. Hoje ela roda Frame Generation, Super Resolution, Ray Reconstruction e DLAA.",
   },
   {
     question: "GTX 1060 suporta DLSS 5?",
@@ -204,7 +212,7 @@ export default function PtDlss5QuaisPlacasPage() {
     name: "DLSS 5: Quais Placas Suportam",
     url: PAGE_URL,
     inLanguage: "pt-BR",
-    dateModified: "2026-06-22",
+    dateModified: "2026-09-05",
     isPartOf: {
       "@type": "WebSite",
       name: "DLSS 5 Checker",
@@ -243,14 +251,14 @@ export default function PtDlss5QuaisPlacasPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Última verificação em 1 de agosto de 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Última verificação em 5 de setembro de 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5: Quais Placas Suportam?
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            A resposta curta: os modelos confirmados nesta lista são RTX 50. RTX 40 ainda
-            merece atenção, mas deve ser tratada como desconhecida até a NVIDIA publicar
-            os requisitos finais por geração e por modelo.
+            A resposta curta: os modelos RTX 50 de desktop e notebook estão confirmados
+            para DLSS 5 em NBA 2K27. RTX 40 está planejada, mas ainda não disponível e
+            sem data pública.
           </p>
         </header>
 
@@ -260,24 +268,21 @@ export default function PtDlss5QuaisPlacasPage() {
         >
           <h2 className="text-xl font-bold mb-3">Quais placas suportam DLSS 5? Resposta curta</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            Última verificação em 1 de agosto de 2026: RTX 50 é o caminho mais claro para
-            DLSS 5. RTX 5090, RTX 5080, RTX 5070 Ti e RTX 5070 ficam como confirmadas;
-            RTX 5060 Ti e RTX 5060 ficam como esperadas até documentação final por modelo.
-            RTX 40 segue desconhecida, RTX 30 é pouco provável para a nova camada de
-            Neural Rendering, e GTX, AMD e Intel não rodam NVIDIA DLSS.
+            Última verificação em 5 de setembro de 2026: RTX 50 é o caminho confirmado
+            para DLSS 5 Neural Rendering em NBA 2K27, incluindo RTX 5090 até RTX 5050 e
+            versões de notebook. RTX 40 está planejada para depois da otimização em RTX 50,
+            mas ainda não está ativa. RTX 20 e RTX 30 não têm suporte oficial atual ao
+            DLSS 5, e GTX, AMD e Intel não rodam NVIDIA DLSS.
           </p>
           <div className="mt-4 flex flex-wrap gap-2 text-sm">
             <a href="#status-confirmed" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
               RTX 50 confirmadas
             </a>
-            <a href="#status-expected" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
-              RTX 50 esperadas
+            <a href="#status-planned" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 40 planejadas
             </a>
-            <a href="#status-unknown" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
-              RTX 40 desconhecidas
-            </a>
-            <a href="#status-unlikely" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
-              RTX 30 pouco prováveis
+            <a href="#status-unsupported" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
+              RTX 20/30 sem suporte atual
             </a>
             <a href="#status-none" className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400">
               GTX, AMD, Intel sem DLSS
@@ -309,9 +314,8 @@ export default function PtDlss5QuaisPlacasPage() {
         </section>
 
         <StatusSection status="confirmed" />
-        <StatusSection status="expected" />
-        <StatusSection status="unknown" />
-        <StatusSection status="unlikely" />
+        <StatusSection status="planned" />
+        <StatusSection status="unsupported" />
         <StatusSection status="none" />
 
         <section className="mb-10 rounded-lg border border-border p-5">
@@ -350,7 +354,7 @@ export default function PtDlss5QuaisPlacasPage() {
             >
               <div className="font-semibold mb-1">RTX 4080 e DLSS 5</div>
               <p className="text-sm text-muted-foreground">
-                Entenda por que a RTX 4080 segue como desconhecida para DLSS 5.
+                Entenda por que a RTX 4080 está planejada para depois, mas ainda sem DLSS 5 ativo.
               </p>
             </Link>
             <Link
@@ -443,7 +447,7 @@ export default function PtDlss5QuaisPlacasPage() {
             de suporte antes do lançamento.
           </p>
         </section>
-        <ArticleTrustBlock locale="pt" />
+        <ArticleTrustBlock locale="pt" reviewedAt="2026-09-05" />
       </main>
     </>
   );

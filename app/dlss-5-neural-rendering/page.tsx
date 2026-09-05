@@ -9,13 +9,28 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/dlss-5-neural-rendering",
   },
+  openGraph: {
+    title: "DLSS 5 Neural Rendering: What 3D-Guided Rendering Means",
+    description:
+      "Learn what DLSS 5 3D-guided Neural Rendering means, how game frames and motion vectors guide the model, and why it differs from video generation.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-5-neural-rendering",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DLSS 5 Neural Rendering: What 3D-Guided Rendering Means",
+    description:
+      "Learn what DLSS 5 3D-guided Neural Rendering means, how game frames and motion vectors guide the model, and why it differs from video generation.",
+  },
 };
 
 const NVIDIA_DLSS5_NEWS =
-  "https://nvidianews.nvidia.com/news/nvidia-dlss-5-delivers-ai-powered-breakthrough-in-visual-fidelity-for-games";
+  "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/";
 const NVIDIA_DLSS_DEVELOPER = "https://developer.nvidia.com/rtx/dlss";
 const NVIDIA_DLSS45_NOW =
   "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-generation-6x-mode-released/";
+const NVIDIA_NBA_DRIVER =
+  "https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/";
 
 const inputRows = [
   {
@@ -36,7 +51,7 @@ const inputRows = [
   {
     input: "Artist controls",
     role:
-      "Developers can tune intensity, color grading, and masking so the result respects a game's intended look.",
+      "Developers can tune Structure Intensity, Tone Intensity, and masks so the result respects a game's intended look.",
   },
 ];
 
@@ -64,7 +79,7 @@ const boundaryRows = [
   {
     label: "Not a final GPU matrix",
     detail:
-      "The technical explanation does not replace a launch support table. Hardware support still needs a separate source.",
+      "The technical explanation does not replace a support table. RTX 50 is live in NBA 2K27; RTX 40 is planned but not available yet.",
   },
 ];
 
@@ -72,7 +87,7 @@ const faqItems = [
   {
     question: "What is DLSS 5 Neural Rendering?",
     answer:
-      "It is NVIDIA's announced real-time visual-fidelity layer that uses game color frames, motion vectors, and an AI model to improve lighting and material appearance while staying anchored to the source scene.",
+      "It is NVIDIA's real-time visual-fidelity layer that uses game color frames, motion vectors, and an AI model to improve lighting and material appearance while staying anchored to the source scene.",
   },
   {
     question: "What does 3D-guided Neural Rendering mean?",
@@ -82,7 +97,7 @@ const faqItems = [
   {
     question: "Is neural rendering the same as DLSS 4.5?",
     answer:
-      "No. DLSS 4.5 improves the current Super Resolution and frame-generation stack. The announced DLSS 5 layer focuses on photoreal lighting, materials, and artist-controlled visual fidelity.",
+      "No. DLSS 4.5 improves the current Super Resolution and frame-generation stack. DLSS 5 Neural Rendering focuses on lighting, materials, and artist-controlled visual fidelity.",
   },
   {
     question: "Does this prove my GPU will support it?",
@@ -146,7 +161,7 @@ export default function Dlss5NeuralRenderingPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Technical explainer updated July 28, 2026
+            Technical explainer updated September 5, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Neural Rendering: What “3D-Guided” Means
@@ -154,7 +169,8 @@ export default function Dlss5NeuralRenderingPage() {
           <p className="text-lg text-muted-foreground leading-relaxed">
             The important shift is not only more frames. NVIDIA describes the new layer as
             a real-time model that uses source game data to improve lighting and materials
-            while keeping the result stable and controllable for developers.
+            while keeping the result stable and controllable for developers. It is live first
+            in NBA 2K27 for RTX 50 desktop and laptop GPUs.
           </p>
         </header>
 
@@ -219,9 +235,10 @@ export default function Dlss5NeuralRenderingPage() {
             uses shortcuts.
           </p>
           <p>
-            The other useful detail is control. NVIDIA says developers get intensity,
-            grading, and mask controls. That matters because games are art-directed; a
-            useful model has to enhance a scene without rewriting the style of the game.
+            The other useful detail is control. NVIDIA names Structure Intensity, Tone
+            Intensity, and masks as developer-facing controls. Players do not tune those
+            internal controls directly in NBA 2K27; the game exposes a DLSS Neural
+            Rendering option, and F9 toggles the effect during gameplay or replay.
           </p>
         </section>
 
@@ -254,7 +271,7 @@ export default function Dlss5NeuralRenderingPage() {
           >
             <div className="font-semibold mb-1">Unreal Engine status</div>
             <p className="text-sm text-muted-foreground">
-              Check current plugin support and what is still unconfirmed for developers.
+              Check current plugin support and what remains separate from game launch proof.
             </p>
           </Link>
           <Link
@@ -263,7 +280,7 @@ export default function Dlss5NeuralRenderingPage() {
           >
             <div className="font-semibold mb-1">Release date status</div>
             <p className="text-sm text-muted-foreground">
-              Check the Fall 2026 window and what still needs launch proof.
+              Check the September 2026 NBA 2K27 launch and what still needs rollout proof.
             </p>
           </Link>
           <Link
@@ -272,7 +289,7 @@ export default function Dlss5NeuralRenderingPage() {
           >
             <div className="font-semibold mb-1">DLSS 5 vs DLSS 4.5</div>
             <p className="text-sm text-muted-foreground">
-              Compare the announced visual layer with current performance features.
+              Compare the neural rendering layer with current performance features.
             </p>
           </Link>
           <Link
@@ -310,7 +327,11 @@ export default function Dlss5NeuralRenderingPage() {
             <a href={NVIDIA_DLSS45_NOW} className="text-blue-400 hover:underline">
               NVIDIA DLSS 4.5 release notes
             </a>
-            . Hardware support and launch behavior can still change before public release.
+            , and{" "}
+            <a href={NVIDIA_NBA_DRIVER} className="text-blue-400 hover:underline">
+              NVIDIA&apos;s NBA 2K27 driver note
+            </a>
+            . RTX 40 rollout timing and future game behavior can still change.
           </p>
         </section>
 
@@ -325,7 +346,7 @@ export default function Dlss5NeuralRenderingPage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

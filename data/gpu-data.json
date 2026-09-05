@@ -22,7 +22,7 @@
         "dynamic_mfg_6x"
       ],
       "missing_features": [],
-      "summary": "RTX 5090 is confirmed for DLSS 5 Neural Rendering (coming Fall 2026). Today it supports DLSS 4.5 with Dynamic 6X Multi Frame Generation and 2nd-gen Transformer Super Resolution. Final driver, game, and per-model launch documentation can still affect real-world availability.",
+      "summary": "RTX 5090 is confirmed for DLSS 5 Neural Rendering (available now). Today it supports DLSS 4.5 with Dynamic 6X Multi Frame Generation and 2nd-gen Transformer Super Resolution. Final driver, game, and per-model launch documentation can still affect real-world availability.",
       "vram": "32GB",
       "tier": "flagship"
     },
@@ -48,7 +48,7 @@
         "dynamic_mfg_6x"
       ],
       "missing_features": [],
-      "summary": "RTX 5080 is confirmed for DLSS 5 Neural Rendering (coming Fall 2026). Today it supports DLSS 4.5 with Dynamic 6X Multi Frame Generation. Final driver, game, and per-model launch documentation can still affect real-world availability.",
+      "summary": "RTX 5080 is confirmed for DLSS 5 Neural Rendering (available now). Today it supports DLSS 4.5 with Dynamic 6X Multi Frame Generation. Final driver, game, and per-model launch documentation can still affect real-world availability.",
       "vram": "16GB",
       "tier": "high-end"
     },
@@ -75,7 +75,7 @@
         "dynamic_mfg_6x"
       ],
       "missing_features": [],
-      "summary": "RTX 5070 Ti is confirmed for DLSS 5 Neural Rendering (coming Fall 2026). Today it supports DLSS 4.5 with Dynamic 6X Multi Frame Generation. Final driver, game, and per-model launch documentation can still affect real-world availability.",
+      "summary": "RTX 5070 Ti is confirmed for DLSS 5 Neural Rendering (available now). Today it supports DLSS 4.5 with Dynamic 6X Multi Frame Generation. Final driver, game, and per-model launch documentation can still affect real-world availability.",
       "vram": "16GB",
       "tier": "high-end"
     },
@@ -101,7 +101,7 @@
         "dynamic_mfg_6x"
       ],
       "missing_features": [],
-      "summary": "RTX 5070 is confirmed for DLSS 5 Neural Rendering (coming Fall 2026). Today it supports DLSS 4.5 with Dynamic 6X Multi Frame Generation. Final driver, game, and per-model launch documentation can still affect real-world availability.",
+      "summary": "RTX 5070 is confirmed for DLSS 5 Neural Rendering (available now). Today it supports DLSS 4.5 with Dynamic 6X Multi Frame Generation. Final driver, game, and per-model launch documentation can still affect real-world availability.",
       "vram": "12GB",
       "tier": "mid-high"
     },
@@ -115,7 +115,7 @@
         "rtx 5060 ti"
       ],
       "series": "RTX 50",
-      "dlss5_support": "expected",
+      "dlss5_support": "confirmed",
       "dlss5_features": [
         "neural_rendering"
       ],
@@ -127,7 +127,7 @@
         "dynamic_mfg_6x"
       ],
       "missing_features": [],
-      "summary": "RTX 5060 Ti is part of the RTX 50 generation and is expected to be on the DLSS 5 path, but NVIDIA's final per-model compatibility documentation should still be checked before buying only for DLSS 5. It supports current DLSS 4.5 Dynamic MFG features today.",
+      "summary": "RTX 5060 Ti is part of the RTX 50 generation and is confirmed for DLSS 5 Neural Rendering in supported games. It supports current DLSS 4.5 Dynamic MFG features today.",
       "vram": "16GB",
       "tier": "mid"
     },
@@ -141,7 +141,7 @@
         "geforce 5060"
       ],
       "series": "RTX 50",
-      "dlss5_support": "expected",
+      "dlss5_support": "confirmed",
       "dlss5_features": [
         "neural_rendering"
       ],
@@ -153,9 +153,198 @@
         "dynamic_mfg_6x"
       ],
       "missing_features": [],
-      "summary": "RTX 5060 is part of the RTX 50 generation and is expected to be on the DLSS 5 path, but NVIDIA's final per-model compatibility documentation should still be checked before buying only for DLSS 5. It supports current DLSS 4.5 Dynamic MFG features today.",
+      "summary": "RTX 5060 is part of the RTX 50 generation and is confirmed for DLSS 5 Neural Rendering in supported games. It supports current DLSS 4.5 Dynamic MFG features today.",
       "vram": "8GB",
       "tier": "mid"
+    },
+    {
+      "id": "rtx-5050",
+      "name": "NVIDIA GeForce RTX 5050",
+      "aliases": [
+        "5050",
+        "rtx5050",
+        "rtx 5050",
+        "geforce 5050"
+      ],
+      "series": "RTX 50",
+      "dlss5_support": "confirmed",
+      "dlss5_features": [
+        "neural_rendering"
+      ],
+      "current_dlss_features": [
+        "dlss_super_resolution",
+        "dlaa",
+        "ray_reconstruction",
+        "multi_frame_generation_4x",
+        "dynamic_mfg_6x"
+      ],
+      "missing_features": [],
+      "summary": "RTX 5050 is part of the RTX 50 generation and is confirmed for DLSS 5 Neural Rendering in supported games. It supports the current DLSS 4.5 RTX 50 feature path, but this checker has no separate benchmark data for this model yet.",
+      "vram": "8GB",
+      "tier": "entry"
+    },
+    {
+      "id": "rtx-5090-laptop",
+      "name": "NVIDIA GeForce RTX 5090 Laptop GPU",
+      "aliases": [
+        "5090 laptop",
+        "rtx 5090 laptop",
+        "rtx5090 laptop",
+        "5090 notebook",
+        "rtx 5090 notebook"
+      ],
+      "series": "RTX 50",
+      "dlss5_support": "confirmed",
+      "dlss5_features": [
+        "neural_rendering"
+      ],
+      "current_dlss_features": [
+        "dlss_super_resolution",
+        "dlaa",
+        "ray_reconstruction",
+        "multi_frame_generation_4x",
+        "dynamic_mfg_6x"
+      ],
+      "missing_features": [],
+      "summary": "RTX 5090 Laptop GPU is confirmed for DLSS 5 Neural Rendering as part of the RTX 50 laptop lineup. Laptop performance depends on each notebook's power and cooling limits, and this checker does not reuse desktop RTX 5090 benchmark data for it.",
+      "vram": "24GB",
+      "tier": "flagship"
+    },
+    {
+      "id": "rtx-5080-laptop",
+      "name": "NVIDIA GeForce RTX 5080 Laptop GPU",
+      "aliases": [
+        "5080 laptop",
+        "rtx 5080 laptop",
+        "rtx5080 laptop",
+        "5080 notebook",
+        "rtx 5080 notebook"
+      ],
+      "series": "RTX 50",
+      "dlss5_support": "confirmed",
+      "dlss5_features": [
+        "neural_rendering"
+      ],
+      "current_dlss_features": [
+        "dlss_super_resolution",
+        "dlaa",
+        "ray_reconstruction",
+        "multi_frame_generation_4x",
+        "dynamic_mfg_6x"
+      ],
+      "missing_features": [],
+      "summary": "RTX 5080 Laptop GPU is confirmed for DLSS 5 Neural Rendering as part of the RTX 50 laptop lineup. Laptop performance depends on each notebook's power and cooling limits, and this checker does not reuse desktop RTX 5080 benchmark data for it.",
+      "vram": "16GB",
+      "tier": "high-end"
+    },
+    {
+      "id": "rtx-5070-ti-laptop",
+      "name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "aliases": [
+        "5070 ti laptop",
+        "5070ti laptop",
+        "rtx 5070 ti laptop",
+        "rtx5070ti laptop",
+        "5070 ti notebook",
+        "rtx 5070 ti notebook"
+      ],
+      "series": "RTX 50",
+      "dlss5_support": "confirmed",
+      "dlss5_features": [
+        "neural_rendering"
+      ],
+      "current_dlss_features": [
+        "dlss_super_resolution",
+        "dlaa",
+        "ray_reconstruction",
+        "multi_frame_generation_4x",
+        "dynamic_mfg_6x"
+      ],
+      "missing_features": [],
+      "summary": "RTX 5070 Ti Laptop GPU is confirmed for DLSS 5 Neural Rendering as part of the RTX 50 laptop lineup. Laptop performance depends on each notebook's power and cooling limits, and this checker does not reuse desktop RTX 5070 Ti benchmark data for it.",
+      "vram": "12GB",
+      "tier": "high-end"
+    },
+    {
+      "id": "rtx-5070-laptop",
+      "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+      "aliases": [
+        "5070 laptop",
+        "rtx 5070 laptop",
+        "rtx5070 laptop",
+        "5070 notebook",
+        "rtx 5070 notebook"
+      ],
+      "series": "RTX 50",
+      "dlss5_support": "confirmed",
+      "dlss5_features": [
+        "neural_rendering"
+      ],
+      "current_dlss_features": [
+        "dlss_super_resolution",
+        "dlaa",
+        "ray_reconstruction",
+        "multi_frame_generation_4x",
+        "dynamic_mfg_6x"
+      ],
+      "missing_features": [],
+      "summary": "RTX 5070 Laptop GPU is confirmed for DLSS 5 Neural Rendering as part of the RTX 50 laptop lineup. NVIDIA lists 8GB and 12GB configurations, so buyers should check the exact notebook SKU before comparing performance.",
+      "vram": "8GB or 12GB",
+      "tier": "mid-high"
+    },
+    {
+      "id": "rtx-5060-laptop",
+      "name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "aliases": [
+        "5060 laptop",
+        "rtx 5060 laptop",
+        "rtx5060 laptop",
+        "5060 notebook",
+        "rtx 5060 notebook"
+      ],
+      "series": "RTX 50",
+      "dlss5_support": "confirmed",
+      "dlss5_features": [
+        "neural_rendering"
+      ],
+      "current_dlss_features": [
+        "dlss_super_resolution",
+        "dlaa",
+        "ray_reconstruction",
+        "multi_frame_generation_4x",
+        "dynamic_mfg_6x"
+      ],
+      "missing_features": [],
+      "summary": "RTX 5060 Laptop GPU is confirmed for DLSS 5 Neural Rendering as part of the RTX 50 laptop lineup. Laptop performance depends on each notebook's power and cooling limits, and this checker does not reuse desktop RTX 5060 benchmark data for it.",
+      "vram": "8GB",
+      "tier": "mid"
+    },
+    {
+      "id": "rtx-5050-laptop",
+      "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+      "aliases": [
+        "5050 laptop",
+        "rtx 5050 laptop",
+        "rtx5050 laptop",
+        "5050 notebook",
+        "rtx 5050 notebook"
+      ],
+      "series": "RTX 50",
+      "dlss5_support": "confirmed",
+      "dlss5_features": [
+        "neural_rendering"
+      ],
+      "current_dlss_features": [
+        "dlss_super_resolution",
+        "dlaa",
+        "ray_reconstruction",
+        "multi_frame_generation_4x",
+        "dynamic_mfg_6x"
+      ],
+      "missing_features": [],
+      "summary": "RTX 5050 Laptop GPU is confirmed for DLSS 5 Neural Rendering as part of the RTX 50 laptop lineup. Laptop performance depends on each notebook's power and cooling limits, and this checker does not reuse desktop RTX 5050 data for it.",
+      "vram": "8GB",
+      "tier": "entry"
     },
     {
       "id": "rtx-4090",
@@ -167,7 +356,7 @@
         "geforce 4090"
       ],
       "series": "RTX 40",
-      "dlss5_support": "unknown",
+      "dlss5_support": "planned",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -178,7 +367,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 4090 DLSS 5 Neural Rendering support is unknown until NVIDIA publishes final launch compatibility details. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
+      "summary": "RTX 4090 DLSS 5 Neural Rendering support is planned after RTX 50 optimization, with no public date. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
       "vram": "24GB",
       "tier": "flagship"
     },
@@ -192,7 +381,7 @@
         "rtx 4080 super"
       ],
       "series": "RTX 40",
-      "dlss5_support": "unknown",
+      "dlss5_support": "planned",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -203,7 +392,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 4080 Super DLSS 5 Neural Rendering support is unknown until NVIDIA publishes final launch compatibility details. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
+      "summary": "RTX 4080 Super DLSS 5 Neural Rendering support is planned after RTX 50 optimization, with no public date. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
       "vram": "16GB",
       "tier": "high-end"
     },
@@ -217,7 +406,7 @@
         "geforce 4080"
       ],
       "series": "RTX 40",
-      "dlss5_support": "unknown",
+      "dlss5_support": "planned",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -228,7 +417,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 4080 DLSS 5 Neural Rendering support is unknown until NVIDIA publishes final launch compatibility details. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
+      "summary": "RTX 4080 DLSS 5 Neural Rendering support is planned after RTX 50 optimization, with no public date. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
       "vram": "16GB",
       "tier": "high-end"
     },
@@ -242,7 +431,7 @@
         "rtx4070tis"
       ],
       "series": "RTX 40",
-      "dlss5_support": "unknown",
+      "dlss5_support": "planned",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -253,7 +442,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 4070 Ti Super DLSS 5 Neural Rendering support is unknown until NVIDIA publishes final launch compatibility details. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
+      "summary": "RTX 4070 Ti Super DLSS 5 Neural Rendering support is planned after RTX 50 optimization, with no public date. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
       "vram": "16GB",
       "tier": "high-end"
     },
@@ -267,7 +456,7 @@
         "rtx 4070 ti"
       ],
       "series": "RTX 40",
-      "dlss5_support": "unknown",
+      "dlss5_support": "planned",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -278,7 +467,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 4070 Ti DLSS 5 Neural Rendering support is unknown until NVIDIA publishes final launch compatibility details. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
+      "summary": "RTX 4070 Ti DLSS 5 Neural Rendering support is planned after RTX 50 optimization, with no public date. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
       "vram": "12GB",
       "tier": "mid-high"
     },
@@ -292,7 +481,7 @@
         "rtx 4070 super"
       ],
       "series": "RTX 40",
-      "dlss5_support": "unknown",
+      "dlss5_support": "planned",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -303,7 +492,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 4070 Super DLSS 5 Neural Rendering support is unknown until NVIDIA publishes final launch compatibility details. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
+      "summary": "RTX 4070 Super DLSS 5 Neural Rendering support is planned after RTX 50 optimization, with no public date. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
       "vram": "12GB",
       "tier": "mid"
     },
@@ -317,7 +506,7 @@
         "geforce 4070"
       ],
       "series": "RTX 40",
-      "dlss5_support": "unknown",
+      "dlss5_support": "planned",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -328,7 +517,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 4070 DLSS 5 Neural Rendering support is unknown until NVIDIA publishes final launch compatibility details. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
+      "summary": "RTX 4070 DLSS 5 Neural Rendering support is planned after RTX 50 optimization, with no public date. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
       "vram": "12GB",
       "tier": "mid"
     },
@@ -342,7 +531,7 @@
         "rtx 4060 ti"
       ],
       "series": "RTX 40",
-      "dlss5_support": "unknown",
+      "dlss5_support": "planned",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -352,7 +541,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 4060 Ti DLSS 5 Neural Rendering support is unknown until NVIDIA publishes final launch compatibility details. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
+      "summary": "RTX 4060 Ti DLSS 5 Neural Rendering support is planned after RTX 50 optimization, with no public date. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
       "vram": "8GB",
       "tier": "mid"
     },
@@ -366,7 +555,7 @@
         "geforce 4060"
       ],
       "series": "RTX 40",
-      "dlss5_support": "unknown",
+      "dlss5_support": "planned",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -376,7 +565,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 4060 DLSS 5 Neural Rendering support is unknown until NVIDIA publishes final launch compatibility details. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
+      "summary": "RTX 4060 DLSS 5 Neural Rendering support is planned after RTX 50 optimization, with no public date. Today it supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA in supported games.",
       "vram": "8GB",
       "tier": "entry"
     },
@@ -390,7 +579,7 @@
         "rtx 3090 ti"
       ],
       "series": "RTX 30",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -400,7 +589,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 3090 Ti is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
+      "summary": "RTX 3090 Ti is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
       "vram": "24GB",
       "tier": "flagship"
     },
@@ -414,7 +603,7 @@
         "geforce 3090"
       ],
       "series": "RTX 30",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -424,7 +613,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 3090 is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
+      "summary": "RTX 3090 is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
       "vram": "24GB",
       "tier": "flagship"
     },
@@ -438,7 +627,7 @@
         "rtx 3080 ti"
       ],
       "series": "RTX 30",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -448,7 +637,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 3080 Ti is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
+      "summary": "RTX 3080 Ti is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
       "vram": "12GB",
       "tier": "high-end"
     },
@@ -462,7 +651,7 @@
         "geforce 3080"
       ],
       "series": "RTX 30",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -472,7 +661,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 3080 is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
+      "summary": "RTX 3080 is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
       "vram": "10GB",
       "tier": "high-end"
     },
@@ -486,7 +675,7 @@
         "rtx 3070 ti"
       ],
       "series": "RTX 30",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -496,7 +685,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 3070 Ti is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
+      "summary": "RTX 3070 Ti is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
       "vram": "8GB",
       "tier": "mid-high"
     },
@@ -510,7 +699,7 @@
         "geforce 3070"
       ],
       "series": "RTX 30",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -520,7 +709,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 3070 is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
+      "summary": "RTX 3070 is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
       "vram": "8GB",
       "tier": "mid"
     },
@@ -534,7 +723,7 @@
         "rtx 3060 ti"
       ],
       "series": "RTX 30",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -544,7 +733,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 3060 Ti is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
+      "summary": "RTX 3060 Ti is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
       "vram": "8GB",
       "tier": "mid"
     },
@@ -558,7 +747,7 @@
         "geforce 3060"
       ],
       "series": "RTX 30",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -568,7 +757,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 3060 is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
+      "summary": "RTX 3060 is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
       "vram": "12GB",
       "tier": "mid"
     },
@@ -582,7 +771,7 @@
         "geforce 3050"
       ],
       "series": "RTX 30",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -591,7 +780,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 3050 is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
+      "summary": "RTX 3050 is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it supports DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the RTX 40 Frame Generation or RTX 50 MFG path.",
       "vram": "8GB",
       "tier": "entry"
     },
@@ -605,7 +794,7 @@
         "rtx 2080 ti"
       ],
       "series": "RTX 20",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -614,7 +803,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 2080 Ti is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
+      "summary": "RTX 2080 Ti is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
       "vram": "11GB",
       "tier": "flagship"
     },
@@ -628,7 +817,7 @@
         "rtx 2080 super"
       ],
       "series": "RTX 20",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -637,7 +826,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 2080 Super is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
+      "summary": "RTX 2080 Super is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
       "vram": "8GB",
       "tier": "high-end"
     },
@@ -651,7 +840,7 @@
         "geforce 2080"
       ],
       "series": "RTX 20",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -660,7 +849,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 2080 is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
+      "summary": "RTX 2080 is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
       "vram": "8GB",
       "tier": "high-end"
     },
@@ -674,7 +863,7 @@
         "rtx 2070 super"
       ],
       "series": "RTX 20",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -683,7 +872,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 2070 Super is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
+      "summary": "RTX 2070 Super is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
       "vram": "8GB",
       "tier": "mid-high"
     },
@@ -697,7 +886,7 @@
         "geforce 2070"
       ],
       "series": "RTX 20",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -706,7 +895,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 2070 is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
+      "summary": "RTX 2070 is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
       "vram": "8GB",
       "tier": "mid"
     },
@@ -720,7 +909,7 @@
         "rtx 2060 super"
       ],
       "series": "RTX 20",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -729,7 +918,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 2060 Super is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
+      "summary": "RTX 2060 Super is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
       "vram": "8GB",
       "tier": "mid"
     },
@@ -743,7 +932,7 @@
         "geforce 2060"
       ],
       "series": "RTX 20",
-      "dlss5_support": "unlikely",
+      "dlss5_support": "unsupported",
       "dlss5_features": [],
       "current_dlss_features": [
         "dlss_super_resolution",
@@ -752,7 +941,7 @@
       "missing_features": [
         "neural_rendering"
       ],
-      "summary": "RTX 2060 is unlikely to support DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
+      "summary": "RTX 2060 is currently unsupported for DLSS 5 Neural Rendering based on the current public feature split. Today it can use DLSS Super Resolution, DLAA, and Ray Reconstruction in supported games, but it does not have the newer frame-generation path.",
       "vram": "6GB",
       "tier": "entry"
     },
@@ -947,6 +1136,6 @@
     "frame_generation": "Frame Generation -- Single AI-generated frame per rendered frame (DLSS 3, RTX 40)",
     "multi_frame_generation_4x": "Multi Frame Generation 4X -- 3 additional AI frames per rendered frame (DLSS 4, RTX 50)",
     "dynamic_mfg_6x": "Dynamic MFG 6X -- 5 additional AI frames per rendered frame (DLSS 4.5, RTX 50)",
-    "neural_rendering": "Neural Rendering -- AI-powered photoreal lighting and materials (DLSS 5, coming Fall 2026)"
+    "neural_rendering": "Neural Rendering -- AI-powered photoreal lighting and materials (DLSS 5, available now)"
   }
 }

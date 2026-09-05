@@ -14,6 +14,19 @@ export const metadata: Metadata = {
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-vs-dlss-4-5",
     },
   },
+  openGraph: {
+    title: "DLSS 5 vs DLSS 4.5: What Actually Changes?",
+    description:
+      "Compare DLSS 5 and DLSS 4.5 without mixing up neural rendering, Super Resolution, Multi Frame Generation, hardware support, and release timing.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-5-vs-dlss-4-5",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DLSS 5 vs DLSS 4.5: What Actually Changes?",
+    description:
+      "Compare DLSS 5 and DLSS 4.5 without mixing up neural rendering, Super Resolution, Multi Frame Generation, hardware support, and release timing.",
+  },
 };
 
 const comparisonRows = [
@@ -25,12 +38,12 @@ const comparisonRows = [
   {
     angle: "Availability",
     dlss45: "Available now through NVIDIA's current DLSS stack in supported games and app paths.",
-    dlss5: "Announced for Fall 2026, with public game implementation details still pending.",
+    dlss5: "Available now in NBA 2K27 on GeForce RTX 50 desktop and laptop GPUs; other games still need their own patch proof.",
   },
   {
     angle: "Hardware signal",
     dlss45: "Its newest frame-generation path is tied to GeForce RTX 50 series GPUs.",
-    dlss5: "RTX 50 is the safest confirmed family; older generations need a final support matrix.",
+    dlss5: "RTX 50 is the confirmed local family today; RTX 40 support is planned later with no public date.",
   },
   {
     angle: "What players notice",
@@ -48,7 +61,7 @@ const misconceptionRows = [
   {
     myth: "Myth: DLSS 5 is just DLSS 4.5 with a bigger number.",
     reality:
-      "The naming is close, but the useful split is different: DLSS 4.5 is the current performance and image-quality stack; DLSS 5 is the announced neural rendering layer.",
+      "The naming is close, but the useful split is different: DLSS 4.5 is the current performance and image-quality stack; DLSS 5 adds the neural rendering layer for lighting and materials.",
   },
   {
     myth: "Myth: A game on the DLSS 5 list means every RTX card can use it.",
@@ -58,7 +71,7 @@ const misconceptionRows = [
   {
     myth: "Myth: RTX 4070 or RTX 4080 support is guaranteed because they support DLSS today.",
     reality:
-      "They support current DLSS features, but NVIDIA has not published final DLSS 5 support details for RTX 40.",
+      "They support current DLSS features, and NVIDIA says RTX 40 support is planned later, but it is not live and has no public date.",
   },
 ];
 
@@ -66,17 +79,17 @@ const faqItems = [
   {
     question: "What is the difference between DLSS 5 and DLSS 4.5?",
     answer:
-      "DLSS 4.5 is the current DLSS stack focused on Super Resolution quality and Dynamic Multi Frame Generation. DLSS 5 is an announced neural rendering layer focused on visual fidelity, especially lighting and materials.",
+      "DLSS 4.5 is the current DLSS stack focused on Super Resolution quality and Dynamic Multi Frame Generation. DLSS 5 adds a neural rendering layer focused on visual fidelity, especially lighting and materials.",
   },
   {
     question: "Is DLSS 5 available now?",
     answer:
-      "No. DLSS 5 has been announced for Fall 2026. DLSS 4.5 and current DLSS features are available today in supported games and app paths.",
+      "Yes, in the first published local path: NBA 2K27 on GeForce RTX 50 desktop and laptop GPUs with the documented driver and in-game option. Other games still need their own patch notes or visible menu support.",
   },
   {
     question: "Should I upgrade from RTX 40 to RTX 50 for DLSS 5?",
     answer:
-      "If DLSS 5 is the only reason, it is safer to wait for NVIDIA's final support matrix and real game patch notes. RTX 50 is the safest current path, but launch behavior is not fully documented yet.",
+      "If DLSS 5 is the only reason, RTX 50 is the current confirmed local path. RTX 40 support is planned later with no public date, so an RTX 40 owner should wait unless they need RTX 50 performance for other reasons.",
   },
 ];
 
@@ -134,13 +147,13 @@ export default function Dlss5VsDlss45Page() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Updated August 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Updated September 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 vs DLSS 4.5: What Actually Changes?
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             The short answer: DLSS 4.5 is the current performance and image-quality stack.
-            DLSS 5 is the announced neural rendering layer. Mixing those two together is
+            DLSS 5 is the neural rendering layer now live first in NBA 2K27 on RTX 50. Mixing those two together is
             why so many compatibility answers feel contradictory.
           </p>
         </header>
@@ -149,8 +162,8 @@ export default function Dlss5VsDlss45Page() {
           <h2 className="text-2xl font-bold mb-3">Is DLSS 5 the same as DLSS 4.5?</h2>
           <p className="text-foreground/80 leading-relaxed">
             No. DLSS 4.5 is the current DLSS feature stack for Super Resolution quality and
-            Dynamic Multi Frame Generation. DLSS 5 is the announced neural rendering layer
-            aimed at visual fidelity, with final game and GPU behavior still pending.
+            Dynamic Multi Frame Generation. DLSS 5 is the Neural Rendering layer
+            aimed at visual fidelity, with NBA 2K27 as the first documented local game path.
           </p>
         </section>
 
@@ -164,10 +177,10 @@ export default function Dlss5VsDlss45Page() {
             </p>
           </div>
           <div className="rounded-lg border border-blue-500/30 bg-blue-500/5 p-5">
-            <h2 className="text-xl font-bold mb-2">DLSS 5 next</h2>
+            <h2 className="text-xl font-bold mb-2">DLSS 5 now</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
               Think of it as a visual-fidelity layer that tries to improve how lighting and
-              materials look. The launch proof still needs public per-game documentation.
+              materials look. NBA 2K27 has published support; other games need their own proof.
             </p>
           </div>
         </section>
@@ -222,14 +235,14 @@ export default function Dlss5VsDlss45Page() {
           <h2 className="text-2xl font-bold text-foreground">How to decide what matters</h2>
           <p>
             If you are comparing GPUs today, DLSS 4.5 and current DLSS support matter more
-            because they are the features you can actually use. The newer visual layer
-            matters if you are planning around Fall 2026 games, but it should be treated as
-            a forward-looking factor until launch notes exist.
+            because they are the features you can actually use across more games. The newer
+            visual layer matters if you have RTX 50 and a supported title such as NBA 2K27,
+            but it should not be copied to every announced game until launch notes exist.
           </p>
           <p>
             For RTX 4070, RTX 4080, and RTX 4090 owners, the practical answer is not
             &quot;upgrade immediately.&quot; It is to keep your current DLSS feature set in mind,
-            watch for the final support matrix, and avoid buying only on a preview claim.
+            watch for the RTX 40 rollout date, and avoid buying only on a vague support claim.
           </p>
         </section>
 
@@ -251,7 +264,7 @@ export default function Dlss5VsDlss45Page() {
             >
               <div className="font-semibold mb-1">Evidence tracker</div>
               <p className="text-sm text-muted-foreground">
-                See which answers are confirmed, announced, or still uncertain.
+                See which answers are confirmed, planned, unsupported, or still pending.
               </p>
             </Link>
             <Link
@@ -315,16 +328,16 @@ export default function Dlss5VsDlss45Page() {
             </a>
             , and{" "}
             <a
-              href="https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/"
+              href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/"
               className="text-blue-400 hover:underline"
             >
               NVIDIA DLSS 5 announcement
             </a>
-            . Final DLSS 5 behavior may still depend on drivers, game patches, settings,
-            and GPU-specific support.
+            . DLSS 5 behavior depends on drivers, game patches, settings, and GPU-specific
+            support.
           </p>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

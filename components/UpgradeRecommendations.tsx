@@ -10,7 +10,7 @@ interface UpgradeRecommendationsProps {
 
 export default function UpgradeRecommendations({ gpu }: UpgradeRecommendationsProps) {
   // Only show when support is not confirmed
-  if (gpu.dlss5_support === "confirmed" || gpu.dlss5_support === "expected") return null;
+  if (gpu.dlss5_support === "confirmed") return null;
 
   return (
     <div>
@@ -25,12 +25,10 @@ export default function UpgradeRecommendations({ gpu }: UpgradeRecommendationsPr
         Your {gpu.name}{" "}
         {gpu.dlss5_support === "none"
           ? "doesn't support DLSS at all"
-          : gpu.dlss5_support === "unknown"
-          ? "has unknown DLSS 5 Neural Rendering support until NVIDIA publishes final launch details"
-          : gpu.dlss5_support === "unlikely"
-          ? "is unlikely to support DLSS 5"
-          : "needs final DLSS 5 launch documentation"}
-        . These RTX 50 upgrade options are the clearest DLSS 5 path and already deliver DLSS 4/4.5 performance today:
+          : gpu.dlss5_support === "planned"
+          ? "is on NVIDIA's later RTX 40 plan, but DLSS 5 is not available for it yet"
+          : "does not currently have official DLSS 5 support"}
+        . These RTX 50 upgrade options are the clearest DLSS 5 path and also support the current DLSS 4/4.5 feature stack:
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

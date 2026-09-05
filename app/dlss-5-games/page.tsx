@@ -3,9 +3,9 @@ import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Games Tracker: Announced vs Verified Titles",
+  title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
   description:
-    "Track DLSS 5 games NVIDIA has announced so far, what support means, what still needs per-game verification, and how to separate game support from GPU support.",
+    "Track DLSS 5 games after launch: NBA 2K27 live support, announced titles still waiting on patches, and how to separate game support from GPU support.",
   alternates: {
     canonical: "/dlss-5-games",
     languages: {
@@ -13,9 +13,29 @@ export const metadata: Metadata = {
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-jogos",
     },
   },
+  openGraph: {
+    title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
+    description:
+      "Track DLSS 5 games after launch: NBA 2K27 live support, announced titles still waiting on patches, and how to separate game support from GPU support.",
+    url: "https://www.dlss5.net/dlss-5-games",
+    type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
+    description:
+      "Track DLSS 5 games after launch: NBA 2K27 live support, announced titles still waiting on patches, and how to separate game support from GPU support.",
+  },
 };
 
 const announcedGames = [
+  {
+    title: "NBA 2K27",
+    href: "/games/nba-2k27-dlss-5",
+    publisherSignal: "2K / Visual Concepts",
+    status: "Live on RTX 50",
+    note: "NVIDIA documents driver 616.64 WHQL and Video Settings → DLSS Neural Rendering; its launch article says F9 toggles Neural Rendering.",
+  },
   {
     title: "AION 2",
     publisherSignal: "NCSOFT",
@@ -112,6 +132,7 @@ const announcedGames = [
 ];
 
 const previewExamples = [
+  "NBA 2K27",
   "Resident Evil Requiem",
   "EA SPORTS FC",
   "Starfield",
@@ -123,7 +144,7 @@ const relatedLinks = [
   {
     href: "/dlss-4-5-games",
     title: "Current DLSS 4.5 games",
-    description: "Separate live and announced 4.5 support from Fall 2026 game support.",
+    description: "Separate live and announced 4.5 support from current DLSS 5 game support.",
   },
   {
     href: "/dlss-5-evidence-tracker",
@@ -138,7 +159,7 @@ const relatedLinks = [
   {
     href: "/dlss-5-supported-cards",
     title: "DLSS 5 supported cards",
-    description: "Check whether the GPU question is confirmed, expected, unknown, or unlikely.",
+    description: "Check whether the GPU question is confirmed, planned, unsupported, or unavailable.",
   },
   {
     href: "/dlss-5-system-requirements",
@@ -157,36 +178,36 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "What games support DLSS 5?",
+    answer:
+      "NBA 2K27 supports DLSS 5 now on GeForce RTX 50 Series desktop and laptop GPUs. NVIDIA has also announced titles including Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Hogwarts Legacy, Phantom Blade Zero, Delta Force, AION 2, and more, but those still need per-game patch evidence before being marked live.",
+  },
+  {
+    question: "Is DLSS 5 available in games now?",
+    answer:
+      "Yes, in NBA 2K27 on supported RTX 50 desktop and laptop GPUs. Other announced titles should still be treated as announced or pending verification until their own patch notes and settings are public.",
+  },
+  {
+    question: "Does a DLSS 5 game mean every RTX GPU can use it?",
+    answer:
+      "No. Game support and GPU support are separate. A game can integrate DLSS 5 while only specific RTX GPU families or features are available to a given player.",
+  },
+];
+
 export default function Dlss5GamesPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What games support DLSS 5?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "NVIDIA has announced an initial DLSS 5 game list including Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Hogwarts Legacy, Phantom Blade Zero, Delta Force, AION 2, and more. Treat these as announced titles until each game publishes final patch notes, settings, and GPU behavior.",
-        },
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
       },
-      {
-        "@type": "Question",
-        name: "Is DLSS 5 available in games now?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. NVIDIA says DLSS 5 will arrive in Fall 2026. Current games may support DLSS 4 or DLSS 4.5 features, but DLSS 5 Neural Rendering is not generally available yet.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Does a DLSS 5 game mean every RTX GPU can use it?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. Game support and GPU support are separate. A game can integrate DLSS 5 while only specific RTX GPU families or features are available to a given player.",
-        },
-      },
-    ],
+    })),
   };
 
   const breadcrumbJsonLd = {
@@ -230,16 +251,16 @@ export default function Dlss5GamesPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Tracker updated July 28, 2026
+            Tracker reviewed September 5, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Games Tracker
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            NVIDIA has announced the first wave of titles planned for DLSS 5, but the
-            feature is not public yet. This page tracks the named games, what support
-            actually means, and what still needs final launch documentation before a title
-            should be called verified.
+            DLSS 5 is public now, but that does not make every announced game live. NBA
+            2K27 is the first verified player-facing game, while the rest of the list still
+            needs game-specific patch notes, driver notes, and visible settings before a
+            title should be called supported today.
           </p>
         </header>
 
@@ -247,8 +268,8 @@ export default function Dlss5GamesPage() {
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
             <h2 className="font-bold mb-2">Fast answer</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              NVIDIA has named an initial wave of games and partners. The public proof for
-              each title still needs patch notes, driver support, and visible settings.
+              NBA 2K27 is live with DLSS 5 on RTX 50 desktop and laptop GPUs. Other named
+              titles remain announced unless their own patch evidence is public.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
@@ -259,10 +280,10 @@ export default function Dlss5GamesPage() {
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
-            <h2 className="font-bold mb-2">Why this page exists</h2>
+            <h2 className="font-bold mb-2">Why players should check twice</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              Most search results collapse DLSS 4.5, DLSS 5, GPU support, and game support
-              into one answer. This page keeps those buckets separate.
+              A game listing can say DLSS 5 while your GPU, driver, or game build still
+              decides whether the option appears for you.
             </p>
           </div>
         </section>
@@ -303,8 +324,14 @@ export default function Dlss5GamesPage() {
                     </td>
                     <td className="px-4 py-3 text-muted-foreground">{game.publisherSignal}</td>
                     <td className="px-4 py-3">
-                      <span className="rounded-full border border-green-500/30 bg-green-500/10 px-2.5 py-1 text-xs text-green-300">
-                        Announced
+                      <span
+                        className={`rounded-full border px-2.5 py-1 text-xs ${
+                          game.status === "Live on RTX 50"
+                            ? "border-blue-500/30 bg-blue-500/10 text-blue-300"
+                            : "border-green-500/30 bg-green-500/10 text-green-300"
+                        }`}
+                      >
+                        {game.status}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-muted-foreground">{game.note}</td>
@@ -320,9 +347,9 @@ export default function Dlss5GamesPage() {
             <h2 className="text-2xl font-bold mb-3">Release timing</h2>
             <div className="space-y-4 text-foreground/80 leading-relaxed">
               <p>
-                The cleanest date answer right now is broad: NVIDIA says the feature arrives
-                in <strong>Fall 2026</strong>. That does not automatically mean every named
-                game receives a public update on the same day.
+                The cleanest date answer is now split: NBA 2K27 is available with documented
+                RTX 50 support, while most other named titles still need their own public
+                updates before this tracker marks them live.
               </p>
               <p>
                 For players, the practical release checklist is: a supported game build, a
@@ -335,7 +362,7 @@ export default function Dlss5GamesPage() {
           <div className="rounded-lg border border-blue-500/30 bg-blue-500/5 p-5">
             <h2 className="text-xl font-bold mb-3">Preview examples</h2>
             <p className="text-sm text-foreground/80 leading-relaxed mb-3">
-              NVIDIA also showed early examples around these titles and demos:
+              NVIDIA has shown or named these titles and demos around the DLSS 5 rollout:
             </p>
             <ul className="space-y-2 text-sm text-foreground/80">
               {previewExamples.map((example) => (
@@ -384,8 +411,8 @@ export default function Dlss5GamesPage() {
           </h2>
           <p>
             DLSS 5 is not just another frame-rate label. NVIDIA describes it as a real-time
-            neural rendering layer that uses a game&apos;s color and motion-vector data to
-            enhance lighting and materials while staying anchored to the source 3D scene.
+            3D-guided neural rendering layer that uses a game&apos;s frame data to enhance
+            lighting and materials while staying anchored to the source scene.
           </p>
           <p>
             That is why developer control matters. NVIDIA says studios can tune intensity,
@@ -445,10 +472,17 @@ export default function Dlss5GamesPage() {
           <p>
             Sources:{" "}
             <a
-              href="https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/"
+              href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/"
               className="text-blue-400 hover:underline"
             >
               NVIDIA DLSS 5 announcement
+            </a>{" "}
+            ,{" "}
+            <a
+              href="https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/"
+              className="text-blue-400 hover:underline"
+            >
+              NBA 2K27 Game Ready Driver note
             </a>{" "}
             and{" "}
             <a
@@ -458,35 +492,19 @@ export default function Dlss5GamesPage() {
               NVIDIA DLSS hardware table
             </a>
             . This page avoids treating preview footage as final behavior because drivers,
-            game patches, settings, and GPU support can still change before public release.
+            game patches, settings, and GPU support can differ by title.
           </p>
         </section>
 
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4">Frequently asked questions</h2>
           <div className="space-y-5">
-            <div>
-              <h3 className="font-semibold mb-1">What games support DLSS 5?</h3>
-              <p className="text-sm text-foreground/80">
-                NVIDIA has named Starfield, Resident Evil Requiem, Assassin&apos;s Creed
-                Shadows, Hogwarts Legacy, Phantom Blade Zero, Delta Force, AION 2, and other
-                titles in its first announcement.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-1">When is DLSS 5 coming to games?</h3>
-              <p className="text-sm text-foreground/80">
-                NVIDIA says Fall 2026. Individual games may still need separate patches,
-                driver support, and visible graphics settings.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-1">Will every RTX card get DLSS 5 in these games?</h3>
-              <p className="text-sm text-foreground/80">
-                Not necessarily. Always check the GPU support page as well as the game list,
-                because the two questions are different.
-              </p>
-            </div>
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="font-semibold mb-1">{item.question}</h3>
+                <p className="text-sm text-foreground/80">{item.answer}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -501,7 +519,7 @@ export default function Dlss5GamesPage() {
             Back to GPU Checker
           </Link>
         </div>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

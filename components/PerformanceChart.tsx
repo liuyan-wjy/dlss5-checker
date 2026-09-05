@@ -71,7 +71,7 @@ export default function PerformanceChart({ gpu }: PerformanceChartProps) {
           </span>
         </CardTitle>
         <p className="text-xs text-muted-foreground mt-1">
-          DLSS 5 Neural Rendering performance data is not yet available (launches Fall 2026). Below shows current DLSS 4/4.5 performance.
+          These are older DLSS 4/4.5 benchmark estimates. This site does not treat them as DLSS 5 Neural Rendering performance data.
         </p>
         <div className="flex items-center gap-3 mt-2">
           <span className="text-sm text-muted-foreground whitespace-nowrap">Select game:</span>
@@ -99,7 +99,7 @@ export default function PerformanceChart({ gpu }: PerformanceChartProps) {
         ) : !gpuStats ? (
           <div className="text-muted-foreground text-sm text-center py-8">
             <p>Benchmark data for {gpu.name} in this game is not yet available.</p>
-            <p className="mt-1 text-xs">Based on your GPU tier, expect a similar boost pattern.</p>
+            <p className="mt-1 text-xs">No desktop or same-tier score is borrowed for this model.</p>
           </div>
         ) : (
           <>

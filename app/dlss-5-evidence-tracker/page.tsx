@@ -3,9 +3,9 @@ import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Evidence Tracker: Confirmed vs Unknown Facts [2026]",
+  title: "DLSS 5 Evidence Tracker: Confirmed, Planned, Unsupported [2026]",
   description:
-    "Track what is confirmed, announced, expected, unknown, and unlikely for DLSS 5, including GPU support, games, release timing, and DLSS 4.5 differences.",
+    "Track what is confirmed, planned, unsupported, or not local DLSS for DLSS 5, including RTX 50, RTX 40, NBA 2K27, and DLSS 4.5 differences.",
   alternates: {
     canonical: "/dlss-5-evidence-tracker",
     languages: {
@@ -13,13 +13,32 @@ export const metadata: Metadata = {
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-confirmado",
     },
   },
+  openGraph: {
+    title: "DLSS 5 Evidence Tracker: Confirmed, Planned, Unsupported [2026]",
+    description:
+      "Track what is confirmed, planned, unsupported, or not local DLSS for DLSS 5, including RTX 50, RTX 40, NBA 2K27, and DLSS 4.5 differences.",
+    type: "article",
+    url: "https://www.dlss5.net/dlss-5-evidence-tracker",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DLSS 5 Evidence Tracker: Confirmed, Planned, Unsupported [2026]",
+    description:
+      "Track what is confirmed, planned, unsupported, or not local DLSS for DLSS 5, including RTX 50, RTX 40, NBA 2K27, and DLSS 4.5 differences.",
+  },
 };
 
 const NVIDIA_DLSS5 =
-  "https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/";
+  "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/";
+const NVIDIA_DLSS5_CN =
+  "https://www.nvidia.cn/geforce/news/dlss-5-3d-guided-neural-rendering/";
 const NVIDIA_DLSS_TECH = "https://www.nvidia.com/en-us/geforce/technologies/dlss/";
 const NVIDIA_DLSS45 =
   "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-super-resolution-available-now/";
+const NVIDIA_NBA_DRIVER =
+  "https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/";
+const NVIDIA_RTX40_PLAN =
+  "https://www.reddit.com/r/nvidia/comments/1w4bcvp/nvidia_dlss_5_available_september_3rd_dlss/?sort=new";
 
 type Confidence = "High" | "Medium" | "Low";
 
@@ -35,72 +54,72 @@ const evidenceRows: {
   {
     question: "Is DLSS 5 available to players today?",
     currentAnswer:
-      "No. NVIDIA has announced the feature, but public game, driver, and settings documentation is still pending.",
-    evidence: "NVIDIA DLSS 5 announcement",
+      "Yes. DLSS 5 is available in NBA 2K27 for RTX 50 desktop and laptop GPUs.",
+    evidence: "NVIDIA DLSS 5 launch article",
     sourceHref: NVIDIA_DLSS5,
-    status: "Announced, not generally available",
+    status: "Confirmed",
     confidence: "High",
-    whatWouldChangeIt: "A public NVIDIA App, driver, or game patch note that exposes the feature.",
+    whatWouldChangeIt: "A broader NVIDIA support matrix or another game patch note.",
   },
   {
-    question: "What is the expected release window?",
+    question: "What is the release date?",
     currentAnswer:
-      "The safest current wording is Fall 2026. Treat exact dates as unconfirmed until NVIDIA or a game publisher publishes one.",
-    evidence: "NVIDIA DLSS 5 announcement",
+      "September 3, 2026 at 9 p.m. Pacific time for the first game launch. In Beijing, that is September 4, 2026 at noon.",
+    evidence: "NVIDIA China launch timing",
+    sourceHref: NVIDIA_DLSS5_CN,
+    status: "Confirmed",
+    confidence: "High",
+    whatWouldChangeIt: "A corrected NVIDIA timestamp or regional launch clarification.",
+  },
+  {
+    question: "Which GPU family is confirmed?",
+    currentAnswer:
+      "NVIDIA says DLSS 5 in NBA 2K27 supports all GeForce RTX 50 Series desktop and laptop GPUs.",
+    evidence: "NVIDIA DLSS 5 launch article",
     sourceHref: NVIDIA_DLSS5,
-    status: "Official broad window",
+    status: "Confirmed",
     confidence: "High",
-    whatWouldChangeIt: "A dated launch blog, driver release note, or first-party game update.",
+    whatWouldChangeIt: "A revised NVIDIA game note that narrows the supported RTX 50 list.",
   },
   {
-    question: "Which GPU family is the safest bet?",
+    question: "Are RTX 40 cards available for DLSS 5 now?",
     currentAnswer:
-      "RTX 50 is the safest family because current NVIDIA DLSS feature tables put the newest frame-generation features on RTX 50 hardware.",
-    evidence: "NVIDIA DLSS technology and hardware table",
-    sourceHref: NVIDIA_DLSS_TECH,
-    status: "Supported-feature signal",
-    confidence: "High",
-    whatWouldChangeIt: "A DLSS 5-specific per-GPU support matrix from NVIDIA.",
-  },
-  {
-    question: "Are RTX 40 cards confirmed for DLSS 5?",
-    currentAnswer:
-      "No. RTX 40 cards remain strong current DLSS cards, but this site keeps them in the unknown bucket for the new neural rendering layer until final launch documentation exists.",
-    evidence: "NVIDIA DLSS hardware table",
-    sourceHref: NVIDIA_DLSS_TECH,
-    status: "Not confirmed",
+      "No. NVIDIA has said RTX 40 support is planned after RTX 50 optimization, but there is no public availability date.",
+    evidence: "NVIDIA community update",
+    sourceHref: NVIDIA_RTX40_PLAN,
+    status: "Planned",
     confidence: "Medium",
-    whatWouldChangeIt: "A public NVIDIA support matrix listing RTX 4090, 4080, 4070, or 4060 for DLSS 5.",
+    whatWouldChangeIt: "A driver note, launch article, or support table that exposes DLSS 5 on RTX 40.",
   },
   {
     question: "Are RTX 30 cards confirmed?",
     currentAnswer:
-      "No. RTX 30 remains useful for Super Resolution, DLAA, and Ray Reconstruction in supported titles, but the DLSS 5 path is not confirmed.",
+      "No. RTX 30 remains useful for Super Resolution, DLAA, and Ray Reconstruction in supported titles, but there is no current official DLSS 5 support.",
     evidence: "NVIDIA DLSS hardware table",
     sourceHref: NVIDIA_DLSS_TECH,
-    status: "Unlikely for the new layer",
+    status: "Unsupported for DLSS 5 today",
     confidence: "Medium",
     whatWouldChangeIt: "A launch document that names RTX 30 cards for the neural rendering feature.",
   },
   {
     question: "Are the named games final launch support?",
     currentAnswer:
-      "Not necessarily. NVIDIA has named an initial wave of games and partners, but each title still needs its own public patch notes, menu settings, and GPU behavior details.",
-    evidence: "NVIDIA DLSS 5 announcement",
-    sourceHref: NVIDIA_DLSS5,
-    status: "Announced game support",
+      "NBA 2K27 is verified. Other named games still need their own public patch notes, menu settings, and GPU behavior details.",
+    evidence: "NVIDIA NBA 2K27 driver note",
+    sourceHref: NVIDIA_NBA_DRIVER,
+    status: "One verified game; others pending",
     confidence: "High",
     whatWouldChangeIt: "Individual game patch notes confirming the exact mode, date, and supported GPU tiers.",
   },
   {
     question: "Is DLSS 4.5 the same thing as DLSS 5?",
     currentAnswer:
-      "No. DLSS 4.5 is the current Super Resolution and Dynamic Multi Frame Generation stack. DLSS 5 is the announced neural rendering layer focused on visual fidelity.",
+      "No. DLSS 4.5 is the current Super Resolution and Dynamic Multi Frame Generation stack. DLSS 5 is the neural rendering layer focused on visual fidelity.",
     evidence: "NVIDIA DLSS 4.5 announcement and DLSS feature page",
     sourceHref: NVIDIA_DLSS45,
     status: "Different feature generation",
     confidence: "High",
-    whatWouldChangeIt: "NVIDIA changing the product naming before launch.",
+    whatWouldChangeIt: "A future NVIDIA naming or support revision.",
   },
 ];
 
@@ -136,12 +155,12 @@ const faqItems = [
   {
     question: "What is confirmed about DLSS 5 right now?",
     answer:
-      "The safest confirmed points are that NVIDIA has announced DLSS 5, framed it around real-time neural rendering for visual fidelity, and named a Fall 2026 launch window plus an initial group of game partners and titles.",
+      "DLSS 5 launched in NBA 2K27 for RTX 50 desktop and laptop GPUs. NVIDIA describes it as 3D-guided Neural Rendering focused on lighting, materials, and visual fidelity.",
   },
   {
     question: "Is RTX 40 confirmed for DLSS 5?",
     answer:
-      "No. RTX 40 cards support current DLSS features, but NVIDIA has not published a final DLSS 5 support matrix that confirms RTX 40 for the new neural rendering layer.",
+      "RTX 40 is planned, not live. NVIDIA has not published a public release date or player setup path for RTX 40 DLSS 5 support.",
   },
   {
     question: "Why use an evidence tracker for DLSS 5?",
@@ -217,14 +236,14 @@ export default function Dlss5EvidenceTrackerPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Last checked August 1, 2026
+            Last checked September 5, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Evidence Tracker
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             This page is the site&apos;s source-of-truth layer. It separates confirmed
-            facts, announced plans, cautious inference, and open questions so readers do
+            facts, planned support, unsupported hardware, and open questions so readers do
             not have to guess which answer is solid.
           </p>
         </header>
@@ -232,10 +251,9 @@ export default function Dlss5EvidenceTrackerPage() {
         <section className="mb-10 rounded-lg border border-green-500/30 bg-green-500/5 p-5">
           <h2 className="text-2xl font-bold mb-3">Is DLSS 5 confirmed?</h2>
           <p className="text-foreground/80 leading-relaxed">
-            Yes, NVIDIA has announced DLSS 5 as a real-time neural rendering feature for
-            visual fidelity. What is not fully confirmed yet is the final launch matrix:
-            exact game patches, driver requirements, per-GPU support, and visible in-game
-            settings still need public documentation.
+            Yes. NVIDIA has launched DLSS 5 as a real-time neural rendering feature for
+            visual fidelity in NBA 2K27. What still needs tracking is the broader rollout:
+            RTX 40 timing, other game patches, and per-game settings.
           </p>
         </section>
 
@@ -243,22 +261,22 @@ export default function Dlss5EvidenceTrackerPage() {
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
             <h2 className="font-bold mb-2">Best confirmed answer</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              The feature is announced, aimed at visual fidelity, and still waiting on
-              public launch implementation details.
+              DLSS 5 is available in NBA 2K27 for RTX 50 desktop and laptop GPUs with
+              NVIDIA&apos;s 616.64 WHQL driver.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Hardware caution</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              RTX 50 is the safest buying path. RTX 40 and RTX 30 should not be treated as
-              confirmed for the new layer.
+              RTX 50 is confirmed. RTX 40 is planned but not available. RTX 20 and RTX 30
+              have no current official DLSS 5 support.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Game caution</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              A named game is not the same as a public patch. The final proof is a game
-              update, driver note, and visible settings menu.
+              NBA 2K27 is verified. Other named games still need a game update, driver
+              note, or visible settings menu before being marked live.
             </p>
           </div>
         </section>
@@ -323,10 +341,10 @@ export default function Dlss5EvidenceTrackerPage() {
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
-            <h2 className="text-xl font-bold mb-3">Inferred</h2>
+            <h2 className="text-xl font-bold mb-3">Unsupported or no DLSS</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              Use this only when the public hardware table implies a likely answer. It
-              should never be phrased as a guarantee.
+              Use unsupported when there is no current official DLSS 5 support, and no
+              DLSS when the hardware cannot run local DLSS at all.
             </p>
           </div>
         </section>
@@ -383,11 +401,15 @@ export default function Dlss5EvidenceTrackerPage() {
             <a href={NVIDIA_DLSS45} className="text-blue-400 hover:underline">
               NVIDIA&apos;s DLSS 4.5 announcement
             </a>
+            , and{" "}
+            <a href={NVIDIA_NBA_DRIVER} className="text-blue-400 hover:underline">
+              NVIDIA&apos;s NBA 2K27 Game Ready Driver note
+            </a>
             . It intentionally avoids turning previews, rumors, or upgrade guesses into
             definitive compatibility claims.
           </p>
         </section>
-        <ArticleTrustBlock />
+        <ArticleTrustBlock reviewedAt="2026-09-05" />
       </main>
     </>
   );

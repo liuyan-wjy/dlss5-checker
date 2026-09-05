@@ -4,33 +4,39 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Editorial Policy | DLSS 5 Checker",
   description:
-    "How DLSS 5 Checker labels confirmed, expected, unknown, unlikely, and unsupported claims, plus source, correction, and update standards.",
+    "How DLSS 5 Checker labels confirmed, planned, unsupported, and no-DLSS claims, plus source, correction, and update standards.",
   alternates: { canonical: "/editorial-policy" },
+  openGraph: {
+    title: "Editorial Policy | DLSS 5 Checker",
+    description: "How DLSS 5 Checker labels confirmed, planned, unsupported, and no-DLSS claims, plus source, correction, and update standards.",
+    type: "article",
+    url: "https://www.dlss5.net/editorial-policy",
+  },
+  twitter: {
+    card: "summary",
+    title: "Editorial Policy | DLSS 5 Checker",
+    description: "How DLSS 5 Checker labels confirmed, planned, unsupported, and no-DLSS claims, plus source, correction, and update standards.",
+  },
 };
 
 const statusRows = [
   {
     label: "Confirmed",
-    meaning: "NVIDIA or an official partner has clearly published the claim.",
+    meaning: "Official release documentation confirms current DLSS 5 support for the named hardware or game.",
   },
   {
-    label: "Expected",
+    label: "Planned",
     meaning:
-      "The claim follows from the announced generation or platform path, but final per-model documentation is still needed.",
-  },
-  {
-    label: "Unknown",
-    meaning:
-      "There is not enough public evidence to treat the claim as supported or unsupported.",
-  },
-  {
-    label: "Unlikely",
-    meaning:
-      "Current hardware tiers or official feature splits point away from support, but a future official update could change the answer.",
+      "An official source indicates future support, but the feature is not available yet or lacks a public date.",
   },
   {
     label: "Unsupported",
-    meaning: "The hardware or vendor is outside NVIDIA DLSS support.",
+    meaning:
+      "The sources checked here do not list current official support for the feature.",
+  },
+  {
+    label: "No DLSS",
+    meaning: "The local GPU does not support NVIDIA DLSS. Streaming on a supported cloud GPU is a separate case.",
   },
 ];
 
@@ -46,7 +52,7 @@ export default function EditorialPolicyPage() {
       </nav>
 
       <header className="mb-10 max-w-3xl">
-        <p className="mb-3 text-sm font-semibold text-blue-400">Last checked August 1, 2026</p>
+        <p className="mb-3 text-sm font-semibold text-blue-400">Last checked September 5, 2026</p>
         <h1 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
           Editorial Policy
         </h1>
@@ -127,8 +133,9 @@ export default function EditorialPolicyPage() {
           <p>
             When a primary source changes a status label, we update the relevant article,
             the evidence tracker, related GPU pages, and any structured data that repeats
-            the same answer. If a claim is plausible but not proven, it stays in the
-            expected, unknown, or unlikely bucket instead of being promoted to confirmed.
+            the same answer. A future official plan is not current support. Missing DLSS 5
+            support does not remove a card&apos;s older DLSS features, and an unrecognized GPU
+            query returns no match rather than a guessed compatibility result.
           </p>
         </div>
       </section>

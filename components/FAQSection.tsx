@@ -1,17 +1,17 @@
 import { ChevronDown } from "lucide-react";
 
-const faqs = [
+export const faqs = [
   {
     q: "What is DLSS 5?",
-    a: "DLSS 5 is NVIDIA's next-generation AI rendering technology, announced at GTC on March 16, 2026, launching Fall 2026. Unlike DLSS 4/4.5 which focus on performance (upscaling and frame generation), DLSS 5 is about visual fidelity. Its core feature is Real-time Neural Rendering -- AI-powered enhancement of lighting and materials that generates photoreal lighting, translucent skin, fabric detail, and environmental effects. Jensen Huang called it 'the GPT moment for graphics.'",
+    a: "DLSS 5 is NVIDIA's current Neural Rendering layer for improving lighting and materials in supported games. It launched first in NBA 2K27 for GeForce RTX 50 desktop and laptop GPUs. Unlike Super Resolution or Frame Generation, the DLSS 5 feature is primarily a visual-fidelity feature, not a generic frame-rate multiplier.",
   },
   {
     q: "Which GPUs will support DLSS 5?",
-    a: "The clearest DLSS 5 Neural Rendering path is RTX 50. This site treats RTX 5090, 5080, 5070 Ti, and 5070 as confirmed, RTX 5060 Ti / 5060 as expected pending final per-model documentation, RTX 40 as unknown, and RTX 20/30 as unlikely. DLSS 5 has not shipped yet -- it launches Fall 2026.",
+    a: "The confirmed local-PC path is GeForce RTX 50 desktop and laptop GPUs, including RTX 5090 through RTX 5050. RTX 40 support is planned but not available yet and has no public date. RTX 20 and RTX 30 do not currently have official DLSS 5 Neural Rendering support, while GTX, AMD, and Intel cards do not run local NVIDIA DLSS.",
   },
   {
     q: "How is DLSS 5 different from DLSS 4 and 4.5?",
-    a: "DLSS 4 (CES 2025) introduced Multi Frame Generation (up to 3 additional AI frames) and the first Transformer model for Super Resolution. DLSS 4.5 (CES 2026) added Dynamic 6X MFG (5 additional frames) and a 2nd-gen Transformer model. DLSS 5 is completely different -- it's about visual fidelity, not performance. It adds Neural Rendering that analyzes scene semantics (characters, hair, fabric, lighting) and generates photoreal material responses. DLSS 5 runs on top of DLSS 4.5 (upscaling + frame gen underneath, neural rendering on top).",
+    a: "DLSS 4 introduced Multi Frame Generation and a Transformer model for Super Resolution. DLSS 4.5 added Dynamic 6X MFG and a second-generation Transformer model. DLSS 5 is different: it adds Neural Rendering for visual fidelity. Super Resolution, Frame Generation, and Neural Rendering are separate settings or feature layers, depending on the game.",
   },
   {
     q: "Does DLSS 5 work on AMD or Intel GPUs?",
@@ -23,15 +23,15 @@ const faqs = [
   },
   {
     q: "Is DLSS 5 available now?",
-    a: "No. DLSS 5 was announced at GTC on March 16, 2026 and is expected to launch in Fall 2026. What IS available now: DLSS 4 with Multi Frame Generation for RTX 50 series, DLSS 4.5 with Dynamic 6X MFG for RTX 50, DLSS 3 Frame Generation for RTX 40, and Transformer-based Super Resolution for RTX 20/30/40/50. Over 250 games support current DLSS versions.",
+    a: "Yes, but only where the game, driver, and GPU path support it. NBA 2K27 is the first public game with DLSS 5 3D-guided Neural Rendering, using NVIDIA's 616.64 WHQL Game Ready Driver path on RTX 50 desktop and laptop GPUs. In that game, use Video Settings > DLSS Neural Rendering, and press F9 to toggle the effect during gameplay or replay.",
   },
   {
     q: "What games will support DLSS 5?",
-    a: "NVIDIA has announced an initial group of games for DLSS 5 Neural Rendering, including Starfield, Hogwarts Legacy, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, Resident Evil Requiem, and The Elder Scrolls IV: Oblivion Remastered. Treat those as announced titles until each game publishes patch notes, settings, and GPU support details.",
+    a: "NBA 2K27 is the first verified DLSS 5 game. Other named games remain announced or pending until each game publishes patch notes, settings, and GPU support details.",
   },
   {
     q: "Should I buy an RTX 50 GPU for DLSS 5?",
-    a: "RTX 50 is the safest path for DLSS 5, but lower-tier models should still be checked against final per-model launch documentation. You don't need to wait for Fall 2026 to benefit from current features: RTX 50 GPUs already run DLSS 4/4.5 with Multi Frame Generation in supported games.",
+    a: "RTX 50 is the cleanest current DLSS 5 path. If you already own RTX 40, wait for NVIDIA's official RTX 40 rollout details before upgrading for one feature; RTX 40 remains strong for DLSS 3/4-era Frame Generation and current reconstruction features.",
   },
 ];
 
