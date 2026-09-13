@@ -97,7 +97,6 @@ export default function Home() {
 
             {/* Tool -- main interactive area */}
             <GPUChecker />
-            <AdSlot slot="home-below" />
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm">
               <span className="text-muted-foreground">Popular checks:</span>

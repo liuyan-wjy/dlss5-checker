@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Privacy Policy | DLSS 5 GPU Compatibility Checker",
   description:
-    "Privacy policy for DLSS 5 Checker, covering aggregate analytics, Adsterra native advertising, Google AdSense status, email, and service providers.",
+    "Privacy policy for DLSS 5 Checker, covering aggregate analytics, current advertising status, future consent requirements, email, and service providers.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <h1 className="text-3xl font-bold mb-8">Privacy Policy</h1>
-      <p className="text-muted-foreground text-sm mb-8">Last updated: September 12, 2026</p>
+      <p className="text-muted-foreground text-sm mb-8">Last updated: September 5, 2026</p>
 
       <div className="space-y-8 text-foreground/80 leading-relaxed">
         <section>
@@ -83,22 +83,10 @@ export default function PrivacyPage() {
 
         <section>
           <h2 className="text-xl font-semibold mb-3 text-foreground">
-            5. Native Advertising and Future Google Advertising
+            5. Advertising and Consent Before Future Activation
           </h2>
           <p>
-            The English homepage loads an Adsterra native advertising script below the GPU
-            checker. Loading ads sends requests to Adsterra and its delivery partners,
-            which may receive your IP address, browser and device information, page URL,
-            and referrer. Advertising providers may use cookies or similar technologies
-            to deliver and measure ads. See{" "}
-            <a href="https://adsterra.com/privacy-policy-managed/" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">
-              Adsterra&apos;s privacy policy
-            </a>
-            {" "}for details about its data practices. Advertisement labels distinguish
-            paid placements from our compatibility guidance; ads are not our endorsements.
-          </p>
-          <p className="mt-3">
-            Before Google advertising is enabled, we will configure a Google-certified consent
+            Before advertising is enabled, we will configure a Google-certified consent
             management platform where required, including for relevant visitors in the
             European Economic Area, the United Kingdom, and Switzerland. The consent message
             will provide the choices required for the advertising purposes in use, and this
@@ -126,8 +114,7 @@ export default function PrivacyPage() {
           </h2>
           <p>
             The current site configuration does not load Google Analytics or AdSense
-            ad-serving tags. Adsterra advertising may use cookies or similar technologies
-            as described above. Analytics, hosting, delivery, and security providers may still
+            ad-serving tags. Analytics, hosting, delivery, and security providers may still
             use cookies, local storage, or comparable technologies when necessary for their
             services. You can inspect, block, or delete stored website data through your
             browser. Blocking required storage or scripts may affect analytics or site
