@@ -121,8 +121,7 @@ export default function AboutPage() {
           <p>
             DLSS 5 Checker is an independent resource and is <strong className="text-foreground">not
             affiliated with NVIDIA Corporation</strong>. All product names, logos, and brands
-            are property of their respective owners. We have not performed independent
-            per-GPU DLSS performance tests. The checker does not publish estimated FPS
+            are property of their respective owners. The checker does not publish estimated FPS
             or promise a percentage improvement from a graphics-card upgrade.
           </p>
         </section>

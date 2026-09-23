@@ -87,6 +87,24 @@ for (const gpu of ALL_GPUS) {
   assert.match(html, /What to do next/);
   assert.match(html, /not an FPS prediction/);
   assert.match(html, /href="\/dlss-5-evidence-tracker"/);
+  if (gpu.vram.includes("/")) {
+    assert.match(html, /memory variants/);
+    assert.match(html, /exact VRAM/);
+  } else {
+    assert.doesNotMatch(html, /memory variants/);
+  }
+  if (gpu.id === "rtx-5070-laptop") {
+    assert.match(html, /8GB and 12GB configurations/);
+    assert.match(html, /exact notebook SKU/);
+  }
+  if (gpu.id.endsWith("-laptop")) {
+    assert.match(html, /similar power limit and cooling design/);
+  } else {
+    assert.doesNotMatch(html, /similar power limit and cooling design/);
+  }
+  if (["rtx-4070", "rtx-4080", "rtx-5090", "rtx-3070", "rtx-3060"].includes(gpu.id)) {
+    assert.match(html, new RegExp(`href="/gpu/${gpu.id}"`));
+  }
   assert.doesNotMatch(html, /avg\. FPS boost|FPS \(Off\)|\+85%|\+140%|\+210%/);
   if (gpu.dlss5_support === "confirmed") {
     assert.match(html, /href="\/games\/nba-2k27-dlss-5#how-to-enable"/);

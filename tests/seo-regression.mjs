@@ -161,6 +161,14 @@ assert.match(homepage, /plausible-ly-005\.pages\.dev\/js\/pa-VclqONE0bFW-1okXx2C
 assert.match(homepage, /plausible\.init/);
 assert.match(visibleText(homepage), /NBA 2K27/);
 assert.match(visibleText(homepage), /available now|live now|now available/i);
+assert.match(homepage, /href="\/dlss-5-supported-cards"/);
+assert.match(visibleText(homepage), /Showing \d+ GPUs/);
+assert.match(visibleText(homepage), /NVIDIA GeForce RTX 5060 Ti/);
+assert.match(visibleText(readRoute("dlss-5-supported-cards")), /NVIDIA GeForce RTX 5060 Ti/);
+assert.doesNotMatch(visibleText(readRoute("about")), /We have not performed independent per-GPU DLSS performance tests/);
+const evidenceTracker = visibleText(readRoute("dlss-5-evidence-tracker"));
+assert.match(evidenceTracker, /370 FPS/);
+assert.match(evidenceTracker, /one-frame-in, one-frame-out/);
 assert.doesNotMatch(visibleText(homepage), /Use FSR 4 instead|AMD users should look at FSR 4/);
 assert.doesNotMatch(visibleText(readRoute("pt")), /Use FSR 4 como alternativa/);
 assert.doesNotMatch(visibleText(readRoute("guides")), /future DLSS 5 neural rendering layer/);

@@ -30,6 +30,8 @@ export const metadata: Metadata = {
 
 const NVIDIA_DLSS5 =
   "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/";
+const NVIDIA_DLSS5_ANNOUNCEMENT =
+  "https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/";
 const NVIDIA_DLSS5_CN =
   "https://www.nvidia.cn/geforce/news/dlss-5-3d-guided-neural-rendering/";
 const NVIDIA_DLSS_TECH = "https://www.nvidia.com/en-us/geforce/technologies/dlss/";
@@ -37,6 +39,8 @@ const NVIDIA_DLSS45 =
   "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-super-resolution-available-now/";
 const NVIDIA_NBA_DRIVER =
   "https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/";
+const NVIDIA_DEVELOPER_BRIEF =
+  "https://developer.nvidia.com/blog/whats-new-for-game-developers-dlss-5-with-3d-guided-neural-rendering-nvidia-ace-updates-and-new-rtx-kit-capabilities/";
 const NVIDIA_RTX40_PLAN =
   "https://www.reddit.com/r/nvidia/comments/1w4bcvp/nvidia_dlss_5_available_september_3rd_dlss/?sort=new";
 
@@ -110,6 +114,16 @@ const evidenceRows: {
     status: "One verified game; others pending",
     confidence: "High",
     whatWouldChangeIt: "Individual game patch notes confirming the exact mode, date, and supported GPU tiers.",
+  },
+  {
+    question: "Does NVIDIA's 370 FPS example predict my frame rate?",
+    currentAnswer:
+      "No. NVIDIA shows 370 FPS at 4K Ultra with ray tracing on an RTX 5090 while describing DLSS 5 together with Super Resolution and Multi Frame Generation. It does not isolate the FPS effect of Neural Rendering or predict other GPUs.",
+    evidence: "NVIDIA NBA 2K27 driver article",
+    sourceHref: NVIDIA_NBA_DRIVER,
+    status: "Vendor example, not a per-card benchmark",
+    confidence: "High",
+    whatWouldChangeIt: "Repeatable measurements that show each setting and GPU separately.",
   },
   {
     question: "Is DLSS 4.5 the same thing as DLSS 5?",
@@ -236,7 +250,7 @@ export default function Dlss5EvidenceTrackerPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Last checked September 5, 2026
+            Last checked September 23, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Evidence Tracker
@@ -257,28 +271,33 @@ export default function Dlss5EvidenceTrackerPage() {
           </p>
         </section>
 
-        <section className="mb-10 grid gap-4 md:grid-cols-3">
-          <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
-            <h2 className="font-bold mb-2">Best confirmed answer</h2>
-            <p className="text-sm text-foreground/80 leading-relaxed">
-              DLSS 5 is available in NBA 2K27 for RTX 50 desktop and laptop GPUs with
-              NVIDIA&apos;s 616.64 WHQL driver.
-            </p>
-          </div>
-          <div className="rounded-lg border border-border p-5">
-            <h2 className="font-bold mb-2">Hardware caution</h2>
-            <p className="text-sm text-foreground/80 leading-relaxed">
-              RTX 50 is confirmed. RTX 40 is planned but not available. RTX 20 and RTX 30
-              have no current official DLSS 5 support.
-            </p>
-          </div>
-          <div className="rounded-lg border border-border p-5">
-            <h2 className="font-bold mb-2">Game caution</h2>
-            <p className="text-sm text-foreground/80 leading-relaxed">
-              NBA 2K27 is verified. Other named games still need a game update, driver
-              note, or visible settings menu before being marked live.
-            </p>
-          </div>
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">From announcement to playable setup</h2>
+          <ol className="space-y-3 text-sm leading-relaxed">
+            <li className="rounded-lg border border-border p-4">
+              <strong>March 16, 2026: Announcement.</strong> NVIDIA introduced neural
+              rendering. No player setup was documented yet.
+              {" "}<a href={NVIDIA_DLSS5_ANNOUNCEMENT} className="text-blue-400 hover:underline">Original announcement ↗</a>
+            </li>
+            <li className="rounded-lg border border-border p-4">
+              <strong>September 1, 2026: GPU coverage.</strong> NVIDIA named NBA 2K27
+              and all RTX 50 desktop and laptop GPUs. The article did not measure FPS for
+              every model. <a href={NVIDIA_DLSS5} className="text-blue-400 hover:underline">Launch article ↗</a>
+            </li>
+            <li className="rounded-lg border border-border p-4">
+              <strong>September 3, 2026: Player setup.</strong> NVIDIA&apos;s driver note
+              documented the released game, driver, and in-game option. NBA 2K27 is
+              marked live; other announced games still need their own release evidence.
+              {" "}<a href={NVIDIA_NBA_DRIVER} className="text-blue-400 hover:underline">Driver note ↗</a>
+            </li>
+            <li className="rounded-lg border border-border p-4">
+              <strong>September 22, 2026: Developer controls.</strong> NVIDIA documented
+              one-frame-in, one-frame-out processing, Structure and Tone Intensity controls,
+              and masks that let developers target or protect scene elements. These are
+              developer controls, not extra settings promised to players.
+              {" "}<a href={NVIDIA_DEVELOPER_BRIEF} className="text-blue-400 hover:underline">Developer brief ↗</a>
+            </li>
+          </ol>
         </section>
 
         <section className="mb-10">
@@ -349,15 +368,6 @@ export default function Dlss5EvidenceTrackerPage() {
           </div>
         </section>
 
-        <section className="mb-10 rounded-lg border border-blue-500/30 bg-blue-500/5 p-5">
-          <h2 className="text-2xl font-bold mb-3">Editorial rule for this site</h2>
-          <p className="text-foreground/80 leading-relaxed">
-            If a reader would need to search again after reading an answer, the page has
-            not done its job. Each DLSS 5 answer should say what is known, what is unknown,
-            and what public evidence would change the recommendation.
-          </p>
-        </section>
-
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4">Where to go next</h2>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -389,27 +399,31 @@ export default function Dlss5EvidenceTrackerPage() {
         <section className="text-sm text-muted-foreground leading-relaxed">
           <h2 className="text-xl font-bold text-foreground mb-3">Primary sources</h2>
           <p>
-            This tracker uses{" "}
+            Primary reporting: {" "}
             <a href={NVIDIA_DLSS5} className="text-blue-400 hover:underline">
-              NVIDIA&apos;s DLSS 5 announcement
+              NVIDIA&apos;s DLSS 5 launch article
             </a>
             ,{" "}
             <a href={NVIDIA_DLSS_TECH} className="text-blue-400 hover:underline">
               NVIDIA&apos;s DLSS technology page
             </a>
-            , and{" "}
+            ,{" "}
             <a href={NVIDIA_DLSS45} className="text-blue-400 hover:underline">
               NVIDIA&apos;s DLSS 4.5 announcement
             </a>
-            , and{" "}
+            ,{" "}
             <a href={NVIDIA_NBA_DRIVER} className="text-blue-400 hover:underline">
               NVIDIA&apos;s NBA 2K27 Game Ready Driver note
+            </a>
+            , and{" "}
+            <a href={NVIDIA_DEVELOPER_BRIEF} className="text-blue-400 hover:underline">
+              NVIDIA&apos;s developer brief
             </a>
             . It intentionally avoids turning previews, rumors, or upgrade guesses into
             definitive compatibility claims.
           </p>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-09-05" />
+        <ArticleTrustBlock reviewedAt="2026-09-23" />
       </main>
     </>
   );

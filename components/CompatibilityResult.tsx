@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { type GPU, getFeatureLabel } from "@/lib/gpu-search";
+import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 import { CheckCircle2, XCircle, AlertCircle, Clock } from "lucide-react";
 import Link from "next/link";
 
@@ -166,11 +167,29 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
               </>
             )}
             <p className="text-muted-foreground">
-              This is a compatibility result, not an FPS prediction. We do not have
-              verified per-game performance measurements for {gpu.name}. Before buying,
-              compare tests of your exact GPU, resolution, and game settings. For a
-              laptop, also match the notebook&apos;s power limit and cooling configuration.
+              This is a compatibility result, not an FPS prediction. Before buying,
+              compare tests of your exact GPU, resolution, and game settings.
             </p>
+            {gpu.vram.includes("/") && (
+              <p className="text-muted-foreground">
+                This model has {gpu.vram} memory variants. Check the exact VRAM on the
+                listing or your system before using memory-specific advice; the DLSS 5
+                support status above applies to the GPU family, not a measured result for
+                either memory version.
+              </p>
+            )}
+            {gpu.id.endsWith("-laptop") && (
+              <p className="text-muted-foreground">
+                For this laptop GPU, compare tests from a notebook with a similar power
+                limit and cooling design. A desktop card with the same model number is
+                not an equivalent performance result.
+              </p>
+            )}
+            {isEnabledGpuSlug("en", gpu.id) && (
+              <Link href={getGpuPageHref("en", gpu.id)} className="inline-block text-blue-400 hover:underline">
+                Read the {gpu.name} model-specific breakdown →
+              </Link>
+            )}
             <p className="text-xs text-muted-foreground">
               Support evidence reviewed September 5, 2026: {" "}
               <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">

@@ -74,7 +74,7 @@ export default function Home() {
 
       <main>
         {/* ===== HERO SECTION ===== */}
-        <section className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-background via-background to-muted/20 px-4">
+        <section className="bg-gradient-to-b from-background via-background to-muted/20 px-4 py-14 sm:py-20">
           <div className="max-w-3xl mx-auto w-full text-center">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-6">
@@ -98,7 +98,20 @@ export default function Home() {
             {/* Tool -- main interactive area */}
             <GPUChecker />
 
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm">
+            <div className="mt-6 rounded-lg border border-border bg-background/70 p-4 text-left text-sm leading-relaxed">
+              <p className="font-semibold">Example: RTX 5060 Ti · sources checked September 23, 2026</p>
+              <p className="mt-1 text-muted-foreground">
+                NVIDIA confirms DLSS 5 in NBA 2K27 for RTX 50 GPUs, including this model.
+                RTX 5060 Ti comes in 8GB and 16GB versions: check which one you own before
+                comparing game tests at the same resolution and settings.
+              </p>
+              <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+                <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">NVIDIA DLSS 5 launch ↗</a>
+                <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/" className="text-blue-400 hover:underline">RTX 5060 Ti memory specs ↗</a>
+              </p>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm">
               <span className="text-muted-foreground">Popular checks:</span>
               <Link
                 href="/dlss-5-supported-cards"
@@ -117,36 +130,6 @@ export default function Home() {
                 className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 Evidence tracker
-              </Link>
-              <Link
-                href="/games/nba-2k27-dlss-5"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                NBA 2K27 DLSS 5 guide
-              </Link>
-              <Link
-                href="/ai-pc/nvidia-rtx-spark"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                RTX Spark AI PCs
-              </Link>
-              <Link
-                href="/dlss-5-release-date"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                DLSS 5 release date
-              </Link>
-              <Link
-                href="/dlss-5-neural-rendering"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                Neural rendering
-              </Link>
-              <Link
-                href="/dlss-5-vs-dlss-4-5"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                DLSS 5 vs 4.5
               </Link>
             </div>
           </div>
@@ -193,7 +176,6 @@ export default function Home() {
 
         <AdSlot slot="content-mid" />
 
-        {/* Supported GPUs */}
         <section id="supported-gpus">
           <h2 className="text-3xl font-bold mb-2">DLSS 5 Supported Cards &amp; GPU Compatibility</h2>
           <p className="text-muted-foreground mb-6">
