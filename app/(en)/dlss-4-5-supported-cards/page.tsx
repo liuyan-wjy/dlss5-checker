@@ -40,7 +40,7 @@ const matrixRows = [
   {
     cards: "RTX 50 Series",
     examples: "RTX 5050, 5060, 5060 Ti, 5070, 5070 Ti, 5080, 5090 and laptop models",
-    sr: "Yes, Models M/L/K",
+    sr: "Yes; M/L and K available",
     rr: "Yes",
     fg: "Yes",
     mfg: "Yes, including Dynamic MFG",
@@ -49,7 +49,7 @@ const matrixRows = [
   {
     cards: "RTX 40 Series",
     examples: "RTX 4050, 4060, 4070, 4080, 4090 and laptop models",
-    sr: "Yes, Models M/L/K",
+    sr: "Yes; M/L and K available",
     rr: "Yes",
     fg: "Yes",
     mfg: "No",
@@ -58,7 +58,7 @@ const matrixRows = [
   {
     cards: "RTX 30 Series",
     examples: "RTX 3050, 3060, 3070, 3080, 3090 and Ti/laptop variants",
-    sr: "Yes, heavier Models M/L/K",
+    sr: "Yes; M/L cost more",
     rr: "Yes",
     fg: "No",
     mfg: "No",
@@ -67,7 +67,7 @@ const matrixRows = [
   {
     cards: "RTX 20 Series",
     examples: "RTX 2060, 2070, 2080, Super variants, 2080 Ti and laptops",
-    sr: "Yes, heavier Models M/L/K",
+    sr: "Yes; M/L cost more",
     rr: "Yes",
     fg: "No",
     mfg: "No",
@@ -150,7 +150,7 @@ export default function Dlss45SupportedCardsPage() {
     headline: "DLSS 4.5 Supported Cards: RTX 20 to RTX 50 GPU Guide",
     url: PAGE_URL,
     datePublished: "2026-08-26",
-    dateModified: "2026-09-05",
+    dateModified: "2026-10-01",
     inLanguage: "en",
     author: { "@type": "Person", name: "DLSS 5 Checker Editor" },
     publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
@@ -170,7 +170,7 @@ export default function Dlss45SupportedCardsPage() {
         </nav>
 
         <header className="mb-10 max-w-3xl">
-          <p className="mb-3 text-sm font-semibold text-blue-400">Hardware and setup guide · Reviewed September 5, 2026</p>
+          <p className="mb-3 text-sm font-semibold text-blue-400">Hardware and setup guide · Reviewed October 1, 2026</p>
           <h1 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
             DLSS 4.5 Supported Cards: What Every RTX Generation Can Use
           </h1>
@@ -199,7 +199,7 @@ export default function Dlss45SupportedCardsPage() {
 
         <figure className="mb-10">
           <figcaption className="mb-3 text-2xl font-bold">DLSS 4.5 GPU compatibility matrix</figcaption>
-          <div className="overflow-x-auto rounded-lg border border-border">
+          <div className="overflow-x-auto rounded-lg border border-border" tabIndex={0} role="region" aria-label="DLSS 4.5 GPU compatibility table">
             <table className="w-full min-w-[900px] text-sm">
               <thead className="bg-muted/40 text-left">
                 <tr>
@@ -225,7 +225,7 @@ export default function Dlss45SupportedCardsPage() {
             </table>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            “Yes” means the generation is eligible. The game still needs the relevant integration
+            Scroll horizontally to compare all features. “Yes” means the generation is eligible. The game still needs the relevant integration
             or an NVIDIA App override, and performance varies by model, resolution, and preset.
           </p>
         </figure>
@@ -260,7 +260,8 @@ export default function Dlss45SupportedCardsPage() {
           <p className="mb-5 leading-relaxed text-foreground/80">
             DLSS 4.5 uses different models for different input-resolution ranges. NVIDIA identifies
             Model M with Performance mode, Model L with Ultra Performance, and Model K with other
-            modes. That mapping is more useful than choosing the newest letter blindly because each
+            modes. K is the earlier transformer preset; M and L are the newer DLSS 4.5
+            Super Resolution models. That mapping is more useful than choosing the newest letter blindly because each
             preset solves a different rendering problem.
           </p>
           <div className="grid gap-4 md:grid-cols-3">
@@ -277,6 +278,33 @@ export default function Dlss45SupportedCardsPage() {
             and RTX 30 cards can still run them, but NVIDIA notes that Models M and L have a greater
             performance cost on those older generations. Do not interpret compatibility as a promise
             that the most demanding model will improve the overall experience on every card.
+          </p>
+          <p className="mt-4 leading-relaxed text-foreground/80">
+            To verify the active model, open the NVIDIA overlay with Alt+Z, then
+            Statistics → Statistics View → DLSS. NVIDIA documents both this check and
+            the K/M/L mapping in its <a href="https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-generation-6x-mode-released/" className="text-blue-400 hover:underline">March 31 setup guide</a>.
+          </p>
+        </section>
+
+        <section className="mb-10 rounded-lg border border-border p-5">
+          <h2 className="mb-3 text-2xl font-bold">RTX 3060 or RTX 3070: which preset should I try?</h2>
+          <p className="leading-relaxed text-foreground/80">
+            Start with the game&apos;s normal Quality setting and note the active model before
+            changing an override. Compare it with Performance mode using Model M at the same
+            output resolution and in the same moving scene. Check both frame times and fine
+            detail; a newer model can improve reconstruction while costing more GPU time.
+          </p>
+          <p className="mt-4 leading-relaxed text-foreground/80">
+            If the override makes the game slower or introduces an unwanted visual change,
+            return that game&apos;s override to its default. A supported model is an option,
+            not a requirement to use it. Keep frame generation off during this comparison
+            on hardware that offers it, so its extra displayed frames do not hide the cost.
+          </p>
+          <p className="mt-4 text-sm text-muted-foreground">
+            On RTX 50, finish the reconstruction comparison first, then use the
+            <Link href="/dlss-4-5-dynamic-mfg-settings" className="text-blue-400 hover:underline"> Dynamic MFG setup steps</Link>.
+            For DLSS 5 lighting and materials, use the separate
+            <Link href="/dlss-5-download" className="text-blue-400 hover:underline"> Neural Rendering setup guide</Link>.
           </p>
         </section>
 
@@ -353,9 +381,10 @@ export default function Dlss45SupportedCardsPage() {
           <h2 className="mb-3 text-2xl font-bold">August 2026 Ray Reconstruction status</h2>
           <div className="space-y-4 leading-relaxed text-foreground/80">
             <p>
-              NVIDIA announced that the second-generation DLSS 4.5 Ray Reconstruction model is
-              available through NVIDIA App Early Access in August 2026, with the regular release
-              planned for September. NVIDIA&apos;s Gamescom guidance lists driver 580.88 or newer for
+              NVIDIA&apos;s August announcement introduced the second-generation DLSS 4.5 Ray
+              Reconstruction model through NVIDIA App Early Access and scheduled a regular
+              release for September. That announcement alone does not confirm that every app
+              installation or game profile has received the release. NVIDIA&apos;s Gamescom guidance lists driver 580.88 or newer for
               this Early Access path. It is an all-RTX feature, so RTX 20, 30, 40, and 50 cards are
               within the stated hardware group.
             </p>
@@ -385,8 +414,8 @@ export default function Dlss45SupportedCardsPage() {
         <section className="mb-10 space-y-4 text-foreground/80">
           <h2 className="text-2xl font-bold text-foreground">Common reasons the option is missing</h2>
           <p className="leading-relaxed">
-            The most common reason is a feature mismatch. An RTX 3070 will never show NVIDIA Frame
-            Generation because RTX 30 is outside that hardware group, even though Super Resolution
+            A missing switch can be a feature mismatch. An RTX 3070 does not support NVIDIA Frame
+            Generation under the current hardware requirements, even though Super Resolution
             works. An RTX 4060 will not show MFG for the same reason. Verify the row in the matrix
             before reinstalling drivers or changing Windows settings.
           </p>
@@ -439,7 +468,7 @@ export default function Dlss45SupportedCardsPage() {
             <a href={NVIDIA_DLSS_45} rel="noreferrer" className="text-blue-400 hover:underline">DLSS 4.5 model announcement</a>,{" "}
             <a href={NVIDIA_DYNAMIC_MFG} rel="noreferrer" className="text-blue-400 hover:underline">Dynamic MFG release guidance</a>, and{" "}
             <a href={NVIDIA_RR_NEWS} rel="noreferrer" className="text-blue-400 hover:underline">Gamescom 2026 Ray Reconstruction update</a>.
-            Published by the DLSS 5 Checker Editor on August 26, 2026 and reviewed on September 5,
+            Published by the DLSS 5 Checker Editor on August 26, 2026 and reviewed on October 1,
             2026. A supported GPU
             does not guarantee a feature in every game, and app profiles, driver requirements, and
             Early Access availability can change after publication.

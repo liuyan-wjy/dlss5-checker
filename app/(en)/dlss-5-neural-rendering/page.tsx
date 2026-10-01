@@ -26,7 +26,8 @@ export const metadata: Metadata = {
 
 const NVIDIA_DLSS5_NEWS =
   "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/";
-const NVIDIA_DLSS_DEVELOPER = "https://developer.nvidia.com/rtx/dlss";
+const NVIDIA_DLSS_DEVELOPER =
+  "https://developer.nvidia.com/blog/whats-new-for-game-developers-dlss-5-with-3d-guided-neural-rendering-nvidia-ace-updates-and-new-rtx-kit-capabilities/";
 const NVIDIA_DLSS45_NOW =
   "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-generation-6x-mode-released/";
 const NVIDIA_NBA_DRIVER =
@@ -44,9 +45,9 @@ const inputRows = [
       "Movement data helps the output remain stable from frame to frame instead of behaving like a new prompt each time.",
   },
   {
-    input: "Scene semantics",
+    input: "Learned scene features",
     role:
-      "NVIDIA says the model is trained to understand elements such as hair, fabric, translucent skin, and lighting direction.",
+      "The model learns to recognize materials and lighting. These learned features are not a separate player setting or a text prompt.",
   },
   {
     input: "Artist controls",
@@ -161,16 +162,15 @@ export default function Dlss5NeuralRenderingPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Technical explainer updated September 5, 2026
+            Technical explainer updated October 1, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Neural Rendering: What “3D-Guided” Means
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            The important shift is not only more frames. NVIDIA describes the new layer as
-            a real-time model that uses source game data to improve lighting and materials
-            while keeping the result stable and controllable for developers. It is live first
-            in NBA 2K27 for RTX 50 desktop and laptop GPUs.
+            DLSS 5 Neural Rendering changes lighting and materials using the game&apos;s
+            rendered frame and motion data. It runs in NBA 2K27 on RTX 50 desktop and
+            laptop GPUs, alongside separate options for upscaling and frame generation.
           </p>
         </header>
 
@@ -181,6 +181,26 @@ export default function Dlss5NeuralRenderingPage() {
             inputs, then applies an AI model to produce photoreal lighting and material
             responses that remain tied to the original 3D scene. That makes it different
             from a generic video generator and different from the current frame-rate tools.
+          </p>
+        </section>
+
+        <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
+          <h2 className="text-2xl font-bold text-foreground">What the September 22 developer update clarifies</h2>
+          <p>
+            NVIDIA describes a final rendering stage: one engine frame enters and one
+            enhanced frame leaves. Motion vectors guide changes between frames. This
+            explains why NR is separate from generating extra frames for a higher display FPS.
+          </p>
+          <p>
+            Developers can select models, adjust Structure and Tone intensity, and mask
+            specific materials or objects. Those controls determine where the effect applies;
+            they are not extra sliders promised in every game&apos;s player menu. NVIDIA also
+            says richer source lighting improves the result, so NR does not make the
+            original rendering settings irrelevant.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Source: <a href={NVIDIA_DLSS_DEVELOPER} className="text-blue-400 hover:underline">NVIDIA&apos;s September 22 developer explanation</a>.
+            Its design claims do not establish a measured performance cost for your PC.
           </p>
         </section>
 
@@ -216,8 +236,8 @@ export default function Dlss5NeuralRenderingPage() {
           </p>
           <p>
             For players, the phrase should therefore mean <strong>scene-aware and
-            temporally controlled</strong>, not prompt-generated. The important launch
-            tests will be motion stability, input responsiveness, preservation of art
+            temporally controlled</strong>, not prompt-generated. Useful on/off
+            comparisons include motion stability, input responsiveness, preservation of art
             direction, performance cost, and whether materials remain consistent across
             gameplay, cutscenes, weather changes, and camera movement.
           </p>
@@ -228,11 +248,10 @@ export default function Dlss5NeuralRenderingPage() {
             Why this matters for players and developers
           </h2>
           <p>
-            Most short answers say the feature improves graphics, but that does not tell a
-            buyer or player what kind of improvement to expect. The specific claim is about
-            materials and lighting: skin, fabric, hair, back-lit scenes, overcast scenes,
-            reflections, and other hard cases where traditional real-time rendering often
-            uses shortcuts.
+            Look for changes to skin, fabric, hair, shadows, and how light passes through
+            thin surfaces. To judge the effect, use the same camera position and lighting
+            with NR on and off, then repeat while moving. A still image cannot establish
+            motion stability or input responsiveness.
           </p>
           <p>
             The other useful detail is control. NVIDIA names Structure Intensity, Tone
@@ -263,6 +282,12 @@ export default function Dlss5NeuralRenderingPage() {
             </table>
           </div>
         </section>
+
+        <p className="mb-10 text-foreground/80 leading-relaxed">
+          To try the effect, follow the <Link href="/games/nba-2k27-dlss-5" className="text-blue-400 hover:underline">NBA 2K27 setup and F9 comparison steps</Link>.
+          Keep Super Resolution and MFG unchanged while comparing NR, and turn NR off
+          if the performance cost outweighs the image change on your system.
+        </p>
 
         <section className="mb-10 grid gap-3 sm:grid-cols-2">
           <Link
@@ -321,7 +346,7 @@ export default function Dlss5NeuralRenderingPage() {
             </a>
             ,{" "}
             <a href={NVIDIA_DLSS_DEVELOPER} className="text-blue-400 hover:underline">
-              NVIDIA Developer DLSS page
+              NVIDIA September 22 developer update
             </a>
             , and{" "}
             <a href={NVIDIA_DLSS45_NOW} className="text-blue-400 hover:underline">
@@ -346,7 +371,7 @@ export default function Dlss5NeuralRenderingPage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-09-05" />
+        <ArticleTrustBlock reviewedAt="2026-10-01" />
       </main>
     </>
   );

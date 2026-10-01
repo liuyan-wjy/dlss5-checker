@@ -56,7 +56,9 @@ const NVIDIA_NBA_DRIVER =
 const NVIDIA_GFN_SEPTEMBER =
   "https://blogs.nvidia.com/blog/geforce-now-thursday-september-2026-games-list/";
 const NVIDIA_RTX40_UPDATE =
-  "https://www.reddit.com/r/nvidia/comments/1w4bcvp/nvidia_dlss_5_available_september_3rd_dlss/?sort=new";
+  "https://www.nvidia.com/en-us/geforce/forums/nvidia-app/129/583738/dlss-5-faq-932026/";
+const NBA_2K_SUPPORT =
+  "https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5";
 const NVIDIA_RTX_GAMES =
   "https://www.nvidia.com/en-us/geforce/news/nvidia-rtx-games-engines-apps/";
 const NVIDIA_RAY_RECONSTRUCTION =
@@ -70,12 +72,12 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
     metaTitle: "NBA 2K27 DLSS 5: Settings, GPUs, Driver, and RTX 40 Status",
     metaDescription:
       "NBA 2K27 is the first live DLSS 5 game. Check the RTX 50 GPU requirement, 616.64 driver, DLSS Neural Rendering setting, F9 toggle, RTX 40 status, and GeForce NOW caveats.",
-    eyebrow: "Game support guide · Reviewed September 5, 2026",
+    eyebrow: "Game support guide · Reviewed October 1, 2026",
     title: "NBA 2K27 DLSS 5: Settings, GPUs, Driver, and RTX 40 Status",
     description:
       "Enable DLSS 5 in NBA 2K27, compare image quality with F9, and check what to do if the setting is missing. These steps apply to local RTX 50 desktop and laptop GPUs; GeForce NOW has separate hardware and regional requirements.",
     fastAnswer:
-      "NBA 2K27 supports DLSS 5 now on GeForce RTX 50 Series desktop and laptop GPUs. NVIDIA's driver page names the 616.64 WHQL Game Ready Driver and the in-game path Video Settings → DLSS Neural Rendering; NVIDIA's DLSS 5 launch article says F9 toggles Neural Rendering during gameplay and replays.",
+      "NBA 2K27 supports DLSS 5 now on GeForce RTX 50 Series desktop and laptop GPUs. NVIDIA's driver page names the 616.64 WHQL Game Ready Driver and the in-game path Features → Video Settings → DLSS Neural Rendering; NVIDIA's DLSS 5 launch article says F9 toggles Neural Rendering during gameplay and replays.",
     availability:
       "Available now, but the current local-PC support is limited to RTX 50 Series GPUs. RTX 40 support is planned after RTX 50 tuning work, with no official public date in the sources checked for this guide.",
     nextProof:
@@ -84,7 +86,7 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       "NVIDIA calls NBA 2K27 the debut game for DLSS 5 3D-guided Neural Rendering.",
       "The initial local support is for GeForce RTX 50 Series desktop and laptop GPUs.",
       "The official Game Ready Driver article names version 616.64 WHQL for NBA 2K27.",
-      "The NBA 2K27 setting path is Video Settings → DLSS Neural Rendering, with F9 used in-game to toggle Neural Rendering during gameplay and replays.",
+      "The NBA 2K27 setting path is Features → Video Settings → DLSS Neural Rendering, with F9 used in-game to toggle Neural Rendering during gameplay and replays.",
     ],
     context: [
       "NBA 2K27's repeated camera angles make lighting and material changes easier to compare. Use the same court, players, and camera for both settings. Arena lights, polished wood, skin, jerseys, and hair offer useful detail to inspect, while fast camera pans and overlapping players help reveal whether that detail stays stable in motion.",
@@ -117,10 +119,14 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       "Update NBA 2K27 through Steam or the store you use, then restart the game after the update finishes.",
       "Install NVIDIA GeForce Game Ready Driver 616.64 WHQL or a newer driver that explicitly carries the NBA 2K27 DLSS 5 support path.",
       "Confirm the game is running on a GeForce RTX 50 Series desktop or laptop GPU for local DLSS 5 support.",
-      "Open Video Settings and look for DLSS Neural Rendering. Enable it there rather than assuming a normal DLSS Super Resolution label is the same feature.",
+      "From the main menu, open Features → Video Settings and look for DLSS Neural Rendering. Enable it there rather than assuming a normal DLSS Super Resolution label is the same feature.",
       "Use F9 in NBA 2K27 to toggle Neural Rendering during gameplay or replays, then judge the same arena, camera angle, and motion instead of comparing unrelated scenes.",
     ],
     troubleshooting: [
+      {
+        issue: "DLSS Neural Rendering is greyed out",
+        fix: "A disabled control alone does not identify the cause. Check the same GPU, game-update, and driver requirements as a missing control. On a supported RTX 50 PC, restart after updates and record the game build, driver version, active GPU, and a screenshot for 2K Support if it stays disabled. This is a diagnostic checklist, not a verified workaround for a particular game bug.",
+      },
       {
         issue: "DLSS Neural Rendering is missing",
         fix: "Check that the active GPU is an RTX 50 Series card, the 616.64 WHQL driver or newer is installed, NBA 2K27 is fully updated, and the game is not using an integrated GPU path.",
@@ -131,7 +137,7 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       },
       {
         issue: "F9 does not toggle Neural Rendering",
-        fix: "Use it inside NBA 2K27 after enabling the feature in Video Settings. Do not assume F9 is a global DLSS shortcut for every game or every NVIDIA feature.",
+        fix: "Test F9 during gameplay or a replay, after enabling Neural Rendering under Features → Video Settings. If the keyboard uses F9 for a media action, use its function-key mode. Test the menu switch too: if that works but F9 does not, record a keyboard or shortcut issue; if neither works, return to the GPU, driver, and game checks. F9 is not a global DLSS shortcut.",
       },
       {
         issue: "A GeForce NOW session behaves differently from the local install",
@@ -160,17 +166,24 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
     ],
     extraSections: [
       {
-        title: "Quality comparison: what to look for",
+        title: "Game build and driver: what is actually verified",
         paragraphs: [
-          "Use NBA 2K27's repeatable camera work to your advantage. A good comparison starts with the same arena, the same graphics preset, the same resolution, and the same camera. Free throws, replay angles, practice mode, and early possessions are better than a highlight montage because they let you focus on one visual change at a time. Watch skin, sweat, jersey seams, hair, crowd rows, the backboard, rim, court varnish, and the way bright lights roll across glossy materials.",
-          "Avoid treating a single screenshot as the verdict. Neural Rendering is partly about how lighting and materials behave over time, so motion matters. If a still frame looks sharper but moving players leave trails or crowd edges shimmer, that is not automatically a win. Likewise, if the feature looks subtle on one court, test another arena before deciding it does nothing. Different lighting rigs can expose different strengths and weaknesses.",
+          "The launch driver documented by NVIDIA is 616.64 WHQL; that is a launch reference, not a claim that it is the newest driver today. Use the current official Game Ready Driver for your GPU and update NBA 2K27 through your store. 2K does not list a required game-build number in its setup article. Record your installed build when contacting support.",
+          "For a useful support report, record your exact GPU (including Laptop GPU), installed driver version, store and game build shown on your PC, and whether you are playing locally or through GeForce NOW. Keep these details with a screenshot of the setting. These checks follow official setup documentation; they have not been tested on our own hardware.",
         ],
       },
       {
-        title: "Performance and input latency",
+        title: "Compare Neural Rendering on vs off in the same scene",
         paragraphs: [
-          "The support announcement does not establish the frame rate or latency you will get on your own PC. Your CPU, GPU, resolution, display, and graphics preset all affect the result. Record a baseline first, then change one feature at a time. Start with native resolution or your usual Super Resolution mode, enable DLSS Neural Rendering, and only then test Frame Generation if your setup supports it.",
-          "Smooth camera motion, clean player outlines, readable UI, stable crowd detail, and responsive shot timing all matter alongside frame rate. If Frame Generation makes motion look smoother but input timing feels worse, turn it off and compare the same scene again. Test lower graphics settings separately. If Neural Rendering leaves too little performance headroom, compare Super Resolution modes one at a time while keeping the other settings fixed.",
+          "Pick one replay or practice scene and keep the arena, camera, resolution, graphics preset, Super Resolution mode, Frame Generation, and Reflex settings fixed. Start with Neural Rendering off, note the frame rate and input feel, then switch only Neural Rendering on using the menu or F9 and repeat the same camera movement. Compare skin, hair, jersey edges, court reflections, and moving player outlines rather than two unrelated screenshots.",
+          "Repeat the off/on comparison once to check that an arena or camera change did not explain the result. Keep Frame Generation off for a separate base-frame-rate comparison if you want to measure render cost; a counter with generated frames enabled is not the same measurement. Record the game build and driver with your results. If Neural Rendering makes play less responsive or the image is not preferable, leave it off. 2K explicitly allows disabling the optional effect when performance drops affect play.",
+        ],
+      },
+      {
+        title: "What to watch in motion",
+        paragraphs: [
+          "Check player outlines during fast camera pans, crowd edges, and jersey seams. A sharper still image can hide trails or shimmering that only appear in motion. After the controlled comparison, try a second arena: different lighting may change how noticeable the effect is.",
+          "Watch shot timing and responsiveness as well as the FPS counter. Generated frames can make motion look smoother without a matching improvement in input response. If NR leaves too little performance headroom, lower other graphics settings or compare Super Resolution modes separately.",
         ],
       },
       {
@@ -195,7 +208,7 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       {
         question: "Where is the NBA 2K27 DLSS 5 setting?",
         answer:
-          "NVIDIA points players to Video Settings → DLSS Neural Rendering. NVIDIA's DLSS 5 launch article says F9 toggles Neural Rendering during gameplay and replays in NBA 2K27.",
+          "2K points players to Features → Video Settings → DLSS Neural Rendering. NVIDIA's DLSS 5 launch article says F9 toggles Neural Rendering during gameplay and replays in NBA 2K27.",
       },
       {
         question: "Does NBA 2K27 DLSS 5 work on RTX 40?",
@@ -214,6 +227,10 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       },
     ],
     sources: [
+      {
+        label: "2K official NBA 2K27 DLSS 5 settings and performance guidance",
+        href: NBA_2K_SUPPORT,
+      },
       {
         label: "NVIDIA DLSS 5 launch article",
         href: NVIDIA_DLSS5_ANNOUNCEMENT,
@@ -238,12 +255,12 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
     metaTitle: "Resident Evil Requiem DLSS 5: Support and Settings",
     metaDescription:
       "Check Resident Evil Requiem DLSS 5 support, current path tracing and Ray Reconstruction evidence, expected settings, GPU caveats, and what to verify.",
-    eyebrow: "Game support guide · Reviewed September 5, 2026",
+    eyebrow: "Game support guide · Availability sources checked October 1, 2026",
     title: "Resident Evil Requiem DLSS 5: Support, Path Tracing, and Settings",
     description:
-      "Resident Evil Requiem is an officially announced DLSS 5 title, but the sources checked for this guide do not show a live public game patch yet. This guide separates the confirmed announcement from current path-tracing technology and shows players exactly what to check when the update arrives.",
+      "Resident Evil Requiem is an officially announced DLSS 5 title, but our October 1 check did not find a public DLSS 5 activation guide or patch announcement in the official sources searched. This guide separates the confirmed announcement from current path-tracing technology and shows players exactly what to check when the update arrives.",
     fastAnswer:
-      "Yes, NVIDIA names Resident Evil Requiem as a DLSS 5 game, but this page still treats support as announced rather than live until Capcom patch notes and a visible public settings menu confirm it.",
+      "NVIDIA has announced DLSS 5 for Resident Evil Requiem. Our October 1 check found the announcement, but not official public activation instructions. We label it announced with live support unverified; this is not a claim that every possible patch source has been checked.",
     availability:
       "Current Capcom and NVIDIA material documents path tracing, DLSS Ray Reconstruction, and Multi Frame Generation in the RE ENGINE pipeline. Those are not interchangeable with the future DLSS 5 Neural Rendering option.",
     nextProof:
@@ -305,9 +322,10 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       },
     ],
     sources: [
+      { label: "CAPCOM Resident Evil news portal (availability check, October 1)", href: "https://game.capcom.com/residentevil/uk/" },
       {
         label: "NVIDIA DLSS 5 announcement",
-        href: NVIDIA_DLSS5_ANNOUNCEMENT,
+        href: "https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/",
       },
       {
         label: "NVIDIA and Capcom RE ENGINE path-tracing Q&A",
@@ -325,12 +343,12 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
     metaTitle: "Starfield DLSS 5: Support Status and Update Guide",
     metaDescription:
       "Check Starfield DLSS 5 support, expected update timing, current DLSS feature differences, GPU caveats, and what players should verify after the patch.",
-    eyebrow: "Game support guide · Reviewed September 5, 2026",
+    eyebrow: "Game support guide · Availability sources checked October 1, 2026",
     title: "Starfield DLSS 5: Support Status, Update Timing, and Player Checklist",
     description:
       "Starfield is on NVIDIA's announced DLSS 5 list. This page explains what that announcement confirms, what Bethesda still needs to document, and how to evaluate the feature without confusing Neural Rendering with the DLSS options already available in the game.",
     fastAnswer:
-      "Starfield is officially planned to receive DLSS 5, but the sources checked for this guide do not show a live Starfield patch. There is no safe reason to call the integration live until a public update and settings menu confirm it.",
+      "Starfield is officially announced for DLSS 5. Our October 1 search of Bethesda and NVIDIA sources did not find public DLSS 5 activation instructions or a confirmed live patch. Official availability remains unverified here; existing DLSS features and community mods do not establish it.",
     availability:
       "Starfield already has a history of DLSS updates, but an existing Super Resolution or Frame Generation option is not evidence that DLSS 5 Neural Rendering has shipped.",
     nextProof:
@@ -392,9 +410,10 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       },
     ],
     sources: [
+      { label: "Bethesda DLSS support article (existing DLSS features)", href: "https://help.bethesda.net/app/answers/detail/a_id/63791/~/does-starfield-support-nvidia-dlss%3F" },
       {
         label: "NVIDIA DLSS 5 announcement",
-        href: NVIDIA_DLSS5_ANNOUNCEMENT,
+        href: "https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/",
       },
       {
         label: "NVIDIA RTX games and applications list",
@@ -408,12 +427,12 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
     metaTitle: "Assassin's Creed Shadows DLSS 5: Support Guide",
     metaDescription:
       "Check Assassin's Creed Shadows DLSS 5 support, release status, likely visual test areas, current DLSS feature differences, and player setup advice.",
-    eyebrow: "Game support guide · Reviewed September 5, 2026",
+    eyebrow: "Game support guide · Availability sources checked October 1, 2026",
     title: "Assassin's Creed Shadows DLSS 5: Support Status and Settings Guide",
     description:
       "Assassin's Creed Shadows is officially named for DLSS 5, but the practical player questions are still open: when the update lands, which GPUs qualify, what the control is called, and whether the visual result remains stable through changing weather, foliage, and fast traversal.",
     fastAnswer:
-      "NVIDIA has announced Assassin's Creed Shadows for DLSS 5. Players should treat the game as confirmed for planned support rather than assume the option is already active until Ubisoft ships a public patch.",
+      "NVIDIA has announced Assassin's Creed Shadows for DLSS 5. Our October 1 search of Ubisoft and NVIDIA sources did not find a public DLSS 5 activation guide or launch patch. Live official support remains unverified here; the announcement alone does not confirm an available setting.",
     availability:
       "Existing DLSS or ray-tracing settings are current technologies. They do not silently become DLSS 5 just because the game appears in a future-support announcement.",
     nextProof:
@@ -422,7 +441,7 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       "NVIDIA names Assassin's Creed Shadows as an announced DLSS 5 title.",
       "The feature is described as improving lighting and material fidelity with developer controls.",
       "The DLSS 5 launch in NBA 2K27 is not a confirmed Assassin's Creed Shadows patch date.",
-      "No final public support matrix or trustworthy per-GPU benchmark is available yet.",
+      "The official sources checked do not establish a live DLSS 5 GPU matrix for this game.",
     ],
     context: [
       "Assassin's Creed Shadows combines dense vegetation, weather, day-and-night changes, skin, fabric, armor, reflective wet surfaces, and quick camera movement. Those are difficult conditions for any temporal reconstruction system. A strong implementation should improve local lighting and material response without causing foliage shimmer, texture boiling, ghost trails, or a look that conflicts with the game's art direction.",
@@ -476,9 +495,10 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       },
     ],
     sources: [
+      { label: "Ubisoft Title Update 1.1.11 notes (no DLSS 5 activation instructions)", href: "https://www.ubisoft.com/en-au/game/assassins-creed/news/rQWdji9OHYDuvINeT3Bkb/ac-shadows-title-update-1111-release-notes" },
       {
         label: "NVIDIA DLSS 5 announcement",
-        href: NVIDIA_DLSS5_ANNOUNCEMENT,
+        href: "https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/",
       },
       {
         label: "NVIDIA RTX games and applications list",
@@ -746,6 +766,12 @@ export default function Dlss5GameGuide({ gameKey }: { gameKey: Dlss5GameGuideKey
               Check the full list and the evidence level for each title.
             </p>
           </Link>
+          {gameKey === "nba-2k27" && (
+            <Link href="/dlss-5-download" className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400">
+              <div className="mb-1 font-semibold">Official DLSS 5 download and setup paths</div>
+              <p className="text-sm text-muted-foreground">Check the driver, game update, and GPU together before looking for a missing setting.</p>
+            </Link>
+          )}
           {gameKey !== "nba-2k27" ? (
             <Link
               href="/games/nba-2k27-dlss-5"

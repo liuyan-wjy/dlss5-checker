@@ -12,6 +12,10 @@ assert.equal(
 );
 
 const newRoutes = [
+  "dlss-5-download",
+  "dlss-5-amd",
+  "pt/como-ativar-dlss-5",
+  "pt/dlss-5-amd",
   "dlss-4-5-ray-reconstruction",
   "games/nba-2k27-dlss-5",
   "games/resident-evil-requiem-dlss-5",
@@ -136,6 +140,11 @@ assert.match(robots, /Allow: \//);
 assert.match(robots, /Sitemap: https:\/\/www\.dlss5\.net\/sitemap\.xml/);
 
 const notFoundHtml = fs.readFileSync(path.join(appOutput, "404.html"), "utf8");
+assert.match(notFoundHtml, /<html[^>]*lang="en"/);
+assert.match(notFoundHtml, /name="robots" content="noindex/);
+assert.match(notFoundHtml, /href="\/"/);
+assert.match(notFoundHtml, /href="\/pt"/);
+assert.doesNotMatch(notFoundHtml, /rel="canonical"/);
 assert.match(visibleText(notFoundHtml), /404|not found|could not be found/i, "Static export must not fall back unknown paths to the homepage");
 
 const homepage = readRoute("index");
@@ -176,7 +185,31 @@ assert.doesNotMatch(visibleText(readRoute("pt/dlss-5-quais-placas")), /mudar a m
 assert.doesNotMatch(visibleText(readRoute("dlss-5-supported-cards")), /no-DLSS unsupported|unsupported, and unsupported/);
 checkFaq(homepage, "homepage");
 
-const generatedHtml = readGeneratedHtml().join("\n");
+const generatedPages = readGeneratedHtml();
+const generatedHtml = generatedPages.join("\n");
+for (const html of generatedPages) {
+  const canonical = html.match(/<link rel="canonical" href="https:\/\/www\.dlss5\.net([^\"]*)"/);
+  if (!canonical || /<title>404:/.test(html)) continue;
+  const route = canonical[1];
+  const language = /^\/pt(?:\/|$)/.test(route) ? "pt-BR" : /^\/de(?:\/|$)/.test(route) ? "de" : "en";
+  assert.match(html, new RegExp(`<html[^>]*lang="${language}"`), `${route || "/"} must declare its language in the exported HTML`);
+  if (language === "pt-BR") {
+    assert.match(html, /aria-label="Navegação principal"/);
+    assert.match(html, /href="\/pt\/como-ativar-dlss-5"/);
+  }
+}
+for (const [english, portuguese] of [
+  ["dlss-5-download", "pt/como-ativar-dlss-5"],
+  ["dlss-5-amd", "pt/dlss-5-amd"],
+]) {
+  for (const route of [english, portuguese]) {
+    const html = readRoute(route);
+    assert.match(html, new RegExp(`hrefLang="en" href="https://www\\.dlss5\\.net/${english}"`));
+    assert.match(html, new RegExp(`hrefLang="pt-BR" href="https://www\\.dlss5\\.net/${portuguese}"`));
+    assert.doesNotMatch(html, /name="robots" content="noindex/);
+    assert.match(readRoute(route.startsWith("pt/") ? "pt" : "index"), new RegExp(`href="/${route}"`));
+  }
+}
 assert.doesNotMatch(generatedHtml, /DLSS 5 Checker Editorial Team/);
 assert.doesNotMatch(generatedHtml, /support \[at\] dlss5\.net/);
 assert.doesNotMatch(
@@ -201,6 +234,8 @@ for (const route of ["about", "contact"]) {
 
 for (const route of [...new Set([...newRoutes, ...refreshedRoutes, ...compatibilityRoutes])]) {
   const html = readRoute(route);
+  const language = route.startsWith("pt") ? "pt-BR" : route.startsWith("de/") ? "de" : "en";
+  assert.match(html, new RegExp(`<html[^>]*lang="${language}"`), `${route} exported language`);
   const title = metadataValue(html, /<title>([^<]+)<\/title>/, `${route} title`);
   const canonical = metadataValue(
     html,
@@ -232,7 +267,7 @@ for (const route of [...new Set([...newRoutes, ...refreshedRoutes, ...compatibil
   assert.equal(canonical, `https://www.dlss5.net/${route}`, `${route} canonical must remain self-referencing`);
   assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1, `${route} must have one H1`);
   assert.doesNotMatch(html, /Last checked June 22, 2026/);
-  checkFaq(html, route, !["about", "contact", "editorial-policy", "guides"].includes(route));
+  checkFaq(html, route, !["about", "contact", "editorial-policy", "guides", "dlss-5-download", "dlss-5-amd", "pt/como-ativar-dlss-5", "pt/dlss-5-amd"].includes(route));
   if (!route.includes("rtx-spark")) {
     assert.doesNotMatch(visibleText(html), /DLSS 5 (?:itself )?is (?:scheduled|planned) for Fall 2026|DLSS 5 is still unreleased|Why the exact launch date is still open/i);
   }
@@ -300,13 +335,20 @@ assert.match(dlss45Portuguese, /hrefLang="en" href="https:\/\/www\.dlss5\.net\/d
 const sitemap = fs.readFileSync(path.join(appOutput, "sitemap.xml"), "utf8");
 assert.doesNotMatch(sitemap, /<lastmod>/, "Sitemap must not publish deployment time as lastmod");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+for (const url of sitemapUrls) {
+  const route = new URL(url).pathname.slice(1) || "index";
+  const html = readRoute(route);
+  assert.doesNotMatch(html, /name="robots" content="noindex/, `${url} must be indexable`);
+  assert.equal(metadataValue(html, /<link rel="canonical" href="([^"]+)"/, `${url} canonical`).replace(/\/$/, ""), url.replace(/\/$/, ""));
+}
+
 assert.equal(
   new Set(sitemapUrls).size,
   sitemapUrls.length,
   "Sitemap must not contain duplicate URLs",
 );
 
-for (const route of [...compatibilityRoutes, "games/nba-2k27-dlss-5"]) {
+for (const route of [...compatibilityRoutes, ...newRoutes]) {
   assert.ok(
     sitemapUrls.includes(`https://www.dlss5.net/${route}`),
     `${route} must be present in the sitemap`,
@@ -368,7 +410,7 @@ assert.match(
 );
 
 const dgxComparison = fs.readFileSync(
-  path.join("app", "ai-pc", "nvidia-rtx-spark-vs-dgx-spark", "page.tsx"),
+  path.join("app", "(en)", "ai-pc", "nvidia-rtx-spark-vs-dgx-spark", "page.tsx"),
   "utf8",
 );
 assert.doesNotMatch(dgxComparison, /fixed configuration/i);

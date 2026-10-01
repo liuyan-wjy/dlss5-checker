@@ -157,7 +157,7 @@ export default function PtDlss5VsDlss45Page() {
 
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4">Tabela completa de gerações DLSS</h2>
-          <ComparisonTable />
+          <ComparisonTable locale="pt" />
           <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
             Use a tabela como visão geral. Para decisão de compra, combine com a página de
             placas compatíveis.

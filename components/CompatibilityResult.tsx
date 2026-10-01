@@ -121,7 +121,7 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
                 <p>
                   For NBA 2K27, update the game and install NVIDIA&apos;s 616.64 WHQL
                   Game Ready Driver or a newer official driver that retains support.
-                  Open Video Settings → DLSS Neural Rendering. These instructions are
+                  Open Features → Video Settings → DLSS Neural Rendering. These instructions are
                   specific to NBA 2K27; an RTX 50 card does not enable DLSS 5 in every game.
                 </p>
                 <Link href="/games/nba-2k27-dlss-5#how-to-enable" className="inline-block text-blue-400 hover:underline">
@@ -166,6 +166,9 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
                 </Link>
               </>
             )}
+            <Link href={gpu.brand === "AMD" ? "/dlss-5-amd" : "/dlss-5-download"} className="inline-flex min-h-11 items-center text-blue-400 hover:underline">
+              {gpu.brand === "AMD" ? "DLSS 5 on AMD: local support and cloud options →" : "Official DLSS 5 downloads and setup requirements →"}
+            </Link>
             <p className="text-muted-foreground">
               This is a compatibility result, not an FPS prediction. Before buying,
               compare tests of your exact GPU, resolution, and game settings.

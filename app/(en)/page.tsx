@@ -115,22 +115,24 @@ export default function Home() {
               <span className="text-muted-foreground">Popular checks:</span>
               <Link
                 href="/dlss-5-supported-cards"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 DLSS 5 supported cards list
               </Link>
               <Link
                 href="/dlss-5-games"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 DLSS 5 games
               </Link>
               <Link
                 href="/dlss-5-evidence-tracker"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 Evidence tracker
               </Link>
+              <Link href="/dlss-5-download" className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400">Download & setup</Link>
+              <Link href="/dlss-5-amd" className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400">DLSS 5 on AMD</Link>
             </div>
           </div>
         </section>

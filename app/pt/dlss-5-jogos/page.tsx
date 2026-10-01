@@ -28,6 +28,12 @@ export const metadata: Metadata = {
   },
 };
 
+const NVIDIA_ANNOUNCEMENT = "https://nvidianews.nvidia.com/news/nvidia-dlss-5-delivers-ai-powered-breakthrough-in-visual-fidelity-for-games";
+const NBA_SUPPORT = "https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5";
+const NBA_DRIVER = "https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/";
+
+const recentlyCheckedGames = ["NBA 2K27", "Starfield", "Resident Evil Requiem", "Assassin's Creed Shadows"];
+
 const announcedGames = [
   "NBA 2K27",
   "AION 2",
@@ -97,7 +103,7 @@ export default function PtDlss5JogosPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Revisado em 5 de setembro de 2026
+            NBA 2K27 e três jogos anunciados revisados em 1 de outubro de 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Jogos com DLSS 5: NBA 2K27 disponível e status por título
@@ -113,21 +119,31 @@ export default function PtDlss5JogosPage() {
           <h2 className="text-2xl font-bold mb-3">Resposta rápida</h2>
           <p className="text-foreground/80 leading-relaxed">
             NBA 2K27 já está disponível com DLSS 5 em placas GeForce RTX 50 desktop e
-            notebook, com driver 616.64 WHQL e opção DLSS Neural Rendering no menu Video
-            Settings. Os outros jogos da lista continuam exigindo prova por patch antes de
+            notebook, com driver 616.64 WHQL e opção DLSS Neural Rendering em Features → Video Settings. Os outros jogos da lista continuam exigindo prova por patch antes de
             serem marcados como disponíveis.
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">Jogos anunciados para DLSS 5</h2>
-          <div className="overflow-x-auto rounded-lg border border-border">
-            <table className="w-full text-sm">
+          <h2 className="text-2xl font-bold mb-4">Jogos com DLSS 5: disponíveis e anunciados</h2>
+          <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+            A plataforma abaixo se refere ao DLSS 5, não a todas as versões do jogo.
+            Starfield, Resident Evil Requiem e Assassin&apos;s Creed Shadows foram
+            rechecados em 1 de outubro: encontramos os anúncios oficiais, mas nenhuma
+            instrução pública de ativação do DLSS 5 nas fontes consultadas. Isso não prova
+            que não exista uma atualização fora dessas fontes. Os demais anúncios mantêm
+            a checagem de 5 de setembro; a data não é uma previsão de lançamento.
+          </p>
+          <p className="mb-2 text-sm text-muted-foreground">Deslize na horizontal para ver plataforma, driver e fontes. No teclado, coloque o foco na tabela e use as setas.</p>
+          <div className="overflow-x-auto rounded-lg border border-border" tabIndex={0} role="region" aria-label="Tabela de jogos DLSS 5, role na horizontal para ver os detalhes">
+            <table className="w-full min-w-[800px] text-sm">
               <thead>
                 <tr className="border-b border-border bg-muted/40">
-                  <th className="px-4 py-3 text-left font-semibold">Jogo</th>
+                  <th scope="col" className="sticky left-0 z-10 bg-background px-4 py-3 text-left font-semibold">Jogo</th>
                   <th className="px-4 py-3 text-left font-semibold">Status atual</th>
-                  <th className="px-4 py-3 text-left font-semibold">O que verificar depois</th>
+                  <th className="px-4 py-3 text-left font-semibold">Plataforma / GPU</th>
+                  <th className="px-4 py-3 text-left font-semibold">Patch / driver</th>
+                  <th className="px-4 py-3 text-left font-semibold">Fonte / verificação</th>
                 </tr>
               </thead>
               <tbody>
@@ -136,16 +152,24 @@ export default function PtDlss5JogosPage() {
                     key={game}
                     className={`border-b border-border/50 ${index % 2 ? "bg-muted/15" : ""}`}
                   >
-                    <td className="px-4 py-3 font-medium">{game}</td>
+                    <td className="sticky left-0 z-10 bg-background px-4 py-3 font-medium">{game}</td>
                     <td className="px-4 py-3">
-                      <span className="rounded-full border border-green-500/30 bg-green-500/10 px-2.5 py-1 text-xs text-green-300">
-                        {game === "NBA 2K27" ? "Disponível em RTX 50" : "Anunciado"}
+                      <span className={`rounded-full border px-2.5 py-1 text-xs ${game === "NBA 2K27" ? "border-green-500/30 bg-green-500/10 text-green-300" : "border-yellow-500/30 bg-yellow-500/10 text-yellow-300"}`}>
+                        {game === "NBA 2K27" ? "Disponível em RTX 50" : recentlyCheckedGames.includes(game) ? "Anunciado; ativação não verificada" : "Anunciado"}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-muted-foreground">
+                      {game === "NBA 2K27" ? "PC local: RTX 50 desktop/notebook. GeForce NOW depende do plano, região e servidor." : "Integração para PC anunciada; requisitos finais de GPU por jogo ainda não verificados."}
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground">
                       {game === "NBA 2K27"
-                        ? "Driver 616.64 WHQL, Video Settings → DLSS Neural Rendering; o F9 alterna Neural Rendering."
-                        : "Patch do jogo, driver, menu gráfico e limite por GPU."}
+                        ? "Driver de lançamento 616.64 WHQL; atualize o jogo pela loja. A 2K não especifica um número obrigatório de build no guia."
+                        : "Patch público com Neural Rendering e driver para este jogo ainda não verificados; anúncio não confirma disponibilidade."}
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground">
+                      <a href={game === "NBA 2K27" ? NBA_SUPPORT : NVIDIA_ANNOUNCEMENT} className="text-blue-400 hover:underline">{game === "NBA 2K27" ? "Guia oficial 2K" : "Anúncio NVIDIA"}</a>
+                      {game === "NBA 2K27" && <> · <a href={NBA_DRIVER} className="text-blue-400 hover:underline">Driver</a></>}
+                      <p className="mt-1"><time dateTime={recentlyCheckedGames.includes(game) ? "2026-10-01" : "2026-09-05"}>{recentlyCheckedGames.includes(game) ? "1 out. 2026" : "5 set. 2026"}</time></p>
                     </td>
                   </tr>
                 ))}
@@ -250,7 +274,7 @@ export default function PtDlss5JogosPage() {
             como comportamento final de cada jogo.
           </p>
         </section>
-        <ArticleTrustBlock locale="pt" reviewedAt="2026-09-05" />
+        <ArticleTrustBlock locale="pt" reviewedAt="2026-10-01" />
       </main>
     </>
   );

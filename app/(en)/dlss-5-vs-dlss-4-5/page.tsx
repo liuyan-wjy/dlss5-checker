@@ -38,11 +38,11 @@ const comparisonRows = [
   {
     angle: "Availability",
     dlss45: "Available now through NVIDIA's current DLSS stack in supported games and app paths.",
-    dlss5: "Available now in NBA 2K27 on GeForce RTX 50 desktop and laptop GPUs; other games still need their own patch proof.",
+    dlss5: "Available now in NBA 2K27 on GeForce RTX 50 desktop and laptop GPUs; other games require their own DLSS 5 update.",
   },
   {
-    angle: "Hardware signal",
-    dlss45: "Its newest frame-generation path is tied to GeForce RTX 50 series GPUs.",
+    angle: "Supported GPUs",
+    dlss45: "Super Resolution works across RTX 20–50; FG needs RTX 40/50, and MFG needs RTX 50.",
     dlss5: "RTX 50 is the confirmed local family today; RTX 40 support is planned later with no public date.",
   },
   {
@@ -51,7 +51,7 @@ const comparisonRows = [
     dlss5: "Potentially richer lighting and material response, if the game integration preserves art direction.",
   },
   {
-    angle: "Proof needed",
+    angle: "What you need",
     dlss45: "A supported game, NVIDIA App or driver path, and visible graphics option.",
     dlss5: "A game patch note, driver note, visible settings, and GPU support details.",
   },
@@ -147,42 +147,35 @@ export default function Dlss5VsDlss45Page() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Updated September 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Updated October 1, 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 vs DLSS 4.5: What Actually Changes?
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            The short answer: DLSS 4.5 is the current performance and image-quality stack.
-            DLSS 5 is the neural rendering layer now live first in NBA 2K27 on RTX 50. Mixing those two together is
-            why so many compatibility answers feel contradictory.
+            DLSS 4.5 improves image reconstruction and frame generation. DLSS 5 adds
+            Neural Rendering for lighting and materials, now available in NBA 2K27 on
+            RTX 50. You can use these features together; they solve different problems.
           </p>
         </header>
 
         <section className="mb-10 rounded-lg border border-blue-500/30 bg-blue-500/5 p-5">
           <h2 className="text-2xl font-bold mb-3">Is DLSS 5 the same as DLSS 4.5?</h2>
           <p className="text-foreground/80 leading-relaxed">
-            No. DLSS 4.5 is the current DLSS feature stack for Super Resolution quality and
-            Dynamic Multi Frame Generation. DLSS 5 is the Neural Rendering layer
-            aimed at visual fidelity, with NBA 2K27 as the first documented local game path.
+            No. They can work together. In NBA 2K27, Neural Rendering is a separate
+            switch from the options for upscaling and frame generation. Turning NR off
+            does not require turning off those performance features.
           </p>
         </section>
 
-        <section className="mb-10 grid gap-4 md:grid-cols-2">
-          <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
-            <h2 className="text-xl font-bold mb-2">DLSS 4.5 today</h2>
-            <p className="text-sm text-foreground/80 leading-relaxed">
-              Think of it as the current DLSS branch for better Super Resolution and
-              Dynamic Multi Frame Generation. It is the practical feature set users can
-              evaluate in supported games now.
-            </p>
-          </div>
-          <div className="rounded-lg border border-blue-500/30 bg-blue-500/5 p-5">
-            <h2 className="text-xl font-bold mb-2">DLSS 5 now</h2>
-            <p className="text-sm text-foreground/80 leading-relaxed">
-              Think of it as a visual-fidelity layer that tries to improve how lighting and
-              materials look. NBA 2K27 has published support; other games need their own proof.
-            </p>
-          </div>
+        <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
+          <h2 className="text-2xl font-bold text-foreground">SR, RR, FG, MFG, and NR: which setting should you use?</h2>
+          <dl className="space-y-4">
+            <div><dt className="font-semibold text-foreground">Super Resolution (SR): render fewer pixels</dt><dd>Reconstructs the output image at your display resolution. Start here when GPU rendering cost is high. Choose the mode by comparing fine detail in motion; see <Link href="/dlss-4-5-supported-cards" className="text-blue-400 hover:underline">DLSS 4.5 presets by GPU generation</Link>.</dd></div>
+            <div><dt className="font-semibold text-foreground">Ray Reconstruction (RR): clean up ray-traced effects</dt><dd>Replaces denoisers for supported ray-traced lighting. It needs the game&apos;s RR integration and relevant ray-tracing settings; an SR toggle alone does not imply RR support.</dd></div>
+            <div><dt className="font-semibold text-foreground">Frame Generation (FG): add a displayed frame</dt><dd>Available on RTX 40 and 50 in compatible games. It can improve visual smoothness, but a higher displayed FPS does not mean the game simulates input at that same rate.</dd></div>
+            <div><dt className="font-semibold text-foreground">Multi Frame Generation (MFG): add multiple displayed frames</dt><dd>RTX 50 adds fixed multipliers and Dynamic MFG. A 6X mode includes one rendered frame and up to five generated frames. Use the <Link href="/dlss-4-5-dynamic-mfg-settings" className="text-blue-400 hover:underline">Dynamic and Fixed settings guide</Link> to match your display.</dd></div>
+            <div><dt className="font-semibold text-foreground">Neural Rendering (NR): change lighting and material detail</dt><dd>DLSS 5 processes a frame&apos;s appearance; it is not the 6X multiplier. Enable it for its visual effect, then compare performance and appearance. Read <Link href="/dlss-5-neural-rendering" className="text-blue-400 hover:underline">how its frame inputs and artist controls work</Link>.</dd></div>
+          </dl>
         </section>
 
         <section className="mb-10">
@@ -234,10 +227,10 @@ export default function Dlss5VsDlss45Page() {
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
           <h2 className="text-2xl font-bold text-foreground">How to decide what matters</h2>
           <p>
-            If you are comparing GPUs today, DLSS 4.5 and current DLSS support matter more
-            because they are the features you can actually use across more games. The newer
-            visual layer matters if you have RTX 50 and a supported title such as NBA 2K27,
-            but it should not be copied to every announced game until launch notes exist.
+            For more responsive gameplay, first find a stable base frame rate with frame
+            generation off. For smoother presentation on a high-refresh display, compare
+            FG or MFG next. For lighting and material changes in NBA 2K27, compare NR
+            separately while keeping resolution, SR mode, and frame generation unchanged.
           </p>
           <p>
             For RTX 4070, RTX 4080, and RTX 4090 owners, the practical answer is not
@@ -291,7 +284,7 @@ export default function Dlss5VsDlss45Page() {
             >
               <div className="font-semibold mb-1">RTX 4070 status</div>
               <p className="text-sm text-muted-foreground">
-                A model-specific answer for one of the most common RTX 40 searches.
+                Current features and the planned DLSS 5 rollout for RTX 4070 owners.
               </p>
             </Link>
           </div>
@@ -337,7 +330,7 @@ export default function Dlss5VsDlss45Page() {
             support.
           </p>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-09-05" />
+        <ArticleTrustBlock reviewedAt="2026-10-01" />
       </main>
     </>
   );

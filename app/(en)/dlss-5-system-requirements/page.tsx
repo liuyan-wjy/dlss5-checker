@@ -85,28 +85,17 @@ export default function Dlss5SystemRequirementsPage() {
           not available yet.
         </p>
 
-        <section className="mb-10 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border p-5">
-            <h2 className="text-xl font-bold mb-2">Start with your GPU, game, and driver</h2>
-            <p className="text-sm text-foreground/80 leading-relaxed">
-              For local play, you need three things at the same time: a GeForce RTX 50
-              desktop or laptop GPU, a game that exposes DLSS 5, and the right NVIDIA
-              driver path for that game. NBA 2K27 is the verified example today.
-            </p>
-          </div>
-          <div className="rounded-lg border border-border p-5">
-            <h2 className="text-xl font-bold mb-2">Best page for card-by-card status</h2>
-            <p className="text-sm text-foreground/80 leading-relaxed mb-3">
-              If your question is about a specific model or generation, use the compatibility
-              list instead of treating this as a full desktop build checklist.
-            </p>
-            <Link
-              href="/dlss-5-supported-cards"
-              className="text-sm font-semibold text-blue-400 hover:underline"
-            >
-              View the DLSS 5 supported cards list
-            </Link>
-          </div>
+        <section className="mb-10 rounded-lg border border-border p-5">
+          <h2 className="text-2xl font-bold mb-4">Check all three before enabling DLSS 5</h2>
+          <ol className="list-decimal pl-5 space-y-4 text-foreground/80 leading-relaxed">
+            <li><strong>GPU:</strong> confirm a GeForce RTX 50 desktop or laptop GPU in the NVIDIA App. On a laptop with integrated graphics, check which GPU the game uses. Compare your model with the <Link href="/dlss-5-supported-cards" className="text-blue-400 hover:underline">supported-card matrix</Link>.</li>
+            <li><strong>Game:</strong> update NBA 2K27 through your game launcher. An announcement alone does not confirm a playable NR setting; check the <Link href="/dlss-5-games" className="text-blue-400 hover:underline">live and upcoming games list</Link>.</li>
+            <li><strong>Driver:</strong> NVIDIA lists 616.64 WHQL for the NBA 2K27 launch. Install a current compatible Game Ready Driver from NVIDIA, then restart if prompted. Use the <Link href="/dlss-5-download" className="text-blue-400 hover:underline">official download and setup guide</Link> for the download routes.</li>
+          </ol>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Also meet the game publisher&apos;s CPU, RAM, storage, and Windows requirements.
+            DLSS 5 eligibility is not a complete PC specification or a guarantee of a target frame rate.
+          </p>
         </section>
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
@@ -115,7 +104,7 @@ export default function Dlss5SystemRequirementsPage() {
             NVIDIA has confirmed <strong>RTX 50 family support</strong> for DLSS 5 Neural
             Rendering in NBA 2K27, including desktop and laptop RTX 50 GPUs. For that game,
             NVIDIA points players to the 616.64 WHQL Game Ready Driver and the in-game{" "}
-            <strong>Video Settings &gt; DLSS Neural Rendering</strong> option.
+            <strong>Features &gt; Video Settings &gt; DLSS Neural Rendering</strong> option.
           </p>
           <p>
             What still varies is game support. NBA 2K27 is verified; other announced games
@@ -159,16 +148,22 @@ export default function Dlss5SystemRequirementsPage() {
         </section>
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
-          <h2 className="text-2xl font-bold text-foreground">How to use this answer</h2>
+          <h2 className="text-2xl font-bold text-foreground">Can I use DLSS 5 without an RTX 50 PC?</h2>
           <p>
-            If you already own RTX 50, check the game and driver next. If you own RTX 40,
-            keep using your current DLSS features and wait for NVIDIA&apos;s RTX 40 rollout
-            details. If you own RTX 20 or RTX 30, treat DLSS 5 as unsupported today.
+            GeForce NOW runs the game on a remote GPU. NVIDIA documents DLSS 5 in NBA 2K27
+            for Ultimate members using RTX 5080-powered rigs in NVIDIA-operated regions.
+            Confirm your region, membership, game availability, and assigned rig before
+            subscribing for this feature. Partner-operated services may have different offerings.
           </p>
           <p>
-            If you are shopping, do not buy from a benchmark chart alone. Check whether the
-            exact game you care about lists DLSS Neural Rendering, then confirm your GPU is
-            in the supported group.
+            Your local AMD GPU, older RTX card, or Mac receives the video stream; it does not
+            gain local Neural Rendering support. See the <Link href="/dlss-5-amd" className="text-blue-400 hover:underline">AMD and cloud compatibility guide</Link> for this distinction.
+          </p>
+          <h2 className="text-2xl font-bold text-foreground">All requirements met, but the option is missing?</h2>
+          <p>
+            Open NBA 2K27&apos;s Main Menu, then Features → Video Settings. Look for
+            <strong> DLSS Neural Rendering</strong>, which is separate from Super Resolution
+            and Frame Generation. The <Link href="/games/nba-2k27-dlss-5" className="text-blue-400 hover:underline">NBA 2K27 settings and troubleshooting guide</Link> covers missing options and the F9 toggle.
           </p>
         </section>
 
@@ -190,7 +185,7 @@ export default function Dlss5SystemRequirementsPage() {
             >
               <div className="font-semibold mb-1">RTX 3070 DLSS 5 support</div>
               <p className="text-sm text-muted-foreground">
-                Useful if you are checking whether RTX 30 can stretch into DLSS 5.
+                Current features and DLSS 5 limits for RTX 30 owners.
               </p>
             </Link>
             <Link
@@ -230,21 +225,12 @@ export default function Dlss5SystemRequirementsPage() {
               </p>
             </Link>
             <Link
-              href="/ai-pc/nvidia-rtx-spark"
-              className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX Spark AI PCs</div>
-              <p className="text-sm text-muted-foreground">
-                Separate DLSS requirements from NVIDIA&apos;s new Windows AI PC platform.
-              </p>
-            </Link>
-            <Link
               href="/dlss-5-vs-dlss-4-5"
               className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
             >
               <div className="font-semibold mb-1">DLSS 5 vs DLSS 4.5</div>
               <p className="text-sm text-muted-foreground">
-                Clarify what belongs to the current DLSS stack versus the announced layer.
+                Compare image reconstruction, frame generation, and Neural Rendering.
               </p>
             </Link>
           </div>
@@ -276,12 +262,12 @@ export default function Dlss5SystemRequirementsPage() {
             </a>
             , and{" "}
             <a
-              href="https://www.reddit.com/r/nvidia/comments/1w4bcvp/nvidia_dlss_5_available_september_3rd_dlss/?sort=new"
+              href="https://www.nvidia.com/en-us/geforce/forums/nvidia-app/129/583738/dlss-5-faq-932026/"
               className="text-blue-400 hover:underline"
             >
               NVIDIA&apos;s RTX 40 support plan update
             </a>
-            . Driver, game, and RTX 40 rollout requirements can still change.
+            ; <a href="https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5" className="text-blue-400 hover:underline">2K&apos;s setup instructions</a>; and <a href="https://blogs.nvidia.com/blog/geforce-now-thursday-september-2026-games-list/" className="text-blue-400 hover:underline">NVIDIA&apos;s GeForce NOW availability notice</a>. Requirements may change with later releases.
           </p>
         </section>
 
@@ -308,7 +294,7 @@ export default function Dlss5SystemRequirementsPage() {
             ← Back to GPU Checker
           </Link>
         </div>
-        <ArticleTrustBlock reviewedAt="2026-09-05" />
+        <ArticleTrustBlock reviewedAt="2026-10-01" />
       </main>
     </>
   );

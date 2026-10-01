@@ -125,6 +125,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  :focus-visible {
+    outline: 2px solid var(--color-blue-400);
+    outline-offset: 3px;
+  }
   html {
     @apply font-sans;
   }

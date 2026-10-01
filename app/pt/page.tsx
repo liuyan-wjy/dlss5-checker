@@ -59,7 +59,7 @@ const ptFaqs = [
   },
   {
     q: "Vale a pena comprar RTX 50 para o DLSS 5?",
-    a: "RTX 50 é o caminho local confirmado para DLSS 5 hoje. Se você joga via GeForce NOW Ultimate, o DLSS 5 roda na infraestrutura RTX 5080 da NVIDIA; isso é diferente de ter suporte no seu PC ou notebook.",
+    a: "RTX 50 é o caminho local confirmado para DLSS 5 hoje. No GeForce NOW, é preciso verificar Ultimate, servidor RTX 5080, jogo compatível e região operada pela NVIDIA. A disponibilidade dos parceiros regionais pode ser diferente; isso não habilita o recurso na sua placa local.",
   },
 ];
 
@@ -86,7 +86,7 @@ export default function PtHome() {
 
       <main>
         {/* ===== HERO SECTION ===== */}
-        <section className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-background via-background to-muted/20 px-4">
+        <section className="py-10 sm:py-16 flex flex-col justify-center bg-gradient-to-b from-background via-background to-muted/20 px-4">
           <div className="max-w-3xl mx-auto w-full text-center">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-6">
@@ -104,55 +104,57 @@ export default function PtHome() {
 
             <p className="text-muted-foreground text-lg sm:text-xl mb-8 max-w-xl mx-auto">
               Verifique se sua placa de vídeo NVIDIA suporta o DLSS 5 Neural Rendering,
-              veja os dados de desempenho do DLSS 4/4.5 e encontre o melhor caminho de upgrade.
+              confira os recursos do DLSS 4/4.5 e saiba o que ativar em cada jogo.
             </p>
 
-            <GPUChecker />
+            <div lang="en"><GPUChecker /></div>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm">
               <span className="text-muted-foreground">Consultas populares:</span>
               <Link
                 href="/pt/dlss-5-quais-placas"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 Quais placas suportam
               </Link>
               <Link
                 href="/pt/dlss-4-5-quais-placas"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 Placas para DLSS 4.5
               </Link>
               <Link
                 href="/pt/dlss-5-requisitos"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 Requisitos
               </Link>
               <Link
                 href="/pt/dlss-5-jogos"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 Jogos
               </Link>
               <Link
                 href="/pt/dlss-5-confirmado"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 Está confirmado?
               </Link>
               <Link
                 href="/pt/ai-pc/nvidia-rtx-spark"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 RTX Spark
               </Link>
               <Link
                 href="/pt/dlss-5-vs-dlss-4-5"
-                className="rounded-full border border-border px-3 py-1 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >
                 DLSS 5 vs 4.5
               </Link>
+              <Link href="/pt/como-ativar-dlss-5" className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400">Como baixar e ativar</Link>
+              <Link href="/pt/dlss-5-amd" className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400">DLSS 5 na AMD</Link>
             </div>
           </div>
         </section>

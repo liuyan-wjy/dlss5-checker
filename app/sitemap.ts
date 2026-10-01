@@ -12,6 +12,10 @@ type SitemapPage = {
 
 const pages: SitemapPage[] = [
   { path: "", changeFrequency: "weekly", priority: 1 },
+  { path: "/dlss-5-download", changeFrequency: "weekly", priority: 0.85 },
+  { path: "/dlss-5-amd", changeFrequency: "weekly", priority: 0.85 },
+  { path: "/pt/como-ativar-dlss-5", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/pt/dlss-5-amd", changeFrequency: "weekly", priority: 0.8 },
   { path: "/pt", changeFrequency: "weekly", priority: 0.9 },
   { path: "/about", changeFrequency: "monthly", priority: 0.6 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.55 },

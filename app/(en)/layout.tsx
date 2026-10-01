@@ -3,5 +3,5 @@ import SiteDocument from "@/components/SiteDocument";
 export { metadata } from "@/components/SiteDocument";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <SiteDocument locale="pt-BR">{children}</SiteDocument>;
+  return <SiteDocument locale="en">{children}</SiteDocument>;
 }

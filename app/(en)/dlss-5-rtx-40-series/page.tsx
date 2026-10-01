@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const rtx40Cards = ALL_GPUS.filter((gpu) => gpu.series === "RTX 40");
 const PAGE_URL = "https://www.dlss5.net/dlss-5-rtx-40-series";
 const NVIDIA_RTX40_PLAN =
-  "https://www.reddit.com/r/nvidia/comments/1w4bcvp/nvidia_dlss_5_available_september_3rd_dlss/?sort=new";
+  "https://www.nvidia.com/en-us/geforce/forums/nvidia-app/129/583738/dlss-5-faq-932026/";
 
 const faqItems = [
   {
@@ -41,6 +41,26 @@ const faqItems = [
     question: "Does RTX 4070 support DLSS 5?",
     answer:
       "RTX 4070 is in the planned RTX 40 bucket, not the currently supported bucket. It currently supports DLSS Frame Generation, Super Resolution, Ray Reconstruction, and DLAA.",
+  },
+  {
+    question: "Does RTX 4060 or RTX 4060 Ti support DLSS 5?",
+    answer:
+      "Neither is in the current official local DLSS 5 support group. The RTX 40 plan has no public release date; an RTX 4060 Ti with more VRAM does not gain DLSS 5 through memory capacity alone. Keep using the supported Super Resolution, Frame Generation, and Ray Reconstruction options in your games.",
+  },
+  {
+    question: "What about RTX 4070 Ti, RTX 4070 SUPER, and RTX 4070 Ti SUPER?",
+    answer:
+      "These are still RTX 40 Series GPUs. Ti and SUPER variants do not change the current planned-but-unavailable status for local DLSS 5. NVIDIA's generation-level plan does not establish a separate rollout date or final per-model requirements for any of them.",
+  },
+  {
+    question: "Will RTX 40 laptops get DLSS 5?",
+    answer:
+      "An RTX 4060, 4070, 4080, or 4090 Laptop GPU is not an RTX 50 Laptop GPU. Current local DLSS 5 support does not include these RTX 40 laptops. The future RTX 40 plan is not a published laptop rollout schedule; wait for explicit mobile GPU and game requirements before expecting support.",
+  },
+  {
+    question: "Can a new driver or GeForce NOW unlock DLSS 5 on my RTX 40?",
+    answer:
+      "A driver alone does not make an unsupported local GPU eligible. A qualifying GeForce NOW session can run the game on supported cloud hardware, but that does not enable local RTX 40 Neural Rendering. Check the cloud service tier, region, and assigned rig separately.",
   },
   {
     question: "Should RTX 40 owners upgrade only for DLSS 5?",
@@ -98,7 +118,7 @@ export default function Dlss5Rtx40SeriesPage() {
     name: "DLSS 5 on RTX 40 Series",
     url: PAGE_URL,
     inLanguage: "en",
-    dateModified: "2026-09-05",
+    dateModified: "2026-10-01",
     isPartOf: {
       "@type": "WebSite",
       name: "DLSS 5 Checker",
@@ -137,7 +157,7 @@ export default function Dlss5Rtx40SeriesPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked September 5, 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked October 1, 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 on RTX 40 Series: Planned, Not Available Yet
           </h1>
@@ -169,6 +189,10 @@ export default function Dlss5Rtx40SeriesPage() {
 
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4">RTX 40 model status</h2>
+          <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+            The table records the generation-level plan, not a confirmed future per-model release.
+            No driver version, date, VRAM threshold, or desktop-versus-laptop rollout is promised by this status.
+          </p>
           <div className="overflow-x-auto rounded-lg border border-border">
             <table className="w-full text-sm">
               <thead>
@@ -344,13 +368,13 @@ export default function Dlss5Rtx40SeriesPage() {
             </a>
             , and{" "}
             <a href={NVIDIA_RTX40_PLAN} className="text-blue-400 hover:underline">
-              NVIDIA&apos;s RTX 40 support plan update
+              NVIDIA&apos;s official DLSS 5 FAQ (September 3 update)
             </a>
             . Treat the RTX 40 answer as provisional until NVIDIA publishes driver,
             setting, and release-date details for RTX 40 DLSS 5 support.
           </p>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-09-05" />
+        <ArticleTrustBlock reviewedAt="2026-10-01" />
       </main>
     </>
   );

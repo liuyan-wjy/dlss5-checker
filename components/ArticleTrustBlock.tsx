@@ -94,7 +94,7 @@ export default function ArticleTrustBlock({ locale = "en", reviewedAt }: Article
               {t.cards}
             </Link>
             <Link href="/editorial-policy" className="block text-blue-400 hover:underline">
-              Editorial Policy
+              {locale === "pt" ? "Política editorial (em inglês)" : "Editorial Policy"}
             </Link>
           </div>
         </div>

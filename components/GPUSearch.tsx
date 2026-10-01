@@ -107,7 +107,7 @@ export default function GPUSearch({ onResult }: GPUSearchProps) {
   return (
     <div className="gpu-search-wrapper relative w-full max-w-xl mx-auto">
       <div className="flex gap-2">
-        <div className="relative flex-1">
+        <div className="relative min-w-0 flex-1">
           <label htmlFor="gpu-search" className="sr-only">
             GPU model
           </label>
@@ -131,7 +131,7 @@ export default function GPUSearch({ onResult }: GPUSearchProps) {
         <button
           type="button"
           onClick={handleSearch}
-          className="px-6 h-12 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md transition-colors"
+          className="shrink-0 px-4 sm:px-6 h-12 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md transition-colors"
         >
           Check
         </button>
@@ -148,13 +148,13 @@ export default function GPUSearch({ onResult }: GPUSearchProps) {
               key={gpu.id}
               role="option"
               aria-selected={i === activeIndex}
-              className={`flex items-center justify-between px-4 py-2.5 cursor-pointer text-sm hover:bg-accent ${
+              className={`flex min-h-11 items-center justify-between gap-3 px-4 py-2.5 cursor-pointer text-sm hover:bg-accent ${
                 i === activeIndex ? "bg-accent" : ""
               }`}
               onMouseDown={() => selectGPU(gpu)}
             >
               <span className="font-medium">{gpu.name}</span>
-              <span className={`text-xs font-semibold ${supportBadgeColor[gpu.dlss5_support]}`}>
+              <span className={`shrink-0 text-xs font-semibold ${supportBadgeColor[gpu.dlss5_support]}`}>
                 {supportLabel[gpu.dlss5_support]}
               </span>
             </li>

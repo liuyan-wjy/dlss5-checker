@@ -2,30 +2,39 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Guides: NBA 2K27, Games, Compatibility, Ray Reconstruction",
+  title: "DLSS 5 Guides: Setup, Games & GPU Compatibility",
   description:
-    "Browse DLSS 5 and DLSS 4.5 guides for NBA 2K27, game support, GPUs, release status, Ray Reconstruction, Dynamic MFG, RTX Spark, and evidence tracking.",
+    "Set up DLSS 5, check your GPU and find supported games. Get NBA 2K27 troubleshooting, AMD options, and clear guides to DLSS 4.5 features.",
   alternates: { canonical: "/guides" },
   openGraph: {
-    title: "DLSS 5 Guides: NBA 2K27, Games, Compatibility, Ray Reconstruction",
+    title: "DLSS 5 Guides: Setup, Games & GPU Compatibility",
     description:
-      "Browse DLSS 5 and DLSS 4.5 guides for NBA 2K27, game support, GPUs, release status, Ray Reconstruction, Dynamic MFG, RTX Spark, and evidence tracking.",
+      "Set up DLSS 5, check your GPU and find supported games. Get NBA 2K27 troubleshooting, AMD options, and clear guides to DLSS 4.5 features.",
     url: "https://www.dlss5.net/guides",
     type: "article",
   },
   twitter: {
     card: "summary",
-    title: "DLSS 5 Guides: NBA 2K27, Games, Compatibility, Ray Reconstruction",
+    title: "DLSS 5 Guides: Setup, Games & GPU Compatibility",
     description:
-      "Browse DLSS 5 and DLSS 4.5 guides for NBA 2K27, game support, GPUs, release status, Ray Reconstruction, Dynamic MFG, RTX Spark, and evidence tracking.",
+      "Set up DLSS 5, check your GPU and find supported games. Get NBA 2K27 troubleshooting, AMD options, and clear guides to DLSS 4.5 features.",
   },
 };
 
 const guideGroups = [
   {
+    title: "Set up DLSS 5",
+    description: "Find the official downloads, check your hardware, and fix a missing game setting.",
+    links: [
+      { href: "/dlss-5-download", title: "DLSS 5 download and setup", description: "Official driver and game updates, requirements, and what to check when the option is missing." },
+      { href: "/dlss-5-amd", title: "DLSS 5 on AMD", description: "Local support, GeForce NOW requirements, and the limits of community mods." },
+      { href: "/dlss-4-5-dynamic-mfg-settings", title: "DLSS 4.5 Dynamic MFG settings", description: "NVIDIA App settings for RTX 50, frame-rate targets, and when to use 2X instead." },
+    ],
+  },
+  {
     title: "Compatibility and requirements",
     description:
-      "Use these pages when the main question is whether a GPU is a safe DLSS 5 choice, what can be used today, and which claims still need final NVIDIA launch documentation.",
+      "Check which features your GPU can run and what each game requires.",
     links: [
       {
         href: "/dlss-supported-cards",
@@ -45,12 +54,12 @@ const guideGroups = [
       {
         href: "/dlss-5-system-requirements",
         title: "DLSS 5 system requirements",
-        description: "What NVIDIA has confirmed and what still needs launch documentation.",
+        description: "Check your GPU, driver and game before enabling Neural Rendering.",
       },
       {
         href: "/dlss-5-rtx-40-series",
         title: "Will DLSS 5 be on RTX 40?",
-        description: "RTX 4090, 4080, 4070, and 4060 status without overclaiming support.",
+        description: "RTX 4060, 4070, Ti, Super and laptop support: planned, with no release date.",
       },
     ],
   },
@@ -62,7 +71,7 @@ const guideGroups = [
       {
         href: "/dlss-5-release-date",
         title: "DLSS 5 release date",
-        description: "Launch status, rollout dates, availability caveats, and proof needed.",
+        description: "NBA 2K27 launch date and the status of later hardware and game rollouts.",
       },
       {
         href: "/dlss-5-evidence-tracker",
@@ -72,14 +81,14 @@ const guideGroups = [
       {
         href: "/dlss-5-games",
         title: "DLSS 5 games",
-        description: "Announced titles, verification checklist, and per-game caveats.",
+        description: "Play NBA 2K27 now, or check which other titles have only been announced.",
       },
     ],
   },
   {
     title: "Feature explainers",
     description:
-      "These guides separate current DLSS 4.5 features from the DLSS 5 neural rendering layer, so users do not mix frame generation with visual rendering claims.",
+      "Understand what each graphics setting changes before choosing a quality or performance mode.",
     links: [
       {
         href: "/dlss-5-neural-rendering",
@@ -89,7 +98,7 @@ const guideGroups = [
       {
         href: "/dlss-4-5-ray-reconstruction",
         title: "DLSS 4.5 Ray Reconstruction",
-        description: "August release, all-RTX support, 27 announced games, and setup.",
+        description: "All-RTX support, setup, and 30 NVIDIA App profiles for Ray Reconstruction overrides.",
       },
       {
         href: "/dlss-4-5-dynamic-mfg-6x",
@@ -194,16 +203,14 @@ export default function GuidesPage() {
           DLSS 5 Guides
         </h1>
         <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
-          Start here when you need a structured path through DLSS 5 compatibility, release
-          timing, current DLSS 4.5 features, and the evidence behind each claim.
+          Find supported games, install the right driver, and choose the DLSS settings
+          available on your GPU.
         </p>
         <p className="leading-relaxed text-foreground/80">
-          This guide index is organized for real decisions rather than keyword browsing.
-          DLSS 5 has launched first in NBA 2K27, while many announced games still need
-          their own patch evidence and generation-by-generation feature limits. Use the cards
-          below to check the most relevant source first: hardware support if you are
-          considering an upgrade, release and evidence pages if you are verifying a claim,
-          or feature explainers if you are trying to understand what is available now.
+          DLSS 5 is available in NBA 2K27 on RTX 50 desktop and laptop GPUs.
+          Start with the setup guide if you want to turn it on, or check the hardware
+          and games lists before upgrading. Announced games are listed separately
+          from games you can play with Neural Rendering today.
         </p>
       </header>
 
@@ -242,9 +249,6 @@ export default function GuidesPage() {
                   <div className="mb-2 font-semibold">{link.title}</div>
                   <p className="text-sm leading-relaxed text-muted-foreground">
                     {link.description}
-                  </p>
-                  <p className="mt-3 text-xs text-muted-foreground/80">
-                    Last checked September 5, 2026
                   </p>
                 </Link>
               ))}

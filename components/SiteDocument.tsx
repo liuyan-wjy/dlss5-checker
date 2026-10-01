@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SiteFooter, SiteHeader } from "@/components/SiteNavigation";
-import "./globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Supported Cards & GPU Compatibility Checker",
@@ -27,17 +27,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function SiteDocument({
   children,
+  locale = "en",
 }: Readonly<{
   children: React.ReactNode;
+  locale?: "en" | "pt-BR" | "de";
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang={locale} className="dark">
       <body className="antialiased bg-background text-foreground">
-        <SiteHeader />
+        <SiteHeader locale={locale === "pt-BR" ? "pt" : "en"} />
         {children}
-        <SiteFooter />
+        <SiteFooter locale={locale === "pt-BR" ? "pt" : "en"} />
         <script
           src="https://plausible-ly-005.pages.dev/js/pa-VclqONE0bFW-1okXx2CnS.js"
           async

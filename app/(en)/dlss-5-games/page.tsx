@@ -28,106 +28,96 @@ export const metadata: Metadata = {
   },
 };
 
+const NVIDIA_ANNOUNCEMENT = "https://nvidianews.nvidia.com/news/nvidia-dlss-5-delivers-ai-powered-breakthrough-in-visual-fidelity-for-games";
+const NBA_SUPPORT = "https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5";
+const NBA_DRIVER = "https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/";
+
+const recentlyCheckedGames = ["NBA 2K27", "Starfield", "Resident Evil Requiem", "Assassin's Creed Shadows"];
+
 const announcedGames = [
   {
     title: "NBA 2K27",
     href: "/games/nba-2k27-dlss-5",
     publisherSignal: "2K / Visual Concepts",
     status: "Live on RTX 50",
-    note: "NVIDIA documents driver 616.64 WHQL and Video Settings → DLSS Neural Rendering; its launch article says F9 toggles Neural Rendering.",
   },
   {
     title: "AION 2",
     publisherSignal: "NCSOFT",
     status: "Announced by NVIDIA",
-    note: "Watch for launch notes that explain which visual features ship first.",
   },
   {
     title: "Assassin's Creed Shadows",
     href: "/games/assassins-creed-shadows-dlss-5",
     publisherSignal: "Ubisoft / Vantage Studios",
-    status: "Announced by NVIDIA",
-    note: "A useful title to track because NVIDIA highlighted world lighting and materials.",
+    status: "Announced; live patch not verified",
   },
   {
     title: "Black State",
     publisherSignal: "Developer support announced",
     status: "Announced by NVIDIA",
-    note: "Final per-game settings and GPU behavior are still launch details.",
   },
   {
     title: "CINDER CITY",
     publisherSignal: "NCSOFT",
     status: "Announced by NVIDIA",
-    note: "Expected to be part of the first wave NVIDIA named.",
   },
   {
     title: "Delta Force",
     publisherSignal: "Tencent ecosystem",
     status: "Announced by NVIDIA",
-    note: "Competitive shooters will need careful latency and clarity validation.",
   },
   {
     title: "Hogwarts Legacy",
     publisherSignal: "Warner Bros. Games",
     status: "Announced by NVIDIA",
-    note: "Also appears in NVIDIA's early visual examples.",
   },
   {
     title: "Justice",
     publisherSignal: "NetEase",
     status: "Announced by NVIDIA",
-    note: "A likely showcase for dense environments and character materials.",
   },
   {
     title: "NARAKA: BLADEPOINT",
     publisherSignal: "NetEase",
     status: "Announced by NVIDIA",
-    note: "Worth watching for motion stability in fast melee combat.",
   },
   {
     title: "NTE: Neverness to Everness",
     publisherSignal: "Hotta Studio",
     status: "Announced by NVIDIA",
-    note: "Open-world scenes may make lighting changes easier to compare.",
   },
   {
     title: "Phantom Blade Zero",
     publisherSignal: "S-GAME",
     status: "Announced by NVIDIA",
-    note: "A high-interest title for checking character rendering and art direction.",
   },
   {
     title: "Resident Evil Requiem",
     href: "/games/resident-evil-requiem-dlss-5",
     publisherSignal: "CAPCOM",
-    status: "Announced by NVIDIA",
-    note: "Likely to draw close scrutiny because horror games depend heavily on intentional lighting.",
+    status: "Announced; live patch not verified",
   },
   {
     title: "Sea of Remnants",
     publisherSignal: "Developer support announced",
     status: "Announced by NVIDIA",
-    note: "Track whether support lands at launch or in a later patch.",
   },
   {
     title: "Starfield",
     href: "/games/starfield-dlss-5",
     publisherSignal: "Bethesda Game Studios",
-    status: "Announced by NVIDIA",
-    note: "Bethesda specifically discussed bringing the technology to Starfield and future titles.",
+    status: "Announced; live patch not verified",
   },
   {
     title: "The Elder Scrolls IV: Oblivion Remastered",
     publisherSignal: "Bethesda ecosystem",
     status: "Announced by NVIDIA",
-    note: "A remaster is a useful case for comparing original art direction against enhancement.",
   },
   {
     title: "Where Winds Meet",
     publisherSignal: "Developer support announced",
     status: "Announced by NVIDIA",
-    note: "Also relevant because current DLSS 4.5 support is already being discussed separately.",
   },
 ];
 
@@ -141,6 +131,11 @@ const previewExamples = [
 ];
 
 const relatedLinks = [
+  {
+    href: "/dlss-5-download",
+    title: "DLSS 5 download and setup",
+    description: "Find the official driver and game-update paths before checking the in-game setting.",
+  },
   {
     href: "/dlss-4-5-games",
     title: "Current DLSS 4.5 games",
@@ -251,7 +246,7 @@ export default function Dlss5GamesPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Tracker reviewed September 5, 2026
+            NBA 2K27 and three announced games checked October 1, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Games Tracker
@@ -294,17 +289,24 @@ export default function Dlss5GamesPage() {
             The table below uses NVIDIA&apos;s announcement as the source of truth. The
             important distinction is evidence level: announced support is useful, but
             verified support requires public game notes or a graphics menu that players can
-            actually inspect.
+            actually inspect. We rechecked Starfield, Resident Evil Requiem, and
+            Assassin&apos;s Creed Shadows on October 1: their announcements are confirmed,
+            but we did not find public DLSS 5 activation instructions in the official sources
+            searched. That is not proof that no update exists elsewhere. Other announced
+            entries retain their September 5 check. Platform means the DLSS 5 path, not
+            every platform on which the base game is sold.
           </p>
 
-          <div className="overflow-x-auto rounded-lg border border-border">
-            <table className="w-full text-sm">
+          <p className="mb-2 text-sm text-muted-foreground">Swipe horizontally to see platform, driver, and source details. Keyboard users can focus the table and use the arrow keys.</p>
+          <div className="overflow-x-auto rounded-lg border border-border" tabIndex={0} role="region" aria-label="DLSS 5 games table, scroll horizontally for details">
+            <table className="w-full min-w-[850px] text-sm">
               <thead>
                 <tr className="border-b border-border bg-muted/40">
-                  <th className="px-4 py-3 text-left font-semibold">Game</th>
-                  <th className="px-4 py-3 text-left font-semibold">Publisher / studio signal</th>
+                  <th scope="col" className="sticky left-0 z-10 bg-background px-4 py-3 text-left font-semibold">Game / publisher</th>
                   <th className="px-4 py-3 text-left font-semibold">Evidence level</th>
-                  <th className="px-4 py-3 text-left font-semibold">Next verification step</th>
+                  <th className="px-4 py-3 text-left font-semibold">Platform / GPU</th>
+                  <th className="px-4 py-3 text-left font-semibold">Patch / driver</th>
+                  <th className="px-4 py-3 text-left font-semibold">Official evidence / checked</th>
                 </tr>
               </thead>
               <tbody>
@@ -313,7 +315,7 @@ export default function Dlss5GamesPage() {
                     key={game.title}
                     className={`border-b border-border/50 ${index % 2 ? "bg-muted/15" : ""}`}
                   >
-                    <td className="px-4 py-3 font-medium">
+                    <td className="sticky left-0 z-10 bg-background px-4 py-3 font-medium">
                       {game.href ? (
                         <Link href={game.href} className="text-blue-400 hover:underline">
                           {game.title}
@@ -321,20 +323,30 @@ export default function Dlss5GamesPage() {
                       ) : (
                         game.title
                       )}
+                      <p className="mt-1 text-xs font-normal text-muted-foreground">{game.publisherSignal}</p>
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground">{game.publisherSignal}</td>
                     <td className="px-4 py-3">
                       <span
                         className={`rounded-full border px-2.5 py-1 text-xs ${
                           game.status === "Live on RTX 50"
-                            ? "border-blue-500/30 bg-blue-500/10 text-blue-300"
-                            : "border-green-500/30 bg-green-500/10 text-green-300"
+                            ? "border-green-500/30 bg-green-500/10 text-green-300"
+                            : "border-yellow-500/30 bg-yellow-500/10 text-yellow-300"
                         }`}
                       >
                         {game.status}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground">{game.note}</td>
+                    <td className="px-4 py-3 text-muted-foreground">
+                      {game.title === "NBA 2K27" ? "Local PC: RTX 50 desktop/laptop. GeForce NOW has separate tier, region, and rig requirements." : "PC integration announced; final per-game GPU requirements not verified."}
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground">
+                      {game.title === "NBA 2K27" ? "Launch driver: 616.64 WHQL. Update through your game store; 2K's setup guide does not specify a required numbered build." : "A public Neural Rendering patch and game-specific driver path have not been verified here."}
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground">
+                      <a href={game.title === "NBA 2K27" ? NBA_SUPPORT : NVIDIA_ANNOUNCEMENT} className="text-blue-400 hover:underline">{game.title === "NBA 2K27" ? "2K setup guide" : "NVIDIA announcement"}</a>
+                      {game.title === "NBA 2K27" && <> · <a href={NBA_DRIVER} className="text-blue-400 hover:underline">Driver note</a></>}
+                      <p className="mt-1"><time dateTime={recentlyCheckedGames.includes(game.title) ? "2026-10-01" : "2026-09-05"}>{recentlyCheckedGames.includes(game.title) ? "October 1, 2026" : "September 5, 2026"}</time></p>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -519,7 +531,7 @@ export default function Dlss5GamesPage() {
             Back to GPU Checker
           </Link>
         </div>
-        <ArticleTrustBlock reviewedAt="2026-09-05" />
+        <ArticleTrustBlock reviewedAt="2026-10-01" />
       </main>
     </>
   );

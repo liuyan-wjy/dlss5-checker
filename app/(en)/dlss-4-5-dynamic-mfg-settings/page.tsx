@@ -64,18 +64,18 @@ const settingRows = [
 
 const setupSteps = [
   "Update the NVIDIA App and install a current Game Ready Driver. For Dynamic MFG with V-Sync or frame limiters, use 616.64 WHQL or later.",
-  "Open the Graphics tab and choose the game or global profile you want to test.",
+  "Open Graphics, select your game, then scroll to Driver Settings. Start with a per-game profile so the change only affects that title.",
   "Find DLSS Override - Frame Generation Mode.",
   "Choose Dynamic for automatic shifting or Fixed for a selected multiplier.",
   "If Dynamic is selected, choose Max refresh rate or type a Custom target.",
   "Launch the game and confirm Frame Generation is enabled in the game menu when required.",
-  "If the app tooltip still warns that Dynamic is not compatible with V-Sync or frame limiters, reboot and confirm the game has received the Streamline 2.14+ path.",
+  "If the Dynamic tooltip still warns about V-Sync or frame limiters, reboot and check the downloaded Streamline version using the instructions below.",
 ];
 
 const troubleRows = [
   {
     symptom: "No Dynamic option",
-    likelyCause: "The GPU, driver, app version, or selected game does not expose that path.",
+    likelyCause: "Confirm RTX 50 first. RTX 40 supports standard FG, but not Dynamic MFG. On RTX 50, check the current app, driver, and supported game profile.",
   },
   {
     symptom: "6X is missing",
@@ -191,23 +191,23 @@ export default function Dlss45DynamicMfgSettingsPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            NVIDIA App guide updated September 2026
+            NVIDIA App guide updated October 1, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 4.5 Dynamic MFG Settings: NVIDIA App Guide
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            This DLSS 4.5 Dynamic MFG settings guide starts with the NVIDIA App because the
-            feature is not controlled only through an in-game menu. It explains the current
-            options and the limitations that matter when you test a title.
+            On RTX 50, open NVIDIA App → Graphics → your game → Driver Settings →
+            DLSS Override - Frame Generation Mode. Choose Dynamic to follow a frame-rate
+            target or Fixed to keep one multiplier. The game must support the selected mode.
           </p>
         </header>
 
         <section className="mb-10 rounded-lg border border-green-500/30 bg-green-500/5 p-5">
           <h2 className="text-2xl font-bold mb-3">Quick answer</h2>
           <p className="text-foreground/80 leading-relaxed">
-            For DLSS 4.5 Dynamic MFG settings, open the NVIDIA App Graphics tab, choose a
-            game or global profile, then use{" "}
+            Open the NVIDIA App Graphics tab, choose your
+            game, then use{" "}
             <strong>DLSS Override - Frame Generation Mode</strong>. Dynamic mode can target
             Max refresh rate or a Custom number. Fixed mode uses the selected multiplier.
             Dynamic MFG with V-Sync or frame rate limiters requires the newer NVIDIA App
@@ -253,10 +253,9 @@ export default function Dlss45DynamicMfgSettingsPage() {
           <div className="rounded-lg border border-border p-5">
             <h2 className="text-2xl font-bold mb-4">Setup checklist</h2>
             <p className="mb-4 text-sm text-foreground/80 leading-relaxed">
-              Use this DLSS 4.5 Dynamic MFG settings sequence before comparing screenshots
-              or frame pacing.
+              Confirm an RTX 50 GPU and a compatible game before changing the profile.
             </p>
-            <ol className="space-y-3 text-sm text-foreground/80">
+            <ol className="list-decimal pl-5 space-y-3 text-sm text-foreground/80">
               {setupSteps.map((step) => (
                 <li key={step} className="rounded-md bg-muted/30 p-3">
                   {step}
@@ -278,7 +277,27 @@ export default function Dlss45DynamicMfgSettingsPage() {
         </section>
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
-          <h2 className="text-2xl font-bold text-foreground">How to test without fooling yourself</h2>
+          <h2 className="text-2xl font-bold text-foreground">V-Sync warning still showing? Check Streamline</h2>
+          <p>
+            NVIDIA&apos;s September 3 update requires the updated NVIDIA App, driver 616.64
+            WHQL or newer, and Streamline 2.14 or newer for Dynamic MFG with V-Sync or
+            frame limiters. NVIDIA says the Streamline component downloads automatically
+            after a system reboot.
+          </p>
+          <ol className="list-decimal pl-5 space-y-3">
+            <li>Restart after updating the app and driver, then reopen your game&apos;s Dynamic setting.</li>
+            <li>If the incompatibility tooltip remains, open <code className="break-all">C:\ProgramData\NVIDIA\NGX\models\nvngx_config.txt</code> in a text editor.</li>
+            <li>Find <code>sl_dlss_g_0</code> and check for version <code>2.14.0</code> or later. Read the value; do not edit it to force compatibility.</li>
+          </ol>
+          <p>
+            To use ordinary 2X Frame Generation instead, select <strong>Use 3D app setting</strong>
+            in the override and enable FG in the game. To undo an override, restore that
+            game profile&apos;s previous setting and restart the game.
+          </p>
+        </section>
+
+        <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
+          <h2 className="text-2xl font-bold text-foreground">How to compare frame rate and responsiveness</h2>
           <p>
             Compare one variable at a time. If you are testing Dynamic mode, do not also
             change resolution, ray tracing, Reflex, V-Sync, frame limits, and game quality presets during
@@ -288,19 +307,17 @@ export default function Dlss45DynamicMfgSettingsPage() {
             For high-refresh monitors, Max refresh rate is the natural first test. For a
             more controlled benchmark, Custom can be easier because you decide the target
             before launching the game. Fixed mode is useful when you want a repeatable
-            multiplier for screenshots or side-by-side capture. In other words, DLSS 4.5
-            Dynamic MFG settings should be logged with the same care as resolution or ray
-            tracing settings.
+            multiplier for side-by-side capture. Record the selected mode and target alongside
+            resolution and ray-tracing settings.
           </p>
         </section>
 
         <section className="mb-10 rounded-lg border border-border p-5">
           <h2 className="text-2xl font-bold mb-4">Recommended test matrix</h2>
           <p className="mb-5 text-foreground/80 leading-relaxed">
-            Use this DLSS 4.5 Dynamic MFG settings matrix when you want a cleaner answer
-            than a single FPS screenshot. The goal is to separate app behavior, game menu
-            behavior, and monitor behavior before judging whether Dynamic or Fixed is better
-            for one title.
+            Choose a starting point for your display or test. Record the base rendered
+            frame rate separately from the FPS shown with generated frames; they measure
+            different things.
           </p>
           <div className="grid gap-3 md:grid-cols-2">
             {testMatrixRows.map((row) => (
@@ -316,9 +333,8 @@ export default function Dlss45DynamicMfgSettingsPage() {
             ))}
           </div>
           <p className="mt-5 text-sm text-foreground/80 leading-relaxed">
-            Repeat each DLSS 4.5 Dynamic MFG settings run after a driver update or game
-            patch. Profiles can change, and a title that exposes Dynamic mode today may
-            alter its recommended defaults later.
+            Repeat the comparison if a driver update or game patch changes the behavior.
+            Profiles can change their available modes or recommended defaults.
           </p>
         </section>
 
@@ -327,9 +343,8 @@ export default function Dlss45DynamicMfgSettingsPage() {
             When Fixed can be the better answer
           </h2>
           <p>
-            DLSS 4.5 Dynamic MFG settings are useful when the display target is the main
-            goal, but Dynamic is not automatically the best choice for every game. If the
-            base frame rate is unstable, a mode that constantly changes multipliers can make
+            Dynamic aims for a display target, but it is not automatically the best choice
+            for every game. If the base frame rate is unstable, a mode that constantly changes multipliers can make
             the result harder to read. In that case, Fixed mode is often the cleaner first
             test because the multiplier stays known.
           </p>
@@ -337,16 +352,8 @@ export default function Dlss45DynamicMfgSettingsPage() {
             Start with Dynamic when you are tuning for a high-refresh panel and the game
             already feels responsive. Start with Fixed when you are comparing visual
             artifacts, measuring latency, capturing video, or checking whether a specific
-            title exposes 4X or 6X correctly. DLSS 4.5 Dynamic MFG settings should be judged
-            by frame pacing, HUD stability, and input feel, not only by the highest number
-            in an overlay.
-          </p>
-          <p>
-            The practical rule is simple: keep one profile for comfort and one profile for
-            evidence. A comfort profile can prioritize Max refresh rate or a Custom target.
-            An evidence profile should freeze resolution, graphics settings, Reflex,
-            V-Sync, frame limiters, and the selected multiplier. That makes DLSS 4.5 Dynamic
-            MFG settings easier to compare after later driver or game updates.
+            title exposes 4X or 6X correctly. Judge the result by frame pacing, HUD stability,
+            and input feel, not only by the highest number in an overlay.
           </p>
         </section>
 
@@ -379,12 +386,12 @@ export default function Dlss45DynamicMfgSettingsPage() {
             </p>
           </Link>
           <Link
-            href="/dlss-5-system-requirements"
+            href="/dlss-4-5-supported-cards"
             className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
           >
             <div className="font-semibold mb-1">Hardware requirements</div>
             <p className="text-sm text-muted-foreground">
-              Confirm whether your GPU tier can expose the feature path.
+              Compare SR, RR, FG, and MFG eligibility across RTX generations.
             </p>
           </Link>
         </section>
@@ -409,8 +416,6 @@ export default function Dlss45DynamicMfgSettingsPage() {
             </a>
             . App wording, supported games, and driver requirements can change with later
             releases.
-            This DLSS 4.5 Dynamic MFG settings page should be read as a current guide, not
-            a permanent driver contract.
           </p>
         </section>
 
@@ -425,7 +430,7 @@ export default function Dlss45DynamicMfgSettingsPage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-09-05" />
+        <ArticleTrustBlock reviewedAt="2026-10-01" />
       </main>
     </>
   );

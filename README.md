@@ -16,7 +16,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/(en)/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
@@ -58,3 +58,8 @@ HTTP 200 responses.
 `vercel.json` disables automatic Vercel Git deployments. Retain the old deployment
 and record the old DNS targets until the Cloudflare cutover has been verified;
 the old Vercel project is not deleted by this configuration.
+
+English pages live in `app/(en)/`; Portuguese and German pages use their own root
+layouts so the exported HTML has the correct language. Route groups do not change
+public URLs. Shared metadata, analytics and the document shell are in
+`components/SiteDocument.tsx`.
