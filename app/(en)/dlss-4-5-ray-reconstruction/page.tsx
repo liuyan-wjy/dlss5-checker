@@ -429,15 +429,6 @@ export default function Dlss45RayReconstructionPage() {
               Compare Ray Reconstruction with the DLSS 5 Neural Rendering release.
             </p>
           </Link>
-          <Link
-            href="/games/resident-evil-requiem-dlss-5"
-            className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400"
-          >
-            <div className="mb-1 font-semibold">Resident Evil Requiem guide</div>
-            <p className="text-sm text-muted-foreground">
-              See how path tracing, Ray Reconstruction, and future DLSS 5 support differ.
-            </p>
-          </Link>
         </section>
 
         <section className="mb-10 text-sm leading-relaxed text-muted-foreground">

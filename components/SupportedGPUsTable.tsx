@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { ALL_GPUS, type DlssSupport } from "@/lib/gpu-search";
-import { getGpuPageHref, isEnabledGpuSlug, type SupportedLocale } from "@/lib/gpu-page-config";
 
 const SERIES_OPTIONS = [
   "All",
@@ -16,6 +14,8 @@ const SERIES_OPTIONS = [
   "AMD RX 7000",
   "Intel Arc Battlemage",
 ];
+
+type SupportedLocale = "en" | "pt";
 
 const supportConfig: Record<DlssSupport, { label: Record<SupportedLocale, string>; className: string }> = {
   confirmed: {
@@ -175,14 +175,7 @@ export default function SupportedGPUsTable({
                   className={`border-b border-border/50 ${i % 2 === 0 ? "" : "bg-muted/20"} hover:bg-muted/40 transition-colors`}
                 >
                   <td className="px-4 py-3 font-medium">
-                    {isEnabledGpuSlug(locale, gpu.id) ? (
-                      <Link
-                        href={getGpuPageHref(locale, gpu.id)}
-                        className="hover:text-blue-400 hover:underline transition-colors"
-                      >
-                        {gpu.name}
-                      </Link>
-                    ) : gpu.name}
+                    {gpu.name}
                   </td>
                   <td className="px-4 py-3 text-muted-foreground">{gpu.series}</td>
                   <td className="px-4 py-3 text-muted-foreground">{gpu.vram}</td>

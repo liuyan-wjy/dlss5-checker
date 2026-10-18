@@ -1,0 +1,15 @@
+# Thin or duplicate pages consolidated into the main guides (Cloudflare Pages).
+/gpu/rtx-4070 /dlss-5-rtx-40-series 301
+/gpu/rtx-4080 /dlss-5-rtx-40-series 301
+/gpu/rtx-5090 /dlss-5-supported-cards 301
+/gpu/rtx-3070 /dlss-supported-cards 301
+/gpu/rtx-3060 /dlss-supported-cards 301
+/pt/gpu/rtx-4070 /pt/dlss-5-quais-placas 301
+/pt/gpu/rtx-4080 /pt/dlss-5-quais-placas 301
+/pt/gpu/rtx-4090 /pt/dlss-5-quais-placas 301
+/pt/gpu/rtx-3060 /pt/dlss-5-quais-placas 301
+/pt/gpu/gtx-1060 /pt/dlss-5-quais-placas 301
+/de/dlss-5-grafikkarten /dlss-5-supported-cards 301
+/games/resident-evil-requiem-dlss-5 /dlss-5-games 301
+/games/starfield-dlss-5 /dlss-5-games 301
+/games/assassins-creed-shadows-dlss-5 /dlss-5-games 301

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type DlssSupport, type GPU } from "@/lib/gpu-search";
-import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 
 const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-quais-placas";
 
@@ -115,14 +114,6 @@ function featureText(gpu: GPU): string {
 }
 
 function GpuName({ gpu }: { gpu: GPU }) {
-  if (isEnabledGpuSlug("pt", gpu.id)) {
-    return (
-      <Link href={getGpuPageHref("pt", gpu.id)} className="hover:text-blue-400 hover:underline">
-        {gpu.name}
-      </Link>
-    );
-  }
-
   return <span>{gpu.name}</span>;
 }
 
@@ -322,57 +313,12 @@ export default function PtDlss5QuaisPlacasPage() {
           <h2 className="text-2xl font-bold mb-4">Consultas relacionadas</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
-              href="/pt/gpu/rtx-4090"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 4090 e DLSS 5</div>
-              <p className="text-sm text-muted-foreground">
-                Página específica para a placa mais procurada da série RTX 40.
-              </p>
-            </Link>
-            <Link
-              href="/pt/gpu/gtx-1060"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">GTX 1060 e DLSS</div>
-              <p className="text-sm text-muted-foreground">
-                Resposta direta para quem usa uma placa GTX antiga.
-              </p>
-            </Link>
-            <Link
-              href="/pt/gpu/rtx-4070"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 4070 e DLSS 5</div>
-              <p className="text-sm text-muted-foreground">
-                Status específico para uma das placas RTX 40 mais pesquisadas.
-              </p>
-            </Link>
-            <Link
-              href="/pt/gpu/rtx-4080"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 4080 e DLSS 5</div>
-              <p className="text-sm text-muted-foreground">
-                Entenda por que a RTX 4080 está planejada para depois, mas ainda sem DLSS 5 ativo.
-              </p>
-            </Link>
-            <Link
-              href="/pt/gpu/rtx-3060"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 3060 e DLSS 5</div>
-              <p className="text-sm text-muted-foreground">
-                Resposta direta para RTX 30, DLSS atual e upgrade.
-              </p>
-            </Link>
-            <Link
               href="/dlss-5-supported-cards"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
             >
               <div className="font-semibold mb-1">Lista em inglês</div>
               <p className="text-sm text-muted-foreground">
-                Veja a versão principal com links para modelos RTX 4070 e RTX 3070.
+                Versão principal da lista de placas, em inglês.
               </p>
             </Link>
             <Link

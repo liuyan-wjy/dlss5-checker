@@ -142,12 +142,6 @@ export default function PtHome() {
                 Está confirmado?
               </Link>
               <Link
-                href="/pt/ai-pc/nvidia-rtx-spark"
-                className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
-              >
-                RTX Spark
-              </Link>
-              <Link
                 href="/pt/dlss-5-vs-dlss-4-5"
                 className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400 transition-colors"
               >

@@ -111,11 +111,6 @@ const relatedPages = [
     title: "System requirements",
     copy: "Separate release timing from GPU and driver requirements.",
   },
-  {
-    href: "/ai-pc/nvidia-rtx-spark-release-date",
-    title: "RTX Spark release date",
-    copy: "Track NVIDIA's fall 2026 Windows AI PC availability window.",
-  },
 ];
 
 const faqItems = [

@@ -279,12 +279,12 @@ export default function Dlss5VsDlss45Page() {
               </p>
             </Link>
             <Link
-              href="/gpu/rtx-4070"
+              href="/dlss-5-rtx-40-series"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
             >
-              <div className="font-semibold mb-1">RTX 4070 status</div>
+              <div className="font-semibold mb-1">RTX 40 series status</div>
               <p className="text-sm text-muted-foreground">
-                Current features and the planned DLSS 5 rollout for RTX 4070 owners.
+                Current features and the planned DLSS 5 rollout for RTX 40 owners.
               </p>
             </Link>
           </div>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type GPU } from "@/lib/gpu-search";
-import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 
 export const metadata: Metadata = {
   title: "DLSS 5 on RTX 40 Series: Planned, Not Available Yet",
@@ -70,14 +69,6 @@ const faqItems = [
 ];
 
 function CardName({ gpu }: { gpu: GPU }) {
-  if (isEnabledGpuSlug("en", gpu.id)) {
-    return (
-      <Link href={getGpuPageHref("en", gpu.id)} className="hover:text-blue-400 hover:underline">
-        {gpu.name}
-      </Link>
-    );
-  }
-
   return <span>{gpu.name}</span>;
 }
 
@@ -271,24 +262,6 @@ export default function Dlss5Rtx40SeriesPage() {
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4">Related checks</h2>
           <div className="grid gap-3 sm:grid-cols-2">
-            <Link
-              href="/gpu/rtx-4070"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 4070 status</div>
-              <p className="text-sm text-muted-foreground">
-                Model-specific answer for the most common RTX 40 query.
-              </p>
-            </Link>
-            <Link
-              href="/gpu/rtx-4080"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 4080 status</div>
-              <p className="text-sm text-muted-foreground">
-                Higher-end RTX 40 card, same confirmation question.
-              </p>
-            </Link>
             <Link
               href="/dlss-5-supported-cards"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"

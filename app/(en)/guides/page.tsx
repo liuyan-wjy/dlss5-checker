@@ -115,34 +115,19 @@ const guideGroups = [
   {
     title: "Game-specific DLSS 5 guides",
     description:
-      "Use these pages for one game's confirmed announcement, current rendering features, visual test areas, update evidence, and player-focused settings advice.",
+      "Setup and troubleshooting for games where DLSS 5 is live. Announced titles stay on the games tracker until a patch ships and the setting can be verified.",
     links: [
-      {
-        href: "/games/resident-evil-requiem-dlss-5",
-        title: "Resident Evil Requiem DLSS 5",
-        description: "Path tracing, Ray Reconstruction, Neural Rendering, and player checks.",
-      },
       {
         href: "/games/nba-2k27-dlss-5",
         title: "NBA 2K27 DLSS 5",
         description: "Driver 616.64, DLSS Neural Rendering, F9, RTX 50 support, and RTX 40 status.",
-      },
-      {
-        href: "/games/starfield-dlss-5",
-        title: "Starfield DLSS 5",
-        description: "Update status, feature differences, safe downloads, and test scenes.",
-      },
-      {
-        href: "/games/assassins-creed-shadows-dlss-5",
-        title: "Assassin's Creed Shadows DLSS 5",
-        description: "Support status, foliage and weather tests, and settings guidance.",
       },
     ],
   },
   {
     title: "Developer and platform notes",
     description:
-      "These pages are for readers comparing engines, AI PC hardware, and platform-level support rather than checking one GPU model.",
+      "These pages are for readers comparing engine integration and DLSS generations rather than checking one GPU model.",
     links: [
       {
         href: "/dlss-5-unreal-engine",
@@ -153,16 +138,6 @@ const guideGroups = [
         href: "/dlss-5-vs-dlss-4-5",
         title: "DLSS 5 vs DLSS 4.5",
         description: "Neural Rendering versus the current Super Resolution and MFG stack.",
-      },
-      {
-        href: "/ai-pc/nvidia-rtx-spark",
-        title: "NVIDIA RTX Spark hub",
-        description: "Separate Windows AI PC hardware tracking from DLSS game features.",
-      },
-      {
-        href: "/ai-pc/nvidia-rtx-spark-vs-dgx-spark",
-        title: "RTX Spark vs DGX Spark",
-        description: "Windows AI PC versus a dedicated desktop AI development system.",
       },
     ],
   },

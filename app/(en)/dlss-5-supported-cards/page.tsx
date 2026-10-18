@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type DlssSupport, type GPU } from "@/lib/gpu-search";
-import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 
 const PAGE_URL = "https://www.dlss5.net/dlss-5-supported-cards";
 
@@ -96,14 +95,6 @@ function getFeatureSummary(gpu: GPU): string {
 }
 
 function CardLink({ gpu }: { gpu: GPU }) {
-  if (isEnabledGpuSlug("en", gpu.id)) {
-    return (
-      <Link href={getGpuPageHref("en", gpu.id)} className="hover:text-blue-400 hover:underline">
-        {gpu.name}
-      </Link>
-    );
-  }
-
   return <span>{gpu.name}</span>;
 }
 
@@ -417,15 +408,6 @@ export default function Dlss5SupportedCardsPage() {
               <div className="font-semibold mb-1">DLSS 5 vs DLSS 4.5</div>
               <p className="text-sm text-muted-foreground">
                 Separate Neural Rendering from current DLSS features.
-              </p>
-            </Link>
-            <Link
-              href="/gpu/rtx-4070"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 4070 support status</div>
-              <p className="text-sm text-muted-foreground">
-                Current DLSS features and what remains unconfirmed.
               </p>
             </Link>
             <Link

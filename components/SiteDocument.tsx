@@ -32,7 +32,7 @@ export default function SiteDocument({
   locale = "en",
 }: Readonly<{
   children: React.ReactNode;
-  locale?: "en" | "pt-BR" | "de";
+  locale?: "en" | "pt-BR";
 }>) {
   return (
     <html lang={locale} className="dark">

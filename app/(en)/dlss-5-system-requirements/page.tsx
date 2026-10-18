@@ -171,24 +171,6 @@ export default function Dlss5SystemRequirementsPage() {
           <h2 className="text-2xl font-bold mb-4">Recommended next checks</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
-              href="/gpu/rtx-5090"
-              className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 5090 DLSS 5 support</div>
-              <p className="text-sm text-muted-foreground">
-                Confirmed path for DLSS 5 Neural Rendering.
-              </p>
-            </Link>
-            <Link
-              href="/gpu/rtx-3070"
-              className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 3070 DLSS 5 support</div>
-              <p className="text-sm text-muted-foreground">
-                Current features and DLSS 5 limits for RTX 30 owners.
-              </p>
-            </Link>
-            <Link
               href="/dlss-5-rtx-40-series"
               className="rounded-lg border border-border p-4 hover:border-blue-400 transition-colors"
             >

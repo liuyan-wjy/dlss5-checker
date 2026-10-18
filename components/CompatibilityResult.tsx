@@ -3,7 +3,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { type GPU, getFeatureLabel } from "@/lib/gpu-search";
-import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 import { CheckCircle2, XCircle, AlertCircle, Clock } from "lucide-react";
 import Link from "next/link";
 
@@ -187,11 +186,6 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
                 limit and cooling design. A desktop card with the same model number is
                 not an equivalent performance result.
               </p>
-            )}
-            {isEnabledGpuSlug("en", gpu.id) && (
-              <Link href={getGpuPageHref("en", gpu.id)} className="inline-block text-blue-400 hover:underline">
-                Read the {gpu.name} model-specific breakdown →
-              </Link>
             )}
             <p className="text-xs text-muted-foreground">
               Support evidence reviewed September 5, 2026: {" "}

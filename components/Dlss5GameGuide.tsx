@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export type Dlss5GameGuideKey =
-  | "nba-2k27"
-  | "resident-evil-requiem"
-  | "starfield"
-  | "assassins-creed-shadows";
+export type Dlss5GameGuideKey = "nba-2k27";
 
 type GameGuide = {
   name: string;
@@ -59,11 +55,6 @@ const NVIDIA_RTX40_UPDATE =
   "https://www.nvidia.com/en-us/geforce/forums/nvidia-app/129/583738/dlss-5-faq-932026/";
 const NBA_2K_SUPPORT =
   "https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5";
-const NVIDIA_RTX_GAMES =
-  "https://www.nvidia.com/en-us/geforce/news/nvidia-rtx-games-engines-apps/";
-const NVIDIA_RAY_RECONSTRUCTION =
-  "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-ray-reconstruction-1000-rtx-games-apps-out-now/";
-const NVIDIA_CAPCOM_PATH_TRACING = "https://developer.nvidia.com/blog/?p=119888";
 
 const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
   "nba-2k27": {
@@ -249,263 +240,6 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       },
     ],
   },
-  "resident-evil-requiem": {
-    name: "Resident Evil Requiem",
-    canonical: "/games/resident-evil-requiem-dlss-5",
-    metaTitle: "Resident Evil Requiem DLSS 5: Support and Settings",
-    metaDescription:
-      "Check Resident Evil Requiem DLSS 5 support, current path tracing and Ray Reconstruction evidence, expected settings, GPU caveats, and what to verify.",
-    eyebrow: "Game support guide · Availability sources checked October 1, 2026",
-    title: "Resident Evil Requiem DLSS 5: Support, Path Tracing, and Settings",
-    description:
-      "Resident Evil Requiem is an officially announced DLSS 5 title, but our October 1 check did not find a public DLSS 5 activation guide or patch announcement in the official sources searched. This guide separates the confirmed announcement from current path-tracing technology and shows players exactly what to check when the update arrives.",
-    fastAnswer:
-      "NVIDIA has announced DLSS 5 for Resident Evil Requiem. Our October 1 check found the announcement, but not official public activation instructions. We label it announced with live support unverified; this is not a claim that every possible patch source has been checked.",
-    availability:
-      "Current Capcom and NVIDIA material documents path tracing, DLSS Ray Reconstruction, and Multi Frame Generation in the RE ENGINE pipeline. Those are not interchangeable with the future DLSS 5 Neural Rendering option.",
-    nextProof:
-      "A Capcom patch note, compatible NVIDIA driver note for this game, and a visible in-game DLSS 5 or Neural Rendering control are still needed before players should treat support as live.",
-    confirmed: [
-      "NVIDIA includes Resident Evil Requiem in the first announced group of DLSS 5 games.",
-      "DLSS 5 is now public first through NBA 2K27, but that launch does not prove Resident Evil Requiem has shipped its own patch.",
-      "Capcom built a game-oriented RE ENGINE path tracer for Resident Evil Requiem and PRAGMATA.",
-      "The documented rendering pipeline uses DLSS Ray Reconstruction as a denoising foundation.",
-    ],
-    context: [
-      "Resident Evil Requiem is a useful test case because its horror presentation depends on controlled darkness, indirect illumination, reflections, skin, hair, and small light sources. A graphics feature can technically increase detail while still hurting the intended mood, so the important question is not simply whether a toggle exists. Players need to know whether the implementation preserves shadow detail, avoids unstable highlights, and keeps faces and hair consistent during movement.",
-      "Capcom told NVIDIA that its newer path tracer handles both direct and indirect lighting. The studio also described a smaller gap between gameplay and cutscenes, more dimensional character shadows, and real-time light transmission through strand hair. Those are current, concrete rendering details. DLSS 5 is a separate announced visual layer that NVIDIA says will use the game frame and motion data to enhance lighting and materials while remaining anchored to the source scene.",
-      "That distinction matters when choosing settings. Ray Reconstruction replaces multiple hand-tuned denoisers in a ray-traced or path-traced pipeline. DLSS Super Resolution reconstructs resolution. Frame Generation improves displayed smoothness. DLSS 5 Neural Rendering is aimed at the appearance of lighting and materials. A future Resident Evil Requiem menu may expose several of these controls, and turning on one will not necessarily turn on all the others.",
-    ],
-    visualAreas: [
-      {
-        title: "Dark-room lighting",
-        detail:
-          "Check whether indirect light reveals believable room shape without lifting black levels or flattening the horror atmosphere.",
-      },
-      {
-        title: "Faces and strand hair",
-        detail:
-          "Capcom specifically discussed character grounding and light transmission through hair, making close-ups a strong stability test.",
-      },
-      {
-        title: "Reflections and fine geometry",
-        detail:
-          "Mirrors, wet surfaces, damaged materials, lampshades, and thin geometry can expose denoising errors or delayed temporal detail.",
-      },
-    ],
-    playerAdvice: [
-      "If you already own the game, wait for Capcom's actual patch notes before changing drivers or settings solely for DLSS 5. An NVIDIA announcement confirms integration intent, but it does not establish the public build number, exact menu label, or supported GPU tiers.",
-      "When the update arrives, compare the same checkpoint rather than relying on a fast-moving trailer. Use a dark interior with a face, moving hair, reflective material, and one strong light source. Keep resolution, ray-tracing level, frame-generation mode, and camera position consistent so the Neural Rendering comparison is meaningful.",
-      "For lower-end RTX hardware, prioritize a stable base frame rate before enabling Frame Generation. Ray Reconstruction and DLSS 5 may improve image quality, but they do not remove the CPU and GPU cost of the underlying path-traced scene. The best-looking preset is not automatically the best way to play.",
-      "If you see a normal DLSS or Ray Reconstruction setting before Capcom names DLSS 5, read that label literally. It is useful, but it is not proof that this specific DLSS 5 path is live.",
-    ],
-    faq: [
-      {
-        question: "Does Resident Evil Requiem support DLSS 5 now?",
-        answer:
-          "NVIDIA has announced Resident Evil Requiem as a DLSS 5 title. Treat support as announced, not verified live, until Capcom publishes a patch and the option appears in a public game build.",
-      },
-      {
-        question: "Is Ray Reconstruction the same as DLSS 5 in Resident Evil Requiem?",
-        answer:
-          "No. Ray Reconstruction is the neural denoising and reconstruction path used with ray tracing or path tracing. DLSS 5 Neural Rendering is a separate announced layer focused on lighting and material appearance.",
-      },
-      {
-        question: "Will every RTX card get the same Resident Evil Requiem options?",
-        answer:
-          "That is not confirmed. DLSS 4.5 Ray Reconstruction is announced for all GeForce RTX GPUs, but Frame Generation, Multi Frame Generation, and future DLSS 5 features can have different hardware requirements.",
-      },
-      {
-        question: "What should I test after the DLSS 5 update?",
-        answer:
-          "Check motion stability, hair, faces, dark-room lighting, reflections, base frame rate, latency, and whether the result still matches the game's intended atmosphere.",
-      },
-    ],
-    sources: [
-      { label: "CAPCOM Resident Evil news portal (availability check, October 1)", href: "https://game.capcom.com/residentevil/uk/" },
-      {
-        label: "NVIDIA DLSS 5 announcement",
-        href: "https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/",
-      },
-      {
-        label: "NVIDIA and Capcom RE ENGINE path-tracing Q&A",
-        href: NVIDIA_CAPCOM_PATH_TRACING,
-      },
-      {
-        label: "NVIDIA DLSS 4.5 Ray Reconstruction announcement",
-        href: NVIDIA_RAY_RECONSTRUCTION,
-      },
-    ],
-  },
-  starfield: {
-    name: "Starfield",
-    canonical: "/games/starfield-dlss-5",
-    metaTitle: "Starfield DLSS 5: Support Status and Update Guide",
-    metaDescription:
-      "Check Starfield DLSS 5 support, expected update timing, current DLSS feature differences, GPU caveats, and what players should verify after the patch.",
-    eyebrow: "Game support guide · Availability sources checked October 1, 2026",
-    title: "Starfield DLSS 5: Support Status, Update Timing, and Player Checklist",
-    description:
-      "Starfield is on NVIDIA's announced DLSS 5 list. This page explains what that announcement confirms, what Bethesda still needs to document, and how to evaluate the feature without confusing Neural Rendering with the DLSS options already available in the game.",
-    fastAnswer:
-      "Starfield is officially announced for DLSS 5. Our October 1 search of Bethesda and NVIDIA sources did not find public DLSS 5 activation instructions or a confirmed live patch. Official availability remains unverified here; existing DLSS features and community mods do not establish it.",
-    availability:
-      "Starfield already has a history of DLSS updates, but an existing Super Resolution or Frame Generation option is not evidence that DLSS 5 Neural Rendering has shipped.",
-    nextProof:
-      "The decisive evidence will be Bethesda patch notes naming DLSS 5, a driver or NVIDIA App path, and repeatable settings in the current public build.",
-    confirmed: [
-      "NVIDIA includes Starfield in its announced DLSS 5 game lineup.",
-      "NVIDIA describes DLSS 5 as a lighting and material feature that first launched publicly in NBA 2K27.",
-      "Game support and GPU support are separate; a listed title does not guarantee identical features on every RTX generation.",
-      "The exact Starfield patch date, final controls, performance cost, and supported cards remain unconfirmed.",
-    ],
-    context: [
-      "Starfield moves rapidly between dark interiors, brightly lit settlements, reflective spacecraft, volumetric effects, spacesuits, faces, and large exterior scenes. That variety makes it a strong visual test, but it also makes one screenshot a weak verdict. A useful evaluation has to cover several locations and both camera motion and static detail.",
-      "NVIDIA's description of DLSS 5 emphasizes photoreal lighting and material behavior rather than another frame-rate multiplier. In Starfield, that could matter for metal, glass, cloth, skin, helmet visors, indirect interior light, and the transition between extreme lighting conditions. Those are evaluation targets, not promises about the final implementation.",
-      "Players should also separate the feature from current DLSS controls. Super Resolution changes how a higher-resolution frame is reconstructed from a lower rendering resolution. Frame Generation inserts generated frames to improve smoothness. Ray Reconstruction improves denoising in supported ray-traced pipelines. DLSS 5 Neural Rendering is a different layer, and Bethesda may choose its own labels or presets when integration becomes public.",
-    ],
-    visualAreas: [
-      {
-        title: "Interior and exterior transitions",
-        detail:
-          "Move between a dim ship, a lit settlement, and an outdoor scene to check exposure, temporal stability, and indirect lighting.",
-      },
-      {
-        title: "Spacesuits and hard surfaces",
-        detail:
-          "Metal panels, glass, fabric, helmet visors, and small emissive controls can reveal whether material detail stays coherent in motion.",
-      },
-      {
-        title: "Faces and camera movement",
-        detail:
-          "Conversation close-ups and third-person movement are good places to look for unstable skin detail, hair, ghosting, or over-sharpening.",
-      },
-    ],
-    playerAdvice: [
-      "Do not download a third-party file advertised as a DLSS 5 mod or DLL simply because Starfield is on the official list. The verified release path should come from Bethesda, NVIDIA, the game's normal update channel, or an official NVIDIA App feature.",
-      "After the patch, note the game version and driver version before comparing screenshots. Test one controlled scene with Frame Generation off first; that makes it easier to judge the visual layer without generated-frame motion changing the comparison.",
-      "If you are deciding whether to buy a GPU for Starfield, wait for the final support matrix and independent tests. An announced game partnership does not yet answer whether an RTX 40-series or older card receives the same DLSS 5 path as an RTX 50-series card.",
-      "For troubleshooting, avoid changing mods, render scale, frame generation, and upscaling quality all at once. Starfield players often run custom INI files or visual mods, so a clean comparison should start from the current public build, official updates, and one repeatable location. If DLSS 5 later appears in the menu, capture the driver version and game version before judging quality or reporting a bug. Also check one vanilla save before blaming the feature, because a visual mod can change lighting, material response, sharpening, exposure, color grading, texture detail, or camera filters in ways that look like a DLSS issue.",
-    ],
-    faq: [
-      {
-        question: "Is DLSS 5 available in Starfield?",
-        answer:
-          "Not yet based on the public evidence tracked here. NVIDIA has announced Starfield support, but Bethesda still needs to ship and document the game update.",
-      },
-      {
-        question: "Will Starfield DLSS 5 be a free update?",
-        answer:
-          "No official source cited here has confirmed pricing or packaging. DLSS integrations are commonly delivered through game updates, but that pattern is not a substitute for a Bethesda announcement.",
-      },
-      {
-        question: "Is Starfield's current DLSS setting already DLSS 5?",
-        answer:
-          "No. Current DLSS Super Resolution or Frame Generation labels should be read as their named features. They should not be relabeled as DLSS 5 without a specific game update.",
-      },
-      {
-        question: "What is the best Starfield DLSS 5 setting?",
-        answer:
-          "There is no verified best setting before the patch and independent testing. Start with a stable native base frame rate, then compare image quality and latency at the same location.",
-      },
-    ],
-    sources: [
-      { label: "Bethesda DLSS support article (existing DLSS features)", href: "https://help.bethesda.net/app/answers/detail/a_id/63791/~/does-starfield-support-nvidia-dlss%3F" },
-      {
-        label: "NVIDIA DLSS 5 announcement",
-        href: "https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/",
-      },
-      {
-        label: "NVIDIA RTX games and applications list",
-        href: NVIDIA_RTX_GAMES,
-      },
-    ],
-  },
-  "assassins-creed-shadows": {
-    name: "Assassin's Creed Shadows",
-    canonical: "/games/assassins-creed-shadows-dlss-5",
-    metaTitle: "Assassin's Creed Shadows DLSS 5: Support Guide",
-    metaDescription:
-      "Check Assassin's Creed Shadows DLSS 5 support, release status, likely visual test areas, current DLSS feature differences, and player setup advice.",
-    eyebrow: "Game support guide · Availability sources checked October 1, 2026",
-    title: "Assassin's Creed Shadows DLSS 5: Support Status and Settings Guide",
-    description:
-      "Assassin's Creed Shadows is officially named for DLSS 5, but the practical player questions are still open: when the update lands, which GPUs qualify, what the control is called, and whether the visual result remains stable through changing weather, foliage, and fast traversal.",
-    fastAnswer:
-      "NVIDIA has announced Assassin's Creed Shadows for DLSS 5. Our October 1 search of Ubisoft and NVIDIA sources did not find a public DLSS 5 activation guide or launch patch. Live official support remains unverified here; the announcement alone does not confirm an available setting.",
-    availability:
-      "Existing DLSS or ray-tracing settings are current technologies. They do not silently become DLSS 5 just because the game appears in a future-support announcement.",
-    nextProof:
-      "Ubisoft patch notes, a supported driver path, an in-game Neural Rendering control, and generation-specific GPU guidance are still required.",
-    confirmed: [
-      "NVIDIA names Assassin's Creed Shadows as an announced DLSS 5 title.",
-      "The feature is described as improving lighting and material fidelity with developer controls.",
-      "The DLSS 5 launch in NBA 2K27 is not a confirmed Assassin's Creed Shadows patch date.",
-      "The official sources checked do not establish a live DLSS 5 GPU matrix for this game.",
-    ],
-    context: [
-      "Assassin's Creed Shadows combines dense vegetation, weather, day-and-night changes, skin, fabric, armor, reflective wet surfaces, and quick camera movement. Those are difficult conditions for any temporal reconstruction system. A strong implementation should improve local lighting and material response without causing foliage shimmer, texture boiling, ghost trails, or a look that conflicts with the game's art direction.",
-      "NVIDIA says developers can control DLSS 5 intensity, color grading, and masking. That matters here because the same visual treatment may not suit a sunlit landscape, a dark interior, rain, snow, and a close-up cinematic. Ubisoft's final tuning will be more important than the existence of the model alone.",
-      "The game may ultimately expose DLSS 5 beside Super Resolution, Frame Generation, ray tracing, and other quality settings. These controls answer different problems. Players should change one feature at a time, record the base frame rate, and avoid judging the visual layer only while Multi Frame Generation is changing perceived smoothness.",
-    ],
-    visualAreas: [
-      {
-        title: "Foliage and traversal",
-        detail:
-          "Trees, grass, particles, and thin geometry during fast movement are the clearest places to check shimmer and temporal breakup.",
-      },
-      {
-        title: "Weather and time of day",
-        detail:
-          "Rain, snow, wet surfaces, dawn, and night scenes can show whether lighting improvements remain consistent across conditions.",
-      },
-      {
-        title: "Skin, cloth, and armor",
-        detail:
-          "Character close-ups help reveal whether fine materials gain depth without becoming waxy, over-sharpened, or unstable.",
-      },
-    ],
-    playerAdvice: [
-      "Keep the game and NVIDIA driver current through their official update channels, but do not install an unofficial 'DLSS 5 download.' Planned support does not require a mystery executable or replacement file from an unknown site.",
-      "When the option becomes available, begin with a repeatable save location. Compare a foliage-heavy exterior, a dark interior, wet material, and one character close-up. Leave camera position and quality settings unchanged between captures.",
-      "Competitive-looking frame-rate numbers can hide latency and artifact tradeoffs. First establish a comfortable base frame rate, then test Frame Generation separately from DLSS 5 Neural Rendering. That gives a more useful answer than switching every RTX option on at once.",
-      "If a future patch exposes several DLSS choices, start with the official preset you already trust and then enable Neural Rendering alone. Assassin's Creed Shadows has dense foliage, weather, and traversal, so stacking every RTX option at once can make it hard to tell whether a problem comes from the new visual layer, frame generation, ray tracing, or the base game settings.",
-      "For laptops, also confirm that Windows and the vendor control panel are using the discrete NVIDIA GPU. As a general system check, review hybrid graphics and power profiles because they can change which adapter the game sees. Treat that as normal PC troubleshooting, not as a game-specific NVIDIA DLSS 5 rule. If a menu option appears only after changing adapters, record that configuration before comparing image quality, latency, reflections, foliage stability, and traversal smoothness in a repeatable scene with the same weather and camera route. That makes later comparisons easier to trust and repeat.",
-    ],
-    faq: [
-      {
-        question: "Does Assassin's Creed Shadows support DLSS 5?",
-        answer:
-          "NVIDIA has announced the game for DLSS 5. Public availability still needs a Ubisoft patch and visible game setting.",
-      },
-      {
-        question: "Can I enable DLSS 5 in Assassin's Creed Shadows now?",
-        answer:
-          "Do not assume so from an existing DLSS label. Wait for official patch notes and a specific DLSS 5 or Neural Rendering option in the current game build.",
-      },
-      {
-        question: "Will DLSS 5 improve frame rate in Assassin's Creed Shadows?",
-        answer:
-          "DLSS 5 is presented primarily as a lighting and material fidelity feature. Super Resolution and Frame Generation remain the clearer performance-focused tools. Final performance still needs testing.",
-      },
-      {
-        question: "What should I compare after the update?",
-        answer:
-          "Test foliage in motion, weather transitions, wet materials, character skin and cloth, base frame rate, latency, and visual consistency between bright and dark scenes.",
-      },
-    ],
-    sources: [
-      { label: "Ubisoft Title Update 1.1.11 notes (no DLSS 5 activation instructions)", href: "https://www.ubisoft.com/en-au/game/assassins-creed/news/rQWdji9OHYDuvINeT3Bkb/ac-shadows-title-update-1111-release-notes" },
-      {
-        label: "NVIDIA DLSS 5 announcement",
-        href: "https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/",
-      },
-      {
-        label: "NVIDIA RTX games and applications list",
-        href: NVIDIA_RTX_GAMES,
-      },
-    ],
-  },
 };
 
 export function createDlss5GameMetadata(key: Dlss5GameGuideKey): Metadata {
@@ -643,9 +377,7 @@ export default function Dlss5GameGuide({ gameKey }: { gameKey: Dlss5GameGuideKey
 
         <section className="mb-10 space-y-4 text-foreground/80">
           <h2 className="text-2xl font-bold text-foreground">
-            {gameKey === "nba-2k27"
-              ? `What DLSS 5 changes in ${guide.name}`
-              : `What DLSS 5 could change in ${guide.name}`}
+            What DLSS 5 changes in {guide.name}
           </h2>
           {guide.context.map((paragraph) => (
             <p key={paragraph} className="leading-relaxed">
@@ -766,24 +498,10 @@ export default function Dlss5GameGuide({ gameKey }: { gameKey: Dlss5GameGuideKey
               Check the full list and the evidence level for each title.
             </p>
           </Link>
-          {gameKey === "nba-2k27" && (
-            <Link href="/dlss-5-download" className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400">
-              <div className="mb-1 font-semibold">Official DLSS 5 download and setup paths</div>
-              <p className="text-sm text-muted-foreground">Check the driver, game update, and GPU together before looking for a missing setting.</p>
-            </Link>
-          )}
-          {gameKey !== "nba-2k27" ? (
-            <Link
-              href="/games/nba-2k27-dlss-5"
-              className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400"
-            >
-              <div className="mb-1 font-semibold">NBA 2K27 DLSS 5 setup</div>
-              <p className="text-sm text-muted-foreground">
-                See the first live DLSS 5 game, driver requirement, setting path, and RTX
-                40 status.
-              </p>
-            </Link>
-          ) : null}
+                      <Link href="/dlss-5-download" className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400">
+            <div className="mb-1 font-semibold">Official DLSS 5 download and setup paths</div>
+            <p className="text-sm text-muted-foreground">Check the driver, game update, and GPU together before looking for a missing setting.</p>
+          </Link>
           <Link
             href="/dlss-5-supported-cards"
             className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400"

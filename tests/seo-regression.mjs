@@ -18,10 +18,6 @@ const newRoutes = [
   "pt/dlss-5-amd",
   "dlss-4-5-ray-reconstruction",
   "games/nba-2k27-dlss-5",
-  "games/resident-evil-requiem-dlss-5",
-  "games/starfield-dlss-5",
-  "games/assassins-creed-shadows-dlss-5",
-  "ai-pc/nvidia-rtx-spark-vs-dgx-spark",
 ];
 
 const compatibilityRoutes = [
@@ -35,31 +31,28 @@ const refreshedRoutes = [
   "dlss-5-supported-cards", "dlss-5-rtx-40-series", "dlss-5-system-requirements",
   "dlss-5-games", "dlss-5-neural-rendering", "dlss-5-unreal-engine", "dlss-5-vs-dlss-4-5",
   "pt/dlss-5-confirmado", "pt/dlss-5-quais-placas", "pt/dlss-5-requisitos",
-  "pt/dlss-5-jogos", "pt/dlss-5-vs-dlss-4-5", "de/dlss-5-grafikkarten",
+  "pt/dlss-5-jogos", "pt/dlss-5-vs-dlss-4-5",
   "dlss-4-5-games", "dlss-4-5-dynamic-mfg-6x", "dlss-4-5-dynamic-mfg-settings",
   "dlss-frame-generation-vs-multi-frame-generation", "guides",
-  "gpu/rtx-4070", "gpu/rtx-4080", "gpu/rtx-5090", "gpu/rtx-3070", "gpu/rtx-3060",
-  "pt/gpu/rtx-4070", "pt/gpu/rtx-4080", "pt/gpu/rtx-3060", "pt/gpu/rtx-4090", "pt/gpu/gtx-1060",
 ];
 
-const noindexRtxSparkRoutes = [
-  "ai-pc/nvidia-rtx-spark",
-  "ai-pc/nvidia-rtx-spark-specs",
-  "ai-pc/nvidia-rtx-spark-laptops",
-  "ai-pc/nvidia-rtx-spark-vs-apple-m5",
-  "ai-pc/nvidia-rtx-spark-vs-snapdragon-x",
-  "ai-pc/nvidia-rtx-spark-for-local-ai",
-  "ai-pc/nvidia-rtx-spark-gaming-performance",
-  "ai-pc/nvidia-rtx-spark-release-date",
-  "pt/ai-pc/nvidia-rtx-spark",
-  "pt/ai-pc/nvidia-rtx-spark-especificacoes",
-  "pt/ai-pc/nvidia-rtx-spark-notebooks",
-  "pt/ai-pc/nvidia-rtx-spark-vs-apple-m5",
-  "pt/ai-pc/nvidia-rtx-spark-vs-snapdragon-x",
-  "pt/ai-pc/nvidia-rtx-spark-ia-local",
-  "pt/ai-pc/nvidia-rtx-spark-desempenho-jogos",
-  "pt/ai-pc/nvidia-rtx-spark-data-lancamento",
-];
+// Thin, templated, or off-topic pages removed to improve site-level content quality.
+const removedRoutes = {
+  "gpu/rtx-4070": "/dlss-5-rtx-40-series",
+  "gpu/rtx-4080": "/dlss-5-rtx-40-series",
+  "gpu/rtx-5090": "/dlss-5-supported-cards",
+  "gpu/rtx-3070": "/dlss-supported-cards",
+  "gpu/rtx-3060": "/dlss-supported-cards",
+  "pt/gpu/rtx-4070": "/pt/dlss-5-quais-placas",
+  "pt/gpu/rtx-4080": "/pt/dlss-5-quais-placas",
+  "pt/gpu/rtx-4090": "/pt/dlss-5-quais-placas",
+  "pt/gpu/rtx-3060": "/pt/dlss-5-quais-placas",
+  "pt/gpu/gtx-1060": "/pt/dlss-5-quais-placas",
+  "de/dlss-5-grafikkarten": "/dlss-5-supported-cards",
+  "games/resident-evil-requiem-dlss-5": "/dlss-5-games",
+  "games/starfield-dlss-5": "/dlss-5-games",
+  "games/assassins-creed-shadows-dlss-5": "/dlss-5-games",
+};
 
 function routePath(route) {
   return route === "index"
@@ -234,7 +227,7 @@ for (const route of ["about", "contact"]) {
 
 for (const route of [...new Set([...newRoutes, ...refreshedRoutes, ...compatibilityRoutes])]) {
   const html = readRoute(route);
-  const language = route.startsWith("pt") ? "pt-BR" : route.startsWith("de/") ? "de" : "en";
+  const language = route.startsWith("pt") ? "pt-BR" : "en";
   assert.match(html, new RegExp(`<html[^>]*lang="${language}"`), `${route} exported language`);
   const title = metadataValue(html, /<title>([^<]+)<\/title>/, `${route} title`);
   const canonical = metadataValue(
@@ -268,12 +261,7 @@ for (const route of [...new Set([...newRoutes, ...refreshedRoutes, ...compatibil
   assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1, `${route} must have one H1`);
   assert.doesNotMatch(html, /Last checked June 22, 2026/);
   checkFaq(html, route, !["about", "contact", "editorial-policy", "guides", "dlss-5-download", "dlss-5-amd", "pt/como-ativar-dlss-5", "pt/dlss-5-amd"].includes(route));
-  if (!route.includes("rtx-spark")) {
-    assert.doesNotMatch(visibleText(html), /DLSS 5 (?:itself )?is (?:scheduled|planned) for Fall 2026|DLSS 5 is still unreleased|Why the exact launch date is still open/i);
-  }
-  if (route.startsWith("gpu/") || route.startsWith("pt/gpu/")) {
-    assert.match(html, /name="robots" content="noindex/, `${route} must retain its noindex policy`);
-  }
+  assert.doesNotMatch(visibleText(html), /DLSS 5 (?:itself )?is (?:scheduled|planned) for Fall 2026|DLSS 5 is still unreleased|Why the exact launch date is still open/i);
 
   for (const [, href] of html.matchAll(/href="(\/[^"#?]*)[^\"]*"/g)) {
     if (/\.[a-z0-9]+$/i.test(href)) continue;
@@ -282,8 +270,7 @@ for (const route of [...new Set([...newRoutes, ...refreshedRoutes, ...compatibil
   }
 
   if (route.startsWith("games/")) {
-    const minimum = route === "games/nba-2k27-dlss-5" ? 1500 : 850;
-    assert.ok(mainWords(html) >= minimum, `${route} must contain at least ${minimum} visible main-content words`);
+    assert.ok(mainWords(html) >= 1500, `${route} must contain at least 1500 visible main-content words`);
     assert.doesNotMatch(visibleText(html), /DLSS 5 (?:itself )?is (?:scheduled|planned) for Fall 2026/i);
   }
 }
@@ -363,11 +350,6 @@ assert.doesNotThrow(() => checkFaq(nbaWithoutJsonLd, "optional FAQ page", false)
 assert.match(nbaHtml, /href="#how-to-enable"/, "NBA guide must link directly to setup steps");
 assert.match(nbaHtml, /id="how-to-enable"/, "NBA setup link must have a target");
 assert.doesNotMatch(nbaText, /check the boring things|does not invent frame-rate numbers|lower visual ambition|clean support path/i);
-for (const route of ["gpu/rtx-4070", "gpu/rtx-4080", "pt/gpu/rtx-4070", "pt/gpu/rtx-4080", "pt/gpu/rtx-4090"]) {
-  const text = visibleText(readRoute(route));
-  assert.match(text, /An announced date alone does not make DLSS 5 available|Uma data anunciada, por si só, não significa/);
-  assert.match(text, /only when NVIDIA confirms that support is live|só muda para disponível quando a NVIDIA confirma a liberação do suporte/);
-}
 for (const pattern of [/616\.64/, /Video Settings/, /DLSS Neural Rendering/, /F9/, /RTX 50/, /RTX 40/, /GeForce NOW/, /Super Resolution/, /Frame Generation/]) {
   assert.match(nbaText, pattern, `NBA 2K27 guide is missing ${pattern}`);
 }
@@ -387,32 +369,17 @@ for (const route of ["dlss-4-5-dynamic-mfg-settings", "dlss-4-5-dynamic-mfg-6x"]
   assert.match(text, /2\.14/);
 }
 
-for (const route of noindexRtxSparkRoutes) {
-  const html = readRoute(route);
-  assert.match(html, /name="robots" content="noindex/, `${route} must remain noindex`);
-  assert.doesNotMatch(sitemap, new RegExp(`<loc>https://www\\.dlss5\\.net/${route}</loc>`));
-  assert.match(visibleText(html), route.startsWith("pt/") ? /outubro de 2026/i : /October 2026/);
-  assert.match(html, /local-ai-ifa-next-gen-agents-nv-pair-rtx-spark/);
-  assert.doesNotMatch(visibleText(html), /Fall 2026|outono de 2026/i);
-  assert.doesNotMatch(visibleText(html), /Do not promise benchmarks|Não prometa benchmarks|this guide should remain|esta página deve ser/i);
-  checkFaq(html, route);
+const redirects = fs.readFileSync(path.join(appOutput, "_redirects"), "utf8");
+for (const [route, target] of Object.entries(removedRoutes)) {
+  assert.ok(!fs.existsSync(routePath(route)), `${route} must not be exported`);
+  assert.match(redirects, new RegExp(`^/${route} ${target} 301$`, "m"), `${route} must 301 to ${target}`);
+  assert.ok(fs.existsSync(routePath(target.slice(1))), `${route} redirect target must exist`);
 }
-
-const dgxComparisonRoute = "ai-pc/nvidia-rtx-spark-vs-dgx-spark";
-const dgxComparisonHtml = readRoute(dgxComparisonRoute);
-assert.doesNotMatch(dgxComparisonHtml, /name="robots" content="noindex/);
-assert.match(visibleText(dgxComparisonHtml), /October 2026/);
-assert.doesNotMatch(visibleText(dgxComparisonHtml), /Fall 2026/);
-assert.ok(mainWords(dgxComparisonHtml) >= 1500, "DGX comparison must retain its substantive main content");
-assert.match(
-  sitemap,
-  new RegExp(`<loc>https://www\\.dlss5\\.net/${dgxComparisonRoute}</loc>`),
+assert.doesNotMatch(generatedHtml, /href="\/(?:pt\/)?ai-pc\//, "Off-topic RTX Spark pages must not be linked");
+const noindexPages = generatedPages.filter((html) => /name="robots" content="noindex/.test(html));
+assert.ok(
+  noindexPages.every((html) => /<title>Page not found/.test(html)),
+  "Only not-found pages may be noindex; thin pages should be improved or removed instead",
 );
-
-const dgxComparison = fs.readFileSync(
-  path.join("app", "(en)", "ai-pc", "nvidia-rtx-spark-vs-dgx-spark", "page.tsx"),
-  "utf8",
-);
-assert.doesNotMatch(dgxComparison, /fixed configuration/i);
 
 console.log("SEO regression checks passed.");

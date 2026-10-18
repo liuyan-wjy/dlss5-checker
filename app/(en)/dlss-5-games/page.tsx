@@ -48,7 +48,6 @@ const announcedGames = [
   },
   {
     title: "Assassin's Creed Shadows",
-    href: "/games/assassins-creed-shadows-dlss-5",
     publisherSignal: "Ubisoft / Vantage Studios",
     status: "Announced; live patch not verified",
   },
@@ -94,7 +93,6 @@ const announcedGames = [
   },
   {
     title: "Resident Evil Requiem",
-    href: "/games/resident-evil-requiem-dlss-5",
     publisherSignal: "CAPCOM",
     status: "Announced; live patch not verified",
   },
@@ -105,7 +103,6 @@ const announcedGames = [
   },
   {
     title: "Starfield",
-    href: "/games/starfield-dlss-5",
     publisherSignal: "Bethesda Game Studios",
     status: "Announced; live patch not verified",
   },
@@ -165,11 +162,6 @@ const relatedLinks = [
     href: "/dlss-5-rtx-40-series",
     title: "RTX 40 series status",
     description: "A cautious answer for RTX 4090, 4080, 4070, and 4060 owners.",
-  },
-  {
-    href: "/gpu/rtx-5090",
-    title: "RTX 5090 compatibility",
-    description: "The safest individual-card page for the confirmed RTX 50 path.",
   },
 ];
 
