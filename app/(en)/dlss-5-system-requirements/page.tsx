@@ -28,11 +28,59 @@ export const metadata: Metadata = {
   },
 };
 
+const benchmarkRows = [
+  {
+    gpu: "RTX 5090",
+    test: "4K, max settings, ray tracing, no frame generation",
+    result: "192 FPS without Neural Rendering, 76 FPS with it (about 60% lower)",
+    source: "GameGPU",
+    href: "https://en.gamegpu.com/test-gpu/action-fps-tps/nba-2k27-benchmarki-videokart-rtx-50-s-dlss-5",
+    model: "September launch model",
+  },
+  {
+    gpu: "RTX 5080 / 5090",
+    test: "4K, 90 seconds of broadcast-camera gameplay, no upscaling or frame generation",
+    result: "From roughly 140–200+ FPS down to about 50–80 FPS",
+    source: "TweakTown",
+    href: "https://www.tweaktown.com/articles/11596/nvidia-dlss-5-3d-guided-neural-rendering-in-nba-2k27-performance-analysis-and-more/index.html",
+    model: "September launch model",
+  },
+  {
+    gpu: "RTX 5080",
+    test: "1440p Ultra with ray tracing, quick match gameplay, Ryzen 7 9800X3D",
+    result: "Up to 73% lower average frame rate in the worst scenes",
+    source: "PC Gamer",
+    href: "https://www.pcgamer.com/hardware/graphics-cards/dlss-5-can-slash-performance-by-up-to-73-percent-on-an-rtx-5080-gaming-pc-in-nba-2k27-and-im-left-wondering-what-kind-of-mega-rig-youd-need-to-justify-the-hit/",
+    model: "September launch model",
+  },
+  {
+    gpu: "RTX 5070",
+    test: "Max ray tracing with Neural Rendering, no frame generation",
+    result: "66 FPS average, the lowest card in the test above 60 FPS",
+    source: "GameGPU",
+    href: "https://en.gamegpu.com/test-gpu/action-fps-tps/nba-2k27-benchmarki-videokart-rtx-50-s-dlss-5",
+    model: "September launch model",
+  },
+  {
+    gpu: "RTX Spark laptop",
+    test: "1440p, preview build",
+    result: "About 25% faster with the October model than with the September model",
+    source: "PC Gamer",
+    href: "https://www.pcgamer.com/hardware/i-jammed-nvidias-new-dlss-5-october-update-model-into-the-rtx-spark-and-its-25-percent-faster-at-1440p/",
+    model: "October model",
+  },
+];
+
 const faqItems = [
   {
     question: "What are the DLSS 5 system requirements?",
     answer:
-      "For local play today, DLSS 5 Neural Rendering requires a supported game, NVIDIA's 616.64 WHQL or newer compatible driver path for NBA 2K27, and a GeForce RTX 50 desktop or laptop GPU.",
+      "For local play today, DLSS 5 Neural Rendering requires a supported game, NVIDIA's 616.64 WHQL or newer compatible driver path for NBA 2K27, and a GeForce RTX 50 desktop or laptop GPU or an RTX Spark laptop.",
+  },
+  {
+    question: "How much FPS does DLSS 5 cost?",
+    answer:
+      "With the September launch model, independent tests of NBA 2K27 measured roughly 50–73% lower frame rates depending on the scene with Neural Rendering on and frame generation off, for example 192 to 76 FPS on an RTX 5090 at 4K. NVIDIA says the October model is up to 1.4x faster, and PC Gamer measured about 25% at 1440p on an RTX Spark laptop.",
   },
   {
     question: "Will RTX 40 support DLSS 5?",
@@ -148,6 +196,71 @@ export default function Dlss5SystemRequirementsPage() {
               </p>
             </div>
           </div>
+        </section>
+
+        <section id="benchmarks" className="mb-10 space-y-4 text-foreground/80 leading-relaxed scroll-mt-24">
+          <h2 className="text-2xl font-bold text-foreground">What DLSS 5 costs: published test results</h2>
+          <p>
+            &quot;Supported&quot; does not mean &quot;free&quot;. We have not benchmarked DLSS 5
+            ourselves, so this table collects the independent NBA 2K27 measurements we could
+            find, with the conditions each outlet used. Most were made with the September
+            launch model, before NVIDIA&apos;s faster October update.
+          </p>
+          <div className="overflow-x-auto rounded-lg border border-border" tabIndex={0} role="region" aria-label="DLSS 5 benchmark summary">
+            <table className="w-full min-w-[640px] text-sm">
+              <thead className="bg-muted/40 text-left">
+                <tr>
+                  <th className="p-3 font-semibold">GPU</th>
+                  <th className="p-3 font-semibold">Test conditions</th>
+                  <th className="p-3 font-semibold">Result</th>
+                  <th className="p-3 font-semibold">Source and model</th>
+                </tr>
+              </thead>
+              <tbody>
+                {benchmarkRows.map((row) => (
+                  <tr key={`${row.gpu}-${row.source}-${row.model}`} className="border-t border-border align-top">
+                    <td className="p-3 font-medium whitespace-nowrap">{row.gpu}</td>
+                    <td className="p-3">{row.test}</td>
+                    <td className="p-3">{row.result}</td>
+                    <td className="p-3">
+                      <a href={row.href} className="text-blue-400 hover:underline">{row.source}</a>
+                      <span className="block text-xs text-muted-foreground">{row.model}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <h3 className="text-lg font-semibold text-foreground">How to read these numbers</h3>
+          <p>
+            <strong>The launch model roughly halved the rendered frame rate.</strong> Across
+            the three outlets, turning Neural Rendering on with frame generation off cost
+            between about 50% and 73%, depending on the scene. That is a much bigger cost than Super Resolution or
+            Ray Reconstruction, and it is why the effect is easiest to justify on an RTX 5070
+            or faster at 1440p, or with Super Resolution doing more of the work at 4K.
+          </p>
+          <p>
+            <strong>NVIDIA&apos;s headline FPS figures include 6X frame generation.</strong>{" "}
+            NVIDIA&apos;s NBA 2K27 chart shows numbers such as 370 FPS for an RTX 5090 at 4K
+            and 261 FPS for an RTX 5070 at 1440p, with DLSS 4.5 Super Resolution and 6X
+            Multi Frame Generation on.{" "}
+            <a href="https://www.techspot.com/article/3169-nvidia-dlss-5-release/" className="text-blue-400 hover:underline">TechSpot worked out</a>{" "}
+            that the RTX 5080&apos;s 4K figure of about 233 FPS implies only about 39 rendered
+            frames per second; the rest are generated. Input response
+            follows the rendered rate, not the displayed one.
+          </p>
+          <p>
+            <strong>The October model narrows the gap but does not remove it.</strong> NVIDIA
+            claims up to 1.4x higher frame rates with Neural Rendering on, and the one
+            independent check we found measured about 25%. Applied to the launch numbers, an
+            RTX 5090 at 4K would still land well below its Neural-Rendering-off frame rate. Treat
+            this as an estimate until full retests of the October model are published; we will
+            add them to this table.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Results vary with scene, camera, driver, and game build, and outlets did not all
+            use the same settings, so compare rows only within the same source.
+          </p>
         </section>
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">

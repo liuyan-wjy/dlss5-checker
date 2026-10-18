@@ -371,7 +371,7 @@
       "missing_features": [],
       "summary": "RTX Spark laptops are on NVIDIA's DLSS 5 list alongside RTX 50: the faster October model reached NBA 2K27 on RTX Spark on October 16, 2026, and Hogwarts Legacy is scheduled for November 5. The Blackwell GPU in the chip uses memory shared with the CPU, so there is no separate VRAM figure, and performance depends on each laptop's power and cooling limits.",
       "vram": "Shared memory",
-      "tier": "high"
+      "tier": "mid-high"
     },
     {
       "id": "rtx-4090",

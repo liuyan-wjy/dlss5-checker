@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { type GPU, getFeatureLabel } from "@/lib/gpu-search";
 import { CheckCircle2, XCircle, AlertCircle, Clock } from "lucide-react";
 import Link from "next/link";
+import GpuNextSteps from "@/components/GpuNextSteps";
 
 interface CompatibilityResultProps {
   gpu: GPU;
@@ -200,6 +201,7 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
               </Link>
             </p>
           </section>
+          <GpuNextSteps gpu={gpu} />
         </CardContent>
       </Card>
     </div>
