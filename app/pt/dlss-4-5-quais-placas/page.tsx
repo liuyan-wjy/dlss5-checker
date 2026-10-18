@@ -133,7 +133,7 @@ export default function Dlss45QuaisPlacasPage() {
     datePublished: "2026-08-26",
     dateModified: "2026-09-05",
     inLanguage: "pt-BR",
-    author: { "@type": "Person", name: "Editor do DLSS 5 Checker" },
+    author: { "@type": "Person", name: "liuyan-wjy", url: "https://github.com/liuyan-wjy" },
     publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
   };
 
@@ -437,7 +437,7 @@ export default function Dlss45QuaisPlacasPage() {
             <a href={NVIDIA_DLSS_45_BR} rel="noreferrer" className="text-blue-400 hover:underline">modelos e recursos do DLSS 4.5</a>{" "}
             e a atualização oficial de{" "}
             <a href={NVIDIA_RR_NEWS} rel="noreferrer" className="text-blue-400 hover:underline">Ray Reconstruction na Gamescom 2026</a>.
-            Publicado pelo Editor do DLSS 5 Checker em 26 de agosto de 2026 e revisado em 5 de
+            Publicado por liuyan-wjy em 26 de agosto de 2026 e revisado em 5 de
             setembro de 2026. A
             compatibilidade da placa não garante o recurso em todos os games. Perfis, drivers e
             disponibilidade em Early Access podem mudar depois desta revisão.

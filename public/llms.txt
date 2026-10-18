@@ -8,8 +8,10 @@
 - Primary language: English.
 - Secondary language: Brazilian Portuguese.
 - Main user intent: check whether a GPU, game, or PC setup is ready for DLSS 5.
-- Support evidence reviewed: September 5, 2026.
+- Support evidence reviewed: October 18, 2026.
+- Author and maintainer: liuyan-wjy (https://github.com/liuyan-wjy). Source code and change history: https://github.com/liuyan-wjy/dlss5-checker
 - Current release: DLSS 5 launched in NBA 2K27 on September 3, 2026 Pacific time, for RTX 50 desktop and laptop GPUs. The game requires the appropriate NVIDIA driver, current game build, and DLSS Neural Rendering setting.
+- October 2026: a faster DLSS 5 model (NVIDIA: about half the GPU cost, ~118M parameters, ~20% less 4K VRAM) reached NBA 2K27 on October 16 for RTX 50, RTX Spark laptops, and GeForce NOW. Hogwarts Legacy is scheduled for November 5, 2026 and Where Winds Meet for late November. RTX Remix added DLSS 5 on October 23.
 - RTX 40 support is planned, with no public date. RTX 20 and RTX 30 have no current official DLSS 5 support but retain other supported DLSS features.
 - Important limitation: one supported game does not establish support in every announced game. GeForce NOW Ultimate on NVIDIA-operated RTX 5080 cloud rigs is separate from the player's local GPU compatibility.
 

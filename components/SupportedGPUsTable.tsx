@@ -7,6 +7,7 @@ import { ALL_GPUS, type DlssSupport } from "@/lib/gpu-search";
 const SERIES_OPTIONS = [
   "All",
   "RTX 50",
+  "RTX Spark",
   "RTX 40",
   "RTX 30",
   "RTX 20",

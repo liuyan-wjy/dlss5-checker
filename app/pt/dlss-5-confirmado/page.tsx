@@ -114,7 +114,7 @@ export default function PtDlss5ConfirmadoPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Última checagem: 5 de setembro de 2026
+            Última checagem: 18 de outubro de 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 está confirmado? Evidências, placas e jogos
@@ -129,8 +129,10 @@ export default function PtDlss5ConfirmadoPage() {
         <section className="mb-10 rounded-lg border border-green-500/30 bg-green-500/5 p-5">
           <h2 className="text-2xl font-bold mb-3">Resposta rápida</h2>
           <p className="text-foreground/80 leading-relaxed">
-            Sim. DLSS 5 está lançado. A resposta prática em 5 de setembro de 2026 é:
-            RTX 50 roda localmente em jogos com suporte, NBA 2K27 já está disponível,
+            Sim. DLSS 5 está lançado. A resposta prática em 18 de outubro de 2026 é:
+            RTX 50 e notebooks RTX Spark rodam localmente em jogos com suporte, NBA 2K27 já
+            está disponível com o modelo mais rápido de outubro, Hogwarts Legacy chega em 5 de
+            novembro,
             RTX 40 está planejada para depois sem data pública e RTX 20/30 não têm
             suporte oficial atual ao DLSS 5 Neural Rendering.
           </p>
@@ -243,7 +245,7 @@ export default function PtDlss5ConfirmadoPage() {
             .
           </p>
         </section>
-        <ArticleTrustBlock locale="pt" reviewedAt="2026-09-05" />
+        <ArticleTrustBlock locale="pt" reviewedAt="2026-10-18" />
       </main>
     </>
   );

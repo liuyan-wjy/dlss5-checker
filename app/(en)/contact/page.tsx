@@ -26,7 +26,7 @@ export default function ContactPage() {
       <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
       <p className="text-muted-foreground mb-12">
         Have a question, found a data error, or want to suggest a GPU? This page explains
-        what to send so the DLSS 5 Checker Editor can review the claim without guessing.
+        what to send so liuyan-wjy can review the claim without guessing.
       </p>
 
       <div className="grid gap-6">
@@ -42,6 +42,17 @@ export default function ContactPage() {
           >
             support@dlss5.net
           </a>
+          <p className="mt-3 text-sm text-muted-foreground">
+            The site is maintained by{" "}
+            <a href="https://github.com/liuyan-wjy" className="text-blue-400 hover:underline">
+              liuyan-wjy
+            </a>
+            . You can also report a correction as an issue in the public{" "}
+            <a href="https://github.com/liuyan-wjy/dlss5-checker/issues" className="text-blue-400 hover:underline">
+              GitHub repository
+            </a>
+            , where the fix and its source stay visible.
+          </p>
         </div>
 
         <div className="border border-border rounded-lg p-6">

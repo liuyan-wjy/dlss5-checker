@@ -81,8 +81,9 @@ export default function Dlss5SystemRequirementsPage() {
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
           The short version: local DLSS 5 is live in NBA 2K27 on GeForce RTX 50 desktop
-          and laptop GPUs with NVIDIA&apos;s 616.64 WHQL driver path. RTX 40 is planned,
-          not available yet.
+          and laptop GPUs and RTX Spark laptops with NVIDIA&apos;s 616.64 WHQL or newer driver
+          path. RTX 40 is planned, not available yet, and still has no date after the October 2026
+          update.
         </p>
 
         <section className="mb-10 rounded-lg border border-border p-5">
@@ -93,7 +94,9 @@ export default function Dlss5SystemRequirementsPage() {
             <li><strong>Driver:</strong> NVIDIA lists 616.64 WHQL for the NBA 2K27 launch. Install a current compatible Game Ready Driver from NVIDIA, then restart if prompted. Use the <Link href="/dlss-5-download" className="text-blue-400 hover:underline">official download and setup guide</Link> for the download routes.</li>
           </ol>
           <p className="mt-4 text-sm text-muted-foreground">
-            Also meet the game publisher&apos;s CPU, RAM, storage, and Windows requirements.
+            Also meet the game publisher&apos;s CPU, RAM, storage, and Windows requirements. Plan
+            for Windows 11: NVIDIA says Game Ready drivers released from November 2026 no longer
+            support Windows 10, so future DLSS 5 game updates may need it.
             DLSS 5 eligibility is not a complete PC specification or a guarantee of a target frame rate.
           </p>
         </section>
@@ -276,7 +279,7 @@ export default function Dlss5SystemRequirementsPage() {
             ← Back to GPU Checker
           </Link>
         </div>
-        <ArticleTrustBlock reviewedAt="2026-10-01" />
+        <ArticleTrustBlock reviewedAt="2026-10-18" />
       </main>
     </>
   );

@@ -57,7 +57,7 @@ const faqItems = [
   {
     question: "Quais jogos vão ter DLSS 5?",
     answer:
-      "NBA 2K27 já está disponível com DLSS 5 em GPUs GeForce RTX 50 desktop e notebook. A NVIDIA também anunciou um grupo inicial de jogos com DLSS 5, incluindo Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Hogwarts Legacy, Phantom Blade Zero e Delta Force. Para esses outros jogos, ainda é preciso esperar notas de patch e configurações visíveis.",
+      "NBA 2K27 já está disponível com DLSS 5 em GPUs GeForce RTX 50 desktop e notebook. A NVIDIA também anunciou um grupo inicial de jogos com DLSS 5, incluindo Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Hogwarts Legacy, Phantom Blade Zero e Delta Force. Hogwarts Legacy tem atualização marcada para 5 de novembro de 2026 e Where Winds Meet para o fim de novembro. Para os outros jogos, ainda é preciso esperar notas de patch e configurações visíveis.",
   },
   {
     question: "DLSS 5 já está disponível nesses jogos?",
@@ -103,7 +103,7 @@ export default function PtDlss5JogosPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            NBA 2K27 e três jogos anunciados revisados em 1 de outubro de 2026
+            NBA 2K27, Hogwarts Legacy e Where Winds Meet revisados em 18 de outubro de 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Jogos com DLSS 5: NBA 2K27 disponível e status por título
@@ -121,6 +121,13 @@ export default function PtDlss5JogosPage() {
             NBA 2K27 já está disponível com DLSS 5 em placas GeForce RTX 50 desktop e
             notebook, com driver 616.64 WHQL e opção DLSS Neural Rendering em Features → Video Settings. Os outros jogos da lista continuam exigindo prova por patch antes de
             serem marcados como disponíveis.
+          </p>
+          <p className="mt-3 text-foreground/80 leading-relaxed">
+            Atualização de outubro de 2026: em 16 de outubro, a NVIDIA levou ao NBA 2K27 um
+            modelo de DLSS 5 mais rápido, para RTX 50, notebooks RTX Spark e GeForce NOW. Segundo
+            a NVIDIA, ele usa cerca de metade do tempo de GPU do modelo de setembro e cerca de 20%
+            menos VRAM em 4K. Hogwarts Legacy recebe DLSS 5 em 5 de novembro e Where Winds Meet no
+            fim de novembro. A RTX 40 continua sem data. <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/" className="text-blue-400 hover:underline">Fonte: NVIDIA</a>.
           </p>
         </section>
 
@@ -274,7 +281,7 @@ export default function PtDlss5JogosPage() {
             como comportamento final de cada jogo.
           </p>
         </section>
-        <ArticleTrustBlock locale="pt" reviewedAt="2026-10-01" />
+        <ArticleTrustBlock locale="pt" reviewedAt="2026-10-18" />
       </main>
     </>
   );

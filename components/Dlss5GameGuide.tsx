@@ -53,6 +53,12 @@ const NVIDIA_GFN_SEPTEMBER =
   "https://blogs.nvidia.com/blog/geforce-now-thursday-september-2026-games-list/";
 const NVIDIA_RTX40_UPDATE =
   "https://www.nvidia.com/en-us/geforce/forums/nvidia-app/129/583738/dlss-5-faq-932026/";
+const NVIDIA_OCTOBER_MODEL =
+  "https://www.nvidia.com/en-us/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/";
+const PCGAMER_OCTOBER_TEST =
+  "https://www.pcgamer.com/hardware/i-jammed-nvidias-new-dlss-5-october-update-model-into-the-rtx-spark-and-its-25-percent-faster-at-1440p/";
+const TECHPOWERUP_61742 =
+  "https://www.techpowerup.com/353425/nvidia-releases-geforce-617-42-whql-game-ready-drivers";
 const NBA_2K_SUPPORT =
   "https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5";
 
@@ -62,15 +68,15 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
     canonical: "/games/nba-2k27-dlss-5",
     metaTitle: "NBA 2K27 DLSS 5: Settings, GPUs, Driver, and RTX 40 Status",
     metaDescription:
-      "NBA 2K27 is the first live DLSS 5 game. Check the RTX 50 GPU requirement, 616.64 driver, DLSS Neural Rendering setting, F9 toggle, RTX 40 status, and GeForce NOW caveats.",
-    eyebrow: "Game support guide · Reviewed October 1, 2026",
+      "NBA 2K27 is the first live DLSS 5 game. Check the RTX 50 requirement, driver, DLSS Neural Rendering setting, F9 toggle, October faster model, and RTX 40 status.",
+    eyebrow: "Game support guide · Reviewed October 18, 2026",
     title: "NBA 2K27 DLSS 5: Settings, GPUs, Driver, and RTX 40 Status",
     description:
       "Enable DLSS 5 in NBA 2K27, compare image quality with F9, and check what to do if the setting is missing. These steps apply to local RTX 50 desktop and laptop GPUs; GeForce NOW has separate hardware and regional requirements.",
     fastAnswer:
-      "NBA 2K27 supports DLSS 5 now on GeForce RTX 50 Series desktop and laptop GPUs. NVIDIA's driver page names the 616.64 WHQL Game Ready Driver and the in-game path Features → Video Settings → DLSS Neural Rendering; NVIDIA's DLSS 5 launch article says F9 toggles Neural Rendering during gameplay and replays.",
+      "NBA 2K27 supports DLSS 5 now on GeForce RTX 50 Series desktop and laptop GPUs. NVIDIA's driver page names the 616.64 WHQL Game Ready Driver and the in-game path Features → Video Settings → DLSS Neural Rendering; NVIDIA's DLSS 5 launch article says F9 toggles Neural Rendering during gameplay and replays. On October 16, 2026, NBA 2K27 became the first game to receive NVIDIA's faster October DLSS 5 model.",
     availability:
-      "Available now, but the current local-PC support is limited to RTX 50 Series GPUs. RTX 40 support is planned after RTX 50 tuning work, with no official public date in the sources checked for this guide.",
+      "Available now, but the current local-PC support is limited to RTX 50 Series GPUs. RTX 40 support is planned after RTX 50 tuning work. As of October 18, 2026, NVIDIA still has not published an RTX 40 date, and the October model update names RTX 50, RTX Spark laptops, and GeForce NOW only.",
     nextProof:
       "For a local PC, the practical proof is an RTX 50 desktop or laptop GPU, driver 616.64 or newer, an updated NBA 2K27 build, and the DLSS Neural Rendering option visible in Video Settings.",
     confirmed: [
@@ -157,6 +163,21 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
     ],
     extraSections: [
       {
+        title: "October 2026 update: the faster DLSS 5 model",
+        paragraphs: [
+          "NVIDIA announced a revised DLSS 5 Neural Rendering model in October 2026 and said it debuts in NBA 2K27 on October 16 for GeForce RTX 50 Series GPUs, RTX Spark laptops, and GeForce NOW. NVIDIA's figures: roughly half the GPU cost of the September model, a model about 24% smaller (around 118 million parameters), about 20% less VRAM at 4K, and up to 1.4x higher frame rates in NBA 2K27 with Neural Rendering enabled compared with the launch model. These are NVIDIA's numbers, measured on its own test systems.",
+          "The first independent check we found is from PC Gamer, which tested a preview build of the new model on an RTX Spark laptop and reported about 25% higher frame rates at 1440p, with a noticeably smaller performance hit than the September model. That is one outlet, one game, and one laptop, so treat it as an early signal rather than a result for every RTX 50 card. The cost of turning Neural Rendering on is lower than at launch, but it has not disappeared.",
+          "We could not find a separate switch for the new model in the sources available on October 18. NVIDIA says the faster model ships with the NBA 2K27 update and will be the default for future DLSS 5 games. In practice: keep NBA 2K27 and your NVIDIA driver up to date, then repeat the same-scene on/off comparison below. If you tested Neural Rendering in September and turned it off because of the frame-rate cost, test it again.",
+        ],
+      },
+      {
+        title: "Driver and Windows 10 note",
+        paragraphs: [
+          "616.64 WHQL was the launch driver. The newest Game Ready Driver we found on October 18 is 617.42 WHQL, released October 6, 2026. Its Game Ready list targets other new games, but any current official driver keeps the NBA 2K27 DLSS 5 path. Get it from the NVIDIA App or NVIDIA's driver page, never from a third-party download site.",
+          "If your gaming PC still runs Windows 10, plan ahead. NVIDIA has said October 2026 brings the last Game Ready Driver for Windows 10, and Game Ready and Studio drivers from November require Windows 11. Windows 10 keeps security-only driver updates, but future game fixes, including later DLSS 5 game support, may need Windows 11.",
+        ],
+      },
+      {
         title: "Game build and driver: what is actually verified",
         paragraphs: [
           "The launch driver documented by NVIDIA is 616.64 WHQL; that is a launch reference, not a claim that it is the newest driver today. Use the current official Game Ready Driver for your GPU and update NBA 2K27 through your store. 2K does not list a required game-build number in its setup article. Record your installed build when contacting support.",
@@ -180,7 +201,7 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       {
         title: "RTX 40 status and upgrade timing",
         paragraphs: [
-          "RTX 40 cards are not the current local DLSS 5 target for NBA 2K27 in the sources checked here. NVIDIA has indicated that RTX 40 support is planned after RTX 50 tuning work, but no public date is available. That means an RTX 4090 can still be excellent for many DLSS 4 features while not being a confirmed local DLSS 5 NBA 2K27 card today.",
+          "RTX 40 cards are not the current local DLSS 5 target for NBA 2K27 in the sources checked here, and the October model update did not add them. NVIDIA has indicated that RTX 40 support is planned after RTX 50 tuning work, but no public date is available. That means an RTX 4090 can still be excellent for many DLSS 4 features while not being a confirmed local DLSS 5 NBA 2K27 card today.",
           "An RTX 40 card does not need replacing just because it lacks this one setting today. Before upgrading for NBA 2K27, compare the visual difference, measured performance, and total cost on the hardware you are considering. Waiting for RTX 40 support is an option, but there is no announced date to plan around. Current local DLSS 5 support covers RTX 50 desktop and laptop GPUs.",
         ],
       },
@@ -202,9 +223,14 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
           "2K points players to Features → Video Settings → DLSS Neural Rendering. NVIDIA's DLSS 5 launch article says F9 toggles Neural Rendering during gameplay and replays in NBA 2K27.",
       },
       {
+        question: "Is DLSS 5 in NBA 2K27 faster after the October update?",
+        answer:
+          "NVIDIA says the October model, which debuted in NBA 2K27 on October 16, 2026, costs about half as much GPU time as the September model and raises frame rates by up to 1.4x with Neural Rendering on. PC Gamer measured about 25% at 1440p on an RTX Spark laptop. Results on your PC depend on GPU, resolution, and settings.",
+      },
+      {
         question: "Does NBA 2K27 DLSS 5 work on RTX 40?",
         answer:
-          "Not as current local support in the checked sources. RTX 40 support is planned after RTX 50 tuning, but NVIDIA has not provided a public availability date.",
+          "Not yet. RTX 40 support is planned after RTX 50 tuning, but as of October 18, 2026 NVIDIA has not provided a public availability date, and the October model update covers RTX 50, RTX Spark laptops, and GeForce NOW only.",
       },
       {
         question: "Is GeForce NOW support the same as local PC support?",
@@ -229,6 +255,18 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       {
         label: "NVIDIA NBA 2K27 Game Ready Driver 616.64 note",
         href: NVIDIA_NBA_DRIVER,
+      },
+      {
+        label: "NVIDIA October 2026 DLSS 5 model update (Hogwarts Legacy, RTX Spark)",
+        href: NVIDIA_OCTOBER_MODEL,
+      },
+      {
+        label: "PC Gamer test of the October DLSS 5 model",
+        href: PCGAMER_OCTOBER_TEST,
+      },
+      {
+        label: "GeForce 617.42 WHQL driver release (TechPowerUp)",
+        href: TECHPOWERUP_61742,
       },
       {
         label: "NVIDIA GeForce NOW September games update",

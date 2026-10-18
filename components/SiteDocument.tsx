@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description:
     "Check DLSS 5 GPU support with an evidence-based tracker for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel cards. See confirmed, planned, unsupported, and no-DLSS status.",
   metadataBase: new URL("https://www.dlss5.net"),
-  authors: [{ name: "DLSS 5 Checker Editor", url: "https://www.dlss5.net/about" }],
-  creator: "DLSS 5 Checker Editor",
+  authors: [{ name: "liuyan-wjy", url: "https://github.com/liuyan-wjy" }],
+  creator: "liuyan-wjy",
   publisher: "DLSS 5 Checker",
   other: {
     "google-adsense-account": "ca-pub-5442184426795655",

@@ -52,8 +52,8 @@ export default function ArticleTrustBlock({ locale = "en", reviewedAt }: Article
       <h2 className="mb-2 text-xl font-bold">{t.title}</h2>
       <p className="author mb-1 font-medium text-foreground/90">
         {t.byline}
-        <Link href="/about" rel="author" className="text-blue-400 hover:underline">
-          {locale === "pt" ? "Editor do DLSS 5 Checker" : "DLSS 5 Checker Editor"}
+        <Link href="/about" rel="author" title="About the author, liuyan-wjy" className="text-blue-400 hover:underline">
+          liuyan-wjy
         </Link>
       </p>
       <p className="mb-5 text-muted-foreground">

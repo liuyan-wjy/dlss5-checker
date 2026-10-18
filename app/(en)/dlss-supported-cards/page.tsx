@@ -160,7 +160,7 @@ export default function DlssSupportedCardsPage() {
     datePublished: "2026-08-26",
     dateModified: "2026-09-05",
     inLanguage: "en",
-    author: { "@type": "Person", name: "DLSS 5 Checker Editor" },
+    author: { "@type": "Person", name: "liuyan-wjy", url: "https://github.com/liuyan-wjy" },
     publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
   };
 
@@ -437,7 +437,7 @@ export default function DlssSupportedCardsPage() {
             and NVIDIA&apos;s public{" "}
             <a href={NVIDIA_RTX40_UPDATE} rel="noreferrer" className="text-blue-400 hover:underline">RTX 40 expansion note</a>.
             We separate hardware eligibility from game availability and avoid treating a version
-            label as support for every feature. Published and checked by the DLSS 5 Checker Editor
+            label as support for every feature. Published and checked by liuyan-wjy
             on August 26, 2026 and reviewed on September 5, 2026. Drivers, game profiles, and feature availability can change, so the
             linked primary sources take priority over this summary.
           </p>

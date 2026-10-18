@@ -5,14 +5,14 @@ import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 export const metadata: Metadata = {
   title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
   description:
-    "See the DLSS 5 release date, NBA 2K27 launch status, RTX 50 support, RTX 40 planned support, and what still needs per-game proof.",
+    "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
   alternates: {
     canonical: "/dlss-5-release-date",
   },
   openGraph: {
     title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
     description:
-      "See the DLSS 5 release date, NBA 2K27 launch status, RTX 50 support, RTX 40 planned support, and what still needs per-game proof.",
+      "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
     type: "article",
     url: "https://www.dlss5.net/dlss-5-release-date",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
     description:
-      "See the DLSS 5 release date, NBA 2K27 launch status, RTX 50 support, RTX 40 planned support, and what still needs per-game proof.",
+      "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
   },
 };
 
@@ -33,6 +33,10 @@ const NVIDIA_DLSS5_DRIVER =
 const NVIDIA_DLSS45_NOW =
   "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-generation-6x-mode-released/";
 const NVIDIA_DLSS_DEVELOPER = "https://developer.nvidia.com/rtx/dlss";
+const NVIDIA_OCTOBER_UPDATE =
+  "https://www.nvidia.com/en-us/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/";
+const TECHPOWERUP_61742 =
+  "https://www.techpowerup.com/353425/nvidia-releases-geforce-617-42-whql-game-ready-drivers";
 
 const timelineRows = [
   {
@@ -83,6 +87,45 @@ const timelineRows = [
     proof: "Official driver note",
     href: NVIDIA_DLSS5_DRIVER,
   },
+  {
+    date: "October 6, 2026",
+    signal: "Game Ready Driver 617.42",
+    meaning:
+      "The newest Game Ready Driver we found keeps the NBA 2K27 DLSS 5 path. October is also the last Game Ready month for Windows 10; drivers from November require Windows 11.",
+    proof: "617.42 release coverage",
+    href: TECHPOWERUP_61742,
+  },
+  {
+    date: "October 16, 2026",
+    signal: "Faster DLSS 5 model",
+    meaning:
+      "NVIDIA's revised Neural Rendering model reached NBA 2K27 for RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. NVIDIA says it halves the GPU cost of the September model. RTX 40 was not included.",
+    proof: "NVIDIA October update article",
+    href: NVIDIA_OCTOBER_UPDATE,
+  },
+  {
+    date: "October 23, 2026",
+    signal: "RTX Remix support",
+    meaning:
+      "NVIDIA scheduled DLSS 5 for RTX Remix, so modders can apply Neural Rendering to remastered classic games. This is a modding tool, not official support in each original game.",
+    proof: "NVIDIA October update article",
+    href: NVIDIA_OCTOBER_UPDATE,
+  },
+  {
+    date: "November 5, 2026",
+    signal: "Hogwarts Legacy (scheduled)",
+    meaning:
+      "The first dated DLSS 5 update after NBA 2K27. NVIDIA lists RTX 50, RTX Spark laptops, and GeForce NOW. It has not shipped yet; this row changes when the patch is public.",
+    proof: "NVIDIA October update article",
+    href: NVIDIA_OCTOBER_UPDATE,
+  },
+  {
+    date: "Late November 2026",
+    signal: "Where Winds Meet (scheduled)",
+    meaning: "NVIDIA gives late November without an exact day.",
+    proof: "NVIDIA October update article",
+    href: NVIDIA_OCTOBER_UPDATE,
+  },
 ];
 
 const relatedPages = [
@@ -122,12 +165,22 @@ const faqItems = [
   {
     question: "Is DLSS 5 available to download now?",
     answer:
-      "The player-facing route is NVIDIA's 616.64 WHQL Game Ready Driver plus a supported game. For NBA 2K27, the option appears under Video Settings > DLSS Neural Rendering and F9 toggles it in gameplay or replay.",
+      "The player-facing route is an official NVIDIA Game Ready Driver (616.64 WHQL or newer; 617.42 was the newest we found on October 18, 2026) plus a supported game. For NBA 2K27, the option appears under Video Settings > DLSS Neural Rendering and F9 toggles it in gameplay or replay.",
   },
   {
     question: "What changed after the announcement?",
     answer:
       "DLSS 5 moved from announced to available in one verified game. RTX 50 desktop and laptop GPUs are confirmed, RTX 40 is planned for later, and other games still need their own public patch notes.",
+  },
+  {
+    question: "When do more games get DLSS 5?",
+    answer:
+      "NVIDIA has dated two more games: Hogwarts Legacy on November 5, 2026 and Where Winds Meet in late November. Both use the faster October model on RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. Other announced titles have no public date yet.",
+  },
+  {
+    question: "Is there a release date for DLSS 5 on RTX 40?",
+    answer:
+      "No. As of October 18, 2026, NVIDIA still describes RTX 40 support as planned without a date, and its October model update does not include RTX 40 GPUs.",
   },
 ];
 
@@ -186,7 +239,7 @@ export default function Dlss5ReleaseDatePage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Last checked September 5, 2026
+            Last checked October 18, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Release Date: September 2026 Launch Status
@@ -210,14 +263,15 @@ export default function Dlss5ReleaseDatePage() {
             <h2 className="font-bold mb-2">Available now</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
               NBA 2K27 exposes DLSS Neural Rendering for RTX 50 desktop and laptop GPUs
-              with NVIDIA&apos;s 616.64 WHQL Game Ready Driver.
+              and RTX Spark laptops, using the faster October model since October 16.
+              Hogwarts Legacy follows on November 5.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Still missing</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              RTX 40 support is planned but not available. Other games remain announced
-              or pending until their own patch notes name DLSS 5 settings.
+              RTX 40 support is planned but still has no date. Most announced games remain
+              pending until their own patch notes name DLSS 5 settings.
             </p>
           </div>
         </section>
@@ -236,7 +290,7 @@ export default function Dlss5ReleaseDatePage() {
               </thead>
               <tbody>
                 {timelineRows.map((row) => (
-                  <tr key={row.date} className="border-t border-border align-top">
+                  <tr key={`${row.date}-${row.signal}`} className="border-t border-border align-top">
                     <td className="p-3 whitespace-nowrap font-medium">{row.date}</td>
                     <td className="p-3">{row.signal}</td>
                     <td className="p-3 text-foreground/80 leading-relaxed">{row.meaning}</td>
@@ -270,13 +324,21 @@ export default function Dlss5ReleaseDatePage() {
             game-by-game proof: NBA 2K27 is verified; other titles need their own publisher
             or NVIDIA patch notes before you expect the setting to appear.
           </p>
+          <p>
+            The October update is the first sign of the rollout pattern. NVIDIA improved
+            the model first, shipped it in the one live game, and only then dated the next
+            titles. Hogwarts Legacy and Where Winds Meet are the next two, so a scheduled
+            date for another game is more likely to come from a similar NVIDIA update than
+            from a publisher patch note appearing without warning.
+          </p>
         </section>
 
         <section className="mb-10 rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-5">
           <h2 className="text-xl font-bold mb-3">What would change this page?</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            The next meaningful update would be RTX 40 availability details, another
-            game patch note, or a revised NVIDIA support matrix. A rumor, preview video,
+            The next meaningful updates would be the Hogwarts Legacy patch going live on
+            November 5, RTX 40 availability details, another dated game, or a revised NVIDIA
+            support matrix. A rumor, preview video,
             or DLL download is not enough.
           </p>
         </section>
@@ -308,7 +370,7 @@ export default function Dlss5ReleaseDatePage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-09-05" />
+        <ArticleTrustBlock reviewedAt="2026-10-18" />
       </main>
     </>
   );

@@ -152,7 +152,7 @@ export default function Dlss45SupportedCardsPage() {
     datePublished: "2026-08-26",
     dateModified: "2026-10-01",
     inLanguage: "en",
-    author: { "@type": "Person", name: "DLSS 5 Checker Editor" },
+    author: { "@type": "Person", name: "liuyan-wjy", url: "https://github.com/liuyan-wjy" },
     publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
   };
 
@@ -468,7 +468,7 @@ export default function Dlss45SupportedCardsPage() {
             <a href={NVIDIA_DLSS_45} rel="noreferrer" className="text-blue-400 hover:underline">DLSS 4.5 model announcement</a>,{" "}
             <a href={NVIDIA_DYNAMIC_MFG} rel="noreferrer" className="text-blue-400 hover:underline">Dynamic MFG release guidance</a>, and{" "}
             <a href={NVIDIA_RR_NEWS} rel="noreferrer" className="text-blue-400 hover:underline">Gamescom 2026 Ray Reconstruction update</a>.
-            Published by the DLSS 5 Checker Editor on August 26, 2026 and reviewed on October 1,
+            Published by liuyan-wjy on August 26, 2026 and reviewed on October 1,
             2026. A supported GPU
             does not guarantee a feature in every game, and app profiles, driver requirements, and
             Early Access availability can change after publication.

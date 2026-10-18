@@ -29,7 +29,7 @@ export default function Dlss5DownloadPage() {
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">How to download and enable DLSS 5</h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
           Get the driver from NVIDIA and the DLSS 5 integration through a supported game.
-          For official local use, you currently need an RTX 50 desktop or laptop GPU.
+          For official local use, you currently need an RTX 50 desktop or laptop GPU or an RTX Spark laptop.
           NBA 2K27 is a verified available title. There is no universal official installer
           that adds Neural Rendering to every game. This is an independent setup guide, not a download host.
         </p>
@@ -47,7 +47,19 @@ export default function Dlss5DownloadPage() {
           NVIDIA identified 616.64 WHQL as the NBA 2K27 launch driver in its{" "}
           <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">release instructions</a>.
           Treat that number as a launch reference, not a claim that it remains the newest driver.
+          The newest Game Ready Driver we found on October 18, 2026 is 617.42 WHQL (October 6).
           Check the current driver notes for your GPU before installing an older package from a search result.
+        </p>
+        <p>
+          <strong>Windows 10 users:</strong> NVIDIA says October 2026 brings the last Game Ready
+          Driver for Windows 10. From November, new Game Ready and Studio drivers require Windows 11,
+          while Windows 10 receives security-only driver updates. DLSS 5 already works with the
+          current drivers, but later game fixes and new DLSS 5 game support may need Windows 11.
+        </p>
+        <p>
+          You do not need a separate download for NVIDIA&apos;s faster October DLSS 5 model. NVIDIA
+          says it arrived through the NBA 2K27 update on October 16 and is the default for upcoming
+          DLSS 5 games such as Hogwarts Legacy (November 5). Keep the game and driver updated.
         </p>
       </section>
 
@@ -100,7 +112,7 @@ export default function Dlss5DownloadPage() {
           <Link href="/dlss-5-vs-dlss-4-5" className="text-blue-400 hover:underline">DLSS 5 vs DLSS 4.5</Link>.
         </p>
       </section>
-      <ArticleTrustBlock reviewedAt="2026-10-01" />
+      <ArticleTrustBlock reviewedAt="2026-10-18" />
     </main>
   );
 }

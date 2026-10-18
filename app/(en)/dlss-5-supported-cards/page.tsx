@@ -43,7 +43,7 @@ const STATUS_COPY: Record<
   confirmed: {
     title: "Confirmed cards",
     label: "Confirmed",
-    note: "RTX 50 desktop and laptop GPUs support DLSS 5 Neural Rendering in NBA 2K27 with the compatible game update and driver.",
+    note: "RTX 50 desktop and laptop GPUs and RTX Spark laptops support DLSS 5 Neural Rendering in NBA 2K27 with the compatible game update and driver. Hogwarts Legacy is scheduled for November 5, 2026.",
     className: "border-green-500/30 bg-green-500/5 text-green-300",
   },
   planned: {
@@ -202,7 +202,7 @@ export default function Dlss5SupportedCardsPage() {
     name: "DLSS 5 Supported Cards",
     url: PAGE_URL,
     inLanguage: "en",
-    dateModified: "2026-10-01",
+    dateModified: "2026-10-18",
     isPartOf: {
       "@type": "WebSite",
       name: "DLSS 5 Checker",
@@ -241,7 +241,7 @@ export default function Dlss5SupportedCardsPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked October 1, 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked October 18, 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Supported Cards: Confirmed, Planned, and Unsupported GPUs
           </h1>
@@ -258,9 +258,10 @@ export default function Dlss5SupportedCardsPage() {
         >
           <h2 className="text-xl font-bold mb-3">DLSS 5 supported cards short answer</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            Last checked October 1, 2026: RTX 50 desktop and laptop GPUs are confirmed
-            for DLSS 5 Neural Rendering in NBA 2K27, including RTX 5090 through RTX 5050.
-            RTX 40 is planned but not available yet and has no public date. RTX 20 and
+            Last checked October 18, 2026: RTX 50 desktop and laptop GPUs are confirmed
+            for DLSS 5 Neural Rendering in NBA 2K27, including RTX 5090 through RTX 5050,
+            and RTX Spark laptops joined with the faster October model. RTX 40 is planned
+            but not available yet and still has no public date. RTX 20 and
             RTX 30 have no current official DLSS 5 support, while GTX, AMD, and Intel
             cards are outside NVIDIA DLSS.
           </p>
@@ -455,7 +456,7 @@ export default function Dlss5SupportedCardsPage() {
             These are compatibility statements, not measured performance results.
           </p>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-10-01" />
+        <ArticleTrustBlock reviewedAt="2026-10-18" />
       </main>
     </>
   );

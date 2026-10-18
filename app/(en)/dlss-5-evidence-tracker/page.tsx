@@ -44,6 +44,11 @@ const NVIDIA_DEVELOPER_BRIEF =
 const NVIDIA_RTX40_PLAN =
   "https://www.reddit.com/r/nvidia/comments/1w4bcvp/nvidia_dlss_5_available_september_3rd_dlss/?sort=new";
 
+const NVIDIA_OCTOBER_UPDATE =
+  "https://www.nvidia.com/en-us/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/";
+const PCGAMER_OCTOBER_TEST =
+  "https://www.pcgamer.com/hardware/i-jammed-nvidias-new-dlss-5-october-update-model-into-the-rtx-spark-and-its-25-percent-faster-at-1440p/";
+
 type Confidence = "High" | "Medium" | "Low";
 
 const evidenceRows: {
@@ -88,7 +93,7 @@ const evidenceRows: {
   {
     question: "Are RTX 40 cards available for DLSS 5 now?",
     currentAnswer:
-      "No. NVIDIA has said RTX 40 support is planned after RTX 50 optimization, but there is no public availability date.",
+      "No. NVIDIA has said RTX 40 support is planned after RTX 50 optimization, but there is no public availability date. The October 2026 model update and the dated Hogwarts Legacy release list RTX 50, RTX Spark laptops, and GeForce NOW only.",
     evidence: "NVIDIA community update",
     sourceHref: NVIDIA_RTX40_PLAN,
     status: "Planned",
@@ -108,12 +113,22 @@ const evidenceRows: {
   {
     question: "Are the named games final launch support?",
     currentAnswer:
-      "NBA 2K27 is verified. Other named games still need their own public patch notes, menu settings, and GPU behavior details.",
+      "NBA 2K27 is verified. Hogwarts Legacy is scheduled for November 5, 2026 and Where Winds Meet for late November. Other named games still need their own public patch notes, menu settings, and GPU behavior details.",
     evidence: "NVIDIA NBA 2K27 driver note",
     sourceHref: NVIDIA_NBA_DRIVER,
     status: "One verified game; others pending",
     confidence: "High",
     whatWouldChangeIt: "Individual game patch notes confirming the exact mode, date, and supported GPU tiers.",
+  },
+  {
+    question: "Is the October DLSS 5 model faster?",
+    currentAnswer:
+      "NVIDIA says the October model costs about half the GPU time of the September model, is about 24% smaller, uses about 20% less VRAM at 4K, and raises NBA 2K27 frame rates by up to 1.4x with Neural Rendering on. PC Gamer measured about 25% at 1440p on an RTX Spark laptop preview build.",
+    evidence: "NVIDIA October update article; PC Gamer test",
+    sourceHref: NVIDIA_OCTOBER_UPDATE,
+    status: "Vendor claim plus one independent test",
+    confidence: "Medium",
+    whatWouldChangeIt: "More independent tests across RTX 50 desktop cards and resolutions.",
   },
   {
     question: "Does NVIDIA's 370 FPS example predict my frame rate?",
@@ -245,7 +260,7 @@ export default function Dlss5EvidenceTrackerPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Last checked September 23, 2026
+            Last checked October 18, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Evidence Tracker
@@ -291,6 +306,15 @@ export default function Dlss5EvidenceTrackerPage() {
               and masks that let developers target or protect scene elements. These are
               developer controls, not extra settings promised to players.
               {" "}<a href={NVIDIA_DEVELOPER_BRIEF} className="text-blue-400 hover:underline">Developer brief ↗</a>
+            </li>
+            <li className="rounded-lg border border-border p-4">
+              <strong>October 16, 2026: Faster model.</strong> NVIDIA shipped a revised
+              Neural Rendering model in NBA 2K27 for RTX 50, RTX Spark laptops, and GeForce
+              NOW, and dated Hogwarts Legacy (November 5) and Where Winds Meet (late
+              November). The speed figures are NVIDIA&apos;s; the first independent check
+              came from{" "}
+              <a href={PCGAMER_OCTOBER_TEST} className="text-blue-400 hover:underline">PC Gamer ↗</a>.
+              {" "}<a href={NVIDIA_OCTOBER_UPDATE} className="text-blue-400 hover:underline">October update ↗</a>
             </li>
           </ol>
         </section>
@@ -418,7 +442,7 @@ export default function Dlss5EvidenceTrackerPage() {
             definitive compatibility claims.
           </p>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-09-23" />
+        <ArticleTrustBlock reviewedAt="2026-10-18" />
       </main>
     </>
   );

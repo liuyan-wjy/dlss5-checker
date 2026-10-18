@@ -48,8 +48,8 @@ export function SiteHeader({ locale = "en" }: { locale?: "en" | "pt" }) {
       <div className="border-t border-border/40 px-4 py-2">
         <p className="author mx-auto max-w-6xl text-xs text-foreground/80">
           {pt ? "Por " : "By "}
-          <Link href="/about" rel="author" className="text-blue-400 hover:underline">
-            {pt ? "Editor do DLSS 5 Checker" : "DLSS 5 Checker Editor"}
+          <Link href="/about" rel="author" title="About the author, liuyan-wjy" className="text-blue-400 hover:underline">
+            liuyan-wjy
           </Link>
           .
         </p>

@@ -242,7 +242,7 @@ export default function PtDlss5QuaisPlacasPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Última verificação em 5 de setembro de 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Última verificação em 18 de outubro de 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5: Quais Placas Suportam?
           </h1>
@@ -259,10 +259,11 @@ export default function PtDlss5QuaisPlacasPage() {
         >
           <h2 className="text-xl font-bold mb-3">Quais placas suportam DLSS 5? Resposta curta</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            Última verificação em 5 de setembro de 2026: RTX 50 é o caminho confirmado
+            Última verificação em 18 de outubro de 2026: RTX 50 é o caminho confirmado
             para DLSS 5 Neural Rendering em NBA 2K27, incluindo RTX 5090 até RTX 5050 e
-            versões de notebook. RTX 40 está planejada para depois da otimização em RTX 50,
-            mas ainda não está ativa. RTX 20 e RTX 30 não têm suporte oficial atual ao
+            versões de notebook, e os notebooks RTX Spark entraram com o modelo mais rápido
+            de outubro. RTX 40 está planejada para depois da otimização em RTX 50, mas ainda
+            não está ativa nem tem data. RTX 20 e RTX 30 não têm suporte oficial atual ao
             DLSS 5, e GTX, AMD e Intel não rodam NVIDIA DLSS.
           </p>
           <div className="mt-4 flex flex-wrap gap-2 text-sm">
@@ -393,7 +394,7 @@ export default function PtDlss5QuaisPlacasPage() {
             páginas de produto ou notas oficiais mudarem a matriz de suporte.
           </p>
         </section>
-        <ArticleTrustBlock locale="pt" reviewedAt="2026-09-05" />
+        <ArticleTrustBlock locale="pt" reviewedAt="2026-10-18" />
       </main>
     </>
   );
