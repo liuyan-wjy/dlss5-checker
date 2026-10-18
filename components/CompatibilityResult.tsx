@@ -3,9 +3,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { type GPU, getFeatureLabel } from "@/lib/gpu-search";
-import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 import { CheckCircle2, XCircle, AlertCircle, Clock } from "lucide-react";
 import Link from "next/link";
+import GpuNextSteps from "@/components/GpuNextSteps";
 
 interface CompatibilityResultProps {
   gpu: GPU;
@@ -62,7 +62,7 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
                 {cfg.badge}
               </div>
               <p className="text-lg font-semibold mt-1">{gpu.name}</p>
-              <p className="text-muted-foreground text-sm mt-1">{gpu.vram} VRAM · {gpu.series}</p>
+              <p className="text-muted-foreground text-sm mt-1">{gpu.vram.endsWith("GB") ? `${gpu.vram} VRAM` : gpu.vram} · {gpu.series}</p>
             </div>
           </div>
 
@@ -119,10 +119,12 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
             {gpu.dlss5_support === "confirmed" ? (
               <>
                 <p>
-                  For NBA 2K27, update the game and install NVIDIA&apos;s 616.64 WHQL
-                  Game Ready Driver or a newer official driver that retains support.
-                  Open Features → Video Settings → DLSS Neural Rendering. These instructions are
-                  specific to NBA 2K27; an RTX 50 card does not enable DLSS 5 in every game.
+                  For NBA 2K27, update the game and install a current official NVIDIA Game
+                  Ready Driver (616.64 WHQL or newer). Open Features → Video Settings → DLSS
+                  Neural Rendering. Since October 16, 2026 the game uses NVIDIA&apos;s faster
+                  DLSS 5 model. These instructions are specific to NBA 2K27; a supported GPU
+                  does not enable DLSS 5 in every game. Hogwarts Legacy is scheduled next, on
+                  November 5.
                 </p>
                 <Link href="/games/nba-2k27-dlss-5#how-to-enable" className="inline-block text-blue-400 hover:underline">
                   Follow the NBA 2K27 setup and missing-option checks →
@@ -188,13 +190,8 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
                 not an equivalent performance result.
               </p>
             )}
-            {isEnabledGpuSlug("en", gpu.id) && (
-              <Link href={getGpuPageHref("en", gpu.id)} className="inline-block text-blue-400 hover:underline">
-                Read the {gpu.name} model-specific breakdown →
-              </Link>
-            )}
             <p className="text-xs text-muted-foreground">
-              Support evidence reviewed September 5, 2026: {" "}
+              Support evidence reviewed October 18, 2026: {" "}
               <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
                 NVIDIA&apos;s DLSS 5 launch details
               </a>
@@ -204,6 +201,7 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
               </Link>
             </p>
           </section>
+          <GpuNextSteps gpu={gpu} />
         </CardContent>
       </Card>
     </div>

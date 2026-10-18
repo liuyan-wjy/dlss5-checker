@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type GPU } from "@/lib/gpu-search";
-import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 
 export const metadata: Metadata = {
   title: "DLSS 5 on RTX 40 Series: Planned, Not Available Yet",
@@ -35,7 +34,7 @@ const faqItems = [
   {
     question: "Will DLSS 5 be on RTX 40 series?",
     answer:
-      "NVIDIA has said RTX 40 support is planned after RTX 50 optimization, but it is not available yet and has no public release date. RTX 40 cards still support current features such as Frame Generation, Super Resolution, Ray Reconstruction, and DLAA.",
+      "NVIDIA has said RTX 40 support is planned after RTX 50 optimization, but as of October 18, 2026 it is not available and has no public release date. The October model update and the Hogwarts Legacy release list RTX 50, RTX Spark laptops, and GeForce NOW only. RTX 40 cards still support current features such as Frame Generation, Super Resolution, Ray Reconstruction, and DLAA.",
   },
   {
     question: "Does RTX 4070 support DLSS 5?",
@@ -70,14 +69,6 @@ const faqItems = [
 ];
 
 function CardName({ gpu }: { gpu: GPU }) {
-  if (isEnabledGpuSlug("en", gpu.id)) {
-    return (
-      <Link href={getGpuPageHref("en", gpu.id)} className="hover:text-blue-400 hover:underline">
-        {gpu.name}
-      </Link>
-    );
-  }
-
   return <span>{gpu.name}</span>;
 }
 
@@ -118,7 +109,7 @@ export default function Dlss5Rtx40SeriesPage() {
     name: "DLSS 5 on RTX 40 Series",
     url: PAGE_URL,
     inLanguage: "en",
-    dateModified: "2026-10-01",
+    dateModified: "2026-10-18",
     isPartOf: {
       "@type": "WebSite",
       name: "DLSS 5 Checker",
@@ -157,14 +148,15 @@ export default function Dlss5Rtx40SeriesPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked October 1, 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked October 18, 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 on RTX 40 Series: Planned, Not Available Yet
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             The honest answer is: planned, but not available yet. RTX 40 cards are
             excellent current DLSS cards, but DLSS 5 Neural Rendering is only live for
-            RTX 50 desktop and laptop GPUs in NBA 2K27 today.
+            RTX 50 desktop and laptop GPUs in NBA 2K27 today. NVIDIA&apos;s October 2026
+            update made DLSS 5 faster, but it still did not add RTX 40.
           </p>
         </header>
 
@@ -185,6 +177,32 @@ export default function Dlss5Rtx40SeriesPage() {
               than confirmed.
             </p>
           </div>
+        </section>
+
+        <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
+          <h2 className="text-2xl font-bold text-foreground">What the October update means for RTX 40</h2>
+          <p>
+            On October 16, 2026, NVIDIA shipped a revised DLSS 5 model in NBA 2K27. NVIDIA
+            says it needs about half the GPU time of the September model, is about 24%
+            smaller (around 118 million parameters), and uses about 20% less VRAM at 4K. The
+            update went to RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. The next dated
+            games, Hogwarts Legacy on November 5 and Where Winds Meet in late November, use
+            the same hardware list. RTX 40 is not on it.
+          </p>
+          <p>
+            NVIDIA&apos;s earlier explanation was that RTX 40 support would follow once the
+            RTX 50 version was better tuned. A model that is cheaper to run is the kind of
+            change that could make an RTX 40 version practical, especially for 8GB cards
+            such as the RTX 4060. That is our reading of the situation, not something NVIDIA
+            has said. NVIDIA has not tied the October model to RTX 40 or given a date, so
+            the status on this page stays &quot;planned&quot;.
+          </p>
+          <p>
+            One practical item for RTX 40 owners: NVIDIA says October 2026 brings the last
+            Game Ready Driver for Windows 10, and Game Ready drivers from November require
+            Windows 11. If RTX 40 support arrives later in a new driver, a PC still on
+            Windows 10 may not be able to install it.
+          </p>
         </section>
 
         <section className="mb-10">
@@ -272,24 +290,6 @@ export default function Dlss5Rtx40SeriesPage() {
           <h2 className="text-2xl font-bold mb-4">Related checks</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
-              href="/gpu/rtx-4070"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 4070 status</div>
-              <p className="text-sm text-muted-foreground">
-                Model-specific answer for the most common RTX 40 query.
-              </p>
-            </Link>
-            <Link
-              href="/gpu/rtx-4080"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 4080 status</div>
-              <p className="text-sm text-muted-foreground">
-                Higher-end RTX 40 card, same confirmation question.
-              </p>
-            </Link>
-            <Link
               href="/dlss-5-supported-cards"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
             >
@@ -374,7 +374,7 @@ export default function Dlss5Rtx40SeriesPage() {
             setting, and release-date details for RTX 40 DLSS 5 support.
           </p>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-10-01" />
+        <ArticleTrustBlock reviewedAt="2026-10-18" />
       </main>
     </>
   );

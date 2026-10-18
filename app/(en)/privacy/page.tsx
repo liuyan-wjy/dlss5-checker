@@ -170,7 +170,7 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold mb-3 text-foreground">11. Publisher Contact</h2>
           <p>
             The publisher is DLSS 5 Checker (dlss5.net), with editorial responsibility held
-            by the DLSS 5 Checker Editor. For privacy questions or deletion requests, email{" "}
+            by liuyan-wjy. For privacy questions or deletion requests, email{" "}
             <a href="mailto:support@dlss5.net" className="font-medium text-blue-400 hover:underline">
               support@dlss5.net
             </a>

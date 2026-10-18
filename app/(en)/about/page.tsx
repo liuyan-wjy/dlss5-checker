@@ -25,7 +25,7 @@ export default function AboutPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <h1 className="text-3xl font-bold mb-8">About DLSS 5 Checker</h1>
-      <p className="-mt-5 mb-8 text-sm text-muted-foreground">Last reviewed: September 5, 2026</p>
+      <p className="-mt-5 mb-8 text-sm text-muted-foreground">Last reviewed: October 18, 2026</p>
 
       <div className="space-y-8 text-foreground/80 leading-relaxed">
         <section>
@@ -50,23 +50,41 @@ export default function AboutPage() {
         <section>
           <h2 className="text-xl font-semibold mb-3 text-foreground">Who Publishes This Site</h2>
           <p>
-            DLSS 5 Checker is an independently operated publication at dlss5.net. The site
-            uses the byline <strong className="text-foreground">DLSS 5 Checker Editor</strong>
-            {" "}for the editor responsible for researching, writing, reviewing, and correcting
-            its compatibility guidance. We write for players, creators, and PC builders who
-            need to know what is usable now, what is planned for later, and what still
-            depends on final documentation.
+            DLSS 5 Checker is built and maintained by{" "}
+            <a href="https://github.com/liuyan-wjy" className="font-medium text-blue-400 hover:underline" rel="author">
+              liuyan-wjy
+            </a>
+            , an independent web developer. One person researches, writes, reviews, and
+            corrects every page; there is no hidden editorial team, sponsor, or NVIDIA
+            relationship behind the site. The writing is aimed at players, creators, and PC
+            builders who need to know what is usable now, what is only planned, and what
+            still depends on final documentation.
           </p>
           <p className="mt-4">
-            The site is not an NVIDIA publication, reseller page, or download portal. Our job
+            The site is not an NVIDIA publication, reseller page, or download portal. Its job
             is to organize public evidence, explain uncertainty clearly, and correct outdated
-            compatibility language when better official sources appear.
+            compatibility language when better official sources appear. The complete source
+            code, the GPU data file, and every content change are public in the{" "}
+            <a href="https://github.com/liuyan-wjy/dlss5-checker" className="text-blue-400 hover:underline">
+              dlss5-checker GitHub repository
+            </a>
+            , so you can see exactly when a support label changed and why.
           </p>
           <dl className="mt-5 grid gap-3 rounded-lg border border-border p-4 text-sm sm:grid-cols-[10rem_1fr]">
             <dt className="font-semibold text-foreground">Publisher</dt>
             <dd>DLSS 5 Checker (dlss5.net)</dd>
-            <dt className="font-semibold text-foreground">Responsible editor</dt>
-            <dd>DLSS 5 Checker Editor</dd>
+            <dt className="font-semibold text-foreground">Author and maintainer</dt>
+            <dd>
+              <a href="https://github.com/liuyan-wjy" className="text-blue-400 hover:underline">
+                liuyan-wjy on GitHub
+              </a>
+            </dd>
+            <dt className="font-semibold text-foreground">Source code and change history</dt>
+            <dd>
+              <a href="https://github.com/liuyan-wjy/dlss5-checker" className="text-blue-400 hover:underline">
+                github.com/liuyan-wjy/dlss5-checker
+              </a>
+            </dd>
             <dt className="font-semibold text-foreground">Editorial contact</dt>
             <dd>
               <a href="mailto:support@dlss5.net" className="text-blue-400 hover:underline">

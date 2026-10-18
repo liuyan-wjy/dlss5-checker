@@ -102,9 +102,7 @@ for (const gpu of ALL_GPUS) {
   } else {
     assert.doesNotMatch(html, /similar power limit and cooling design/);
   }
-  if (["rtx-4070", "rtx-4080", "rtx-5090", "rtx-3070", "rtx-3060"].includes(gpu.id)) {
-    assert.match(html, new RegExp(`href="/gpu/${gpu.id}"`));
-  }
+  assert.doesNotMatch(html, /href="\/gpu\//);
   assert.doesNotMatch(html, /avg\. FPS boost|FPS \(Off\)|\+85%|\+140%|\+210%/);
   if (gpu.dlss5_support === "confirmed") {
     assert.match(html, /href="\/games\/nba-2k27-dlss-5#how-to-enable"/);

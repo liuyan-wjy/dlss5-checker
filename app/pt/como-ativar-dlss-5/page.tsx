@@ -43,7 +43,13 @@ export default function ComoAtivarDlss5Page() {
         <p>
           O <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">guia de lançamento da NVIDIA</a> indica
           o 616.64 WHQL para a estreia no NBA 2K27. Esse número é uma referência do lançamento, não uma afirmação
-          de que continua sendo o driver mais recente. Consulte as notas atuais para sua placa antes de instalar um pacote antigo encontrado na busca.
+          de que continua sendo o driver mais recente. Em 18 de outubro de 2026, o mais recente que encontramos é o 617.42 WHQL (6 de outubro).
+          Consulte as notas atuais para sua placa antes de instalar um pacote antigo encontrado na busca.
+        </p>
+        <p>
+          <strong>Windows 10:</strong> a NVIDIA diz que outubro de 2026 traz o último driver Game Ready para Windows 10.
+          A partir de novembro, novos drivers Game Ready e Studio exigem Windows 11. O modelo de DLSS 5 mais rápido de
+          outubro não precisa de download separado: ele chegou com a atualização do NBA 2K27 em 16 de outubro.
         </p>
       </section>
 
@@ -96,7 +102,7 @@ export default function ComoAtivarDlss5Page() {
           <Link href="/pt/dlss-5-vs-dlss-4-5" className="text-blue-400 hover:underline">DLSS 5 vs DLSS 4.5</Link>.
         </p>
       </section>
-      <ArticleTrustBlock locale="pt" reviewedAt="2026-10-01" />
+      <ArticleTrustBlock locale="pt" reviewedAt="2026-10-18" />
     </main>
   );
 }

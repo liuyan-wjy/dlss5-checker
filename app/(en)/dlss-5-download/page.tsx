@@ -29,7 +29,7 @@ export default function Dlss5DownloadPage() {
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">How to download and enable DLSS 5</h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
           Get the driver from NVIDIA and the DLSS 5 integration through a supported game.
-          For official local use, you currently need an RTX 50 desktop or laptop GPU.
+          For official local use, you currently need an RTX 50 desktop or laptop GPU or an RTX Spark laptop.
           NBA 2K27 is a verified available title. There is no universal official installer
           that adds Neural Rendering to every game. This is an independent setup guide, not a download host.
         </p>
@@ -47,7 +47,19 @@ export default function Dlss5DownloadPage() {
           NVIDIA identified 616.64 WHQL as the NBA 2K27 launch driver in its{" "}
           <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">release instructions</a>.
           Treat that number as a launch reference, not a claim that it remains the newest driver.
+          The newest Game Ready Driver we found on October 18, 2026 is 617.42 WHQL (October 6).
           Check the current driver notes for your GPU before installing an older package from a search result.
+        </p>
+        <p>
+          <strong>Windows 10 users:</strong> NVIDIA says October 2026 brings the last Game Ready
+          Driver for Windows 10. From November, new Game Ready and Studio drivers require Windows 11,
+          while Windows 10 receives security-only driver updates. DLSS 5 already works with the
+          current drivers, but later game fixes and new DLSS 5 game support may need Windows 11.
+        </p>
+        <p>
+          You do not need a separate download for NVIDIA&apos;s faster October DLSS 5 model. NVIDIA
+          says it arrived through the NBA 2K27 update on October 16 and is the default for upcoming
+          DLSS 5 games such as Hogwarts Legacy (November 5). Keep the game and driver updated.
         </p>
       </section>
 
@@ -100,7 +112,50 @@ export default function Dlss5DownloadPage() {
           <Link href="/dlss-5-vs-dlss-4-5" className="text-blue-400 hover:underline">DLSS 5 vs DLSS 4.5</Link>.
         </p>
       </section>
-      <ArticleTrustBlock reviewedAt="2026-10-01" />
+
+      <section className="mb-10 space-y-4 leading-relaxed text-foreground/80">
+        <h2 className="text-2xl font-bold text-foreground">Claims to be careful about</h2>
+        <p>
+          Searches for a DLSS 5 download return a mix of official pages, video guides, and tools
+          that use the DLSS 5 name. These are the claims we see most often, and how they compare
+          with NVIDIA&apos;s documentation:
+        </p>
+        <ul className="list-disc space-y-3 pl-6">
+          <li>
+            <strong>&quot;Swap the DLSS DLL to unlock DLSS 5.&quot;</strong> Neural Rendering needs
+            the game&apos;s own integration and a menu option the developer exposes. Replacing a
+            DLL in a game without that integration does not add the setting, and files from
+            unofficial download sites are a security risk.
+          </li>
+          <li>
+            <strong>&quot;Works on RTX 20, 30, and 40 cards.&quot;</strong> Some third-party
+            optimizer and overlay tools list older RTX cards next to the DLSS 5 name. That refers
+            to their own processing, not to NVIDIA&apos;s Neural Rendering. NVIDIA&apos;s official
+            local support is RTX 50 and RTX Spark; RTX 40 is planned without a date.
+          </li>
+          <li>
+            <strong>&quot;DLSS 5 runs at 250+ FPS.&quot;</strong> NVIDIA&apos;s headline numbers
+            include 6X Multi Frame Generation. With frame generation off, independent tests of the
+            launch model measured roughly half the frame rate or less with Neural Rendering on. See the{" "}
+            <Link href="/dlss-5-system-requirements#benchmarks" className="text-blue-400 hover:underline">
+              published test summary
+            </Link>
+            .
+          </li>
+          <li>
+            <strong>&quot;Update your driver and DLSS 5 appears in every game.&quot;</strong> The
+            driver is only one of three requirements. As of October 18, 2026, NBA 2K27 is the
+            only live game; Hogwarts Legacy is scheduled for November 5.
+          </li>
+        </ul>
+        <p>
+          If the option is greyed out on a supported RTX 50 PC, the most common causes reported in
+          video guides and forums match the three checks above: an outdated driver, a game update
+          that has not finished, or a laptop running the game on its integrated GPU. Fix those in
+          that order before reinstalling anything.
+        </p>
+      </section>
+      <ArticleTrustBlock reviewedAt="2026-10-18" />
     </main>
   );
 }

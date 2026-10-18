@@ -104,7 +104,7 @@ export default function PtDlss5RequisitosPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Revisado em 5 de setembro de 2026
+            Revisado em 18 de outubro de 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Requisitos do DLSS 5: placas compatíveis e o que falta confirmar
@@ -123,6 +123,12 @@ export default function PtDlss5RequisitosPage() {
             com suporte publicado. NBA 2K27 é o primeiro exemplo confirmado e usa o driver
             GeForce Game Ready 616.64 WHQL. RTX 40 está planejada para depois, mas ainda
             não tem data. RTX 30, RTX 20 e GTX não devem ser compradas esperando DLSS 5.
+          </p>
+          <p className="mt-3 text-foreground/80 leading-relaxed">
+            Notebooks RTX Spark também entraram na lista em outubro. Se o seu PC ainda usa
+            Windows 10, atenção: a NVIDIA diz que outubro de 2026 traz o último driver Game Ready
+            para Windows 10, e os drivers Game Ready a partir de novembro exigem Windows 11. O
+            driver mais recente que encontramos em 18 de outubro é o 617.42 WHQL (6 de outubro).
           </p>
         </section>
 
@@ -210,15 +216,6 @@ export default function PtDlss5RequisitosPage() {
                 Títulos anunciados e o que ainda precisa de confirmação por jogo.
               </p>
             </Link>
-            <Link
-              href="/pt/ai-pc/nvidia-rtx-spark"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX Spark e AI PCs</div>
-              <p className="text-sm text-muted-foreground">
-                Separe requisitos DLSS da nova plataforma Windows AI PC da NVIDIA.
-              </p>
-            </Link>
           </div>
         </section>
 
@@ -243,7 +240,7 @@ export default function PtDlss5RequisitosPage() {
             onde o processamento roda nos servidores RTX 5080 da NVIDIA.
           </p>
         </section>
-        <ArticleTrustBlock locale="pt" reviewedAt="2026-09-05" />
+        <ArticleTrustBlock locale="pt" reviewedAt="2026-10-18" />
       </main>
     </>
   );

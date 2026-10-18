@@ -7,7 +7,7 @@ export const faqs = [
   },
   {
     q: "Which GPUs will support DLSS 5?",
-    a: "The confirmed local-PC path is GeForce RTX 50 desktop and laptop GPUs, including RTX 5090 through RTX 5050. RTX 40 support is planned but not available yet and has no public date. RTX 20 and RTX 30 do not currently have official DLSS 5 Neural Rendering support, while GTX, AMD, and Intel cards do not run local NVIDIA DLSS.",
+    a: "The confirmed local-PC path is GeForce RTX 50 desktop and laptop GPUs, including RTX 5090 through RTX 5050, plus RTX Spark laptops. RTX 40 support is planned but not available yet and has no public date. RTX 20 and RTX 30 do not currently have official DLSS 5 Neural Rendering support, while GTX, AMD, and Intel cards do not run local NVIDIA DLSS.",
   },
   {
     q: "How is DLSS 5 different from DLSS 4 and 4.5?",
@@ -23,11 +23,11 @@ export const faqs = [
   },
   {
     q: "Is DLSS 5 available now?",
-    a: "Yes, but only where the game, driver, and GPU path support it. NBA 2K27 is the first public game with DLSS 5 3D-guided Neural Rendering, using NVIDIA's 616.64 WHQL Game Ready Driver path on RTX 50 desktop and laptop GPUs. In that game, use Video Settings > DLSS Neural Rendering, and press F9 to toggle the effect during gameplay or replay.",
+    a: "Yes, but only where the game, driver, and GPU path support it. NBA 2K27 is the first public game with DLSS 5 3D-guided Neural Rendering, using NVIDIA's 616.64 WHQL or newer Game Ready Driver on RTX 50 desktop and laptop GPUs and RTX Spark laptops. A faster DLSS 5 model replaced the launch version in NBA 2K27 on October 16, 2026. In that game, use Video Settings > DLSS Neural Rendering, and press F9 to toggle the effect during gameplay or replay.",
   },
   {
     q: "What games will support DLSS 5?",
-    a: "NBA 2K27 is the first verified DLSS 5 game. Other named games remain announced or pending until each game publishes patch notes, settings, and GPU support details.",
+    a: "NBA 2K27 is the first verified DLSS 5 game. Hogwarts Legacy is scheduled for November 5, 2026 and Where Winds Meet for late November. Other named games remain announced or pending until each game publishes patch notes, settings, and GPU support details.",
   },
   {
     q: "Should I buy an RTX 50 GPU for DLSS 5?",

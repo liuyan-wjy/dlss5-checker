@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type DlssSupport, type GPU } from "@/lib/gpu-search";
-import { getGpuPageHref, isEnabledGpuSlug } from "@/lib/gpu-page-config";
 
 const PAGE_URL = "https://www.dlss5.net/dlss-5-supported-cards";
 
@@ -44,7 +43,7 @@ const STATUS_COPY: Record<
   confirmed: {
     title: "Confirmed cards",
     label: "Confirmed",
-    note: "RTX 50 desktop and laptop GPUs support DLSS 5 Neural Rendering in NBA 2K27 with the compatible game update and driver.",
+    note: "RTX 50 desktop and laptop GPUs and RTX Spark laptops support DLSS 5 Neural Rendering in NBA 2K27 with the compatible game update and driver. Hogwarts Legacy is scheduled for November 5, 2026.",
     className: "border-green-500/30 bg-green-500/5 text-green-300",
   },
   planned: {
@@ -96,14 +95,6 @@ function getFeatureSummary(gpu: GPU): string {
 }
 
 function CardLink({ gpu }: { gpu: GPU }) {
-  if (isEnabledGpuSlug("en", gpu.id)) {
-    return (
-      <Link href={getGpuPageHref("en", gpu.id)} className="hover:text-blue-400 hover:underline">
-        {gpu.name}
-      </Link>
-    );
-  }
-
   return <span>{gpu.name}</span>;
 }
 
@@ -211,7 +202,7 @@ export default function Dlss5SupportedCardsPage() {
     name: "DLSS 5 Supported Cards",
     url: PAGE_URL,
     inLanguage: "en",
-    dateModified: "2026-10-01",
+    dateModified: "2026-10-18",
     isPartOf: {
       "@type": "WebSite",
       name: "DLSS 5 Checker",
@@ -250,7 +241,7 @@ export default function Dlss5SupportedCardsPage() {
         </nav>
 
         <header className="max-w-3xl mb-10">
-          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked October 1, 2026</p>
+          <p className="text-sm font-semibold text-blue-400 mb-3">Last checked October 18, 2026</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Supported Cards: Confirmed, Planned, and Unsupported GPUs
           </h1>
@@ -267,9 +258,10 @@ export default function Dlss5SupportedCardsPage() {
         >
           <h2 className="text-xl font-bold mb-3">DLSS 5 supported cards short answer</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            Last checked October 1, 2026: RTX 50 desktop and laptop GPUs are confirmed
-            for DLSS 5 Neural Rendering in NBA 2K27, including RTX 5090 through RTX 5050.
-            RTX 40 is planned but not available yet and has no public date. RTX 20 and
+            Last checked October 18, 2026: RTX 50 desktop and laptop GPUs are confirmed
+            for DLSS 5 Neural Rendering in NBA 2K27, including RTX 5090 through RTX 5050,
+            and RTX Spark laptops joined with the faster October model. RTX 40 is planned
+            but not available yet and still has no public date. RTX 20 and
             RTX 30 have no current official DLSS 5 support, while GTX, AMD, and Intel
             cards are outside NVIDIA DLSS.
           </p>
@@ -353,6 +345,50 @@ export default function Dlss5SupportedCardsPage() {
         <StatusTable status="unsupported" />
         <StatusTable status="none" />
 
+        <section id="status-history" className="mb-10 space-y-4 text-foreground/80 leading-relaxed scroll-mt-24">
+          <h2 className="text-2xl font-bold text-foreground">How these status labels changed over time</h2>
+          <p>
+            The labels on this page come from a public data file, and every change to it is
+            recorded in the site&apos;s{" "}
+            <a href="https://github.com/liuyan-wjy/dlss5-checker/commits/main/data/gpu-data.json" className="text-blue-400 hover:underline">
+              GitHub history
+            </a>
+            . Seeing how the answer moved is useful: it shows which claims were guesses
+            before launch and which are now backed by NVIDIA documentation.
+          </p>
+          <ol className="space-y-3 text-sm">
+            <li className="rounded-lg border border-border p-4">
+              <strong>March 17, 2026, after GTC.</strong> First labels. Higher-end RTX 50
+              cards were marked confirmed from NVIDIA&apos;s announcement, RTX 40 and RTX 30
+              were marked possible or unlikely, and GTX had no DLSS. The same day we moved
+              the RTX 5060 and 5060 Ti down to unlikely after rereading the GTC material. The
+              September launch article later showed that was too cautious.
+            </li>
+            <li className="rounded-lg border border-border p-4">
+              <strong>June 22, 2026.</strong> We dropped guess-style labels such as
+              &quot;possible&quot; and &quot;unlikely&quot; in favour of &quot;expected&quot; and
+              &quot;unknown&quot;, because NVIDIA had not published a hardware list and the
+              earlier wording read like predictions.
+            </li>
+            <li className="rounded-lg border border-border p-4">
+              <strong>September 5, 2026, after the NBA 2K27 launch.</strong> NVIDIA&apos;s launch
+              article named every RTX 50 desktop and laptop GPU, so all of them became
+              confirmed. RTX 40 became planned, based on NVIDIA&apos;s FAQ, and RTX 20 and RTX 30
+              became unsupported for DLSS 5 while keeping their other DLSS features.
+            </li>
+            <li className="rounded-lg border border-border p-4">
+              <strong>October 18, 2026.</strong> RTX Spark laptops were added as confirmed
+              after NVIDIA&apos;s October model update named them. RTX 40 stayed planned because
+              the same update did not include it.
+            </li>
+          </ol>
+          <p className="text-sm text-muted-foreground">
+            What would move RTX 40 to confirmed: an NVIDIA driver note, game patch, or
+            support table that names RTX 40 GPUs for Neural Rendering. A forum post, a
+            leaked menu, or a mod is not enough.
+          </p>
+        </section>
+
         <section className="mb-10 rounded-lg border border-border p-5">
           <h2 className="text-2xl font-bold mb-4">Related pages</h2>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -420,15 +456,6 @@ export default function Dlss5SupportedCardsPage() {
               </p>
             </Link>
             <Link
-              href="/gpu/rtx-4070"
-              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
-            >
-              <div className="font-semibold mb-1">RTX 4070 support status</div>
-              <p className="text-sm text-muted-foreground">
-                Current DLSS features and what remains unconfirmed.
-              </p>
-            </Link>
-            <Link
               href="/pt/dlss-5-quais-placas"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
             >
@@ -473,7 +500,7 @@ export default function Dlss5SupportedCardsPage() {
             These are compatibility statements, not measured performance results.
           </p>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-10-01" />
+        <ArticleTrustBlock reviewedAt="2026-10-18" />
       </main>
     </>
   );

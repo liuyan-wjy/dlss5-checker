@@ -162,7 +162,7 @@ export default function Dlss5NeuralRenderingPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Technical explainer updated October 1, 2026
+            Technical explainer updated October 18, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Neural Rendering: What “3D-Guided” Means
@@ -170,7 +170,8 @@ export default function Dlss5NeuralRenderingPage() {
           <p className="text-lg text-muted-foreground leading-relaxed">
             DLSS 5 Neural Rendering changes lighting and materials using the game&apos;s
             rendered frame and motion data. It runs in NBA 2K27 on RTX 50 desktop and
-            laptop GPUs, alongside separate options for upscaling and frame generation.
+            laptop GPUs and RTX Spark laptops, alongside separate options for upscaling and
+            frame generation. A faster, smaller model replaced the launch version in October.
           </p>
         </header>
 
@@ -201,6 +202,32 @@ export default function Dlss5NeuralRenderingPage() {
           <p className="text-sm text-muted-foreground">
             Source: <a href={NVIDIA_DLSS_DEVELOPER} className="text-blue-400 hover:underline">NVIDIA&apos;s September 22 developer explanation</a>.
             Its design claims do not establish a measured performance cost for your PC.
+          </p>
+        </section>
+
+        <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
+          <h2 className="text-2xl font-bold text-foreground">What changed in the October 2026 model</h2>
+          <p>
+            NVIDIA replaced the launch model with a revised one on October 16, 2026, starting
+            in NBA 2K27. The approach is the same, one frame in and one enhanced frame out,
+            but the network is smaller: NVIDIA gives about 118 million parameters, roughly
+            24% fewer than before. That is why it reports about half the GPU time per frame
+            and about 20% less VRAM at 4K. A smaller model mainly changes the cost of the
+            effect, not what the effect is for.
+          </p>
+          <p>
+            The look is also being tuned per game. NVIDIA says Avalanche Software used the
+            DLSS 5 SDK controls to keep Hogwarts Legacy&apos;s art style, and early coverage of
+            the new comparison images describes faces that change far less than in the March
+            2026 demo. That matters for the most common worry about Neural Rendering: whether
+            the AI repaints characters. The developer controls described above (masks and
+            Structure and Tone intensity) are how a studio limits that. Judge the November 5
+            Hogwarts Legacy update yourself with the same on/off scene comparison used for
+            NBA 2K27.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Source: <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/" className="text-blue-400 hover:underline">NVIDIA&apos;s October 2026 DLSS 5 update</a>.
+            Performance figures are NVIDIA&apos;s and not measured by this site.
           </p>
         </section>
 
@@ -371,7 +398,7 @@ export default function Dlss5NeuralRenderingPage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-10-01" />
+        <ArticleTrustBlock reviewedAt="2026-10-18" />
       </main>
     </>
   );
