@@ -157,7 +157,6 @@ assert.match(
   /<meta name="google-adsense-account" content="ca-pub-5442184426795655"/,
   "Homepage must retain AdSense ownership verification",
 );
-assert.doesNotMatch(homepage, /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/);
 assert.doesNotMatch(homepage, /googletagmanager\.com\/gtag\/js/);
 assert.match(homepage, /plausible-ly-005\.pages\.dev\/js\/pa-VclqONE0bFW-1okXx2CnS\.js/);
 assert.match(homepage, /plausible\.init/);
@@ -211,8 +210,16 @@ assert.doesNotMatch(
 );
 
 const privacy = readRoute("privacy");
-assert.match(privacy, /AdSense ad-serving code and Auto ads are not loaded/);
-assert.doesNotMatch(privacy, /we use a Google-certified consent management platform/i);
+// AdSense is live: every page must load the publisher's ad script, and the
+// privacy policy must disclose Google's ad cookies and the consent choices.
+const adsenseScript = /<script async="" src="https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-5442184426795655" crossorigin="anonymous">/;
+for (const html of generatedPages) {
+  assert.match(html, adsenseScript, "Every exported page must load the AdSense script once");
+  assert.equal((html.match(/<script[^>]*adsbygoogle\.js/g) || []).length, 1, "AdSense script must not be duplicated");
+}
+assert.match(privacy, /policies\.google\.com\/technologies\/partner-sites/);
+assert.match(privacy, /adssettings\.google\.com/);
+assert.match(visibleText(privacy), /certified consent management platform/);
 assert.doesNotMatch(privacy, /We use Google Analytics/i);
 assert.match(visibleText(privacy), /Cloudflare Web Analytics/);
 assert.match(visibleText(privacy), /real.user monitoring|RUM/i);
