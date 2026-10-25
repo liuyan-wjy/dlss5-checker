@@ -6,6 +6,7 @@ import { type GPU, getFeatureLabel } from "@/lib/gpu-search";
 import { CheckCircle2, XCircle, AlertCircle, Clock } from "lucide-react";
 import Link from "next/link";
 import GpuNextSteps from "@/components/GpuNextSteps";
+import ShareResult from "@/components/ShareResult";
 
 interface CompatibilityResultProps {
   gpu: GPU;
@@ -64,6 +65,10 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
               <p className="text-lg font-semibold mt-1">{gpu.name}</p>
               <p className="text-muted-foreground text-sm mt-1">{gpu.vram.endsWith("GB") ? `${gpu.vram} VRAM` : gpu.vram} · {gpu.series}</p>
             </div>
+          </div>
+
+          <div className="mb-4">
+            <ShareResult key={gpu.id} gpu={gpu} />
           </div>
 
           {/* Summary */}

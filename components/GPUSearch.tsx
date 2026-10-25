@@ -7,10 +7,12 @@ import { Search } from "lucide-react";
 
 interface GPUSearchProps {
   onResult: (gpu: GPU | null) => void;
+  /** GPU name to show in the input when a result is opened from a shared link. */
+  initialQuery?: string;
 }
 
-export default function GPUSearch({ onResult }: GPUSearchProps) {
-  const [query, setQuery] = useState("");
+export default function GPUSearch({ onResult, initialQuery = "" }: GPUSearchProps) {
+  const [query, setQuery] = useState(initialQuery);
   const [suggestions, setSuggestions] = useState<GPU[]>([]);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);

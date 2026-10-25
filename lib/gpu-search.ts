@@ -82,3 +82,7 @@ export function getFeatureLabel(featureId: string): string {
 }
 
 export const ALL_GPUS: GPU[] = gpuData.gpus as GPU[];
+
+export function getGpuById(id: string): GPU | undefined {
+  return ALL_GPUS.find((gpu) => gpu.id === id);
+}
