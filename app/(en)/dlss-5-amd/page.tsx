@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
-const title = "Can You Use DLSS 5 on AMD? Official Answer, Cloud and Mods";
-const description = "No: AMD Radeon GPUs have no official DLSS 5 support. See the two ways AMD users can still try it, and what AMD FSR Redstone offers instead.";
+const title = "DLSS 5 on AMD: Official Support, Cloud Access and Mod Status";
+const description = "AMD Radeon has no official local DLSS 5 support. Compare eligible GeForce NOW access, experimental community mods and the limits of FSR or XeSS alternatives.";
 
 export const metadata: Metadata = {
   title,

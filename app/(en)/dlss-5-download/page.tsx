@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
-const title = "DLSS 5 Download: How to Get and Enable It (Official Steps)";
-const description = "There is no standalone DLSS 5 download. Get it through an NVIDIA driver and a supported game, check your GPU, and find the Neural Rendering setting in 3 steps.";
+const title = "DLSS 5 Download & Setup: Drivers, Games and GPU Requirements";
+const description = "Get DLSS 5 through official NVIDIA drivers and supported games. Check GPU, game and driver requirements, then find the Neural Rendering setting.";
 
 export const metadata: Metadata = {
   title,

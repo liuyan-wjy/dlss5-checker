@@ -3,24 +3,24 @@ import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Release Date: Out Now, Next Games and RTX 40 Status",
+  title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
   description:
-    "DLSS 5 released September 3, 2026 in NBA 2K27. See the next dates: Hogwarts Legacy on November 5, Where Winds Meet in late November, and RTX 40 status.",
+    "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
   alternates: {
     canonical: "/dlss-5-release-date",
   },
   openGraph: {
-    title: "DLSS 5 Release Date: Out Now, Next Games and RTX 40 Status",
+    title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
     description:
-      "DLSS 5 released September 3, 2026 in NBA 2K27. See the next dates: Hogwarts Legacy on November 5, Where Winds Meet in late November, and RTX 40 status.",
+      "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
     type: "article",
     url: "https://www.dlss5.net/dlss-5-release-date",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DLSS 5 Release Date: Out Now, Next Games and RTX 40 Status",
+    title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
     description:
-      "DLSS 5 released September 3, 2026 in NBA 2K27. See the next dates: Hogwarts Legacy on November 5, Where Winds Meet in late November, and RTX 40 status.",
+      "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
   },
 };
 
@@ -242,7 +242,7 @@ export default function Dlss5ReleaseDatePage() {
             Last checked October 18, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-            DLSS 5 Release Date: Out Now, and What Comes Next
+            DLSS 5 Release Date: September 2026 Launch Status
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             NVIDIA moved DLSS 5 from an announced Fall 2026 window to a verified player
