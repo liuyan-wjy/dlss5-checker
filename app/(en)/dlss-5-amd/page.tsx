@@ -25,7 +25,7 @@ export default function Dlss5AmdPage() {
       <header className="mb-10">
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">Can you use DLSS 5 on AMD?</h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          AMD Radeon GPUs have no official local DLSS 5 Neural Rendering support as of October 1, 2026.
+          AMD Radeon GPUs have no official local DLSS 5 Neural Rendering support as of October 25, 2026.
           An eligible GeForce NOW session can render it remotely on NVIDIA hardware.
           Community AMD projects also exist, but their experiments are not official compatibility and we have not tested them.
           If your PC has an AMD Ryzen CPU and an RTX 50 GPU, check the GPU: the CPU brand is not the restriction.
@@ -89,6 +89,23 @@ export default function Dlss5AmdPage() {
       </section>
 
       <section className="mb-10 space-y-4 leading-relaxed text-foreground/80">
+        <h2 className="text-2xl font-bold text-foreground">Does AMD have its own answer to DLSS 5?</h2>
+        <p>
+          Not yet. AMD&apos;s current machine-learning graphics package is{" "}
+          <a href="https://gpuopen.com/learn/amd-fsr-redstone-developers-neural-rendering/" className="text-blue-400 hover:underline">FSR Redstone</a>,
+          built mainly for Radeon RX 9000 (RDNA 4) cards. It covers ML upscaling (FSR 4), frame generation, and
+          FSR Ray Regeneration, which plays a similar role to NVIDIA&apos;s Ray Reconstruction by cleaning up
+          ray-traced lighting. AMD has also shown Radiance Caching as a technical preview. None of these is a
+          counterpart to DLSS 5 Neural Rendering, which changes the lighting and materials of the final image.
+        </p>
+        <p>
+          Posts in September 2026 claimed AMD is working on a &quot;neural lighting&quot; feature, but AMD has not
+          announced or documented one, so treat it as a rumor. For a Radeon owner today, the practical choice is
+          FSR 4 or Redstone features in games that support them, and GeForce NOW if you want to see DLSS 5 itself.
+        </p>
+      </section>
+
+      <section className="mb-10 space-y-4 leading-relaxed text-foreground/80">
         <h2 className="text-2xl font-bold text-foreground">FSR and XeSS solve different questions</h2>
         <p>
           If you want higher frame rates on Radeon, start with the upscaling and frame-generation options
@@ -102,7 +119,7 @@ export default function Dlss5AmdPage() {
           For NBA 2K27 on eligible hardware or cloud sessions, use the <Link href="/games/nba-2k27-dlss-5" className="text-blue-400 hover:underline">game settings guide</Link>.
         </p>
       </section>
-      <ArticleTrustBlock reviewedAt="2026-10-01" />
+      <ArticleTrustBlock reviewedAt="2026-10-25" />
     </main>
   );
 }
