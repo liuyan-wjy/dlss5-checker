@@ -170,8 +170,10 @@ export default function Home() {
               in NBA 2K27 on October 16 for RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. NVIDIA
               says it needs about half the GPU time of the launch model. Hogwarts Legacy is the next
               dated game (November 5), followed by Where Winds Meet in late November. RTX 40 still
-              has no date. See the <Link href="/dlss-5-release-date" className="text-blue-400 hover:underline">release timeline</Link>{" "}
-              for sources.
+              has no date. See the <Link href="/dlss-5-release-date" className="text-blue-400 hover:underline">DLSS 5 release date timeline</Link>{" "}
+              for sources, and the{" "}
+              <Link href="/dlss-5-system-requirements" className="text-blue-400 hover:underline">DLSS 5 system requirements</Link>{" "}
+              for the driver and Windows version you need.
             </p>
             <p>
               <strong>What else is available today:</strong> RTX 50 GPUs also keep the current

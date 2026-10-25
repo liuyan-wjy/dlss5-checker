@@ -1,33 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DLSS 5 Checker
 
-## Getting Started
+Source code for **[dlss5.net](https://www.dlss5.net)**, an independent site that answers one question:
+*can my graphics card use NVIDIA DLSS 5, and what can I turn on today?*
 
-First, run the development server:
+- **[GPU checker](https://www.dlss5.net/)**: type a GPU model (RTX, GTX, Radeon, or Arc) and get its DLSS 5
+  status, the DLSS features it supports now, and where to switch each one on. Results can be shared as a link,
+  for example [dlss5.net/?gpu=rtx-4070](https://www.dlss5.net/?gpu=rtx-4070).
+- **[DLSS 5 supported cards](https://www.dlss5.net/dlss-5-supported-cards)**: every tracked GPU grouped as
+  confirmed, planned, unsupported, or no DLSS, with a dated history of how those labels changed.
+- **[DLSS 5 games](https://www.dlss5.net/dlss-5-games)**: which games are live, scheduled, or only announced.
+- **[System requirements and benchmarks](https://www.dlss5.net/dlss-5-system-requirements)**: driver and
+  Windows requirements plus a summary of published third-party performance tests.
+- **[Setup guide](https://www.dlss5.net/dlss-5-download)** and the
+  **[NBA 2K27 DLSS 5 guide](https://www.dlss5.net/games/nba-2k27-dlss-5)**.
+- Portuguese (Brazil) version at [dlss5.net/pt](https://www.dlss5.net/pt).
+
+The site is not affiliated with NVIDIA. It is written and maintained by
+[liuyan-wjy](https://github.com/liuyan-wjy).
+
+## Where the data comes from
+
+GPU support status lives in [`data/gpu-data.json`](data/gpu-data.json). A status changes only when a primary
+source supports it: an NVIDIA announcement, driver note, or support table, or a game publisher's patch notes.
+Media reports and leaks are used to know what to watch, not to change a label. Because the file is versioned
+here, the [commit history](https://github.com/liuyan-wjy/dlss5-checker/commits/main/data/gpu-data.json) shows
+when and why each label changed. The site's [editorial policy](https://www.dlss5.net/editorial-policy)
+describes the sourcing rules in full.
+
+## Corrections
+
+Found an outdated status or a missing GPU? [Open an issue](https://github.com/liuyan-wjy/dlss5-checker/issues)
+with the GPU or game, the page, and the source that shows the change, or email support@dlss5.net.
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm ci
+npm run dev        # http://localhost:3000
+npm run lint
+npx tsc --noEmit
+npm run test:gpu   # GPU search and checker result checks
+npm run test:seo   # builds the static site, then checks the exported HTML
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/(en)/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Pages live under `app/(en)` (English) and `app/pt` (Portuguese). Shared UI is in `components/`, and GPU search
+logic is in `lib/gpu-search.ts`.
 
 ## Deploy on Cloudflare Pages
 
