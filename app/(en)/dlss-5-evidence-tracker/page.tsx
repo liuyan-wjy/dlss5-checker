@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Evidence Tracker: Confirmed, Planned, Unsupported [2026]",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 Evidence Tracker: Confirmed, Planned, Unsupported [2026]",
     description:
       "Track what is confirmed, planned, unsupported, or not local DLSS for DLSS 5, including RTX 50, RTX 40, NBA 2K27, and DLSS 4.5 differences.",

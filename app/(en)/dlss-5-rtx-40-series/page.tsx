@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type GPU } from "@/lib/gpu-search";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5 on RTX 40 Series: Planned, Not Available Yet",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     canonical: "/dlss-5-rtx-40-series",
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 on RTX 40 Series: Planned, Not Available Yet",
     description:
       "See RTX 40 DLSS 5 planned status, why it is not available yet, and what RTX 4090, RTX 4080, RTX 4070, and RTX 4060 cards can already do with DLSS.",

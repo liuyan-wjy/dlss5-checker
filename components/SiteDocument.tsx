@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter, SiteHeader } from "@/components/SiteNavigation";
 import "@/app/globals.css";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Supported Cards & GPU Compatibility Checker",
@@ -21,9 +22,14 @@ export const metadata: Metadata = {
       "x-default": "https://www.dlss5.net",
     },
   },
+  openGraph: {
+    images: [OG_IMAGE_EN],
+  },
   robots: {
     index: true,
     follow: true,
+    // Lets Google show the large preview image in Discover and image results.
+    googleBot: { "max-image-preview": "large" },
   },
 };
 

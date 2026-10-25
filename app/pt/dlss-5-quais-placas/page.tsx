@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type DlssSupport, type GPU } from "@/lib/gpu-search";
+import { OG_IMAGE_PT } from "@/lib/og-image";
 
 const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-quais-placas";
 
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_PT],
     title: "DLSS 5: Quais Placas Suportam? Lista por GPU [2026]",
     description:
       "Veja quais placas estão confirmadas, planejadas, sem suporte oficial ou fora do NVIDIA DLSS para DLSS 5, com status para RTX 50, RTX 40, RTX 30, GTX, AMD e Intel.",

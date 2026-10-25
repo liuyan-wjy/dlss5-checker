@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "Contact | DLSS 5 GPU Compatibility Checker",
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     "Contact DLSS 5 Checker for data corrections, GPU requests, source updates, and editorial feedback about DLSS compatibility pages.",
   alternates: { canonical: "/contact" },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "Contact | DLSS 5 GPU Compatibility Checker",
     description:
       "Contact DLSS 5 Checker for data corrections, GPU requests, source updates, and editorial feedback about DLSS compatibility pages.",

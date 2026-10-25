@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import ComparisonTable from "@/components/ComparisonTable";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5 vs DLSS 4.5: What Actually Changes?",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 vs DLSS 4.5: What Actually Changes?",
     description:
       "Compare DLSS 5 and DLSS 4.5 without mixing up neural rendering, Super Resolution, Multi Frame Generation, hardware support, and release timing.",

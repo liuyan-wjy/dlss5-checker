@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 const title = "DLSS 5 Download & Setup: Drivers, Games and GPU Requirements";
 const description = "Get DLSS 5 through official NVIDIA drivers and supported games. Check GPU, game and driver requirements, then find the Neural Rendering setting.";
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
       "pt-BR": "https://www.dlss5.net/pt/como-ativar-dlss-5",
     },
   },
-  openGraph: { title, description, type: "article", url: "https://www.dlss5.net/dlss-5-download" },
+  openGraph: { images: [OG_IMAGE_EN], title, description, type: "article", url: "https://www.dlss5.net/dlss-5-download" },
   twitter: { card: "summary", title, description },
 };
 

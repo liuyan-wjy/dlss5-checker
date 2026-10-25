@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Guides: Setup, Games & GPU Compatibility",
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     "Set up DLSS 5, check your GPU and find supported games. Get NBA 2K27 troubleshooting, AMD options, and clear guides to DLSS 4.5 features.",
   alternates: { canonical: "/guides" },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 Guides: Setup, Games & GPU Compatibility",
     description:
       "Set up DLSS 5, check your GPU and find supported games. Get NBA 2K27 troubleshooting, AMD options, and clear guides to DLSS 4.5 features.",

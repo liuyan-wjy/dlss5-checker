@@ -5,9 +5,11 @@ import SupportedGPUsTable from "@/components/SupportedGPUsTable";
 import ComparisonTable from "@/components/ComparisonTable";
 import FAQSection, { faqs } from "@/components/FAQSection";
 import AdSlot from "@/components/AdSlot";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 GPU Compatibility Checker",
     description:
       "Check DLSS 5 GPU support with an evidence-based tracker for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel cards.",

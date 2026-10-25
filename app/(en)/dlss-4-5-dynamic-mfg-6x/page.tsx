@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 4.5 Dynamic MFG 6X: What Is Available Now for RTX",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "/dlss-4-5-dynamic-mfg-6x",
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 4.5 Dynamic MFG 6X: What Is Available Now for RTX",
     description:
       "DLSS 4.5 Dynamic Multi Frame Generation and 6X mode are live for RTX 50 owners. See requirements, driver notes, differences from DLSS 5, and game caveats.",

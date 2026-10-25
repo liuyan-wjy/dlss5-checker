@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 4.5 Games: Current Support and Verification [2026]",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "/dlss-4-5-games",
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 4.5 Games: Current Support and Verification [2026]",
     description:
       "Track DLSS 4.5 games, current feature support, NVIDIA App override caveats, verification steps, and how to avoid confusing current support with DLSS 5.",

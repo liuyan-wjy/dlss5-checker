@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_PT } from "@/lib/og-image";
 
 const title = "DLSS 5 na AMD: suporte oficial, GeForce NOW e mods";
 const description = "Radeon não tem suporte oficial local ao DLSS 5. Entenda as condições do GeForce NOW, os limites de mods experimentais e a diferença para FSR e XeSS.";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     canonical: "/pt/dlss-5-amd",
     languages: { en: "https://www.dlss5.net/dlss-5-amd", "pt-BR": "https://www.dlss5.net/pt/dlss-5-amd" },
   },
-  openGraph: { title, description, type: "article", locale: "pt_BR", url: "https://www.dlss5.net/pt/dlss-5-amd" },
+  openGraph: { images: [OG_IMAGE_PT], title, description, type: "article", locale: "pt_BR", url: "https://www.dlss5.net/pt/dlss-5-amd" },
   twitter: { card: "summary", title, description },
 };
 

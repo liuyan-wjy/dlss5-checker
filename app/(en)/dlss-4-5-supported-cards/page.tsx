@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 const PAGE_URL = "https://www.dlss5.net/dlss-4-5-supported-cards";
 const META_TITLE = "DLSS 4.5 Supported Cards: RTX 20–50 GPU Guide";
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: META_TITLE,
     description: META_DESCRIPTION,
     type: "article",

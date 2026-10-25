@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 4.5 Ray Reconstruction: Release Date, GPUs, Games",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     canonical: "/dlss-4-5-ray-reconstruction",
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 4.5 Ray Reconstruction: Release Date, GPUs, Games",
     description:
       "DLSS 4.5 Ray Reconstruction is available: check all-RTX hardware support, 30 NVIDIA App game profiles, setup steps, image quality, and performance.",

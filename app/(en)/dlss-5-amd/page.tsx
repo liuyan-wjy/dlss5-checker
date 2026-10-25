@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 const title = "DLSS 5 on AMD: Official Support, Cloud Access and Mod Status";
 const description = "AMD Radeon has no official local DLSS 5 support. Compare eligible GeForce NOW access, experimental community mods and the limits of FSR or XeSS alternatives.";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     canonical: "/dlss-5-amd",
     languages: { en: "https://www.dlss5.net/dlss-5-amd", "pt-BR": "https://www.dlss5.net/pt/dlss-5-amd" },
   },
-  openGraph: { title, description, type: "article", url: "https://www.dlss5.net/dlss-5-amd" },
+  openGraph: { images: [OG_IMAGE_EN], title, description, type: "article", url: "https://www.dlss5.net/dlss-5-amd" },
   twitter: { card: "summary", title, description },
 };
 
