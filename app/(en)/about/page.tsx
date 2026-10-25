@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SupportLink from "@/components/SupportLink";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
@@ -155,6 +156,19 @@ export default function AboutPage() {
               support@dlss5.net
             </a>
             .
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold mb-3 text-foreground">Support the Site</h2>
+          <p>
+            Everything on DLSS 5 Checker is free, and ads cover hosting. If the checker or a
+            guide saved you time, you can{" "}
+            <SupportLink placement="about" className="font-medium text-blue-400 hover:underline">
+              buy me a coffee ☕
+            </SupportLink>
+            {" "}(US$3 each, through Stripe). It is entirely optional: tips do not unlock
+            anything, and they never influence a GPU&apos;s support status.
           </p>
         </section>
       </div>

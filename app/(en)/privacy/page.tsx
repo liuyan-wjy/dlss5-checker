@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <h1 className="text-3xl font-bold mb-8">Privacy Policy</h1>
-      <p className="text-muted-foreground text-sm mb-8">Last updated: October 24, 2026</p>
+      <p className="text-muted-foreground text-sm mb-8">Last updated: October 25, 2026</p>
 
       <div className="space-y-8 text-foreground/80 leading-relaxed">
         <section>
@@ -158,7 +158,27 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold mb-3 text-foreground">8. Third-Party Links</h2>
+          <h2 className="text-xl font-semibold mb-3 text-foreground">8. Optional Tips Through Stripe</h2>
+          <p>
+            The &quot;Buy me a coffee&quot; links open a checkout page hosted by Stripe. No Stripe
+            code runs on this site until you follow that link. If you choose to pay, Stripe
+            processes your payment details, email address, and related payment data under the{" "}
+            <a
+              href="https://stripe.com/privacy"
+              className="text-blue-400 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Stripe Privacy Policy
+            </a>
+            . We receive the payment record from Stripe, such as the amount, date, and email
+            address, but never your full card number. We use it only to keep accounts and
+            handle refunds or questions.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold mb-3 text-foreground">9. Third-Party Links</h2>
           <p>
             Articles link to NVIDIA, game publishers, hardware vendors, and other external
             sources. Visiting an external link sends you to a separate service with its own
@@ -168,7 +188,7 @@ export default function PrivacyPage() {
 
         <section>
           <h2 className="text-xl font-semibold mb-3 text-foreground">
-            9. Children&apos;s Privacy
+            10. Children&apos;s Privacy
           </h2>
           <p>
             This site is not directed at children under 13, and we do not knowingly collect
@@ -179,7 +199,7 @@ export default function PrivacyPage() {
 
         <section>
           <h2 className="text-xl font-semibold mb-3 text-foreground">
-            10. Changes to This Policy
+            11. Changes to This Policy
           </h2>
           <p>
             We may update this policy when the site&apos;s providers or data practices change.
@@ -190,7 +210,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold mb-3 text-foreground">11. Publisher Contact</h2>
+          <h2 className="text-xl font-semibold mb-3 text-foreground">12. Publisher Contact</h2>
           <p>
             The publisher is DLSS 5 Checker (dlss5.net), with editorial responsibility held
             by liuyan-wjy. For privacy questions or deletion requests, email{" "}

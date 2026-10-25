@@ -7,6 +7,7 @@ import { CheckCircle2, XCircle, AlertCircle, Clock } from "lucide-react";
 import Link from "next/link";
 import GpuNextSteps from "@/components/GpuNextSteps";
 import ShareResult from "@/components/ShareResult";
+import SupportLink from "@/components/SupportLink";
 
 interface CompatibilityResultProps {
   gpu: GPU;
@@ -207,6 +208,13 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
             </p>
           </section>
           <GpuNextSteps gpu={gpu} />
+          <p className="mt-5 border-t border-border pt-4 text-left text-sm text-muted-foreground">
+            DLSS 5 Checker is free and kept up to date by one person. If this answer helped,{" "}
+            <SupportLink placement="result" className="font-medium text-blue-400 hover:underline">
+              buy me a coffee ☕
+            </SupportLink>
+            .
+          </p>
         </CardContent>
       </Card>
     </div>
