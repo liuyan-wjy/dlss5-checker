@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "Frame Generation vs Multi Frame Generation in DLSS",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "/dlss-frame-generation-vs-multi-frame-generation",
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "Frame Generation vs Multi Frame Generation in DLSS",
     description:
       "Compare DLSS Frame Generation, Multi Frame Generation, Dynamic MFG, and 6X mode so RTX 40 and RTX 50 users can separate current features from DLSS 5 claims.",

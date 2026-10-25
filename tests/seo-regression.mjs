@@ -390,4 +390,16 @@ assert.ok(
   "Only not-found pages may be noindex; thin pages should be improved or removed instead",
 );
 
+// Every indexable page carries the shared 1200x630 preview image in its language.
+for (const [route, html] of generatedPages.map((html, i) => [i, html])) {
+  if (/<title>Page not found/.test(html)) continue;
+  assert.match(html, /<meta property="og:image" content="https:\/\/www\.dlss5\.net\/og\/dlss5-checker-(en|pt)\.png"/, `page ${route} must have a social preview image`);
+  assert.match(html, /<meta name="googlebot" content="max-image-preview:large"/, `page ${route} must allow large image previews`);
+}
+for (const [route, lang] of [["index", "en"], ["dlss-5-games", "en"], ["games/nba-2k27-dlss-5", "en"], ["pt", "pt"], ["pt/dlss-5-jogos", "pt"]]) {
+  assert.match(readRoute(route), new RegExp(`og:image" content="https://www\\.dlss5\\.net/og/dlss5-checker-${lang}\\.png"`), `${route} must use the ${lang} preview image`);
+}
+assert.ok(fs.existsSync(path.join(appOutput, "og", "dlss5-checker-en.png")));
+assert.ok(fs.existsSync(path.join(appOutput, "og", "dlss5-checker-pt.png")));
+
 console.log("SEO regression checks passed.");

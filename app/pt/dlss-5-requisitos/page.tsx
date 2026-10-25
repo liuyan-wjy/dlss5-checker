@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_PT } from "@/lib/og-image";
 
 const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-requisitos";
 
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_PT],
     title: "Requisitos DLSS 5: placas, driver e jogos",
     description:
       "Veja requisitos atuais do DLSS 5 no Brasil: RTX 50 desktop e notebook, driver 616.64 no NBA 2K27, RTX 40 planejada sem data definida e limites RTX 20/30.",

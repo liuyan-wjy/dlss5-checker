@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
     description:
       "Track DLSS 5 games after launch: NBA 2K27 live support, announced titles still waiting on patches, and how to separate game support from GPU support.",

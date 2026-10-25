@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_PT } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "Jogos com DLSS 5: NBA 2K27 disponível e status por título",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_PT],
     title: "Jogos com DLSS 5: NBA 2K27 disponível e status por título",
     description:
       "Veja NBA 2K27 com DLSS 5 já disponível em RTX 50, quais jogos seguem apenas anunciados e por que suporte do jogo não é igual ao suporte da sua placa.",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export type Dlss5GameGuideKey = "nba-2k27";
 
@@ -292,6 +293,7 @@ export function createDlss5GameMetadata(key: Dlss5GameGuideKey): Metadata {
       canonical: guide.canonical,
     },
     openGraph: {
+      images: [OG_IMAGE_EN],
       title: guide.metaTitle,
       description: guide.metaDescription,
       type: "article",

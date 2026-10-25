@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Neural Rendering: What 3D-Guided Rendering Means",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "/dlss-5-neural-rendering",
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 Neural Rendering: What 3D-Guided Rendering Means",
     description:
       "Learn what DLSS 5 3D-guided Neural Rendering means, how game frames and motion vectors guide the model, and why it differs from video generation.",

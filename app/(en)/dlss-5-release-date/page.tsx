@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "/dlss-5-release-date",
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
     description:
       "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",

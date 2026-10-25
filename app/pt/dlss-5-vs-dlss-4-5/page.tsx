@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import ComparisonTable from "@/components/ComparisonTable";
+import { OG_IMAGE_PT } from "@/lib/og-image";
 
 const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-vs-dlss-4-5";
 
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_PT],
     title: "DLSS 5 vs DLSS 4.5: diferença real para jogos e placas",
     description:
       "Compare DLSS 5 vs DLSS 4.5 em português: Neural Rendering, Super Resolution, geração de quadros, jogos compatíveis e suporte de placas RTX.",

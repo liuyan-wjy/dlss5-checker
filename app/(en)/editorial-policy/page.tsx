@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "Editorial Policy | DLSS 5 Checker",
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     "How DLSS 5 Checker labels confirmed, planned, unsupported, and no-DLSS claims, plus source, correction, and update standards.",
   alternates: { canonical: "/editorial-policy" },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "Editorial Policy | DLSS 5 Checker",
     description: "How DLSS 5 Checker labels confirmed, planned, unsupported, and no-DLSS claims, plus source, correction, and update standards.",
     type: "article",

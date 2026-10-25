@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5 Unreal Engine Status: What Developers Know Now",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "/dlss-5-unreal-engine",
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 Unreal Engine Status: What Developers Know Now",
     description:
       "See DLSS 5 Unreal Engine status, current DLSS 4.5 UE plugin support, Streamline details, and what remains separate from the NBA 2K27 player launch.",

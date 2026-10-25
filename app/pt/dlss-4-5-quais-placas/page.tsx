@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OG_IMAGE_PT } from "@/lib/og-image";
 
 const PAGE_URL = "https://www.dlss5.net/pt/dlss-4-5-quais-placas";
 const META_TITLE = "DLSS 4.5: Quais Placas de Vídeo São Compatíveis?";
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_PT],
     title: META_TITLE,
     description: META_DESCRIPTION,
     type: "article",

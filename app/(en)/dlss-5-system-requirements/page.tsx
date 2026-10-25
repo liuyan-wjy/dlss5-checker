@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5 System Requirements: RTX 50, Driver, and Game Support",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 System Requirements: RTX 50, Driver, and Game Support",
     description:
       "Looking for DLSS 5 system requirements? See RTX 50 support, the NBA 2K27 616.64 WHQL driver, RTX 40 planned status, and local vs GeForce NOW support.",

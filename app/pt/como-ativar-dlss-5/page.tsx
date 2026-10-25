@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_PT } from "@/lib/og-image";
 
 const title = "Como baixar e ativar o DLSS 5: driver, placa e jogos";
 const description = "Saiba onde baixar o driver oficial e como ativar o DLSS 5. Confira placa, jogo e atualização, encontre Neural Rendering e entenda as opções ausentes.";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     canonical: "/pt/como-ativar-dlss-5",
     languages: { en: "https://www.dlss5.net/dlss-5-download", "pt-BR": "https://www.dlss5.net/pt/como-ativar-dlss-5" },
   },
-  openGraph: { title, description, type: "article", locale: "pt_BR", url: "https://www.dlss5.net/pt/como-ativar-dlss-5" },
+  openGraph: { images: [OG_IMAGE_PT], title, description, type: "article", locale: "pt_BR", url: "https://www.dlss5.net/pt/como-ativar-dlss-5" },
   twitter: { card: "summary", title, description },
 };
 

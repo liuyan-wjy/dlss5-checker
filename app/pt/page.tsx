@@ -4,6 +4,7 @@ import GPUChecker from "@/components/GPUChecker";
 import SupportedGPUsTable from "@/components/SupportedGPUsTable";
 import ComparisonTable from "@/components/ComparisonTable";
 import AdSlot from "@/components/AdSlot";
+import { OG_IMAGE_PT } from "@/lib/og-image";
 
 export const metadata: Metadata = {
   title: "DLSS 5: quais placas suportam? Verificador GPU",
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_PT],
     title: "DLSS 5: quais placas suportam? Verificador GPU",
     description:
       "Verifique se sua placa NVIDIA suporta DLSS 5, veja placas compatíveis, requisitos, jogos confirmados e diferenças entre DLSS 4.5 e DLSS 5.",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { ALL_GPUS, type DlssSupport, type GPU } from "@/lib/gpu-search";
+import { OG_IMAGE_EN } from "@/lib/og-image";
 
 const PAGE_URL = "https://www.dlss5.net/dlss-5-supported-cards";
 
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_EN],
     title: "DLSS 5 Supported Cards: RTX 50 Confirmed, RTX 40 Planned [2026]",
     description:
       "See which GPUs are confirmed, planned, unsupported, or outside NVIDIA DLSS for DLSS 5. Includes RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel status notes.",

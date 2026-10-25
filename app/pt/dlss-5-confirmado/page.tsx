@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import { OG_IMAGE_PT } from "@/lib/og-image";
 
 const PAGE_URL = "https://www.dlss5.net/pt/dlss-5-confirmado";
 
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE_PT],
     title: "DLSS 5 está confirmado? Lançamento, placas e jogos",
     description:
       "Entenda o DLSS 5 após o lançamento: RTX 50 confirmado, RTX 40 planejado sem data, NBA 2K27 disponível e outros jogos ainda em verificação.",
