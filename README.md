@@ -65,11 +65,13 @@ Enable automatic production deployments for `main`. A saved repository name and
 an enabled switch are not sufficient: the Deployments page must show no Git
 account disconnection warning, and a push must produce a `github:push` deployment.
 If the project is disconnected, reconnect the existing repository in Settings
-without deleting the Pages project or its custom domains.
+without deleting the Pages project or its custom domains. In the GitHub app's
+repository access settings, ensure `dlss5-checker` is included: Cloudflare can
+clone this public repository even when it lacks access to receive push events.
 
 The production build also preserves `public/indexnow-key.txt`, which is excluded
 from Git. Set the existing ownership key as the Pages build secret `INDEXNOW_KEY`
-and use this production build command:
+in both production and preview environments, then use this build command:
 
 ```sh
 npm run build && test -n "$INDEXNOW_KEY" && printf '%s\n' "$INDEXNOW_KEY" > out/indexnow-key.txt
