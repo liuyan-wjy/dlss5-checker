@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SupportLink from "@/components/SupportLink";
 
 const primaryLinks = [
   { href: "/", label: "Home" },
@@ -80,6 +81,9 @@ export function SiteFooter({ locale = "en" }: { locale?: "en" | "pt" }) {
               {pt ? link.ptLabel : link.label}
             </Link>
           ))}
+          <SupportLink placement="footer" className="inline-flex min-h-11 items-center hover:text-foreground">
+            {pt ? "Pague um café ☕" : "Buy me a coffee ☕"}
+          </SupportLink>
           <a href="/sitemap.xml" className="inline-flex min-h-11 items-center hover:text-foreground">
             {pt ? "Mapa do site" : "Sitemap"}
           </a>

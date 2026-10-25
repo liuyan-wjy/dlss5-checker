@@ -402,4 +402,15 @@ for (const [route, lang] of [["index", "en"], ["dlss-5-games", "en"], ["games/nb
 assert.ok(fs.existsSync(path.join(appOutput, "og", "dlss5-checker-en.png")));
 assert.ok(fs.existsSync(path.join(appOutput, "og", "dlss5-checker-pt.png")));
 
+// Optional tip link: footer on every page, explained on About, disclosed in Privacy.
+const supportUrl = "https://buy.stripe.com/eVq8wR6HPbc14THdJt2Ji00";
+for (const html of generatedPages) {
+  if (/<title>Page not found/.test(html)) continue;
+  assert.ok(html.includes(`href="${supportUrl}"`), "Every page footer must link to the tip jar");
+}
+assert.match(visibleText(readRoute("about")), /buy me a coffee/i);
+assert.match(visibleText(readRoute("privacy")), /Optional Tips Through Stripe/);
+assert.match(readRoute("privacy"), /https:\/\/stripe\.com\/privacy/);
+assert.doesNotMatch(generatedHtml, /js\.stripe\.com/, "No Stripe script should load on the site");
+
 console.log("SEO regression checks passed.");
