@@ -8,7 +8,7 @@ const PAGE_URL = "https://www.dlss5.net/dlss-5-supported-cards";
 export const metadata: Metadata = {
   title: "DLSS 5 Supported Cards: RTX 50 Confirmed, RTX 40 Planned [2026]",
   description:
-    "See which GPUs are confirmed, planned, unsupported, or outside NVIDIA DLSS for DLSS 5. Includes RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel status notes.",
+    "Which GPUs support DLSS 5? Every RTX 50 card now, RTX 40 planned without a date, RTX 30 not supported. Quick answers for RTX 3060, 4060, 4070, 5060 and more.",
   alternates: {
     canonical: "/dlss-5-supported-cards",
     languages: {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DLSS 5 Supported Cards: RTX 50 Confirmed, RTX 40 Planned [2026]",
     description:
-      "See which GPUs are confirmed, planned, unsupported, or outside NVIDIA DLSS for DLSS 5. Includes RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel status notes.",
+      "Which GPUs support DLSS 5? Every RTX 50 card now, RTX 40 planned without a date, RTX 30 not supported. Quick answers for RTX 3060, 4060, 4070, 5060 and more.",
     type: "article",
     url: PAGE_URL,
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "DLSS 5 Supported Cards: RTX 50 Confirmed, RTX 40 Planned [2026]",
     description:
-      "See which GPUs are confirmed, planned, unsupported, or outside NVIDIA DLSS for DLSS 5. Includes RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel status notes.",
+      "Which GPUs support DLSS 5? Every RTX 50 card now, RTX 40 planned without a date, RTX 30 not supported. Quick answers for RTX 3060, 4060, 4070, 5060 and more.",
   },
 };
 
@@ -93,6 +93,66 @@ function getFeatureSummary(gpu: GPU): string {
 
   return "No DLSS feature support";
 }
+
+// Ordered by Search Console impressions for "<model> dlss 5" queries (October 2026).
+const popularCards = [
+  {
+    id: "rtx-3060",
+    name: "RTX 3060 and RTX 3060 Ti",
+    answer: "No DLSS 5 support",
+    answerClass: "text-orange-400",
+    detail:
+      "RTX 30 cards have no official DLSS 5 Neural Rendering support, and NVIDIA has not announced plans to add it. A Ti suffix or 12GB of VRAM does not change that. They keep DLSS 4.5 Super Resolution, DLAA, and Ray Reconstruction in supported games, but not NVIDIA Frame Generation.",
+  },
+  {
+    id: "rtx-4060",
+    name: "RTX 4060 and RTX 4060 Ti",
+    answer: "Planned, no date yet",
+    answerClass: "text-yellow-400",
+    detail:
+      "RTX 40 support is planned, but NVIDIA's October 2026 update still left RTX 40 out. When it arrives, the 8GB models will be the tightest fit, since Neural Rendering adds VRAM use at higher resolutions. Today they support Super Resolution, Ray Reconstruction, and 2X Frame Generation.",
+  },
+  {
+    id: "rtx-4070",
+    name: "RTX 4070, 4070 SUPER, and 4070 Ti",
+    answer: "Planned, no date yet",
+    answerClass: "text-yellow-400",
+    detail:
+      "Same RTX 40 status as every other 40-series card: Ti and SUPER variants do not get DLSS 5 earlier. If DLSS 5 is the only reason to upgrade, waiting for NVIDIA's RTX 40 date is reasonable; the card already runs every other current DLSS feature except Multi Frame Generation.",
+  },
+  {
+    id: "rtx-3070",
+    name: "RTX 3070 and RTX 3080",
+    answer: "No DLSS 5 support",
+    answerClass: "text-orange-400",
+    detail:
+      "Like the rest of RTX 30, no official DLSS 5. These cards still benefit from the DLSS 4.5 Super Resolution model; in ray-traced games, Ray Reconstruction is the newest DLSS feature they can use.",
+  },
+  {
+    id: "rtx-5060",
+    name: "RTX 5060, 5060 Ti, and 5050",
+    answer: "Supported now",
+    answerClass: "text-green-400",
+    detail:
+      "Every RTX 50 card is supported, including the entry models. The catch is speed: independent tests showed Neural Rendering roughly halving frame rates on the launch model, so on these cards start at 1080p with Super Resolution and check the 8GB vs 16GB version of a 5060 Ti before comparing results.",
+  },
+  {
+    id: "rtx-5070",
+    name: "RTX 5070 desktop and laptop",
+    answer: "Supported now",
+    answerClass: "text-green-400",
+    detail:
+      "Both are supported. In GameGPU's NBA 2K27 test the desktop RTX 5070 was the lowest card averaging above 60 FPS with Neural Rendering and maximum ray tracing, without frame generation. The laptop version is a different chip, so compare laptop results, not desktop ones.",
+  },
+  {
+    id: "rtx-4090",
+    name: "RTX 4090 and RTX 4080",
+    answer: "Planned, no date yet",
+    answerClass: "text-yellow-400",
+    detail:
+      "The fastest RTX 40 cards are in the same planned group as the rest of the series. Raw performance is not the blocker; NVIDIA simply has not released the RTX 40 version yet.",
+  },
+];
 
 function CardLink({ gpu }: { gpu: GPU }) {
   return <span>{gpu.name}</span>;
@@ -315,24 +375,20 @@ export default function Dlss5SupportedCardsPage() {
           </p>
         </section>
 
-        <section className="mb-10 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border p-5">
-            <h2 className="text-xl font-bold mb-3">RTX 3060 and RTX 3060 Ti</h2>
-            <p className="text-sm text-foreground/80 leading-relaxed">
-              Neither card has official DLSS 5 Neural Rendering support. A Ti suffix or
-              different VRAM capacity does not change the RTX 30 feature limits: SR,
-              DLAA, and RR can work in compatible games; NVIDIA FG and MFG cannot.
-              For an existing PC, start with those supported settings rather than a DLSS 5 DLL swap.
-            </p>
-          </div>
-          <div className="rounded-lg border border-border p-5">
-            <h2 className="text-xl font-bold mb-3">RTX 5070 desktop and laptop</h2>
-            <p className="text-sm text-foreground/80 leading-relaxed">
-              Both are in the supported RTX 50 family. The RTX 5070 Laptop GPU is a
-              separate product: shared feature support does not promise desktop frame rates.
-              Confirm that the game uses the RTX GPU, update the game and driver, then
-              compare NR on and off at your chosen resolution.
-            </p>
+        <section id="popular-cards" className="mb-10 scroll-mt-24">
+          <h2 className="text-2xl font-bold mb-2">Quick answers for the most-searched cards</h2>
+          <p className="mb-4 text-sm text-muted-foreground">
+            These are the models people search for most with &quot;DLSS 5&quot;. For any other card, use the{" "}
+            <Link href="/" className="text-blue-400 hover:underline">GPU checker</Link>.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {popularCards.map((card) => (
+              <div key={card.id} id={card.id} className="scroll-mt-24 rounded-lg border border-border p-5">
+                <h3 className="text-lg font-bold mb-1">{card.name}</h3>
+                <p className={`mb-2 text-sm font-semibold ${card.answerClass}`}>{card.answer}</p>
+                <p className="text-sm text-foreground/80 leading-relaxed">{card.detail}</p>
+              </div>
+            ))}
           </div>
         </section>
         <p className="mb-10 text-foreground/80 leading-relaxed">

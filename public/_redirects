@@ -13,3 +13,6 @@
 /games/resident-evil-requiem-dlss-5 /dlss-5-games 301
 /games/starfield-dlss-5 /dlss-5-games 301
 /games/assassins-creed-shadows-dlss-5 /dlss-5-games 301
+
+# Mistyped URL that Google has seen.
+/dlss5-games /dlss-5-games 301

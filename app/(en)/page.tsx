@@ -6,11 +6,14 @@ import ComparisonTable from "@/components/ComparisonTable";
 import FAQSection, { faqs } from "@/components/FAQSection";
 import AdSlot from "@/components/AdSlot";
 
+const description =
+  "Does your GPU support DLSS 5? Check any RTX, GTX, AMD, or Intel card in seconds. Live now on RTX 50 in NBA 2K27, with Hogwarts Legacy next on November 5.";
+
 export const metadata: Metadata = {
+  description,
   openGraph: {
     title: "DLSS 5 GPU Compatibility Checker",
-    description:
-      "Check DLSS 5 GPU support with an evidence-based tracker for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel cards.",
+    description,
     type: "website",
     locale: "en_US",
     url: "https://www.dlss5.net",
@@ -18,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "DLSS 5 GPU Compatibility Checker",
-    description: "Check confirmed, planned, unsupported, and no-DLSS status for DLSS 5.",
+    description,
   },
 };
 
