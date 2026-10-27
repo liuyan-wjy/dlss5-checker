@@ -200,7 +200,7 @@ export default function GuidesPage() {
               href={path.href}
               className="rounded-lg bg-muted/25 p-4 transition-colors hover:bg-muted/40"
             >
-              <div className="mb-2 font-semibold text-blue-400">{path.title}</div>
+              <h3 className="mb-2 font-semibold text-blue-400">{path.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{path.copy}</p>
             </Link>
           ))}
@@ -223,7 +223,7 @@ export default function GuidesPage() {
                   href={link.href}
                   className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400"
                 >
-                  <div className="mb-2 font-semibold">{link.title}</div>
+                  <h3 className="mb-2 font-semibold">{link.title}</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">
                     {link.description}
                   </p>

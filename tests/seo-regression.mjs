@@ -413,4 +413,9 @@ assert.match(visibleText(readRoute("privacy")), /Optional Tips Through Stripe/);
 assert.match(readRoute("privacy"), /https:\/\/stripe\.com\/privacy/);
 assert.doesNotMatch(generatedHtml, /js\.stripe\.com/, "No Stripe script should load on the site");
 
+// Hub pages need a full heading outline: H2 sections with H3 items under them.
+for (const route of ["index", "guides", "pt"]) {
+  assert.ok((readRoute(route).match(/<h3[\s>]/g) || []).length >= 5, `${route} must use H3 headings under its H2 sections`);
+}
+
 console.log("SEO regression checks passed.");

@@ -54,7 +54,7 @@ export default function FAQSection() {
           open={i === 0}
         >
           <summary className="flex w-full cursor-pointer list-none items-center justify-between px-5 py-4 text-left hover:bg-muted/30 transition-colors">
-            <span className="font-semibold text-sm sm:text-base pr-4">{item.q}</span>
+            <h3 className="font-semibold text-sm sm:text-base pr-4">{item.q}</h3>
             <ChevronDown
               className="w-4 h-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180"
             />
