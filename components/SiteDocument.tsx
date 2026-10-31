@@ -42,16 +42,6 @@ export default function SiteDocument({
 }>) {
   return (
     <html lang={locale} className="dark">
-      {/* App Router root layouts render <head> directly; the Pages Router rule does not apply. */}
-      {/* eslint-disable-next-line @next/next/no-head-element */}
-      <head>
-        {/* AdSense Auto ads; placements and formats are managed in the AdSense dashboard. */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5442184426795655"
-          crossOrigin="anonymous"
-        ></script>
-      </head>
       <body className="antialiased bg-background text-foreground">
         <SiteHeader locale={locale === "pt-BR" ? "pt" : "en"} />
         {children}
