@@ -14,6 +14,7 @@ assert.equal(
 const newRoutes = [
   "dlss-5-download",
   "dlss-5-amd",
+  "dlss-5-mods",
   "pt/como-ativar-dlss-5",
   "pt/dlss-5-amd",
   "dlss-4-5-ray-reconstruction",
@@ -348,6 +349,57 @@ for (const route of [...compatibilityRoutes, ...newRoutes]) {
     sitemapUrls.includes(`https://www.dlss5.net/${route}`),
     `${route} must be present in the sitemap`,
   );
+}
+
+const modsHtml = readRoute("dlss-5-mods");
+assert.equal(metadataValue(modsHtml, /<title>([^<]+)<\/title>/, "mods title"), "DLSS 5 Mods on RTX 40, RTX 30 and AMD: What Works and the Risks");
+assert.equal(metadataValue(modsHtml, /<meta name="description" content="([^"]+)"/, "mods description"), "Unofficial tools like DLSS 5 Swapper and OptiScaler forks run Neural Rendering outside RTX 50. What they do, what NVIDIA supports, and the ban and malware risks.");
+assert.equal(visibleText(metadataValue(modsHtml, /<h1[^>]*>([\s\S]*?)<\/h1>/, "mods H1")), "DLSS 5 mods: what they are and what they risk");
+const modsWords = mainWords(modsHtml);
+assert.ok(modsWords >= 1500 && modsWords <= 2200, `Mods guide must contain 1,500–2,200 main-content words (got ${modsWords})`);
+const modsSections = new Map([...modsHtml.matchAll(/<section\b[^>]*id="([^"]+)"[^>]*>([\s\S]*?)<\/section>/g)].map((match) => [match[1], match[2]]));
+for (const id of ["quick-answer", "comparison", "tools", "risks", "principles", "alternatives", "faq"]) {
+  assert.ok(modsSections.has(id), `Mods guide must include ${id}`);
+  assert.match(modsSections.get(id), /<h2\b/);
+  assert.match(modsSections.get(id), /<h3\b/, `${id} must have an H3 subsection`);
+}
+const riskWords = visibleText(modsSections.get("risks")).split(/\s+/).length;
+assert.ok(riskWords / modsWords >= 0.3, `Mods risks must cover at least 30% of the main content (${riskWords}/${modsWords})`);
+for (const id of ["tool-swapper", "tool-optiscaler", "tool-manager", "tool-desktop", "tool-open"]) {
+  const tool = metadataValue(modsSections.get("tools"), new RegExp(`<article\\b[^>]*id="${id}"[^>]*>([\\s\\S]*?)<\\/article>`), id);
+  assert.match(tool, /<h3\b/);
+  assert.match(tool, /href="https:\/\/(?:www\.)?(?:tweaktown\.com|pcgamer\.com|pcgameshardware\.de|techradar\.com|thefpsreview\.com|pcguide\.com|techspot\.com|digitalcitizen\.life)\//, `${id} must cite a news source`);
+  assert.doesNotMatch(tool, /href="https:\/\/(?:www\.)?(?:github\.com|huggingface\.co)\//, `${id} must not link to project downloads`);
+}
+for (const [, value] of modsHtml.matchAll(/(?:href|src)="([^"]+)"/g)) {
+  const url = decodeURIComponent(decodeHtml(value));
+  assert.doesNotMatch(url, /github\.com\/[^?#]*\/releases(?:[/?#]|$)|(?:huggingface\.co|hf\.co)(?:[/:?#]|$)|\.dll(?:[/?#]|$)/i, `Mods guide must not link to binaries, releases, or model weights: ${url}`);
+  assert.doesNotMatch(url, /(?:drive\.google\.com|dropbox\.com|mega\.nz|mediafire\.com|onedrive\.live\.com|1drv\.ms|pan\.baidu\.com|lanzou\w*\.com|gofile\.io|pixeldrain\.com)(?:[/:?#]|$)/i, `Mods guide must not link to file-sharing downloads: ${url}`);
+}
+assert.doesNotMatch(modsHtml, /<a\b[^>]*\bdownload(?:[\s=>])/i, "Mods guide must not offer download controls");
+const modsFaqs = [...modsHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+  .flatMap((match) => {
+    const schema = JSON.parse(match[1]);
+    return Array.isArray(schema) ? schema : [schema, ...(schema["@graph"] ?? [])];
+  }).filter((schema) => schema["@type"] === "FAQPage");
+assert.equal(modsFaqs.length, 1, "Mods guide must have one FAQPage schema");
+assert.ok(modsFaqs[0].mainEntity.length >= 4 && modsFaqs[0].mainEntity.length <= 6, "Mods guide must have 4–6 FAQs");
+assert.match(modsHtml, /<time dateTime="2026-10-31">October 31, 2026<\/time>/);
+assert.match(visibleText(modsHtml), /Sources, review status, and related pages/);
+const modsSitemapEntry = metadataValue(sitemap, /<url>\s*(<loc>https:\/\/www\.dlss5\.net\/dlss-5-mods<\/loc>[\s\S]*?)<\/url>/, "mods sitemap entry");
+assert.match(modsSitemapEntry, /<changefreq>weekly<\/changefreq>/);
+assert.match(modsSitemapEntry, /<priority>0\.8<\/priority>/);
+const corePages = llms.split("## Core Pages")[1]?.split(/\n## /)[0] ?? "";
+assert.match(corePages, /https:\/\/www\.dlss5\.net\/dlss-5-mods\)/);
+const setupGroup = [...readRoute("guides").matchAll(/<section\b[^>]*>([\s\S]*?)<\/section>/g)].find((match) => /<h2[^>]*>Set up DLSS 5<\/h2>/.test(match[1]));
+assert.ok(setupGroup, "Guides must retain the Set up DLSS 5 group");
+assert.match(setupGroup[1], /href="\/dlss-5-mods"/);
+for (const route of ["dlss-5-rtx-40-series", "dlss-5-amd"]) {
+  assert.match(readRoute(route), /<main\b[^>]*>[\s\S]*href="\/dlss-5-mods"[\s\S]*<\/main>/, `${route} must link to the mods guide in its body`);
+}
+for (const id of ["rtx-3060", "rtx-3070", "rtx-4060", "rtx-4070", "rtx-4090"]) {
+  const card = metadataValue(readRoute("dlss-5-supported-cards"), new RegExp(`<div\\b[^>]*id="${id}"[^>]*>([\\s\\S]*?)<\\/div>`), `popular card ${id}`);
+  assert.match(card, /href="\/dlss-5-mods"/, `${id} must link to the mods guide`);
 }
 
 const nbaHtml = readRoute("games/nba-2k27-dlss-5");

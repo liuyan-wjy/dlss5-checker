@@ -205,6 +205,7 @@ export default function Dlss5Rtx40SeriesPage() {
             Windows 11. If RTX 40 support arrives later in a new driver, a PC still on
             Windows 10 may not be able to install it.
           </p>
+          <p>For community experiments, read <Link href="/dlss-5-mods" className="text-blue-400 hover:underline">what unofficial DLSS 5 mods do and the risks they carry</Link>.</p>
         </section>
 
         <section className="mb-10">

@@ -87,6 +87,7 @@ export default function Dlss5AmdPage() {
           The <a href="https://github.com/optiscaler/OptiScaler" className="text-blue-400 hover:underline">upstream OptiScaler repository</a> distinguishes
           its releases from third-party manager applications. A familiar project name on a download button is not sufficient provenance.
         </p>
+        <p>Read the <Link href="/dlss-5-mods" className="text-blue-400 hover:underline">community mod overview and safety risks</Link> before treating a demonstration as a compatibility claim.</p>
       </section>
 
       <section className="mb-10 space-y-4 leading-relaxed text-foreground/80">

@@ -17,6 +17,7 @@
 
 ## Core Pages
 
+- [DLSS 5 mods and risks](https://www.dlss5.net/dlss-5-mods): unofficial community tools, official support boundaries, malware and anti-cheat risks; no downloads or installation instructions.
 - [Homepage and GPU checker](https://www.dlss5.net/): interactive DLSS 5 card compatibility checker, DLSS overview, comparison table, and FAQ.
 - [DLSS 5 games tracker](https://www.dlss5.net/dlss-5-games): live NBA 2K27 support, other announced games, verification checklist, and game-support caveats.
 - [DLSS 5 evidence tracker](https://www.dlss5.net/dlss-5-evidence-tracker): source-of-truth table separating confirmed, announced, inferred, and unknown claims.
