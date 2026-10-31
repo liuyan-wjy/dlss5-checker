@@ -82,8 +82,15 @@ for (const query of ["RTX 5060 Ti", "RTX 4060 Ti"]) {
 assert.doesNotMatch(fs.readFileSync("components/GPUChecker.tsx", "utf8"), /PerformanceChart|UpgradeRecommendations/,
   "The checker must not serve unsourced FPS estimates or generic upgrade boosts");
 const CompatibilityResult = loadTs("components/CompatibilityResult.tsx").default;
+const officialHeadings = {
+  confirmed: "DLSS 5 Confirmed (Available now)",
+  planned: "DLSS 5 Planned, Not Available Yet",
+  unsupported: "DLSS 5 Not Officially Supported",
+  none: "DLSS Not Supported",
+};
 for (const gpu of ALL_GPUS) {
   const html = renderToStaticMarkup(CompatibilityResult({ gpu }));
+  assert.equal(html.match(/<h2[^>]*>([^<]+)<\/h2>/)?.[1], officialHeadings[gpu.dlss5_support], `${gpu.id} must retain its official compatibility result`);
   assert.match(html, /What to do next/);
   assert.match(html, /not an FPS prediction/);
   assert.match(html, /href="\/dlss-5-evidence-tracker"/);
@@ -104,6 +111,15 @@ for (const gpu of ALL_GPUS) {
   }
   assert.doesNotMatch(html, /href="\/gpu\//);
   assert.doesNotMatch(html, /avg\. FPS boost|FPS \(Off\)|\+85%|\+140%|\+210%/);
+  const modEntry = html.match(/<a\b[^>]*href="\/dlss-5-mods"[^>]*>([\s\S]*?)<\/a>/g) ?? [];
+  if (["planned", "unsupported"].includes(gpu.dlss5_support) || ["AMD", "Intel"].includes(gpu.brand)) {
+    assert.equal(modEntry.length, 1, `${gpu.id} must show one unofficial-mods reading link`);
+    assert.match(modEntry[0], /Unofficial DLSS 5 mods and their risks/);
+    assert.match(modEntry[0], /What community tools do on cards NVIDIA does not support\./);
+    if (gpu.dlss5_support !== "confirmed") assert.deepEqual(gpu.dlss5_features, [], `${gpu.id} must not gain official DLSS 5 features`);
+  } else {
+    assert.equal(modEntry.length, 0, `${gpu.id} must retain its existing reading links`);
+  }
   if (gpu.dlss5_support === "confirmed") {
     assert.match(html, /href="\/games\/nba-2k27-dlss-5#how-to-enable"/);
     assert.match(html, /616\.64/);
