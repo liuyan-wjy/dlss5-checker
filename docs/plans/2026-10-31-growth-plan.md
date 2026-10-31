@@ -105,7 +105,7 @@ GSC 导出只包含前 1,000 个查询词，覆盖 885k 总展示中的 355k。*
     npm run test:seo     # 会先构建静态站
     ```
 16. 每个 PR 必须新增或更新测试，覆盖本工作包的验收标准（测试文件：`tests/seo-regression.mjs`、`tests/gpu-search-regression.mjs`）。
-17. 涉及界面的 PR，需附 390px（手机）与 1280px（桌面）截图，并确认无横向滚动。
+17. 涉及界面的 PR，需附 390px（手机）与 1280px（桌面）截图，并确认无横向滚动。截图**只放在 PR 描述或评论中**（拖拽上传到 GitHub 即可），**不得提交到仓库**；本地截图请放在已被 `.gitignore` 忽略的目录。
 18. 只开 PR，**不得自行合并**。PR 描述需列出：改了什么、为什么、测试结果、截图、对 TDK 的影响（应为"无"）。
 19. `package-lock.json` 的 `resolved` 指向 `registry.npmmirror.com`。如安装依赖失败，可临时替换为 `registry.npmjs.org` 安装，但**不得提交** lock 文件的改动。
 
