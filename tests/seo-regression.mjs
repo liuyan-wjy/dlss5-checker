@@ -210,16 +210,19 @@ assert.doesNotMatch(
 );
 
 const privacy = readRoute("privacy");
-// AdSense is live: every page must load the publisher's ad script, and the
-// privacy policy must disclose Google's ad cookies and the consent choices.
-const adsenseScript = /<script async="" src="https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-5442184426795655" crossorigin="anonymous">/;
 for (const html of generatedPages) {
-  assert.match(html, adsenseScript, "Every exported page must load the AdSense script once");
-  assert.equal((html.match(/<script[^>]*adsbygoogle\.js/g) || []).length, 1, "AdSense script must not be duplicated");
+  assert.doesNotMatch(html, /adsbygoogle\.js|googlesyndication\.com/, "Exported pages must not load AdSense code");
 }
-assert.match(privacy, /policies\.google\.com\/technologies\/partner-sites/);
-assert.match(privacy, /adssettings\.google\.com/);
-assert.match(visibleText(privacy), /certified consent management platform/);
+assert.match(visibleText(readRoute("about")), /Everything on DLSS 5 Checker is free and has no ads\./);
+assert.match(visibleText(privacy), /no ads/);
+assert.match(visibleText(privacy), /does not load advertising code/);
+assert.match(visibleText(privacy), /do not currently show a consent popup/);
+assert.match(visibleText(privacy), /ads\.txt and the AdSense ownership verification/);
+assert.doesNotMatch(visibleText(privacy), /shows ads served by Google|Google AdSense uses cookies|may change which ads you see/);
+assert.equal(
+  metadataValue(privacy, /<meta name="description" content="([^"]+)"/, "privacy description"),
+  "Privacy policy for DLSS 5 Checker, covering aggregate analytics, optional Stripe tips, email, and service providers. The site currently shows no ads.",
+);
 assert.doesNotMatch(privacy, /We use Google Analytics/i);
 assert.match(visibleText(privacy), /Cloudflare Web Analytics/);
 assert.match(visibleText(privacy), /real.user monitoring|RUM/i);

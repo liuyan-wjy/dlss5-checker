@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Privacy Policy | DLSS 5 GPU Compatibility Checker",
   description:
-    "Privacy policy for DLSS 5 Checker, covering aggregate analytics, Google AdSense advertising, cookies and consent choices, email, and service providers.",
+    "Privacy policy for DLSS 5 Checker, covering aggregate analytics, optional Stripe tips, email, and service providers. The site currently shows no ads.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <h1 className="text-3xl font-bold mb-8">Privacy Policy</h1>
-      <p className="text-muted-foreground text-sm mb-8">Last updated: October 25, 2026</p>
+      <p className="text-muted-foreground text-sm mb-8">Last updated: October 31, 2026</p>
 
       <div className="space-y-8 text-foreground/80 leading-relaxed">
         <section>
@@ -68,49 +68,13 @@ export default function PrivacyPage() {
 
         <section>
           <h2 className="text-xl font-semibold mb-3 text-foreground">
-            4. Advertising with Google AdSense
+            4. Advertising
           </h2>
           <p>
-            DLSS 5 Checker shows ads served by Google AdSense, including Auto ads that Google
-            places on the page. Ads keep the GPU checker and guides free. To deliver, measure,
-            and protect ads, Google and its partners may use cookies, device identifiers, and
-            similar technologies, and may receive information such as your IP address,
-            browser and device details, the page you are viewing, and your interactions with
-            ads. Depending on your choices and location, ads may be personalized based on
-            your previous visits to this and other websites.
-          </p>
-          <p className="mt-3">
-            Google&apos;s use of advertising cookies enables it and its partners to serve ads
-            based on your visits to this site and other sites on the internet. Learn more in
-            Google&apos;s{" "}
-            <a
-              href="https://policies.google.com/technologies/partner-sites"
-              className="text-blue-400 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              explanation of how Google uses information from sites that use its services
-            </a>
-            . You can turn off personalized advertising in{" "}
-            <a
-              href="https://adssettings.google.com/"
-              className="text-blue-400 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Google&apos;s My Ad Center
-            </a>
-            , and you can opt out of some third-party vendors&apos; use of cookies for
-            personalized advertising at{" "}
-            <a
-              href="https://www.aboutads.info/choices/"
-              className="text-blue-400 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              aboutads.info
-            </a>
-            .
+            DLSS 5 Checker currently shows no ads and does not load advertising code.
+            We retain ads.txt and the AdSense ownership verification marker only in case
+            advertising is restored in the future. We will update this policy before
+            restoring ads.
           </p>
         </section>
 
@@ -119,13 +83,9 @@ export default function PrivacyPage() {
             5. Consent Choices
           </h2>
           <p>
-            Visitors in the European Economic Area, the United Kingdom, and Switzerland see a
-            consent message from Google&apos;s certified consent management platform before
-            personalized ads or advertising cookies are used. You can accept, reject, or
-            manage your choices there, and change them later from the privacy and cookie
-            settings link the message provides. If you do not consent, Google may still show
-            non-personalized or limited ads, which use less data and are not based on your
-            browsing history.
+            Because we do not load advertising code, we do not currently show a consent
+            popup. If ads are restored, we will use a Google-certified consent management
+            platform in regions where one is required.
           </p>
         </section>
 
@@ -134,13 +94,11 @@ export default function PrivacyPage() {
             6. Cookies and Similar Technologies
           </h2>
           <p>
-            Google AdSense uses cookies and similar storage to serve and measure ads, limit
-            how often you see the same ad, and detect fraud. Analytics, hosting, delivery, and
-            security providers may also use cookies, local storage, or comparable technologies
+            Analytics, hosting, delivery, and security providers may use cookies, local
+            storage, or comparable technologies
             when necessary for their services. Google Analytics is not loaded on this site.
             You can inspect, block, or delete stored website data through your browser.
-            Blocking these technologies may change which ads you see, but the compatibility
-            articles remain available without an account.
+            The compatibility articles remain available without an account.
           </p>
         </section>
 

@@ -162,7 +162,7 @@ export default function AboutPage() {
         <section>
           <h2 className="text-xl font-semibold mb-3 text-foreground">Support the Site</h2>
           <p>
-            Everything on DLSS 5 Checker is free, and ads cover hosting. If the checker or a
+            Everything on DLSS 5 Checker is free and has no ads. If the checker or a
             guide saved you time, you can{" "}
             <SupportLink placement="about" className="font-medium text-blue-400 hover:underline">
               buy me a coffee ☕
