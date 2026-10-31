@@ -129,7 +129,7 @@ GSC 导出只包含前 1,000 个查询词，覆盖 885k 总展示中的 355k。*
   - 第 5 节 "Consent Choices"：说明因为不加载广告代码，目前不展示同意弹窗；如果恢复广告，会在需要的地区使用 Google 认证的同意管理平台。
   - 第 6 节 "Cookies and Similar Technologies"：删除 AdSense Cookie 的描述，保留分析、托管、安全服务商的描述。
   - "Last updated" 改为 WP0 合并当天。
-  - **meta description 例外**：当前隐私政策的 meta description 写着 "Google AdSense advertising"，与事实不符。这是第 3.1 节"不改 TDK"规则的**唯一例外**，**需站长批准后才可修改**，改为：`Privacy policy for DLSS 5 Checker, covering aggregate analytics, optional Stripe tips, email, and service providers. The site currently shows no ads.`（该页近 28 天仅 30 次展示，没有排名风险）。未获批准时，description 保持原样，并在 PR 中注明。
+  - **meta description 例外（站长已于 2026-10-31 批准）**：当前隐私政策的 meta description 写着 "Google AdSense advertising"，与事实不符。这是第 3.1 节"不改 TDK"规则的**唯一例外**，改为（一字不改）：`Privacy policy for DLSS 5 Checker, covering aggregate analytics, optional Stripe tips, email, and service providers. The site currently shows no ads.`（该页近 28 天仅 30 次展示，没有排名风险）。隐私政策的 title 和 H1 不变；其他任何页面的 TDK 都不得改动。
 
 #### 0-C 测试（`tests/seo-regression.mjs`）
 - 第 215–218 行附近"每页必须加载 AdSense 脚本"的断言，改为：每个导出页面**都不得**包含 `adsbygoogle.js` 或 `googlesyndication.com`。
