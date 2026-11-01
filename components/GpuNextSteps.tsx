@@ -62,7 +62,7 @@ function readNext(gpu: GPU): ReadNext[] {
     return [
       { href: "/dlss-5-amd", title: "Play DLSS 5 without an NVIDIA card", copy: "GeForce NOW requirements and why mods are not official support." },
       { href: "/dlss-5-games", title: "Games with DLSS 5", copy: "Which games are live, scheduled, or only announced." },
-      { href: "/dlss-5-vs-dlss-4-5", title: "What DLSS 5 actually changes", copy: "So you know what you would gain from switching." },
+      { href: "/dlss-5-mods", title: "Unofficial DLSS 5 mods and their risks", copy: "What community tools do on cards NVIDIA does not support." },
     ];
   }
   switch (gpu.dlss5_support) {
@@ -76,13 +76,13 @@ function readNext(gpu: GPU): ReadNext[] {
       return [
         { href: "/dlss-5-rtx-40-series", title: "When RTX 40 might get DLSS 5", copy: "What NVIDIA has said and what the October model could change." },
         { href: "/dlss-4-5-games", title: "DLSS 4.5 games for your card", copy: "Features you can use now, game by game." },
-        { href: "/dlss-frame-generation-vs-multi-frame-generation", title: "Frame Generation on RTX 40", copy: "How 2X Frame Generation compares with RTX 50 MFG." },
+        { href: "/dlss-5-mods", title: "Unofficial DLSS 5 mods and their risks", copy: "What community tools do on cards NVIDIA does not support." },
       ];
     case "unsupported":
       return [
         { href: "/dlss-supported-cards", title: "Every DLSS feature by generation", copy: "What your RTX generation keeps and what it cannot run." },
         { href: "/dlss-4-5-ray-reconstruction", title: "Ray Reconstruction on your card", copy: "The newest DLSS feature that still covers all RTX GPUs." },
-        { href: "/dlss-5-system-requirements", title: "Is an upgrade worth it?", copy: "DLSS 5 requirements and its performance cost on RTX 50." },
+        { href: "/dlss-5-mods", title: "Unofficial DLSS 5 mods and their risks", copy: "What community tools do on cards NVIDIA does not support." },
       ];
     default:
       return [
