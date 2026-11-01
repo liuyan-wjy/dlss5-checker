@@ -45,9 +45,9 @@ const FEATURE_HOW_TO: Record<string, { name: string; where: string; href?: strin
 // requirements page (September launch model, NVIDIA's October model is lighter).
 const TIER_START: Record<string, string> = {
   flagship:
-    "Independent 4K tests of the launch model showed the heaviest cost here too: GameGPU measured an RTX 5090 at 76 FPS with Neural Rendering versus 192 FPS without it, before frame generation. Start at 4K with Super Resolution Quality, and add Frame Generation only if the base rate stays near 60 FPS.",
+    "Independent 4K tests of the launch model showed the heaviest cost here too: GameGPU measured an RTX 5090 at 68 FPS with Neural Rendering versus 162 FPS without it at 4K. Start at 4K with Super Resolution Quality, and add Frame Generation only if the base rate stays near 60 FPS.",
   "high-end":
-    "PC Gamer measured up to 73% lower frame rates on an RTX 5080 at 1440p Ultra with ray tracing in the worst scenes. Start at 1440p or 4K with Super Resolution Balanced or Performance, then decide whether frame generation is worth the latency.",
+    "PC Gamer measured an RTX 5080 dropping from 230 to 93 FPS at 1440p and from 183 to 49 FPS at 4K (Ultra, ray tracing). Start at 1440p or 4K with Super Resolution Balanced or Performance, then decide whether frame generation is worth the latency.",
   "mid-high":
     "GameGPU lists the RTX 5070 as the lowest desktop card that averaged above 60 FPS (66 FPS) in its maximum ray tracing test with Neural Rendering and no frame generation. Start at 1440p with Super Resolution Quality and lower ray tracing first if the frame rate drops.",
   mid:

@@ -40,7 +40,7 @@ const faqItems = [
   {
     question: "How much FPS does DLSS 5 cost?",
     answer:
-      "With the September launch model, independent tests of NBA 2K27 measured roughly 50–73% lower frame rates depending on the scene with Neural Rendering on and frame generation off, for example 192 to 76 FPS on an RTX 5090 at 4K. NVIDIA says the October model is up to 1.4x faster, and PC Gamer measured about 25% at 1440p on an RTX Spark laptop.",
+      "With the September launch model, independent tests of NBA 2K27 measured roughly 50–73% lower frame rates depending on the scene with Neural Rendering on and frame generation off, for example 162 to 68 FPS on an RTX 5090 at 4K in GameGPU's test. NVIDIA says the October model is up to 1.4x faster, and PC Gamer measured about 25% at 1440p on an RTX Spark laptop.",
   },
   {
     question: "Will RTX 40 support DLSS 5?",

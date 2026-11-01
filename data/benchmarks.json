@@ -9,13 +9,13 @@
       "game": "NBA 2K27",
       "model": "september-2026",
       "resolution": "4K",
-      "settings": "4K, max settings, ray tracing, no frame generation",
-      "result": "192 FPS without Neural Rendering, 76 FPS with it (about 60% lower)",
+      "settings": "4K, as reported in the GameGPU NBA 2K27 DLSS 5 test",
+      "result": "162 FPS without Neural Rendering, 68 FPS with it (about 58% lower)",
       "source": "GameGPU",
-      "url": "https://en.gamegpu.com/test-gpu/action-fps-tps/nba-2k27-benchmarki-videokart-rtx-50-s-dlss-5",
+      "url": "https://en.gamegpu.com/news/igry/dlss-5-snizil-proizvoditelnost-rtx-5090-v-nba-2k27-v-2-5-raza-s-162-do-68-fps-v-4k",
       "checked": "2026-11-01",
-      "fpsOff": 192,
-      "fpsOn": 76
+      "fpsOff": 162,
+      "fpsOn": 68
     },
     {
       "id": "tweaktown-nba2k27-5080-5090-4k",
@@ -43,10 +43,29 @@
       "model": "september-2026",
       "resolution": "1440p",
       "settings": "1440p Ultra with ray tracing, quick match gameplay, Ryzen 7 9800X3D",
-      "result": "Up to 73% lower average frame rate in the worst scenes",
+      "result": "230 FPS without Neural Rendering, 93 FPS with it (about 60% lower)",
       "source": "PC Gamer",
       "url": "https://www.pcgamer.com/hardware/graphics-cards/dlss-5-can-slash-performance-by-up-to-73-percent-on-an-rtx-5080-gaming-pc-in-nba-2k27-and-im-left-wondering-what-kind-of-mega-rig-youd-need-to-justify-the-hit/",
-      "checked": "2026-11-01"
+      "checked": "2026-11-01",
+      "fpsOff": 230,
+      "fpsOn": 93
+    },
+    {
+      "id": "pcgamer-nba2k27-5080-4k",
+      "gpuIds": [
+        "rtx-5080"
+      ],
+      "gpu": "RTX 5080",
+      "game": "NBA 2K27",
+      "model": "september-2026",
+      "resolution": "4K",
+      "settings": "4K Ultra with ray tracing, quick match gameplay, Ryzen 7 9800X3D",
+      "result": "183 FPS without Neural Rendering, 49 FPS with it (about 73% lower)",
+      "source": "PC Gamer",
+      "url": "https://www.pcgamer.com/hardware/graphics-cards/dlss-5-can-slash-performance-by-up-to-73-percent-on-an-rtx-5080-gaming-pc-in-nba-2k27-and-im-left-wondering-what-kind-of-mega-rig-youd-need-to-justify-the-hit/",
+      "checked": "2026-11-01",
+      "fpsOff": 183,
+      "fpsOn": 49
     },
     {
       "id": "gamegpu-nba2k27-5070",

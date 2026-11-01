@@ -24,7 +24,7 @@ function loadTs(relativePath) {
 }
 const { searchGPU, getSuggestions, ALL_GPUS } = loadTs("lib/gpu-search.ts");
 const { ALL_BENCHMARKS, getBenchmarksForGpu, BENCHMARK_MODEL_LABELS } = loadTs("lib/benchmarks.ts");
-const expectedBenchmarkCounts = { "rtx-5090": 2, "rtx-5080": 2, "rtx-5070": 1, "rtx-spark": 1 };
+const expectedBenchmarkCounts = { "rtx-5090": 2, "rtx-5080": 3, "rtx-5070": 1, "rtx-spark": 1 };
 for (const gpu of ALL_GPUS) {
   const rows = getBenchmarksForGpu(gpu.id);
   assert.equal(rows.length, expectedBenchmarkCounts[gpu.id] ?? 0, `${gpu.id}: exact benchmark mapping`);
