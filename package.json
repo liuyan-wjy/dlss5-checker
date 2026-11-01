@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:gpu": "node tests/gpu-search-regression.mjs",
+    "test:gpu": "node tests/benchmarks-regression.mjs && node tests/gpu-search-regression.mjs",
     "test:seo": "npm run build && node tests/seo-regression.mjs"
   },
   "dependencies": {

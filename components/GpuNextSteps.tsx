@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { GPU } from "@/lib/gpu-search";
+import { BENCHMARK_MODEL_LABELS, getBenchmarksForGpu } from "@/lib/benchmarks";
 
 // Where each feature is switched on. Paths follow the NVIDIA App and game menus
 // documented on the linked guides; a game's own menu can label them differently.
@@ -104,6 +105,7 @@ export default function GpuNextSteps({ gpu }: { gpu: GPU }) {
   const name = shortName(gpu.name);
   const isNvidia = gpu.brand !== "AMD" && gpu.brand !== "Intel";
   const tierStart = gpu.dlss5_support === "confirmed" ? TIER_START[gpu.tier] : undefined;
+  const benchmarks = getBenchmarksForGpu(gpu.id);
 
   return (
     <section className="mt-5 space-y-5 border-t border-border pt-5 text-left text-sm leading-relaxed">
@@ -157,6 +159,25 @@ export default function GpuNextSteps({ gpu }: { gpu: GPU }) {
           </p>
         )}
       </div>
+
+      {benchmarks.length > 0 && (
+        <div>
+          <h3 className="mb-2 text-base font-semibold">Published tests for this card</h3>
+          <ul className="space-y-3">
+            {benchmarks.map((benchmark) => (
+              <li key={benchmark.id} className="rounded-md border border-border/60 p-3">
+                <p className="font-medium text-foreground">{benchmark.result}</p>
+                <p className="text-muted-foreground">{benchmark.game} — {benchmark.settings}</p>
+                <p className="text-xs text-muted-foreground">
+                  <a href={benchmark.url} className="text-blue-400 hover:underline">{benchmark.source}</a>
+                  {" · "}{BENCHMARK_MODEL_LABELS[benchmark.model]}
+                  {" · Checked "}{benchmark.checked}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {tierStart && (
         <div>

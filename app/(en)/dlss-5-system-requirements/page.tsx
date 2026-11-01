@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { OG_IMAGE_EN } from "@/lib/og-image";
+import { ALL_BENCHMARKS, BENCHMARK_MODEL_LABELS } from "@/lib/benchmarks";
 
 export const metadata: Metadata = {
   title: "DLSS 5 System Requirements: RTX 50, Driver, and Game Support",
@@ -29,49 +30,6 @@ export const metadata: Metadata = {
       "Looking for DLSS 5 system requirements? See RTX 50 support, the NBA 2K27 616.64 WHQL driver, RTX 40 planned status, and local vs GeForce NOW support.",
   },
 };
-
-const benchmarkRows = [
-  {
-    gpu: "RTX 5090",
-    test: "4K, max settings, ray tracing, no frame generation",
-    result: "192 FPS without Neural Rendering, 76 FPS with it (about 60% lower)",
-    source: "GameGPU",
-    href: "https://en.gamegpu.com/test-gpu/action-fps-tps/nba-2k27-benchmarki-videokart-rtx-50-s-dlss-5",
-    model: "September launch model",
-  },
-  {
-    gpu: "RTX 5080 / 5090",
-    test: "4K, 90 seconds of broadcast-camera gameplay, no upscaling or frame generation",
-    result: "From roughly 140–200+ FPS down to about 50–80 FPS",
-    source: "TweakTown",
-    href: "https://www.tweaktown.com/articles/11596/nvidia-dlss-5-3d-guided-neural-rendering-in-nba-2k27-performance-analysis-and-more/index.html",
-    model: "September launch model",
-  },
-  {
-    gpu: "RTX 5080",
-    test: "1440p Ultra with ray tracing, quick match gameplay, Ryzen 7 9800X3D",
-    result: "Up to 73% lower average frame rate in the worst scenes",
-    source: "PC Gamer",
-    href: "https://www.pcgamer.com/hardware/graphics-cards/dlss-5-can-slash-performance-by-up-to-73-percent-on-an-rtx-5080-gaming-pc-in-nba-2k27-and-im-left-wondering-what-kind-of-mega-rig-youd-need-to-justify-the-hit/",
-    model: "September launch model",
-  },
-  {
-    gpu: "RTX 5070",
-    test: "Max ray tracing with Neural Rendering, no frame generation",
-    result: "66 FPS average, the lowest card in the test above 60 FPS",
-    source: "GameGPU",
-    href: "https://en.gamegpu.com/test-gpu/action-fps-tps/nba-2k27-benchmarki-videokart-rtx-50-s-dlss-5",
-    model: "September launch model",
-  },
-  {
-    gpu: "RTX Spark laptop",
-    test: "1440p, preview build",
-    result: "About 25% faster with the October model than with the September model",
-    source: "PC Gamer",
-    href: "https://www.pcgamer.com/hardware/i-jammed-nvidias-new-dlss-5-october-update-model-into-the-rtx-spark-and-its-25-percent-faster-at-1440p/",
-    model: "October model",
-  },
-];
 
 const faqItems = [
   {
@@ -219,14 +177,14 @@ export default function Dlss5SystemRequirementsPage() {
                 </tr>
               </thead>
               <tbody>
-                {benchmarkRows.map((row) => (
-                  <tr key={`${row.gpu}-${row.source}-${row.model}`} className="border-t border-border align-top">
+                {ALL_BENCHMARKS.map((row) => (
+                  <tr key={row.id} className="border-t border-border align-top">
                     <td className="p-3 font-medium whitespace-nowrap">{row.gpu}</td>
-                    <td className="p-3">{row.test}</td>
+                    <td className="p-3">{row.settings}</td>
                     <td className="p-3">{row.result}</td>
                     <td className="p-3">
-                      <a href={row.href} className="text-blue-400 hover:underline">{row.source}</a>
-                      <span className="block text-xs text-muted-foreground">{row.model}</span>
+                      <a href={row.url} className="text-blue-400 hover:underline">{row.source}</a>
+                      <span className="block text-xs text-muted-foreground">{BENCHMARK_MODEL_LABELS[row.model]}</span>
                     </td>
                   </tr>
                 ))}

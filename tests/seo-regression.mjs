@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 
 const appOutput = "out";
 
@@ -412,5 +413,14 @@ assert.match(visibleText(readRoute("about")), /buy me a coffee/i);
 assert.match(visibleText(readRoute("privacy")), /Optional Tips Through Stripe/);
 assert.match(readRoute("privacy"), /https:\/\/stripe\.com\/privacy/);
 assert.doesNotMatch(generatedHtml, /js\.stripe\.com/, "No Stripe script should load on the site");
+
+// WP2 must preserve the complete visible main text from main d5b6b47.
+const requirementsMain = readRoute("dlss-5-system-requirements").match(/<main(?:\s[^>]*)?>([\s\S]*?)<\/main>/);
+assert.ok(requirementsMain, "System requirements must have a main landmark");
+assert.equal(
+  createHash("sha256").update(visibleText(requirementsMain[1])).digest("hex"),
+  "25addccf3322bb01a3cbbc06c6ac1c453130f644cb5a38908f220a2c69bff169",
+  "System requirements visible text must remain identical to the pre-WP2 baseline",
+);
 
 console.log("SEO regression checks passed.");

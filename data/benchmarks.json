@@ -1,0 +1,83 @@
+{
+  "benchmarks": [
+    {
+      "id": "gamegpu-nba2k27-5090-4k",
+      "gpuIds": [
+        "rtx-5090"
+      ],
+      "gpu": "RTX 5090",
+      "game": "NBA 2K27",
+      "model": "september-2026",
+      "resolution": "4K",
+      "settings": "4K, max settings, ray tracing, no frame generation",
+      "result": "192 FPS without Neural Rendering, 76 FPS with it (about 60% lower)",
+      "source": "GameGPU",
+      "url": "https://en.gamegpu.com/test-gpu/action-fps-tps/nba-2k27-benchmarki-videokart-rtx-50-s-dlss-5",
+      "checked": "2026-11-01",
+      "fpsOff": 192,
+      "fpsOn": 76
+    },
+    {
+      "id": "tweaktown-nba2k27-5080-5090-4k",
+      "gpuIds": [
+        "rtx-5080",
+        "rtx-5090"
+      ],
+      "gpu": "RTX 5080 / 5090",
+      "game": "NBA 2K27",
+      "model": "september-2026",
+      "resolution": "4K",
+      "settings": "4K, 90 seconds of broadcast-camera gameplay, no upscaling or frame generation",
+      "result": "From roughly 140–200+ FPS down to about 50–80 FPS",
+      "source": "TweakTown",
+      "url": "https://www.tweaktown.com/articles/11596/nvidia-dlss-5-3d-guided-neural-rendering-in-nba-2k27-performance-analysis-and-more/index.html",
+      "checked": "2026-11-01"
+    },
+    {
+      "id": "pcgamer-nba2k27-5080-1440p",
+      "gpuIds": [
+        "rtx-5080"
+      ],
+      "gpu": "RTX 5080",
+      "game": "NBA 2K27",
+      "model": "september-2026",
+      "resolution": "1440p",
+      "settings": "1440p Ultra with ray tracing, quick match gameplay, Ryzen 7 9800X3D",
+      "result": "Up to 73% lower average frame rate in the worst scenes",
+      "source": "PC Gamer",
+      "url": "https://www.pcgamer.com/hardware/graphics-cards/dlss-5-can-slash-performance-by-up-to-73-percent-on-an-rtx-5080-gaming-pc-in-nba-2k27-and-im-left-wondering-what-kind-of-mega-rig-youd-need-to-justify-the-hit/",
+      "checked": "2026-11-01"
+    },
+    {
+      "id": "gamegpu-nba2k27-5070",
+      "gpuIds": [
+        "rtx-5070"
+      ],
+      "gpu": "RTX 5070",
+      "game": "NBA 2K27",
+      "model": "september-2026",
+      "resolution": "Not specified in the existing summary",
+      "settings": "Max ray tracing with Neural Rendering, no frame generation",
+      "result": "66 FPS average, the lowest card in the test above 60 FPS",
+      "source": "GameGPU",
+      "url": "https://en.gamegpu.com/test-gpu/action-fps-tps/nba-2k27-benchmarki-videokart-rtx-50-s-dlss-5",
+      "checked": "2026-11-01",
+      "fpsOn": 66
+    },
+    {
+      "id": "pcgamer-nba2k27-spark-1440p",
+      "gpuIds": [
+        "rtx-spark"
+      ],
+      "gpu": "RTX Spark laptop",
+      "game": "NBA 2K27",
+      "model": "october-2026",
+      "resolution": "1440p",
+      "settings": "1440p, preview build",
+      "result": "About 25% faster with the October model than with the September model",
+      "source": "PC Gamer",
+      "url": "https://www.pcgamer.com/hardware/i-jammed-nvidias-new-dlss-5-october-update-model-into-the-rtx-spark-and-its-25-percent-faster-at-1440p/",
+      "checked": "2026-11-01"
+    }
+  ]
+}

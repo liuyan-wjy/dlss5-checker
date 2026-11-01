@@ -23,6 +23,16 @@ function loadTs(relativePath) {
   return testModule.exports;
 }
 const { searchGPU, getSuggestions, ALL_GPUS } = loadTs("lib/gpu-search.ts");
+const { ALL_BENCHMARKS, getBenchmarksForGpu, BENCHMARK_MODEL_LABELS } = loadTs("lib/benchmarks.ts");
+const expectedBenchmarkCounts = { "rtx-5090": 2, "rtx-5080": 2, "rtx-5070": 1, "rtx-spark": 1 };
+for (const gpu of ALL_GPUS) {
+  const rows = getBenchmarksForGpu(gpu.id);
+  assert.equal(rows.length, expectedBenchmarkCounts[gpu.id] ?? 0, `${gpu.id}: exact benchmark mapping`);
+  assert.deepEqual(rows, ALL_BENCHMARKS.filter((row) => row.gpuIds.includes(gpu.id)));
+}
+for (const id of ["unknown", "", "RTX 5090", "rtx-5090-laptop", "rtx-5080-laptop", "rtx-5070-laptop"]) {
+  assert.deepEqual(getBenchmarksForGpu(id), [], `Do not infer benchmarks for ${JSON.stringify(id)}`);
+}
 
 const cases = [
   ["RTX 5050", "rtx-5050"],
@@ -84,6 +94,24 @@ assert.doesNotMatch(fs.readFileSync("components/GPUChecker.tsx", "utf8"), /Perfo
 const CompatibilityResult = loadTs("components/CompatibilityResult.tsx").default;
 for (const gpu of ALL_GPUS) {
   const html = renderToStaticMarkup(CompatibilityResult({ gpu }));
+  const publishedHeading = "Published tests for this card";
+  if (expectedBenchmarkCounts[gpu.id]) {
+    assert.equal(html.split(publishedHeading).length - 1, 1, `${gpu.id}: one published-test section`);
+    assert.ok(html.indexOf(publishedHeading) < html.indexOf("A realistic starting point"), `${gpu.id}: tests precede tier advice`);
+    const section = html.slice(html.indexOf(publishedHeading), html.indexOf("A realistic starting point"));
+    const text = section.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+    for (const row of getBenchmarksForGpu(gpu.id)) {
+      assert.ok(text.includes(row.result), `${gpu.id}: preserve result from ${row.source}`);
+      assert.ok(text.includes(row.settings), `${gpu.id}: preserve test conditions from ${row.source}`);
+      assert.ok(text.includes(row.game), `${gpu.id}: game must be identified`);
+      assert.ok(text.includes(BENCHMARK_MODEL_LABELS[row.model]), `${gpu.id}: model must be identified`);
+      assert.ok(text.includes(row.checked), `${gpu.id}: check date must be visible`);
+      assert.ok(section.includes(`href="${row.url}"`), `${gpu.id}: link to ${row.source}`);
+      assert.ok(text.includes(row.source), `${gpu.id}: source must be visible`);
+    }
+  } else {
+    assert.ok(!html.includes(publishedHeading), `${gpu.id}: no tests for unmeasured cards`);
+  }
   assert.match(html, /What to do next/);
   assert.match(html, /not an FPS prediction/);
   assert.match(html, /href="\/dlss-5-evidence-tracker"/);
