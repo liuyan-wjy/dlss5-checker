@@ -163,6 +163,31 @@ const modeRows = [
   { mode: "Ultra Performance", scale: "33.3%", p1080: "640×360", p1440: "853×480", p2160: "1280×720" },
 ];
 
+const ladderFeatures = [
+  { id: "sr", label: "Super Resolution", tone: "border-blue-400/50 bg-blue-500/15 text-blue-200" },
+  { id: "dlaa", label: "DLAA", tone: "border-blue-400/50 bg-blue-500/15 text-blue-200" },
+  { id: "rr", label: "Ray Reconstruction", tone: "border-blue-400/50 bg-blue-500/15 text-blue-200" },
+  { id: "fg", label: "Frame Generation", tone: "border-green-400/50 bg-green-500/15 text-green-200" },
+  { id: "mfg", label: "Multi Frame Gen", tone: "border-green-400/50 bg-green-500/15 text-green-200" },
+  { id: "dmfg", label: "Dynamic MFG", tone: "border-green-400/50 bg-green-500/15 text-green-200" },
+  { id: "nr", label: "DLSS 5 Neural Rendering", tone: "border-violet-400/50 bg-violet-500/15 text-violet-200" },
+];
+
+const IMAGE_QUALITY = { sr: "yes", dlaa: "yes", rr: "yes" } as const;
+const ladderColumns: { name: string; features: Record<string, "yes" | "planned"> }[] = [
+  { name: "GTX, AMD, Intel", features: {} },
+  { name: "RTX 20 / 30", features: { ...IMAGE_QUALITY } },
+  { name: "RTX 40", features: { ...IMAGE_QUALITY, fg: "yes", nr: "planned" } },
+  { name: "RTX 50 / Spark", features: { ...IMAGE_QUALITY, fg: "yes", mfg: "yes", dmfg: "yes", nr: "yes" } },
+];
+
+const modeBoxes = [
+  { mode: "Quality", scale: 66.7, pixels: "44%" },
+  { mode: "Balanced", scale: 58, pixels: "34%" },
+  { mode: "Performance", scale: 50, pixels: "25%" },
+  { mode: "Ultra Perf.", scale: 33.3, pixels: "11%" },
+];
+
 const tocLinks = [
   { href: "#matrix", label: "Feature matrix" },
   { href: "#gpu-compare", label: "Compare two GPUs" },
@@ -329,6 +354,43 @@ export default function DlssSupportedCardsPage() {
           </p>
         </section>
 
+        <figure className="mb-10" aria-labelledby="ladder-caption">
+          <figcaption id="ladder-caption" className="mb-1 text-xl font-bold">DLSS features by GPU generation at a glance</figcaption>
+          <p className="mb-4 text-sm text-muted-foreground">Each newer generation keeps everything below it and adds the features on top.</p>
+          <div className="grid grid-cols-4 items-end gap-2 sm:gap-4">
+            {ladderColumns.map((column) => (
+              <div key={column.name} className="flex flex-col justify-end gap-1.5">
+                {[...ladderFeatures].reverse().map((feature) => {
+                  const state = column.features[feature.id];
+                  if (!state) return null;
+                  return (
+                    <div
+                      key={feature.id}
+                      className={`rounded-md border px-1.5 py-2 text-center text-[11px] leading-tight sm:px-2 sm:text-xs ${
+                        state === "planned"
+                          ? "border-dashed border-muted-foreground/50 text-muted-foreground"
+                          : feature.tone
+                      }`}
+                    >
+                      {feature.label}
+                      {state === "planned" && <span className="block text-[10px] sm:text-[11px]">planned</span>}
+                    </div>
+                  );
+                })}
+                {Object.keys(column.features).length === 0 && (
+                  <div className="rounded-md border border-dashed border-border px-1.5 py-6 text-center text-[11px] text-muted-foreground sm:text-xs">No DLSS</div>
+                )}
+                <p className="mt-1 border-t border-border pt-2 text-center text-xs font-semibold sm:text-sm">{column.name}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5"><span className="h-3 w-3 rounded-sm border border-blue-400/50 bg-blue-500/15" aria-hidden="true" />Image quality</span>
+            <span className="inline-flex items-center gap-1.5"><span className="h-3 w-3 rounded-sm border border-green-400/50 bg-green-500/15" aria-hidden="true" />Frame generation</span>
+            <span className="inline-flex items-center gap-1.5"><span className="h-3 w-3 rounded-sm border border-violet-400/50 bg-violet-500/15" aria-hidden="true" />DLSS 5</span>
+          </div>
+        </figure>
+
         <figure id="matrix" className="mb-10 scroll-mt-24">
           <figcaption className="mb-3 text-2xl font-bold">DLSS card compatibility matrix</figcaption>
           <ul className="space-y-3 md:hidden">
@@ -387,9 +449,10 @@ export default function DlssSupportedCardsPage() {
         <section id="dlss-versions" className="mb-10 scroll-mt-24 space-y-4">
           <h2 className="text-2xl font-bold">Which DLSS version does my card support?</h2>
           <p className="leading-relaxed text-foreground/80">
-            Every RTX card gets the image-quality parts of each DLSS release, but the
-            frame-generation parts depend on the generation. Read your card&apos;s column for each
-            release; NVIDIA confirms that the{" "}
+            &quot;DLSS 4&quot; or &quot;DLSS 4.5&quot; on a game&apos;s store page is a bundle of
+            features, not a single switch. Every RTX card gets the image-quality parts of each release,
+            but the frame-generation parts depend on the generation, so an RTX 3070 can run the DLSS 4
+            upscaling model without gaining DLSS 4 Multi Frame Generation. NVIDIA confirms that the{" "}
             <a href={NVIDIA_DLSS_4} rel="noreferrer" className="text-blue-400 hover:underline">DLSS 4 transformer models</a>{" "}
             run on all RTX GPUs while Multi Frame Generation is RTX 50-only.
           </p>
@@ -422,6 +485,15 @@ export default function DlssSupportedCardsPage() {
               </li>
             ))}
           </ul>
+          <div className="rounded-lg border border-border bg-muted/20 p-4">
+            <h3 className="mb-2 font-semibold">Good to know by generation</h3>
+            <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-foreground/80">
+              <li><strong className="text-foreground">RTX 50:</strong> Multi Frame Generation works best when the game already runs at a stable base frame rate on a high-refresh display. Dynamic MFG can conflict with V-Sync or external frame-rate limiters, so test latency rather than picking the largest multiplier.</li>
+              <li><strong className="text-foreground">RTX 40:</strong> &quot;No MFG&quot; does not mean &quot;no DLSS 4.5&quot;. These cards still get the newer upscaling and Ray Reconstruction models and the improved Frame Generation model.</li>
+              <li><strong className="text-foreground">RTX 20 and 30:</strong> The newer transformer models cost more on these cards because they lack the FP8 acceleration of newer GPUs. Compare the new model with the older preset, or with one mode lower, in the same scene.</li>
+              <li><strong className="text-foreground">Ray tracing on older cards:</strong> Ray Reconstruction improves a ray-traced image on every RTX card, but it cannot make heavy path tracing cheap on an RTX 2060 or 3060.</li>
+            </ul>
+          </div>
         </section>
 
         <section id="laptops" className="mb-10 scroll-mt-24 space-y-4 text-foreground/80">
@@ -468,6 +540,33 @@ export default function DlssSupportedCardsPage() {
             The table shows the internal resolution for each output resolution, using the standard
             scale factors per axis; some games use their own values or offer a custom slider.
           </p>
+          <figure className="max-w-2xl space-y-2" aria-labelledby="render-area-caption">
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-border bg-muted/20" role="img" aria-label="Rendered area for each DLSS mode compared with the output frame: Quality renders about 44% of the pixels, Balanced 34%, Performance 25% and Ultra Performance 11%.">
+              <span className="absolute bottom-1.5 right-2 text-[11px] text-muted-foreground sm:text-xs">Output frame (100%)</span>
+              {modeBoxes.map((box) => (
+                <div
+                  key={box.mode}
+                  className="absolute left-0 top-0 rounded-br-md border-b border-r border-blue-400/60 bg-blue-500/10"
+                  style={{ width: `${box.scale}%`, height: `${box.scale}%` }}
+                >
+                  <span className="absolute bottom-1 right-1.5 hidden whitespace-nowrap text-xs text-blue-200 sm:block">
+                    {box.mode} · {box.pixels}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-muted-foreground sm:hidden">
+              {modeBoxes.map((box) => (
+                <li key={box.mode}><span className="text-blue-200">{box.mode}</span> · {box.pixels} of pixels</li>
+              ))}
+            </ul>
+            <figcaption id="render-area-caption" className="text-sm text-muted-foreground">
+              Nested boxes show the share of the output frame&apos;s pixels each mode actually renders,
+              measured from the top-left corner. Performance draws a quarter of the pixels
+              of the output frame, which is why it is so much faster, and why the reconstruction model
+              matters so much for image quality.
+            </figcaption>
+          </figure>
           <div className="overflow-x-auto rounded-lg border border-border" tabIndex={0} role="region" aria-label="DLSS mode internal resolutions">
             <table className="w-full text-xs sm:text-sm">
               <caption className="sr-only">Internal render resolution for each DLSS mode at 1080p, 1440p and 4K output</caption>
@@ -504,127 +603,13 @@ export default function DlssSupportedCardsPage() {
         </section>
 
         <section className="mb-10 space-y-4 text-foreground/80">
-          <h2 className="text-2xl font-bold text-foreground">Why the DLSS version number can be misleading</h2>
-          <p className="leading-relaxed">
-            DLSS is a collection of technologies rather than one switch. Super Resolution
-            reconstructs a higher-resolution image from a lower internal resolution. DLAA uses
-            the reconstruction model at native resolution for anti-aliasing. Ray Reconstruction
-            rebuilds noisy ray-traced signals. Frame Generation inserts one generated frame
-            between traditionally rendered frames, while Multi Frame Generation can create
-            several. Those features have different hardware paths even when NVIDIA groups them
-            under one DLSS release name.
-          </p>
-          <p className="leading-relaxed">
-            This is why “supports DLSS 3” is an incomplete answer for an RTX 3060. The card can
-            use the Super Resolution improvements associated with that era, but it cannot enable
-            the RTX 40-only Frame Generation feature. The same logic applies to DLSS 4 and 4.5.
-            Older RTX cards can use compatible reconstruction models, yet the frame-generation
-            controls remain limited by GPU generation.
-          </p>
-          <p className="leading-relaxed">
-            Marketing pages and game menus also use labels differently. One title may show a
-            single “DLSS” selector for Super Resolution, another may list Ray Reconstruction and
-            Frame Generation separately, and a third may expose a newer model only through an
-            NVIDIA App profile. When you troubleshoot, record the exact game version and option
-            name instead of assuming that one DLSS badge guarantees the complete feature stack.
-          </p>
-          <p className="leading-relaxed">
-            DLSS 5 adds another reason to read the exact feature name. Neural Rendering is not
-            the same as Super Resolution, Ray Reconstruction, or Frame Generation. On September 3,
-            2026 Pacific time, NVIDIA made DLSS 5 available first on RTX 50 desktop and laptop GPUs.
-            RTX 40 is on NVIDIA&apos;s future support plan, but without a public availability date it
-            belongs in the planned column, not the current-support column.
-          </p>
-        </section>
-
-        <section className="mb-10 grid gap-5 md:grid-cols-2">
-          <div className="rounded-lg border border-border p-5">
-            <h2 className="mb-3 text-xl font-bold">RTX 50 Series support</h2>
-            <div className="space-y-3 text-sm leading-relaxed text-foreground/80">
-              <p>
-                RTX 50 is the only generation in NVIDIA&apos;s current matrix with the full stack:
-                Super Resolution, DLAA, Ray Reconstruction, Frame Generation, Multi Frame
-                Generation, Dynamic Multi Frame Generation, and current DLSS 5 Neural Rendering
-                support in games that have shipped it. That makes it the broadest DLSS choice
-                for a new purchase.
-              </p>
-              <p>
-                Full hardware eligibility does not make every setting sensible. Multi Frame
-                Generation needs a stable base frame rate and benefits from a high-refresh-rate
-                display. Dynamic MFG also depends on compatible game profiles and can conflict
-                with V-Sync or external frame-rate limiters in current implementations. Test
-                latency and animation consistency instead of choosing the largest multiplier by default.
-              </p>
-            </div>
-          </div>
-          <div className="rounded-lg border border-border p-5">
-            <h2 className="mb-3 text-xl font-bold">RTX 40 Series support</h2>
-            <div className="space-y-3 text-sm leading-relaxed text-foreground/80">
-              <p>
-                RTX 40 cards support Super Resolution, DLAA, Ray Reconstruction, and standard
-                Frame Generation. This includes desktop cards such as the RTX 4060, 4070, 4080,
-                and 4090 as well as laptop versions, provided the individual game supports the option.
-              </p>
-              <p>
-                RTX 40 does not support Multi Frame Generation or Dynamic MFG. A DLSS 4.5 game may
-                still provide a newer Super Resolution model and an enhanced Frame Generation model,
-                so “no MFG” does not mean “no DLSS 4.5.” It means the card receives the compatible
-                parts of the stack rather than the RTX 50-only multipliers.
-                For DLSS 5 Neural Rendering, NVIDIA has described RTX 40 as a future expansion target;
-                do not treat that as available until a driver or game note says so.
-              </p>
-            </div>
-          </div>
-          <div className="rounded-lg border border-border p-5">
-            <h2 className="mb-3 text-xl font-bold">RTX 30 Series support</h2>
-            <div className="space-y-3 text-sm leading-relaxed text-foreground/80">
-              <p>
-                RTX 30 cards support Super Resolution, DLAA, and Ray Reconstruction. Models such
-                as the RTX 3050, 3060, 3070, 3080, and 3090 do not support NVIDIA Frame Generation.
-                They can still gain image-quality improvements when a compatible game or app
-                profile supplies a newer reconstruction model.
-              </p>
-              <p>
-                The practical limit is performance. New transformer models may be more demanding
-                on RTX 20 and RTX 30 hardware because those generations do not have the same native
-                FP8 acceleration as newer cards. A quality mode that looks better but reduces the
-                base frame rate may not be worthwhile on every GPU. Compare the original preset,
-                the new model, and a lower internal resolution in the same scene.
-              </p>
-            </div>
-          </div>
-          <div className="rounded-lg border border-border p-5">
-            <h2 className="mb-3 text-xl font-bold">RTX 20 Series support</h2>
-            <div className="space-y-3 text-sm leading-relaxed text-foreground/80">
-              <p>
-                RTX 20 introduced the Tensor Core hardware path used by DLSS. The RTX 2060, 2070,
-                2080, their Super variants, and the RTX 2080 Ti remain eligible for Super Resolution,
-                DLAA, and Ray Reconstruction. They do not support Frame Generation or MFG.
-              </p>
-              <p>
-                These cards often benefit most from sensible expectations. Super Resolution can
-                extend useful life at 1080p or 1440p, but heavy path tracing may still overwhelm
-                the base rendering workload. Ray Reconstruction can improve a supported ray-traced
-                image; it cannot make an otherwise unplayable path-tracing preset inexpensive.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-10 space-y-4 text-foreground/80">
           <h2 className="text-2xl font-bold text-foreground">What about GTX, Radeon, and Intel Arc?</h2>
           <p className="leading-relaxed">
-            GeForce GTX cards do not support DLSS. The name “GeForce” is not enough; DLSS requires
-            RTX-class hardware. This excludes popular GTX models such as the GTX 1060, GTX 1650,
-            GTX 1660, GTX 1070, and GTX 1080 Ti. Replacing a game&apos;s DLSS file or forcing a menu
-            flag will not add the missing Tensor Core path.
-          </p>
-          <p className="leading-relaxed">
-            AMD Radeon and Intel Arc cards also cannot run NVIDIA DLSS. Many games provide AMD FSR
-            or Intel XeSS as alternatives, sometimes even on an NVIDIA card. Those technologies can
-            serve a similar user goal, such as increasing frame rate, but their supported modes,
-            artifacts, and hardware rules differ. Use the option designed for the installed GPU and
-            avoid unofficial downloads that claim to convert unsupported hardware into a DLSS card.
+            None of them can run NVIDIA DLSS. GTX cards such as the GTX 1060, GTX 1660 and GTX 1080 Ti
+            lack the Tensor Cores DLSS needs, and replacing a game&apos;s DLSS file or forcing a menu
+            flag will not add them. AMD Radeon and Intel Arc cards use their own upscalers instead: pick
+            FSR or XeSS in the game&apos;s menu, and avoid unofficial downloads that claim to turn
+            unsupported hardware into a DLSS card.
           </p>
         </section>
 

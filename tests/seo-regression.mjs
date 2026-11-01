@@ -133,6 +133,10 @@ for (const id of ["rtx-2060", "rtx-3050", "rtx-3080", "rtx-4050-laptop", "gtx"])
   assert.match(comparePage, new RegExp(`<li[^>]*id="${id}"`), `Popular-card answer #${id} must stay linkable`);
 }
 assert.ok(visibleText(comparePage).includes("1707×960"), "DLSS mode table must list 1440p Quality resolution");
+// Two text-based infographics: the feature ladder and the rendered-area illustration.
+assert.match(comparePage, /<figure[^>]*aria-labelledby="ladder-caption"/, "Feature ladder figure must stay on the page");
+assert.match(comparePage, /role="img" aria-label="Rendered area for each DLSS mode[^"]*25%/, "Rendered-area figure needs a text alternative");
+assert.doesNotMatch(visibleText(comparePage), /Why the DLSS version number can be misleading/, "Merged section must not return as a duplicate");
 assert.ok((comparePage.match(/<dl class="grid grid-cols-\[minmax\(0,1fr\)_auto\]/g) || []).length >= 5, "Matrix must have stacked mobile cards");
 
 assert.equal((compareSection.match(/<optgroup /g) || []).length, 2 * new Set(JSON.parse(fs.readFileSync("data/gpu-data.json", "utf8")).gpus.map((gpu) => gpu.series)).size,
