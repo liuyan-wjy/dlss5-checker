@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { GPU } from "@/lib/gpu-search";
+import { shortGpuName } from "@/lib/gpu-compare";
 import { BENCHMARK_MODEL_LABELS, getBenchmarksForGpu } from "@/lib/benchmarks";
 
 // Where each feature is switched on. Paths follow the NVIDIA App and game menus
@@ -94,15 +95,11 @@ function readNext(gpu: GPU): ReadNext[] {
   }
 }
 
-function shortName(name: string) {
-  return name.replace(/^NVIDIA (GeForce )?|^AMD Radeon |^Intel Arc /, "");
-}
-
 export default function GpuNextSteps({ gpu }: { gpu: GPU }) {
   const features = [...gpu.dlss5_features, ...gpu.current_dlss_features].filter(
     (feature) => FEATURE_HOW_TO[feature],
   );
-  const name = shortName(gpu.name);
+  const name = shortGpuName(gpu.name);
   const isNvidia = gpu.brand !== "AMD" && gpu.brand !== "Intel";
   const tierStart = gpu.dlss5_support === "confirmed" ? TIER_START[gpu.tier] : undefined;
   const benchmarks = getBenchmarksForGpu(gpu.id);

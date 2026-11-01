@@ -105,6 +105,46 @@ function mainWords(html) {
   return visibleText(main[1]).split(/\s+/).length;
 }
 
+const comparePage = readRoute("dlss-supported-cards");
+const compareSection = comparePage.match(/<section id="gpu-compare"[\s\S]*?<\/section>/)?.[0];
+assert.ok(compareSection, "The existing supported-cards page must include the comparison tool");
+assert.match(compareSection, /<h2[^>]*>Compare two GPUs<\/h2>/);
+assert.ok(comparePage.indexOf(compareSection) < comparePage.indexOf(">Frequently asked questions</h2>"), "Comparison precedes the FAQ");
+assert.match(compareSection, /id="compare-from"/);
+assert.match(compareSection, /id="compare-to"/);
+assert.ok(visibleText(compareSection).includes("Feature support only. This does not predict frame rates; see published tests on the system requirements page."));
+assert.match(compareSection, /href="\/dlss-5-system-requirements#benchmarks"/);
+// With no ?from=&to= the page ships a useful default comparison instead of an empty state.
+const compareText = visibleText(compareSection);
+assert.ok(compareText.includes("RTX 3060 → RTX 5070"), "Default comparison must be rendered in the static HTML");
+assert.ok(compareText.includes("4 added · 0 lost"), "Default comparison must summarize gained and lost features");
+assert.ok(compareText.includes("+ DLSS 5 Neural Rendering"), "Default comparison must list gained features");
+for (const label of ["RTX 4070 → RTX 5070", "RTX 4090 → RTX 5090", "RX 7900 XTX → RTX 5080"]) {
+  assert.ok(compareText.includes(label), `Quick comparison "${label}" must be offered`);
+}
+assert.match(compareSection, /aria-label="Swap current and target GPU"/);
+// The supported-cards guide answers model, version, laptop, frame-generation and mode questions,
+// and every "On this page" link lands on a section.
+for (const id of ["matrix", "gpu-compare", "dlss-versions", "popular-cards", "laptops", "frame-generation-rtx-20-30", "dlss-modes", "faq"]) {
+  assert.match(comparePage, new RegExp(`id="${id}"`), `Supported-cards guide must include #${id}`);
+  assert.match(comparePage, new RegExp(`href="#${id}"`), `On-this-page navigation must link #${id}`);
+}
+for (const id of ["rtx-2060", "rtx-3050", "rtx-3080", "rtx-4050-laptop", "gtx"]) {
+  assert.match(comparePage, new RegExp(`<li[^>]*id="${id}"`), `Popular-card answer #${id} must stay linkable`);
+}
+assert.ok(visibleText(comparePage).includes("1707×960"), "DLSS mode table must list 1440p Quality resolution");
+// Two text-based infographics: the feature ladder and the rendered-area illustration.
+assert.match(comparePage, /<figure[^>]*aria-labelledby="ladder-caption"/, "Feature ladder figure must stay on the page");
+assert.match(comparePage, /role="img" aria-label="Rendered area for each DLSS mode[^"]*25%/, "Rendered-area figure needs a text alternative");
+assert.doesNotMatch(visibleText(comparePage), /Why the DLSS version number can be misleading/, "Merged section must not return as a duplicate");
+assert.ok((comparePage.match(/<dl class="grid grid-cols-\[minmax\(0,1fr\)_auto\]/g) || []).length >= 5, "Matrix must have stacked mobile cards");
+
+assert.equal((compareSection.match(/<optgroup /g) || []).length, 2 * new Set(JSON.parse(fs.readFileSync("data/gpu-data.json", "utf8")).gpus.map((gpu) => gpu.series)).size,
+  "Both selectors must group GPUs by series");
+assert.equal(metadataValue(comparePage, /<title>([^<]+)<\/title>/, "comparison page title"), "DLSS Supported Cards: RTX 20, 30, 40 &amp; 50 Guide");
+assert.equal(metadataValue(comparePage, /<meta name="description" content="([^"]+)"/, "comparison page description"), "See which NVIDIA cards support DLSS Super Resolution, Neural Rendering, Ray Reconstruction, Frame Generation, MFG, Dynamic MFG, and DLAA by GPU generation.");
+assert.equal(metadataValue(comparePage, /<h1[^>]*>([^<]+)<\/h1>/, "comparison page H1"), "DLSS Supported Cards: RTX 20, 30, 40, and 50 Series Compared");
+
 function checkFaq(html, route, required = true) {
   const text = visibleText(html);
   let faqCount = 0;

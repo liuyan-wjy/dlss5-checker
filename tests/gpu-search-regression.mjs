@@ -10,7 +10,7 @@ const require = createRequire(import.meta.url);
 function loadTs(relativePath) {
   const filename = path.resolve(relativePath);
   const compiled = ts.transpileModule(fs.readFileSync(filename, "utf8"), {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, esModuleInterop: true, jsx: ts.JsxEmit.ReactJSX },
+    compilerOptions: { target: ts.ScriptTarget.ES2017, module: ts.ModuleKind.CommonJS, esModuleInterop: true, jsx: ts.JsxEmit.ReactJSX },
     fileName: filename,
   }).outputText;
   const testModule = { exports: {} };
@@ -23,6 +23,44 @@ function loadTs(relativePath) {
   return testModule.exports;
 }
 const { searchGPU, getSuggestions, ALL_GPUS } = loadTs("lib/gpu-search.ts");
+const { compareGpus, shortGpuName } = loadTs("lib/gpu-compare.ts");
+for (const [full, short] of [
+  ["NVIDIA GeForce RTX 5070", "RTX 5070"], ["NVIDIA RTX Spark (laptop superchip)", "RTX Spark (laptop superchip)"],
+  ["AMD Radeon RX 7900 XTX", "RX 7900 XTX"], ["Intel Arc B580", "Arc B580"],
+]) assert.equal(shortGpuName(full), short);
+const gpuById = (id) => {
+  const gpu = ALL_GPUS.find((entry) => entry.id === id);
+  assert.ok(gpu, `Missing comparison fixture: ${id}`);
+  return gpu;
+};
+const gpuSnapshot = JSON.stringify(ALL_GPUS);
+const upgrade = compareGpus(gpuById("rtx-3060"), gpuById("rtx-5070"));
+assert.deepEqual(new Set(upgrade.added), new Set([
+  "frame_generation", "multi_frame_generation_4x", "dynamic_mfg_6x", "neural_rendering",
+]));
+assert.deepEqual(upgrade.removed, []);
+assert.deepEqual(new Set(upgrade.unchanged), new Set(["dlss_super_resolution", "dlaa", "ray_reconstruction"]));
+assert.equal(upgrade.vramDelta, 0);
+const lessMemory = compareGpus(gpuById("rtx-4090"), gpuById("rtx-5060"));
+assert.equal(lessMemory.vramDelta, -16);
+assert.ok(lessMemory.added.includes("multi_frame_generation_4x"));
+assert.ok(lessMemory.added.includes("neural_rendering"), "Planned Neural Rendering is not currently available on RTX 4090");
+assert.ok(lessMemory.unchanged.includes("frame_generation"), "MFG cards retain Frame Generation support");
+assert.deepEqual(lessMemory.removed, []);
+const reverse = compareGpus(gpuById("rtx-5060"), gpuById("rtx-4090"));
+assert.deepEqual(reverse.removed, lessMemory.added);
+assert.deepEqual(reverse.added, lessMemory.removed);
+assert.equal(reverse.vramDelta, 16);
+for (const gpu of ALL_GPUS) {
+  const same = compareGpus(gpu, gpu);
+  assert.deepEqual(same.added, [], `${gpu.id}: no added features when comparing itself`);
+  assert.deepEqual(same.removed, [], `${gpu.id}: no lost features when comparing itself`);
+  if (gpu.dlss5_support === "none") assert.deepEqual(same.unchanged, [], `${gpu.id}: no inferred DLSS support`);
+}
+for (const id of ["rtx-4060-ti", "rtx-5060-ti", "rtx-5070-laptop", "rtx-spark"]) {
+  assert.equal(compareGpus(gpuById("rtx-4090"), gpuById(id)).vramDelta, null, `${id}: no invented memory configuration`);
+}
+assert.equal(JSON.stringify(ALL_GPUS), gpuSnapshot, "Comparisons must not mutate GPU data");
 const { ALL_BENCHMARKS, getBenchmarksForGpu, BENCHMARK_MODEL_LABELS } = loadTs("lib/benchmarks.ts");
 const expectedBenchmarkCounts = { "rtx-5090": 2, "rtx-5080": 3, "rtx-5070": 1, "rtx-spark": 1 };
 for (const gpu of ALL_GPUS) {
