@@ -12,6 +12,12 @@ const NVIDIA_DLSS_45 =
   "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/";
 const NVIDIA_DLSS5_LAUNCH =
   "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/";
+const NVIDIA_DLSS_4 =
+  "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/";
+const AMD_FSR3_LAUNCH =
+  "https://overclock3d.net/news/software/amds-fidelityfx-super-resolution-3-technology-is-launching-today-in-two-games/";
+const DLSS_MODES_EXPLAINER =
+  "https://www.benq.com/en-us/knowledge-center/knowledge/dlss-presets-performance-quality-balanced.html";
 const NVIDIA_RTX40_UPDATE =
   "https://www.reddit.com/r/nvidia/comments/1w4bcvp/nvidia_dlss_5_available_september_3rd_dlss/?sort=new";
 
@@ -36,7 +42,7 @@ export const metadata: Metadata = {
 const compatibilityRows = [
   {
     generation: "GeForce RTX 50 Series",
-    examples: "RTX 5050 through RTX 5090, including laptop variants",
+    examples: "RTX 5050 through RTX 5090, laptop variants and RTX Spark laptops",
     superResolution: "Yes",
     rayReconstruction: "Yes",
     neuralRendering: "Yes, in DLSS 5 games",
@@ -91,6 +97,83 @@ const compatibilityRows = [
   },
 ];
 
+const versionRows = [
+  {
+    release: "DLSS 2",
+    added: "AI Super Resolution (upscaling)",
+    rtx2030: "Yes",
+    rtx40: "Yes",
+    rtx50: "Yes",
+  },
+  {
+    release: "DLSS 3",
+    added: "Frame Generation (one generated frame per rendered frame)",
+    rtx2030: "No",
+    rtx40: "Yes",
+    rtx50: "Yes",
+  },
+  {
+    release: "DLSS 3.5",
+    added: "Ray Reconstruction (AI denoising for ray tracing)",
+    rtx2030: "Yes",
+    rtx40: "Yes",
+    rtx50: "Yes",
+  },
+  {
+    release: "DLSS 4",
+    added: "Transformer models for Super Resolution, Ray Reconstruction and DLAA; Multi Frame Generation",
+    rtx2030: "Transformer models only",
+    rtx40: "Transformer models and improved Frame Generation",
+    rtx50: "Yes, including Multi Frame Generation",
+  },
+  {
+    release: "DLSS 4.5",
+    added: "Second-generation transformer Super Resolution, updated Ray Reconstruction, Dynamic Multi Frame Generation and 6X",
+    rtx2030: "New Super Resolution and Ray Reconstruction models; no frame generation",
+    rtx40: "New models and Frame Generation; no Dynamic MFG or 6X",
+    rtx50: "Yes, including Dynamic MFG and 6X",
+  },
+  {
+    release: "DLSS 5",
+    added: "Neural Rendering (lighting and materials)",
+    rtx2030: "No official support",
+    rtx40: "Planned, no public date",
+    rtx50: "Yes, in games that ship it",
+  },
+];
+
+const popularCards = [
+  { id: "rtx-2060", name: "RTX 2060", answer: "Super Resolution, DLAA and Ray Reconstruction, including the DLSS 4 and 4.5 upscaling models. No Frame Generation." },
+  { id: "rtx-3050", name: "RTX 3050 (desktop and laptop)", answer: "Super Resolution, DLAA and Ray Reconstruction with the newest upscaling models. No NVIDIA Frame Generation; the newer models cost more on this entry card, so compare them in the same scene." },
+  { id: "rtx-3060", name: "RTX 3060 and 3060 Ti", answer: "Same feature set as every RTX 30 card: Super Resolution, DLAA and Ray Reconstruction, but no Frame Generation." },
+  { id: "rtx-3070", name: "RTX 3070", answer: "Gets the DLSS 4 and 4.5 Super Resolution models. Frame Generation and Multi Frame Generation stay unavailable." },
+  { id: "rtx-3080", name: "RTX 3080 and 3090", answer: "RTX 30 features only: Super Resolution, DLAA and Ray Reconstruction. Raw speed does not unlock Frame Generation." },
+  { id: "rtx-4050-laptop", name: "RTX 4050 Laptop", answer: "Full RTX 40 feature set, including Frame Generation. Laptop power limits change performance, not features." },
+  { id: "rtx-4060", name: "RTX 4060 and 4060 Ti", answer: "Super Resolution, DLAA, Ray Reconstruction and Frame Generation. No Multi Frame Generation; DLSS 5 is planned for RTX 40 without a date." },
+  { id: "rtx-4070", name: "RTX 4070 to RTX 4090", answer: "Same features as the RTX 4060. A faster card gives more headroom for Frame Generation, not extra DLSS features." },
+  { id: "rtx-5060", name: "RTX 5050 to RTX 5090 and RTX Spark", answer: "Every DLSS feature, including Multi Frame Generation, Dynamic MFG and DLSS 5 Neural Rendering in supported games." },
+  { id: "gtx", name: "GTX 1060, GTX 1080 Ti and GTX 16 Series", answer: "No DLSS. These cards lack Tensor Cores. Use FSR or XeSS upscaling where a game offers it." },
+];
+
+const modeRows = [
+  { mode: "DLAA", scale: "100%", p1080: "1920×1080", p1440: "2560×1440", p2160: "3840×2160" },
+  { mode: "Quality", scale: "66.7%", p1080: "1280×720", p1440: "1707×960", p2160: "2560×1440" },
+  { mode: "Balanced", scale: "58%", p1080: "1114×626", p1440: "1485×835", p2160: "2227×1253" },
+  { mode: "Performance", scale: "50%", p1080: "960×540", p1440: "1280×720", p2160: "1920×1080" },
+  { mode: "Ultra Performance", scale: "33.3%", p1080: "640×360", p1440: "853×480", p2160: "1280×720" },
+];
+
+const tocLinks = [
+  { href: "#matrix", label: "Feature matrix" },
+  { href: "#gpu-compare", label: "Compare two GPUs" },
+  { href: "#dlss-versions", label: "DLSS versions" },
+  { href: "#popular-cards", label: "Popular cards" },
+  { href: "#laptops", label: "Laptop GPUs" },
+  { href: "#frame-generation-rtx-20-30", label: "Frame Generation on RTX 20/30" },
+  { href: "#dlss-modes", label: "DLSS modes" },
+  { href: "#faq", label: "FAQ" },
+];
+
 const faqItems = [
   {
     question: "What graphics cards support DLSS?",
@@ -127,14 +210,31 @@ const faqItems = [
     answer:
       "No. Hardware eligibility is only the first requirement. The game must integrate the specific DLSS feature, and some newer model overrides also require a supported NVIDIA App profile and current driver.",
   },
+  {
+    question: "Which DLSS version does my RTX 30 card support?",
+    answer:
+      "RTX 30 cards get the Super Resolution, DLAA and Ray Reconstruction parts of every DLSS release, including the DLSS 4 and DLSS 4.5 transformer models. They do not get the Frame Generation parts of DLSS 3, 4 or 4.5, and they have no official DLSS 5 support.",
+  },
+  {
+    question: "Can RTX 20 or RTX 30 cards use frame generation?",
+    answer:
+      "Not NVIDIA DLSS Frame Generation, which starts with RTX 40. In games that offer AMD FSR 3 frame generation, AMD lists RTX 20 and newer as supported and RTX 30 and newer as recommended, so RTX 20 and 30 owners can use that option instead.",
+  },
+  {
+    question: "Do laptop GPUs support the same DLSS features as desktop cards?",
+    answer:
+      "Yes. A laptop GPU supports the same DLSS features as the desktop generation it belongs to, so an RTX 4050 Laptop GPU has Frame Generation and an RTX 3050 Laptop GPU does not. Laptop power and cooling limits change performance, not the feature list.",
+  },
+  {
+    question: "What resolution does DLSS Quality render at?",
+    answer:
+      "DLSS Quality renders at about 66.7% of the output resolution on each axis: 1280×720 for 1080p, about 1707×960 for 1440p and 2560×1440 for 4K. Balanced uses about 58%, Performance 50% and Ultra Performance about 33.3%.",
+  },
 ];
 
 function SupportMark({ value }: { value: string }) {
-  return (
-    <span className={value === "Yes" ? "font-semibold text-green-400" : "text-muted-foreground"}>
-      {value}
-    </span>
-  );
+  const tone = value.startsWith("Yes") ? "font-semibold text-green-400" : value.startsWith("No") ? "text-muted-foreground" : "text-foreground";
+  return <span className={tone}>{value}</span>;
 }
 
 export default function DlssSupportedCardsPage() {
@@ -161,7 +261,7 @@ export default function DlssSupportedCardsPage() {
     headline: "DLSS Supported Cards: RTX 20, 30, 40 and 50 Guide",
     url: PAGE_URL,
     datePublished: "2026-08-26",
-    dateModified: "2026-09-05",
+    dateModified: "2026-11-01",
     inLanguage: "en",
     author: { "@type": "Person", name: "liuyan-wjy", url: "https://github.com/liuyan-wjy" },
     publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
@@ -181,7 +281,7 @@ export default function DlssSupportedCardsPage() {
         </nav>
 
         <header className="mb-10 max-w-3xl">
-          <p className="mb-3 text-sm font-semibold text-blue-400">Compatibility guide · Reviewed September 5, 2026</p>
+          <p className="mb-3 text-sm font-semibold text-blue-400">Compatibility guide · Reviewed November 1, 2026</p>
           <h1 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
             DLSS Supported Cards: RTX 20, 30, 40, and 50 Series Compared
           </h1>
@@ -194,6 +294,19 @@ export default function DlssSupportedCardsPage() {
           </p>
         </header>
 
+        <nav aria-label="On this page" className="mb-10">
+          <p className="mb-2 text-sm font-semibold text-muted-foreground">On this page</p>
+          <ul className="flex flex-wrap gap-2">
+            {tocLinks.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="inline-flex min-h-9 items-center rounded-full border border-border px-3 text-sm hover:border-blue-400 hover:text-blue-400">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         <section className="mb-10 rounded-lg border border-blue-500/30 bg-blue-500/5 p-5">
           <h2 className="mb-3 text-2xl font-bold">Short answer: which cards support DLSS?</h2>
           <p className="leading-relaxed text-foreground/80">
@@ -201,9 +314,10 @@ export default function DlssSupportedCardsPage() {
             cards. All four generations can use DLSS Super Resolution, Ray Reconstruction,
             and DLAA when the game supports the feature. RTX 40 and RTX 50 cards can also use
             Frame Generation. Multi Frame Generation and the newer Dynamic Multi Frame
-            Generation modes are RTX 50-only features. DLSS 5 Neural Rendering is confirmed
-            locally on RTX 50 desktop and laptop GPUs in supported games such as NBA 2K27; RTX
-            40 is planned for later with no public date. GTX cards, AMD Radeon cards, and Intel
+            Generation modes are RTX 50-only features, and RTX Spark laptops share the RTX 50
+            feature set. DLSS 5 Neural Rendering is confirmed locally on RTX 50 desktop and laptop
+            GPUs and RTX Spark laptops in supported games such as NBA 2K27; RTX 40 is planned for
+            later with no public date. GTX cards, AMD Radeon cards, and Intel
             Arc cards do not support NVIDIA DLSS.
           </p>
           <p className="mt-4 leading-relaxed text-foreground/80">
@@ -215,9 +329,26 @@ export default function DlssSupportedCardsPage() {
           </p>
         </section>
 
-        <figure className="mb-10">
+        <figure id="matrix" className="mb-10 scroll-mt-24">
           <figcaption className="mb-3 text-2xl font-bold">DLSS card compatibility matrix</figcaption>
-          <div className="overflow-x-auto rounded-lg border border-border">
+          <ul className="space-y-3 md:hidden">
+            {compatibilityRows.map((row) => (
+              <li key={row.generation} className="rounded-lg border border-border p-4">
+                <p className="font-semibold">{row.generation}</p>
+                <p className="mb-3 text-sm text-muted-foreground">{row.examples}</p>
+                <dl className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1.5 text-sm">
+                  <dt>Super Resolution</dt><dd className="text-right"><SupportMark value={row.superResolution} /></dd>
+                  <dt>DLAA</dt><dd className="text-right"><SupportMark value={row.dlaa} /></dd>
+                  <dt>Ray Reconstruction</dt><dd className="text-right"><SupportMark value={row.rayReconstruction} /></dd>
+                  <dt>Frame Generation</dt><dd className="text-right"><SupportMark value={row.frameGeneration} /></dd>
+                  <dt>Multi Frame Generation</dt><dd className="text-right"><SupportMark value={row.multiFrameGeneration} /></dd>
+                  <dt>Dynamic MFG</dt><dd className="text-right"><SupportMark value={row.dynamicMfg} /></dd>
+                  <dt>DLSS 5 Neural Rendering</dt><dd className="text-right"><SupportMark value={row.neuralRendering} /></dd>
+                </dl>
+              </li>
+            ))}
+          </ul>
+          <div className="hidden overflow-x-auto rounded-lg border border-border md:block">
             <table className="w-full min-w-[900px] text-sm">
               <thead className="bg-muted/40 text-left">
                 <tr>
@@ -250,6 +381,127 @@ export default function DlssSupportedCardsPage() {
             game, its patch level, the driver, and in some cases an NVIDIA App override.
           </p>
         </figure>
+
+        <GpuCompare />
+
+        <section id="dlss-versions" className="mb-10 scroll-mt-24 space-y-4">
+          <h2 className="text-2xl font-bold">Which DLSS version does my card support?</h2>
+          <p className="leading-relaxed text-foreground/80">
+            Every RTX card gets the image-quality parts of each DLSS release, but the
+            frame-generation parts depend on the generation. Read your card&apos;s column for each
+            release; NVIDIA confirms that the{" "}
+            <a href={NVIDIA_DLSS_4} rel="noreferrer" className="text-blue-400 hover:underline">DLSS 4 transformer models</a>{" "}
+            run on all RTX GPUs while Multi Frame Generation is RTX 50-only.
+          </p>
+          <ul className="space-y-3">
+            {versionRows.map((row) => (
+              <li key={row.release} className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold">{row.release}</h3>
+                <p className="mb-3 text-sm text-muted-foreground">Added: {row.added}</p>
+                <dl className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-x-3 gap-y-1.5 text-sm sm:grid-cols-3 sm:gap-2">
+                  <div className="contents sm:block sm:rounded-md sm:bg-muted/40 sm:px-3 sm:py-2"><dt className="text-muted-foreground sm:text-xs">RTX 20/30</dt><dd><SupportMark value={row.rtx2030} /></dd></div>
+                  <div className="contents sm:block sm:rounded-md sm:bg-muted/40 sm:px-3 sm:py-2"><dt className="text-muted-foreground sm:text-xs">RTX 40</dt><dd><SupportMark value={row.rtx40} /></dd></div>
+                  <div className="contents sm:block sm:rounded-md sm:bg-muted/40 sm:px-3 sm:py-2"><dt className="text-muted-foreground sm:text-xs">RTX 50, Spark</dt><dd><SupportMark value={row.rtx50} /></dd></div>
+                </dl>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="popular-cards" className="mb-10 scroll-mt-24 space-y-4">
+          <h2 className="text-2xl font-bold">Popular cards at a glance</h2>
+          <p className="leading-relaxed text-foreground/80">
+            Short answers for the models people ask about most. For any other card, use the{" "}
+            <Link href="/" className="text-blue-400 hover:underline">GPU checker</Link> or the comparison above.
+          </p>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {popularCards.map((card) => (
+              <li key={card.id} id={card.id} className="scroll-mt-24 rounded-lg border border-border p-4">
+                <h3 className="mb-1 font-semibold">{card.name}</h3>
+                <p className="text-sm leading-relaxed text-foreground/80">{card.answer}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="laptops" className="mb-10 scroll-mt-24 space-y-4 text-foreground/80">
+          <h2 className="text-2xl font-bold text-foreground">Laptop GPUs: same features, different performance</h2>
+          <p className="leading-relaxed">
+            A laptop GPU supports the same DLSS features as the desktop generation it belongs to.
+            An RTX 4050 Laptop GPU has Frame Generation because it is an RTX 40 part; an RTX 3050
+            Laptop GPU does not, because it is an RTX 30 part. RTX 50 laptops and RTX Spark laptops
+            get Multi Frame Generation and DLSS 5 Neural Rendering like RTX 50 desktop cards.
+          </p>
+          <p className="leading-relaxed">
+            What changes is performance. Laptop GPUs run at much lower power than desktop cards with
+            similar names, and two laptops with the same GPU can perform very differently depending on
+            power limit and cooling. Compare reviews of laptops with a similar power rating, and on
+            laptops with integrated graphics make sure the game runs on the NVIDIA GPU, or the DLSS
+            options will not appear.
+          </p>
+        </section>
+
+        <section id="frame-generation-rtx-20-30" className="mb-10 scroll-mt-24 space-y-4 text-foreground/80">
+          <h2 className="text-2xl font-bold text-foreground">Can RTX 20 and RTX 30 cards use frame generation?</h2>
+          <p className="leading-relaxed">
+            Not NVIDIA&apos;s. DLSS Frame Generation starts with RTX 40, and Multi Frame Generation with
+            RTX 50; no driver or setting adds them to older cards. Many games, however, also include
+            AMD FSR 3 frame generation, which is not tied to AMD hardware. At launch,{" "}
+            <a href={AMD_FSR3_LAUNCH} rel="noreferrer" className="text-blue-400 hover:underline">AMD listed</a>{" "}
+            NVIDIA RTX 20 Series and newer as supported and RTX 30 Series and newer as recommended.
+          </p>
+          <p className="leading-relaxed">
+            So an RTX 3060 or RTX 3080 owner can often turn on frame generation by choosing the
+            game&apos;s FSR frame generation option, and some games let you combine it with DLSS
+            Super Resolution. As with any frame generation, it smooths motion best when the base frame
+            rate is already around 60 FPS, and it does not improve input response. Community tools that
+            claim to add NVIDIA Frame Generation to RTX 30 are unofficial; see our{" "}
+            <Link href="/dlss-5-mods" className="text-blue-400 hover:underline">notes on community mods and their risks</Link>.
+          </p>
+        </section>
+
+        <section id="dlss-modes" className="mb-10 scroll-mt-24 space-y-4 text-foreground/80">
+          <h2 className="text-2xl font-bold text-foreground">DLSS modes: what resolution does each one render at?</h2>
+          <p className="leading-relaxed">
+            Super Resolution renders at a lower internal resolution and reconstructs your output
+            resolution. Lower internal resolution means more speed and, at some point, a softer image.
+            The table shows the internal resolution for each output resolution, using the standard
+            scale factors per axis; some games use their own values or offer a custom slider.
+          </p>
+          <div className="overflow-x-auto rounded-lg border border-border" tabIndex={0} role="region" aria-label="DLSS mode internal resolutions">
+            <table className="w-full text-xs sm:text-sm">
+              <caption className="sr-only">Internal render resolution for each DLSS mode at 1080p, 1440p and 4K output</caption>
+              <thead className="bg-muted/40 text-left">
+                <tr>
+                  <th scope="col" className="p-2 sm:p-3">Mode</th>
+                  <th scope="col" className="p-2 sm:p-3">1080p</th>
+                  <th scope="col" className="p-2 sm:p-3">1440p</th>
+                  <th scope="col" className="p-2 sm:p-3">4K</th>
+                </tr>
+              </thead>
+              <tbody>
+                {modeRows.map((row) => (
+                  <tr key={row.mode} className="border-t border-border">
+                    <th scope="row" className="p-2 text-left font-semibold sm:p-3">
+                      {row.mode}
+                      <span className="block text-xs font-normal text-muted-foreground">{row.scale}</span>
+                    </th>
+                    <td className="p-2 tabular-nums sm:p-3">{row.p1080}</td>
+                    <td className="p-2 tabular-nums sm:p-3">{row.p1440}</td>
+                    <td className="p-2 tabular-nums sm:p-3">{row.p2160}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="leading-relaxed">
+            A practical starting point: Quality at 1080p and 1440p, Performance at 4K, and Balanced
+            when you need a little more speed. NVIDIA designed the transformer models used since DLSS 4
+            to keep more detail than earlier models, so if you last chose a mode years ago, try one step
+            lower and compare the same scene before deciding. Scale factors follow the commonly published{" "}
+            <a href={DLSS_MODES_EXPLAINER} rel="noreferrer" className="text-blue-400 hover:underline">DLSS preset values</a>.
+          </p>
+        </section>
 
         <section className="mb-10 space-y-4 text-foreground/80">
           <h2 className="text-2xl font-bold text-foreground">Why the DLSS version number can be misleading</h2>
@@ -440,15 +692,14 @@ export default function DlssSupportedCardsPage() {
             and NVIDIA&apos;s public{" "}
             <a href={NVIDIA_RTX40_UPDATE} rel="noreferrer" className="text-blue-400 hover:underline">RTX 40 expansion note</a>.
             We separate hardware eligibility from game availability and avoid treating a version
-            label as support for every feature. Published and checked by liuyan-wjy
-            on August 26, 2026 and reviewed on September 5, 2026. Drivers, game profiles, and feature availability can change, so the
+            label as support for every feature. FSR frame generation support follows AMD&apos;s published
+            hardware list. Published and checked by liuyan-wjy on August 26, 2026 and reviewed on
+            November 1, 2026. Drivers, game profiles, and feature availability can change, so the
             linked primary sources take priority over this summary.
           </p>
         </section>
 
-        <GpuCompare />
-
-        <section className="mb-10">
+        <section id="faq" className="mb-10 scroll-mt-24">
           <h2 className="mb-4 text-2xl font-bold">Frequently asked questions</h2>
           <div className="space-y-5">
             {faqItems.map((item) => (

@@ -123,6 +123,18 @@ for (const label of ["RTX 4070 → RTX 5070", "RTX 4090 → RTX 5090", "RX 7900 
   assert.ok(compareText.includes(label), `Quick comparison "${label}" must be offered`);
 }
 assert.match(compareSection, /aria-label="Swap current and target GPU"/);
+// The supported-cards guide answers model, version, laptop, frame-generation and mode questions,
+// and every "On this page" link lands on a section.
+for (const id of ["matrix", "gpu-compare", "dlss-versions", "popular-cards", "laptops", "frame-generation-rtx-20-30", "dlss-modes", "faq"]) {
+  assert.match(comparePage, new RegExp(`id="${id}"`), `Supported-cards guide must include #${id}`);
+  assert.match(comparePage, new RegExp(`href="#${id}"`), `On-this-page navigation must link #${id}`);
+}
+for (const id of ["rtx-2060", "rtx-3050", "rtx-3080", "rtx-4050-laptop", "gtx"]) {
+  assert.match(comparePage, new RegExp(`<li[^>]*id="${id}"`), `Popular-card answer #${id} must stay linkable`);
+}
+assert.ok(visibleText(comparePage).includes("1707×960"), "DLSS mode table must list 1440p Quality resolution");
+assert.ok((comparePage.match(/<dl class="grid grid-cols-\[minmax\(0,1fr\)_auto\]/g) || []).length >= 5, "Matrix must have stacked mobile cards");
+
 assert.equal((compareSection.match(/<optgroup /g) || []).length, 2 * new Set(JSON.parse(fs.readFileSync("data/gpu-data.json", "utf8")).gpus.map((gpu) => gpu.series)).size,
   "Both selectors must group GPUs by series");
 assert.equal(metadataValue(comparePage, /<title>([^<]+)<\/title>/, "comparison page title"), "DLSS Supported Cards: RTX 20, 30, 40 &amp; 50 Guide");
