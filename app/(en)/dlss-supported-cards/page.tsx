@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import GpuCompare from "@/components/GpuCompare";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
 const PAGE_URL = "https://www.dlss5.net/dlss-supported-cards";
@@ -444,6 +445,8 @@ export default function DlssSupportedCardsPage() {
             linked primary sources take priority over this summary.
           </p>
         </section>
+
+        <GpuCompare />
 
         <section className="mb-10">
           <h2 className="mb-4 text-2xl font-bold">Frequently asked questions</h2>

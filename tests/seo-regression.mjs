@@ -105,6 +105,19 @@ function mainWords(html) {
   return visibleText(main[1]).split(/\s+/).length;
 }
 
+const comparePage = readRoute("dlss-supported-cards");
+const compareSection = comparePage.match(/<section id="gpu-compare"[\s\S]*?<\/section>/)?.[0];
+assert.ok(compareSection, "The existing supported-cards page must include the comparison tool");
+assert.match(compareSection, /<h2[^>]*>Compare two GPUs<\/h2>/);
+assert.ok(comparePage.indexOf(compareSection) < comparePage.indexOf(">Frequently asked questions</h2>"), "Comparison precedes the FAQ");
+assert.match(compareSection, /id="compare-from"/);
+assert.match(compareSection, /id="compare-to"/);
+assert.ok(visibleText(compareSection).includes("Feature support only. This does not predict frame rates; see published tests on the system requirements page."));
+assert.match(compareSection, /href="\/dlss-5-system-requirements#benchmarks"/);
+assert.equal(metadataValue(comparePage, /<title>([^<]+)<\/title>/, "comparison page title"), "DLSS Supported Cards: RTX 20, 30, 40 &amp; 50 Guide");
+assert.equal(metadataValue(comparePage, /<meta name="description" content="([^"]+)"/, "comparison page description"), "See which NVIDIA cards support DLSS Super Resolution, Neural Rendering, Ray Reconstruction, Frame Generation, MFG, Dynamic MFG, and DLAA by GPU generation.");
+assert.equal(metadataValue(comparePage, /<h1[^>]*>([^<]+)<\/h1>/, "comparison page H1"), "DLSS Supported Cards: RTX 20, 30, 40, and 50 Series Compared");
+
 function checkFaq(html, route, required = true) {
   const text = visibleText(html);
   let faqCount = 0;
