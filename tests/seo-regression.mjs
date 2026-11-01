@@ -468,4 +468,13 @@ assert.match(visibleText(readRoute("privacy")), /Optional Tips Through Stripe/);
 assert.match(readRoute("privacy"), /https:\/\/stripe\.com\/privacy/);
 assert.doesNotMatch(generatedHtml, /js\.stripe\.com/, "No Stripe script should load on the site");
 
+// The system requirements benchmark table renders every row of data/benchmarks.json.
+const requirementsHtml = readRoute("dlss-5-system-requirements");
+const requirementsText = visibleText(requirementsHtml);
+for (const row of JSON.parse(fs.readFileSync("data/benchmarks.json", "utf8")).benchmarks) {
+  assert.ok(requirementsText.includes(row.result), `System requirements must show benchmark ${row.id}`);
+  assert.ok(requirementsHtml.includes(`href="${row.url}"`), `System requirements must link the source of ${row.id}`);
+}
+assert.doesNotMatch(requirementsText, /192 to 76|192 FPS/, "The unverified 192 to 76 FPS figure must not return");
+
 console.log("SEO regression checks passed.");
