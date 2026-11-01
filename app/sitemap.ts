@@ -14,6 +14,7 @@ const pages: SitemapPage[] = [
   { path: "", changeFrequency: "weekly", priority: 1 },
   { path: "/dlss-5-download", changeFrequency: "weekly", priority: 0.85 },
   { path: "/dlss-5-amd", changeFrequency: "weekly", priority: 0.85 },
+  { path: "/dlss-5-mods", changeFrequency: "weekly", priority: 0.8 },
   { path: "/pt/como-ativar-dlss-5", changeFrequency: "weekly", priority: 0.8 },
   { path: "/pt/dlss-5-amd", changeFrequency: "weekly", priority: 0.8 },
   { path: "/pt", changeFrequency: "weekly", priority: 0.9 },

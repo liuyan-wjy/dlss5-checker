@@ -388,7 +388,10 @@ export default function Dlss5SupportedCardsPage() {
               <div key={card.id} id={card.id} className="scroll-mt-24 rounded-lg border border-border p-5">
                 <h3 className="text-lg font-bold mb-1">{card.name}</h3>
                 <p className={`mb-2 text-sm font-semibold ${card.answerClass}`}>{card.answer}</p>
-                <p className="text-sm text-foreground/80 leading-relaxed">{card.detail}</p>
+                <p className="text-sm text-foreground/80 leading-relaxed">
+                  {card.detail}
+                  {/^rtx-[34]/.test(card.id) && <> Read about <Link href="/dlss-5-mods" className="text-blue-400 hover:underline">unofficial mods and their risks</Link>.</>}
+                </p>
               </div>
             ))}
           </div>
