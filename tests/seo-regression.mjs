@@ -114,6 +114,17 @@ assert.match(compareSection, /id="compare-from"/);
 assert.match(compareSection, /id="compare-to"/);
 assert.ok(visibleText(compareSection).includes("Feature support only. This does not predict frame rates; see published tests on the system requirements page."));
 assert.match(compareSection, /href="\/dlss-5-system-requirements#benchmarks"/);
+// With no ?from=&to= the page ships a useful default comparison instead of an empty state.
+const compareText = visibleText(compareSection);
+assert.ok(compareText.includes("RTX 3060 → RTX 5070"), "Default comparison must be rendered in the static HTML");
+assert.ok(compareText.includes("4 added · 0 lost"), "Default comparison must summarize gained and lost features");
+assert.ok(compareText.includes("+ DLSS 5 Neural Rendering"), "Default comparison must list gained features");
+for (const label of ["RTX 4070 → RTX 5070", "RTX 4090 → RTX 5090", "RX 7900 XTX → RTX 5080"]) {
+  assert.ok(compareText.includes(label), `Quick comparison "${label}" must be offered`);
+}
+assert.match(compareSection, /aria-label="Swap current and target GPU"/);
+assert.equal((compareSection.match(/<optgroup /g) || []).length, 2 * new Set(JSON.parse(fs.readFileSync("data/gpu-data.json", "utf8")).gpus.map((gpu) => gpu.series)).size,
+  "Both selectors must group GPUs by series");
 assert.equal(metadataValue(comparePage, /<title>([^<]+)<\/title>/, "comparison page title"), "DLSS Supported Cards: RTX 20, 30, 40 &amp; 50 Guide");
 assert.equal(metadataValue(comparePage, /<meta name="description" content="([^"]+)"/, "comparison page description"), "See which NVIDIA cards support DLSS Super Resolution, Neural Rendering, Ray Reconstruction, Frame Generation, MFG, Dynamic MFG, and DLAA by GPU generation.");
 assert.equal(metadataValue(comparePage, /<h1[^>]*>([^<]+)<\/h1>/, "comparison page H1"), "DLSS Supported Cards: RTX 20, 30, 40, and 50 Series Compared");

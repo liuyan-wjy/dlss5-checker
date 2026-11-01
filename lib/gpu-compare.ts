@@ -1,5 +1,10 @@
 import type { GPU } from "@/lib/gpu-search";
 
+/** "NVIDIA GeForce RTX 5070" → "RTX 5070", "AMD Radeon RX 7900 XTX" → "RX 7900 XTX", "Intel Arc B580" → "Arc B580". */
+export function shortGpuName(name: string) {
+  return name.replace(/^NVIDIA (GeForce )?|^AMD Radeon |^Intel /, "");
+}
+
 function availableFeatures(gpu: GPU) {
   const features = new Set([...gpu.current_dlss_features, ...gpu.dlss5_features]);
   // RTX 50 data uses MFG as its frame-generation path; the support matrix also includes FG.

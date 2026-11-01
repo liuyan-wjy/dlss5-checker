@@ -23,7 +23,11 @@ function loadTs(relativePath) {
   return testModule.exports;
 }
 const { searchGPU, getSuggestions, ALL_GPUS } = loadTs("lib/gpu-search.ts");
-const { compareGpus } = loadTs("lib/gpu-compare.ts");
+const { compareGpus, shortGpuName } = loadTs("lib/gpu-compare.ts");
+for (const [full, short] of [
+  ["NVIDIA GeForce RTX 5070", "RTX 5070"], ["NVIDIA RTX Spark (laptop superchip)", "RTX Spark (laptop superchip)"],
+  ["AMD Radeon RX 7900 XTX", "RX 7900 XTX"], ["Intel Arc B580", "Arc B580"],
+]) assert.equal(shortGpuName(full), short);
 const gpuById = (id) => {
   const gpu = ALL_GPUS.find((entry) => entry.id === id);
   assert.ok(gpu, `Missing comparison fixture: ${id}`);
