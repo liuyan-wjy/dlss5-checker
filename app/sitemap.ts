@@ -49,6 +49,7 @@ const pages: SitemapPage[] = [
   { path: "/dlss-5-vs-dlss-4-5", changeFrequency: "weekly", priority: 0.84 },
   { path: "/dlss-5-rtx-40-series", changeFrequency: "weekly", priority: 0.85 },
   { path: "/pt/dlss-5-quais-placas", changeFrequency: "weekly", priority: 0.85 },
+  { path: "/de/dlss-5-grafikkarten", changeFrequency: "weekly", priority: 0.85 },
   { path: "/pt/dlss-4-5-quais-placas", changeFrequency: "weekly", priority: 0.84 },
   { path: "/pt/dlss-5-requisitos", changeFrequency: "weekly", priority: 0.8 },
   { path: "/pt/dlss-5-jogos", changeFrequency: "weekly", priority: 0.8 },
