@@ -406,8 +406,11 @@ assert.match(germanHtml, /<meta property="og:locale" content="de_DE"/);
 assert.match(germanHtml, /"inLanguage":"de"/);
 assert.match(germanHtml, /<time dateTime="2026-11-02">/);
 const germanProse = metadataValue(germanHtml, /<article\b[^>]*id="redaktion"[^>]*>([\s\S]*?)<\/article>/, "authored German article");
-const germanWordCount = visibleText(germanProse).split(/\s+/).length;
-assert.ok(germanWordCount >= 800, `German editorial prose must have >=800 words excluding GPU rows (got ${germanWordCount})`);
+const germanAuthoredText = [...germanProse.matchAll(/<(h[1-3]|p)\b([^>]*)>([\s\S]*?)<\/\1>/g)]
+  .filter(([, tag, attributes]) => tag !== "p" || !/\btext-sm\b/.test(attributes))
+  .map(([, , , content]) => visibleText(content)).join(" ");
+const germanWordCount = germanAuthoredText.split(/\s+/).length;
+assert.ok(germanWordCount >= 800, `German authored headings and prose must have >=800 words excluding GPU rows, navigation and source notes (got ${germanWordCount})`);
 assert.doesNotMatch(germanProse, /data-gpu-id=/, "GPU rows must not inflate unique editorial word count");
 for (const [language, target] of [
   ["en", "dlss-5-supported-cards"],
