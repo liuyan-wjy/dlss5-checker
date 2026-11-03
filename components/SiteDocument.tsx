@@ -38,14 +38,14 @@ export default function SiteDocument({
   locale = "en",
 }: Readonly<{
   children: React.ReactNode;
-  locale?: "en" | "pt-BR";
+  locale?: "en" | "pt-BR" | "de";
 }>) {
   return (
     <html lang={locale} className="dark">
       <body className="antialiased bg-background text-foreground">
-        <SiteHeader locale={locale === "pt-BR" ? "pt" : "en"} />
+        <SiteHeader locale={locale === "pt-BR" ? "pt" : locale} />
         {children}
-        <SiteFooter locale={locale === "pt-BR" ? "pt" : "en"} />
+        <SiteFooter locale={locale === "pt-BR" ? "pt" : locale} />
         <script
           src="https://plausible-ly-005.pages.dev/js/pa-VclqONE0bFW-1okXx2CnS.js"
           async

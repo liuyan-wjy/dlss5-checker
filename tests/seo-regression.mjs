@@ -19,6 +19,7 @@ const newRoutes = [
   "pt/dlss-5-amd",
   "dlss-4-5-ray-reconstruction",
   "games/nba-2k27-dlss-5",
+  "de/dlss-5-grafikkarten",
 ];
 
 const compatibilityRoutes = [
@@ -49,7 +50,6 @@ const removedRoutes = {
   "pt/gpu/rtx-4090": "/pt/dlss-5-quais-placas",
   "pt/gpu/rtx-3060": "/pt/dlss-5-quais-placas",
   "pt/gpu/gtx-1060": "/pt/dlss-5-quais-placas",
-  "de/dlss-5-grafikkarten": "/dlss-5-supported-cards",
   "games/resident-evil-requiem-dlss-5": "/dlss-5-games",
   "games/starfield-dlss-5": "/dlss-5-games",
   "games/assassins-creed-shadows-dlss-5": "/dlss-5-games",
@@ -279,7 +279,7 @@ for (const route of ["about", "contact"]) {
 
 for (const route of [...new Set([...newRoutes, ...refreshedRoutes, ...compatibilityRoutes])]) {
   const html = readRoute(route);
-  const language = route.startsWith("pt") ? "pt-BR" : "en";
+  const language = route.startsWith("pt/") || route === "pt" ? "pt-BR" : route.startsWith("de/") ? "de" : "en";
   assert.match(html, new RegExp(`<html[^>]*lang="${language}"`), `${route} exported language`);
   const title = metadataValue(html, /<title>([^<]+)<\/title>/, `${route} title`);
   const canonical = metadataValue(
@@ -394,6 +394,66 @@ for (const route of [...compatibilityRoutes, ...newRoutes]) {
   );
 }
 
+// WP5 restores exactly one German page, with owner-approved metadata and reciprocal alternates.
+const germanRoute = "de/dlss-5-grafikkarten";
+const germanHtml = readRoute(germanRoute);
+assert.deepEqual(fs.readdirSync(path.join(appOutput, "de"), { recursive: true }).filter((file) => file.endsWith(".html")), ["dlss-5-grafikkarten.html"]);
+assert.equal(decodeHtml(metadataValue(germanHtml, /<title>([^<]+)<\/title>/, "German title")), "DLSS 5: Welche Grafikkarten werden unterstützt? [2026]");
+assert.equal(decodeHtml(metadataValue(germanHtml, /<meta name="description" content="([^"]+)"/, "German description")), "Welche Grafikkarten unterstützen DLSS 5? RTX 50 und RTX Spark sind bestätigt, RTX 40 ist geplant. Status und Unterschiede zu DLSS 4.5 im Überblick.");
+assert.equal(visibleText(metadataValue(germanHtml, /<h1[^>]*>([\s\S]*?)<\/h1>/, "German H1")), "Welche Grafikkarten unterstützen DLSS 5?");
+assert.match(germanHtml, /aria-label="Hauptnavigation"/);
+assert.match(germanHtml, /<meta property="og:locale" content="de_DE"/);
+assert.match(germanHtml, /"inLanguage":"de"/);
+assert.match(germanHtml, /<time dateTime="2026-11-03">/);
+const germanProse = metadataValue(germanHtml, /<article\b[^>]*id="ratgeber"[^>]*>([\s\S]*?)<\/article>/, "authored German article");
+const germanAuthoredText = [...germanProse.matchAll(/<(h[1-3]|p)\b([^>]*)>([\s\S]*?)<\/\1>/g)]
+  .filter(([, tag, attributes]) => tag !== "p" || !/\btext-sm\b/.test(attributes))
+  .map(([, , , content]) => visibleText(content)).join(" ");
+const germanWordCount = germanAuthoredText.split(/\s+/).length;
+assert.ok(germanWordCount >= 800, `German authored headings and prose must have >=800 words excluding GPU rows, navigation and source notes (got ${germanWordCount})`);
+assert.doesNotMatch(germanProse, /data-gpu-id=/, "GPU rows must not inflate unique editorial word count");
+for (const [language, target] of [
+  ["en", "dlss-5-supported-cards"],
+  ["pt-BR", "pt/dlss-5-quais-placas"],
+  ["de", germanRoute],
+  ["x-default", "dlss-5-supported-cards"],
+]) {
+  for (const route of ["dlss-5-supported-cards", "pt/dlss-5-quais-placas", germanRoute]) {
+    assert.ok(readRoute(route).includes(`hrefLang="${language}" href="https://www.dlss5.net/${target}"`), `${route} must reciprocate ${language} hreflang`);
+    if (route !== target && language !== "x-default") {
+      assert.ok(readRoute(route).includes(`href="/${target}"`), `${route} must visibly link its ${language} counterpart`);
+    }
+  }
+}
+const germanGpuData = JSON.parse(fs.readFileSync("data/gpu-data.json", "utf8")).gpus;
+assert.equal((germanHtml.match(/data-gpu-id=/g) || []).length, germanGpuData.length, "German guide must render each GPU once");
+for (const status of ["confirmed", "planned", "unsupported", "none"]) {
+  const section = metadataValue(germanHtml, new RegExp(`<section\\b[^>]*id="status-${status}"[^>]*>([\\s\\S]*?)<\\/section>`), `German ${status} section`);
+  assert.deepEqual([...section.matchAll(/data-gpu-id="([^"]+)"/g)].map((match) => match[1]), germanGpuData.filter((gpu) => gpu.dlss5_support === status).map((gpu) => gpu.id));
+  for (const gpu of germanGpuData.filter((gpu) => gpu.dlss5_support === status)) {
+    const item = metadataValue(section, new RegExp(`<li\\b[^>]*data-gpu-id="${gpu.id}"[^>]*>([\\s\\S]*?)<\\/li>`), `German GPU ${gpu.id}`);
+    assert.ok(visibleText(item).includes(gpu.name), `${gpu.id} must retain its model name`);
+  }
+}
+for (const [id, memory] of [
+  ["rtx-5060-ti", "8GB / 16GB"],
+  ["rtx-4060-ti", "8GB / 16GB"],
+  ["rtx-5070-laptop", "8GB oder 12GB"],
+  ["rtx-spark", "Gemeinsamer Speicher mit der CPU"],
+]) {
+  const item = metadataValue(germanHtml, new RegExp(`<li\\b[^>]*data-gpu-id="${id}"[^>]*>([\\s\\S]*?)<\\/li>`), `German memory for ${id}`);
+  assert.ok(visibleText(item).includes(memory), `${id} must preserve its memory variants`);
+}
+for (const source of [
+  "https://www.nvidia.com/de-de/geforce/technologies/dlss/",
+  "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/",
+  "https://www.nvidia.com/en-us/geforce/forums/nvidia-app/129/583738/dlss-5-faq-932026/",
+]) {
+  assert.ok(germanHtml.includes(`href="${source}"`), `German guide must cite ${source}`);
+}
+assert.match(germanHtml, /href="https:\/\/(?:www\.nvidia\.com\/en-us\/geforce\/news\/rtx-spark-dlss-reflex-ray-tracing-games\/|developer\.nvidia\.com\/blog\/nvidia-rtx-spark-powers-neural-rendering-and-ai-characters-in-games\/?)/);
+assert.doesNotMatch(germanHtml, /href="[^"]*(?:\.dll|huggingface\.co|\/releases\/)/i);
+
 const modsHtml = readRoute("dlss-5-mods");
 assert.equal(metadataValue(modsHtml, /<title>([^<]+)<\/title>/, "mods title"), "DLSS 5 Mods on RTX 40, RTX 30 and AMD: What Works and the Risks");
 assert.equal(metadataValue(modsHtml, /<meta name="description" content="([^"]+)"/, "mods description"), "Unofficial tools like DLSS 5 Swapper and OptiScaler forks run Neural Rendering outside RTX 50. What they do, what NVIDIA supports, and the ban and malware risks.");
@@ -473,6 +533,11 @@ for (const route of ["dlss-4-5-dynamic-mfg-settings", "dlss-4-5-dynamic-mfg-6x"]
 }
 
 const redirects = fs.readFileSync(path.join(appOutput, "_redirects"), "utf8");
+assert.doesNotMatch(redirects, /^\/de\/dlss-5-grafikkarten\s/m, "Only the restored German route must lose its 301");
+assert.deepEqual(redirects.split(/\r?\n/).filter((line) => line && !line.startsWith("#")), [
+  ...Object.entries(removedRoutes).map(([route, target]) => `/${route} ${target} 301`),
+  "/dlss5-games /dlss-5-games 301",
+], "Every other existing redirect must remain intact");
 for (const [route, target] of Object.entries(removedRoutes)) {
   assert.ok(!fs.existsSync(routePath(route)), `${route} must not be exported`);
   assert.match(redirects, new RegExp(`^/${route} ${target} 301$`, "m"), `${route} must 301 to ${target}`);
@@ -488,7 +553,8 @@ assert.ok(
 // Every indexable page carries the shared 1200x630 preview image in its language.
 for (const [route, html] of generatedPages.map((html, i) => [i, html])) {
   if (/<title>Page not found/.test(html)) continue;
-  assert.match(html, /<meta property="og:image" content="https:\/\/www\.dlss5\.net\/og\/dlss5-checker-(en|pt)\.png"/, `page ${route} must have a social preview image`);
+  const imageLanguage = /<html[^>]*lang="pt-BR"/.test(html) ? "pt" : /<html[^>]*lang="de"/.test(html) ? "de" : "en";
+  assert.ok(html.includes(`<meta property="og:image" content="https://www.dlss5.net/og/dlss5-checker-${imageLanguage}.png"`), `page ${route} must have a social preview image in its language`);
   assert.match(html, /<meta name="googlebot" content="max-image-preview:large"/, `page ${route} must allow large image previews`);
 }
 for (const [route, lang] of [["index", "en"], ["dlss-5-games", "en"], ["games/nba-2k27-dlss-5", "en"], ["pt", "pt"], ["pt/dlss-5-jogos", "pt"]]) {
@@ -496,6 +562,13 @@ for (const [route, lang] of [["index", "en"], ["dlss-5-games", "en"], ["games/nb
 }
 assert.ok(fs.existsSync(path.join(appOutput, "og", "dlss5-checker-en.png")));
 assert.ok(fs.existsSync(path.join(appOutput, "og", "dlss5-checker-pt.png")));
+const germanImage = fs.readFileSync(path.join(appOutput, "og", "dlss5-checker-de.png"));
+assert.equal(germanImage.subarray(1, 4).toString(), "PNG");
+assert.equal(germanImage.readUInt32BE(16), 1200);
+assert.equal(germanImage.readUInt32BE(20), 630);
+assert.match(germanHtml, /<meta property="og:image:width" content="1200"/);
+assert.match(germanHtml, /<meta property="og:image:height" content="630"/);
+assert.match(germanHtml, /<meta property="og:image:alt" content="DLSS 5 Checker: RTX 50 und RTX Spark unterstützt/);
 
 // Optional tip link: footer on every page, explained on About, disclosed in Privacy.
 const supportUrl = "https://buy.stripe.com/eVq8wR6HPbc14THdJt2Ji00";
