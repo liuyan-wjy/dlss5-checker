@@ -274,7 +274,10 @@ for (const route of ["about", "contact"]) {
   const html = readRoute(route);
   assert.match(html, /mailto:support@dlss5\.net/);
   assert.match(html, /liuyan-wjy/);
-  assert.match(html, /href="https:\/\/github\.com\/liuyan-wjy"/);
+}
+// The site credits the author by name but does not link to their GitHub profile or repository.
+for (const html of generatedPages) {
+  assert.doesNotMatch(html, /github\.com\/liuyan-wjy/i, "pages must not link to the author's GitHub");
 }
 
 for (const route of [...new Set([...newRoutes, ...refreshedRoutes, ...compatibilityRoutes])]) {

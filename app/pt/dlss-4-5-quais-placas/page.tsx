@@ -135,7 +135,7 @@ export default function Dlss45QuaisPlacasPage() {
     datePublished: "2026-08-26",
     dateModified: "2026-09-05",
     inLanguage: "pt-BR",
-    author: { "@type": "Person", name: "liuyan-wjy", url: "https://github.com/liuyan-wjy" },
+    author: { "@type": "Person", name: "liuyan-wjy", url: "https://www.dlss5.net/about" },
     publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
   };
 

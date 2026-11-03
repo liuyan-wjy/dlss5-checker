@@ -54,10 +54,7 @@ export default function AboutPage() {
           <h2 className="text-xl font-semibold mb-3 text-foreground">Who Publishes This Site</h2>
           <p>
             DLSS 5 Checker is built and maintained by{" "}
-            <a href="https://github.com/liuyan-wjy" className="font-medium text-blue-400 hover:underline" rel="author">
-              liuyan-wjy
-            </a>
-            , an independent web developer. One person researches, writes, reviews, and
+            <strong className="font-medium text-foreground">liuyan-wjy</strong>, an independent web developer. One person researches, writes, reviews, and
             corrects every page; there is no hidden editorial team, sponsor, or NVIDIA
             relationship behind the site. The writing is aimed at players, creators, and PC
             builders who need to know what is usable now, what is only planned, and what
@@ -66,27 +63,27 @@ export default function AboutPage() {
           <p className="mt-4">
             The site is not an NVIDIA publication, reseller page, or download portal. Its job
             is to organize public evidence, explain uncertainty clearly, and correct outdated
-            compatibility language when better official sources appear. The complete source
-            code, the GPU data file, and every content change are public in the{" "}
-            <a href="https://github.com/liuyan-wjy/dlss5-checker" className="text-blue-400 hover:underline">
-              dlss5-checker GitHub repository
-            </a>
-            , so you can see exactly when a support label changed and why.
+            compatibility language when better official sources appear. The source behind
+            each current support label is listed in the{" "}
+            <Link href="/dlss-5-evidence-tracker" className="text-blue-400 hover:underline">
+              DLSS 5 evidence tracker
+            </Link>
+            , and the history of major label changes is on the{" "}
+            <Link href="/dlss-5-supported-cards#status-history" className="text-blue-400 hover:underline">
+              supported cards page
+            </Link>
+            .
           </p>
           <dl className="mt-5 grid gap-3 rounded-lg border border-border p-4 text-sm sm:grid-cols-[10rem_1fr]">
             <dt className="font-semibold text-foreground">Publisher</dt>
             <dd>DLSS 5 Checker (dlss5.net)</dd>
             <dt className="font-semibold text-foreground">Author and maintainer</dt>
+            <dd>liuyan-wjy</dd>
+            <dt className="font-semibold text-foreground">Sources behind each label</dt>
             <dd>
-              <a href="https://github.com/liuyan-wjy" className="text-blue-400 hover:underline">
-                liuyan-wjy on GitHub
-              </a>
-            </dd>
-            <dt className="font-semibold text-foreground">Source code and change history</dt>
-            <dd>
-              <a href="https://github.com/liuyan-wjy/dlss5-checker" className="text-blue-400 hover:underline">
-                github.com/liuyan-wjy/dlss5-checker
-              </a>
+              <Link href="/dlss-5-evidence-tracker" className="text-blue-400 hover:underline">
+                DLSS 5 evidence tracker
+              </Link>
             </dd>
             <dt className="font-semibold text-foreground">Editorial contact</dt>
             <dd>

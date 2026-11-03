@@ -411,12 +411,11 @@ export default function Dlss5SupportedCardsPage() {
         <section id="status-history" className="mb-10 space-y-4 text-foreground/80 leading-relaxed scroll-mt-24">
           <h2 className="text-2xl font-bold text-foreground">How these status labels changed over time</h2>
           <p>
-            The labels on this page come from a public data file, and every change to it is
-            recorded in the site&apos;s{" "}
-            <a href="https://github.com/liuyan-wjy/dlss5-checker/commits/main/data/gpu-data.json" className="text-blue-400 hover:underline">
-              GitHub history
-            </a>
-            . Seeing how the answer moved is useful: it shows which claims were guesses
+            The timeline below records each time these labels changed, and the{" "}
+            <Link href="/dlss-5-evidence-tracker" className="text-blue-400 hover:underline">
+              DLSS 5 evidence tracker
+            </Link>{" "}
+            lists the sources behind the current answer. Seeing how the answer moved is useful: it shows which claims were guesses
             before launch and which are now backed by NVIDIA documentation.
           </p>
           <ol className="space-y-3 text-sm">

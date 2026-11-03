@@ -250,7 +250,7 @@ export default function GermanSupportedCardsPage() {
       image: `https://www.dlss5.net${OG_IMAGE_DE.url}`,
       datePublished: "2026-11-03",
       dateModified: CHECKED,
-      author: { "@type": "Person", name: "liuyan-wjy", url: "https://github.com/liuyan-wjy" },
+      author: { "@type": "Person", name: "liuyan-wjy", url: "https://www.dlss5.net/about" },
       publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
     },
   ];
