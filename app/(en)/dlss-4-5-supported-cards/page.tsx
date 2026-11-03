@@ -154,7 +154,7 @@ export default function Dlss45SupportedCardsPage() {
     datePublished: "2026-08-26",
     dateModified: "2026-10-01",
     inLanguage: "en",
-    author: { "@type": "Person", name: "liuyan-wjy", url: "https://github.com/liuyan-wjy" },
+    author: { "@type": "Person", name: "liuyan-wjy", url: "https://www.dlss5.net/about" },
     publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
   };
 
