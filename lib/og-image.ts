@@ -19,5 +19,5 @@ export const OG_IMAGE_DE = {
   url: "/og/dlss5-checker-de.png",
   width: 1200,
   height: 630,
-  alt: "DLSS 5 Checker: RTX 50 und RTX Spark unterstützt, RTX 40 geplant ohne Termin, RTX 30 und RTX 20 ohne offiziellen Neural-Rendering-Support; GTX, AMD und Intel ohne DLSS.",
+  alt: "DLSS 5 Checker: RTX 50 und RTX Spark unterstützt, RTX 40 geplant ohne Termin, RTX 30 und RTX 20 ohne DLSS 5, GTX, AMD und Intel ohne DLSS.",
 };

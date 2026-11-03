@@ -6,11 +6,21 @@ import { OG_IMAGE_DE } from "@/lib/og-image";
 const PAGE_URL = "https://www.dlss5.net/de/dlss-5-grafikkarten";
 const TITLE = "DLSS 5: Welche Grafikkarten werden unterstützt? [2026]";
 const DESCRIPTION = "Welche Grafikkarten unterstützen DLSS 5? RTX 50 und RTX Spark sind bestätigt, RTX 40 ist geplant. Status und Unterschiede zu DLSS 4.5 im Überblick.";
+const CHECKED = "2026-11-03";
+const CHECKED_LABEL = "3. November 2026";
+
 const SOURCES = {
   launch: "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/",
+  driver: "https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/",
+  october: "https://www.nvidia.com/en-us/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/",
   hardware: "https://www.nvidia.com/de-de/geforce/technologies/dlss/",
   spark: "https://www.nvidia.com/en-us/geforce/news/rtx-spark-dlss-reflex-ray-tracing-games/",
+  sparkSpecs: "https://www.nvidia.com/en-us/products/rtx-spark/",
   rtx40: "https://www.nvidia.com/en-us/geforce/forums/nvidia-app/129/583738/dlss-5-faq-932026/",
+  pcgamer: "https://www.pcgamer.com/hardware/graphics-cards/dlss-5-can-slash-performance-by-up-to-73-percent-on-an-rtx-5080-gaming-pc-in-nba-2k27-and-im-left-wondering-what-kind-of-mega-rig-youd-need-to-justify-the-hit/",
+  gamegpu5090: "https://en.gamegpu.com/news/igry/dlss-5-snizil-proizvoditelnost-rtx-5090-v-nba-2k27-v-2-5-raza-s-162-do-68-fps-v-4k",
+  gamegpuTest: "https://en.gamegpu.com/test-gpu/action-fps-tps/nba-2k27-benchmarki-videokart-rtx-50-s-dlss-5",
+  pcgamerSpark: "https://www.pcgamer.com/hardware/i-jammed-nvidias-new-dlss-5-october-update-model-into-the-rtx-spark-and-its-25-percent-faster-at-1440p/",
 };
 
 export const metadata: Metadata = {
@@ -41,105 +51,172 @@ export const metadata: Metadata = {
   },
 };
 
-const STATUS_COPY: Record<DlssSupport, { title: string; label: string; note: string; className: string }> = {
+const STATUS_COPY: Record<DlssSupport, {
+  short: string;
+  verdict: string;
+  title: string;
+  note: string;
+  dot: string;
+  box: string;
+  text: string;
+}> = {
   confirmed: {
-    title: "RTX 50 und RTX Spark: offiziell unterstützt",
-    label: "Bestätigt",
-    note: "Neural Rendering ist in unterstützten Spielen verfügbar. Eine bestätigte GPU allein schaltet die Funktion nicht in jedem Spiel frei.",
-    className: "border-green-500/30 bg-green-500/5 text-green-300",
+    short: "RTX 50 & RTX Spark",
+    verdict: "Unterstützt",
+    title: "RTX 50 und RTX Spark: DLSS 5 läuft",
+    note: "Alle RTX-50-Karten für Desktop und Notebook sowie Notebooks mit RTX Spark. Dazu kommen Super Resolution, DLAA, Ray Reconstruction und Multi Frame Generation bis 6X.",
+    dot: "bg-green-400",
+    box: "border-green-500/30 bg-green-500/5",
+    text: "text-green-400",
   },
   planned: {
-    title: "RTX 40: geplant, noch nicht verfügbar",
-    label: "Geplant, ohne Termin",
-    note: "Der angekündigte Plan ist keine heutige Freigabe. RTX 40 bleibt hier getrennt von bereits unterstützter Hardware aufgeführt.",
-    className: "border-yellow-500/30 bg-yellow-500/5 text-yellow-300",
+    short: "RTX 40",
+    verdict: "Geplant, noch kein Termin",
+    title: "RTX 40: DLSS 5 kommt später",
+    note: "NVIDIA will DLSS 5 nachreichen, nennt aber keinen Termin. Bis dahin: Super Resolution, DLAA, Ray Reconstruction und Frame Generation (2X).",
+    dot: "bg-yellow-400",
+    box: "border-yellow-500/30 bg-yellow-500/5",
+    text: "text-yellow-400",
   },
   unsupported: {
-    title: "RTX 30 und RTX 20: kein offizielles Neural Rendering",
-    label: "Kein offizieller DLSS-5-Support",
-    note: "Diese Karten unterstützen weiterhin andere DLSS-Funktionen. Fehlender Support für Neural Rendering bedeutet nicht, dass sämtliches DLSS entfällt.",
-    className: "border-orange-500/30 bg-orange-500/5 text-orange-300",
+    short: "RTX 30 & RTX 20",
+    verdict: "Kein DLSS 5",
+    title: "RTX 30 und RTX 20: kein DLSS 5",
+    note: "Kein DLSS 5 und keine Ankündigung dafür. Super Resolution (inklusive neuem 4.5-Modell), DLAA und Ray Reconstruction funktionieren weiter, Frame Generation nicht.",
+    dot: "bg-orange-400",
+    box: "border-orange-500/30 bg-orange-500/5",
+    text: "text-orange-400",
   },
   none: {
-    title: "GTX, AMD und Intel: kein NVIDIA DLSS",
-    label: "Kein DLSS",
-    note: "Die folgenden Modelle gehören nicht zur unterstützten NVIDIA-RTX-Hardware. Die Freigabe einer anderen Upscaling-Technik ist davon unabhängig.",
-    className: "border-red-500/30 bg-red-500/5 text-red-300",
+    short: "GTX, AMD, Intel",
+    verdict: "Kein DLSS",
+    title: "GTX, AMD Radeon und Intel Arc: gar kein DLSS",
+    note: "DLSS ist an NVIDIA-RTX-Hardware gebunden, diese Karten können es grundsätzlich nicht nutzen. AMD-Nutzer greifen zu FSR, Intel-Nutzer zu XeSS.",
+    dot: "bg-red-400",
+    box: "border-red-500/30 bg-red-500/5",
+    text: "text-red-400",
   },
 };
 
-const FEATURE_LABELS: Record<string, string> = {
-  dlss_super_resolution: "Super Resolution",
-  dlaa: "DLAA",
-  ray_reconstruction: "Ray Reconstruction",
-  frame_generation: "Frame Generation",
-  multi_frame_generation_4x: "Multi Frame Generation",
-  dynamic_mfg_6x: "Dynamic Multi Frame Generation",
-};
+const STATUS_ORDER = ["confirmed", "planned", "unsupported", "none"] as const;
+
+const popularCards: { name: string; status: DlssSupport; text: string }[] = [
+  {
+    name: "RTX 3060 und RTX 3060 Ti",
+    status: "unsupported",
+    text: "Kein DLSS 5, auch nicht mit 12 GB. NVIDIA hat für RTX 30 nichts angekündigt. Super Resolution, DLAA und Ray Reconstruction bleiben dir erhalten.",
+  },
+  {
+    name: "RTX 3070 und RTX 3080",
+    status: "unsupported",
+    text: "Gleicher Stand wie die ganze RTX-30-Serie. Das neue Super-Resolution-Modell aus DLSS 4.5 läuft trotzdem.",
+  },
+  {
+    name: "RTX 4060 und RTX 4060 Ti",
+    status: "planned",
+    text: "Geplant, aber noch nicht da. Auch das schnellere Oktober-Modell kam nur für RTX 50 und RTX Spark. Die 8-GB-Versionen dürften später am knappsten sein.",
+  },
+  {
+    name: "RTX 4070, 4070 SUPER und 4070 Ti",
+    status: "planned",
+    text: "SUPER- und Ti-Modelle bekommen DLSS 5 nicht früher. Frame Generation (2X) nutzt du schon heute, Multi Frame Generation bleibt RTX 50 vorbehalten.",
+  },
+  {
+    name: "RTX 4080 und RTX 4090",
+    status: "planned",
+    text: "An der Leistung liegt es nicht: NVIDIA hat die RTX-40-Version schlicht noch nicht veröffentlicht. Ein Termin fehlt weiterhin.",
+  },
+  {
+    name: "RTX 5060, 5060 Ti und 5050",
+    status: "confirmed",
+    text: "Unterstützt. Neural Rendering kostet aber viel Leistung, also eher in 1080p mit Super Resolution starten. Bei Tests der 5060 Ti auf die Speicherversion (8 oder 16 GB) achten.",
+  },
+  {
+    name: "RTX 5070 (Desktop und Notebook)",
+    status: "confirmed",
+    text: "Beide unterstützt. Im Test von GameGPU war die Desktop-5070 die kleinste Karte mit über 60 FPS (66 FPS) bei maximalem Raytracing und ohne Frame Generation.",
+  },
+];
+
+const generations = [
+  { name: "RTX 50", features: ["DLSS 5 Neural Rendering", "Super Resolution", "DLAA", "Ray Reconstruction", "Frame Generation", "Multi Frame Generation bis 6X"] },
+  { name: "RTX 40", features: ["Super Resolution", "DLAA", "Ray Reconstruction", "Frame Generation (2X)"] },
+  { name: "RTX 30 / RTX 20", features: ["Super Resolution", "DLAA", "Ray Reconstruction"] },
+];
 
 const faqItems = [
   {
     question: "Welche Grafikkarten unterstützen DLSS 5?",
-    answer: "Offiziell bestätigt sind GeForce RTX 50 für Desktop-PCs und Notebooks sowie RTX Spark. RTX 40 ist geplant, aber noch nicht freigeschaltet und ohne öffentlichen Termin. RTX 20 und RTX 30 haben keinen aktuellen offiziellen Support für DLSS 5 Neural Rendering.",
+    answer: "Alle GeForce RTX 50 für Desktop und Notebook sowie Notebooks mit RTX Spark. RTX 40 soll DLSS 5 später bekommen, einen Termin gibt es noch nicht. RTX 30 und RTX 20 werden nicht unterstützt, GTX-, AMD- und Intel-Karten können DLSS generell nicht nutzen.",
   },
   {
-    question: "Kann meine RTX 3060 DLSS 5 nutzen?",
-    answer: "Nicht als offiziell unterstütztes Neural Rendering. Die RTX 3060 gehört zur RTX-30-Serie. Super Resolution, DLAA und Ray Reconstruction bleiben in entsprechend unterstützten Spielen verfügbar; NVIDIA Frame Generation gehört nicht zu ihren freigegebenen Funktionen.",
+    question: "Läuft DLSS 5 auf meiner RTX 3060 oder RTX 3080?",
+    answer: "Nein. Für RTX 30 gibt es kein DLSS 5 und auch keine Ankündigung. Deine Karte nutzt aber weiterhin Super Resolution mit dem neuen DLSS-4.5-Modell, DLAA und Ray Reconstruction.",
   },
   {
-    question: "Unterstützen RTX 4060, RTX 4070 und RTX 4090 DLSS 5?",
-    answer: "Alle drei gehören zur geplanten RTX-40-Gruppe. Auch Ti- und SUPER-Varianten haben noch keine offizielle Freigabe für DLSS 5 Neural Rendering. Die bereits unterstützte Frame Generation ist eine andere Funktion und belegt keine DLSS-5-Freigabe.",
+    question: "Wann kommt DLSS 5 für RTX 40?",
+    answer: "NVIDIA hat Support für RTX 40 angekündigt, aber keinen Termin genannt. Weder das schnellere Oktober-Modell noch das Update für Hogwarts Legacy am 5. November schließen RTX 40 ein.",
   },
   {
-    question: "Ist DLSS 4.5 dasselbe wie DLSS 5?",
-    answer: "Nein. Die Versionsnummer allein reicht als Kompatibilitätsangabe nicht aus. Super Resolution rekonstruiert eine höhere Bildauflösung, Frame Generation erzeugt zusätzliche Bilder. DLSS 5 ergänzt Neural Rendering für Beleuchtung und Materialien. Prüfe deshalb immer die einzelne Funktion und das konkrete Spiel.",
+    question: "Was ist der Unterschied zwischen DLSS 4.5 und DLSS 5?",
+    answer: "DLSS 4.5 verbessert Hochskalierung (Super Resolution) und Zwischenbilder (Frame Generation) und läuft je nach Funktion auf allen RTX-Karten. DLSS 5 bringt Neural Rendering: Eine KI überarbeitet Licht und Materialien im fertigen Bild. Das braucht derzeit eine RTX 50 oder RTX Spark.",
+  },
+  {
+    question: "Welche Spiele unterstützen DLSS 5?",
+    answer: "Aktuell NBA 2K27. Hogwarts Legacy folgt laut NVIDIA am 5. November 2026, Where Winds Meet Ende November. Weitere Titel wie Starfield und Resident Evil Requiem sind angekündigt, aber noch nicht verfügbar.",
+  },
+  {
+    question: "Wie viele FPS kostet DLSS 5?",
+    answer: "Mit dem ersten Modell viel: PC Gamer maß auf einer RTX 5080 in 1440p 93 statt 230 FPS, in 4K 49 statt 183 FPS. NVIDIA gibt das Oktober-Modell als bis zu 1,4-mal schneller an. Wir messen nicht selbst und geben keine eigenen FPS-Prognosen ab.",
+  },
+  {
+    question: "Kann ich DLSS 5 mit einer AMD- oder Intel-Grafikkarte nutzen?",
+    answer: "Nicht lokal. Offiziell geht es nur über GeForce NOW Ultimate, wo das Spiel auf NVIDIA-Servern mit RTX-Grafik läuft. Inoffizielle Mods sind kein offizieller Support und bergen Risiken.",
   },
 ];
 
-function SourceNote({ href, children }: { href: string; children: React.ReactNode }) {
+function Sources({ links }: { links: { href: string; label: string }[] }) {
   return (
-    <p className="mt-4 text-sm text-muted-foreground">
-      Quelle: <a href={href} className="text-blue-400 hover:underline">{children}</a>.
-      {" "}Geprüft am <time dateTime="2026-11-02">2. November 2026</time>.
+    <p className="mt-3 text-sm text-muted-foreground">
+      Quelle{links.length > 1 ? "n" : ""}:{" "}
+      {links.map((link, index) => (
+        <span key={link.href}>
+          {index > 0 && ", "}
+          <a href={link.href} className="text-blue-400 hover:underline">{link.label}</a>
+        </span>
+      ))}
     </p>
   );
 }
 
-function StatusSection({ status }: { status: DlssSupport }) {
+function StatusList({ status }: { status: DlssSupport }) {
   const copy = STATUS_COPY[status];
   const cards = ALL_GPUS.filter((gpu) => gpu.dlss5_support === status);
 
   return (
-    <section id={`status-${status}`} className="mb-10 scroll-mt-6" data-gpu-status={status}>
-      <div className={`mb-4 rounded-lg border p-5 ${copy.className}`}>
-        <h2 className="mb-2 text-2xl font-bold text-foreground">{copy.title}</h2>
-        <p className="text-sm leading-relaxed text-foreground/80">{copy.note}</p>
+    <section id={`status-${status}`} className="scroll-mt-6" data-gpu-status={status}>
+      <div className={`rounded-lg border p-4 sm:p-5 ${copy.box}`}>
+        <h3 className="flex items-center gap-2 text-lg font-bold">
+          <span className={`h-2.5 w-2.5 flex-none rounded-full ${copy.dot}`} aria-hidden="true" />
+          {copy.title}
+          <span className="ml-auto text-sm font-normal text-muted-foreground">{cards.length}</span>
+        </h3>
+        <p className="mt-1 text-sm leading-relaxed text-foreground/80">{copy.note}</p>
       </div>
-      <ul className="grid gap-3 sm:grid-cols-2">
+      <ul className="mt-2 divide-y divide-border/60 rounded-lg border border-border sm:grid sm:grid-cols-2 sm:divide-y-0">
         {cards.map((gpu) => (
-          <li key={gpu.id} data-gpu-id={gpu.id} className="min-w-0 rounded-lg border border-border p-4">
-            <h3 className="mb-2 font-semibold">{gpu.name}</h3>
-            <p className="mb-3 text-sm font-medium">{copy.label}</p>
-            <dl className="space-y-2 text-sm">
-              <div><dt className="inline text-muted-foreground">Baureihe: </dt><dd className="inline">{gpu.series}</dd></div>
-              <div>
-                <dt className="inline text-muted-foreground">{gpu.vram === "Shared memory" ? "Speicher: " : "Grafikspeicher: "}</dt>
-                <dd className="inline">{gpu.vram === "Shared memory" ? "Gemeinsamer Speicher mit der CPU" : gpu.vram.replace(" or ", " oder ")}</dd>
-              </div>
-              <div>
-                <dt className="text-muted-foreground">Weitere verfügbare DLSS-Funktionen:</dt>
-                <dd className="mt-1 leading-relaxed">{gpu.current_dlss_features.length
-                  ? gpu.current_dlss_features.map((feature) => FEATURE_LABELS[feature]).join(", ")
-                  : "Keine"}</dd>
-              </div>
-            </dl>
+          <li
+            key={gpu.id}
+            data-gpu-id={gpu.id}
+            className="flex min-w-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5 px-4 py-2.5 text-sm sm:border-b sm:border-border/60"
+          >
+            <span className="min-w-0 font-medium">{gpu.name}</span>
+            <span className="ml-auto text-right text-muted-foreground">
+              {gpu.vram === "Shared memory" ? "Gemeinsamer Speicher mit der CPU" : gpu.vram.replace(" or ", " oder ")}
+            </span>
           </li>
         ))}
       </ul>
-      <SourceNote href={status === "planned" ? SOURCES.rtx40 : SOURCES.hardware}>
-        {status === "planned" ? "NVIDIAs FAQ zum RTX-40-Plan (Englisch)" : "NVIDIAs Hardware- und Funktionstabelle"}
-      </SourceNote>
-      {status === "confirmed" && <SourceNote href={SOURCES.spark}>NVIDIAs Freigabe für RTX Spark (Englisch)</SourceNote>}
     </section>
   );
 }
@@ -165,178 +242,271 @@ export default function GermanSupportedCardsPage() {
     },
     {
       "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: TITLE,
+      "@type": "Article",
+      headline: "Welche Grafikkarten unterstützen DLSS 5?",
       description: DESCRIPTION,
       url: PAGE_URL,
       inLanguage: "de",
-      datePublished: "2026-11-02",
-      dateModified: "2026-11-02",
+      image: `https://www.dlss5.net${OG_IMAGE_DE.url}`,
+      datePublished: "2026-11-03",
+      dateModified: CHECKED,
       author: { "@type": "Person", name: "liuyan-wjy", url: "https://github.com/liuyan-wjy" },
-      isPartOf: { "@type": "WebSite", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
+      publisher: { "@type": "Organization", name: "DLSS 5 Checker", url: "https://www.dlss5.net" },
     },
   ];
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <main className="mx-auto max-w-5xl px-4 py-12">
-        <nav aria-label="Sprachversionen dieser Grafikkartenliste" className="mb-6 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
-          <span aria-current="page">Deutsch</span>
+      <main className="mx-auto max-w-4xl px-4 py-10 sm:py-12">
+        <nav aria-label="Sprache" className="mb-6 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
+          <span aria-current="page" className="font-medium text-foreground">Deutsch</span>
           <Link href="/dlss-5-supported-cards" hrefLang="en" lang="en" className="hover:text-foreground">English</Link>
           <Link href="/pt/dlss-5-quais-placas" hrefLang="pt-BR" lang="pt-BR" className="hover:text-foreground">Português</Link>
         </nav>
 
-        <article id="redaktion" className="space-y-10">
-          <header className="max-w-3xl">
-            <p className="mb-3 text-sm font-semibold text-blue-400">Stand: <time dateTime="2026-11-02">2. November 2026</time></p>
+        <article id="ratgeber" className="space-y-12">
+          <header>
+            <p className="mb-3 text-sm font-semibold text-blue-400">
+              Aktualisiert am <time dateTime={CHECKED}>{CHECKED_LABEL}</time>
+            </p>
             <h1 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Welche Grafikkarten unterstützen DLSS 5?</h1>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Du suchst nach „DLSS 5 welche Grafikkarte“ und willst vor allem wissen, ob deine vorhandene Karte dazugehört?
-              Entscheidend ist die Freigabe für <strong className="text-foreground">Neural Rendering</strong>, nicht allein die DLSS-Versionsnummer im Spielmenü.
-              Hier findest du die Antwort nach Baureihe, konkrete Hinweise für häufig gesuchte Modelle und die vollständige Liste unseres GPU-Datenbestands.
+              DLSS 5 läuft aktuell nur auf <strong className="text-foreground">GeForce RTX 50</strong> und Notebooks mit{" "}
+              <strong className="text-foreground">RTX Spark</strong>. RTX 40 soll folgen, RTX 30 und RTX 20 gehen leer aus.
+              Hier siehst du auf einen Blick, was deine Grafikkarte kann, was DLSS 5 an FPS kostet und in welchen Spielen es schon läuft.
             </p>
           </header>
 
-          <section id="kurzantwort" className="scroll-mt-6 rounded-lg border border-blue-500/30 bg-blue-500/5 p-5">
-            <h2 className="mb-3 text-2xl font-bold">Die kurze Antwort: RTX 50 und RTX Spark</h2>
-            <p className="leading-relaxed text-foreground/80">
-              GeForce RTX 50 für Desktop-PCs und Notebooks unterstützt DLSS 5 Neural Rendering in NBA 2K27.
-              RTX Spark ist ebenfalls bestätigt. RTX 40 ist geplant, aber noch nicht freigeschaltet; einen öffentlichen Termin gibt es nicht.
-              RTX 30 und RTX 20 haben keinen aktuellen offiziellen Support für diese neue Funktion. GTX, AMD Radeon und Intel Arc unterstützen NVIDIA DLSS nicht.
-              „Geplant“ und „bestätigt“ sind deshalb bewusst getrennte Kategorien: Ein Plan lässt sich heute nicht wie eine verfügbare Einstellung einschalten.
+          <section id="kurzantwort" aria-labelledby="kurzantwort-heading" className="scroll-mt-6">
+            <h2 id="kurzantwort-heading" className="mb-4 text-2xl font-bold">DLSS 5 nach Grafikkarten-Serie</h2>
+            <ul className="divide-y divide-border overflow-hidden rounded-xl border border-border">
+              {STATUS_ORDER.map((status) => {
+                const copy = STATUS_COPY[status];
+                return (
+                  <li key={status}>
+                    <a href={`#status-${status}`} className="flex items-center gap-3 px-4 py-3.5 hover:bg-muted/30">
+                      <span className={`h-2.5 w-2.5 flex-none rounded-full ${copy.dot}`} aria-hidden="true" />
+                      <span className="font-semibold">{copy.short}</span>
+                      <span className={`ml-auto text-right text-sm ${copy.text}`}>{copy.verdict}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+            <p className="mt-4 leading-relaxed text-foreground/80">
+              Wichtig: Mit „DLSS 5“ ist das neue <strong className="text-foreground">Neural Rendering</strong> gemeint, das Licht und
+              Materialien per KI aufwertet. Hochskalierung (Super Resolution) und Ray Reconstruction gibt es weiterhin auf jeder RTX-Karte,
+              auch wenn DLSS 5 selbst nicht läuft.
             </p>
-            <div className="mt-4 flex flex-wrap gap-2 text-sm">
-              {(["confirmed", "planned", "unsupported", "none"] as const).map((status) => (
-                <a key={status} href={`#status-${status}`} className="rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400">{STATUS_COPY[status].title}</a>
-              ))}
-            </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Quellen, geprüft am <time dateTime="2026-11-02">2. November 2026</time>: {" "}
-              <a href={SOURCES.launch} className="text-blue-400 hover:underline">DLSS-5-Start (Englisch)</a>, {" "}
-              <a href={SOURCES.spark} className="text-blue-400 hover:underline">RTX Spark (Englisch)</a>, {" "}
-              <a href={SOURCES.rtx40} className="text-blue-400 hover:underline">RTX-40-FAQ (Englisch)</a> und {" "}
-              <a href={SOURCES.hardware} className="text-blue-400 hover:underline">Hardware-Tabelle</a>.
-            </p>
+            <Sources links={[
+              { href: SOURCES.launch, label: "NVIDIA zum Start von DLSS 5" },
+              { href: SOURCES.october, label: "NVIDIA zum Oktober-Update" },
+              { href: SOURCES.rtx40, label: "NVIDIA-FAQ zu RTX 40" },
+              { href: SOURCES.hardware, label: "NVIDIA DLSS-Übersicht" },
+            ]} />
           </section>
 
           <section id="modelle" className="scroll-mt-6">
-            <h2 className="mb-4 text-2xl font-bold">RTX 3060, 4060, 4070 oder 4090: Was gilt für meine Karte?</h2>
-            <div className="space-y-5 leading-relaxed text-foreground/80">
-              <div>
-                <h3 className="mb-2 font-semibold text-foreground">RTX 3060 und RTX 3060 Ti</h3>
-                <p>Die RTX-30-Serie steht nicht auf der aktuellen offiziellen Liste für Neural Rendering. Sie bleibt jedoch für Super Resolution, DLAA und Ray Reconstruction in passenden Spielen nutzbar.
-                  Wenn du nach „DLSS 5 RTX 3060“ suchst, trenne daher zwei Fragen: Läuft eine bekannte DLSS-Funktion weiter, oder wurde die neue Rendering-Stufe für diese Karte freigegeben?
-                  Die erste Antwort kann ja lauten, während die zweite derzeit nein lautet. Mehr Grafikspeicher oder der Namenszusatz Ti ersetzen keine offizielle Freigabe.</p>
-                <SourceNote href={SOURCES.hardware}>NVIDIAs Hardware- und Funktionstabelle</SourceNote>
-              </div>
-              <div>
-                <h3 className="mb-2 font-semibold text-foreground">RTX 4060, RTX 4070 und die Ti-/SUPER-Varianten</h3>
-                <p>Diese Karten fallen unter den RTX-40-Plan. Behandle „kommt später“ beim Kauf oder bei der Fehlersuche nicht als Zusage für einen bestimmten Monat.
-                  Solange die offizielle Freigabe fehlt, ist eine ausgegraute Neural-Rendering-Option kein Beleg für einen Defekt an deiner Karte.
-                  Verwechsle eine Meldung zu Frame Generation außerdem nicht mit einer Meldung zu Neural Rendering: Ein Update der einen Funktion bestätigt nicht automatisch die andere.
-                  Für die Statusentscheidung zählt die ausdrücklich genannte Funktion, nicht eine Überschrift mit einer hohen DLSS-Nummer.</p>
-                <SourceNote href={SOURCES.rtx40}>NVIDIAs FAQ zum RTX-40-Plan (Englisch)</SourceNote>
-              </div>
-              <div>
-                <h3 className="mb-2 font-semibold text-foreground">RTX 4080 und RTX 4090</h3>
-                <p>Auch diese Modelle gehören zur geplanten Gruppe. Ziehe aus einem großen Modellnamen keine vorgezogene Freigabe ab.
-                  Vergleiche beim Lesen einer Anleitung zuerst die Baureihe und dann die konkrete Technik.
-                  Eine Anleitung für Multi Frame Generation auf einer RTX 50 beantwortet eine andere Frage als die nach Neural Rendering auf deiner RTX 4090.
-                  Wer bereits eine RTX 40 besitzt, kann eine Kaufentscheidung daher von einer tatsächlichen Veröffentlichung abhängig machen, statt einen noch offenen Termin vorauszusetzen.</p>
-                <SourceNote href={SOURCES.rtx40}>NVIDIAs FAQ zum RTX-40-Plan (Englisch)</SourceNote>
-              </div>
+            <h2 className="mb-2 text-2xl font-bold">Die meistgesuchten Grafikkarten im Check</h2>
+            <p className="mb-4 leading-relaxed text-muted-foreground">Die Kurzantwort für die Karten, nach denen am häufigsten gefragt wird.</p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {popularCards.map((card) => {
+                const copy = STATUS_COPY[card.status];
+                return (
+                  <div key={card.name} className="rounded-lg border border-border p-4">
+                    <h3 className="font-semibold">{card.name}</h3>
+                    <p className={`mt-0.5 text-sm font-medium ${copy.text}`}>{copy.verdict}</p>
+                    <p className="mt-2 leading-relaxed text-foreground/80">{card.text}</p>
+                  </div>
+                );
+              })}
             </div>
+            <Sources links={[
+              { href: SOURCES.rtx40, label: "NVIDIA-FAQ zu RTX 40" },
+              { href: SOURCES.gamegpuTest, label: "GameGPU-Test NBA 2K27" },
+            ]} />
           </section>
 
           <section id="dlss-45-oder-5" className="scroll-mt-6">
-            <h2 className="mb-4 text-2xl font-bold">DLSS 4.5 oder DLSS 5: Prüfe die Funktion statt nur die Zahl</h2>
+            <h2 className="mb-4 text-2xl font-bold">DLSS 5 oder DLSS 4.5: Was ist der Unterschied?</h2>
             <div className="space-y-4 leading-relaxed text-foreground/80">
-              <p>DLSS bezeichnet mehrere Techniken. Super Resolution rekonstruiert ein Bild mit höherer Auflösung aus einer niedrigeren Eingabeauflösung.
-                Ray Reconstruction betrifft die Rekonstruktion bei Raytracing. Frame Generation und Multi Frame Generation ergänzen Bilder.
-                DLSS 5 fügt mit Neural Rendering eine Stufe für Beleuchtung und Materialien hinzu. Diese Begriffe sind keine austauschbaren Namen für denselben Schalter.</p>
-              <p>Notiere dir beim Abgleich mit einem Test daher den vollständigen Funktionsnamen. „DLSS an“ ist zu ungenau, wenn du wissen möchtest, ob genau Neural Rendering verwendet wurde.
-                Frage bei einem Screenshot aus einem Forum nach dem Spiel, der Grafikkarte und der aktivierten Option.
-                Ein sichtbarer Super-Resolution-Regler auf einer älteren RTX-Karte widerspricht der fehlenden Neural-Rendering-Freigabe nicht.
-                Umgekehrt bedeutet eine unterstützte RTX 50 nicht, dass jeder Entwickler bereits alle DLSS-Funktionen in sein Spiel eingebaut hat.</p>
-              <p>Die Liste weiter unten nennt deshalb den Neural-Rendering-Status und die weiteren verfügbaren Funktionen getrennt.
-                Lies „weitere verfügbar“ immer mit dem Zusatz „in einem Spiel, das die jeweilige Funktion unterstützt“.
-                Für einen direkten Funktionsvergleich gibt es außerdem unsere <Link href="/dlss-supported-cards" className="text-blue-400 hover:underline">englische Übersicht aller DLSS-Generationen</Link>.
-                Diese Seite gibt keine eigenen Schätzungen für deine Bildrate ab.</p>
+              <p>
+                DLSS ist kein einzelner Schalter, sondern ein Paket aus mehreren Funktionen. <strong className="text-foreground">DLSS 4.5</strong> macht
+                vor allem zwei Dinge besser: Super Resolution rechnet ein Bild aus niedrigerer Auflösung hoch, Frame Generation schiebt
+                zusätzliche Bilder ein. Das neue Super-Resolution-Modell läuft auf jeder RTX-Karte ab der RTX-20-Serie.
+              </p>
+              <p>
+                <strong className="text-foreground">DLSS 5</strong> geht einen Schritt weiter. Das sogenannte Neural Rendering nimmt das fertige
+                Bild und lässt eine KI Licht und Materialien realistischer nachzeichnen. Genau diese Funktion ist auf RTX 50 und
+                RTX Spark beschränkt. Steht in einem Spielmenü nur „DLSS“, ist meist Super Resolution gemeint, nicht DLSS 5.
+              </p>
             </div>
-            <SourceNote href={SOURCES.hardware}>NVIDIAs Beschreibung der einzelnen DLSS-Funktionen</SourceNote>
+            <h3 className="mb-3 mt-6 font-semibold">Diese DLSS-Funktionen nutzt deine Karte heute</h3>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {generations.map((generation) => (
+                <div key={generation.name} className="rounded-lg border border-border p-4">
+                  <p className="mb-2 font-semibold">{generation.name}</p>
+                  <ul className="space-y-1 text-sm text-foreground/80">
+                    {generation.features.map((feature) => (
+                      <li key={feature} className="flex gap-2"><span className="text-green-400" aria-hidden="true">✓</span>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 leading-relaxed text-foreground/80">
+              Den kompletten Funktionsvergleich aller Generationen findest du in unserer{" "}
+              <Link href="/dlss-supported-cards" className="text-blue-400 hover:underline">DLSS-Übersicht nach Grafikkarte (Englisch)</Link>.
+            </p>
+            <Sources links={[{ href: SOURCES.hardware, label: "NVIDIA DLSS-Übersicht" }]} />
+          </section>
+
+          <section id="spiele" className="scroll-mt-6">
+            <h2 className="mb-4 text-2xl font-bold">In welchen Spielen läuft DLSS 5?</h2>
+            <ul className="space-y-3">
+              <li className="rounded-lg border border-border p-4">
+                <p className="font-semibold">NBA 2K27 <span className="ml-1 text-sm font-medium text-green-400">verfügbar</span></p>
+                <p className="mt-1 leading-relaxed text-foreground/80">
+                  Das erste Spiel mit DLSS 5. Seit dem 16. Oktober nutzt es das schnellere Oktober-Modell.
+                  Voraussetzung ist der Game-Ready-Treiber 616.64 oder neuer.
+                </p>
+              </li>
+              <li className="rounded-lg border border-border p-4">
+                <p className="font-semibold">Hogwarts Legacy <span className="ml-1 text-sm font-medium text-yellow-400">ab 5. November 2026</span></p>
+                <p className="mt-1 leading-relaxed text-foreground/80">
+                  Kommt per Update für RTX 50, RTX Spark und GeForce NOW. RTX 40 führt NVIDIA dafür nicht auf.
+                </p>
+              </li>
+              <li className="rounded-lg border border-border p-4">
+                <p className="font-semibold">Where Winds Meet <span className="ml-1 text-sm font-medium text-yellow-400">Ende November 2026</span></p>
+                <p className="mt-1 leading-relaxed text-foreground/80">Angekündigt für Ende November, ein genauer Tag steht noch aus.</p>
+              </li>
+            </ul>
+            <p className="mt-4 leading-relaxed text-foreground/80">
+              Weitere Titel wie Starfield, Resident Evil Requiem und Assassin&apos;s Creed Shadows sind angekündigt, haben DLSS 5 aber noch nicht
+              bekommen. Den aktuellen Stand pflegen wir in der{" "}
+              <Link href="/dlss-5-games" className="text-blue-400 hover:underline">Liste aller DLSS-5-Spiele (Englisch)</Link>.
+            </p>
+            <Sources links={[
+              { href: SOURCES.october, label: "NVIDIA zu Oktober-Modell und Hogwarts Legacy" },
+              { href: SOURCES.driver, label: "NVIDIA-Treiber für NBA 2K27" },
+            ]} />
+          </section>
+
+          <section id="leistung" className="scroll-mt-6">
+            <h2 className="mb-4 text-2xl font-bold">Wie viel Leistung kostet DLSS 5?</h2>
+            <p className="mb-4 leading-relaxed text-foreground/80">
+              Neural Rendering ist teuer. Unabhängige Tests von NBA 2K27 mit dem ersten Modell, jeweils ohne Frame Generation:
+            </p>
+            <div className="overflow-hidden rounded-lg border border-border">
+              <table className="w-full text-left text-sm">
+                <caption className="sr-only">Veröffentlichte FPS-Messungen mit und ohne DLSS 5</caption>
+                <thead className="bg-muted/40">
+                  <tr>
+                    <th scope="col" className="p-3 font-semibold">Karte und Auflösung</th>
+                    <th scope="col" className="p-3 text-right font-semibold">Ohne</th>
+                    <th scope="col" className="p-3 text-right font-semibold">Mit DLSS 5</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-t border-border/70"><th scope="row" className="p-3 font-medium">RTX 5080, 1440p <span className="block text-xs font-normal text-muted-foreground">PC Gamer</span></th><td className="p-3 text-right">230 FPS</td><td className="p-3 text-right">93 FPS</td></tr>
+                  <tr className="border-t border-border/70"><th scope="row" className="p-3 font-medium">RTX 5080, 4K <span className="block text-xs font-normal text-muted-foreground">PC Gamer</span></th><td className="p-3 text-right">183 FPS</td><td className="p-3 text-right">49 FPS</td></tr>
+                  <tr className="border-t border-border/70"><th scope="row" className="p-3 font-medium">RTX 5090, 4K <span className="block text-xs font-normal text-muted-foreground">GameGPU</span></th><td className="p-3 text-right">162 FPS</td><td className="p-3 text-right">68 FPS</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-4 leading-relaxed text-foreground/80">
+              Das seit Oktober ausgelieferte Modell soll laut NVIDIA bis zu 1,4-mal schneller sein. PC Gamer hat auf einem RTX-Spark-Notebook
+              in 1440p rund 25 Prozent mehr FPS gemessen. Die Werte oben sind also eher die Untergrenze. Eigene Messungen machen wir nicht.
+            </p>
+            <Sources links={[
+              { href: SOURCES.pcgamer, label: "PC Gamer (RTX 5080)" },
+              { href: SOURCES.gamegpu5090, label: "GameGPU (RTX 5090)" },
+              { href: SOURCES.pcgamerSpark, label: "PC Gamer (RTX Spark)" },
+              { href: SOURCES.october, label: "NVIDIA zum Oktober-Modell" },
+            ]} />
           </section>
 
           <section id="notebooks" className="scroll-mt-6">
-            <h2 className="mb-4 text-2xl font-bold">Gilt die Liste auch für Notebooks und RTX Spark?</h2>
+            <h2 className="mb-4 text-2xl font-bold">Gaming-Notebooks und RTX Spark</h2>
             <div className="space-y-4 leading-relaxed text-foreground/80">
-              <p>NVIDIAs DLSS-5-Start nennt ausdrücklich Desktop- und Laptop-GPUs der RTX-50-Serie.
-                Bei der Suche nach deiner Karte solltest du den Zusatz „Laptop“ oder „Notebook“ trotzdem mit angeben.
-                Nutze einen Desktop-Test nicht automatisch als Messwert für dein Notebook: Die Aussage „Funktion unterstützt“ und die Frage „wie schnell läuft sie in meinem Gerät?“ gehören getrennt geprüft.
-                In der Modellliste bleiben Notebook- und Desktop-Einträge deshalb unterscheidbar.</p>
-              <p>RTX Spark ist eine eigene Plattform und wird hier nicht einfach als weiteres RTX-50-Desktopmodell einsortiert.
-                NVIDIA bestätigt Neural Rendering auch für RTX Spark. Beim Speicher ist die Unterscheidung wichtig: CPU und GPU teilen sich den Speicher.
-                Deshalb steht beim Spark-Eintrag „Gemeinsamer Speicher mit der CPU“ statt einer erfundenen Zahl für separaten Grafikspeicher.
-                Wenn du zwei Geräte vergleichst, übernimm diese Angabe nicht ungeprüft in eine Spalte für dedizierten VRAM.</p>
+              <p>
+                DLSS 5 gilt für Notebook-GPUs genauso wie für Desktop-Karten: Jede RTX-50-Laptop-GPU wird unterstützt. Eine RTX 5070
+                im Notebook ist aber ein anderer Chip als die Desktop-5070. Vergleiche deshalb nur Tests mit derselben Laptop-GPU.
+              </p>
+              <p>
+                RTX Spark ist NVIDIAs Notebook-Plattform, bei der sich Prozessor und Grafik den Arbeitsspeicher teilen. Seit dem
+                Oktober-Update unterstützt sie DLSS 5 offiziell. Eine feste VRAM-Angabe gibt es deshalb nicht.
+              </p>
             </div>
-            <SourceNote href={SOURCES.launch}>NVIDIAs Freigabe für Desktop- und Laptop-GPUs (Englisch)</SourceNote>
-            <SourceNote href="https://www.nvidia.com/en-us/products/rtx-spark/">NVIDIAs RTX-Spark-Spezifikationen (Englisch)</SourceNote>
+            <Sources links={[
+              { href: SOURCES.spark, label: "NVIDIA zu RTX Spark in Spielen" },
+              { href: SOURCES.sparkSpecs, label: "RTX-Spark-Datenblatt" },
+            ]} />
           </section>
 
           <section id="aktivieren" className="scroll-mt-6">
-            <h2 className="mb-4 text-2xl font-bold">Grafikkarte bestätigt, aber kein DLSS-5-Schalter?</h2>
-            <div className="space-y-4 leading-relaxed text-foreground/80">
-              <p>Prüfe drei Dinge getrennt: die GPU-Freigabe, die Unterstützung durch das konkrete Spiel und die passende Treiber- beziehungsweise Spielversion.
-                NVIDIAs Startanleitung für NBA 2K27 beschreibt Neural Rendering als eigene Option im Spiel.
-                Ein allgemeiner DLSS-Eintrag in einem anderen Titel ist deshalb noch keine Bestätigung für dieselbe Funktion.
-                Suche in offiziellen Patchnotes ausdrücklich nach „DLSS Neural Rendering“ beziehungsweise „3D-Guided Neural Rendering“.</p>
-              <p>Halte bei der Fehlersuche fest, welche Karte und welches Spiel du tatsächlich verwendest, bevor du eine allgemeine Anleitung ausprobierst.
-                So lässt sich ein fehlender Spiel-Patch von einer nicht unterstützten GPU unterscheiden.
-                Für bestätigte Titel führt unsere <Link href="/dlss-5-games" className="text-blue-400 hover:underline">englische Spieleübersicht</Link> die jeweiligen Informationen zusammen;
-                die <Link href="/dlss-5-download" className="text-blue-400 hover:underline">englische Einrichtungsübersicht</Link> erläutert den offiziellen Weg.
-                Aus einer Ankündigung für ein künftiges Update machen wir dabei keine bereits verfügbare Funktion.</p>
+            <h2 className="mb-4 text-2xl font-bold">RTX 50 im Rechner, aber keine DLSS-5-Option?</h2>
+            <ol className="list-decimal space-y-2 pl-5 leading-relaxed text-foreground/80">
+              <li>Grafiktreiber aktualisieren: mindestens Game Ready 616.64, am einfachsten über die NVIDIA App.</li>
+              <li>Spiel-Update installieren. DLSS 5 kommt per Patch über Steam oder den jeweiligen Launcher.</li>
+              <li>Im Spiel nach „DLSS Neural Rendering“ suchen. In NBA 2K27 steht die Option in den Videoeinstellungen, mit F9 vergleichst du an und aus.</li>
+              <li>Ist die Option ausgegraut, prüfe im Notebook, ob das Spiel wirklich auf der RTX-GPU läuft und nicht auf der integrierten Grafik.</li>
+            </ol>
+            <p className="mt-4 leading-relaxed text-foreground/80">
+              Schritt für Schritt mit Lösungen für häufige Probleme: unsere{" "}
+              <Link href="/games/nba-2k27-dlss-5" className="text-blue-400 hover:underline">Anleitung für NBA 2K27 (Englisch)</Link>.
+            </p>
+            <Sources links={[{ href: SOURCES.driver, label: "NVIDIA-Treiber und Einrichtung für NBA 2K27" }]} />
+          </section>
+
+          <section id="amd-intel" className="scroll-mt-6">
+            <h2 className="mb-4 text-2xl font-bold">Keine NVIDIA-Karte? Das geht trotzdem</h2>
+            <p className="leading-relaxed text-foreground/80">
+              Mit AMD Radeon oder Intel Arc läuft DLSS 5 nicht lokal. Der einzige offizielle Weg ist GeForce NOW Ultimate: Das Spiel läuft
+              dann auf NVIDIA-Servern und wird zu dir gestreamt. Für deine eigene Karte sind FSR (AMD) und XeSS (Intel) die passenden
+              Alternativen. Mods, die DLSS 5 auf nicht unterstützten Karten erzwingen, sind inoffiziell und können zu Abstürzen oder
+              Problemen mit Anti-Cheat führen.
+            </p>
+            <p className="mt-3 leading-relaxed text-foreground/80">
+              Mehr dazu: <Link href="/dlss-5-amd" className="text-blue-400 hover:underline">DLSS 5 mit AMD-Grafikkarte (Englisch)</Link>.
+            </p>
+          </section>
+
+          <section id="faq" className="scroll-mt-6">
+            <h2 className="mb-4 text-2xl font-bold">Häufige Fragen zu DLSS 5</h2>
+            <div className="divide-y divide-border rounded-lg border border-border">
+              {faqItems.map((item) => (
+                <div key={item.question} className="p-4">
+                  <h3 className="mb-1.5 font-semibold">{item.question}</h3>
+                  <p className="leading-relaxed text-foreground/80">{item.answer}</p>
+                </div>
+              ))}
             </div>
-            <SourceNote href={SOURCES.launch}>NVIDIAs Start- und Einrichtungsanleitung für NBA 2K27 (Englisch)</SourceNote>
           </section>
         </article>
 
-        <div className="mt-12">
-          <h2 className="mb-3 text-2xl font-bold">Alle erfassten Grafikkarten nach Status</h2>
-          <p className="mb-6 leading-relaxed text-muted-foreground">
-            Die Liste verwendet denselben GPU-Datenbestand wie die englische und portugiesische Übersicht.
-            Sie ist keine vollständige Aufzählung aller jemals erschienenen Grafikkarten. Speicherangaben beschreiben die erfassten Varianten, keine Mindestanforderung für Neural Rendering.
+        <section id="liste" className="mt-12 scroll-mt-6">
+          <h2 className="mb-2 text-2xl font-bold">Alle Grafikkarten im Überblick</h2>
+          <p className="mb-5 leading-relaxed text-muted-foreground">
+            {ALL_GPUS.length} Modelle von NVIDIA, AMD und Intel mit Speicherausstattung, sortiert nach DLSS-5-Status.
           </p>
-          <StatusSection status="confirmed" />
-          <StatusSection status="planned" />
-          <StatusSection status="unsupported" />
-          <StatusSection status="none" />
-        </div>
-
-        <section id="faq" className="mb-10 scroll-mt-6">
-          <h2 className="mb-4 text-2xl font-bold">Häufige Fragen zur DLSS-5-Kompatibilität</h2>
-          <div className="space-y-5">
-            {faqItems.map((item) => (
-              <div key={item.question}>
-                <h3 className="mb-2 font-semibold">{item.question}</h3>
-                <p className="leading-relaxed text-foreground/80">{item.answer}</p>
-              </div>
-            ))}
+          <div className="space-y-8">
+            {STATUS_ORDER.map((status) => <StatusList key={status} status={status} />)}
           </div>
-          <p className="mt-4 text-sm text-muted-foreground">Die Antworten beziehen sich auf dieselben offiziellen Quellen und den oben angegebenen Prüfstand.</p>
         </section>
 
-        <section id="quellen" className="rounded-lg border border-border p-5 text-sm">
-          <h2 className="mb-3 text-xl font-bold">Quellen, Autor und Grenzen dieser Übersicht</h2>
+        <section id="quellen" className="mt-12 rounded-lg border border-border p-5 text-sm">
+          <h2 className="mb-3 text-xl font-bold">Über diese Übersicht</h2>
           <p className="mb-3 leading-relaxed text-muted-foreground">
-            Autor: <Link href="/about" rel="author" className="text-blue-400 hover:underline">liuyan-wjy</Link>.
-            {" "}Letzter Quellenabgleich: <time dateTime="2026-11-02">2. November 2026</time>.
-            Dies ist eine unabhängige Übersicht ohne Verbindung zu NVIDIA. Die Statusangaben beschreiben offizielle Funktionsfreigaben; sie sind keine eigene Leistungsprüfung.
-            Neue NVIDIA-Veröffentlichungen, Treibernotizen oder Spiel-Patches können die Einordnung ändern.
+            Von <Link href="/about" rel="author" className="text-blue-400 hover:underline">liuyan-wjy</Link>, zuletzt geprüft am{" "}
+            <time dateTime={CHECKED}>{CHECKED_LABEL}</time>. Unabhängiges Projekt ohne Verbindung zu NVIDIA. Alle Angaben stammen aus
+            offiziellen NVIDIA-Quellen oder veröffentlichten Tests, die jeweils verlinkt sind. Ändert sich der Stand, aktualisieren wir die Seite.
           </p>
           <div className="flex flex-wrap gap-x-4 gap-y-2">
-            <Link href="/editorial-policy" className="text-blue-400 hover:underline">Redaktionelle Grundsätze (Englisch)</Link>
-            <Link href="/dlss-5-evidence-tracker" className="text-blue-400 hover:underline">Belege und Änderungen (Englisch)</Link>
-            <Link href="/dlss-5-system-requirements#benchmarks" className="text-blue-400 hover:underline">Veröffentlichte Leistungstests (Englisch)</Link>
+            <Link href="/dlss-5-evidence-tracker" className="text-blue-400 hover:underline">Alle Belege und Änderungen (Englisch)</Link>
+            <Link href="/editorial-policy" className="text-blue-400 hover:underline">So arbeiten wir (Englisch)</Link>
           </div>
         </section>
       </main>

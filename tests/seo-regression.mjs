@@ -404,8 +404,8 @@ assert.equal(visibleText(metadataValue(germanHtml, /<h1[^>]*>([\s\S]*?)<\/h1>/, 
 assert.match(germanHtml, /aria-label="Hauptnavigation"/);
 assert.match(germanHtml, /<meta property="og:locale" content="de_DE"/);
 assert.match(germanHtml, /"inLanguage":"de"/);
-assert.match(germanHtml, /<time dateTime="2026-11-02">/);
-const germanProse = metadataValue(germanHtml, /<article\b[^>]*id="redaktion"[^>]*>([\s\S]*?)<\/article>/, "authored German article");
+assert.match(germanHtml, /<time dateTime="2026-11-03">/);
+const germanProse = metadataValue(germanHtml, /<article\b[^>]*id="ratgeber"[^>]*>([\s\S]*?)<\/article>/, "authored German article");
 const germanAuthoredText = [...germanProse.matchAll(/<(h[1-3]|p)\b([^>]*)>([\s\S]*?)<\/\1>/g)]
   .filter(([, tag, attributes]) => tag !== "p" || !/\btext-sm\b/.test(attributes))
   .map(([, , , content]) => visibleText(content)).join(" ");

@@ -1,6 +1,6 @@
 # WP5：实施前待补齐的固定 TDK
 
-状态：站长已于 2026-11-02 明确批准采用以下候选，并要求交 Claude 复核；德语母语审校仍待安排。
+状态：站长已于 2026-11-02 批准以下 TDK。2026-11-03 Claude 复核通过，并按站长要求重写德语正文为地道、面向用户的表述后合并；站长决定不等待额外的母语审校，上线后以 GSC 数据观察效果。
 
 ## 方案缺项
 
@@ -18,7 +18,7 @@ WP5 指定了德语单页 `/de/dlss-5-grafikkarten`，但没有给出其 title�
 | meta description | Welche Grafikkarten unterstützen DLSS 5? RTX 50 und RTX Spark sind bestätigt, RTX 40 ist geplant. Status und Unterschiede zu DLSS 4.5 im Überblick. |
 | H1 | Welche Grafikkarten unterstützen DLSS 5? |
 
-站长答复：“允许采用上述候选，交 Claude 复核”。以上文字不得自行改写；继续使用同一 WP5 分支和 PR。德语母语审校仍须由站长安排，并在合并前完成。
+站长答复：“允许采用上述候选，交 Claude 复核”。以上文字不得自行改写；继续使用同一 WP5 分支和 PR。
 
 ## 后续实现范围
 
