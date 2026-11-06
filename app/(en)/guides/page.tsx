@@ -125,6 +125,11 @@ const guideGroups = [
         title: "NBA 2K27 DLSS 5",
         description: "Driver 616.64, DLSS Neural Rendering, F9, RTX 50 support, and RTX 40 status.",
       },
+      {
+        href: "/games/hogwarts-legacy-dlss-5",
+        title: "Hogwarts Legacy DLSS 5",
+        description: "Live since November 5: Display Settings path, Shift+Alt+B toggle, driver 621.14, and tested FPS cost.",
+      },
     ],
   },
   {

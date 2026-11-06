@@ -93,7 +93,7 @@ export default function PtHome() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              DLSS 5 · Modelo mais rápido no NBA 2K27 · Hogwarts Legacy em 5 de novembro
+              DLSS 5 · Já disponível em Hogwarts Legacy · Modelo mais rápido no NBA 2K27
             </div>
 
             {/* H1 */}
@@ -194,8 +194,8 @@ export default function PtHome() {
                 <strong>Atualização de outubro de 2026:</strong> em 16 de outubro, a NVIDIA levou ao NBA 2K27 um
             modelo de DLSS 5 mais rápido, para RTX 50, notebooks RTX Spark e GeForce NOW. Segundo
             a NVIDIA, ele usa cerca de metade do tempo de GPU do modelo de setembro e cerca de 20%
-            menos VRAM em 4K. Hogwarts Legacy recebe DLSS 5 em 5 de novembro e Where Winds Meet no
-            fim de novembro. A RTX 40 continua sem data.
+            menos VRAM em 4K. Hogwarts Legacy recebeu DLSS 5 em 5 de novembro; War Thunder vem em meados de
+            novembro e Where Winds Meet em 23 de novembro. A RTX 40 continua sem data.
               </p>
             </div>
           </section>

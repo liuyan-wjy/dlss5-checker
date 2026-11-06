@@ -59,8 +59,8 @@ export default function Dlss5DownloadPage() {
         </p>
         <p>
           You do not need a separate download for NVIDIA&apos;s faster October DLSS 5 model. NVIDIA
-          says it arrived through the NBA 2K27 update on October 16 and is the default for upcoming
-          DLSS 5 games such as Hogwarts Legacy (November 5). Keep the game and driver updated.
+          says it arrived through the NBA 2K27 update on October 16 and is the default for newer
+          DLSS 5 games such as Hogwarts Legacy, which got DLSS 5 on November 5. Keep the game and driver updated.
         </p>
       </section>
 
@@ -145,8 +145,8 @@ export default function Dlss5DownloadPage() {
           </li>
           <li>
             <strong>&quot;Update your driver and DLSS 5 appears in every game.&quot;</strong> The
-            driver is only one of three requirements. As of October 18, 2026, NBA 2K27 is the
-            only live game; Hogwarts Legacy is scheduled for November 5.
+            driver is only one of three requirements. As of November 6, 2026, NBA 2K27 and
+            Hogwarts Legacy are the only live games.
           </li>
         </ul>
         <p>

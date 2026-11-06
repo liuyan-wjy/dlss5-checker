@@ -129,8 +129,8 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
                   Ready Driver (616.64 WHQL or newer). Open Features → Video Settings → DLSS
                   Neural Rendering. Since October 16, 2026 the game uses NVIDIA&apos;s faster
                   DLSS 5 model. These instructions are specific to NBA 2K27; a supported GPU
-                  does not enable DLSS 5 in every game. Hogwarts Legacy is scheduled next, on
-                  November 5.
+                  does not enable DLSS 5 in every game. Hogwarts Legacy is live too, with its own
+                  setting in Display Settings.
                 </p>
                 <Link href="/games/nba-2k27-dlss-5#how-to-enable" className="inline-block text-blue-400 hover:underline">
                   Follow the NBA 2K27 setup and missing-option checks →

@@ -33,13 +33,14 @@ export const metadata: Metadata = {
 const NVIDIA_ANNOUNCEMENT = "https://nvidianews.nvidia.com/news/nvidia-dlss-5-delivers-ai-powered-breakthrough-in-visual-fidelity-for-games";
 const NBA_SUPPORT = "https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5";
 const NBA_DRIVER = "https://www.nvidia.com/en-in/geforce/news/nba-2k27-dlss-5-3d-guided-neural-rendering-geforce-game-ready-driver/";
-const NVIDIA_OCTOBER_UPDATE = "https://www.nvidia.com/en-us/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/";
+const NVIDIA_NOVEMBER_UPDATE = "https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/";
 
 // Last date each row was checked against official sources.
 const checkedOn: Record<string, string> = {
   "NBA 2K27": "2026-10-18",
-  "Hogwarts Legacy": "2026-10-18",
-  "Where Winds Meet": "2026-10-18",
+  "Hogwarts Legacy": "2026-11-06",
+  "Where Winds Meet": "2026-11-06",
+  "War Thunder": "2026-11-06",
   Starfield: "2026-10-01",
   "Resident Evil Requiem": "2026-10-01",
   "Assassin's Creed Shadows": "2026-10-01",
@@ -59,6 +60,7 @@ type AnnouncedGame = {
   platform?: string;
   patch?: string;
   source?: string;
+  sourceLabel?: string;
 };
 
 const announcedGames: AnnouncedGame[] = [
@@ -95,11 +97,13 @@ const announcedGames: AnnouncedGame[] = [
   },
   {
     title: "Hogwarts Legacy",
+    href: "/games/hogwarts-legacy-dlss-5",
     publisherSignal: "Warner Bros. Games / Avalanche Software",
-    status: "Scheduled: November 5, 2026",
-    platform: "NVIDIA lists RTX 50 Series, RTX Spark laptops, and GeForce NOW. RTX 40 not included.",
-    patch: "Game update scheduled by NVIDIA for November 5; not yet live on October 18. Ships with the faster October model.",
-    source: NVIDIA_OCTOBER_UPDATE,
+    status: "Live on RTX 50",
+    platform: "Local PC: RTX 50 desktop/laptop and RTX Spark. GeForce NOW Ultimate. RTX 40 not included.",
+    patch: "Live since November 5. Driver 621.14 WHQL. Game Settings → Display Settings → Upscale Type: NVIDIA DLSS → Neural Rendering.",
+    source: NVIDIA_NOVEMBER_UPDATE,
+    sourceLabel: "NVIDIA launch article",
   },
   {
     title: "Justice",
@@ -137,6 +141,15 @@ const announcedGames: AnnouncedGame[] = [
     status: "Announced; live patch not verified",
   },
   {
+    title: "War Thunder",
+    publisherSignal: "Gaijin Entertainment",
+    status: "Scheduled: mid-November 2026",
+    platform: "NVIDIA lists RTX 50 Series and RTX Spark.",
+    patch: "Coming with the game's Eagle's Shadow major update; NVIDIA gives mid-November without an exact day.",
+    source: NVIDIA_NOVEMBER_UPDATE,
+    sourceLabel: "NVIDIA November update",
+  },
+  {
     title: "The Elder Scrolls IV: Oblivion Remastered",
     publisherSignal: "Bethesda ecosystem",
     status: "Announced by NVIDIA",
@@ -144,10 +157,11 @@ const announcedGames: AnnouncedGame[] = [
   {
     title: "Where Winds Meet",
     publisherSignal: "Everstone Studio",
-    status: "Scheduled: late November 2026",
+    status: "Scheduled: November 23, 2026",
     platform: "Same RTX 50, RTX Spark, and GeForce NOW path NVIDIA lists for the October model.",
-    patch: "NVIDIA gives late November without an exact day; no public patch yet.",
-    source: NVIDIA_OCTOBER_UPDATE,
+    patch: "NVIDIA dates the update November 23; regional reports put it at November 24 outside North America. No public patch yet.",
+    source: NVIDIA_NOVEMBER_UPDATE,
+    sourceLabel: "NVIDIA November update",
   },
 ];
 
@@ -202,17 +216,17 @@ const faqItems = [
   {
     question: "What games support DLSS 5?",
     answer:
-      "NBA 2K27 supports DLSS 5 now on GeForce RTX 50 Series desktop and laptop GPUs and RTX Spark laptops. Hogwarts Legacy is scheduled for November 5, 2026 and Where Winds Meet for late November. NVIDIA has also announced titles including Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, AION 2, and more, but those still need per-game patch evidence before being marked live.",
+      "NBA 2K27 and Hogwarts Legacy support DLSS 5 now on GeForce RTX 50 Series desktop and laptop GPUs and RTX Spark PCs; Hogwarts Legacy went live on November 5, 2026. War Thunder follows in mid-November and Where Winds Meet on November 23. NVIDIA has also announced titles including Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, AION 2, and more, but those still need per-game patch evidence before being marked live.",
   },
   {
     question: "Is DLSS 5 available in games now?",
     answer:
-      "Yes, in NBA 2K27 on supported RTX 50 desktop and laptop GPUs. Other announced titles should still be treated as announced or pending verification until their own patch notes and settings are public.",
+      "Yes, in NBA 2K27 and Hogwarts Legacy on supported RTX 50 desktop and laptop GPUs and RTX Spark PCs. Other announced titles should still be treated as announced or pending verification until their own patch notes and settings are public.",
   },
   {
-    question: "When does Hogwarts Legacy get DLSS 5?",
+    question: "Is DLSS 5 out in Hogwarts Legacy?",
     answer:
-      "NVIDIA scheduled the Hogwarts Legacy DLSS 5 update for November 5, 2026, for RTX 50 Series GPUs, RTX Spark laptops, and GeForce NOW. It will use the faster October Neural Rendering model. RTX 40 is not on the list.",
+      "Yes. The Hogwarts Legacy DLSS 5 update went live on November 5, 2026 for RTX 50 Series GPUs, RTX Spark PCs, and GeForce NOW Ultimate, using the faster October Neural Rendering model. Enable it in Display Settings after setting Upscale Type to NVIDIA DLSS. RTX 40 is not on the list.",
   },
   {
     question: "Does a DLSS 5 game mean every RTX GPU can use it?",
@@ -276,16 +290,15 @@ export default function Dlss5GamesPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            NBA 2K27, Hogwarts Legacy, and Where Winds Meet checked October 18, 2026
+            NBA 2K27, Hogwarts Legacy, War Thunder, and Where Winds Meet checked November 6, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Games Tracker
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            DLSS 5 is public now, but that does not make every announced game live. NBA
-            2K27 is still the only game you can play with it today. Hogwarts Legacy is the
-            first title with a dated update (November 5), Where Winds Meet follows in late
-            November, and the rest of the list still needs game-specific patch notes and
+            DLSS 5 is public now, but that does not make every announced game live. You can
+            play it today in NBA 2K27 and, since November 5, in Hogwarts Legacy. War Thunder
+            follows in mid-November and Where Winds Meet on November 23, and the rest of the list still needs game-specific patch notes and
             visible settings before a title should be called supported.
           </p>
         </header>
@@ -295,7 +308,8 @@ export default function Dlss5GamesPage() {
             <h2 className="font-bold mb-2">Fast answer</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
               NBA 2K27 is live with DLSS 5 on RTX 50 desktop and laptop GPUs and now uses
-              the faster October model. Hogwarts Legacy is scheduled for November 5. Other
+              the faster October model. Hogwarts Legacy joined on November 5 with the same
+              hardware list; see the <Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">Hogwarts Legacy setup guide</Link>. Other
               named titles remain announced unless their own patch evidence is public.
             </p>
           </div>
@@ -321,8 +335,9 @@ export default function Dlss5GamesPage() {
             The table below uses NVIDIA&apos;s announcement as the source of truth. The
             important distinction is evidence level: announced support is useful, but
             verified support requires public game notes or a graphics menu that players can
-            actually inspect. On October 18 we rechecked NBA 2K27 and the two titles NVIDIA
-            dated in its October update. Earlier, we rechecked Starfield, Resident Evil Requiem, and
+            actually inspect. On November 6 we rechecked Hogwarts Legacy after its patch went
+            live, plus War Thunder and Where Winds Meet, which NVIDIA dated in its November
+            update. Earlier, we rechecked Starfield, Resident Evil Requiem, and
             Assassin&apos;s Creed Shadows on October 1: their announcements are confirmed,
             but we did not find public DLSS 5 activation instructions in the official sources
             searched. That is not proof that no update exists elsewhere. Other announced
@@ -378,7 +393,7 @@ export default function Dlss5GamesPage() {
                       {game.title === "NBA 2K27" ? "Launch driver: 616.64 WHQL; newest found: 617.42 WHQL (October 6). Faster October model live from October 16. Update through your game store." : game.patch ?? "A public Neural Rendering patch and game-specific driver path have not been verified here."}
                     </td>
                     <td className="px-4 py-3 text-muted-foreground">
-                      <a href={game.title === "NBA 2K27" ? NBA_SUPPORT : game.source ?? NVIDIA_ANNOUNCEMENT} className="text-blue-400 hover:underline">{game.title === "NBA 2K27" ? "2K setup guide" : game.source ? "NVIDIA October update" : "NVIDIA announcement"}</a>
+                      <a href={game.title === "NBA 2K27" ? NBA_SUPPORT : game.source ?? NVIDIA_ANNOUNCEMENT} className="text-blue-400 hover:underline">{game.title === "NBA 2K27" ? "2K setup guide" : game.sourceLabel ?? (game.source ? "NVIDIA October update" : "NVIDIA announcement")}</a>
                       {game.title === "NBA 2K27" && <> · <a href={NBA_DRIVER} className="text-blue-400 hover:underline">Driver note</a></>}
                       <p className="mt-1"><time dateTime={checkedOn[game.title] ?? "2026-09-05"}>{formatCheckedDate(checkedOn[game.title] ?? "2026-09-05")}</time></p>
                     </td>
@@ -394,16 +409,17 @@ export default function Dlss5GamesPage() {
             <h2 className="text-2xl font-bold mb-3">Release timing</h2>
             <div className="space-y-4 text-foreground/80 leading-relaxed">
               <p>
-                The cleanest date answer is now split: NBA 2K27 is available with documented
-                RTX 50 support, while most other named titles still need their own public
+                The cleanest date answer is now split: NBA 2K27 and Hogwarts Legacy are
+                available with documented RTX 50 support, while most other named titles still need their own public
                 updates before this tracker marks them live.
               </p>
               <p>
                 The October 2026 update changed the near-term calendar. NVIDIA&apos;s new
                 Neural Rendering model reached NBA 2K27 on October 16 for RTX 50 GPUs, RTX
                 Spark laptops, and GeForce NOW. NVIDIA says it costs about half the GPU time
-                of the September model. Hogwarts Legacy gets DLSS 5 on November 5 and Where
-                Winds Meet in late November, both with the new model by default. RTX Remix
+                of the September model. Hogwarts Legacy got DLSS 5 on November 5; War Thunder
+                follows in mid-November and Where Winds Meet on November 23, all with the new
+                model by default. RTX Remix
                 added DLSS 5 on October 23 for modders, which lets remastered classic games
                 use Neural Rendering, but that is a modding tool, not official support in
                 each original game. RTX 40 still has no date.

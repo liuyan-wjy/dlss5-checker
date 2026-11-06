@@ -6,8 +6,8 @@ import { OG_IMAGE_DE } from "@/lib/og-image";
 const PAGE_URL = "https://www.dlss5.net/de/dlss-5-grafikkarten";
 const TITLE = "DLSS 5: Welche Grafikkarten werden unterstützt? [2026]";
 const DESCRIPTION = "Welche Grafikkarten unterstützen DLSS 5? RTX 50 und RTX Spark sind bestätigt, RTX 40 ist geplant. Status und Unterschiede zu DLSS 4.5 im Überblick.";
-const CHECKED = "2026-11-03";
-const CHECKED_LABEL = "3. November 2026";
+const CHECKED = "2026-11-06";
+const CHECKED_LABEL = "6. November 2026";
 
 const SOURCES = {
   launch: "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/",
@@ -155,7 +155,7 @@ const faqItems = [
   },
   {
     question: "Wann kommt DLSS 5 für RTX 40?",
-    answer: "NVIDIA hat Support für RTX 40 angekündigt, aber keinen Termin genannt. Weder das schnellere Oktober-Modell noch das Update für Hogwarts Legacy am 5. November schließen RTX 40 ein.",
+    answer: "NVIDIA hat Support für RTX 40 angekündigt, aber keinen Termin genannt. Weder das schnellere Oktober-Modell noch das seit 5. November verfügbare Update für Hogwarts Legacy schließen RTX 40 ein.",
   },
   {
     question: "Was ist der Unterschied zwischen DLSS 4.5 und DLSS 5?",
@@ -163,7 +163,7 @@ const faqItems = [
   },
   {
     question: "Welche Spiele unterstützen DLSS 5?",
-    answer: "Aktuell NBA 2K27. Hogwarts Legacy folgt laut NVIDIA am 5. November 2026, Where Winds Meet Ende November. Weitere Titel wie Starfield und Resident Evil Requiem sind angekündigt, aber noch nicht verfügbar.",
+    answer: "Aktuell NBA 2K27 und seit dem 5. November 2026 Hogwarts Legacy. War Thunder folgt Mitte November, Where Winds Meet am 23. November. Weitere Titel wie Starfield und Resident Evil Requiem sind angekündigt, aber noch nicht verfügbar.",
   },
   {
     question: "Wie viele FPS kostet DLSS 5?",
@@ -373,14 +373,21 @@ export default function GermanSupportedCardsPage() {
                 </p>
               </li>
               <li className="rounded-lg border border-border p-4">
-                <p className="font-semibold">Hogwarts Legacy <span className="ml-1 text-sm font-medium text-yellow-400">ab 5. November 2026</span></p>
+                <p className="font-semibold">Hogwarts Legacy <span className="ml-1 text-sm font-medium text-green-400">verfügbar seit 5. November 2026</span></p>
                 <p className="mt-1 leading-relaxed text-foreground/80">
-                  Kommt per Update für RTX 50, RTX Spark und GeForce NOW. RTX 40 führt NVIDIA dafür nicht auf.
+                  Für RTX 50, RTX Spark und GeForce NOW Ultimate, mit Treiber 621.14 oder neuer. So schaltest du es ein:
+                  Game Settings → Display Settings, bei Upscale Type „NVIDIA DLSS“ wählen und dann Neural Rendering aktivieren.
+                  Mit Shift+Alt+B schaltest du im Spiel um. Mehr in unserer{" "}
+                  <Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">Anleitung für Hogwarts Legacy (Englisch)</Link>.
                 </p>
               </li>
               <li className="rounded-lg border border-border p-4">
-                <p className="font-semibold">Where Winds Meet <span className="ml-1 text-sm font-medium text-yellow-400">Ende November 2026</span></p>
-                <p className="mt-1 leading-relaxed text-foreground/80">Angekündigt für Ende November, ein genauer Tag steht noch aus.</p>
+                <p className="font-semibold">War Thunder <span className="ml-1 text-sm font-medium text-yellow-400">Mitte November 2026</span></p>
+                <p className="mt-1 leading-relaxed text-foreground/80">Kommt mit dem großen Update „Eagle&apos;s Shadow“, ein genauer Tag steht noch aus.</p>
+              </li>
+              <li className="rounded-lg border border-border p-4">
+                <p className="font-semibold">Where Winds Meet <span className="ml-1 text-sm font-medium text-yellow-400">23. November 2026</span></p>
+                <p className="mt-1 leading-relaxed text-foreground/80">Von NVIDIA für den 23. November angekündigt, außerhalb Nordamerikas teils erst am 24. November.</p>
               </li>
             </ul>
             <p className="mt-4 leading-relaxed text-foreground/80">
@@ -389,7 +396,8 @@ export default function GermanSupportedCardsPage() {
               <Link href="/dlss-5-games" className="text-blue-400 hover:underline">Liste aller DLSS-5-Spiele (Englisch)</Link>.
             </p>
             <Sources links={[
-              { href: SOURCES.october, label: "NVIDIA zu Oktober-Modell und Hogwarts Legacy" },
+              { href: "https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/", label: "NVIDIA zum Start in Hogwarts Legacy" },
+              { href: "https://portkeygamessupport.wbgames.com/hc/en-us/articles/56349775286419-Enabling-NVIDIA-DLSS-5-Neural-Rendering-in-Hogwarts-Legacy-PC-Steam-EGS-or-Windows-PC", label: "WB-Games-Support zur Einstellung" },
               { href: SOURCES.driver, label: "NVIDIA-Treiber für NBA 2K27" },
             ]} />
           </section>

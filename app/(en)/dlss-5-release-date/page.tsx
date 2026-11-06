@@ -115,11 +115,11 @@ const timelineRows = [
   },
   {
     date: "November 5, 2026",
-    signal: "Hogwarts Legacy (scheduled)",
+    signal: "Hogwarts Legacy goes live",
     meaning:
-      "The first dated DLSS 5 update after NBA 2K27. NVIDIA lists RTX 50, RTX Spark laptops, and GeForce NOW. It has not shipped yet; this row changes when the patch is public.",
-    proof: "NVIDIA October update article",
-    href: NVIDIA_OCTOBER_UPDATE,
+      "The second live DLSS 5 game. RTX 50, RTX Spark, and GeForce NOW Ultimate, with driver 621.14. NVIDIA also dated War Thunder (mid-November) and Where Winds Meet (November 23).",
+    proof: "NVIDIA November launch article",
+    href: "https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/",
   },
   {
     date: "Late November 2026",
@@ -177,7 +177,7 @@ const faqItems = [
   {
     question: "When do more games get DLSS 5?",
     answer:
-      "NVIDIA has dated two more games: Hogwarts Legacy on November 5, 2026 and Where Winds Meet in late November. Both use the faster October model on RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. Other announced titles have no public date yet.",
+      "Hogwarts Legacy got DLSS 5 on November 5, 2026. Next are War Thunder in mid-November and Where Winds Meet on November 23. All use the faster October model on RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. Other announced titles have no public date yet.",
   },
   {
     question: "Is there a release date for DLSS 5 on RTX 40?",
@@ -266,7 +266,7 @@ export default function Dlss5ReleaseDatePage() {
             <p className="text-sm text-foreground/80 leading-relaxed">
               NBA 2K27 exposes DLSS Neural Rendering for RTX 50 desktop and laptop GPUs
               and RTX Spark laptops, using the faster October model since October 16.
-              Hogwarts Legacy follows on November 5.
+              Hogwarts Legacy joined on November 5.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
@@ -329,7 +329,8 @@ export default function Dlss5ReleaseDatePage() {
           <p>
             The October update is the first sign of the rollout pattern. NVIDIA improved
             the model first, shipped it in the one live game, and only then dated the next
-            titles. Hogwarts Legacy and Where Winds Meet are the next two, so a scheduled
+            titles. Hogwarts Legacy followed on November 5, and War Thunder and Where Winds Meet
+            are next, so a scheduled
             date for another game is more likely to come from a similar NVIDIA update than
             from a publisher patch note appearing without warning.
           </p>
@@ -338,8 +339,8 @@ export default function Dlss5ReleaseDatePage() {
         <section className="mb-10 rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-5">
           <h2 className="text-xl font-bold mb-3">What would change this page?</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            The next meaningful updates would be the Hogwarts Legacy patch going live on
-            November 5, RTX 40 availability details, another dated game, or a revised NVIDIA
+            The next meaningful updates would be War Thunder or Where Winds Meet going
+            live, RTX 40 availability details, another dated game, or a revised NVIDIA
             support matrix. A rumor, preview video,
             or DLL download is not enough.
           </p>

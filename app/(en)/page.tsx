@@ -81,7 +81,7 @@ export default function Home() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              DLSS 5 · Faster October model live in NBA 2K27 · Hogwarts Legacy November 5
+              DLSS 5 · Now live in Hogwarts Legacy · NBA 2K27 on the faster October model
             </div>
 
             {/* H1 */}
@@ -170,8 +170,9 @@ export default function Home() {
             <p>
               <strong>Latest update (October 2026):</strong> NVIDIA shipped a faster DLSS 5 model
               in NBA 2K27 on October 16 for RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. NVIDIA
-              says it needs about half the GPU time of the launch model. Hogwarts Legacy is the next
-              dated game (November 5), followed by Where Winds Meet in late November. RTX 40 still
+              says it needs about half the GPU time of the launch model. On November 5 Hogwarts Legacy
+              became the second live DLSS 5 game (<Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">setup guide</Link>);
+              War Thunder follows in mid-November and Where Winds Meet on November 23. RTX 40 still
               has no date. See the <Link href="/dlss-5-release-date" className="text-blue-400 hover:underline">DLSS 5 release date timeline</Link>{" "}
               for sources, and the{" "}
               <Link href="/dlss-5-system-requirements" className="text-blue-400 hover:underline">DLSS 5 system requirements</Link>{" "}

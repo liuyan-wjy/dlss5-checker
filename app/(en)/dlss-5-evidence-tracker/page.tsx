@@ -95,7 +95,7 @@ const evidenceRows: {
   {
     question: "Are RTX 40 cards available for DLSS 5 now?",
     currentAnswer:
-      "No. NVIDIA has said RTX 40 support is planned after RTX 50 optimization, but there is no public availability date. The October 2026 model update and the dated Hogwarts Legacy release list RTX 50, RTX Spark laptops, and GeForce NOW only.",
+      "No. NVIDIA has said RTX 40 support is planned after RTX 50 optimization, but there is no public availability date. The October 2026 model update and the Hogwarts Legacy update that went live on November 5 list RTX 50, RTX Spark, and GeForce NOW only.",
     evidence: "NVIDIA community update",
     sourceHref: NVIDIA_RTX40_PLAN,
     status: "Planned",
@@ -115,7 +115,7 @@ const evidenceRows: {
   {
     question: "Are the named games final launch support?",
     currentAnswer:
-      "NBA 2K27 is verified. Hogwarts Legacy is scheduled for November 5, 2026 and Where Winds Meet for late November. Other named games still need their own public patch notes, menu settings, and GPU behavior details.",
+      "NBA 2K27 and Hogwarts Legacy (live since November 5, 2026) are verified. War Thunder is scheduled for mid-November and Where Winds Meet for November 23. Other named games still need their own public patch notes, menu settings, and GPU behavior details.",
     evidence: "NVIDIA NBA 2K27 driver note",
     sourceHref: NVIDIA_NBA_DRIVER,
     status: "One verified game; others pending",
@@ -317,6 +317,14 @@ export default function Dlss5EvidenceTrackerPage() {
               came from{" "}
               <a href={PCGAMER_OCTOBER_TEST} className="text-blue-400 hover:underline">PC Gamer ↗</a>.
               {" "}<a href={NVIDIA_OCTOBER_UPDATE} className="text-blue-400 hover:underline">October update ↗</a>
+            </li>
+            <li className="rounded-lg border border-border p-4">
+              <strong>November 5, 2026: Second live game.</strong> Hogwarts Legacy got DLSS 5
+              on RTX 50, RTX Spark, and GeForce NOW Ultimate with driver 621.14. NVIDIA also
+              dated War Thunder (mid-November) and Where Winds Meet (November 23). RTX 40 is
+              still not included.
+              {" "}<a href="https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">November update ↗</a>
+              {" "}<Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">Hogwarts Legacy guide</Link>
             </li>
           </ol>
         </section>

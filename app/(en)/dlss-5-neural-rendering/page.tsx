@@ -223,8 +223,9 @@ export default function Dlss5NeuralRenderingPage() {
             the new comparison images describes faces that change far less than in the March
             2026 demo. That matters for the most common worry about Neural Rendering: whether
             the AI repaints characters. The developer controls described above (masks and
-            Structure and Tone intensity) are how a studio limits that. Judge the November 5
-            Hogwarts Legacy update yourself with the same on/off scene comparison used for
+            Structure and Tone intensity) are how a studio limits that. Early reviews of the
+            Hogwarts Legacy update, live since November 5, describe the effect as restrained.
+            Judge it yourself with the same on/off scene comparison used for
             NBA 2K27.
           </p>
           <p className="text-sm text-muted-foreground">

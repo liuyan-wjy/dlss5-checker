@@ -21,3 +21,10 @@ export const OG_IMAGE_DE = {
   height: 630,
   alt: "DLSS 5 Checker: RTX 50 und RTX Spark unterstützt, RTX 40 geplant ohne Termin, RTX 30 und RTX 20 ohne DLSS 5, GTX, AMD und Intel ohne DLSS.",
 };
+
+export const OG_IMAGE_HOGWARTS = {
+  url: "/og/hogwarts-legacy-dlss-5.png",
+  width: 1200,
+  height: 630,
+  alt: "Hogwarts Legacy DLSS 5: live since November 5, 2026 on RTX 50, RTX Spark and GeForce NOW. Turn on Neural Rendering in Display Settings. RTX 40 not included yet.",
+};

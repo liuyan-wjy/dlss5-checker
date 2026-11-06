@@ -11,7 +11,7 @@
 - Support evidence reviewed: October 18, 2026.
 - Author and maintainer: liuyan-wjy (https://www.dlss5.net/about). Sources behind each status: https://www.dlss5.net/dlss-5-evidence-tracker
 - Current release: DLSS 5 launched in NBA 2K27 on September 3, 2026 Pacific time, for RTX 50 desktop and laptop GPUs. The game requires the appropriate NVIDIA driver, current game build, and DLSS Neural Rendering setting.
-- October 2026: a faster DLSS 5 model (NVIDIA: about half the GPU cost, ~118M parameters, ~20% less 4K VRAM) reached NBA 2K27 on October 16 for RTX 50, RTX Spark laptops, and GeForce NOW. Hogwarts Legacy is scheduled for November 5, 2026 and Where Winds Meet for late November. RTX Remix added DLSS 5 on October 23.
+- October 2026: a faster DLSS 5 model (NVIDIA: about half the GPU cost, ~118M parameters, ~20% less 4K VRAM) reached NBA 2K27 on October 16 for RTX 50, RTX Spark laptops, and GeForce NOW. Hogwarts Legacy got DLSS 5 on November 5, 2026 (RTX 50, RTX Spark, GeForce NOW Ultimate; driver 621.14; guide: https://www.dlss5.net/games/hogwarts-legacy-dlss-5). War Thunder is scheduled for mid-November and Where Winds Meet for November 23. RTX Remix added DLSS 5 on October 23.
 - RTX 40 support is planned, with no public date. RTX 20 and RTX 30 have no current official DLSS 5 support but retain other supported DLSS features.
 - Important limitation: one supported game does not establish support in every announced game. GeForce NOW Ultimate on NVIDIA-operated RTX 5080 cloud rigs is separate from the player's local GPU compatibility.
 
@@ -37,6 +37,7 @@
 ## Game Guides
 
 - [NBA 2K27 DLSS 5](https://www.dlss5.net/games/nba-2k27-dlss-5): live RTX 50 support, 616.64 WHQL driver, Video Settings > DLSS Neural Rendering, F9 toggle, and missing-option checks.
+- [Hogwarts Legacy DLSS 5](https://www.dlss5.net/games/hogwarts-legacy-dlss-5): live since November 5, 2026 on RTX 50, RTX Spark and GeForce NOW Ultimate; driver 621.14; Game Settings > Display Settings > Upscale Type: NVIDIA DLSS > Neural Rendering; Shift+Alt+B toggle; DSOGaming RTX 5090 test (20–42% lower FPS).
 
 ## Portuguese Pages
 

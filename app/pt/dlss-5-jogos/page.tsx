@@ -59,12 +59,12 @@ const faqItems = [
   {
     question: "Quais jogos vão ter DLSS 5?",
     answer:
-      "NBA 2K27 já está disponível com DLSS 5 em GPUs GeForce RTX 50 desktop e notebook. A NVIDIA também anunciou um grupo inicial de jogos com DLSS 5, incluindo Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Hogwarts Legacy, Phantom Blade Zero e Delta Force. Hogwarts Legacy tem atualização marcada para 5 de novembro de 2026 e Where Winds Meet para o fim de novembro. Para os outros jogos, ainda é preciso esperar notas de patch e configurações visíveis.",
+      "NBA 2K27 já está disponível com DLSS 5 em GPUs GeForce RTX 50 desktop e notebook. A NVIDIA também anunciou um grupo inicial de jogos com DLSS 5, incluindo Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Hogwarts Legacy, Phantom Blade Zero e Delta Force. Desde 5 de novembro, Hogwarts Legacy também tem DLSS 5 em RTX 50, RTX Spark e GeForce NOW Ultimate (driver 621.14; em Game Settings → Display Settings, escolha NVIDIA DLSS em Upscale Type e ative Neural Rendering). War Thunder chega em meados de novembro e Where Winds Meet em 23 de novembro. Para os outros jogos, ainda é preciso esperar notas de patch e configurações visíveis.",
   },
   {
     question: "DLSS 5 já está disponível nesses jogos?",
     answer:
-      "Sim, em NBA 2K27 com GPU RTX 50 compatível. Nos demais títulos anunciados, trate como anunciado ou pendente de verificação até aparecerem patch notes, driver e opção de menu.",
+      "Sim, em NBA 2K27 e, desde 5 de novembro de 2026, em Hogwarts Legacy, com GPU RTX 50 ou RTX Spark compatível. Nos demais títulos anunciados, trate como anunciado ou pendente de verificação até aparecerem patch notes, driver e opção de menu.",
   },
   {
     question: "Um jogo com DLSS 5 funciona em qualquer RTX?",
@@ -105,7 +105,7 @@ export default function PtDlss5JogosPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            NBA 2K27, Hogwarts Legacy e Where Winds Meet revisados em 18 de outubro de 2026
+            NBA 2K27, Hogwarts Legacy, War Thunder e Where Winds Meet revisados em 6 de novembro de 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Jogos com DLSS 5: NBA 2K27 disponível e status por título
@@ -121,15 +121,16 @@ export default function PtDlss5JogosPage() {
           <h2 className="text-2xl font-bold mb-3">Resposta rápida</h2>
           <p className="text-foreground/80 leading-relaxed">
             NBA 2K27 já está disponível com DLSS 5 em placas GeForce RTX 50 desktop e
-            notebook, com driver 616.64 WHQL e opção DLSS Neural Rendering em Features → Video Settings. Os outros jogos da lista continuam exigindo prova por patch antes de
-            serem marcados como disponíveis.
+            notebook, com driver 616.64 WHQL e opção DLSS Neural Rendering em Features → Video Settings. Hogwarts Legacy também está disponível desde 5 de novembro, com driver 621.14
+            e a opção Neural Rendering em Display Settings. Os outros jogos da lista continuam
+            exigindo prova por patch antes de serem marcados como disponíveis.
           </p>
           <p className="mt-3 text-foreground/80 leading-relaxed">
             Atualização de outubro de 2026: em 16 de outubro, a NVIDIA levou ao NBA 2K27 um
             modelo de DLSS 5 mais rápido, para RTX 50, notebooks RTX Spark e GeForce NOW. Segundo
             a NVIDIA, ele usa cerca de metade do tempo de GPU do modelo de setembro e cerca de 20%
-            menos VRAM em 4K. Hogwarts Legacy recebe DLSS 5 em 5 de novembro e Where Winds Meet no
-            fim de novembro. A RTX 40 continua sem data. <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/" className="text-blue-400 hover:underline">Fonte: NVIDIA</a>.
+            menos VRAM em 4K. Hogwarts Legacy recebeu DLSS 5 em 5 de novembro; War Thunder vem em meados de
+            novembro e Where Winds Meet em 23 de novembro. A RTX 40 continua sem data. <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/" className="text-blue-400 hover:underline">Fonte: NVIDIA (outubro)</a>, <a href="https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">NVIDIA (novembro)</a>, <Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">guia de Hogwarts Legacy (em inglês)</Link>.
           </p>
         </section>
 
