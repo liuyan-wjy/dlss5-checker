@@ -47,7 +47,7 @@ const STATUS_COPY: Record<
   confirmed: {
     title: "Confirmed cards",
     label: "Confirmed",
-    note: "RTX 50 desktop and laptop GPUs and RTX Spark laptops support DLSS 5 Neural Rendering in NBA 2K27 with the compatible game update and driver. Hogwarts Legacy is scheduled for November 5, 2026.",
+    note: "RTX 50 desktop and laptop GPUs and RTX Spark laptops support DLSS 5 Neural Rendering in NBA 2K27 and, since November 5, 2026, Hogwarts Legacy, with the compatible game update and driver.",
     className: "border-green-500/30 bg-green-500/5 text-green-300",
   },
   planned: {

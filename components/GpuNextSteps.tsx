@@ -72,7 +72,7 @@ function readNext(gpu: GPU): ReadNext[] {
       return [
         { href: "/games/nba-2k27-dlss-5", title: "NBA 2K27 setup and fixes", copy: "Menu path, F9 toggle, greyed-out option checks, October model." },
         { href: "/dlss-5-system-requirements#benchmarks", title: "Published performance tests", copy: "What Neural Rendering costs on RTX 50 cards in independent tests." },
-        { href: "/dlss-5-games", title: "Next DLSS 5 games", copy: "Hogwarts Legacy on November 5 and what else is scheduled." },
+        { href: "/games/hogwarts-legacy-dlss-5", title: "Hogwarts Legacy DLSS 5 setup", copy: "Live since November 5: setting path, shortcut, and tested FPS cost." },
       ];
     case "planned":
       return [
@@ -136,8 +136,12 @@ export default function GpuNextSteps({ gpu }: { gpu: GPU }) {
               <Link href="/games/nba-2k27-dlss-5" className="text-blue-400 hover:underline">NBA 2K27</Link>
               {" "}— live now, using NVIDIA&apos;s faster October model since October 16, 2026.
             </li>
-            <li>Hogwarts Legacy — DLSS 5 update scheduled for November 5, 2026.</li>
-            <li>Where Winds Meet — scheduled for late November 2026, no exact day yet.</li>
+            <li>
+              <Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">Hogwarts Legacy</Link>
+              {" "}— live since November 5, 2026.
+            </li>
+            <li>War Thunder — scheduled for mid-November 2026, no exact day yet.</li>
+            <li>Where Winds Meet — scheduled for November 23, 2026.</li>
           </ul>
         ) : isNvidia && gpu.dlss5_support !== "none" ? (
           <p className="text-muted-foreground">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { OG_IMAGE_EN } from "@/lib/og-image";
+import { OG_IMAGE_EN, OG_IMAGE_HOGWARTS } from "@/lib/og-image";
 
 export type Dlss5GameGuideKey = "nba-2k27" | "hogwarts-legacy";
 
@@ -35,7 +35,16 @@ type GameGuide = {
   extraSections?: Array<{
     title: string;
     paragraphs: string[];
+    chart?: {
+      caption: string;
+      unit: string;
+      offLabel: string;
+      onLabel: string;
+      rows: Array<{ label: string; off: number; on: number }>;
+      source: { label: string; href: string };
+    };
   }>;
+  ogImage?: { url: string; width: number; height: number; alt: string };
   faq: Array<{
     question: string;
     answer: string;
@@ -71,6 +80,17 @@ const PCGH_HOGWARTS_TECH =
 // containing this marker must not ship: the production build fails until every
 // marker is replaced (set ALLOW_LAUNCH_PLACEHOLDERS=1 to preview a draft build).
 export const LAUNCH_MARKER = "[LAUNCH DAY:";
+
+const NVIDIA_HOGWARTS_LAUNCH =
+  "https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/";
+const NVIDIA_DRIVER_62114 =
+  "https://www.nvidia.com/en-us/geforce/news/world-of-warcraft-forever-geforce-rtx-spark-game-ready-driver/";
+const PORTKEY_HOGWARTS_DLSS5 =
+  "https://portkeygamessupport.wbgames.com/hc/en-us/articles/56349775286419-Enabling-NVIDIA-DLSS-5-Neural-Rendering-in-Hogwarts-Legacy-PC-Steam-EGS-or-Windows-PC";
+const DSOGAMING_HOGWARTS_DLSS5 =
+  "https://www.dsogaming.com/articles/hogwarts-legacy-nvidia-dlss-5-benchmarks-comparisons/";
+const PCWORLD_HOGWARTS_DLSS5 =
+  "https://www.pcworld.com/article/3277879/nvidias-dlss-5-learned-a-new-spell-for-hogwarts-legacy-restraint.html";
 
 const NBA_2K_SUPPORT =
   "https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5";
@@ -292,33 +312,34 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       },
     ],
   },
-  // DRAFT: publish on November 5, 2026, after the patch is live. Replace every
-  // [LAUNCH DAY: ...] marker with verified facts and their sources first.
   "hogwarts-legacy": {
     name: "Hogwarts Legacy",
     canonical: "/games/hogwarts-legacy-dlss-5",
     metaTitle: "Hogwarts Legacy DLSS 5: How to Enable, GPUs, and Performance",
     metaDescription:
-      "Hogwarts Legacy gets DLSS 5 on November 5, 2026 for RTX 50, RTX Spark laptops, and GeForce NOW. Where the setting is, what it changes, the cost, and RTX 40 status.",
-    eyebrow: "Game support guide · Reviewed [LAUNCH DAY: publish date]",
+      "Hogwarts Legacy has DLSS 5 since November 5, 2026 on RTX 50, RTX Spark, and GeForce NOW. Where the setting is, what it changes, the FPS cost, and RTX 40 status.",
+    eyebrow: "Game support guide · Reviewed November 6, 2026",
+    ogImage: OG_IMAGE_HOGWARTS,
     title: "Hogwarts Legacy DLSS 5: How to Enable, GPUs, and Performance",
     description:
       "Turn on DLSS 5 Neural Rendering in Hogwarts Legacy, see what it changes in the castle and on characters, and check what it costs before you keep it. These steps apply to local RTX 50 and RTX Spark PCs; GeForce NOW has its own requirements.",
     fastAnswer:
-      "Hogwarts Legacy supports DLSS 5 Neural Rendering from its November 5, 2026 update on GeForce RTX 50 desktop and laptop GPUs, RTX Spark laptops, and GeForce NOW. It ships with NVIDIA's faster October model. [LAUNCH DAY: exact menu path and setting name from the patch notes or the game menu.]",
+      "Hogwarts Legacy supports DLSS 5 Neural Rendering since its November 5, 2026 update on GeForce RTX 50 desktop and laptop GPUs, RTX Spark PCs, and GeForce NOW Ultimate. Turn it on in Game Settings → Display Settings: set Upscale Type to NVIDIA DLSS, then switch on Neural Rendering. Shift+Alt+B toggles it in-game. NVIDIA's driver for the update is Game Ready 621.14 WHQL.",
     availability:
-      "Available from November 5 on RTX 50 and RTX Spark. RTX 40 is not included; NVIDIA says RTX 40 support comes later but has not given a date. Consoles do not get DLSS 5.",
+      "Yes. Available since November 5, 2026 on RTX 50 and RTX Spark, and through GeForce NOW Ultimate. RTX 40 is not included; NVIDIA says RTX 40 support comes later but has not given a date. Consoles do not get DLSS 5.",
     nextProof:
-      "For a local PC, the practical proof is an RTX 50 or RTX Spark GPU, a current NVIDIA driver, the updated game build, and the Neural Rendering option visible in the graphics menu. [LAUNCH DAY: name the minimum driver if NVIDIA lists one.]",
+      "For a local PC: an RTX 50 or RTX Spark GPU, NVIDIA driver 621.14 or newer, the November 5 game update, and the Neural Rendering switch visible in Display Settings once Upscale Type is set to NVIDIA DLSS.",
     confirmed: [
-      "NVIDIA scheduled DLSS 5 for Hogwarts Legacy on November 5, 2026, the second game after NBA 2K27.",
-      "NVIDIA lists GeForce RTX 50 Series GPUs, RTX Spark laptops, and GeForce NOW. RTX 40 is not on the list.",
+      "DLSS 5 went live in Hogwarts Legacy on November 5, 2026, the second game after NBA 2K27.",
+      "NVIDIA lists GeForce RTX 50 Series desktop and laptop GPUs, RTX Spark PCs, and GeForce NOW Ultimate. RTX 40 is not on the list.",
+      "WB Games' support page gives the setting path: Game Settings → Display Settings → Upscale Type: NVIDIA DLSS → Neural Rendering, with Shift+Alt+B as the in-game toggle.",
+      "NVIDIA's Game Ready Driver 621.14 WHQL, released November 4, adds support for the update.",
       "The update uses NVIDIA's faster October 2026 model, which NVIDIA says needs about half the GPU time of the launch model.",
       "NVIDIA says Avalanche Software used the DLSS 5 SDK controls to keep the game's art style. Neural Rendering is added alongside the game's existing Super Resolution, Multi Frame Generation, and Ray Reconstruction options rather than replacing them.",
     ],
     context: [
       "Hogwarts Legacy is a very different test from NBA 2K27. Instead of a brightly lit arena, most of the game happens in candlelit stone halls, dim dungeons, and changing outdoor weather. Neural Rendering works on lighting and materials, so the places to look are how stone, wood, fabric, and skin respond to warm candlelight, and whether dark scenes keep their mood instead of being flattened or brightened.",
-      "Faces were the most criticized part of NVIDIA's March 2026 DLSS 5 demo, because the model visibly reshaped characters. Coverage of NVIDIA's updated Hogwarts Legacy comparison images in October described much smaller changes to faces than in March. That matches what the developer controls are for: studios can mask objects and limit how strongly the effect applies. Still, judge the shipped patch yourself rather than the preview images. [LAUNCH DAY: add our own observation from official screenshots or the first reviews.]",
+      "Faces were the most criticized part of NVIDIA's March 2026 DLSS 5 demo, because the model visibly reshaped characters. Coverage of NVIDIA's updated Hogwarts Legacy comparison images in October described much smaller changes to faces than in March. That matches what the developer controls are for: studios can mask objects and limit how strongly the effect applies. First reviews of the shipped patch agree: PCWorld described the result as restrained, and DSOGaming found Hogsmeade clearly improved but less transformative than it hoped, with thin white outlines around some characters. Check close-ups and character edges in your own scenes before you keep it on.",
       "Neural Rendering, Super Resolution, Ray Reconstruction, and Frame Generation solve different problems: lighting and material presentation, resolution, ray-traced denoising, and displayed smoothness. Change one at a time so you can tell which option changed the image or the feel. The table below explains what to check for each.",
       "GeForce NOW is separate from your own PC. If you stream Hogwarts Legacy on a supported GeForce NOW tier, the cloud machine can run DLSS 5 even when your own laptop or desktop cannot. That does not change what your local GPU supports.",
     ],
@@ -345,10 +366,10 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
     ],
     setupSteps: [
       "Update Hogwarts Legacy through your game store and restart it after the update finishes.",
-      "Install the current NVIDIA Game Ready Driver from the NVIDIA App or NVIDIA's driver page. [LAUNCH DAY: minimum driver version if NVIDIA names one.]",
+      "Install NVIDIA Game Ready Driver 621.14 or newer from the NVIDIA App or NVIDIA's driver page.",
       "Confirm the game is running on a GeForce RTX 50 desktop or laptop GPU or an RTX Spark laptop. On a laptop, make sure it is not using integrated graphics.",
-      "[LAUNCH DAY: exact menu path and setting name for Neural Rendering, for example Settings → Graphics → … , and any dependency on other settings.]",
-      "Compare the same scene with Neural Rendering on and off while keeping resolution, Super Resolution mode, Ray Reconstruction, and Frame Generation unchanged. [LAUNCH DAY: note any toggle shortcut if the game has one.]",
+      "Open Game Settings → Display Settings, set Upscale Type to NVIDIA DLSS, then switch on Neural Rendering. The switch only appears with NVIDIA DLSS selected as the upscaler.",
+      "Press Shift+Alt+B in-game to toggle Neural Rendering and compare the same scene on and off, keeping resolution, Super Resolution mode, Ray Reconstruction, and Frame Generation unchanged.",
     ],
     troubleshooting: [
       {
@@ -357,7 +378,7 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       },
       {
         issue: "The option is greyed out",
-        fix: "At launch, Hogwarts Legacy greyed out Frame Generation until NVIDIA DLSS was chosen as the upscaling method. Check whether Neural Rendering has a similar dependency. [LAUNCH DAY: confirm the actual dependency, if any, from the game menu or patch notes.]",
+        fix: "Set Upscale Type to NVIDIA DLSS first. Neural Rendering depends on it, the same way Frame Generation does in this game. If another upscaler such as FSR or XeSS is selected, the switch is unavailable.",
       },
       {
         issue: "The game stutters after turning it on",
@@ -365,7 +386,7 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       },
       {
         issue: "My RTX 40 card does not show the setting",
-        fix: "That is expected. RTX 40 is not included in the November 5 update. A driver or DLL will not add it before NVIDIA releases RTX 40 support.",
+        fix: "That is expected. RTX 40 is not included in the November 5 update, and driver 621.14 does not add it. A DLL or mod will not add official support before NVIDIA releases it for RTX 40.",
       },
       {
         issue: "GeForce NOW looks different from my local PC",
@@ -398,9 +419,20 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       {
         title: "What it costs: performance and VRAM",
         paragraphs: [
-          "NVIDIA says the October model needs about half the GPU time of the launch model and about 20% less VRAM at 4K. For scale, independent tests of the launch model in NBA 2K27 measured roughly 50–73% lower frame rates with Neural Rendering on and frame generation off. Hogwarts Legacy is a heavier game with more complex lighting, so expect a real cost even with the faster model.",
-          "[LAUNCH DAY: add the first independent Hogwarts Legacy measurements with their resolution, settings, and source. Until then, say that no independent test is available yet rather than estimating numbers.]",
+          "Neural Rendering costs frame rate; it does not add any. The first independent test of the shipped patch, by DSOGaming on an RTX 5090 with driver 621.14 at 4K, DLSS Quality, and maximum settings with ray tracing, measured a 20% drop in CPU-limited Hogsmeade (123 to 98 FPS) and a 42% drop in the GPU-limited opening area (173 to 100 FPS).",
+          "NVIDIA's headline of up to 300 FPS at 4K on an RTX 5090 includes 6X Multi Frame Generation, so it is not comparable with the numbers above. NVIDIA says the October model needs about half the GPU time of the launch model and about 20% less VRAM at 4K. Slower RTX 50 cards have not been tested in this game yet; we do not estimate their numbers.",
         ],
+        chart: {
+          caption: "Hogwarts Legacy on an RTX 5090: 4K, DLSS Quality, maximum settings with ray tracing, driver 621.14",
+          unit: "FPS",
+          offLabel: "Neural Rendering off",
+          onLabel: "Neural Rendering on",
+          rows: [
+            { label: "Opening area (GPU-limited)", off: 173, on: 100 },
+            { label: "Hogsmeade (CPU-limited)", off: 123, on: 98 },
+          ],
+          source: { label: "DSOGaming, November 2026", href: DSOGAMING_HOGWARTS_DLSS5 },
+        },
       },
       {
         title: "RTX 40 owners",
@@ -411,14 +443,14 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
     ],
     faq: [
       {
-        question: "When does Hogwarts Legacy get DLSS 5?",
+        question: "Is DLSS 5 out in Hogwarts Legacy?",
         answer:
-          "NVIDIA scheduled the DLSS 5 update for Hogwarts Legacy on November 5, 2026, for RTX 50 GPUs, RTX Spark laptops, and GeForce NOW.",
+          "Yes. The DLSS 5 update went live on November 5, 2026 for RTX 50 desktop and laptop GPUs, RTX Spark PCs, and GeForce NOW Ultimate. Update the game and install NVIDIA driver 621.14 or newer.",
       },
       {
         question: "How do I turn on DLSS 5 in Hogwarts Legacy?",
         answer:
-          "Update the game and your NVIDIA driver, then enable Neural Rendering in the graphics settings. [LAUNCH DAY: exact menu path.]",
+          "Update the game and install driver 621.14 or newer. Then open Game Settings → Display Settings, set Upscale Type to NVIDIA DLSS, and switch on Neural Rendering. Shift+Alt+B toggles it during play.",
       },
       {
         question: "Does Hogwarts Legacy DLSS 5 work on RTX 40?",
@@ -426,9 +458,14 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
           "Not at launch. RTX 40 is not included in the November 5 update, and NVIDIA has not given a date for RTX 40 support.",
       },
       {
+        question: "How much FPS does DLSS 5 cost in Hogwarts Legacy?",
+        answer:
+          "In DSOGaming's RTX 5090 test at 4K with DLSS Quality and ray tracing, frame rates fell 20% in Hogsmeade (123 to 98 FPS) and 42% in the opening area (173 to 100 FPS). NVIDIA's 300 FPS figure includes 6X Multi Frame Generation.",
+      },
+      {
         question: "Does DLSS 5 change how characters look in Hogwarts Legacy?",
         answer:
-          "It changes lighting and materials, which includes skin and hair. NVIDIA says Avalanche Software tuned the effect with the DLSS 5 SDK controls to keep the game's style, and October preview images showed much smaller face changes than NVIDIA's March demo.",
+          "It changes lighting and materials, which includes skin and hair. NVIDIA says Avalanche Software tuned the effect with the DLSS 5 SDK controls to keep the game's style. Early reviews of the shipped patch call the effect restrained, with much smaller face changes than NVIDIA's March demo.",
       },
       {
         question: "Is DLSS 5 available for Hogwarts Legacy on PS5 or Xbox?",
@@ -438,7 +475,27 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
     ],
     sources: [
       {
-        label: "NVIDIA: DLSS 5 comes to Hogwarts Legacy and RTX Spark",
+        label: "NVIDIA: DLSS 5 available now in Hogwarts Legacy",
+        href: NVIDIA_HOGWARTS_LAUNCH,
+      },
+      {
+        label: "WB Games support: enabling DLSS 5 Neural Rendering in Hogwarts Legacy",
+        href: PORTKEY_HOGWARTS_DLSS5,
+      },
+      {
+        label: "NVIDIA: Game Ready Driver 621.14",
+        href: NVIDIA_DRIVER_62114,
+      },
+      {
+        label: "DSOGaming: Hogwarts Legacy DLSS 5 benchmarks",
+        href: DSOGAMING_HOGWARTS_DLSS5,
+      },
+      {
+        label: "PCWorld: DLSS 5 in Hogwarts Legacy",
+        href: PCWORLD_HOGWARTS_DLSS5,
+      },
+      {
+        label: "NVIDIA: DLSS 5 comes to Hogwarts Legacy and RTX Spark (October model)",
         href: NVIDIA_OCTOBER_MODEL,
       },
       {
@@ -452,10 +509,6 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       {
         label: "PC Games Hardware: Hogwarts Legacy VRAM and ray tracing test",
         href: PCGH_HOGWARTS_TECH,
-      },
-      {
-        label: "[LAUNCH DAY: Hogwarts Legacy patch notes and NVIDIA's launch article]",
-        href: NVIDIA_OCTOBER_MODEL,
       },
     ],
   },
@@ -472,18 +525,61 @@ export function createDlss5GameMetadata(key: Dlss5GameGuideKey): Metadata {
       canonical: guide.canonical,
     },
     openGraph: {
-      images: [OG_IMAGE_EN],
+      images: [guide.ogImage ?? OG_IMAGE_EN],
       title: guide.metaTitle,
       description: guide.metaDescription,
       type: "article",
       url,
     },
     twitter: {
-      card: "summary",
+      card: guide.ogImage ? "summary_large_image" : "summary",
+      ...(guide.ogImage ? { images: [guide.ogImage.url] } : {}),
       title: guide.metaTitle,
       description: guide.metaDescription,
     },
   };
+}
+
+type FpsChartData = NonNullable<NonNullable<GameGuide["extraSections"]>[number]["chart"]>;
+
+function FpsChart({ chart }: { chart: FpsChartData }) {
+  const max = Math.max(...chart.rows.map((row) => Math.max(row.off, row.on)));
+  return (
+    <figure className="rounded-lg border border-border p-4 sm:p-5">
+      <figcaption className="mb-4 text-sm font-semibold text-foreground">{chart.caption}</figcaption>
+      <div className="mb-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground" aria-hidden="true">
+        <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-muted-foreground/50" />{chart.offLabel}</span>
+        <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-blue-400" />{chart.onLabel}</span>
+      </div>
+      <dl className="space-y-4">
+        {chart.rows.map((row) => {
+          const drop = Math.round((1 - row.on / row.off) * 100);
+          return (
+            <div key={row.label}>
+              <dt className="mb-1.5 flex flex-wrap items-baseline justify-between gap-x-2 text-sm">
+                <span className="font-medium text-foreground">{row.label}</span>
+                <span className="text-muted-foreground">−{drop}%</span>
+              </dt>
+              <dd className="space-y-1">
+                <span className="sr-only">{chart.offLabel}: {row.off} {chart.unit}. {chart.onLabel}: {row.on} {chart.unit}.</span>
+                <span aria-hidden="true" className="flex items-center gap-2">
+                  <span className="h-3 rounded-sm bg-muted-foreground/50" style={{ width: `${(row.off / max) * 80}%` }} />
+                  <span className="text-xs tabular-nums text-muted-foreground">{row.off}</span>
+                </span>
+                <span aria-hidden="true" className="flex items-center gap-2">
+                  <span className="h-3 rounded-sm bg-blue-400" style={{ width: `${(row.on / max) * 80}%` }} />
+                  <span className="text-xs tabular-nums text-foreground">{row.on}</span>
+                </span>
+              </dd>
+            </div>
+          );
+        })}
+      </dl>
+      <p className="mt-4 text-xs text-muted-foreground">
+        Source: <a href={chart.source.href} className="text-blue-400 hover:underline">{chart.source.label}</a>. Published third-party test, not our own measurement.
+      </p>
+    </figure>
+  );
 }
 
 function assertLaunchReady(key: Dlss5GameGuideKey) {
@@ -704,6 +800,7 @@ export default function Dlss5GameGuide({ gameKey }: { gameKey: Dlss5GameGuideKey
                 {paragraph}
               </p>
             ))}
+            {section.chart ? <FpsChart chart={section.chart} /> : null}
           </section>
         ))}
 

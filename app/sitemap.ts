@@ -29,6 +29,7 @@ const pages: SitemapPage[] = [
   { path: "/dlss-5-supported-cards", changeFrequency: "weekly", priority: 0.9 },
   { path: "/dlss-5-games", changeFrequency: "weekly", priority: 0.88 },
   { path: "/games/nba-2k27-dlss-5", changeFrequency: "weekly", priority: 0.86 },
+  { path: "/games/hogwarts-legacy-dlss-5", changeFrequency: "weekly", priority: 0.86 },
   { path: "/dlss-5-evidence-tracker", changeFrequency: "weekly", priority: 0.86 },
   { path: "/dlss-5-release-date", changeFrequency: "weekly", priority: 0.86 },
   { path: "/dlss-5-neural-rendering", changeFrequency: "weekly", priority: 0.84 },

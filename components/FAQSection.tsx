@@ -34,7 +34,7 @@ export const faqs: { q: string; a: string; link?: { href: string; text: string }
   },
   {
     q: "What games will support DLSS 5?",
-    a: "NBA 2K27 is the first verified DLSS 5 game. Hogwarts Legacy is scheduled for November 5, 2026 and Where Winds Meet for late November. Other named games remain announced or pending until each game publishes patch notes, settings, and GPU support details.",
+    a: "NBA 2K27 and Hogwarts Legacy (since November 5, 2026) support DLSS 5 now. War Thunder is scheduled for mid-November and Where Winds Meet for November 23. Other named games remain announced or pending until each game publishes patch notes, settings, and GPU support details.",
     link: { href: "/dlss-5-games", text: "DLSS 5 games list and release dates" },
   },
   {

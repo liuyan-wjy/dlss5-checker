@@ -20,6 +20,7 @@ const newRoutes = [
   "dlss-4-5-ray-reconstruction",
   "games/nba-2k27-dlss-5",
   "de/dlss-5-grafikkarten",
+  "games/hogwarts-legacy-dlss-5",
 ];
 
 const compatibilityRoutes = [
@@ -407,7 +408,7 @@ assert.equal(visibleText(metadataValue(germanHtml, /<h1[^>]*>([\s\S]*?)<\/h1>/, 
 assert.match(germanHtml, /aria-label="Hauptnavigation"/);
 assert.match(germanHtml, /<meta property="og:locale" content="de_DE"/);
 assert.match(germanHtml, /"inLanguage":"de"/);
-assert.match(germanHtml, /<time dateTime="2026-11-03">/);
+assert.match(germanHtml, /<time dateTime="2026-11-06">/);
 const germanProse = metadataValue(germanHtml, /<article\b[^>]*id="ratgeber"[^>]*>([\s\S]*?)<\/article>/, "authored German article");
 const germanAuthoredText = [...germanProse.matchAll(/<(h[1-3]|p)\b([^>]*)>([\s\S]*?)<\/\1>/g)]
   .filter(([, tag, attributes]) => tag !== "p" || !/\btext-sm\b/.test(attributes))
@@ -526,6 +527,19 @@ assert.doesNotMatch(nbaHtml, /name="robots" content="noindex/, "NBA guide must b
 for (const route of ["dlss-5-games", "guides"]) {
   assert.match(readRoute(route), /href="\/games\/nba-2k27-dlss-5"/, `${route} must link to the NBA guide`);
 }
+const hogwartsHtml = readRoute("games/hogwarts-legacy-dlss-5");
+const hogwartsText = visibleText(hogwartsHtml);
+assert.doesNotMatch(hogwartsHtml, /\[LAUNCH DAY:/, "Hogwarts guide must not ship launch placeholders");
+for (const pattern of [/621\.14/, /Display Settings/, /Upscale Type/, /Neural Rendering/, /Shift\+Alt\+B/, /RTX 50/, /RTX Spark/, /RTX 40/, /GeForce NOW/, /DSOGaming/]) {
+  assert.match(hogwartsText, pattern, `Hogwarts Legacy guide is missing ${pattern}`);
+}
+assert.match(hogwartsHtml, /<figure\b/, "Hogwarts guide must include the published FPS chart");
+assert.match(hogwartsHtml, /og:image" content="https:\/\/www\.dlss5\.net\/og\/hogwarts-legacy-dlss-5\.png"/);
+assert.ok(fs.existsSync(path.join(appOutput, "og", "hogwarts-legacy-dlss-5.png")));
+for (const route of ["dlss-5-games", "guides", "index", "pt/dlss-5-jogos", "de/dlss-5-grafikkarten"]) {
+  assert.match(readRoute(route), /href="\/games\/hogwarts-legacy-dlss-5"/, `${route} must link to the Hogwarts guide`);
+}
+assert.match(fs.readFileSync(path.join(appOutput, "sitemap.xml"), "utf8"), /\/games\/hogwarts-legacy-dlss-5</);
 const rtx40Text = visibleText(readRoute("dlss-5-rtx-40-series"));
 assert.match(rtx40Text, /planned|plans to|plan to/i);
 assert.match(rtx40Text, /not available|not yet available|not live|no (?:release |availability |support )?date|not currently/i);
@@ -557,7 +571,12 @@ assert.ok(
 for (const [route, html] of generatedPages.map((html, i) => [i, html])) {
   if (/<title>Page not found/.test(html)) continue;
   const imageLanguage = /<html[^>]*lang="pt-BR"/.test(html) ? "pt" : /<html[^>]*lang="de"/.test(html) ? "de" : "en";
-  assert.ok(html.includes(`<meta property="og:image" content="https://www.dlss5.net/og/dlss5-checker-${imageLanguage}.png"`), `page ${route} must have a social preview image in its language`);
+  const pageImages = ["og/hogwarts-legacy-dlss-5.png"];
+  assert.ok(
+    html.includes(`<meta property="og:image" content="https://www.dlss5.net/og/dlss5-checker-${imageLanguage}.png"`) ||
+      (imageLanguage === "en" && pageImages.some((image) => html.includes(`<meta property="og:image" content="https://www.dlss5.net/${image}"`))),
+    `page ${route} must have a social preview image in its language`,
+  );
   assert.match(html, /<meta name="googlebot" content="max-image-preview:large"/, `page ${route} must allow large image previews`);
 }
 for (const [route, lang] of [["index", "en"], ["dlss-5-games", "en"], ["games/nba-2k27-dlss-5", "en"], ["pt", "pt"], ["pt/dlss-5-jogos", "pt"]]) {

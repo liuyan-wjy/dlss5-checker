@@ -36,7 +36,7 @@ const faqItems = [
   {
     question: "Will DLSS 5 be on RTX 40 series?",
     answer:
-      "NVIDIA has said RTX 40 support is planned after RTX 50 optimization, but as of October 18, 2026 it is not available and has no public release date. The October model update and the Hogwarts Legacy release list RTX 50, RTX Spark laptops, and GeForce NOW only. RTX 40 cards still support current features such as Frame Generation, Super Resolution, Ray Reconstruction, and DLAA.",
+      "NVIDIA has said RTX 40 support is planned after RTX 50 optimization, but as of October 18, 2026 it is not available and has no public release date. The October model update and the Hogwarts Legacy update that went live on November 5 list RTX 50, RTX Spark, and GeForce NOW only. RTX 40 cards still support current features such as Frame Generation, Super Resolution, Ray Reconstruction, and DLAA.",
   },
   {
     question: "Does RTX 4070 support DLSS 5?",
@@ -187,9 +187,10 @@ export default function Dlss5Rtx40SeriesPage() {
             On October 16, 2026, NVIDIA shipped a revised DLSS 5 model in NBA 2K27. NVIDIA
             says it needs about half the GPU time of the September model, is about 24%
             smaller (around 118 million parameters), and uses about 20% less VRAM at 4K. The
-            update went to RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. The next dated
-            games, Hogwarts Legacy on November 5 and Where Winds Meet in late November, use
-            the same hardware list. RTX 40 is not on it.
+            update went to RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. Hogwarts Legacy,
+            which went live on November 5, and the next dated games, War Thunder in
+            mid-November and Where Winds Meet on November 23, use the same hardware list.
+            RTX 40 is not on it.
           </p>
           <p>
             NVIDIA&apos;s earlier explanation was that RTX 40 support would follow once the
