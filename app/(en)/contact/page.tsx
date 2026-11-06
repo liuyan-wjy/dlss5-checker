@@ -45,15 +45,12 @@ export default function ContactPage() {
             support@dlss5.net
           </a>
           <p className="mt-3 text-sm text-muted-foreground">
-            The site is maintained by{" "}
-            <a href="https://github.com/liuyan-wjy" className="text-blue-400 hover:underline">
-              liuyan-wjy
-            </a>
-            . You can also report a correction as an issue in the public{" "}
-            <a href="https://github.com/liuyan-wjy/dlss5-checker/issues" className="text-blue-400 hover:underline">
-              GitHub repository
-            </a>
-            , where the fix and its source stay visible.
+            The site is maintained by liuyan-wjy, who reads every message. When a correction
+            is confirmed, the page and the source list in the{" "}
+            <Link href="/dlss-5-evidence-tracker" className="text-blue-400 hover:underline">
+              DLSS 5 evidence tracker
+            </Link>{" "}
+            are updated together.
           </p>
         </div>
 

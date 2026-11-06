@@ -14,3 +14,10 @@ export const OG_IMAGE_PT = {
   height: 630,
   alt: "DLSS 5 Checker: RTX 50 e RTX Spark compatíveis agora, RTX 40 planejada sem data, RTX 30 e RTX 20 sem suporte, GTX, AMD e Intel sem DLSS.",
 };
+
+export const OG_IMAGE_DE = {
+  url: "/og/dlss5-checker-de.png",
+  width: 1200,
+  height: 630,
+  alt: "DLSS 5 Checker: RTX 50 und RTX Spark unterstützt, RTX 40 geplant ohne Termin, RTX 30 und RTX 20 ohne DLSS 5, GTX, AMD und Intel ohne DLSS.",
+};

@@ -14,10 +14,12 @@ assert.equal(
 const newRoutes = [
   "dlss-5-download",
   "dlss-5-amd",
+  "dlss-5-mods",
   "pt/como-ativar-dlss-5",
   "pt/dlss-5-amd",
   "dlss-4-5-ray-reconstruction",
   "games/nba-2k27-dlss-5",
+  "de/dlss-5-grafikkarten",
 ];
 
 const compatibilityRoutes = [
@@ -48,7 +50,6 @@ const removedRoutes = {
   "pt/gpu/rtx-4090": "/pt/dlss-5-quais-placas",
   "pt/gpu/rtx-3060": "/pt/dlss-5-quais-placas",
   "pt/gpu/gtx-1060": "/pt/dlss-5-quais-placas",
-  "de/dlss-5-grafikkarten": "/dlss-5-supported-cards",
   "games/resident-evil-requiem-dlss-5": "/dlss-5-games",
   "games/starfield-dlss-5": "/dlss-5-games",
   "games/assassins-creed-shadows-dlss-5": "/dlss-5-games",
@@ -103,6 +104,46 @@ function mainWords(html) {
   assert.ok(main, "Content page must have a main landmark");
   return visibleText(main[1]).split(/\s+/).length;
 }
+
+const comparePage = readRoute("dlss-supported-cards");
+const compareSection = comparePage.match(/<section id="gpu-compare"[\s\S]*?<\/section>/)?.[0];
+assert.ok(compareSection, "The existing supported-cards page must include the comparison tool");
+assert.match(compareSection, /<h2[^>]*>Compare two GPUs<\/h2>/);
+assert.ok(comparePage.indexOf(compareSection) < comparePage.indexOf(">Frequently asked questions</h2>"), "Comparison precedes the FAQ");
+assert.match(compareSection, /id="compare-from"/);
+assert.match(compareSection, /id="compare-to"/);
+assert.ok(visibleText(compareSection).includes("Feature support only. This does not predict frame rates; see published tests on the system requirements page."));
+assert.match(compareSection, /href="\/dlss-5-system-requirements#benchmarks"/);
+// With no ?from=&to= the page ships a useful default comparison instead of an empty state.
+const compareText = visibleText(compareSection);
+assert.ok(compareText.includes("RTX 3060 → RTX 5070"), "Default comparison must be rendered in the static HTML");
+assert.ok(compareText.includes("4 added · 0 lost"), "Default comparison must summarize gained and lost features");
+assert.ok(compareText.includes("+ DLSS 5 Neural Rendering"), "Default comparison must list gained features");
+for (const label of ["RTX 4070 → RTX 5070", "RTX 4090 → RTX 5090", "RX 7900 XTX → RTX 5080"]) {
+  assert.ok(compareText.includes(label), `Quick comparison "${label}" must be offered`);
+}
+assert.match(compareSection, /aria-label="Swap current and target GPU"/);
+// The supported-cards guide answers model, version, laptop, frame-generation and mode questions,
+// and every "On this page" link lands on a section.
+for (const id of ["matrix", "gpu-compare", "dlss-versions", "popular-cards", "laptops", "frame-generation-rtx-20-30", "dlss-modes", "faq"]) {
+  assert.match(comparePage, new RegExp(`id="${id}"`), `Supported-cards guide must include #${id}`);
+  assert.match(comparePage, new RegExp(`href="#${id}"`), `On-this-page navigation must link #${id}`);
+}
+for (const id of ["rtx-2060", "rtx-3050", "rtx-3080", "rtx-4050-laptop", "gtx"]) {
+  assert.match(comparePage, new RegExp(`<li[^>]*id="${id}"`), `Popular-card answer #${id} must stay linkable`);
+}
+assert.ok(visibleText(comparePage).includes("1707×960"), "DLSS mode table must list 1440p Quality resolution");
+// Two text-based infographics: the feature ladder and the rendered-area illustration.
+assert.match(comparePage, /<figure[^>]*aria-labelledby="ladder-caption"/, "Feature ladder figure must stay on the page");
+assert.match(comparePage, /role="img" aria-label="Rendered area for each DLSS mode[^"]*25%/, "Rendered-area figure needs a text alternative");
+assert.doesNotMatch(visibleText(comparePage), /Why the DLSS version number can be misleading/, "Merged section must not return as a duplicate");
+assert.ok((comparePage.match(/<dl class="grid grid-cols-\[minmax\(0,1fr\)_auto\]/g) || []).length >= 5, "Matrix must have stacked mobile cards");
+
+assert.equal((compareSection.match(/<optgroup /g) || []).length, 2 * new Set(JSON.parse(fs.readFileSync("data/gpu-data.json", "utf8")).gpus.map((gpu) => gpu.series)).size,
+  "Both selectors must group GPUs by series");
+assert.equal(metadataValue(comparePage, /<title>([^<]+)<\/title>/, "comparison page title"), "DLSS Supported Cards: RTX 20, 30, 40 &amp; 50 Guide");
+assert.equal(metadataValue(comparePage, /<meta name="description" content="([^"]+)"/, "comparison page description"), "See which NVIDIA cards support DLSS Super Resolution, Neural Rendering, Ray Reconstruction, Frame Generation, MFG, Dynamic MFG, and DLAA by GPU generation.");
+assert.equal(metadataValue(comparePage, /<h1[^>]*>([^<]+)<\/h1>/, "comparison page H1"), "DLSS Supported Cards: RTX 20, 30, 40, and 50 Series Compared");
 
 function checkFaq(html, route, required = true) {
   const text = visibleText(html);
@@ -210,16 +251,19 @@ assert.doesNotMatch(
 );
 
 const privacy = readRoute("privacy");
-// AdSense is live: every page must load the publisher's ad script, and the
-// privacy policy must disclose Google's ad cookies and the consent choices.
-const adsenseScript = /<script async="" src="https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-5442184426795655" crossorigin="anonymous">/;
 for (const html of generatedPages) {
-  assert.match(html, adsenseScript, "Every exported page must load the AdSense script once");
-  assert.equal((html.match(/<script[^>]*adsbygoogle\.js/g) || []).length, 1, "AdSense script must not be duplicated");
+  assert.doesNotMatch(html, /adsbygoogle\.js|googlesyndication\.com/, "Exported pages must not load AdSense code");
 }
-assert.match(privacy, /policies\.google\.com\/technologies\/partner-sites/);
-assert.match(privacy, /adssettings\.google\.com/);
-assert.match(visibleText(privacy), /certified consent management platform/);
+assert.match(visibleText(readRoute("about")), /Everything on DLSS 5 Checker is free and has no ads\./);
+assert.match(visibleText(privacy), /no ads/);
+assert.match(visibleText(privacy), /does not load advertising code/);
+assert.match(visibleText(privacy), /do not currently show a consent popup/);
+assert.match(visibleText(privacy), /ads\.txt and the AdSense ownership verification/);
+assert.doesNotMatch(visibleText(privacy), /shows ads served by Google|Google AdSense uses cookies|may change which ads you see/);
+assert.equal(
+  metadataValue(privacy, /<meta name="description" content="([^"]+)"/, "privacy description"),
+  "Privacy policy for DLSS 5 Checker, covering aggregate analytics, optional Stripe tips, email, and service providers. The site currently shows no ads.",
+);
 assert.doesNotMatch(privacy, /We use Google Analytics/i);
 assert.match(visibleText(privacy), /Cloudflare Web Analytics/);
 assert.match(visibleText(privacy), /real.user monitoring|RUM/i);
@@ -230,12 +274,15 @@ for (const route of ["about", "contact"]) {
   const html = readRoute(route);
   assert.match(html, /mailto:support@dlss5\.net/);
   assert.match(html, /liuyan-wjy/);
-  assert.match(html, /href="https:\/\/github\.com\/liuyan-wjy"/);
+}
+// The site credits the author by name but does not link to their GitHub profile or repository.
+for (const html of generatedPages) {
+  assert.doesNotMatch(html, /github\.com\/liuyan-wjy/i, "pages must not link to the author's GitHub");
 }
 
 for (const route of [...new Set([...newRoutes, ...refreshedRoutes, ...compatibilityRoutes])]) {
   const html = readRoute(route);
-  const language = route.startsWith("pt") ? "pt-BR" : "en";
+  const language = route.startsWith("pt/") || route === "pt" ? "pt-BR" : route.startsWith("de/") ? "de" : "en";
   assert.match(html, new RegExp(`<html[^>]*lang="${language}"`), `${route} exported language`);
   const title = metadataValue(html, /<title>([^<]+)<\/title>/, `${route} title`);
   const canonical = metadataValue(
@@ -350,6 +397,117 @@ for (const route of [...compatibilityRoutes, ...newRoutes]) {
   );
 }
 
+// WP5 restores exactly one German page, with owner-approved metadata and reciprocal alternates.
+const germanRoute = "de/dlss-5-grafikkarten";
+const germanHtml = readRoute(germanRoute);
+assert.deepEqual(fs.readdirSync(path.join(appOutput, "de"), { recursive: true }).filter((file) => file.endsWith(".html")), ["dlss-5-grafikkarten.html"]);
+assert.equal(decodeHtml(metadataValue(germanHtml, /<title>([^<]+)<\/title>/, "German title")), "DLSS 5: Welche Grafikkarten werden unterstützt? [2026]");
+assert.equal(decodeHtml(metadataValue(germanHtml, /<meta name="description" content="([^"]+)"/, "German description")), "Welche Grafikkarten unterstützen DLSS 5? RTX 50 und RTX Spark sind bestätigt, RTX 40 ist geplant. Status und Unterschiede zu DLSS 4.5 im Überblick.");
+assert.equal(visibleText(metadataValue(germanHtml, /<h1[^>]*>([\s\S]*?)<\/h1>/, "German H1")), "Welche Grafikkarten unterstützen DLSS 5?");
+assert.match(germanHtml, /aria-label="Hauptnavigation"/);
+assert.match(germanHtml, /<meta property="og:locale" content="de_DE"/);
+assert.match(germanHtml, /"inLanguage":"de"/);
+assert.match(germanHtml, /<time dateTime="2026-11-03">/);
+const germanProse = metadataValue(germanHtml, /<article\b[^>]*id="ratgeber"[^>]*>([\s\S]*?)<\/article>/, "authored German article");
+const germanAuthoredText = [...germanProse.matchAll(/<(h[1-3]|p)\b([^>]*)>([\s\S]*?)<\/\1>/g)]
+  .filter(([, tag, attributes]) => tag !== "p" || !/\btext-sm\b/.test(attributes))
+  .map(([, , , content]) => visibleText(content)).join(" ");
+const germanWordCount = germanAuthoredText.split(/\s+/).length;
+assert.ok(germanWordCount >= 800, `German authored headings and prose must have >=800 words excluding GPU rows, navigation and source notes (got ${germanWordCount})`);
+assert.doesNotMatch(germanProse, /data-gpu-id=/, "GPU rows must not inflate unique editorial word count");
+for (const [language, target] of [
+  ["en", "dlss-5-supported-cards"],
+  ["pt-BR", "pt/dlss-5-quais-placas"],
+  ["de", germanRoute],
+  ["x-default", "dlss-5-supported-cards"],
+]) {
+  for (const route of ["dlss-5-supported-cards", "pt/dlss-5-quais-placas", germanRoute]) {
+    assert.ok(readRoute(route).includes(`hrefLang="${language}" href="https://www.dlss5.net/${target}"`), `${route} must reciprocate ${language} hreflang`);
+    if (route !== target && language !== "x-default") {
+      assert.ok(readRoute(route).includes(`href="/${target}"`), `${route} must visibly link its ${language} counterpart`);
+    }
+  }
+}
+const germanGpuData = JSON.parse(fs.readFileSync("data/gpu-data.json", "utf8")).gpus;
+assert.equal((germanHtml.match(/data-gpu-id=/g) || []).length, germanGpuData.length, "German guide must render each GPU once");
+for (const status of ["confirmed", "planned", "unsupported", "none"]) {
+  const section = metadataValue(germanHtml, new RegExp(`<section\\b[^>]*id="status-${status}"[^>]*>([\\s\\S]*?)<\\/section>`), `German ${status} section`);
+  assert.deepEqual([...section.matchAll(/data-gpu-id="([^"]+)"/g)].map((match) => match[1]), germanGpuData.filter((gpu) => gpu.dlss5_support === status).map((gpu) => gpu.id));
+  for (const gpu of germanGpuData.filter((gpu) => gpu.dlss5_support === status)) {
+    const item = metadataValue(section, new RegExp(`<li\\b[^>]*data-gpu-id="${gpu.id}"[^>]*>([\\s\\S]*?)<\\/li>`), `German GPU ${gpu.id}`);
+    assert.ok(visibleText(item).includes(gpu.name), `${gpu.id} must retain its model name`);
+  }
+}
+for (const [id, memory] of [
+  ["rtx-5060-ti", "8GB / 16GB"],
+  ["rtx-4060-ti", "8GB / 16GB"],
+  ["rtx-5070-laptop", "8GB oder 12GB"],
+  ["rtx-spark", "Gemeinsamer Speicher mit der CPU"],
+]) {
+  const item = metadataValue(germanHtml, new RegExp(`<li\\b[^>]*data-gpu-id="${id}"[^>]*>([\\s\\S]*?)<\\/li>`), `German memory for ${id}`);
+  assert.ok(visibleText(item).includes(memory), `${id} must preserve its memory variants`);
+}
+for (const source of [
+  "https://www.nvidia.com/de-de/geforce/technologies/dlss/",
+  "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/",
+  "https://www.nvidia.com/en-us/geforce/forums/nvidia-app/129/583738/dlss-5-faq-932026/",
+]) {
+  assert.ok(germanHtml.includes(`href="${source}"`), `German guide must cite ${source}`);
+}
+assert.match(germanHtml, /href="https:\/\/(?:www\.nvidia\.com\/en-us\/geforce\/news\/rtx-spark-dlss-reflex-ray-tracing-games\/|developer\.nvidia\.com\/blog\/nvidia-rtx-spark-powers-neural-rendering-and-ai-characters-in-games\/?)/);
+assert.doesNotMatch(germanHtml, /href="[^"]*(?:\.dll|huggingface\.co|\/releases\/)/i);
+
+const modsHtml = readRoute("dlss-5-mods");
+assert.equal(metadataValue(modsHtml, /<title>([^<]+)<\/title>/, "mods title"), "DLSS 5 Mods on RTX 40, RTX 30 and AMD: What Works and the Risks");
+assert.equal(metadataValue(modsHtml, /<meta name="description" content="([^"]+)"/, "mods description"), "Unofficial tools like DLSS 5 Swapper and OptiScaler forks run Neural Rendering outside RTX 50. What they do, what NVIDIA supports, and the ban and malware risks.");
+assert.equal(visibleText(metadataValue(modsHtml, /<h1[^>]*>([\s\S]*?)<\/h1>/, "mods H1")), "DLSS 5 mods: what they are and what they risk");
+const modsWords = mainWords(modsHtml);
+assert.ok(modsWords >= 1500 && modsWords <= 2200, `Mods guide must contain 1,500–2,200 main-content words (got ${modsWords})`);
+const modsSections = new Map([...modsHtml.matchAll(/<section\b[^>]*id="([^"]+)"[^>]*>([\s\S]*?)<\/section>/g)].map((match) => [match[1], match[2]]));
+for (const id of ["quick-answer", "comparison", "tools", "risks", "principles", "alternatives", "faq"]) {
+  assert.ok(modsSections.has(id), `Mods guide must include ${id}`);
+  assert.match(modsSections.get(id), /<h2\b/);
+  assert.match(modsSections.get(id), /<h3\b/, `${id} must have an H3 subsection`);
+}
+const riskWords = visibleText(modsSections.get("risks")).split(/\s+/).length;
+assert.ok(riskWords / modsWords >= 0.3, `Mods risks must cover at least 30% of the main content (${riskWords}/${modsWords})`);
+for (const id of ["tool-swapper", "tool-optiscaler", "tool-manager", "tool-desktop", "tool-open"]) {
+  const tool = metadataValue(modsSections.get("tools"), new RegExp(`<article\\b[^>]*id="${id}"[^>]*>([\\s\\S]*?)<\\/article>`), id);
+  assert.match(tool, /<h3\b/);
+  assert.match(tool, /href="https:\/\/(?:www\.)?(?:tweaktown\.com|pcgamer\.com|pcgameshardware\.de|techradar\.com|thefpsreview\.com|pcguide\.com|techspot\.com|digitalcitizen\.life)\//, `${id} must cite a news source`);
+  assert.doesNotMatch(tool, /href="https:\/\/(?:www\.)?(?:github\.com|huggingface\.co)\//, `${id} must not link to project downloads`);
+}
+for (const [, value] of modsHtml.matchAll(/(?:href|src)="([^"]+)"/g)) {
+  const url = decodeURIComponent(decodeHtml(value));
+  assert.doesNotMatch(url, /github\.com\/[^?#]*\/releases(?:[/?#]|$)|(?:huggingface\.co|hf\.co)(?:[/:?#]|$)|\.dll(?:[/?#]|$)/i, `Mods guide must not link to binaries, releases, or model weights: ${url}`);
+  assert.doesNotMatch(url, /(?:drive\.google\.com|dropbox\.com|mega\.nz|mediafire\.com|onedrive\.live\.com|1drv\.ms|pan\.baidu\.com|lanzou\w*\.com|gofile\.io|pixeldrain\.com)(?:[/:?#]|$)/i, `Mods guide must not link to file-sharing downloads: ${url}`);
+}
+assert.doesNotMatch(modsHtml, /<a\b[^>]*\bdownload(?:[\s=>])/i, "Mods guide must not offer download controls");
+const modsFaqs = [...modsHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+  .flatMap((match) => {
+    const schema = JSON.parse(match[1]);
+    return Array.isArray(schema) ? schema : [schema, ...(schema["@graph"] ?? [])];
+  }).filter((schema) => schema["@type"] === "FAQPage");
+assert.equal(modsFaqs.length, 1, "Mods guide must have one FAQPage schema");
+assert.ok(modsFaqs[0].mainEntity.length >= 4 && modsFaqs[0].mainEntity.length <= 6, "Mods guide must have 4–6 FAQs");
+assert.match(modsHtml, /<time dateTime="2026-10-31">October 31, 2026<\/time>/);
+assert.match(visibleText(modsHtml), /Sources, review status, and related pages/);
+const modsSitemapEntry = metadataValue(sitemap, /<url>\s*(<loc>https:\/\/www\.dlss5\.net\/dlss-5-mods<\/loc>[\s\S]*?)<\/url>/, "mods sitemap entry");
+assert.match(modsSitemapEntry, /<changefreq>weekly<\/changefreq>/);
+assert.match(modsSitemapEntry, /<priority>0\.8<\/priority>/);
+const corePages = llms.split("## Core Pages")[1]?.split(/\n## /)[0] ?? "";
+assert.match(corePages, /https:\/\/www\.dlss5\.net\/dlss-5-mods\)/);
+const setupGroup = [...readRoute("guides").matchAll(/<section\b[^>]*>([\s\S]*?)<\/section>/g)].find((match) => /<h2[^>]*>Set up DLSS 5<\/h2>/.test(match[1]));
+assert.ok(setupGroup, "Guides must retain the Set up DLSS 5 group");
+assert.match(setupGroup[1], /href="\/dlss-5-mods"/);
+for (const route of ["dlss-5-rtx-40-series", "dlss-5-amd"]) {
+  assert.match(readRoute(route), /<main\b[^>]*>[\s\S]*href="\/dlss-5-mods"[\s\S]*<\/main>/, `${route} must link to the mods guide in its body`);
+}
+for (const id of ["rtx-3060", "rtx-3070", "rtx-4060", "rtx-4070", "rtx-4090"]) {
+  const card = metadataValue(readRoute("dlss-5-supported-cards"), new RegExp(`<div\\b[^>]*id="${id}"[^>]*>([\\s\\S]*?)<\\/div>`), `popular card ${id}`);
+  assert.match(card, /href="\/dlss-5-mods"/, `${id} must link to the mods guide`);
+}
+
 const nbaHtml = readRoute("games/nba-2k27-dlss-5");
 const nbaText = visibleText(nbaHtml);
 const nbaWithoutJsonLd = nbaHtml.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "");
@@ -378,6 +536,11 @@ for (const route of ["dlss-4-5-dynamic-mfg-settings", "dlss-4-5-dynamic-mfg-6x"]
 }
 
 const redirects = fs.readFileSync(path.join(appOutput, "_redirects"), "utf8");
+assert.doesNotMatch(redirects, /^\/de\/dlss-5-grafikkarten\s/m, "Only the restored German route must lose its 301");
+assert.deepEqual(redirects.split(/\r?\n/).filter((line) => line && !line.startsWith("#")), [
+  ...Object.entries(removedRoutes).map(([route, target]) => `/${route} ${target} 301`),
+  "/dlss5-games /dlss-5-games 301",
+], "Every other existing redirect must remain intact");
 for (const [route, target] of Object.entries(removedRoutes)) {
   assert.ok(!fs.existsSync(routePath(route)), `${route} must not be exported`);
   assert.match(redirects, new RegExp(`^/${route} ${target} 301$`, "m"), `${route} must 301 to ${target}`);
@@ -393,7 +556,8 @@ assert.ok(
 // Every indexable page carries the shared 1200x630 preview image in its language.
 for (const [route, html] of generatedPages.map((html, i) => [i, html])) {
   if (/<title>Page not found/.test(html)) continue;
-  assert.match(html, /<meta property="og:image" content="https:\/\/www\.dlss5\.net\/og\/dlss5-checker-(en|pt)\.png"/, `page ${route} must have a social preview image`);
+  const imageLanguage = /<html[^>]*lang="pt-BR"/.test(html) ? "pt" : /<html[^>]*lang="de"/.test(html) ? "de" : "en";
+  assert.ok(html.includes(`<meta property="og:image" content="https://www.dlss5.net/og/dlss5-checker-${imageLanguage}.png"`), `page ${route} must have a social preview image in its language`);
   assert.match(html, /<meta name="googlebot" content="max-image-preview:large"/, `page ${route} must allow large image previews`);
 }
 for (const [route, lang] of [["index", "en"], ["dlss-5-games", "en"], ["games/nba-2k27-dlss-5", "en"], ["pt", "pt"], ["pt/dlss-5-jogos", "pt"]]) {
@@ -401,5 +565,32 @@ for (const [route, lang] of [["index", "en"], ["dlss-5-games", "en"], ["games/nb
 }
 assert.ok(fs.existsSync(path.join(appOutput, "og", "dlss5-checker-en.png")));
 assert.ok(fs.existsSync(path.join(appOutput, "og", "dlss5-checker-pt.png")));
+const germanImage = fs.readFileSync(path.join(appOutput, "og", "dlss5-checker-de.png"));
+assert.equal(germanImage.subarray(1, 4).toString(), "PNG");
+assert.equal(germanImage.readUInt32BE(16), 1200);
+assert.equal(germanImage.readUInt32BE(20), 630);
+assert.match(germanHtml, /<meta property="og:image:width" content="1200"/);
+assert.match(germanHtml, /<meta property="og:image:height" content="630"/);
+assert.match(germanHtml, /<meta property="og:image:alt" content="DLSS 5 Checker: RTX 50 und RTX Spark unterstützt/);
+
+// Optional tip link: footer on every page, explained on About, disclosed in Privacy.
+const supportUrl = "https://buy.stripe.com/eVq8wR6HPbc14THdJt2Ji00";
+for (const html of generatedPages) {
+  if (/<title>Page not found/.test(html)) continue;
+  assert.ok(html.includes(`href="${supportUrl}"`), "Every page footer must link to the tip jar");
+}
+assert.match(visibleText(readRoute("about")), /buy me a coffee/i);
+assert.match(visibleText(readRoute("privacy")), /Optional Tips Through Stripe/);
+assert.match(readRoute("privacy"), /https:\/\/stripe\.com\/privacy/);
+assert.doesNotMatch(generatedHtml, /js\.stripe\.com/, "No Stripe script should load on the site");
+
+// The system requirements benchmark table renders every row of data/benchmarks.json.
+const requirementsHtml = readRoute("dlss-5-system-requirements");
+const requirementsText = visibleText(requirementsHtml);
+for (const row of JSON.parse(fs.readFileSync("data/benchmarks.json", "utf8")).benchmarks) {
+  assert.ok(requirementsText.includes(row.result), `System requirements must show benchmark ${row.id}`);
+  assert.ok(requirementsHtml.includes(`href="${row.url}"`), `System requirements must link the source of ${row.id}`);
+}
+assert.doesNotMatch(requirementsText, /192 to 76|192 FPS/, "The unverified 192 to 76 FPS figure must not return");
 
 console.log("SEO regression checks passed.");

@@ -10,7 +10,7 @@ const require = createRequire(import.meta.url);
 function loadTs(relativePath) {
   const filename = path.resolve(relativePath);
   const compiled = ts.transpileModule(fs.readFileSync(filename, "utf8"), {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, esModuleInterop: true, jsx: ts.JsxEmit.ReactJSX },
+    compilerOptions: { target: ts.ScriptTarget.ES2017, module: ts.ModuleKind.CommonJS, esModuleInterop: true, jsx: ts.JsxEmit.ReactJSX },
     fileName: filename,
   }).outputText;
   const testModule = { exports: {} };
@@ -23,6 +23,54 @@ function loadTs(relativePath) {
   return testModule.exports;
 }
 const { searchGPU, getSuggestions, ALL_GPUS } = loadTs("lib/gpu-search.ts");
+const { compareGpus, shortGpuName } = loadTs("lib/gpu-compare.ts");
+for (const [full, short] of [
+  ["NVIDIA GeForce RTX 5070", "RTX 5070"], ["NVIDIA RTX Spark (laptop superchip)", "RTX Spark (laptop superchip)"],
+  ["AMD Radeon RX 7900 XTX", "RX 7900 XTX"], ["Intel Arc B580", "Arc B580"],
+]) assert.equal(shortGpuName(full), short);
+const gpuById = (id) => {
+  const gpu = ALL_GPUS.find((entry) => entry.id === id);
+  assert.ok(gpu, `Missing comparison fixture: ${id}`);
+  return gpu;
+};
+const gpuSnapshot = JSON.stringify(ALL_GPUS);
+const upgrade = compareGpus(gpuById("rtx-3060"), gpuById("rtx-5070"));
+assert.deepEqual(new Set(upgrade.added), new Set([
+  "frame_generation", "multi_frame_generation_4x", "dynamic_mfg_6x", "neural_rendering",
+]));
+assert.deepEqual(upgrade.removed, []);
+assert.deepEqual(new Set(upgrade.unchanged), new Set(["dlss_super_resolution", "dlaa", "ray_reconstruction"]));
+assert.equal(upgrade.vramDelta, 0);
+const lessMemory = compareGpus(gpuById("rtx-4090"), gpuById("rtx-5060"));
+assert.equal(lessMemory.vramDelta, -16);
+assert.ok(lessMemory.added.includes("multi_frame_generation_4x"));
+assert.ok(lessMemory.added.includes("neural_rendering"), "Planned Neural Rendering is not currently available on RTX 4090");
+assert.ok(lessMemory.unchanged.includes("frame_generation"), "MFG cards retain Frame Generation support");
+assert.deepEqual(lessMemory.removed, []);
+const reverse = compareGpus(gpuById("rtx-5060"), gpuById("rtx-4090"));
+assert.deepEqual(reverse.removed, lessMemory.added);
+assert.deepEqual(reverse.added, lessMemory.removed);
+assert.equal(reverse.vramDelta, 16);
+for (const gpu of ALL_GPUS) {
+  const same = compareGpus(gpu, gpu);
+  assert.deepEqual(same.added, [], `${gpu.id}: no added features when comparing itself`);
+  assert.deepEqual(same.removed, [], `${gpu.id}: no lost features when comparing itself`);
+  if (gpu.dlss5_support === "none") assert.deepEqual(same.unchanged, [], `${gpu.id}: no inferred DLSS support`);
+}
+for (const id of ["rtx-4060-ti", "rtx-5060-ti", "rtx-5070-laptop", "rtx-spark"]) {
+  assert.equal(compareGpus(gpuById("rtx-4090"), gpuById(id)).vramDelta, null, `${id}: no invented memory configuration`);
+}
+assert.equal(JSON.stringify(ALL_GPUS), gpuSnapshot, "Comparisons must not mutate GPU data");
+const { ALL_BENCHMARKS, getBenchmarksForGpu, BENCHMARK_MODEL_LABELS } = loadTs("lib/benchmarks.ts");
+const expectedBenchmarkCounts = { "rtx-5090": 2, "rtx-5080": 3, "rtx-5070": 1, "rtx-spark": 1 };
+for (const gpu of ALL_GPUS) {
+  const rows = getBenchmarksForGpu(gpu.id);
+  assert.equal(rows.length, expectedBenchmarkCounts[gpu.id] ?? 0, `${gpu.id}: exact benchmark mapping`);
+  assert.deepEqual(rows, ALL_BENCHMARKS.filter((row) => row.gpuIds.includes(gpu.id)));
+}
+for (const id of ["unknown", "", "RTX 5090", "rtx-5090-laptop", "rtx-5080-laptop", "rtx-5070-laptop"]) {
+  assert.deepEqual(getBenchmarksForGpu(id), [], `Do not infer benchmarks for ${JSON.stringify(id)}`);
+}
 
 const cases = [
   ["RTX 5050", "rtx-5050"],
@@ -82,8 +130,33 @@ for (const query of ["RTX 5060 Ti", "RTX 4060 Ti"]) {
 assert.doesNotMatch(fs.readFileSync("components/GPUChecker.tsx", "utf8"), /PerformanceChart|UpgradeRecommendations/,
   "The checker must not serve unsourced FPS estimates or generic upgrade boosts");
 const CompatibilityResult = loadTs("components/CompatibilityResult.tsx").default;
+const officialHeadings = {
+  confirmed: "DLSS 5 Confirmed (Available now)",
+  planned: "DLSS 5 Planned, Not Available Yet",
+  unsupported: "DLSS 5 Not Officially Supported",
+  none: "DLSS Not Supported",
+};
 for (const gpu of ALL_GPUS) {
   const html = renderToStaticMarkup(CompatibilityResult({ gpu }));
+  assert.equal(html.match(/<h2[^>]*>([^<]+)<\/h2>/)?.[1], officialHeadings[gpu.dlss5_support], `${gpu.id} must retain its official compatibility result`);
+  const publishedHeading = "Published tests for this card";
+  if (expectedBenchmarkCounts[gpu.id]) {
+    assert.equal(html.split(publishedHeading).length - 1, 1, `${gpu.id}: one published-test section`);
+    assert.ok(html.indexOf(publishedHeading) < html.indexOf("A realistic starting point"), `${gpu.id}: tests precede tier advice`);
+    const section = html.slice(html.indexOf(publishedHeading), html.indexOf("A realistic starting point"));
+    const text = section.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+    for (const row of getBenchmarksForGpu(gpu.id)) {
+      assert.ok(text.includes(row.result), `${gpu.id}: preserve result from ${row.source}`);
+      assert.ok(text.includes(row.settings), `${gpu.id}: preserve test conditions from ${row.source}`);
+      assert.ok(text.includes(row.game), `${gpu.id}: game must be identified`);
+      assert.ok(text.includes(BENCHMARK_MODEL_LABELS[row.model]), `${gpu.id}: model must be identified`);
+      assert.ok(text.includes(row.checked), `${gpu.id}: check date must be visible`);
+      assert.ok(section.includes(`href="${row.url}"`), `${gpu.id}: link to ${row.source}`);
+      assert.ok(text.includes(row.source), `${gpu.id}: source must be visible`);
+    }
+  } else {
+    assert.ok(!html.includes(publishedHeading), `${gpu.id}: no tests for unmeasured cards`);
+  }
   assert.match(html, /What to do next/);
   assert.match(html, /not an FPS prediction/);
   assert.match(html, /href="\/dlss-5-evidence-tracker"/);
@@ -104,6 +177,15 @@ for (const gpu of ALL_GPUS) {
   }
   assert.doesNotMatch(html, /href="\/gpu\//);
   assert.doesNotMatch(html, /avg\. FPS boost|FPS \(Off\)|\+85%|\+140%|\+210%/);
+  const modEntry = html.match(/<a\b[^>]*href="\/dlss-5-mods"[^>]*>([\s\S]*?)<\/a>/g) ?? [];
+  if (["planned", "unsupported"].includes(gpu.dlss5_support) || ["AMD", "Intel"].includes(gpu.brand)) {
+    assert.equal(modEntry.length, 1, `${gpu.id} must show one unofficial-mods reading link`);
+    assert.match(modEntry[0], /Unofficial DLSS 5 mods and their risks/);
+    assert.match(modEntry[0], /What community tools do on cards NVIDIA does not support\./);
+    if (gpu.dlss5_support !== "confirmed") assert.deepEqual(gpu.dlss5_features, [], `${gpu.id} must not gain official DLSS 5 features`);
+  } else {
+    assert.equal(modEntry.length, 0, `${gpu.id} must retain its existing reading links`);
+  }
   if (gpu.dlss5_support === "confirmed") {
     assert.match(html, /href="\/games\/nba-2k27-dlss-5#how-to-enable"/);
     assert.match(html, /616\.64/);

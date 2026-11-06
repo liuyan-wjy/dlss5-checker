@@ -15,6 +15,8 @@ export const metadata: Metadata = {
     languages: {
       en: "https://www.dlss5.net/dlss-5-supported-cards",
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-quais-placas",
+      de: "https://www.dlss5.net/de/dlss-5-grafikkarten",
+      "x-default": "https://www.dlss5.net/dlss-5-supported-cards",
     },
   },
   openGraph: {
@@ -388,7 +390,10 @@ export default function Dlss5SupportedCardsPage() {
               <div key={card.id} id={card.id} className="scroll-mt-24 rounded-lg border border-border p-5">
                 <h3 className="text-lg font-bold mb-1">{card.name}</h3>
                 <p className={`mb-2 text-sm font-semibold ${card.answerClass}`}>{card.answer}</p>
-                <p className="text-sm text-foreground/80 leading-relaxed">{card.detail}</p>
+                <p className="text-sm text-foreground/80 leading-relaxed">
+                  {card.detail}
+                  {/^rtx-[34]/.test(card.id) && <> Read about <Link href="/dlss-5-mods" className="text-blue-400 hover:underline">unofficial mods and their risks</Link>.</>}
+                </p>
               </div>
             ))}
           </div>
@@ -406,12 +411,11 @@ export default function Dlss5SupportedCardsPage() {
         <section id="status-history" className="mb-10 space-y-4 text-foreground/80 leading-relaxed scroll-mt-24">
           <h2 className="text-2xl font-bold text-foreground">How these status labels changed over time</h2>
           <p>
-            The labels on this page come from a public data file, and every change to it is
-            recorded in the site&apos;s{" "}
-            <a href="https://github.com/liuyan-wjy/dlss5-checker/commits/main/data/gpu-data.json" className="text-blue-400 hover:underline">
-              GitHub history
-            </a>
-            . Seeing how the answer moved is useful: it shows which claims were guesses
+            The timeline below records each time these labels changed, and the{" "}
+            <Link href="/dlss-5-evidence-tracker" className="text-blue-400 hover:underline">
+              DLSS 5 evidence tracker
+            </Link>{" "}
+            lists the sources behind the current answer. Seeing how the answer moved is useful: it shows which claims were guesses
             before launch and which are now backed by NVIDIA documentation.
           </p>
           <ol className="space-y-3 text-sm">
@@ -521,6 +525,10 @@ export default function Dlss5SupportedCardsPage() {
               <p className="text-sm text-muted-foreground">
                 Lista em português para consultas do Brasil e Portugal.
               </p>
+            </Link>
+            <Link href="/de/dlss-5-grafikkarten" hrefLang="de" className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors">
+              <div className="font-semibold mb-1">German card list</div>
+              <p lang="de" className="text-sm text-muted-foreground">Welche Grafikkarten unterstützen DLSS 5?</p>
             </Link>
           </div>
         </section>

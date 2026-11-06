@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Check DLSS 5 GPU support with an evidence-based tracker for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel cards. See confirmed, planned, unsupported, and no-DLSS status.",
   metadataBase: new URL("https://www.dlss5.net"),
-  authors: [{ name: "liuyan-wjy", url: "https://github.com/liuyan-wjy" }],
+  authors: [{ name: "liuyan-wjy", url: "https://www.dlss5.net/about" }],
   creator: "liuyan-wjy",
   publisher: "DLSS 5 Checker",
   other: {
@@ -38,24 +38,14 @@ export default function SiteDocument({
   locale = "en",
 }: Readonly<{
   children: React.ReactNode;
-  locale?: "en" | "pt-BR";
+  locale?: "en" | "pt-BR" | "de";
 }>) {
   return (
     <html lang={locale} className="dark">
-      {/* App Router root layouts render <head> directly; the Pages Router rule does not apply. */}
-      {/* eslint-disable-next-line @next/next/no-head-element */}
-      <head>
-        {/* AdSense Auto ads; placements and formats are managed in the AdSense dashboard. */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5442184426795655"
-          crossOrigin="anonymous"
-        ></script>
-      </head>
       <body className="antialiased bg-background text-foreground">
-        <SiteHeader locale={locale === "pt-BR" ? "pt" : "en"} />
+        <SiteHeader locale={locale === "pt-BR" ? "pt" : locale} />
         {children}
-        <SiteFooter locale={locale === "pt-BR" ? "pt" : "en"} />
+        <SiteFooter locale={locale === "pt-BR" ? "pt" : locale} />
         <script
           src="https://plausible-ly-005.pages.dev/js/pa-VclqONE0bFW-1okXx2CnS.js"
           async
