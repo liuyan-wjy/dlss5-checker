@@ -140,7 +140,7 @@ export default function GpuNextSteps({ gpu }: { gpu: GPU }) {
               <Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">Hogwarts Legacy</Link>
               {" "}— live since November 5, 2026.
             </li>
-            <li>War Thunder — scheduled for mid-November 2026, no exact day yet.</li>
+            <li>War Thunder — live since November 12, 2026, with the Eagle&apos;s Shadow update.</li>
             <li>Where Winds Meet — scheduled for November 23, 2026.</li>
           </ul>
         ) : isNvidia && gpu.dlss5_support !== "none" ? (

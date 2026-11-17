@@ -40,7 +40,7 @@ const checkedOn: Record<string, string> = {
   "NBA 2K27": "2026-10-18",
   "Hogwarts Legacy": "2026-11-06",
   "Where Winds Meet": "2026-11-06",
-  "War Thunder": "2026-11-06",
+  "War Thunder": "2026-11-17",
   Starfield: "2026-10-01",
   "Resident Evil Requiem": "2026-10-01",
   "Assassin's Creed Shadows": "2026-10-01",
@@ -143,11 +143,11 @@ const announcedGames: AnnouncedGame[] = [
   {
     title: "War Thunder",
     publisherSignal: "Gaijin Entertainment",
-    status: "Scheduled: mid-November 2026",
-    platform: "NVIDIA lists RTX 50 Series and RTX Spark.",
-    patch: "Coming with the game's Eagle's Shadow major update; NVIDIA gives mid-November without an exact day.",
-    source: NVIDIA_NOVEMBER_UPDATE,
-    sourceLabel: "NVIDIA November update",
+    status: "Live on RTX 50",
+    platform: "Local PC: RTX 50 desktop/laptop and RTX Spark. RTX 40 not included.",
+    patch: "Live since November 12 with the Eagle's Shadow major update (released November 11). Update the game client; look for the Neural Rendering option in the graphics settings.",
+    source: "https://www.nvidia.com/en-us/geforce/news/war-thunder-dlss-5-3d-guided-neural-rendering-out-now/",
+    sourceLabel: "NVIDIA launch article",
   },
   {
     title: "The Elder Scrolls IV: Oblivion Remastered",
@@ -216,7 +216,7 @@ const faqItems = [
   {
     question: "What games support DLSS 5?",
     answer:
-      "NBA 2K27 and Hogwarts Legacy support DLSS 5 now on GeForce RTX 50 Series desktop and laptop GPUs and RTX Spark PCs; Hogwarts Legacy went live on November 5, 2026. War Thunder follows in mid-November and Where Winds Meet on November 23. NVIDIA has also announced titles including Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, AION 2, and more, but those still need per-game patch evidence before being marked live.",
+      "NBA 2K27 and Hogwarts Legacy support DLSS 5 now on GeForce RTX 50 Series desktop and laptop GPUs and RTX Spark PCs; Hogwarts Legacy went live on November 5, 2026 and War Thunder on November 12. Where Winds Meet follows on November 23. NVIDIA has also announced titles including Starfield, Resident Evil Requiem, Assassin's Creed Shadows, Phantom Blade Zero, Delta Force, AION 2, and more, but those still need per-game patch evidence before being marked live.",
   },
   {
     question: "Is DLSS 5 available in games now?",
@@ -290,15 +290,15 @@ export default function Dlss5GamesPage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            NBA 2K27, Hogwarts Legacy, War Thunder, and Where Winds Meet checked November 6, 2026
+            NBA 2K27, Hogwarts Legacy, War Thunder, and Where Winds Meet checked November 17, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Games Tracker
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             DLSS 5 is public now, but that does not make every announced game live. You can
-            play it today in NBA 2K27 and, since November 5, in Hogwarts Legacy. War Thunder
-            follows in mid-November and Where Winds Meet on November 23, and the rest of the list still needs game-specific patch notes and
+            play it today in NBA 2K27, in Hogwarts Legacy since November 5, and in War Thunder
+            since November 12. Where Winds Meet follows on November 23, and the rest of the list still needs game-specific patch notes and
             visible settings before a title should be called supported.
           </p>
         </header>
@@ -417,8 +417,8 @@ export default function Dlss5GamesPage() {
                 The October 2026 update changed the near-term calendar. NVIDIA&apos;s new
                 Neural Rendering model reached NBA 2K27 on October 16 for RTX 50 GPUs, RTX
                 Spark laptops, and GeForce NOW. NVIDIA says it costs about half the GPU time
-                of the September model. Hogwarts Legacy got DLSS 5 on November 5; War Thunder
-                follows in mid-November and Where Winds Meet on November 23, all with the new
+                of the September model. Hogwarts Legacy got DLSS 5 on November 5 and War Thunder on
+                November 12; Where Winds Meet follows on November 23, all with the new
                 model by default. RTX Remix
                 added DLSS 5 on October 23 for modders, which lets remastered classic games
                 use Neural Rendering, but that is a modding tool, not official support in

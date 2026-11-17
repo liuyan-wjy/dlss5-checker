@@ -122,11 +122,19 @@ const timelineRows = [
     href: "https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/",
   },
   {
-    date: "Late November 2026",
+    date: "November 12, 2026",
+    signal: "War Thunder goes live",
+    meaning:
+      "The third live DLSS 5 game, added with the Eagle's Shadow major update on RTX 50 and RTX Spark. Where Winds Meet is next, on November 23.",
+    proof: "NVIDIA War Thunder article",
+    href: "https://www.nvidia.com/en-us/geforce/news/war-thunder-dlss-5-3d-guided-neural-rendering-out-now/",
+  },
+  {
+    date: "November 23, 2026",
     signal: "Where Winds Meet (scheduled)",
-    meaning: "NVIDIA gives late November without an exact day.",
-    proof: "NVIDIA October update article",
-    href: NVIDIA_OCTOBER_UPDATE,
+    meaning: "NVIDIA dates the update November 23; regional reports put it at November 24 outside North America. Not live yet.",
+    proof: "NVIDIA November update article",
+    href: "https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/",
   },
 ];
 
@@ -177,7 +185,7 @@ const faqItems = [
   {
     question: "When do more games get DLSS 5?",
     answer:
-      "Hogwarts Legacy got DLSS 5 on November 5, 2026. Next are War Thunder in mid-November and Where Winds Meet on November 23. All use the faster October model on RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. Other announced titles have no public date yet.",
+      "Hogwarts Legacy got DLSS 5 on November 5, 2026 and War Thunder on November 12. Where Winds Meet is next, on November 23. All use the faster October model on RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. Other announced titles have no public date yet.",
   },
   {
     question: "Is there a release date for DLSS 5 on RTX 40?",
@@ -329,8 +337,8 @@ export default function Dlss5ReleaseDatePage() {
           <p>
             The October update is the first sign of the rollout pattern. NVIDIA improved
             the model first, shipped it in the one live game, and only then dated the next
-            titles. Hogwarts Legacy followed on November 5, and War Thunder and Where Winds Meet
-            are next, so a scheduled
+            titles. Hogwarts Legacy followed on November 5 and War Thunder on November 12, and
+            Where Winds Meet is next, so a scheduled
             date for another game is more likely to come from a similar NVIDIA update than
             from a publisher patch note appearing without warning.
           </p>
@@ -339,8 +347,8 @@ export default function Dlss5ReleaseDatePage() {
         <section className="mb-10 rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-5">
           <h2 className="text-xl font-bold mb-3">What would change this page?</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            The next meaningful updates would be War Thunder or Where Winds Meet going
-            live, RTX 40 availability details, another dated game, or a revised NVIDIA
+            The next meaningful updates would be Where Winds Meet going live on
+            November 23, RTX 40 availability details, another dated game, or a revised NVIDIA
             support matrix. A rumor, preview video,
             or DLL download is not enough.
           </p>
