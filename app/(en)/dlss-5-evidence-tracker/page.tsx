@@ -115,7 +115,7 @@ const evidenceRows: {
   {
     question: "Are the named games final launch support?",
     currentAnswer:
-      "NBA 2K27 and Hogwarts Legacy (live since November 5, 2026) are verified. War Thunder is scheduled for mid-November and Where Winds Meet for November 23. Other named games still need their own public patch notes, menu settings, and GPU behavior details.",
+      "NBA 2K27 and Hogwarts Legacy (live since November 5, 2026) are verified. War Thunder joined on November 12; Where Winds Meet is scheduled for November 23. Other named games still need their own public patch notes, menu settings, and GPU behavior details.",
     evidence: "NVIDIA NBA 2K27 driver note",
     sourceHref: NVIDIA_NBA_DRIVER,
     status: "One verified game; others pending",
@@ -325,6 +325,12 @@ export default function Dlss5EvidenceTrackerPage() {
               still not included.
               {" "}<a href="https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">November update ↗</a>
               {" "}<Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">Hogwarts Legacy guide</Link>
+            </li>
+            <li className="rounded-lg border border-border p-4">
+              <strong>November 12, 2026: Third live game.</strong> War Thunder added DLSS 5
+              with its Eagle&apos;s Shadow major update, on RTX 50 and RTX Spark. RTX 40 is still
+              not included.
+              {" "}<a href="https://www.nvidia.com/en-us/geforce/news/war-thunder-dlss-5-3d-guided-neural-rendering-out-now/" className="text-blue-400 hover:underline">NVIDIA War Thunder article ↗</a>
             </li>
           </ol>
         </section>

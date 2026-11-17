@@ -540,6 +540,13 @@ for (const route of ["dlss-5-games", "guides", "index", "pt/dlss-5-jogos", "de/d
   assert.match(readRoute(route), /href="\/games\/hogwarts-legacy-dlss-5"/, `${route} must link to the Hogwarts guide`);
 }
 assert.match(fs.readFileSync(path.join(appOutput, "sitemap.xml"), "utf8"), /\/games\/hogwarts-legacy-dlss-5</);
+const gamesHtml = readRoute("dlss-5-games");
+assert.match(gamesHtml, /id="live-now"/, "games tracker must show the live-games overview");
+assert.match(gamesHtml, /"@type":"ItemList"/, "games tracker must list live games in structured data");
+for (const game of ["NBA 2K27", "Hogwarts Legacy", "War Thunder"]) {
+  assert.ok(gamesHtml.includes(`"name":"${game}"`), `live games list must include ${game}`);
+}
+assert.match(visibleText(gamesHtml), /War Thunder \(since November 12\)/);
 const rtx40Text = visibleText(readRoute("dlss-5-rtx-40-series"));
 assert.match(rtx40Text, /planned|plans to|plan to/i);
 assert.match(rtx40Text, /not available|not yet available|not live|no (?:release |availability |support )?date|not currently/i);

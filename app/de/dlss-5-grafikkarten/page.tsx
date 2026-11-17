@@ -163,7 +163,7 @@ const faqItems = [
   },
   {
     question: "Welche Spiele unterstützen DLSS 5?",
-    answer: "Aktuell NBA 2K27 und seit dem 5. November 2026 Hogwarts Legacy. War Thunder folgt Mitte November, Where Winds Meet am 23. November. Weitere Titel wie Starfield und Resident Evil Requiem sind angekündigt, aber noch nicht verfügbar.",
+    answer: "Aktuell NBA 2K27, seit dem 5. November 2026 Hogwarts Legacy und seit dem 12. November War Thunder. Where Winds Meet folgt am 23. November. Weitere Titel wie Starfield und Resident Evil Requiem sind angekündigt, aber noch nicht verfügbar.",
   },
   {
     question: "Wie viele FPS kostet DLSS 5?",
@@ -382,8 +382,8 @@ export default function GermanSupportedCardsPage() {
                 </p>
               </li>
               <li className="rounded-lg border border-border p-4">
-                <p className="font-semibold">War Thunder <span className="ml-1 text-sm font-medium text-yellow-400">Mitte November 2026</span></p>
-                <p className="mt-1 leading-relaxed text-foreground/80">Kommt mit dem großen Update „Eagle&apos;s Shadow“, ein genauer Tag steht noch aus.</p>
+                <p className="font-semibold">War Thunder <span className="ml-1 text-sm font-medium text-green-400">verfügbar seit 12. November 2026</span></p>
+                <p className="mt-1 leading-relaxed text-foreground/80">Kam mit dem großen Update „Eagle&apos;s Shadow“ für RTX 50 und RTX Spark. Spiel-Client aktualisieren, dann findest du Neural Rendering in den Grafikeinstellungen.</p>
               </li>
               <li className="rounded-lg border border-border p-4">
                 <p className="font-semibold">Where Winds Meet <span className="ml-1 text-sm font-medium text-yellow-400">23. November 2026</span></p>
