@@ -235,6 +235,58 @@ const faqItems = [
   },
 ];
 
+const NVIDIA_WAR_THUNDER = "https://www.nvidia.com/en-us/geforce/news/war-thunder-dlss-5-3d-guided-neural-rendering-out-now/";
+const HOGWARTS_SUPPORT = "https://portkeygamessupport.wbgames.com/hc/en-us/articles/56349775286419-Enabling-NVIDIA-DLSS-5-Neural-Rendering-in-Hogwarts-Legacy-PC-Steam-EGS-or-Windows-PC";
+
+const rolloutTimeline = [
+  { date: "Sep 3", iso: "2026-09-03", title: "NBA 2K27", detail: "DLSS 5 launches on RTX 50", live: true },
+  { date: "Oct 16", iso: "2026-10-16", title: "Faster model", detail: "October model; RTX Spark added", live: true },
+  { date: "Nov 5", iso: "2026-11-05", title: "Hogwarts Legacy", detail: "Second live game", live: true },
+  { date: "Nov 12", iso: "2026-11-12", title: "War Thunder", detail: "Eagle's Shadow update", live: true },
+  { date: "Nov 23", iso: "2026-11-23", title: "Where Winds Meet", detail: "Scheduled by NVIDIA", live: false },
+];
+
+type Support = "yes" | "no" | "unconfirmed";
+const hardwareColumns = ["RTX 50", "RTX Spark", "GeForce NOW", "RTX 40"] as const;
+const liveGames: Array<{ title: string; href?: string; support: Support[] }> = [
+  { title: "NBA 2K27", href: "/games/nba-2k27-dlss-5", support: ["yes", "yes", "yes", "no"] },
+  { title: "Hogwarts Legacy", href: "/games/hogwarts-legacy-dlss-5", support: ["yes", "yes", "yes", "no"] },
+  { title: "War Thunder", support: ["yes", "yes", "unconfirmed", "no"] },
+];
+
+const SUPPORT_LABEL: Record<Support, { symbol: string; text: string; className: string }> = {
+  yes: { symbol: "✓", text: "Supported", className: "text-green-400" },
+  no: { symbol: "—", text: "Not supported", className: "text-muted-foreground" },
+  unconfirmed: { symbol: "?", text: "Not confirmed", className: "text-yellow-400" },
+};
+
+const setupCards = [
+  {
+    title: "NBA 2K27",
+    path: "Features → Video Settings → DLSS Neural Rendering",
+    toggle: "F9 compares on and off",
+    driver: "Driver 616.64 or newer",
+    href: "/games/nba-2k27-dlss-5#how-to-enable",
+    linkLabel: "NBA 2K27 setup guide",
+  },
+  {
+    title: "Hogwarts Legacy",
+    path: "Game Settings → Display Settings → Upscale Type: NVIDIA DLSS → Neural Rendering",
+    toggle: "Shift+Alt+B toggles it in-game",
+    driver: "Driver 621.14 or newer",
+    href: "/games/hogwarts-legacy-dlss-5#how-to-enable",
+    linkLabel: "Hogwarts Legacy setup guide",
+  },
+  {
+    title: "War Thunder",
+    path: "Update the game client, then turn on Neural Rendering in the graphics settings",
+    toggle: "No official step-by-step menu path published yet",
+    driver: "Current Game Ready driver",
+    href: NVIDIA_WAR_THUNDER,
+    linkLabel: "NVIDIA War Thunder article",
+  },
+];
+
 export default function Dlss5GamesPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -246,6 +298,18 @@ export default function Dlss5GamesPage() {
         "@type": "Answer",
         text: item.answer,
       },
+    })),
+  };
+
+  const liveGamesJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Games with DLSS 5 available now",
+    itemListElement: liveGames.map((game, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: game.title,
+      ...(game.href ? { url: `https://www.dlss5.net${game.href}` } : {}),
     })),
   };
 
@@ -278,6 +342,10 @@ export default function Dlss5GamesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(liveGamesJsonLd) }}
+      />
 
       <main className="max-w-5xl mx-auto px-4 py-12">
         <nav className="text-sm text-muted-foreground mb-6">
@@ -307,10 +375,10 @@ export default function Dlss5GamesPage() {
           <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-5">
             <h2 className="font-bold mb-2">Fast answer</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              NBA 2K27 is live with DLSS 5 on RTX 50 desktop and laptop GPUs and now uses
-              the faster October model. Hogwarts Legacy joined on November 5 with the same
-              hardware list; see the <Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">Hogwarts Legacy setup guide</Link>. Other
-              named titles remain announced unless their own patch evidence is public.
+              Three games have DLSS 5 now: NBA 2K27, Hogwarts Legacy (since November 5),
+              and War Thunder (since November 12), all on RTX 50 desktop and laptop GPUs
+              and RTX Spark. Where Winds Meet is next, on November 23. Other named titles
+              remain announced until their own patch is public.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
@@ -327,6 +395,99 @@ export default function Dlss5GamesPage() {
               decides whether the option appears for you.
             </p>
           </div>
+        </section>
+
+        <section id="live-now" className="mb-10 scroll-mt-24 space-y-6" aria-labelledby="live-now-heading">
+          <div>
+            <h2 id="live-now-heading" className="text-2xl font-bold mb-2">DLSS 5 games you can play now</h2>
+            <p className="text-foreground/80 leading-relaxed">
+              The rollout so far, which hardware each live game supports, and where to find
+              the setting in each one.
+            </p>
+          </div>
+
+          <figure className="rounded-lg border border-border p-4 sm:p-5">
+            <figcaption className="mb-4 text-sm font-semibold">DLSS 5 rollout in 2026</figcaption>
+            <ol className="relative grid gap-4 sm:grid-cols-5 sm:gap-3">
+              {rolloutTimeline.map((step) => (
+                <li key={step.iso} className="relative flex gap-3 sm:block">
+                  <span
+                    aria-hidden="true"
+                    className={`mt-1 block h-3 w-3 flex-none rounded-full sm:mb-3 sm:mt-0 ${step.live ? "bg-green-400" : "border-2 border-yellow-400 bg-background"}`}
+                  />
+                  <span className="block min-w-0">
+                    <time dateTime={step.iso} className={`block text-xs font-semibold ${step.live ? "text-green-400" : "text-yellow-400"}`}>
+                      {step.date}
+                    </time>
+                    <span className="block font-medium">{step.title}</span>
+                    <span className="block text-sm text-muted-foreground">{step.detail}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Filled dot: live. Open dot: scheduled. RTX 40 still has no date.
+            </p>
+          </figure>
+
+          <div className="overflow-hidden rounded-lg border border-border">
+            <table className="w-full table-fixed text-sm">
+              <caption className="sr-only">Hardware support for each live DLSS 5 game</caption>
+              <thead className="bg-muted/40">
+                <tr>
+                  <th scope="col" className="w-[34%] px-3 py-3 text-left font-semibold sm:px-4">Game</th>
+                  {hardwareColumns.map((column) => (
+                    <th key={column} scope="col" className="px-1 py-3 text-center text-xs font-semibold sm:px-4 sm:text-sm">{column}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {liveGames.map((game) => (
+                  <tr key={game.title} className="border-t border-border/70">
+                    <th scope="row" className="px-3 py-3 text-left font-medium sm:px-4">
+                      {game.href ? (
+                        <Link href={game.href} className="text-blue-400 hover:underline">{game.title}</Link>
+                      ) : (
+                        game.title
+                      )}
+                    </th>
+                    {game.support.map((value, index) => (
+                      <td key={hardwareColumns[index]} className={`px-1 py-3 text-center sm:px-4 ${SUPPORT_LABEL[value].className}`}>
+                        <span aria-hidden="true">{SUPPORT_LABEL[value].symbol}</span>
+                        <span className="sr-only">{SUPPORT_LABEL[value].text}</span>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="border-t border-border/70 px-3 py-2 text-xs text-muted-foreground sm:px-4">
+              ✓ supported · — not supported · ? not confirmed by NVIDIA for this game. GeForce NOW
+              needs an Ultimate membership and a supported region.
+            </p>
+          </div>
+
+          <div className="grid gap-3 md:grid-cols-3">
+            {setupCards.map((card) => (
+              <div key={card.title} className="rounded-lg border border-border p-4">
+                <h3 className="mb-2 font-semibold">How to turn it on: {card.title}</h3>
+                <p className="text-sm leading-relaxed text-foreground/80">{card.path}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{card.toggle}</p>
+                <p className="text-sm text-muted-foreground">{card.driver}</p>
+                {card.href.startsWith("/") ? (
+                  <Link href={card.href} className="mt-3 inline-block text-sm text-blue-400 hover:underline">{card.linkLabel} →</Link>
+                ) : (
+                  <a href={card.href} className="mt-3 inline-block text-sm text-blue-400 hover:underline">{card.linkLabel} →</a>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Sources: <a href={NBA_SUPPORT} className="text-blue-400 hover:underline">2K setup guide</a>,{" "}
+            <a href={HOGWARTS_SUPPORT} className="text-blue-400 hover:underline">WB Games support</a>,{" "}
+            <a href={NVIDIA_NOVEMBER_UPDATE} className="text-blue-400 hover:underline">NVIDIA Hogwarts Legacy article</a>,{" "}
+            <a href={NVIDIA_WAR_THUNDER} className="text-blue-400 hover:underline">NVIDIA War Thunder article</a>.
+          </p>
         </section>
 
         <section className="mb-10">
