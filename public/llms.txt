@@ -46,7 +46,8 @@
 ## Portuguese Pages
 
 - [Verificador DLSS 5 em portugues](https://www.dlss5.net/pt): Portuguese homepage and compatibility checker entry.
-- [DLSS 5 quais placas](https://www.dlss5.net/pt/dlss-5-quais-placas): Portuguese card-support guide.
+- [DLSS 5 quais placas](https://www.dlss5.net/pt/dlss-5-quais-placas): Portuguese card-support guide, including what RTX 3060/3070/3080/3090 owners can still use and the GeForce NOW route.
+- [Como baixar e ativar o DLSS 5](https://www.dlss5.net/pt/como-ativar-dlss-5): Portuguese setup guide with per-game menus and hotkeys, fixes for a missing or greyed-out option, and answers for PS5, Switch 2, phones and APK files.
 - [Requisitos DLSS 5 em portugues](https://www.dlss5.net/pt/dlss-5-requisitos): Portuguese requirements guide using local terms such as requisitos, placas compativeis, and suporte.
 - [Jogos com DLSS 5 em portugues](https://www.dlss5.net/pt/dlss-5-jogos): Portuguese games tracker for announced versus verified game support.
 - [DLSS 5 esta confirmado em portugues](https://www.dlss5.net/pt/dlss-5-confirmado): Portuguese evidence page for the live NBA 2K27 release, planned RTX 40 support, and announced games awaiting verification.

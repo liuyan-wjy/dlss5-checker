@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import VideoEmbed from "@/components/VideoEmbed";
 import { OG_IMAGE_PT } from "@/lib/og-image";
 
 const title = "Como baixar e ativar o DLSS 5: driver, placa e jogos";
@@ -17,8 +18,66 @@ export const metadata: Metadata = {
   twitter: { card: "summary", title, description },
 };
 
+
+const REVIEWED = "2026-11-18";
+
+const jogos = [
+  { jogo: "NBA 2K27", desde: "3 de setembro de 2026", menu: "Features → Video Settings → DLSS Neural Rendering", atalho: "F9", driver: "616.64 WHQL ou mais novo" },
+  { jogo: "Hogwarts Legacy", desde: "5 de novembro de 2026", menu: "Game Settings → Display Settings → Upscale Type: NVIDIA DLSS → Neural Rendering", atalho: "Shift+Alt+B", driver: "621.14 WHQL ou mais novo" },
+  { jogo: "War Thunder", desde: "12 de novembro de 2026", menu: "Atualize para o cliente Eagle's Shadow e procure Neural Rendering nas opções gráficas", atalho: "Não documentado", driver: "Driver Game Ready atual" },
+  { jogo: "Where Winds Meet", desde: "Previsto para 23 de novembro de 2026", menu: "Ainda não publicado", atalho: "Ainda não publicado", driver: "621.24 WHQL prepara o PC" },
+];
+
+const problemas = [
+  { sintoma: "A opção Neural Rendering não aparece", solucao: "O jogo ainda não recebeu o DLSS 5, a atualização não terminou ou o PC não tem RTX 50 / RTX Spark. Confira esses três pontos antes de qualquer outra coisa." },
+  { sintoma: "Aparece, mas está cinza (desabilitada) numa RTX 50", solucao: "Em alguns jogos o Neural Rendering é uma subopção do DLSS: primeiro escolha NVIDIA DLSS como upscaler (no Hogwarts Legacy, Upscale Type). Depois atualize o driver e reinicie o jogo." },
+  { sintoma: "Cinza num notebook gamer", solucao: "O jogo pode estar rodando no vídeo integrado. Em Configurações do Windows → Sistema → Tela → Gráficos, defina o jogo como Alto desempenho, ou ative o modo de GPU dedicada do notebook, e abra o jogo de novo." },
+  { sintoma: "Ligou, mas o FPS caiu", solucao: "É esperado: o Neural Rendering consome GPU. Mantenha-o ligado e baixe o Super Resolution para Equilibrado ou Desempenho, ou ative a geração de quadros se a sua placa tiver." },
+  { sintoma: "Rostos ou materiais parecem estranhos", solucao: "Compare a mesma cena com o atalho do jogo (F9 no NBA 2K27, Shift+Alt+B no Hogwarts Legacy). O efeito é opcional e desligá-lo não muda as outras opções de DLSS." },
+];
+
+const faqItems = [
+  {
+    question: "Existe download do DLSS 5?",
+    answer:
+      "Não existe um instalador separado. O DLSS 5 chega com um driver Game Ready atual da NVIDIA e com a atualização de um jogo que já tem o recurso, como NBA 2K27, Hogwarts Legacy ou War Thunder. Um site que oferece \"DLSS 5 para baixar\" não é a NVIDIA.",
+  },
+  {
+    question: "Tem DLSS 5 para celular ou APK para Android?",
+    answer:
+      "Não. O DLSS 5 roda só em placas NVIDIA RTX 50 dentro de jogos de PC com Windows. Um arquivo chamado DLSS 5 APK não é da NVIDIA e não deve ser instalado. No celular, o único jeito oficial de ver o DLSS 5 é jogar pela nuvem com o GeForce NOW Ultimate.",
+  },
+  {
+    question: "O PS5 ou o PS5 Pro tem DLSS 5?",
+    answer:
+      "Não. PS5 e PS5 Pro usam gráficos AMD, e nenhuma versão do DLSS roda neles. O PS5 Pro tem seu próprio upscaler, o PSSR, que foi melhorado em 2026, mas ele só aumenta a resolução; não muda iluminação e materiais como o DLSS 5.",
+  },
+  {
+    question: "O Nintendo Switch 2 tem DLSS 5?",
+    answer:
+      "Não. O Switch 2 usa um processador NVIDIA e os jogos podem usar o upscaling DLSS, mas nem a Nintendo nem a NVIDIA anunciaram o DLSS 5 Neural Rendering para o console. Os vídeos de Mario com DLSS 5 eram o jogo emulado em um PC com RTX 5060 Ti.",
+  },
+  {
+    question: "Preciso do NVIDIA App para usar o DLSS 5?",
+    answer:
+      "Não. O NVIDIA App facilita instalar o driver, mas você também pode baixá-lo em nvidia.com. O DLSS 5 é ligado dentro de cada jogo, não no NVIDIA App.",
+  },
+];
+
 export default function ComoAtivarDlss5Page() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    inLanguage: "pt-BR",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
     <main className="max-w-4xl mx-auto px-4 py-12">
       <nav aria-label="Caminho de navegação" className="text-sm text-muted-foreground mb-6">
         <Link href="/pt" className="hover:text-foreground">DLSS 5 Checker</Link> / Baixar e ativar
@@ -28,7 +87,8 @@ export default function ComoAtivarDlss5Page() {
         <p className="text-lg text-muted-foreground leading-relaxed">
           Baixe o driver pela NVIDIA e obtenha a integração do DLSS 5 pela atualização de um jogo compatível.
           Para usar o recurso oficialmente no próprio computador, você precisa hoje de uma RTX 50 de desktop ou notebook.
-          NBA 2K27 é um título com disponibilidade verificada. Não existe um instalador oficial universal que adicione
+          NBA 2K27, Hogwarts Legacy e War Thunder já têm o recurso, e Where Winds Meet recebe em 23 de novembro.
+          Não existe um instalador oficial universal que adicione
           Neural Rendering a qualquer jogo. Este site é um guia independente, não um distribuidor de drivers.
         </p>
       </header>
@@ -44,7 +104,8 @@ export default function ComoAtivarDlss5Page() {
         <p>
           O <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">guia de lançamento da NVIDIA</a> indica
           o 616.64 WHQL para a estreia no NBA 2K27. Esse número é uma referência do lançamento, não uma afirmação
-          de que continua sendo o driver mais recente. Em 18 de outubro de 2026, o mais recente que encontramos é o 617.42 WHQL (6 de outubro).
+          de que continua sendo o driver mais recente. O Hogwarts Legacy pede o 621.14 WHQL, e o mais recente que encontramos em
+          18 de novembro de 2026 é o <a href="https://www.nvidia.com/en-us/geforce/news/warhammer-40000-dawn-of-war-4-geforce-rtx-spark-game-ready-driver/" className="text-blue-400 hover:underline">621.24 WHQL</a> (11 de novembro), que prepara o PC para o Where Winds Meet.
           Consulte as notas atuais para sua placa antes de instalar um pacote antigo encontrado na busca.
         </p>
         <p>
@@ -66,6 +127,41 @@ export default function ComoAtivarDlss5Page() {
           Da mesma forma, ter uma GeForce RTX não significa que todos os recursos DLSS estão disponíveis naquela geração.
         </p>
       </section>
+
+      <section id="jogos" className="mb-10 scroll-mt-24">
+        <h2 className="text-2xl font-bold mb-3">Onde ligar o DLSS 5 em cada jogo</h2>
+        <p className="mb-4 leading-relaxed text-foreground/80">
+          Cada jogo coloca a opção num lugar diferente. Os nomes abaixo são os do menu em inglês; em português a tradução pode variar.
+          Fontes: artigos da NVIDIA sobre <a href="https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">Hogwarts Legacy</a> e{" "}
+          <a href="https://www.nvidia.com/en-us/geforce/news/war-thunder-dlss-5-3d-guided-neural-rendering-out-now/" className="text-blue-400 hover:underline">War Thunder</a> e instruções de cada editora.
+        </p>
+        <div className="space-y-3">
+          {jogos.map((g) => (
+            <div key={g.jogo} className="rounded-lg border border-border p-4">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="font-semibold">{g.jogo}</h3>
+                <span className="text-xs text-muted-foreground">{g.desde}</span>
+              </div>
+              <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
+                <dt className="text-muted-foreground">Menu</dt><dd>{g.menu}</dd>
+                <dt className="text-muted-foreground">Atalho</dt><dd>{g.atalho}</dd>
+                <dt className="text-muted-foreground">Driver</dt><dd>{g.driver}</dd>
+              </dl>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Lista completa de jogos anunciados: <Link href="/pt/dlss-5-jogos" className="text-blue-400 hover:underline">jogos com DLSS 5</Link>.
+        </p>
+      </section>
+
+      <VideoEmbed
+        id="GPCM-PHjmWw"
+        title="Hogwarts Legacy | DLSS 5 Launch Trailer"
+        channel="NVIDIA GeForce"
+        locale="pt"
+        caption="Trailer oficial da NVIDIA (em inglês): mostra o tipo de mudança de iluminação e materiais que você deve notar ao ligar o Neural Rendering."
+      />
 
       <section className="mb-10 space-y-4 leading-relaxed text-foreground/80">
         <h2 className="text-2xl font-bold text-foreground">Como encontrar a opção no NBA 2K27</h2>
@@ -103,7 +199,61 @@ export default function ComoAtivarDlss5Page() {
           <Link href="/pt/dlss-5-vs-dlss-4-5" className="text-blue-400 hover:underline">DLSS 5 vs DLSS 4.5</Link>.
         </p>
       </section>
-      <ArticleTrustBlock locale="pt" reviewedAt="2026-10-18" />
+      <section id="problemas" className="mb-10 scroll-mt-24">
+        <h2 className="text-2xl font-bold mb-3">DLSS 5 não aparece ou está cinza? Soluções por sintoma</h2>
+        <div className="space-y-3">
+          {problemas.map((p) => (
+            <details key={p.sintoma} className="rounded-lg border border-border">
+              <summary className="cursor-pointer list-none px-4 py-3 font-semibold hover:bg-muted/30">{p.sintoma}</summary>
+              <p className="px-4 pb-4 text-sm leading-relaxed text-foreground/80">{p.solucao}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section id="console-celular" className="mb-10 scroll-mt-24 space-y-4 leading-relaxed text-foreground/80">
+        <h2 className="text-2xl font-bold text-foreground">DLSS 5 no PS5, Xbox, Switch 2, celular ou Mac?</h2>
+        <p>
+          Nenhum console, celular ou Mac roda o DLSS 5 sozinho. O recurso é calculado por uma placa NVIDIA RTX 50,
+          seja no seu PC, seja num servidor da NVIDIA.
+        </p>
+        <ul className="list-disc space-y-3 pl-6">
+          <li><strong>PS5 e PS5 Pro:</strong> usam gráficos AMD, então não rodam nenhuma versão do DLSS. O PS5 Pro tem o PSSR, upscaler da Sony melhorado em 2026 com base no trabalho com a AMD (<a href="https://tbreak.com/ps5-pro-pssr-upgrade-resident-evil-requiem/" className="text-blue-400 hover:underline">tbreak</a>). Ele aumenta a resolução, mas não muda a iluminação como o DLSS 5.</li>
+          <li><strong>Xbox Series X|S:</strong> também usa gráficos AMD. Sem DLSS.</li>
+          <li><strong>Nintendo Switch 2:</strong> tem processador NVIDIA e os jogos podem usar o upscaling DLSS (<a href="https://blogs.nvidia.com/blog/nintendo-switch-2/" className="text-blue-400 hover:underline">blog da NVIDIA</a>), mas não há DLSS 5 anunciado para o console.</li>
+          <li><strong>Celular, tablet, Mac, Steam Deck e Smart TV:</strong> só pela nuvem, com o GeForce NOW Ultimate.</li>
+        </ul>
+        <p>
+          <strong>E os vídeos de &quot;DLSS 5 no PS5&quot;?</strong> Eles mostram jogos de PS5 rodando num PC com Windows, por
+          ports feitos por fãs ou emuladores, com mods que injetam o efeito. O MakeUseOf testou assim o Bloodborne e achou o
+          resultado pesado e com visual &quot;homogeneizado&quot; (<a href="https://www.makeuseof.com/dlss-5-already-works-on-ps5-games-but-the-results-arent-very-impressive/" className="text-blue-400 hover:underline">MakeUseOf</a>).
+          O console em si não roda DLSS 5.
+        </p>
+        <h3 className="text-lg font-semibold text-foreground">Como jogar com DLSS 5 pela nuvem</h3>
+        <ol className="list-decimal space-y-2 pl-6">
+          <li>Assine o GeForce NOW <strong>Ultimate</strong>; só ele usa servidores RTX 5080. No Brasil, o serviço é operado por parceiro, então confirme se o operador oferece RTX 5080 e DLSS 5.</li>
+          <li>Tenha o jogo na versão de PC (Steam ou Epic). A versão de PS5 não vale.</li>
+          <li>Conexão: a NVIDIA pede 25 Mbps para 1080p a 60 FPS e menos de 80 ms de latência até o data center (<a href="https://www.nvidia.com/en-us/geforce-now/system-reqs/" className="text-blue-400 hover:underline">requisitos</a>).</li>
+          <li>No jogo, ligue o Neural Rendering no mesmo menu da tabela acima.</li>
+        </ol>
+        <p className="text-sm text-muted-foreground">
+          Guia completo em inglês: <Link href="/dlss-5-ps5" lang="en" className="text-blue-400 hover:underline">DLSS 5 on PS5, Xbox, Switch 2, Mac and phones</Link>.
+        </p>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-4">Perguntas frequentes</h2>
+        <div className="space-y-5">
+          {faqItems.map((item) => (
+            <div key={item.question}>
+              <h3 className="font-semibold mb-1">{item.question}</h3>
+              <p className="text-sm text-foreground/80 leading-relaxed">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <ArticleTrustBlock locale="pt" reviewedAt={REVIEWED} />
     </main>
+    </>
   );
 }

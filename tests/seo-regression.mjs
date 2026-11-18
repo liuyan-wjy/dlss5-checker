@@ -674,3 +674,24 @@ assert.match(visibleText(releaseHtml), /Where Winds Meet November 23, 2026 Sched
 assert.equal(metadataValue(releaseHtml, /<title>([^<]+)<\/title>/, "release title"), "DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game &amp; GPU");
 assert.match(visibleText(readRoute("privacy")), /youtube-nocookie\.com/);
 
+
+// Portuguese pages carry the RTX 30 and console conclusions without new routes.
+const ptCardsHtml = readRoute("pt/dlss-5-quais-placas");
+const ptCardsText = visibleText(ptCardsHtml);
+assert.match(ptCardsHtml, /id="rtx-30"/, "PT cards page must answer RTX 30 owners");
+for (const pattern of [/RTX 3060 suporta DLSS 5\?/, /RTX 3080 ou RTX 3090/, /GeForce NOW Ultimate/, /FSR/]) {
+  assert.match(ptCardsText, pattern, `PT cards page is missing ${pattern}`);
+}
+checkFaq(ptCardsHtml, "pt/dlss-5-quais-placas");
+assert.equal(metadataValue(ptCardsHtml, /<title>([^<]+)<\/title>/, "PT cards title"), "DLSS 5: Quais Placas Suportam? Lista por GPU [2026]");
+const ptSetupHtml = readRoute("pt/como-ativar-dlss-5");
+const ptSetupText = visibleText(ptSetupHtml);
+for (const id of ["jogos", "problemas", "console-celular"]) {
+  assert.match(ptSetupHtml, new RegExp(`id="${id}"`), `PT setup page must include #${id}`);
+}
+for (const pattern of [/Shift\+Alt\+B/, /War Thunder/, /621\.24/, /APK/, /PS5 Pro/, /PSSR/, /Switch 2/, /Reproduzir vídeo|Ver no YouTube/]) {
+  assert.match(ptSetupText + ptSetupHtml, pattern, `PT setup page is missing ${pattern}`);
+}
+checkFaq(ptSetupHtml, "pt/como-ativar-dlss-5");
+assert.doesNotMatch(ptSetupHtml, /<iframe/, "PT setup page must not load YouTube before play");
+assert.equal(metadataValue(ptSetupHtml, /<h1[^>]*>([^<]+)<\/h1>/, "PT setup H1"), "Como baixar e ativar o DLSS 5");
