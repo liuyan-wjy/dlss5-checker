@@ -142,6 +142,12 @@ export default function PrivacyPage() {
             sources. Visiting an external link sends you to a separate service with its own
             privacy practices. DLSS 5 Checker does not control those sites.
           </p>
+          <p className="mt-3">
+            Some guides include official videos from YouTube. Nothing is loaded from YouTube when you
+            open the page; the player loads only after you press play, and it uses the
+            youtube-nocookie.com domain. Once you play a video, YouTube&apos;s own privacy
+            practices apply.
+          </p>
         </section>
 
         <section>

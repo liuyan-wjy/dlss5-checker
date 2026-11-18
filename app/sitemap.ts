@@ -49,6 +49,8 @@ const pages: SitemapPage[] = [
   { path: "/dlss-5-unreal-engine", changeFrequency: "weekly", priority: 0.78 },
   { path: "/dlss-5-vs-dlss-4-5", changeFrequency: "weekly", priority: 0.84 },
   { path: "/dlss-5-rtx-40-series", changeFrequency: "weekly", priority: 0.85 },
+  { path: "/dlss-5-rtx-30-series", changeFrequency: "weekly", priority: 0.84 },
+  { path: "/dlss-5-ps5", changeFrequency: "weekly", priority: 0.82 },
   { path: "/pt/dlss-5-quais-placas", changeFrequency: "weekly", priority: 0.85 },
   { path: "/de/dlss-5-grafikkarten", changeFrequency: "weekly", priority: 0.85 },
   { path: "/pt/dlss-4-5-quais-placas", changeFrequency: "weekly", priority: 0.84 },

@@ -392,6 +392,7 @@ export default function Dlss5SupportedCardsPage() {
                 <p className={`mb-2 text-sm font-semibold ${card.answerClass}`}>{card.answer}</p>
                 <p className="text-sm text-foreground/80 leading-relaxed">
                   {card.detail}
+                  {/^rtx-3/.test(card.id) && <> See the <Link href="/dlss-5-rtx-30-series" className="text-blue-400 hover:underline">RTX 30 and RTX 20 guide</Link>.</>}
                   {/^rtx-[34]/.test(card.id) && <> Read about <Link href="/dlss-5-mods" className="text-blue-400 hover:underline">unofficial mods and their risks</Link>.</>}
                 </p>
               </div>
@@ -401,6 +402,7 @@ export default function Dlss5SupportedCardsPage() {
         <p className="mb-10 text-foreground/80 leading-relaxed">
           Ready to play? Follow the <Link href="/dlss-5-download" className="text-blue-400 hover:underline">official DLSS 5 download and setup steps</Link>.
           On Radeon hardware, see <Link href="/dlss-5-amd" className="text-blue-400 hover:underline">AMD local support and GeForce NOW options</Link>.
+          On a console, Mac or phone, see <Link href="/dlss-5-ps5" className="text-blue-400 hover:underline">DLSS 5 on PS5, Switch 2 and other devices</Link>.
         </p>
 
         <StatusTable status="confirmed" />
