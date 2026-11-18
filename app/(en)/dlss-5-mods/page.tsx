@@ -3,8 +3,8 @@ import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
-const title = "DLSS 5 Mods on RTX 40, RTX 30 and AMD: What Works and the Risks";
-const description = "Unofficial tools like DLSS 5 Swapper and OptiScaler forks run Neural Rendering outside RTX 50. What they do, what NVIDIA supports, and the ban and malware risks.";
+const title = "DLSS 5 Swapper, Manager & Mods on RTX 40/30 and AMD: Risks";
+const description = "What DLSS 5 Swapper, DLSS 5 Manager and OptiScaler forks are, why they run Neural Rendering outside RTX 50, what NVIDIA supports, and the ban and malware risks.";
 
 export const metadata: Metadata = {
   title,
@@ -101,7 +101,13 @@ export default function Dlss5ModsPage() {
       <section id="tools" className="mb-10 space-y-6 leading-relaxed text-foreground/80">
         <h2 className="text-2xl font-bold text-foreground">What the common tools do</h2>
         <article id="tool-swapper" className="space-y-3">
-          <h3 className="text-xl font-semibold text-foreground">DLSS 5 Swapper, Feeder and ReShade</h3>
+          <h3 className="text-xl font-semibold text-foreground">What is DLSS 5 Swapper?</h3>
+          <p>
+            DLSS 5 Swapper is a free, unofficial Windows tool made by community developers, not by NVIDIA. It tries to
+            run NVIDIA&apos;s Neural Rendering in games that never shipped it, and on cards NVIDIA does not support. On RTX 20,
+            30 and 40 it relies on community-modified NVIDIA runtime files that NVIDIA has not signed or licensed for
+            redistribution, which is why the risks below apply to it in full.
+          </p>
           <p>
             <a href="https://www.tweaktown.com/news/113398/new-dlss-5-swapper-tool-can-mod-dlss-5-into-games-that-dont-support-dlss-at-all/index.html" className="text-blue-400 hover:underline">TweakTown reports</a> a
             Swapper route using DLSS5-Feeder and ReShade to supply input to Neural Rendering in games without native DLSS.
@@ -119,7 +125,12 @@ export default function Dlss5ModsPage() {
           </p>
         </article>
         <article id="tool-manager" className="space-y-3">
-          <h3 className="text-xl font-semibold text-foreground">DLSS 5 Manager</h3>
+          <h3 className="text-xl font-semibold text-foreground">What is DLSS 5 Manager?</h3>
+          <p>
+            DLSS 5 Manager is a separate community app, also not from NVIDIA, with a similar name to NVIDIA&apos;s own
+            software. It does not unlock official support: the game menu still will not show Neural Rendering on an
+            unsupported card. Before installing any app with &quot;DLSS 5&quot; in its name, check who publishes it.
+          </p>
           <p>
             Manager automates several community routes rather than adding official support.
             <a href="https://www.pcguide.com/news/dlss-5-manager-adds-support-for-rdna-4-graphics-cards-with-new-amd-mode-in-latest-update/" className="text-blue-400 hover:underline">PC Guide</a> describes

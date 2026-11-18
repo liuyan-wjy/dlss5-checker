@@ -461,8 +461,8 @@ assert.match(germanHtml, /href="https:\/\/(?:www\.nvidia\.com\/en-us\/geforce\/n
 assert.doesNotMatch(germanHtml, /href="[^"]*(?:\.dll|huggingface\.co|\/releases\/)/i);
 
 const modsHtml = readRoute("dlss-5-mods");
-assert.equal(metadataValue(modsHtml, /<title>([^<]+)<\/title>/, "mods title"), "DLSS 5 Mods on RTX 40, RTX 30 and AMD: What Works and the Risks");
-assert.equal(metadataValue(modsHtml, /<meta name="description" content="([^"]+)"/, "mods description"), "Unofficial tools like DLSS 5 Swapper and OptiScaler forks run Neural Rendering outside RTX 50. What they do, what NVIDIA supports, and the ban and malware risks.");
+assert.equal(metadataValue(modsHtml, /<title>([^<]+)<\/title>/, "mods title"), "DLSS 5 Swapper, Manager &amp; Mods on RTX 40/30 and AMD: Risks");
+assert.equal(metadataValue(modsHtml, /<meta name="description" content="([^"]+)"/, "mods description"), "What DLSS 5 Swapper, DLSS 5 Manager and OptiScaler forks are, why they run Neural Rendering outside RTX 50, what NVIDIA supports, and the ban and malware risks.");
 assert.equal(visibleText(metadataValue(modsHtml, /<h1[^>]*>([\s\S]*?)<\/h1>/, "mods H1")), "DLSS 5 mods: what they are and what they risk");
 const modsWords = mainWords(modsHtml);
 assert.ok(modsWords >= 1500 && modsWords <= 2200, `Mods guide must contain 1,500–2,200 main-content words (got ${modsWords})`);
@@ -664,12 +664,13 @@ const amdHtml = readRoute("dlss-5-amd");
 assert.match(visibleText(amdHtml), /DLSS 5 vs FSR 4 and FSR Redstone/);
 assert.match(visibleText(amdHtml), /RX 9070/);
 checkFaq(amdHtml, "dlss-5-amd");
-assert.equal(metadataValue(amdHtml, /<title>([^<]+)<\/title>/, "AMD title"), "DLSS 5 on AMD: Official Support, Cloud Access and Mod Status");
+assert.match(visibleText(readRoute("dlss-5-mods")), /What is DLSS 5 Swapper\?[\s\S]*What is DLSS 5 Manager\?/);
+assert.equal(metadataValue(amdHtml, /<title>([^<]+)<\/title>/, "AMD title"), "DLSS 5 on AMD: Not Supported — FSR 4 vs DLSS 5 &amp; Cloud Option");
 assert.equal(metadataValue(amdHtml, /<h1[^>]*>([^<]+)<\/h1>/, "AMD H1"), "Can you use DLSS 5 on AMD?");
 const releaseHtml = readRoute("dlss-5-release-date");
 assert.match(releaseHtml, /id="by-game"/);
 assert.match(releaseHtml, /id="by-gpu"/);
 assert.match(visibleText(releaseHtml), /Where Winds Meet November 23, 2026 Scheduled/);
-assert.equal(metadataValue(releaseHtml, /<title>([^<]+)<\/title>/, "release title"), "DLSS 5 Release Date: Launched September 2026 Status Guide");
+assert.equal(metadataValue(releaseHtml, /<title>([^<]+)<\/title>/, "release title"), "DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game &amp; GPU");
 assert.match(visibleText(readRoute("privacy")), /youtube-nocookie\.com/);
 

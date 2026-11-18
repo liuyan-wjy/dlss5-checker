@@ -5,7 +5,7 @@ import VideoEmbed from "@/components/VideoEmbed";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
 const title = "DLSS 5 Download & Setup: Drivers, Games and GPU Requirements";
-const description = "Get DLSS 5 through official NVIDIA drivers and supported games. Check GPU, game and driver requirements, then find the Neural Rendering setting.";
+const description = "There is no DLSS 5 installer or APK. How to turn on DLSS 5: driver, game update, where the setting is in each game, and fixes when it is missing or greyed out.";
 
 export const metadata: Metadata = {
   title,

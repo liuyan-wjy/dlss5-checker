@@ -4,25 +4,25 @@ import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
+  title: "DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game & GPU",
   description:
-    "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
+    "DLSS 5 is out: NBA 2K27 (Sept 3), Hogwarts Legacy (Nov 5), War Thunder (Nov 12), Where Winds Meet (Nov 23). See dates by game and GPU, and RTX 40 status.",
   alternates: {
     canonical: "/dlss-5-release-date",
   },
   openGraph: {
     images: [OG_IMAGE_EN],
-    title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
+    title: "DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game & GPU",
     description:
-      "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
+      "DLSS 5 is out: NBA 2K27 (Sept 3), Hogwarts Legacy (Nov 5), War Thunder (Nov 12), Where Winds Meet (Nov 23). See dates by game and GPU, and RTX 40 status.",
     type: "article",
     url: "https://www.dlss5.net/dlss-5-release-date",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
+    title: "DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game & GPU",
     description:
-      "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
+      "DLSS 5 is out: NBA 2K27 (Sept 3), Hogwarts Legacy (Nov 5), War Thunder (Nov 12), Where Winds Meet (Nov 23). See dates by game and GPU, and RTX 40 status.",
   },
 };
 

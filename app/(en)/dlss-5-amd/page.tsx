@@ -3,8 +3,8 @@ import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
-const title = "DLSS 5 on AMD: Official Support, Cloud Access and Mod Status";
-const description = "AMD Radeon has no official local DLSS 5 support. Compare eligible GeForce NOW access, experimental community mods and the limits of FSR or XeSS alternatives.";
+const title = "DLSS 5 on AMD: Not Supported — FSR 4 vs DLSS 5 & Cloud Option";
+const description = "No Radeon GPU runs DLSS 5. Compare DLSS 5 with FSR 4 and Redstone, see what to turn on for RX 9000, 7000 and 6000, and how GeForce NOW or mods fit in.";
 
 export const metadata: Metadata = {
   title,

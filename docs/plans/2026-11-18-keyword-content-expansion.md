@@ -62,7 +62,16 @@
 | `/dlss-5-download` | "dlss 5 download" 排 9.2 | 描述写入 "no installer / no APK" 与 "how to turn on" | 抓"怎么开"意图 |
 | `/dlss-5-mods` | "dlss 5 swapper/manager" 月搜 1.7 万，本站排 9 且落在首页 | 正文加 "What is DLSS 5 Swapper?" "What is DLSS 5 Manager?" 两节（只讲是什么、风险，不给下载和教程）；TDK 视情况加入 "Swapper" | 合规前提下拿说明类流量 |
 
-改 TDK 前建议先在 GSC 记录基线，一次只改 1–2 页，观察 2 周。
+**站长已于 2026-11-18 批准全部四项，已执行**（H1 均未改）：
+
+| 页面 | 新标题 | GSC 基线（10-18 至 11-16，页面级） |
+|---|---|---|
+| `/dlss-5-release-date` | DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game & GPU | 19,936 展示 / 123 点击 / CTR 0.62% / 排名 6.9 |
+| `/dlss-5-amd` | DLSS 5 on AMD: Not Supported — FSR 4 vs DLSS 5 & Cloud Option | 7,352 / 152 / 2.07% / 6.3 |
+| `/dlss-5-download` | 标题不变，只改描述 | 45,888 / 1,856 / 4.04% / 6.0 |
+| `/dlss-5-mods` | DLSS 5 Swapper, Manager & Mods on RTX 40/30 and AMD: Risks；正文新增 "What is DLSS 5 Swapper?" "What is DLSS 5 Manager?" | 3,719 / 117 / 3.15% / 6.1 |
+
+复盘：2026-12-02 前后对比同口径 28 天数据；若某页排名下跌超过 2 位且 CTR 未提升，回滚该页标题。
 
 ## 5. 后续可做的内页（按优先级）
 
