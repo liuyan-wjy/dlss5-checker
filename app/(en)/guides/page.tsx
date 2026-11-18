@@ -30,6 +30,7 @@ const guideGroups = [
     links: [
       { href: "/dlss-5-download", title: "DLSS 5 download and setup", description: "Official driver and game updates, requirements, and what to check when the option is missing." },
       { href: "/dlss-5-amd", title: "DLSS 5 on AMD", description: "Local support, GeForce NOW requirements, and the limits of community mods." },
+      { href: "/dlss-5-ps5", title: "DLSS 5 on PS5, Switch 2, Mac and phones", description: "Why consoles cannot run it and how GeForce NOW streams DLSS 5 games to any device." },
       { href: "/dlss-5-mods", title: "Unofficial DLSS 5 mods and their risks", description: "What community tools do on cards NVIDIA does not support." },
       { href: "/dlss-4-5-dynamic-mfg-settings", title: "DLSS 4.5 Dynamic MFG settings", description: "NVIDIA App settings for RTX 50, frame-rate targets, and when to use 2X instead." },
     ],
@@ -63,6 +64,11 @@ const guideGroups = [
         href: "/dlss-5-rtx-40-series",
         title: "Will DLSS 5 be on RTX 40?",
         description: "RTX 4060, 4070, Ti, Super and laptop support: planned, with no release date.",
+      },
+      {
+        href: "/dlss-5-rtx-30-series",
+        title: "DLSS 5 on RTX 30 and RTX 20",
+        description: "RTX 3060, 3070, 3080, 3090 and RTX 20: not supported, what still works, and upgrade options.",
       },
     ],
   },

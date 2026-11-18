@@ -21,6 +21,8 @@ const newRoutes = [
   "games/nba-2k27-dlss-5",
   "de/dlss-5-grafikkarten",
   "games/hogwarts-legacy-dlss-5",
+  "dlss-5-rtx-30-series",
+  "dlss-5-ps5",
 ];
 
 const compatibilityRoutes = [
@@ -459,8 +461,8 @@ assert.match(germanHtml, /href="https:\/\/(?:www\.nvidia\.com\/en-us\/geforce\/n
 assert.doesNotMatch(germanHtml, /href="[^"]*(?:\.dll|huggingface\.co|\/releases\/)/i);
 
 const modsHtml = readRoute("dlss-5-mods");
-assert.equal(metadataValue(modsHtml, /<title>([^<]+)<\/title>/, "mods title"), "DLSS 5 Mods on RTX 40, RTX 30 and AMD: What Works and the Risks");
-assert.equal(metadataValue(modsHtml, /<meta name="description" content="([^"]+)"/, "mods description"), "Unofficial tools like DLSS 5 Swapper and OptiScaler forks run Neural Rendering outside RTX 50. What they do, what NVIDIA supports, and the ban and malware risks.");
+assert.equal(metadataValue(modsHtml, /<title>([^<]+)<\/title>/, "mods title"), "DLSS 5 Swapper, Manager &amp; Mods on RTX 40/30 and AMD: Risks");
+assert.equal(metadataValue(modsHtml, /<meta name="description" content="([^"]+)"/, "mods description"), "What DLSS 5 Swapper, DLSS 5 Manager and OptiScaler forks are, why they run Neural Rendering outside RTX 50, what NVIDIA supports, and the ban and malware risks.");
 assert.equal(visibleText(metadataValue(modsHtml, /<h1[^>]*>([\s\S]*?)<\/h1>/, "mods H1")), "DLSS 5 mods: what they are and what they risk");
 const modsWords = mainWords(modsHtml);
 assert.ok(modsWords >= 1500 && modsWords <= 2200, `Mods guide must contain 1,500–2,200 main-content words (got ${modsWords})`);
@@ -620,3 +622,55 @@ for (const row of JSON.parse(fs.readFileSync("data/benchmarks.json", "utf8")).be
 assert.doesNotMatch(requirementsText, /192 to 76|192 FPS/, "The unverified 192 to 76 FPS figure must not return");
 
 console.log("SEO regression checks passed.");
+
+// November 2026 content expansion: RTX 30/20 page, consoles and devices page, deeper setup/AMD/release-date answers.
+const sitemapXml = fs.readFileSync(path.join(appOutput, "sitemap.xml"), "utf8");
+for (const route of ["dlss-5-rtx-30-series", "dlss-5-ps5"]) {
+  const html = readRoute(route);
+  assert.ok(mainWords(html) >= 1200, `${route} must contain at least 1200 visible main-content words`);
+  assert.match(sitemapXml, new RegExp(`<loc>https://www\\.dlss5\\.net/${route}</loc>`), `${route} must be in the sitemap`);
+  assert.match(readRoute("guides"), new RegExp(`href="/${route}"`), `guides must link to ${route}`);
+  assert.match(llms, new RegExp(`https://www\\.dlss5\\.net/${route}\\)`), `llms.txt must list ${route}`);
+  assert.match(html, /aria-label="Play video: /, `${route} must include the click-to-load video`);
+  assert.doesNotMatch(html, /<iframe/, `${route} must not load YouTube before the reader presses play`);
+}
+const rtx30Html = readRoute("dlss-5-rtx-30-series");
+const rtx30Text = visibleText(rtx30Html);
+for (const pattern of [/RTX 3060/, /RTX 3090/, /RTX 2060/, /GeForce NOW Ultimate/, /Ray Reconstruction/, /FSR frame generation/, /no plan|announced no plan|not announced any plan/i]) {
+  assert.match(rtx30Text, pattern, `RTX 30 page is missing ${pattern}`);
+}
+assert.match(rtx30Html, /<figure[^>]*aria-labelledby="ladder-30-caption"/, "RTX 30 page needs the feature-ladder infographic");
+assert.match(rtx30Html, /href="\/dlss-5-mods"/);
+assert.match(readRoute("dlss-5-rtx-40-series"), /href="\/dlss-5-rtx-30-series"/);
+const rtx3060Card = metadataValue(readRoute("dlss-5-supported-cards"), /<div\b[^>]*id="rtx-3060"[^>]*>([\s\S]*?)<\/div>/, "rtx-3060 card");
+assert.match(rtx3060Card, /href="\/dlss-5-rtx-30-series"/, "RTX 3060 quick answer must link to the RTX 30 guide");
+const ps5Text = visibleText(readRoute("dlss-5-ps5"));
+for (const pattern of [/PS5 Pro/, /PSSR/, /Switch 2/, /Steam Deck/, /APK/, /emulat/, /25 Mbps/]) {
+  assert.match(ps5Text, pattern, `PS5 page is missing ${pattern}`);
+}
+const downloadHtml = readRoute("dlss-5-download");
+const downloadText = visibleText(downloadHtml);
+for (const id of ["game-settings", "troubleshooting", "other-devices"]) {
+  assert.match(downloadHtml, new RegExp(`id="${id}"`), `download page must include #${id}`);
+}
+for (const pattern of [/Shift\+Alt\+B/, /F9/, /War Thunder/, /621\.24/, /greyed out/i, /APK/]) {
+  assert.match(downloadText, pattern, `download page is missing ${pattern}`);
+}
+assert.match(downloadHtml, /"@type":"HowTo"/, "download page must describe its setup steps as HowTo");
+checkFaq(downloadHtml, "dlss-5-download");
+assert.equal(metadataValue(downloadHtml, /<title>([^<]+)<\/title>/, "download title"), "DLSS 5 Download &amp; Setup: Drivers, Games and GPU Requirements");
+assert.equal(metadataValue(downloadHtml, /<h1[^>]*>([^<]+)<\/h1>/, "download H1"), "How to download and enable DLSS 5");
+const amdHtml = readRoute("dlss-5-amd");
+assert.match(visibleText(amdHtml), /DLSS 5 vs FSR 4 and FSR Redstone/);
+assert.match(visibleText(amdHtml), /RX 9070/);
+checkFaq(amdHtml, "dlss-5-amd");
+assert.match(visibleText(readRoute("dlss-5-mods")), /What is DLSS 5 Swapper\?[\s\S]*What is DLSS 5 Manager\?/);
+assert.equal(metadataValue(amdHtml, /<title>([^<]+)<\/title>/, "AMD title"), "DLSS 5 on AMD: Not Supported — FSR 4 vs DLSS 5 &amp; Cloud Option");
+assert.equal(metadataValue(amdHtml, /<h1[^>]*>([^<]+)<\/h1>/, "AMD H1"), "Can you use DLSS 5 on AMD?");
+const releaseHtml = readRoute("dlss-5-release-date");
+assert.match(releaseHtml, /id="by-game"/);
+assert.match(releaseHtml, /id="by-gpu"/);
+assert.match(visibleText(releaseHtml), /Where Winds Meet November 23, 2026 Scheduled/);
+assert.equal(metadataValue(releaseHtml, /<title>([^<]+)<\/title>/, "release title"), "DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game &amp; GPU");
+assert.match(visibleText(readRoute("privacy")), /youtube-nocookie\.com/);
+

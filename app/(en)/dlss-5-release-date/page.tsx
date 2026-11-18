@@ -4,25 +4,25 @@ import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
+  title: "DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game & GPU",
   description:
-    "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
+    "DLSS 5 is out: NBA 2K27 (Sept 3), Hogwarts Legacy (Nov 5), War Thunder (Nov 12), Where Winds Meet (Nov 23). See dates by game and GPU, and RTX 40 status.",
   alternates: {
     canonical: "/dlss-5-release-date",
   },
   openGraph: {
     images: [OG_IMAGE_EN],
-    title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
+    title: "DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game & GPU",
     description:
-      "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
+      "DLSS 5 is out: NBA 2K27 (Sept 3), Hogwarts Legacy (Nov 5), War Thunder (Nov 12), Where Winds Meet (Nov 23). See dates by game and GPU, and RTX 40 status.",
     type: "article",
     url: "https://www.dlss5.net/dlss-5-release-date",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DLSS 5 Release Date: Launched September 2026 Status Guide",
+    title: "DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game & GPU",
     description:
-      "See the DLSS 5 release date, the October faster model, the Hogwarts Legacy November 5 date, RTX 50 support, and RTX 40 planned status.",
+      "DLSS 5 is out: NBA 2K27 (Sept 3), Hogwarts Legacy (Nov 5), War Thunder (Nov 12), Where Winds Meet (Nov 23). See dates by game and GPU, and RTX 40 status.",
   },
 };
 
@@ -138,6 +138,27 @@ const timelineRows = [
   },
 ];
 
+
+const gameDates = [
+  { game: "NBA 2K27", href: "/games/nba-2k27-dlss-5", date: "September 3, 2026", status: "Live" },
+  { game: "Hogwarts Legacy", href: "/games/hogwarts-legacy-dlss-5", date: "November 5, 2026", status: "Live" },
+  { game: "War Thunder", date: "November 12, 2026", status: "Live" },
+  { game: "Where Winds Meet", date: "November 23, 2026", status: "Scheduled" },
+  { game: "Starfield", date: "No date", status: "Announced" },
+  { game: "Resident Evil Requiem", date: "No date", status: "Announced" },
+  { game: "Assassin's Creed Shadows", date: "No date", status: "Announced" },
+  { game: "The Elder Scrolls IV: Oblivion Remastered", date: "No date", status: "Announced" },
+  { game: "AION 2, Phantom Blade Zero, NARAKA: BLADEPOINT, Delta Force and others", date: "No date", status: "Announced" },
+];
+
+const gpuDates = [
+  { gpu: "GeForce RTX 50 desktop and laptop", date: "September 3, 2026", note: "Available now in every live DLSS 5 game." },
+  { gpu: "RTX Spark laptops", date: "October 2026", note: "Listed by NVIDIA from the faster October model onward." },
+  { gpu: "GeForce NOW Ultimate (cloud RTX 5080)", date: "September 3, 2026", note: "Confirmed for NBA 2K27 and Hogwarts Legacy." },
+  { gpu: "GeForce RTX 40", date: "No date", note: "Planned by NVIDIA; not in any update so far." },
+  { gpu: "RTX 30, RTX 20, GTX, AMD, Intel", date: "None announced", note: "No official plan. See the RTX 30 and AMD guides." },
+];
+
 const relatedPages = [
   {
     href: "/dlss-5-games",
@@ -190,7 +211,12 @@ const faqItems = [
   {
     question: "Is there a release date for DLSS 5 on RTX 40?",
     answer:
-      "No. As of October 18, 2026, NVIDIA still describes RTX 40 support as planned without a date, and its October model update does not include RTX 40 GPUs.",
+      "No. As of November 18, 2026, NVIDIA still describes RTX 40 support as planned without a date, and none of its DLSS 5 updates so far, including the November game launches, include RTX 40 GPUs.",
+  },
+  {
+    question: "When does Starfield or Resident Evil Requiem get DLSS 5?",
+    answer:
+      "Neither has a date. Both were named by NVIDIA in March 2026, but as of November 18, 2026 neither game has shipped a DLSS 5 patch or announced one.",
   },
 ];
 
@@ -249,7 +275,7 @@ export default function Dlss5ReleaseDatePage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Last checked October 18, 2026
+            Last checked November 18, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Release Date: September 2026 Launch Status
@@ -274,16 +300,70 @@ export default function Dlss5ReleaseDatePage() {
             <p className="text-sm text-foreground/80 leading-relaxed">
               NBA 2K27 exposes DLSS Neural Rendering for RTX 50 desktop and laptop GPUs
               and RTX Spark laptops, using the faster October model since October 16.
-              Hogwarts Legacy joined on November 5.
+              Hogwarts Legacy joined on November 5 and War Thunder on November 12.
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Still missing</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              RTX 40 support is planned but still has no date. Most announced games remain
-              pending until their own patch notes name DLSS 5 settings.
+              RTX 40 support is planned but still has no date. Where Winds Meet is due on
+              November 23; most other announced games have no date yet.
             </p>
           </div>
+        </section>
+
+        <section id="by-game" className="mb-10 scroll-mt-24">
+          <h2 className="text-2xl font-bold mb-3">DLSS 5 release date by game</h2>
+          <p className="mb-4 text-foreground/80 leading-relaxed">
+            Each game gets DLSS 5 in its own patch. A game listed by NVIDIA in March is not live until that patch ships.
+          </p>
+          <ul className="divide-y divide-border rounded-lg border border-border">
+            {gameDates.map((row) => (
+              <li key={row.game} className="flex flex-wrap items-center justify-between gap-2 p-3 text-sm">
+                <span className="font-medium">
+                  {row.href ? <Link href={row.href} className="text-blue-400 hover:underline">{row.game}</Link> : row.game}
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="text-foreground/80">{row.date}</span>
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
+                      row.status === "Live"
+                        ? "bg-green-500/15 text-green-500"
+                        : row.status === "Scheduled"
+                          ? "bg-yellow-500/15 text-yellow-500"
+                          : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    {row.status}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Sources and patch notes for every title are on the <Link href="/dlss-5-games" className="text-blue-400 hover:underline">games tracker</Link>.
+          </p>
+        </section>
+
+        <section id="by-gpu" className="mb-10 scroll-mt-24">
+          <h2 className="text-2xl font-bold mb-3">DLSS 5 release date by graphics card</h2>
+          <div className="space-y-3">
+            {gpuDates.map((row) => (
+              <div key={row.gpu} className="rounded-lg border border-border p-4">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="font-semibold">{row.gpu}</h3>
+                  <span className="text-sm font-medium">{row.date}</span>
+                </div>
+                <p className="mt-1 text-sm text-foreground/80">{row.note}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Details: <Link href="/dlss-5-rtx-40-series" className="text-blue-400 hover:underline">RTX 40</Link>,{" "}
+            <Link href="/dlss-5-rtx-30-series" className="text-blue-400 hover:underline">RTX 30 and RTX 20</Link>,{" "}
+            <Link href="/dlss-5-amd" className="text-blue-400 hover:underline">AMD</Link>,{" "}
+            <Link href="/dlss-5-ps5" className="text-blue-400 hover:underline">PS5 and other devices</Link>.
+          </p>
         </section>
 
         <section className="mb-10">
@@ -381,7 +461,7 @@ export default function Dlss5ReleaseDatePage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-10-18" />
+        <ArticleTrustBlock reviewedAt="2026-11-18" />
       </main>
     </>
   );

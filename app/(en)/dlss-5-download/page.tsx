@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import VideoEmbed from "@/components/VideoEmbed";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
 const title = "DLSS 5 Download & Setup: Drivers, Games and GPU Requirements";
-const description = "Get DLSS 5 through official NVIDIA drivers and supported games. Check GPU, game and driver requirements, then find the Neural Rendering setting.";
+const description = "There is no DLSS 5 installer or APK. How to turn on DLSS 5: driver, game update, where the setting is in each game, and fixes when it is missing or greyed out.";
 
 export const metadata: Metadata = {
   title,
@@ -20,8 +21,128 @@ export const metadata: Metadata = {
   twitter: { card: "summary", title, description },
 };
 
+
+const REVIEWED = "2026-11-18";
+const NVIDIA_HOGWARTS = "https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/";
+const NVIDIA_WAR_THUNDER = "https://www.nvidia.com/en-us/geforce/news/war-thunder-dlss-5-3d-guided-neural-rendering-out-now/";
+const NVIDIA_621_24 = "https://www.nvidia.com/en-us/geforce/news/warhammer-40000-dawn-of-war-4-geforce-rtx-spark-game-ready-driver/";
+
+const gameSettings = [
+  {
+    game: "NBA 2K27",
+    href: "/games/nba-2k27-dlss-5",
+    since: "September 3, 2026",
+    path: "Features → Video Settings → DLSS Neural Rendering",
+    toggle: "F9",
+    driver: "616.64 WHQL or newer",
+  },
+  {
+    game: "Hogwarts Legacy",
+    href: "/games/hogwarts-legacy-dlss-5",
+    since: "November 5, 2026",
+    path: "Game Settings → Display Settings → Upscale Type: NVIDIA DLSS → Neural Rendering",
+    toggle: "Shift+Alt+B",
+    driver: "621.14 WHQL or newer",
+  },
+  {
+    game: "War Thunder",
+    since: "November 12, 2026",
+    path: "Update to the Eagle's Shadow client, then look for Neural Rendering in the graphics settings",
+    toggle: "Not documented",
+    driver: "Current Game Ready driver",
+  },
+  {
+    game: "Where Winds Meet",
+    since: "Scheduled November 23, 2026",
+    path: "Not published until the update ships",
+    toggle: "Not published",
+    driver: "621.24 WHQL prepares for it",
+  },
+];
+
+const setupSteps = [
+  { n: "1", t: "Check the GPU", d: "RTX 50 desktop or laptop, or an RTX Spark laptop." },
+  { n: "2", t: "Update the driver", d: "NVIDIA App or nvidia.com. 621.24 WHQL was current on November 18." },
+  { n: "3", t: "Update the game", d: "Through Steam, Epic or the store you bought it from." },
+  { n: "4", t: "Turn it on in-game", d: "The option is in the game's graphics menu, not in the NVIDIA App." },
+];
+
+const troubleshooting = [
+  {
+    issue: "No Neural Rendering option at all",
+    fix: "The game has no live DLSS 5 update, the game has not finished updating, or the PC is not an RTX 50 / RTX Spark system. Check those three before anything else.",
+  },
+  {
+    issue: "Option is greyed out on an RTX 50 PC",
+    fix: "In some games Neural Rendering is a sub-option of DLSS: first set the upscaler to NVIDIA DLSS (Hogwarts Legacy calls it Upscale Type). Then update the driver and restart the game.",
+  },
+  {
+    issue: "Greyed out on a gaming laptop",
+    fix: "The game may be running on the integrated GPU. In Windows Settings → System → Display → Graphics, set the game to High performance, or switch the laptop to its discrete-GPU mode, then relaunch.",
+  },
+  {
+    issue: "It turned on, but the frame rate dropped",
+    fix: "That is expected: Neural Rendering costs GPU time. Keep it on and lower Super Resolution to Balanced or Performance, or enable Frame Generation if your card supports it.",
+  },
+  {
+    issue: "Faces or materials look wrong to you",
+    fix: "Toggle it with the game's hotkey (F9 in NBA 2K27, Shift+Alt+B in Hogwarts Legacy) in the same scene. It is optional; turning it off does not affect your other DLSS settings.",
+  },
+  {
+    issue: "You have an RTX 40, RTX 30 or AMD card",
+    fix: "No setting will appear on local hardware. RTX 40 is planned with no date. Use GeForce NOW Ultimate to play supported games with DLSS 5 from the cloud.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Is there a DLSS 5 download?",
+    answer:
+      "There is no separate DLSS 5 installer. You get it by installing a current NVIDIA Game Ready driver and updating a game that has shipped DLSS 5, such as NBA 2K27, Hogwarts Legacy or War Thunder. Any site offering a standalone DLSS 5 download is not NVIDIA.",
+  },
+  {
+    question: "How do I turn on DLSS 5?",
+    answer:
+      "On an RTX 50 or RTX Spark PC, update the driver and the game, open the game's graphics settings, select NVIDIA DLSS as the upscaler where the game asks for it, and switch on Neural Rendering. The menu name differs per game.",
+  },
+  {
+    question: "Is there a DLSS 5 APK for Android or a version for phones?",
+    answer:
+      "No. DLSS 5 runs only on NVIDIA RTX 50 GPUs inside Windows PC games. A file called a DLSS 5 APK is not from NVIDIA and should not be installed. On a phone or tablet, the only official way to see DLSS 5 is streaming a supported game through GeForce NOW Ultimate.",
+  },
+  {
+    question: "Can I download DLSS 5 for PS5, Xbox or Mac?",
+    answer:
+      "No. PS5 and Xbox use AMD graphics, and Macs use Apple graphics, so none of them can run DLSS locally. A Mac can stream a supported game with DLSS 5 through GeForce NOW Ultimate.",
+  },
+  {
+    question: "Do I need the NVIDIA App to use DLSS 5?",
+    answer:
+      "No. The NVIDIA App is a convenient way to install the driver, but you can also download the driver from nvidia.com. DLSS 5 itself is switched on inside each game, not in the NVIDIA App.",
+  },
+];
+
 export default function Dlss5DownloadPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to enable DLSS 5",
+    step: setupSteps.map((step) => ({ "@type": "HowToStep", name: step.t, text: step.d })),
+  };
+
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
     <main className="max-w-4xl mx-auto px-4 py-12">
       <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground mb-6">
         <Link href="/" className="hover:text-foreground">DLSS 5 Checker</Link> / Download and setup
@@ -31,10 +152,60 @@ export default function Dlss5DownloadPage() {
         <p className="text-lg text-muted-foreground leading-relaxed">
           Get the driver from NVIDIA and the DLSS 5 integration through a supported game.
           For official local use, you currently need an RTX 50 desktop or laptop GPU or an RTX Spark laptop.
-          NBA 2K27 is a verified available title. There is no universal official installer
-          that adds Neural Rendering to every game. This is an independent setup guide, not a download host.
+          NBA 2K27, Hogwarts Legacy and War Thunder have it now, and Where Winds Meet follows on November 23.
+          There is no universal official installer that adds Neural Rendering to every game.
+          This is an independent setup guide, not a download host.
         </p>
       </header>
+
+      <figure className="mb-10" aria-labelledby="setup-flow-caption">
+        <figcaption id="setup-flow-caption" className="mb-3 text-lg font-bold">DLSS 5 setup in four steps</figcaption>
+        <ol className="grid gap-3 sm:grid-cols-4">
+          {setupSteps.map((step) => (
+            <li key={step.n} className="relative rounded-lg border border-border bg-muted/20 p-4">
+              <span className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 font-bold text-black" aria-hidden="true">{step.n}</span>
+              <span className="block font-semibold">{step.t}</span>
+              <span className="mt-1 block text-sm text-muted-foreground">{step.d}</span>
+            </li>
+          ))}
+        </ol>
+      </figure>
+
+      <section id="game-settings" className="mb-10 scroll-mt-24">
+        <h2 className="text-2xl font-bold mb-3">Where to turn on DLSS 5 in each game</h2>
+        <p className="mb-4 leading-relaxed text-foreground/80">
+          Every game names and places the setting differently. These are the live and scheduled games as of November 18, 2026,
+          taken from NVIDIA&apos;s <a href={NVIDIA_HOGWARTS} className="text-blue-400 hover:underline">Hogwarts Legacy</a> and{" "}
+          <a href={NVIDIA_WAR_THUNDER} className="text-blue-400 hover:underline">War Thunder</a> articles and each publisher&apos;s instructions.
+        </p>
+        <div className="space-y-3">
+          {gameSettings.map((g) => (
+            <div key={g.game} className="rounded-lg border border-border p-4">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="font-semibold">
+                  {g.href ? <Link href={g.href} className="text-blue-400 hover:underline">{g.game}</Link> : g.game}
+                </h3>
+                <span className="text-xs text-muted-foreground">{g.since}</span>
+              </div>
+              <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
+                <dt className="text-muted-foreground">Menu</dt><dd>{g.path}</dd>
+                <dt className="text-muted-foreground">Toggle</dt><dd>{g.toggle}</dd>
+                <dt className="text-muted-foreground">Driver</dt><dd>{g.driver}</dd>
+              </dl>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-sm text-muted-foreground">
+          The full list of announced games is on the <Link href="/dlss-5-games" className="text-blue-400 hover:underline">DLSS 5 games tracker</Link>.
+        </p>
+      </section>
+
+      <VideoEmbed
+        id="GPCM-PHjmWw"
+        title="Hogwarts Legacy | DLSS 5 Launch Trailer"
+        channel="NVIDIA GeForce"
+        caption="NVIDIA's launch trailer shows the kind of lighting and material change to look for after you switch Neural Rendering on."
+      />
 
       <section className="mb-10 space-y-4 leading-relaxed text-foreground/80">
         <h2 className="text-2xl font-bold text-foreground">Use the official download channels</h2>
@@ -48,7 +219,8 @@ export default function Dlss5DownloadPage() {
           NVIDIA identified 616.64 WHQL as the NBA 2K27 launch driver in its{" "}
           <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">release instructions</a>.
           Treat that number as a launch reference, not a claim that it remains the newest driver.
-          The newest Game Ready Driver we found on October 18, 2026 is 617.42 WHQL (October 6).
+          Hogwarts Legacy needs 621.14 WHQL, and the newest Game Ready Driver we found on November 18, 2026 is{" "}
+          <a href={NVIDIA_621_24} className="text-blue-400 hover:underline">621.24 WHQL</a> (November 11), which prepares PCs for the Where Winds Meet update.
           Check the current driver notes for your GPU before installing an older package from a search result.
         </p>
         <p>
@@ -145,8 +317,8 @@ export default function Dlss5DownloadPage() {
           </li>
           <li>
             <strong>&quot;Update your driver and DLSS 5 appears in every game.&quot;</strong> The
-            driver is only one of three requirements. As of November 6, 2026, NBA 2K27 and
-            Hogwarts Legacy are the only live games.
+            driver is only one of three requirements. As of November 18, 2026, NBA 2K27,
+            Hogwarts Legacy and War Thunder are the only live games.
           </li>
         </ul>
         <p>
@@ -156,7 +328,46 @@ export default function Dlss5DownloadPage() {
           that order before reinstalling anything.
         </p>
       </section>
-      <ArticleTrustBlock reviewedAt="2026-10-18" />
+      <section id="troubleshooting" className="mb-10 scroll-mt-24">
+        <h2 className="text-2xl font-bold mb-3">DLSS 5 not showing or greyed out? Fixes by symptom</h2>
+        <div className="space-y-3">
+          {troubleshooting.map((t) => (
+            <details key={t.issue} className="group rounded-lg border border-border">
+              <summary className="cursor-pointer list-none px-4 py-3 font-semibold hover:bg-muted/30">{t.issue}</summary>
+              <p className="px-4 pb-4 text-sm leading-relaxed text-foreground/80">{t.fix}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section id="other-devices" className="mb-10 scroll-mt-24 space-y-4 leading-relaxed text-foreground/80">
+        <h2 className="text-2xl font-bold text-foreground">DLSS 5 on Android, PS5, Mac or as an APK?</h2>
+        <p>
+          A large share of DLSS 5 download searches come from phones, and some ask for an APK. There is no DLSS 5
+          app for Android or iPhone, and no version for PS5, Xbox or Mac: DLSS runs on NVIDIA RTX GPUs inside PC games.
+          Treat any DLSS 5 APK, &quot;mobile DLSS 5&quot; or console installer as unofficial at best and malware at worst.
+        </p>
+        <p>
+          What does work on those devices is streaming. GeForce NOW Ultimate runs supported games on cloud RTX 5080
+          servers and sends the picture to a phone, tablet, Mac, Chromebook, TV or handheld. Our{" "}
+          <Link href="/dlss-5-ps5" className="text-blue-400 hover:underline">DLSS 5 on PS5, Mac and phones guide</Link> explains
+          each device and the limits.
+        </p>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-4">Frequently asked questions</h2>
+        <div className="space-y-5">
+          {faqItems.map((item) => (
+            <div key={item.question}>
+              <h3 className="font-semibold mb-1">{item.question}</h3>
+              <p className="text-sm text-foreground/80 leading-relaxed">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <ArticleTrustBlock reviewedAt={REVIEWED} />
     </main>
+    </>
   );
 }

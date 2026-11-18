@@ -294,6 +294,15 @@ export default function Dlss5Rtx40SeriesPage() {
           <h2 className="text-2xl font-bold mb-4">Related checks</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
+              href="/dlss-5-rtx-30-series"
+              className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
+            >
+              <div className="font-semibold mb-1">RTX 30 and RTX 20 status</div>
+              <p className="text-sm text-muted-foreground">
+                Why older cards are unsupported and what they can still turn on.
+              </p>
+            </Link>
+            <Link
               href="/dlss-5-supported-cards"
               className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors"
             >

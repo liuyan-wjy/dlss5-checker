@@ -3,8 +3,8 @@ import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
-const title = "DLSS 5 on AMD: Official Support, Cloud Access and Mod Status";
-const description = "AMD Radeon has no official local DLSS 5 support. Compare eligible GeForce NOW access, experimental community mods and the limits of FSR or XeSS alternatives.";
+const title = "DLSS 5 on AMD: Not Supported — FSR 4 vs DLSS 5 & Cloud Option";
+const description = "No Radeon GPU runs DLSS 5. Compare DLSS 5 with FSR 4 and Redstone, see what to turn on for RX 9000, 7000 and 6000, and how GeForce NOW or mods fit in.";
 
 export const metadata: Metadata = {
   title,
@@ -17,8 +17,65 @@ export const metadata: Metadata = {
   twitter: { card: "summary", title, description },
 };
 
+
+const REVIEWED = "2026-11-18";
+const AMD_REDSTONE = "https://gpuopen.com/learn/amd-fsr-redstone-developers-neural-rendering/";
+
+const compareRows = [
+  { aspect: "What it changes", dlss5: "Lighting and materials of the final image", fsr: "Resolution (upscaling), frame rate (frame generation), ray-traced noise (Ray Regeneration)" },
+  { aspect: "Runs on", dlss5: "GeForce RTX 50 and RTX Spark; RTX 40 planned", fsr: "ML features: Radeon RX 9000. Older FSR upscaling and frame generation run on most modern GPUs" },
+  { aspect: "Effect on frame rate", dlss5: "Costs frames; NVIDIA pairs it with Super Resolution and frame generation", fsr: "Upscaling and frame generation raise frame rate" },
+  { aspect: "Where you turn it on", dlss5: "In each supported game's graphics menu", fsr: "In each supported game's graphics menu, or AMD Software for driver-level options" },
+  { aspect: "Games", dlss5: "NBA 2K27, Hogwarts Legacy, War Thunder; Where Winds Meet on November 23", fsr: "Hundreds of games support some FSR version; ML features in fewer" },
+];
+
+const radeonAdvice = [
+  { card: "Radeon RX 9000 (RX 9070 XT, 9070, 9060 XT)", advice: "Use FSR 4 ML upscaling and the Redstone features where a game offers them. These are AMD's closest equivalents to DLSS Super Resolution, Frame Generation and Ray Reconstruction." },
+  { card: "Radeon RX 7000 (RX 7900 XTX, 7800 XT, 7700 XT, 7600)", advice: "Use the FSR upscaling and FSR frame generation your games list. Check each game's menu for which FSR version it ships; AMD's ML features target RX 9000." },
+  { card: "Radeon RX 6000 and older (RX 6600, 6700 XT, 6800)", advice: "FSR upscaling and frame generation in supported games, or AMD Fluid Motion Frames in the driver for games without built-in frame generation." },
+];
+
+const faqItems = [
+  {
+    question: "Can AMD GPUs run DLSS 5?",
+    answer:
+      "No. DLSS 5 Neural Rendering officially runs only on NVIDIA GeForce RTX 50 GPUs and RTX Spark laptops, with RTX 40 planned. No Radeon card is supported, and installing an NVIDIA driver does not change that.",
+  },
+  {
+    question: "Is there a DLSS 5 download for AMD?",
+    answer:
+      "There is no official one. NVIDIA does not publish DLSS 5 for AMD, so any \"DLSS 5 AMD download\" is either a community mod or a fake. Community projects are experimental, untested by us, and can carry malware or anti-cheat risk.",
+  },
+  {
+    question: "What is AMD's alternative to DLSS 5?",
+    answer:
+      "AMD has no announced Neural Rendering equivalent. Its current machine-learning graphics package is FSR Redstone for Radeon RX 9000, covering FSR 4 upscaling, frame generation and Ray Regeneration, which match DLSS Super Resolution, Frame Generation and Ray Reconstruction rather than DLSS 5.",
+  },
+  {
+    question: "Does a Ryzen CPU stop DLSS 5 from working?",
+    answer:
+      "No. DLSS 5 depends on the graphics card. A PC with a Ryzen CPU and a GeForce RTX 50 GPU supports DLSS 5 in the same games as an Intel system.",
+  },
+  {
+    question: "How can a Radeon owner see DLSS 5?",
+    answer:
+      "Use GeForce NOW Ultimate in a region with NVIDIA-operated RTX 5080 servers. The game is rendered in the cloud, so your Radeon card only displays the video stream. NVIDIA confirms it for NBA 2K27 and Hogwarts Legacy.",
+  },
+];
+
 export default function Dlss5AmdPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
     <main className="max-w-4xl mx-auto px-4 py-12">
       <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground mb-6">
         <Link href="/" className="hover:text-foreground">DLSS 5 Checker</Link> / AMD support
@@ -26,7 +83,7 @@ export default function Dlss5AmdPage() {
       <header className="mb-10">
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">Can you use DLSS 5 on AMD?</h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          AMD Radeon GPUs have no official local DLSS 5 Neural Rendering support as of October 25, 2026.
+          AMD Radeon GPUs have no official local DLSS 5 Neural Rendering support as of November 18, 2026.
           An eligible GeForce NOW session can render it remotely on NVIDIA hardware.
           Community AMD projects also exist, but their experiments are not official compatibility and we have not tested them.
           If your PC has an AMD Ryzen CPU and an RTX 50 GPU, check the GPU: the CPU brand is not the restriction.
@@ -121,7 +178,86 @@ export default function Dlss5AmdPage() {
           For NBA 2K27 on eligible hardware or cloud sessions, use the <Link href="/games/nba-2k27-dlss-5" className="text-blue-400 hover:underline">game settings guide</Link>.
         </p>
       </section>
-      <ArticleTrustBlock reviewedAt="2026-10-25" />
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-3">DLSS 5 vs FSR 4 and FSR Redstone</h2>
+        <p className="mb-4 leading-relaxed text-foreground/80">
+          Search results often compare &quot;DLSS 5 vs FSR 4&quot; as if they were rival upscalers. They do different jobs.
+          FSR 4 and the <a href={AMD_REDSTONE} className="text-blue-400 hover:underline">Redstone package</a> answer DLSS 4.5;
+          nothing from AMD answers DLSS 5 yet.
+        </p>
+        <div className="space-y-3 sm:hidden">
+          {compareRows.map((row) => (
+            <div key={row.aspect} className="rounded-lg border border-border p-4 text-sm">
+              <p className="font-semibold">{row.aspect}</p>
+              <p className="mt-2"><span className="text-green-500">DLSS 5:</span> {row.dlss5}</p>
+              <p className="mt-1"><span className="text-red-400">FSR 4 / Redstone:</span> {row.fsr}</p>
+            </div>
+          ))}
+        </div>
+        <div className="hidden overflow-x-auto rounded-lg border border-border sm:block">
+          <table className="w-full text-sm">
+            <caption className="sr-only">DLSS 5 compared with AMD FSR 4 and FSR Redstone</caption>
+            <thead className="bg-muted/40 text-left">
+              <tr>
+                <th scope="col" className="p-3"></th>
+                <th scope="col" className="p-3">NVIDIA DLSS 5</th>
+                <th scope="col" className="p-3">AMD FSR 4 / Redstone</th>
+              </tr>
+            </thead>
+            <tbody>
+              {compareRows.map((row) => (
+                <tr key={row.aspect} className="border-t border-border align-top">
+                  <th scope="row" className="p-3 text-left font-medium">{row.aspect}</th>
+                  <td className="p-3">{row.dlss5}</td>
+                  <td className="p-3">{row.fsr}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-3">What to turn on with your Radeon card instead</h2>
+        <div className="space-y-3">
+          {radeonAdvice.map((row) => (
+            <div key={row.card} className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold">{row.card}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-foreground/80">{row.advice}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Feature names and supported cards come from AMD&apos;s developer documentation when we checked; AMD can widen
+          support in later drivers. Console players should read{" "}
+          <Link href="/dlss-5-ps5" className="text-blue-400 hover:underline">DLSS 5 on PS5 and Xbox</Link>, which also use AMD graphics.
+        </p>
+      </section>
+
+      <section className="mb-10 space-y-4 leading-relaxed text-foreground/80">
+        <h2 className="text-2xl font-bold text-foreground">About &quot;DLSS 5 AMD download&quot; results</h2>
+        <p>
+          Many searches for DLSS 5 on AMD end in a download button. NVIDIA has never released DLSS 5 for Radeon, so a
+          file presented as an official &quot;DLSS 5 for AMD&quot; installer is mislabelled. If you test a community
+          project anyway, get it only from the project&apos;s own repository, scan it, keep a backup of the game, and
+          never use it in online games with anti-cheat. An installer that asks you to disable antivirus, or bundles
+          an &quot;activator&quot;, is a red flag.
+        </p>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-4">Frequently asked questions</h2>
+        <div className="space-y-5">
+          {faqItems.map((item) => (
+            <div key={item.question}>
+              <h3 className="font-semibold mb-1">{item.question}</h3>
+              <p className="text-sm text-foreground/80 leading-relaxed">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <ArticleTrustBlock reviewedAt={REVIEWED} />
     </main>
+    </>
   );
 }
