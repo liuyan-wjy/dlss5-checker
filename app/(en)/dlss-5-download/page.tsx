@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import VideoEmbed from "@/components/VideoEmbed";
 import { OG_IMAGE_EN } from "@/lib/og-image";
@@ -333,7 +334,13 @@ export default function Dlss5DownloadPage() {
         <div className="space-y-3">
           {troubleshooting.map((t) => (
             <details key={t.issue} className="group rounded-lg border border-border">
-              <summary className="cursor-pointer list-none px-4 py-3 font-semibold hover:bg-muted/30">{t.issue}</summary>
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 font-semibold hover:bg-muted/30 [&::-webkit-details-marker]:hidden">
+                <span>{t.issue}</span>
+                <ChevronDown
+                  className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180"
+                  aria-hidden="true"
+                />
+              </summary>
               <p className="px-4 pb-4 text-sm leading-relaxed text-foreground/80">{t.fix}</p>
             </details>
           ))}

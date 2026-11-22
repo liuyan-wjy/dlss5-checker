@@ -189,6 +189,7 @@ export default function PtDlss5QuaisPlacasPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    inLanguage: "pt-BR",
     mainEntity: faqItems.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -342,35 +343,50 @@ export default function PtDlss5QuaisPlacasPage() {
               <span className="block font-bold">Recursos DLSS oficiais por geração</span>
               <span className="block text-sm text-muted-foreground">Novembro de 2026. RTX 30 e RTX 20 mantêm as três primeiras linhas.</span>
             </figcaption>
-            <table className="w-full text-xs sm:text-sm">
-              <thead>
-                <tr className="text-left">
-                  <th scope="col" className="py-2 pr-2">Recurso</th>
-                  {["20", "30", "40", "50"].map((g) => (
-                    <th key={g} scope="col" className="px-0.5 py-2 text-center"><span className="sr-only sm:not-sr-only">RTX </span>{g}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["Super Resolution", true, true, true, true],
-                  ["DLAA", true, true, true, true],
-                  ["Ray Reconstruction", true, true, true, true],
-                  ["Frame Generation (2X)", false, false, true, true],
-                  ["Multi Frame Generation", false, false, false, true],
-                  ["DLSS 5 Neural Rendering", false, false, false, true],
-                ].map(([feature, ...cols]) => (
-                  <tr key={String(feature)} className="border-t border-border">
-                    <th scope="row" className="py-2 pr-2 text-left font-medium">{feature}</th>
-                    {cols.map((on, i) => (
-                      <td key={i} className="px-0.5 py-2 text-center">
-                        {on ? <span className="font-bold text-green-500" aria-label="Sim">✓</span> : <span className="font-bold text-red-400" aria-label="Não">✕</span>}
-                      </td>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs sm:text-sm">
+                <thead>
+                  <tr className="text-left">
+                    <th scope="col" className="py-2 pr-2">Recurso</th>
+                    {["20", "30", "40", "50"].map((g) => (
+                      <th key={g} scope="col" className="px-0.5 py-2 text-center"><span className="sr-only sm:not-sr-only">RTX </span>{g}</th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {[
+                    ["Super Resolution", true, true, true, true],
+                    ["DLAA", true, true, true, true],
+                    ["Ray Reconstruction", true, true, true, true],
+                    ["Frame Generation (2X)", false, false, true, true],
+                    ["Multi Frame Generation", false, false, false, true],
+                    ["DLSS 5 Neural Rendering", false, false, false, true],
+                  ].map(([feature, ...cols]) => (
+                    <tr key={String(feature)} className="border-t border-border">
+                      <th scope="row" className="py-2 pr-2 text-left font-medium">{feature}</th>
+                      {cols.map((on, i) => (
+                        <td key={i} className="px-0.5 py-2 text-center">
+                          {on ? (
+                            <>
+                              <span className="font-bold text-green-500" aria-hidden="true">✓</span>
+                              <span className="sr-only">Sim</span>
+                            </>
+                          ) : (
+                            <>
+                              <span className="font-bold text-red-400" aria-hidden="true">✕</span>
+                              <span className="sr-only">Não</span>
+                            </>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-xs text-muted-foreground">
+              O DLSS 5 Neural Rendering na RTX 40 está planejado, ainda sem data pública.
+            </p>
           </figure>
           <h3 className="text-lg font-semibold text-foreground">Como aproveitar uma RTX 30 hoje</h3>
           <ol className="list-decimal space-y-2 pl-6">

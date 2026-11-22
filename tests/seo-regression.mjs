@@ -621,8 +621,6 @@ for (const row of JSON.parse(fs.readFileSync("data/benchmarks.json", "utf8")).be
 }
 assert.doesNotMatch(requirementsText, /192 to 76|192 FPS/, "The unverified 192 to 76 FPS figure must not return");
 
-console.log("SEO regression checks passed.");
-
 // November 2026 content expansion: RTX 30/20 page, consoles and devices page, deeper setup/AMD/release-date answers.
 const sitemapXml = fs.readFileSync(path.join(appOutput, "sitemap.xml"), "utf8");
 for (const route of ["dlss-5-rtx-30-series", "dlss-5-ps5"]) {
@@ -689,9 +687,12 @@ const ptSetupText = visibleText(ptSetupHtml);
 for (const id of ["jogos", "problemas", "console-celular"]) {
   assert.match(ptSetupHtml, new RegExp(`id="${id}"`), `PT setup page must include #${id}`);
 }
-for (const pattern of [/Shift\+Alt\+B/, /War Thunder/, /621\.24/, /APK/, /PS5 Pro/, /PSSR/, /Switch 2/, /Reproduzir vídeo|Ver no YouTube/]) {
-  assert.match(ptSetupText + ptSetupHtml, pattern, `PT setup page is missing ${pattern}`);
+for (const pattern of [/Shift\+Alt\+B/, /War Thunder/, /621\.24/, /APK/, /PS5 Pro/, /PSSR/, /Switch 2/, /Ver no YouTube/]) {
+  assert.match(ptSetupText, pattern, `PT setup page is missing ${pattern}`);
 }
+assert.match(ptSetupHtml, /aria-label="Reproduzir vídeo: /, "PT setup page must include localized click-to-load video");
 checkFaq(ptSetupHtml, "pt/como-ativar-dlss-5");
 assert.doesNotMatch(ptSetupHtml, /<iframe/, "PT setup page must not load YouTube before play");
 assert.equal(metadataValue(ptSetupHtml, /<h1[^>]*>([^<]+)<\/h1>/, "PT setup H1"), "Como baixar e ativar o DLSS 5");
+
+console.log("SEO regression checks passed.");
