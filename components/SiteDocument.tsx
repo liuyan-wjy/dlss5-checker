@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SiteFooter, SiteHeader } from "@/components/SiteNavigation";
+import { SiteFooter, SiteHeader, type NavLocale } from "@/components/SiteNavigation";
 import "@/app/globals.css";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
@@ -33,19 +33,22 @@ export const metadata: Metadata = {
   },
 };
 
+export type DocumentLocale = "en" | "pt-BR" | "de" | "ko" | "fr";
+
 export default function SiteDocument({
   children,
   locale = "en",
 }: Readonly<{
   children: React.ReactNode;
-  locale?: "en" | "pt-BR" | "de";
+  locale?: DocumentLocale;
 }>) {
+  const navLocale: NavLocale = locale === "pt-BR" ? "pt" : locale;
   return (
     <html lang={locale} className="dark">
       <body className="antialiased bg-background text-foreground">
-        <SiteHeader locale={locale === "pt-BR" ? "pt" : locale} />
+        <SiteHeader locale={navLocale} />
         {children}
-        <SiteFooter locale={locale === "pt-BR" ? "pt" : locale} />
+        <SiteFooter locale={navLocale} />
         <script
           src="https://plausible-ly-005.pages.dev/js/pa-VclqONE0bFW-1okXx2CnS.js"
           async

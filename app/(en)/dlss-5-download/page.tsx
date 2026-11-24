@@ -16,6 +16,8 @@ export const metadata: Metadata = {
     languages: {
       en: "https://www.dlss5.net/dlss-5-download",
       "pt-BR": "https://www.dlss5.net/pt/como-ativar-dlss-5",
+      de: "https://www.dlss5.net/de/dlss-5-aktivieren",
+      "x-default": "https://www.dlss5.net/dlss-5-download",
     },
   },
   openGraph: { images: [OG_IMAGE_EN], title, description, type: "article", url: "https://www.dlss5.net/dlss-5-download" },
@@ -54,6 +56,7 @@ const gameSettings = [
   },
   {
     game: "Where Winds Meet",
+    href: "/games/where-winds-meet-dlss-5",
     since: "November 23, 2026 (November 24 outside North America)",
     path: "Update the game, then turn on Neural Rendering in the graphics settings",
     toggle: "Not documented",
@@ -156,6 +159,12 @@ export default function Dlss5DownloadPage() {
           NBA 2K27, Hogwarts Legacy, War Thunder and Where Winds Meet have it now.
           There is no universal official installer that adds Neural Rendering to every game.
           This is an independent setup guide, not a download host.
+        </p>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Also in{" "}
+          <Link href="/pt/como-ativar-dlss-5" lang="pt-BR" className="text-blue-400 hover:underline">Português</Link>
+          {" · "}
+          <Link href="/de/dlss-5-aktivieren" lang="de" className="text-blue-400 hover:underline">Deutsch</Link>
         </p>
       </header>
 

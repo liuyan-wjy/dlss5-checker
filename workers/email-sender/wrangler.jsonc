@@ -1,0 +1,12 @@
+{
+  "name": "dlss5-email-sender",
+  "main": "index.js",
+  "compatibility_date": "2026-11-24",
+  "workers_dev": false,
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_sender_addresses": ["alerts@dlss5.net"]
+    }
+  ]
+}

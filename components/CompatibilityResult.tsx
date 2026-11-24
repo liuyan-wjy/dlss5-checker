@@ -8,6 +8,8 @@ import Link from "next/link";
 import GpuNextSteps from "@/components/GpuNextSteps";
 import ShareResult from "@/components/ShareResult";
 import SupportLink from "@/components/SupportLink";
+import UpgradeOptionsCard from "@/components/UpgradeOptionsCard";
+import UpdateAlertForm from "@/components/UpdateAlertForm";
 
 interface CompatibilityResultProps {
   gpu: GPU;
@@ -129,8 +131,8 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
                   Ready Driver (616.64 WHQL or newer). Open Features → Video Settings → DLSS
                   Neural Rendering. Since October 16, 2026 the game uses NVIDIA&apos;s faster
                   DLSS 5 model. These instructions are specific to NBA 2K27; a supported GPU
-                  does not enable DLSS 5 in every game. Hogwarts Legacy is live too, with its own
-                  setting in Display Settings.
+                  does not enable DLSS 5 in every game. Hogwarts Legacy, War Thunder, and
+                  Where Winds Meet are live too, each with its own driver and graphics menu path.
                 </p>
                 <Link href="/games/nba-2k27-dlss-5#how-to-enable" className="inline-block text-blue-400 hover:underline">
                   Follow the NBA 2K27 setup and missing-option checks →
@@ -177,6 +179,23 @@ export default function CompatibilityResult({ gpu }: CompatibilityResultProps) {
             <Link href={gpu.brand === "AMD" ? "/dlss-5-amd" : "/dlss-5-download"} className="inline-flex min-h-11 items-center text-blue-400 hover:underline">
               {gpu.brand === "AMD" ? "DLSS 5 on AMD: local support and cloud options →" : "Official DLSS 5 downloads and setup requirements →"}
             </Link>
+            {(gpu.dlss5_support === "planned" || gpu.dlss5_support === "confirmed") && (
+              <UpdateAlertForm
+                compact
+                defaultTopics={gpu.dlss5_support === "planned" ? ["rtx40", "games"] : ["games"]}
+                sourcePage={`checker:${gpu.id}`}
+                heading={
+                  gpu.dlss5_support === "planned"
+                    ? `Notify me when ${gpu.name.replace(/^NVIDIA GeForce\s+/i, "")} gets official DLSS 5`
+                    : "Notify me when new DLSS 5 games launch"
+                }
+              />
+            )}
+            <UpgradeOptionsCard
+              gpu={gpu}
+              placement={`checker:${gpu.id}`}
+              showCloudOption={gpu.dlss5_support !== "confirmed"}
+            />
             <p className="text-muted-foreground">
               This is a compatibility result, not an FPS prediction. Before buying,
               compare tests of your exact GPU, resolution, and game settings.

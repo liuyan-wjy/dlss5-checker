@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeftRight, Check, ChevronDown, Minus } from "lucide-react";
 import { ALL_GPUS, getGpuById, type GPU } from "@/lib/gpu-search";
 import { compareGpus, shortGpuName } from "@/lib/gpu-compare";
+import UpgradeOptionsCard from "@/components/UpgradeOptionsCard";
 
 const subscribeNever = () => () => {};
 const readSearch = () => window.location.search;
@@ -241,6 +242,16 @@ export default function GpuCompare() {
         Feature support only. This does not predict frame rates;{" "}
         <Link href="/dlss-5-system-requirements#benchmarks" className="text-blue-400 hover:underline">see published tests on the system requirements page.</Link>
       </p>
+
+      <UpgradeOptionsCard
+        gpu={to}
+        placement={`compare:${from.id}-to-${to.id}`}
+        heading={
+          to.dlss5_support === "confirmed"
+            ? `Thinking about upgrading to ${toName}?`
+            : `Compare ${toName} or try DLSS 5 via GeForce NOW`
+        }
+      />
     </section>
   );
 }

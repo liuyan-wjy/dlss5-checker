@@ -16,6 +16,8 @@ export const metadata: Metadata = {
       en: "https://www.dlss5.net/dlss-5-supported-cards",
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-quais-placas",
       de: "https://www.dlss5.net/de/dlss-5-grafikkarten",
+      ko: "https://www.dlss5.net/ko/dlss-5-supported-cards",
+      fr: "https://www.dlss5.net/fr/dlss-5-cartes-compatibles",
       "x-default": "https://www.dlss5.net/dlss-5-supported-cards",
     },
   },
@@ -531,6 +533,14 @@ export default function Dlss5SupportedCardsPage() {
             <Link href="/de/dlss-5-grafikkarten" hrefLang="de" className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors">
               <div className="font-semibold mb-1">German card list</div>
               <p lang="de" className="text-sm text-muted-foreground">Welche Grafikkarten unterstützen DLSS 5?</p>
+            </Link>
+            <Link href="/ko/dlss-5-supported-cards" hrefLang="ko" className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors">
+              <div className="font-semibold mb-1">Korean card list</div>
+              <p lang="ko" className="text-sm text-muted-foreground">DLSS 5 지원 그래픽카드 목록 (RTX 50·40·30)</p>
+            </Link>
+            <Link href="/fr/dlss-5-cartes-compatibles" hrefLang="fr" className="rounded-md border border-border p-4 hover:border-blue-400 transition-colors">
+              <div className="font-semibold mb-1">French card list</div>
+              <p lang="fr" className="text-sm text-muted-foreground">DLSS 5 : quelles cartes graphiques sont compatibles ?</p>
             </Link>
           </div>
         </section>

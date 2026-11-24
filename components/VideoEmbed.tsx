@@ -12,12 +12,15 @@ interface VideoEmbedProps {
   channel: string;
   /** One sentence on why the reader should watch it. */
   caption: string;
-  locale?: "en" | "pt";
+  locale?: "en" | "pt" | "de" | "ko" | "fr";
 }
 
 const copy = {
   en: { play: "Play video", plays: "plays from YouTube", watch: "Watch on YouTube" },
   pt: { play: "Reproduzir vídeo", plays: "reproduz pelo YouTube", watch: "Ver no YouTube" },
+  de: { play: "Video abspielen", plays: "wird über YouTube geladen", watch: "Auf YouTube ansehen" },
+  ko: { play: "영상 재생", plays: "YouTube에서 재생", watch: "YouTube에서 보기" },
+  fr: { play: "Lire la vidéo", plays: "lecture via YouTube", watch: "Voir sur YouTube" },
 } as const;
 
 /**

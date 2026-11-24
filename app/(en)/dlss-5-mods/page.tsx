@@ -139,6 +139,16 @@ export default function Dlss5ModsPage() {
             Live Flow and found substantial gameplay and visual compromises. Automation does not validate every installed component.
           </p>
         </article>
+        <article id="tool-forall" className="space-y-3">
+          <h3 className="text-xl font-semibold text-foreground">What is DLSS 5 for All (dlss5forall)?</h3>
+          <p>
+            Searches for &quot;DLSS 5 for All&quot;, &quot;dlss5forall&quot; and similar all-in-one packs refer to community wrapper
+            bundles aimed at forcing Neural Rendering into older RTX 20, 30 and 40 cards or titles without native support.
+            Like Swapper and Manager, these packages rely on unofficial compatibility shims and unsigned runtime overrides
+            rather than an NVIDIA-authorized release. The name promises broad coverage, but compatibility still varies by
+            game build, driver and graphics API, and every licensing, malware and anti-cheat risk below still applies.
+          </p>
+        </article>
         <article id="tool-desktop" className="space-y-3">
           <h3 className="text-xl font-semibold text-foreground">Whole-desktop tools and other wrappers</h3>
           <p>

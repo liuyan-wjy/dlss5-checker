@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import UpdateAlertForm from "@/components/UpdateAlertForm";
 import { ALL_GPUS, type GPU } from "@/lib/gpu-search";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
@@ -180,6 +181,13 @@ export default function Dlss5Rtx40SeriesPage() {
             </p>
           </div>
         </section>
+
+        <UpdateAlertForm
+          defaultTopics={["rtx40"]}
+          sourcePage="/dlss-5-rtx-40-series"
+          heading="Get notified the day NVIDIA announces RTX 40 DLSS 5"
+          description="We send one concise email only when NVIDIA publishes an official RTX 40 release date or driver path—no rumors, no marketing newsletters."
+        />
 
         <section className="mb-10 space-y-4 text-foreground/80 leading-relaxed">
           <h2 className="text-2xl font-bold text-foreground">What the October update means for RTX 40</h2>

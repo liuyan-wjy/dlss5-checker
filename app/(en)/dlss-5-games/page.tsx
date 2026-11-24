@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import UpdateAlertForm from "@/components/UpdateAlertForm";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
     languages: {
       en: "https://www.dlss5.net/dlss-5-games",
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-jogos",
+      de: "https://www.dlss5.net/de/dlss-5-spiele",
+      "x-default": "https://www.dlss5.net/dlss-5-games",
     },
   },
   openGraph: {
@@ -156,6 +159,7 @@ const announcedGames: AnnouncedGame[] = [
   },
   {
     title: "Where Winds Meet",
+    href: "/games/where-winds-meet-dlss-5",
     publisherSignal: "Everstone Studio",
     status: "Live on RTX 50",
     platform: "Local PC: RTX 50 desktop/laptop and RTX Spark. GeForce NOW Ultimate. RTX 40 not included.",
@@ -257,7 +261,7 @@ const liveGames: Array<{ title: string; href?: string; support: Support[] }> = [
   { title: "NBA 2K27", href: "/games/nba-2k27-dlss-5", support: ["yes", "yes", "yes", "no"] },
   { title: "Hogwarts Legacy", href: "/games/hogwarts-legacy-dlss-5", support: ["yes", "yes", "yes", "no"] },
   { title: "War Thunder", support: ["yes", "yes", "unconfirmed", "no"] },
-  { title: "Where Winds Meet", support: ["yes", "yes", "yes", "no"] },
+  { title: "Where Winds Meet", href: "/games/where-winds-meet-dlss-5", support: ["yes", "yes", "yes", "no"] },
 ];
 
 const SUPPORT_LABEL: Record<Support, { symbol: string; text: string; className: string }> = {
@@ -294,10 +298,10 @@ const setupCards = [
   {
     title: "Where Winds Meet",
     path: "Update the game, then turn on Neural Rendering in the graphics settings",
-    toggle: "No official step-by-step menu path published yet",
+    toggle: "Optional toggle with customizable in-game visual controls",
     driver: "Driver 621.24 or newer",
-    href: "https://www.dsogaming.com/articles/where-winds-meet-has-the-best-official-dlss-5-implementation/",
-    linkLabel: "DSOGaming first test",
+    href: "/games/where-winds-meet-dlss-5#how-to-enable",
+    linkLabel: "Where Winds Meet setup guide",
   },
 ];
 
@@ -383,6 +387,12 @@ export default function Dlss5GamesPage() {
             since November 12, and in Where Winds Meet since November 23. The rest of the list still needs game-specific patch notes and
             visible settings before a title should be called supported.
           </p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Also in{" "}
+            <Link href="/pt/dlss-5-jogos" lang="pt-BR" className="text-blue-400 hover:underline">Português</Link>
+            {" · "}
+            <Link href="/de/dlss-5-spiele" lang="de" className="text-blue-400 hover:underline">Deutsch</Link>
+          </p>
         </header>
 
         <section className="mb-10 grid gap-4 md:grid-cols-3">
@@ -410,6 +420,12 @@ export default function Dlss5GamesPage() {
             </p>
           </div>
         </section>
+
+        <UpdateAlertForm
+          defaultTopics={["games", "rtx40"]}
+          sourcePage="/dlss-5-games"
+          heading="Get notified when new DLSS 5 games go live"
+        />
 
         <section id="live-now" className="mb-10 scroll-mt-24 space-y-6" aria-labelledby="live-now-heading">
           <div>

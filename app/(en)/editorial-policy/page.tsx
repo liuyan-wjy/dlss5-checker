@@ -118,8 +118,9 @@ export default function EditorialPolicyPage() {
           <h2 className="mb-2 text-xl font-bold">Independence</h2>
           <p className="text-sm leading-relaxed text-foreground/80">
             DLSS 5 Checker is not affiliated with NVIDIA. Product names and trademarks belong
-            to their respective owners. We may monetize the site with ads if enabled, but ad
-            placement does not determine compatibility labels.
+            to their respective owners. We may include optional affiliate links to hardware
+            retailers or cloud gaming services, or accept voluntary tips, but commercial links
+            never determine compatibility labels or recommendations.
           </p>
         </div>
       </section>

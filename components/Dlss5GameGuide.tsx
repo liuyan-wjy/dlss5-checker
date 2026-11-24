@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { OG_IMAGE_EN, OG_IMAGE_HOGWARTS } from "@/lib/og-image";
+import ComparisonSlider, { type ComparisonSliderProps } from "@/components/ComparisonSlider";
+import VideoEmbed from "@/components/VideoEmbed";
+import UpdateAlertForm from "@/components/UpdateAlertForm";
+import { OG_IMAGE_EN, OG_IMAGE_HOGWARTS, OG_IMAGE_WHERE_WINDS_MEET } from "@/lib/og-image";
 
-export type Dlss5GameGuideKey = "nba-2k27" | "hogwarts-legacy";
+export type Dlss5GameGuideKey = "nba-2k27" | "hogwarts-legacy" | "where-winds-meet";
 
 type GameGuide = {
   name: string;
@@ -44,6 +47,13 @@ type GameGuide = {
       source: { label: string; href: string };
     };
   }>;
+  video?: {
+    id: string;
+    title: string;
+    channel: string;
+    caption: string;
+  };
+  comparisons?: ComparisonSliderProps[];
   ogImage?: { url: string; width: number; height: number; alt: string };
   faq: Array<{
     question: string;
@@ -91,6 +101,15 @@ const DSOGAMING_HOGWARTS_DLSS5 =
   "https://www.dsogaming.com/articles/hogwarts-legacy-nvidia-dlss-5-benchmarks-comparisons/";
 const PCWORLD_HOGWARTS_DLSS5 =
   "https://www.pcworld.com/article/3277879/nvidias-dlss-5-learned-a-new-spell-for-hogwarts-legacy-restraint.html";
+
+const NVIDIA_DRIVER_62124 =
+  "https://www.nvidia.com/en-us/geforce/news/warhammer-40000-dawn-of-war-4-geforce-rtx-spark-game-ready-driver/";
+const WWM_OFFICIAL_DLSS5 =
+  "https://www.wherewindsmeetgame.com/news/official/1123DLSS5.html";
+const DSOGAMING_WWM_DLSS5 =
+  "https://www.dsogaming.com/articles/where-winds-meet-has-the-best-official-dlss-5-implementation/";
+const GAMEGPU_WWM_DLSS5 =
+  "https://en.gamegpu.com/test-gpu/action-fps-tps/where-winds-meet-benchmarki-videokart-geforce-rtx-50-s-dlss-5";
 
 const NBA_2K_SUPPORT =
   "https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5";
@@ -337,6 +356,50 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       "The update uses NVIDIA's faster October 2026 model, which NVIDIA says needs about half the GPU time of the launch model.",
       "NVIDIA says Avalanche Software used the DLSS 5 SDK controls to keep the game's art style. Neural Rendering is added alongside the game's existing Super Resolution, Multi Frame Generation, and Ray Reconstruction options rather than replacing them.",
     ],
+    comparisons: [
+      {
+        beforeSrc: "/images/comparisons/hogwarts-legacy/scene1-off.webp",
+        afterSrc: "/images/comparisons/hogwarts-legacy/scene1-on.webp",
+        beforeAlt:
+          "Hogwarts Legacy Hogsmeade village square outside Steepley and Sons tea shop with DLSS 5 Off",
+        afterAlt:
+          "Hogwarts Legacy Hogsmeade village square outside Steepley and Sons tea shop with DLSS 5 On",
+        width: 1440,
+        height: 810,
+        caption:
+          "Hogsmeade village square outside Steepley & Sons tea shop: compare cobblestone highlights, warm string-light bounce on stonework, and shadow depth under the tree and statue.",
+        attribution: {
+          capturedBy: "NVIDIA GeForce News",
+          sourceLabel: "NVIDIA GeForce News (official press comparison)",
+          sourceHref: NVIDIA_HOGWARTS_LAUNCH,
+          date: "November 5, 2026",
+          gpu: "GeForce RTX 50 Series",
+          copyrightNotice:
+            "© 2026 NVIDIA Corporation and Warner Bros. Games / Avalanche Software. Official press comparison shown unmodified for editorial reference. NVIDIA, GeForce, and RTX are trademarks of NVIDIA Corporation.",
+        },
+      },
+      {
+        beforeSrc: "/images/comparisons/hogwarts-legacy/scene2-off.webp",
+        afterSrc: "/images/comparisons/hogwarts-legacy/scene2-on.webp",
+        beforeAlt:
+          "Hogwarts Legacy broomstick flight overlooking Hogwarts Castle towers and lakeside cliffs with DLSS 5 Off",
+        afterAlt:
+          "Hogwarts Legacy broomstick flight overlooking Hogwarts Castle towers and lakeside cliffs with DLSS 5 On",
+        width: 1440,
+        height: 810,
+        caption:
+          "Broomstick flight overlooking Hogwarts Castle: compare weathered stone detail across the spires, cloak fabric shading, and reflections across the shadowed lake surface below.",
+        attribution: {
+          capturedBy: "NVIDIA GeForce News",
+          sourceLabel: "NVIDIA GeForce News (official press comparison)",
+          sourceHref: NVIDIA_HOGWARTS_LAUNCH,
+          date: "November 5, 2026",
+          gpu: "GeForce RTX 50 Series",
+          copyrightNotice:
+            "© 2026 NVIDIA Corporation and Warner Bros. Games / Avalanche Software. Official press comparison shown unmodified for editorial reference. NVIDIA, GeForce, and RTX are trademarks of NVIDIA Corporation.",
+        },
+      },
+    ],
     context: [
       "Hogwarts Legacy is a very different test from NBA 2K27. Instead of a brightly lit arena, most of the game happens in candlelit stone halls, dim dungeons, and changing outdoor weather. Neural Rendering works on lighting and materials, so the places to look are how stone, wood, fabric, and skin respond to warm candlelight, and whether dark scenes keep their mood instead of being flattened or brightened.",
       "Faces were the most criticized part of NVIDIA's March 2026 DLSS 5 demo, because the model visibly reshaped characters. Coverage of NVIDIA's updated Hogwarts Legacy comparison images in October described much smaller changes to faces than in March. That matches what the developer controls are for: studios can mask objects and limit how strongly the effect applies. First reviews of the shipped patch agree: PCWorld described the result as restrained, and DSOGaming found Hogsmeade clearly improved but less transformative than it hoped, with thin white outlines around some characters. Check close-ups and character edges in your own scenes before you keep it on.",
@@ -509,6 +572,237 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       {
         label: "PC Games Hardware: Hogwarts Legacy VRAM and ray tracing test",
         href: PCGH_HOGWARTS_TECH,
+      },
+    ],
+  },
+  "where-winds-meet": {
+    name: "Where Winds Meet",
+    canonical: "/games/where-winds-meet-dlss-5",
+    metaTitle: "Where Winds Meet DLSS 5: Driver 621.24, Settings, GPUs & RTX 40",
+    metaDescription:
+      "Where Winds Meet DLSS 5 is live since November 23, 2026 on RTX 50 and RTX Spark with Driver 621.24 WHQL. See setup steps, custom controls, and RTX 40 status.",
+    eyebrow: "Game support guide · Reviewed November 24, 2026",
+    ogImage: OG_IMAGE_WHERE_WINDS_MEET,
+    title: "Where Winds Meet DLSS 5: Driver 621.24, Settings, GPUs & RTX 40",
+    description:
+      "Check how DLSS 5 Neural Rendering works in Where Winds Meet, which NVIDIA Game Ready Driver and GPUs are required, how Everstone Studio tuned the Wuxia art direction, and what RTX 40, RTX 30, and console players should expect.",
+    fastAnswer:
+      "Where Winds Meet supports NVIDIA DLSS 5 3D-guided Neural Rendering as of November 23, 2026 (November 24 in UTC+8 regions) on GeForce RTX 50 Series desktop and laptop GPUs and RTX Spark systems. Both NVIDIA and Everstone Studio name Game Ready Driver 621.24 WHQL as the launch driver. The feature is optional, includes customizable in-game visual controls, and runs alongside the game's existing DLSS Super Resolution and Multi Frame Generation options.",
+    availability:
+      "Live now on GeForce RTX 50 desktop and laptop GPUs and RTX Spark PCs. NVIDIA also includes Where Winds Meet in its November DLSS 5 rollout notes alongside GeForce NOW cloud support where offered. GeForce RTX 40 cards are not included yet; NVIDIA still lists RTX 40 support as planned with no public release date. RTX 30, RTX 20, GTX, AMD, Intel, and PlayStation 5 do not run local DLSS 5.",
+    nextProof:
+      "For local PC play, confirm four things together: an RTX 50 or RTX Spark GPU, NVIDIA Game Ready Driver 621.24 WHQL or newer, the November 23/24 Where Winds Meet client update, and the DLSS 5 Neural Rendering toggle visible inside the in-game graphics settings.",
+    confirmed: [
+      "Where Winds Meet became the fourth live DLSS 5 game on November 23, 2026 (November 24 UTC+8), following NBA 2K27, Hogwarts Legacy, and War Thunder.",
+      "Both NVIDIA's November 11 driver release and Where Winds Meet's official November 23 announcement name GeForce Game Ready Driver 621.24 WHQL.",
+      "Confirmed local hardware is GeForce RTX 50 Series desktop and laptop GPUs and RTX Spark systems; RTX 40 is still not included.",
+      "The update ships with NVIDIA's faster October 2026 Neural Rendering model (NVIDIA cites ~118M parameters, 24% smaller size, ~20% less 4K VRAM, and roughly half the GPU cost of the September launch model).",
+      "Everstone Studio states that players can toggle DLSS 5 on or off freely and use customizable in-game visual settings tailored to hardware and taste.",
+      "Where Winds Meet already includes DLSS Super Resolution and DLSS Multi Frame Generation, and DLSS 5 Neural Rendering is added as a separate visual-fidelity layer rather than replacing frame-rate upscaling.",
+    ],
+    video: {
+      id: "DUp0h7TCeuM",
+      title: "Where Winds Meet | NVIDIA DLSS 5 Reveal",
+      channel: "NVIDIA GeForce",
+      caption:
+        "Official NVIDIA GeForce reveal comparing Wuxia environments, sunlight, materials, and characters with DLSS 5 3D-guided Neural Rendering.",
+    },
+    comparisons: [
+      {
+        beforeSrc: "/images/comparisons/where-winds-meet/courtyard-off.webp",
+        afterSrc: "/images/comparisons/where-winds-meet/courtyard-on.webp",
+        beforeAlt:
+          "Where Winds Meet temple courtyard with autumn maple leaves, lit candles, and hanging red wooden plaques with DLSS 5 Off",
+        afterAlt:
+          "Where Winds Meet temple courtyard with autumn maple leaves, lit candles, and hanging red wooden plaques with DLSS 5 On",
+        width: 1440,
+        height: 810,
+        caption:
+          "Temple courtyard with autumn maple leaves and lit candles: compare warm candlelight falloff on the wooden stand, sunlit stone paths, hanging red plaques, and shadow contrast under the tiled eaves.",
+        attribution: {
+          capturedBy: "NVIDIA GeForce News",
+          sourceLabel: "NVIDIA GeForce News (official press comparison)",
+          sourceHref: NVIDIA_HOGWARTS_LAUNCH,
+          date: "November 5, 2026",
+          gpu: "GeForce RTX 50 Series",
+          copyrightNotice:
+            "© 2026 NVIDIA Corporation and Everstone Studio / NetEase Games. Official press comparison shown unmodified for editorial reference. NVIDIA, GeForce, and RTX are trademarks of NVIDIA Corporation.",
+        },
+      },
+      {
+        beforeSrc: "/images/comparisons/where-winds-meet/forest-off.webp",
+        afterSrc: "/images/comparisons/where-winds-meet/forest-on.webp",
+        beforeAlt:
+          "Where Winds Meet sunlit bamboo forest with mossy carved stone shrines and boulders with DLSS 5 Off",
+        afterAlt:
+          "Where Winds Meet sunlit bamboo forest with mossy carved stone shrines and boulders with DLSS 5 On",
+        width: 1440,
+        height: 810,
+        caption:
+          "Sunlit bamboo forest and mossy carved stone shrines: compare dappled light through the canopy, damp rock surface detail, and layered foliage depth across the clearing.",
+        attribution: {
+          capturedBy: "NVIDIA GeForce News",
+          sourceLabel: "NVIDIA GeForce News (official press comparison)",
+          sourceHref: NVIDIA_HOGWARTS_LAUNCH,
+          date: "November 5, 2026",
+          gpu: "GeForce RTX 50 Series",
+          copyrightNotice:
+            "© 2026 NVIDIA Corporation and Everstone Studio / NetEase Games. Official press comparison shown unmodified for editorial reference. NVIDIA, GeForce, and RTX are trademarks of NVIDIA Corporation.",
+        },
+      },
+    ],
+    context: [
+      "Where Winds Meet presents a distinct test case compared with NBA 2K27's stadium lights or Hogwarts Legacy's stone corridors. Everstone Studio built its open-world Jianghu around misty mountain vistas, rain-washed city alleys, wooden eaves, embroidered silk, leather armor, and shifting sunset lighting. In its November 23 technical post, the studio explicitly framed DLSS 5 around a visual trade-off: adding photorealistic lighting and material depth without erasing the poetic Wuxia art direction.",
+      "That emphasis directly addresses the main criticism aimed at early DLSS 5 previews earlier in 2026, when aggressive neural rendering smoothed or reshaped character faces. Everstone Studio says its art team prioritized character identity, facial expression, and distinct material separation across fabric, leather, and metal over raw visual intensity. When an environment adjustment interfered with a character's face or outfit, the team recalibrated the model configuration to restore balance.",
+      "Under the hood, NVIDIA notes that Where Winds Meet launches directly on the revised October 2026 Neural Rendering model rather than the heavier September launch model. NVIDIA describes that model as roughly 24% smaller (around 118 million parameters) with about 20% lower 4K VRAM usage and about half the GPU time of the first release. Even with those improvements, Everstone Studio openly cautions players that DLSS 5 still carries an additional GPU performance cost.",
+      "Because DLSS 5 Neural Rendering, DLSS Super Resolution, and Multi Frame Generation handle separate jobs, you should evaluate them individually. Neural Rendering alters lighting, shadow contrast, and surface materials; Super Resolution lowers internal render resolution to recover GPU budget; Multi Frame Generation inserts AI frames for smoother displayed motion on RTX 50 hardware. Keeping them conceptually separate makes tuning much easier if your frame rate dips in dense towns or heavy weather.",
+    ],
+    visualAreas: [
+      {
+        title: "Sunlit eaves, shadow transitions, and highlights",
+        detail:
+          "Everstone Studio specifically highlights moving from bright sunlight into the shade of wooden eaves. Check whether blown-out highlights are tamed while shadows keep rich atmospheric depth rather than looking flat.",
+      },
+      {
+        title: "Fabric, leather, metal, and architecture",
+        detail:
+          "Inspect robes, embroidery, leather straps, stone walls, and rain-slick streets. Look for crisp material separation that still matches the painted Wuxia palette instead of looking overly glossy.",
+      },
+      {
+        title: "Character faces and fast combat motion",
+        detail:
+          "Check close-up dialogues and rapid swordplay pans. Confirm that facial likeness stays consistent with DLSS 5 off and that fast motion does not introduce distracting trails around hair or weapons.",
+      },
+    ],
+    playerAdvice: [
+      "Install NVIDIA Game Ready Driver 621.24 WHQL (or a newer official release) through the NVIDIA App or nvidia.com, and apply the official Where Winds Meet patch through Steam or the official PC launcher. Avoid third-party DLL packs or unofficial injectors claiming to unlock DLSS 5 on older cards, especially in an online live-service RPG where modified binaries create security and anti-cheat risks.",
+      "Because Where Winds Meet lets you toggle DLSS 5 on or off and customize its visual style settings, test it in one stable daytime town scene and one night or rain scene before playing combat content. Hold your resolution, graphics preset, and Super Resolution mode constant while toggling DLSS 5 so you can measure the exact FPS cost and judge whether the altered lighting and material response fit your preference.",
+    ],
+    setupSteps: [
+      "Confirm your PC runs a supported local GPU: any GeForce RTX 50 Series desktop or laptop GPU (RTX 5050 through RTX 5090) or an RTX Spark system.",
+      "Install NVIDIA GeForce Game Ready Driver 621.24 WHQL or newer from the NVIDIA App or NVIDIA's official driver download page, then reboot if prompted.",
+      "Update Where Winds Meet to the November 23/24, 2026 build via Steam or the official PC launcher so the native DLSS 5 integration is present.",
+      "Launch the game and open its graphics / display settings menu. Confirm NVIDIA DLSS is enabled as your active upscaling path where required, then turn on DLSS 5 Neural Rendering.",
+      "Adjust the game's customizable DLSS 5 visual style settings to balance Wuxia mood, surface detail, and character likeness, and pair with Super Resolution Balanced or Performance if you want more frame-rate headroom.",
+    ],
+    tradeoffs: [
+      {
+        feature: "DLSS 5 Neural Rendering",
+        role: "Enhances lighting, shadow contrast, and surface materials using 3D-guided neural rendering.",
+        playerCheck:
+          "Compare blown-out highlights, shadowed eaves, silk and leather textures, and character faces against the native look.",
+      },
+      {
+        feature: "DLSS Super Resolution",
+        role: "Renders internally at a lower resolution and reconstructs the output image to recover frame rate.",
+        playerCheck:
+          "Use Quality or Balanced to offset Neural Rendering GPU cost; watch foliage, distant peaks, and UI text clarity.",
+      },
+      {
+        feature: "DLSS Multi Frame Generation",
+        role: "Generates additional displayed frames on RTX 50 hardware for higher motion smoothness.",
+        playerCheck:
+          "Test parry timing and camera responsiveness during combat; keep a healthy base frame rate before enabling higher multipliers.",
+      },
+    ],
+    troubleshooting: [
+      {
+        issue: "DLSS 5 Neural Rendering option is missing",
+        fix: "Verify three items first: your GPU is an RTX 50 Series or RTX Spark model, NVIDIA Driver 621.24 WHQL or newer is installed, and the Where Winds Meet client finished downloading the November 23/24 update.",
+      },
+      {
+        issue: "Option is greyed out on an RTX 50 gaming laptop",
+        fix: "Make sure Windows is not launching the game on integrated graphics. In Windows Settings → System → Display → Graphics, assign Where Winds Meet to High Performance (your RTX 50 GPU) or switch MUX/Optimus mode, then restart the game.",
+      },
+      {
+        issue: "Frame rate drops noticeably with DLSS 5 enabled",
+        fix: "Everstone Studio confirms DLSS 5 adds GPU overhead even with the faster October model. Lower DLSS Super Resolution one tier (for example, Quality to Balanced) or enable Multi Frame Generation rather than assuming something is broken.",
+      },
+      {
+        issue: "Playing on RTX 40, RTX 30, AMD, or PlayStation 5",
+        fix: "Local DLSS 5 will not appear on those systems. RTX 40 remains planned by NVIDIA without a release date, while RTX 30, AMD, and PS5 are not part of local DLSS 5 support. On PC, keep using Super Resolution (RTX 20–40) or Frame Generation (RTX 40), or check GeForce NOW Ultimate availability.",
+      },
+    ],
+    extraSections: [
+      {
+        title: "Performance cost and early independent coverage",
+        paragraphs: [
+          "Everstone Studio has confirmed that DLSS 5 introduces additional performance cost in Where Winds Meet, while NVIDIA notes that the update uses its faster October 2026 model (roughly half the GPU cost of the September debut model and about 20% less VRAM at 4K). Early launch coverage from DSOGaming highlights Where Winds Meet as one of the strongest official DLSS 5 implementations so far, and GameGPU has published initial RTX 50 GPU benchmark runs for the patch.",
+          "As with Hogwarts Legacy (where DSOGaming measured a 20% to 42% frame-rate reduction on an RTX 5090 depending on resolution and upscaling mode), treat DLSS 5 Neural Rendering as a visual-fidelity option with a real GPU budget rather than a free speed boost. Because Where Winds Meet is an open-world RPG with dense foliage, weather, and crowds, pair DLSS 5 with DLSS Super Resolution and, if you like the combat input feel, Multi Frame Generation on RTX 50 cards.",
+        ],
+      },
+      {
+        title: "RTX 40, RTX 30, and PlayStation 5 status",
+        paragraphs: [
+          "Where Winds Meet's November 23 update follows the same hardware boundary as NBA 2K27, Hogwarts Legacy, and War Thunder: GeForce RTX 50 desktop and laptop GPUs plus RTX Spark systems for local play. NVIDIA has reiterated that GeForce RTX 40 Series support is planned after RTX 50 optimization work, but there is still no public release date and no local toggle on RTX 40 cards today.",
+          "RTX 30 and RTX 20 owners have no announced official DLSS 5 plan, though those GPUs can still run DLSS Super Resolution in supported PC settings. PlayStation 5 runs on AMD graphics hardware and cannot run NVIDIA DLSS 5 locally. If you want to test DLSS 5 in supported titles without upgrading your graphics card, GeForce NOW Ultimate on NVIDIA-operated RTX 5080-class cloud rigs remains the only official non-local route, subject to game catalog availability and regional server coverage.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Is DLSS 5 live in Where Winds Meet right now?",
+        answer:
+          "Yes. Both NVIDIA and Everstone Studio announced November 23, 2026 (November 24 in UTC+8 regions) as the launch date for DLSS 5 3D-guided Neural Rendering in Where Winds Meet on GeForce RTX 50 Series GPUs and RTX Spark systems.",
+      },
+      {
+        question: "Which NVIDIA driver do I need for Where Winds Meet DLSS 5?",
+        answer:
+          "Install GeForce Game Ready Driver 621.24 WHQL or a newer official NVIDIA driver. Both NVIDIA's November 11 driver notes and Where Winds Meet's November 23 announcement specifically name version 621.24.",
+      },
+      {
+        question: "Does Where Winds Meet let me customize or turn off DLSS 5?",
+        answer:
+          "Yes. Everstone Studio states that players have full freedom to toggle DLSS 5 on or off and adjust customizable in-game visual style settings to match their hardware and Wuxia art preference.",
+      },
+      {
+        question: "Does Where Winds Meet DLSS 5 work on RTX 40 or RTX 30?",
+        answer:
+          "Not locally. Current official support covers GeForce RTX 50 desktop and laptop GPUs and RTX Spark systems. NVIDIA lists RTX 40 as planned without a public date, and RTX 30 has no announced official DLSS 5 support.",
+      },
+      {
+        question: "Does Where Winds Meet on PS5 get DLSS 5?",
+        answer:
+          "No. PlayStation 5 uses AMD graphics hardware and does not support NVIDIA DLSS 5. DLSS 5 Neural Rendering in Where Winds Meet is a PC feature for supported RTX 50 hardware.",
+      },
+      {
+        question: "Will turning on DLSS 5 in Where Winds Meet reduce my FPS?",
+        answer:
+          "Yes, expect an additional GPU cost. Everstone Studio notes that DLSS 5 improves visual fidelity with extra performance overhead, even with NVIDIA's faster October model. Pair it with DLSS Super Resolution or Multi Frame Generation if you need higher frame rates.",
+      },
+    ],
+    sources: [
+      {
+        label: "Where Winds Meet official announcement: Official DLSS 5 Custom Driver Available Now (Nov 23, 2026)",
+        href: WWM_OFFICIAL_DLSS5,
+      },
+      {
+        label: "NVIDIA: Game Ready Driver 621.24 WHQL for Where Winds Meet DLSS 5",
+        href: NVIDIA_DRIVER_62124,
+      },
+      {
+        label: "NVIDIA: DLSS 5 in Hogwarts Legacy, War Thunder & Where Winds Meet (Nov 5, 2026)",
+        href: NVIDIA_HOGWARTS_LAUNCH,
+      },
+      {
+        label: "NVIDIA: Faster October 2026 DLSS 5 model & RTX Spark details",
+        href: NVIDIA_OCTOBER_MODEL,
+      },
+      {
+        label: "DSOGaming: Where Winds Meet first DLSS 5 test and visual impressions",
+        href: DSOGAMING_WWM_DLSS5,
+      },
+      {
+        label: "GameGPU: Where Winds Meet RTX 50 DLSS 5 benchmarks",
+        href: GAMEGPU_WWM_DLSS5,
+      },
+      {
+        label: "NVIDIA: RTX 40 DLSS 5 support status FAQ",
+        href: NVIDIA_RTX40_UPDATE,
+      },
+      {
+        label: "NVIDIA GeForce NOW memberships and cloud rig overview",
+        href: "https://www.nvidia.com/en-us/geforce-now/memberships/",
       },
     ],
   },
@@ -710,7 +1004,32 @@ export default function Dlss5GameGuide({ gameKey }: { gameKey: Dlss5GameGuideKey
               {paragraph}
             </p>
           ))}
+          {guide.video ? (
+            <VideoEmbed
+              id={guide.video.id}
+              title={guide.video.title}
+              channel={guide.video.channel}
+              caption={guide.video.caption}
+            />
+          ) : null}
         </section>
+
+        {guide.comparisons && guide.comparisons.length > 0 ? (
+          <section id="visual-comparisons" className="mb-10">
+            <h2 className="mb-2 text-2xl font-bold">
+              Visual comparisons: DLSS 5 Off vs On
+            </h2>
+            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+              Drag the slider handle or focus it and press the Left/Right arrow keys to
+              compare NVIDIA&apos;s official GeForce RTX 50 Series press captures. Images
+              are displayed unmodified for editorial reference rather than captures from
+              our own test bench.
+            </p>
+            {guide.comparisons.map((comparison) => (
+              <ComparisonSlider key={comparison.beforeSrc} {...comparison} />
+            ))}
+          </section>
+        ) : null}
 
         <section className="mb-10">
           <h2 className="mb-4 text-2xl font-bold">The visual areas worth testing</h2>
@@ -815,6 +1134,12 @@ export default function Dlss5GameGuide({ gameKey }: { gameKey: Dlss5GameGuideKey
           </p>
         </section>
 
+        <UpdateAlertForm
+          defaultTopics={["games", "rtx40"]}
+          sourcePage={guide.canonical}
+          heading={`Get notified when more DLSS 5 games or RTX 40 support launch`}
+        />
+
         <section className="mb-10 grid gap-3 sm:grid-cols-2">
           <Link
             href="/dlss-5-games"
@@ -825,6 +1150,18 @@ export default function Dlss5GameGuide({ gameKey }: { gameKey: Dlss5GameGuideKey
               Check the full list and the evidence level for each title.
             </p>
           </Link>
+          {gameKey !== "where-winds-meet" && (
+            <Link href="/games/where-winds-meet-dlss-5" className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400">
+              <div className="mb-1 font-semibold">Where Winds Meet DLSS 5 guide</div>
+              <p className="text-sm text-muted-foreground">Live since November 23: Driver 621.24, customizable Wuxia visual tuning, and RTX 40 status.</p>
+            </Link>
+          )}
+          {gameKey !== "hogwarts-legacy" && (
+            <Link href="/games/hogwarts-legacy-dlss-5" className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400">
+              <div className="mb-1 font-semibold">Hogwarts Legacy DLSS 5 guide</div>
+              <p className="text-sm text-muted-foreground">Live since November 5: Display Settings path, Shift+Alt+B toggle, and published RTX 5090 FPS cost.</p>
+            </Link>
+          )}
           {gameKey !== "nba-2k27" && (
             <Link href="/games/nba-2k27-dlss-5" className="rounded-lg border border-border p-4 transition-colors hover:border-blue-400">
               <div className="mb-1 font-semibold">NBA 2K27 DLSS 5 guide</div>
