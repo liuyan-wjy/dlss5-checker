@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 
-const REVIEWED = "2026-11-18";
+const REVIEWED = "2026-11-24";
 const NVIDIA_HOGWARTS = "https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/";
 const NVIDIA_WAR_THUNDER = "https://www.nvidia.com/en-us/geforce/news/war-thunder-dlss-5-3d-guided-neural-rendering-out-now/";
 const NVIDIA_621_24 = "https://www.nvidia.com/en-us/geforce/news/warhammer-40000-dawn-of-war-4-geforce-rtx-spark-game-ready-driver/";
@@ -54,10 +54,10 @@ const gameSettings = [
   },
   {
     game: "Where Winds Meet",
-    since: "Scheduled November 23, 2026",
-    path: "Not published until the update ships",
-    toggle: "Not published",
-    driver: "621.24 WHQL prepares for it",
+    since: "November 23, 2026 (November 24 outside North America)",
+    path: "Update the game, then turn on Neural Rendering in the graphics settings",
+    toggle: "Not documented",
+    driver: "621.24 WHQL or newer",
   },
 ];
 
@@ -153,7 +153,7 @@ export default function Dlss5DownloadPage() {
         <p className="text-lg text-muted-foreground leading-relaxed">
           Get the driver from NVIDIA and the DLSS 5 integration through a supported game.
           For official local use, you currently need an RTX 50 desktop or laptop GPU or an RTX Spark laptop.
-          NBA 2K27, Hogwarts Legacy and War Thunder have it now, and Where Winds Meet follows on November 23.
+          NBA 2K27, Hogwarts Legacy, War Thunder and Where Winds Meet have it now.
           There is no universal official installer that adds Neural Rendering to every game.
           This is an independent setup guide, not a download host.
         </p>
@@ -175,7 +175,7 @@ export default function Dlss5DownloadPage() {
       <section id="game-settings" className="mb-10 scroll-mt-24">
         <h2 className="text-2xl font-bold mb-3">Where to turn on DLSS 5 in each game</h2>
         <p className="mb-4 leading-relaxed text-foreground/80">
-          Every game names and places the setting differently. These are the live and scheduled games as of November 18, 2026,
+          Every game names and places the setting differently. These are the live games as of November 24, 2026,
           taken from NVIDIA&apos;s <a href={NVIDIA_HOGWARTS} className="text-blue-400 hover:underline">Hogwarts Legacy</a> and{" "}
           <a href={NVIDIA_WAR_THUNDER} className="text-blue-400 hover:underline">War Thunder</a> articles and each publisher&apos;s instructions.
         </p>
@@ -318,8 +318,8 @@ export default function Dlss5DownloadPage() {
           </li>
           <li>
             <strong>&quot;Update your driver and DLSS 5 appears in every game.&quot;</strong> The
-            driver is only one of three requirements. As of November 18, 2026, NBA 2K27,
-            Hogwarts Legacy and War Thunder are the only live games.
+            driver is only one of three requirements. As of November 24, 2026, NBA 2K27,
+            Hogwarts Legacy, War Thunder and Where Winds Meet are the only live games.
           </li>
         </ul>
         <p>

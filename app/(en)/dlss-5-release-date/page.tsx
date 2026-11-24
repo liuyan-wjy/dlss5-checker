@@ -131,10 +131,10 @@ const timelineRows = [
   },
   {
     date: "November 23, 2026",
-    signal: "Where Winds Meet (scheduled)",
-    meaning: "NVIDIA dates the update November 23; regional reports put it at November 24 outside North America. Not live yet.",
-    proof: "NVIDIA November update article",
-    href: "https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/",
+    signal: "Where Winds Meet goes live",
+    meaning: "The fourth live DLSS 5 game: November 23 in North America, November 24 elsewhere. RTX 50, RTX Spark and GeForce NOW Ultimate, with driver 621.24.",
+    proof: "DSOGaming first test",
+    href: "https://www.dsogaming.com/articles/where-winds-meet-has-the-best-official-dlss-5-implementation/",
   },
 ];
 
@@ -143,7 +143,7 @@ const gameDates = [
   { game: "NBA 2K27", href: "/games/nba-2k27-dlss-5", date: "September 3, 2026", status: "Live" },
   { game: "Hogwarts Legacy", href: "/games/hogwarts-legacy-dlss-5", date: "November 5, 2026", status: "Live" },
   { game: "War Thunder", date: "November 12, 2026", status: "Live" },
-  { game: "Where Winds Meet", date: "November 23, 2026", status: "Scheduled" },
+  { game: "Where Winds Meet", date: "November 23, 2026", status: "Live" },
   { game: "Starfield", date: "No date", status: "Announced" },
   { game: "Resident Evil Requiem", date: "No date", status: "Announced" },
   { game: "Assassin's Creed Shadows", date: "No date", status: "Announced" },
@@ -206,7 +206,7 @@ const faqItems = [
   {
     question: "When do more games get DLSS 5?",
     answer:
-      "Hogwarts Legacy got DLSS 5 on November 5, 2026 and War Thunder on November 12. Where Winds Meet is next, on November 23. All use the faster October model on RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. Other announced titles have no public date yet.",
+      "Hogwarts Legacy got DLSS 5 on November 5, 2026, War Thunder on November 12 and Where Winds Meet on November 23. All use the faster October model on RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. Other announced titles have no public date yet.",
   },
   {
     question: "Is there a release date for DLSS 5 on RTX 40?",
@@ -275,7 +275,7 @@ export default function Dlss5ReleaseDatePage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Last checked November 18, 2026
+            Last checked November 24, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             DLSS 5 Release Date: September 2026 Launch Status
@@ -306,8 +306,8 @@ export default function Dlss5ReleaseDatePage() {
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Still missing</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              RTX 40 support is planned but still has no date. Where Winds Meet is due on
-              November 23; most other announced games have no date yet.
+              RTX 40 support is planned but still has no date, and most other announced
+              games have no date yet.
             </p>
           </div>
         </section>
@@ -417,8 +417,7 @@ export default function Dlss5ReleaseDatePage() {
           <p>
             The October update is the first sign of the rollout pattern. NVIDIA improved
             the model first, shipped it in the one live game, and only then dated the next
-            titles. Hogwarts Legacy followed on November 5 and War Thunder on November 12, and
-            Where Winds Meet is next, so a scheduled
+            titles. Hogwarts Legacy, War Thunder and Where Winds Meet followed in November, so a scheduled
             date for another game is more likely to come from a similar NVIDIA update than
             from a publisher patch note appearing without warning.
           </p>
@@ -427,8 +426,7 @@ export default function Dlss5ReleaseDatePage() {
         <section className="mb-10 rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-5">
           <h2 className="text-xl font-bold mb-3">What would change this page?</h2>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            The next meaningful updates would be Where Winds Meet going live on
-            November 23, RTX 40 availability details, another dated game, or a revised NVIDIA
+            The next meaningful updates would be RTX 40 availability details, another dated game, or a revised NVIDIA
             support matrix. A rumor, preview video,
             or DLL download is not enough.
           </p>

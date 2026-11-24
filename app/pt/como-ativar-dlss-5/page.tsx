@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   twitter: { card: "summary", title, description },
 };
 
-const REVIEWED = "2026-11-18";
+const REVIEWED = "2026-11-24";
 
 const jogos = [
   { jogo: "NBA 2K27", href: "/games/nba-2k27-dlss-5", desde: "3 de setembro de 2026", menu: "Features → Video Settings → DLSS Neural Rendering", atalho: "F9", driver: "616.64 WHQL ou mais novo" },
   { jogo: "Hogwarts Legacy", href: "/games/hogwarts-legacy-dlss-5", desde: "5 de novembro de 2026", menu: "Game Settings → Display Settings → Upscale Type: NVIDIA DLSS → Neural Rendering", atalho: "Shift+Alt+B", driver: "621.14 WHQL ou mais novo" },
   { jogo: "War Thunder", desde: "12 de novembro de 2026", menu: "Atualize para o cliente Eagle's Shadow e procure Neural Rendering nas opções gráficas", atalho: "Não documentado", driver: "Driver Game Ready atual" },
-  { jogo: "Where Winds Meet", desde: "Previsto para 23 de novembro de 2026", menu: "Ainda não publicado", atalho: "Ainda não publicado", driver: "621.24 WHQL prepara o PC" },
+  { jogo: "Where Winds Meet", desde: "23 de novembro de 2026 (24 fora da América do Norte)", menu: "Atualize o jogo e ative Neural Rendering nas opções gráficas", atalho: "Não documentado", driver: "621.24 WHQL ou mais novo" },
 ];
 
 const problemas = [
@@ -87,7 +87,7 @@ export default function ComoAtivarDlss5Page() {
         <p className="text-lg text-muted-foreground leading-relaxed">
           Baixe o driver pela NVIDIA e obtenha a integração do DLSS 5 pela atualização de um jogo compatível.
           Para usar o recurso oficialmente no próprio computador, você precisa hoje de uma RTX 50 de desktop ou notebook, ou de um notebook RTX Spark.
-          NBA 2K27, Hogwarts Legacy e War Thunder já têm o recurso, e Where Winds Meet recebe em 23 de novembro.
+          NBA 2K27, Hogwarts Legacy, War Thunder e Where Winds Meet já têm o recurso.
           Não existe um instalador oficial universal que adicione
           Neural Rendering a qualquer jogo. Este site é um guia independente, não um distribuidor de drivers.
         </p>

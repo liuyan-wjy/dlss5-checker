@@ -6,8 +6,8 @@ import { OG_IMAGE_DE } from "@/lib/og-image";
 const PAGE_URL = "https://www.dlss5.net/de/dlss-5-grafikkarten";
 const TITLE = "DLSS 5: Welche Grafikkarten werden unterstützt? [2026]";
 const DESCRIPTION = "Welche Grafikkarten unterstützen DLSS 5? RTX 50 und RTX Spark sind bestätigt, RTX 40 ist geplant. Status und Unterschiede zu DLSS 4.5 im Überblick.";
-const CHECKED = "2026-11-06";
-const CHECKED_LABEL = "6. November 2026";
+const CHECKED = "2026-11-24";
+const CHECKED_LABEL = "24. November 2026";
 
 const SOURCES = {
   launch: "https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/",
@@ -163,7 +163,7 @@ const faqItems = [
   },
   {
     question: "Welche Spiele unterstützen DLSS 5?",
-    answer: "Aktuell NBA 2K27, seit dem 5. November 2026 Hogwarts Legacy und seit dem 12. November War Thunder. Where Winds Meet folgt am 23. November. Weitere Titel wie Starfield und Resident Evil Requiem sind angekündigt, aber noch nicht verfügbar.",
+    answer: "Aktuell NBA 2K27, seit dem 5. November 2026 Hogwarts Legacy seit dem 12. November War Thunder und seit dem 23. November Where Winds Meet. Weitere Titel wie Starfield und Resident Evil Requiem sind angekündigt, aber noch nicht verfügbar.",
   },
   {
     question: "Wie viele FPS kostet DLSS 5?",
@@ -386,8 +386,8 @@ export default function GermanSupportedCardsPage() {
                 <p className="mt-1 leading-relaxed text-foreground/80">Kam mit dem großen Update „Eagle&apos;s Shadow“ für RTX 50 und RTX Spark. Spiel-Client aktualisieren, dann findest du Neural Rendering in den Grafikeinstellungen.</p>
               </li>
               <li className="rounded-lg border border-border p-4">
-                <p className="font-semibold">Where Winds Meet <span className="ml-1 text-sm font-medium text-yellow-400">23. November 2026</span></p>
-                <p className="mt-1 leading-relaxed text-foreground/80">Von NVIDIA für den 23. November angekündigt, außerhalb Nordamerikas teils erst am 24. November.</p>
+                <p className="font-semibold">Where Winds Meet <span className="ml-1 text-sm font-medium text-green-400">verfügbar seit 23. November 2026</span></p>
+                <p className="mt-1 leading-relaxed text-foreground/80">Außerhalb Nordamerikas seit dem 24. November. Für RTX 50, RTX Spark und GeForce NOW Ultimate, mit Treiber 621.24 oder neuer. Nach dem Update Neural Rendering in den Grafikeinstellungen einschalten.</p>
               </li>
             </ul>
             <p className="mt-4 leading-relaxed text-foreground/80">

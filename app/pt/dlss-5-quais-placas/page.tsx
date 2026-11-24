@@ -397,8 +397,8 @@ export default function PtDlss5QuaisPlacasPage() {
           </ol>
           <h3 className="text-lg font-semibold text-foreground">Vale trocar de placa só pelo DLSS 5?</h3>
           <p>
-            Em 18 de novembro de 2026, só NBA 2K27, Hogwarts Legacy e War Thunder tinham DLSS 5, com Where Winds Meet
-            previsto para 23 de novembro. Se você não joga nenhum deles, o DLSS 5 sozinho é um motivo fraco para comprar
+            Em 24 de novembro de 2026, só NBA 2K27, Hogwarts Legacy, War Thunder e Where Winds Meet
+            tinham DLSS 5. Se você não joga nenhum deles, o DLSS 5 sozinho é um motivo fraco para comprar
             uma placa. Para só conhecer o efeito, um mês de GeForce NOW Ultimate custa menos que uma RTX 50. Se o objetivo é
             mais FPS, Frame Generation (RTX 40 ou 50) ajuda mais do que o DLSS 5, que consome desempenho.
           </p>
