@@ -10,6 +10,12 @@
       "database_id": "0b292a3d-3d49-46d8-8205-f5771f98a397"
     }
   ],
+  "services": [
+    {
+      "binding": "EMAIL_SERVICE",
+      "service": "dlss5-email-sender"
+    }
+  ],
   "vars": {
     "NODE_VERSION": "22",
     "CLOUDFLARE_ACCOUNT_ID": "0055078a87a861880dc03e3eb67980a0",

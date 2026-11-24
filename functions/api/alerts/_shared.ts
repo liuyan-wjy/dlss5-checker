@@ -110,9 +110,9 @@ export interface OutboundEmail {
 
 /**
  * Sends a transactional email through Cloudflare Email Service:
- * 1) Prefers the native `env.EMAIL` send_email binding when configured.
- * 2) Falls back to Cloudflare Email Sending REST API (`CLOUDFLARE_ACCOUNT_ID` + `CLOUDFLARE_EMAIL_API_TOKEN`),
- *    which works out of the box from Cloudflare Pages Functions.
+ * 1) Prefers the private `env.EMAIL_SERVICE` Worker Service Binding (`dlss5-email-sender` with native `send_email` binding — zero API tokens required).
+ * 2) Supports a direct `env.EMAIL` native `send_email` binding when running directly on Workers.
+ * 3) Falls back to Cloudflare Email Sending REST API (`CLOUDFLARE_ACCOUNT_ID` + `CLOUDFLARE_EMAIL_API_TOKEN`).
  */
 export async function sendCloudflareEmail(
   env: AlertsEnv,
@@ -122,12 +122,48 @@ export async function sendCloudflareEmail(
   const senderName = "DLSS 5 Checker";
   const replyToAddress = "support@dlss5.net";
   const headers: Record<string, string> = {};
-  if (message.unsubscribeUrl) {
+  if (message.unsubscribeUrl && message.unsubscribeUrl.startsWith("https://")) {
     headers["List-Unsubscribe"] = `<${message.unsubscribeUrl}>`;
     headers["List-Unsubscribe-Post"] = "List-Unsubscribe=One-Click";
   }
 
-  // 1) Native Workers/Pages send_email binding (uses `email` key and `replyTo`).
+  // 1) Private Service Binding to `dlss5-email-sender` Worker (native send_email binding, no API tokens).
+  if (env.EMAIL_SERVICE && typeof env.EMAIL_SERVICE.fetch === "function") {
+    try {
+      const res = await env.EMAIL_SERVICE.fetch("https://dlss5-email-sender.internal/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          from: { email: fromAddress, name: senderName },
+          to: message.to,
+          replyTo: replyToAddress,
+          subject: message.subject,
+          html: message.html,
+          text: message.text,
+          ...(Object.keys(headers).length ? { headers } : {}),
+        }),
+      });
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        messageId?: string | null;
+        error?: string;
+      };
+      if (!res.ok || data.ok === false) {
+        return {
+          ok: false,
+          error: data.error || `Email service worker error (HTTP ${res.status})`,
+        };
+      }
+      return { ok: true, messageId: data.messageId ?? undefined };
+    } catch (err) {
+      return {
+        ok: false,
+        error: err instanceof Error ? err.message : "Email service binding request failed",
+      };
+    }
+  }
+
+  // 2) Direct native Workers send_email binding (uses `email` key and `replyTo`).
   if (env.EMAIL && typeof env.EMAIL.send === "function") {
     try {
       const result = await env.EMAIL.send({
@@ -148,7 +184,7 @@ export async function sendCloudflareEmail(
     }
   }
 
-  // 2) Cloudflare Email Sending REST API (uses `address` key and snake_case `reply_to`).
+  // 3) Cloudflare Email Sending REST API fallback (uses `address` key and snake_case `reply_to`).
   if (env.CLOUDFLARE_ACCOUNT_ID && env.CLOUDFLARE_EMAIL_API_TOKEN) {
     try {
       const res = await fetch(
@@ -190,6 +226,6 @@ export async function sendCloudflareEmail(
 
   return {
     ok: false,
-    error: "Email service is not configured yet (missing EMAIL binding or CLOUDFLARE_EMAIL_API_TOKEN).",
+    error: "Email service is not configured yet (missing EMAIL_SERVICE, EMAIL binding, or CLOUDFLARE_EMAIL_API_TOKEN).",
   };
 }

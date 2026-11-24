@@ -36,8 +36,13 @@ export interface SendEmailBinding {
   send(message: SendEmailMessage): Promise<SendEmailResult>;
 }
 
+export interface ServiceBinding {
+  fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
+}
+
 export interface AlertsEnv {
   DB?: D1Database;
+  EMAIL_SERVICE?: ServiceBinding;
   EMAIL?: SendEmailBinding;
   CLOUDFLARE_ACCOUNT_ID?: string;
   CLOUDFLARE_EMAIL_API_TOKEN?: string;
