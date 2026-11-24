@@ -20,7 +20,12 @@ const newRoutes = [
   "dlss-4-5-ray-reconstruction",
   "games/nba-2k27-dlss-5",
   "de/dlss-5-grafikkarten",
+  "de/dlss-5-spiele",
+  "de/dlss-5-aktivieren",
+  "ko/dlss-5-supported-cards",
+  "fr/dlss-5-cartes-compatibles",
   "games/hogwarts-legacy-dlss-5",
+  "games/where-winds-meet-dlss-5",
   "dlss-5-rtx-30-series",
   "dlss-5-ps5",
 ];
@@ -46,8 +51,8 @@ const removedRoutes = {
   "gpu/rtx-4070": "/dlss-5-rtx-40-series",
   "gpu/rtx-4080": "/dlss-5-rtx-40-series",
   "gpu/rtx-5090": "/dlss-5-supported-cards",
-  "gpu/rtx-3070": "/dlss-supported-cards",
-  "gpu/rtx-3060": "/dlss-supported-cards",
+  "gpu/rtx-3070": "/dlss-5-rtx-30-series",
+  "gpu/rtx-3060": "/dlss-5-rtx-30-series",
   "pt/gpu/rtx-4070": "/pt/dlss-5-quais-placas",
   "pt/gpu/rtx-4080": "/pt/dlss-5-quais-placas",
   "pt/gpu/rtx-4090": "/pt/dlss-5-quais-placas",
@@ -227,7 +232,15 @@ for (const html of generatedPages) {
   const canonical = html.match(/<link rel="canonical" href="https:\/\/www\.dlss5\.net([^\"]*)"/);
   if (!canonical || /<title>404:/.test(html)) continue;
   const route = canonical[1];
-  const language = /^\/pt(?:\/|$)/.test(route) ? "pt-BR" : /^\/de(?:\/|$)/.test(route) ? "de" : "en";
+  const language = /^\/pt(?:\/|$)/.test(route)
+    ? "pt-BR"
+    : /^\/de(?:\/|$)/.test(route)
+      ? "de"
+      : /^\/ko(?:\/|$)/.test(route)
+        ? "ko"
+        : /^\/fr(?:\/|$)/.test(route)
+          ? "fr"
+          : "en";
   assert.match(html, new RegExp(`<html[^>]*lang="${language}"`), `${route || "/"} must declare its language in the exported HTML`);
   if (language === "pt-BR") {
     assert.match(html, /aria-label="Navegação principal"/);
@@ -285,7 +298,16 @@ for (const html of generatedPages) {
 
 for (const route of [...new Set([...newRoutes, ...refreshedRoutes, ...compatibilityRoutes])]) {
   const html = readRoute(route);
-  const language = route.startsWith("pt/") || route === "pt" ? "pt-BR" : route.startsWith("de/") ? "de" : "en";
+  const language =
+    route.startsWith("pt/") || route === "pt"
+      ? "pt-BR"
+      : route.startsWith("de/")
+        ? "de"
+        : route.startsWith("ko/")
+          ? "ko"
+          : route.startsWith("fr/")
+            ? "fr"
+            : "en";
   assert.match(html, new RegExp(`<html[^>]*lang="${language}"`), `${route} exported language`);
   const title = metadataValue(html, /<title>([^<]+)<\/title>/, `${route} title`);
   const canonical = metadataValue(
@@ -400,10 +422,13 @@ for (const route of [...compatibilityRoutes, ...newRoutes]) {
   );
 }
 
-// WP5 restores exactly one German page, with owner-approved metadata and reciprocal alternates.
+// German cluster: cards guide + games tracker + setup guide.
 const germanRoute = "de/dlss-5-grafikkarten";
 const germanHtml = readRoute(germanRoute);
-assert.deepEqual(fs.readdirSync(path.join(appOutput, "de"), { recursive: true }).filter((file) => file.endsWith(".html")), ["dlss-5-grafikkarten.html"]);
+assert.deepEqual(
+  fs.readdirSync(path.join(appOutput, "de"), { recursive: true }).filter((file) => file.endsWith(".html")).sort(),
+  ["dlss-5-aktivieren.html", "dlss-5-grafikkarten.html", "dlss-5-spiele.html"],
+);
 assert.equal(decodeHtml(metadataValue(germanHtml, /<title>([^<]+)<\/title>/, "German title")), "DLSS 5: Welche Grafikkarten werden unterstützt? [2026]");
 assert.equal(decodeHtml(metadataValue(germanHtml, /<meta name="description" content="([^"]+)"/, "German description")), "Welche Grafikkarten unterstützen DLSS 5? RTX 50 und RTX Spark sind bestätigt, RTX 40 ist geplant. Status und Unterschiede zu DLSS 4.5 im Überblick.");
 assert.equal(visibleText(metadataValue(germanHtml, /<h1[^>]*>([\s\S]*?)<\/h1>/, "German H1")), "Welche Grafikkarten unterstützen DLSS 5?");
@@ -422,9 +447,17 @@ for (const [language, target] of [
   ["en", "dlss-5-supported-cards"],
   ["pt-BR", "pt/dlss-5-quais-placas"],
   ["de", germanRoute],
+  ["ko", "ko/dlss-5-supported-cards"],
+  ["fr", "fr/dlss-5-cartes-compatibles"],
   ["x-default", "dlss-5-supported-cards"],
 ]) {
-  for (const route of ["dlss-5-supported-cards", "pt/dlss-5-quais-placas", germanRoute]) {
+  for (const route of [
+    "dlss-5-supported-cards",
+    "pt/dlss-5-quais-placas",
+    germanRoute,
+    "ko/dlss-5-supported-cards",
+    "fr/dlss-5-cartes-compatibles",
+  ]) {
     assert.ok(readRoute(route).includes(`hrefLang="${language}" href="https://www.dlss5.net/${target}"`), `${route} must reciprocate ${language} hreflang`);
     if (route !== target && language !== "x-default") {
       assert.ok(readRoute(route).includes(`href="/${target}"`), `${route} must visibly link its ${language} counterpart`);
@@ -579,8 +612,16 @@ assert.ok(
 // Every indexable page carries the shared 1200x630 preview image in its language.
 for (const [route, html] of generatedPages.map((html, i) => [i, html])) {
   if (/<title>Page not found/.test(html)) continue;
-  const imageLanguage = /<html[^>]*lang="pt-BR"/.test(html) ? "pt" : /<html[^>]*lang="de"/.test(html) ? "de" : "en";
-  const pageImages = ["og/hogwarts-legacy-dlss-5.png"];
+  const imageLanguage = /<html[^>]*lang="pt-BR"/.test(html)
+    ? "pt"
+    : /<html[^>]*lang="de"/.test(html)
+      ? "de"
+      : /<html[^>]*lang="ko"/.test(html)
+        ? "ko"
+        : /<html[^>]*lang="fr"/.test(html)
+          ? "fr"
+          : "en";
+  const pageImages = ["og/hogwarts-legacy-dlss-5.png", "og/where-winds-meet-dlss-5.png"];
   assert.ok(
     html.includes(`<meta property="og:image" content="https://www.dlss5.net/og/dlss5-checker-${imageLanguage}.png"`) ||
       (imageLanguage === "en" && pageImages.some((image) => html.includes(`<meta property="og:image" content="https://www.dlss5.net/${image}"`))),
@@ -694,5 +735,61 @@ assert.match(ptSetupHtml, /aria-label="Reproduzir vídeo: /, "PT setup page must
 checkFaq(ptSetupHtml, "pt/como-ativar-dlss-5");
 assert.doesNotMatch(ptSetupHtml, /<iframe/, "PT setup page must not load YouTube before play");
 assert.equal(metadataValue(ptSetupHtml, /<h1[^>]*>([^<]+)<\/h1>/, "PT setup H1"), "Como baixar e ativar o DLSS 5");
+
+// November 24 expansion: Where Winds Meet guide, DLSS 5 for All mods coverage, DE cluster, KO & FR pilots, alerts & retailer card.
+const wwmHtml = readRoute("games/where-winds-meet-dlss-5");
+const wwmText = visibleText(wwmHtml);
+for (const pattern of [/621\.24/, /November 23, 2026/, /RTX 50/, /RTX Spark/, /RTX 40/, /Everstone Studio/, /Where Winds Meet/]) {
+  assert.match(wwmText, pattern, `Where Winds Meet guide is missing ${pattern}`);
+}
+assert.match(wwmHtml, /aria-label="Play video: Where Winds Meet \| NVIDIA DLSS 5 Reveal"/);
+assert.doesNotMatch(wwmHtml, /<iframe/, "Where Winds Meet guide must not load YouTube before play");
+assert.match(wwmHtml, /og:image" content="https:\/\/www\.dlss5\.net\/og\/where-winds-meet-dlss-5\.png"/);
+for (const route of ["dlss-5-games", "guides", "index", "dlss-5-download", "dlss-5-release-date"]) {
+  assert.match(readRoute(route), /href="\/games\/where-winds-meet-dlss-5"/, `${route} must link to the Where Winds Meet guide`);
+}
+assert.match(visibleText(readRoute("dlss-5-mods")), /What is DLSS 5 for All \(dlss5forall\)\?/);
+
+for (const [pngName, expectedW, expectedH] of [
+  ["where-winds-meet-dlss-5.png", 1200, 630],
+  ["dlss5-checker-ko.png", 1200, 630],
+  ["dlss5-checker-fr.png", 1200, 630],
+]) {
+  const buf = fs.readFileSync(path.join(appOutput, "og", pngName));
+  assert.equal(buf.subarray(1, 4).toString(), "PNG", `${pngName} must be a PNG`);
+  assert.equal(buf.readUInt32BE(16), expectedW, `${pngName} width`);
+  assert.equal(buf.readUInt32BE(20), expectedH, `${pngName} height`);
+}
+
+for (const [route, locale, navAria] of [
+  ["de/dlss-5-spiele", "de_DE", "Hauptnavigation"],
+  ["de/dlss-5-aktivieren", "de_DE", "Hauptnavigation"],
+  ["ko/dlss-5-supported-cards", "ko_KR", "주요 메뉴"],
+  ["fr/dlss-5-cartes-compatibles", "fr_FR", "Navigation principale"],
+]) {
+  const html = readRoute(route);
+  assert.match(html, new RegExp(`<meta property="og:locale" content="${locale}"`), `${route} og:locale`);
+  assert.match(html, new RegExp(`aria-label="${navAria}"`), `${route} nav aria-label`);
+  assert.doesNotMatch(html, /<iframe/, `${route} must not preload YouTube iframes`);
+  checkFaq(html, route);
+}
+for (const route of ["ko/dlss-5-supported-cards", "fr/dlss-5-cartes-compatibles"]) {
+  const html = readRoute(route);
+  assert.equal((html.match(/data-gpu-id=/g) || []).length, germanGpuData.length, `${route} must render all GPUs once`);
+}
+for (const [enRoute, ptRoute, deRoute] of [
+  ["dlss-5-games", "pt/dlss-5-jogos", "de/dlss-5-spiele"],
+  ["dlss-5-download", "pt/como-ativar-dlss-5", "de/dlss-5-aktivieren"],
+]) {
+  for (const route of [enRoute, ptRoute, deRoute]) {
+    const html = readRoute(route);
+    assert.ok(html.includes(`hrefLang="en" href="https://www.dlss5.net/${enRoute}"`), `${route} en hreflang`);
+    assert.ok(html.includes(`hrefLang="pt-BR" href="https://www.dlss5.net/${ptRoute}"`), `${route} pt-BR hreflang`);
+    assert.ok(html.includes(`hrefLang="de" href="https://www.dlss5.net/${deRoute}"`), `${route} de hreflang`);
+  }
+}
+assert.match(readRoute("dlss-5-rtx-40-series"), /placeholder="you@example\.com"/, "RTX 40 page must render the alert form");
+assert.match(readRoute("dlss-5-games"), /placeholder="you@example\.com"/, "Games page must render the alert form");
+assert.match(compareSection, /Check RTX 5070 on Amazon/, "GPU comparer must render upgrade retailer options");
 
 console.log("SEO regression checks passed.");

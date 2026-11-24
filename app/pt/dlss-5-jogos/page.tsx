@@ -12,6 +12,8 @@ export const metadata: Metadata = {
     languages: {
       en: "https://www.dlss5.net/dlss-5-games",
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-jogos",
+      de: "https://www.dlss5.net/de/dlss-5-spiele",
+      "x-default": "https://www.dlss5.net/dlss-5-games",
     },
   },
   openGraph: {

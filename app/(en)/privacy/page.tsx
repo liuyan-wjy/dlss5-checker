@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-16">
       <h1 className="text-3xl font-bold mb-8">Privacy Policy</h1>
-      <p className="text-muted-foreground text-sm mb-8">Last updated: October 31, 2026</p>
+      <p className="text-muted-foreground text-sm mb-8">Last updated: November 24, 2026</p>
 
       <div className="space-y-8 text-foreground/80 leading-relaxed">
         <section>
@@ -25,6 +25,14 @@ export default function PrivacyPage() {
             feature and does not ask for your name or email address. If you contact the
             publisher by email, we receive the address, message, and any information you
             choose to include so we can answer the request or review a correction.
+          </p>
+          <p className="mt-3">
+            If you voluntarily opt in to official DLSS 5 status alerts (for example, RTX 40
+            rollout updates or newly released DLSS 5 game patches), we store your email
+            address, chosen alert topics, language preference, and double opt-in confirmation
+            status in Cloudflare D1 and send transactional alert emails through Cloudflare
+            Email Service. We never sell or share subscriber addresses with third-party
+            advertisers, and every email includes a one-click unsubscribe link.
           </p>
         </section>
 
@@ -140,7 +148,11 @@ export default function PrivacyPage() {
           <p>
             Articles link to NVIDIA, game publishers, hardware vendors, and other external
             sources. Visiting an external link sends you to a separate service with its own
-            privacy practices. DLSS 5 Checker does not control those sites.
+            privacy practices. DLSS 5 Checker does not control those sites. Some links to
+            retailers or cloud gaming services may include affiliate tracking parameters
+            (marked with rel=&quot;sponsored&quot; when active), which may earn a small
+            commission at no extra cost to you if you make a purchase on the retailer&apos;s
+            site.
           </p>
           <p className="mt-3">
             Some guides include official videos from YouTube. Nothing is loaded from YouTube when you

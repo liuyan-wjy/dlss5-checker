@@ -13,7 +13,12 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/pt/como-ativar-dlss-5",
-    languages: { en: "https://www.dlss5.net/dlss-5-download", "pt-BR": "https://www.dlss5.net/pt/como-ativar-dlss-5" },
+    languages: {
+      en: "https://www.dlss5.net/dlss-5-download",
+      "pt-BR": "https://www.dlss5.net/pt/como-ativar-dlss-5",
+      de: "https://www.dlss5.net/de/dlss-5-aktivieren",
+      "x-default": "https://www.dlss5.net/dlss-5-download",
+    },
   },
   openGraph: { images: [OG_IMAGE_PT], title, description, type: "article", locale: "pt_BR", url: "https://www.dlss5.net/pt/como-ativar-dlss-5" },
   twitter: { card: "summary", title, description },

@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "dlss5-checker",
+  "compatibility_date": "2026-11-24",
+  "pages_build_output_dir": "out",
+  // Replace database_id after running: npx wrangler d1 create dlss5-alerts
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "dlss5-alerts",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID"
+    }
+  ],
+  "vars": {
+    "SITE_ORIGIN": "https://www.dlss5.net",
+    "ALERT_FROM_EMAIL": "alerts@dlss5.net"
+  }
+}

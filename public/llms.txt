@@ -42,6 +42,15 @@
 
 - [NBA 2K27 DLSS 5](https://www.dlss5.net/games/nba-2k27-dlss-5): live RTX 50 support, 616.64 WHQL driver, Video Settings > DLSS Neural Rendering, F9 toggle, and missing-option checks.
 - [Hogwarts Legacy DLSS 5](https://www.dlss5.net/games/hogwarts-legacy-dlss-5): live since November 5, 2026 on RTX 50, RTX Spark and GeForce NOW Ultimate; driver 621.14; Game Settings > Display Settings > Upscale Type: NVIDIA DLSS > Neural Rendering; Shift+Alt+B toggle; DSOGaming RTX 5090 test (20–42% lower FPS).
+- [Where Winds Meet DLSS 5](https://www.dlss5.net/games/where-winds-meet-dlss-5): live since November 23, 2026 (November 24 outside North America) on RTX 50, RTX Spark and GeForce NOW Ultimate; driver 621.24 WHQL; optional Neural Rendering toggle and customizable in-game visual controls.
+
+## German, Korean, and French Pages
+
+- [DLSS 5 Grafikkarten (Deutsch)](https://www.dlss5.net/de/dlss-5-grafikkarten): German GPU compatibility guide for RTX 50, RTX 40, RTX 30, GTX, AMD, and Intel.
+- [DLSS 5 Spiele-Liste (Deutsch)](https://www.dlss5.net/de/dlss-5-spiele): German tracker for the four live DLSS 5 games and announced titles.
+- [DLSS 5 aktivieren (Deutsch)](https://www.dlss5.net/de/dlss-5-aktivieren): German driver, game-menu setup, and troubleshooting guide.
+- [DLSS 5 지원 그래픽카드 (한국어)](https://www.dlss5.net/ko/dlss-5-supported-cards): Korean GPU compatibility guide covering RTX 50, RTX 40, RTX 30, RTX 20, GTX, AMD, and Intel.
+- [DLSS 5 cartes compatibles (Français)](https://www.dlss5.net/fr/dlss-5-cartes-compatibles): French GPU compatibility guide covering RTX 50, RTX 40, RTX 30, RTX 20, GTX, AMD, and Intel.
 
 ## Portuguese Pages
 

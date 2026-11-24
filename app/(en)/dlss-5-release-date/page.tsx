@@ -143,7 +143,7 @@ const gameDates = [
   { game: "NBA 2K27", href: "/games/nba-2k27-dlss-5", date: "September 3, 2026", status: "Live" },
   { game: "Hogwarts Legacy", href: "/games/hogwarts-legacy-dlss-5", date: "November 5, 2026", status: "Live" },
   { game: "War Thunder", date: "November 12, 2026", status: "Live" },
-  { game: "Where Winds Meet", date: "November 23, 2026", status: "Live" },
+  { game: "Where Winds Meet", href: "/games/where-winds-meet-dlss-5", date: "November 23, 2026", status: "Live" },
   { game: "Starfield", date: "No date", status: "Announced" },
   { game: "Resident Evil Requiem", date: "No date", status: "Announced" },
   { game: "Assassin's Creed Shadows", date: "No date", status: "Announced" },

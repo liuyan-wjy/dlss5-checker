@@ -136,6 +136,11 @@ const guideGroups = [
         title: "Hogwarts Legacy DLSS 5",
         description: "Live since November 5: Display Settings path, Shift+Alt+B toggle, driver 621.14, and tested FPS cost.",
       },
+      {
+        href: "/games/where-winds-meet-dlss-5",
+        title: "Where Winds Meet DLSS 5",
+        description: "Live since November 23: Driver 621.24 WHQL, customizable Wuxia visual controls, and RTX 50 / RTX 40 status.",
+      },
     ],
   },
   {

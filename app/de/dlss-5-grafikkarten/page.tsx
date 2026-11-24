@@ -32,6 +32,8 @@ export const metadata: Metadata = {
       en: "https://www.dlss5.net/dlss-5-supported-cards",
       "pt-BR": "https://www.dlss5.net/pt/dlss-5-quais-placas",
       de: PAGE_URL,
+      ko: "https://www.dlss5.net/ko/dlss-5-supported-cards",
+      fr: "https://www.dlss5.net/fr/dlss-5-cartes-compatibles",
       "x-default": "https://www.dlss5.net/dlss-5-supported-cards",
     },
   },
@@ -263,6 +265,8 @@ export default function GermanSupportedCardsPage() {
           <span aria-current="page" className="font-medium text-foreground">Deutsch</span>
           <Link href="/dlss-5-supported-cards" hrefLang="en" lang="en" className="hover:text-foreground">English</Link>
           <Link href="/pt/dlss-5-quais-placas" hrefLang="pt-BR" lang="pt-BR" className="hover:text-foreground">Português</Link>
+          <Link href="/ko/dlss-5-supported-cards" hrefLang="ko" lang="ko" className="hover:text-foreground">한국어</Link>
+          <Link href="/fr/dlss-5-cartes-compatibles" hrefLang="fr" lang="fr" className="hover:text-foreground">Français</Link>
         </nav>
 
         <article id="ratgeber" className="space-y-12">
