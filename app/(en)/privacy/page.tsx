@@ -32,7 +32,24 @@ export default function PrivacyPage() {
             address, chosen alert topics, language preference, and double opt-in confirmation
             status in Cloudflare D1 and send transactional alert emails through Cloudflare
             Email Service. We never sell or share subscriber addresses with third-party
-            advertisers, and every email includes a one-click unsubscribe link.
+            advertisers, and every email includes a one-click unsubscribe link. Confirmation
+            links expire after 72 hours.
+          </p>
+          <p className="mt-3">
+            To stop abuse of the alert form, we count sign-up attempts per network address using
+            a one-way hash of your IP address (never the raw address) and delete these counters
+            within two days. If bot protection is enabled, the alert form also loads Cloudflare
+            Turnstile after you start filling it in, which checks that the request comes from a
+            person. See{" "}
+            <a
+              href="https://www.cloudflare.com/turnstile-privacy-policy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:underline"
+            >
+              Cloudflare&apos;s Turnstile privacy addendum
+            </a>
+            .
           </p>
         </section>
 

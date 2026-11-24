@@ -49,6 +49,10 @@ export interface AlertsEnv {
   ALERT_FROM_EMAIL?: string;
   ALERT_ADMIN_KEY?: string;
   SITE_ORIGIN?: string;
+  /** Optional Cloudflare Turnstile secret. When set, /subscribe requires a valid Turnstile token. */
+  TURNSTILE_SECRET_KEY?: string;
+  /** Optional global cap on confirmation emails per UTC day (default 300). */
+  ALERT_DAILY_CONFIRM_CAP?: string;
 }
 
 export interface PagesContext<Env = AlertsEnv> {

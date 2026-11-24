@@ -1,11 +1,65 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { Bell, CheckCircle2, Loader2 } from "lucide-react";
 
 export type AlertTopic = "rtx40" | "games";
 export type AlertLocale = "en" | "pt" | "de" | "ko" | "fr";
+
+/** Optional Cloudflare Turnstile site key. When unset, the form relies on server-side rate limits. */
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+const TURNSTILE_LANG: Record<AlertLocale, string> = { en: "en", pt: "pt-br", de: "de", ko: "ko", fr: "fr" };
+
+interface TurnstileApi {
+  render(
+    el: HTMLElement,
+    options: {
+      sitekey: string;
+      language?: string;
+      callback?: (token: string) => void;
+      "expired-callback"?: () => void;
+      "error-callback"?: () => void;
+    },
+  ): string;
+  reset(widgetId?: string): void;
+  remove(widgetId: string): void;
+}
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi;
+  }
+}
+
+let turnstileLoader: Promise<TurnstileApi> | null = null;
+
+/** Loads the Turnstile script once, only after a visitor starts using an alert form. */
+function loadTurnstile(): Promise<TurnstileApi> {
+  if (window.turnstile) return Promise.resolve(window.turnstile);
+  if (!turnstileLoader) {
+    turnstileLoader = new Promise<TurnstileApi>((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      script.onload = () =>
+        window.turnstile ? resolve(window.turnstile) : reject(new Error("Turnstile unavailable"));
+      script.onerror = () => {
+        turnstileLoader = null;
+        reject(new Error("Turnstile failed to load"));
+      };
+      document.head.appendChild(script);
+    });
+  }
+  return turnstileLoader;
+}
+
+const ERROR_COPY_KEYS = {
+  invalid_email: "emailError",
+  no_topics: "topicError",
+  rate_limited: "rateLimitError",
+  captcha_failed: "captchaError",
+} as const;
 
 interface UpdateAlertFormProps {
   defaultTopics?: AlertTopic[];
@@ -31,6 +85,8 @@ const COPY: Record<
     topicError: string;
     emailError: string;
     genericError: string;
+    rateLimitError: string;
+    captchaError: string;
     successTitle: string;
     successBody: string;
   }
@@ -49,6 +105,8 @@ const COPY: Record<
     topicError: "Select at least one alert topic.",
     emailError: "Enter a valid email address.",
     genericError: "Could not save your alert right now. Please try again shortly.",
+    rateLimitError: "Too many attempts. Please wait a while and try again.",
+    captchaError: "Verification failed. Please complete the check and try again.",
     successTitle: "Check your inbox to confirm",
     successBody:
       "We sent a confirmation link from alerts@dlss5.net. Click it once to activate your DLSS 5 alerts.",
@@ -63,10 +121,12 @@ const COPY: Record<
     button: "Me avise",
     submitting: "Enviando confirmação...",
     privacyNote: "Enviado via Cloudflare Email Service por dlss5.net. Veja a ",
-    privacyLink: "Política de Privacidade",
+    privacyLink: "Política de Privacidade (em inglês)",
     topicError: "Escolha pelo menos um tipo de alerta.",
     emailError: "Digite um endereço de e-mail válido.",
     genericError: "Não foi possível registrar o alerta agora. Tente novamente em instantes.",
+    rateLimitError: "Muitas tentativas. Aguarde um pouco e tente novamente.",
+    captchaError: "A verificação falhou. Conclua a checagem e tente novamente.",
     successTitle: "Confirme no seu e-mail",
     successBody:
       "Enviamos um link de confirmação de alerts@dlss5.net. Clique nele uma vez para ativar os alertas.",
@@ -81,10 +141,12 @@ const COPY: Record<
     button: "Benachrichtigen",
     submitting: "Bestätigung wird gesendet...",
     privacyNote: "Versand über Cloudflare Email Service von dlss5.net. Siehe ",
-    privacyLink: "Datenschutz",
+    privacyLink: "Datenschutzerklärung (Englisch)",
     topicError: "Bitte mindestens ein Thema auswählen.",
     emailError: "Bitte eine gültige E-Mail-Adresse eingeben.",
     genericError: "Die Anmeldung konnte gerade nicht gespeichert werden. Bitte später erneut versuchen.",
+    rateLimitError: "Zu viele Versuche. Bitte warte kurz und versuche es dann erneut.",
+    captchaError: "Die Überprüfung ist fehlgeschlagen. Bitte schließe sie ab und versuche es erneut.",
     successTitle: "Bitte E-Mail-Postfach prüfen",
     successBody:
       "Wir haben einen Bestätigungslink von alerts@dlss5.net gesendet. Mit einem Klick werden deine Hinweise aktiviert.",
@@ -99,10 +161,12 @@ const COPY: Record<
     button: "알림 신청",
     submitting: "확인 메일 전송 중...",
     privacyNote: "Cloudflare Email Service를 통해 dlss5.net에서 발송됩니다. ",
-    privacyLink: "개인정보 처리방침",
+    privacyLink: "개인정보 처리방침(영어)",
     topicError: "알림 항목을 하나 이상 선택해 주세요.",
     emailError: "올바른 이메일 주소를 입력해 주세요.",
     genericError: "현재 알림을 저장할 수 없습니다. 잠시 후 다시 시도해 주세요.",
+    rateLimitError: "시도 횟수가 너무 많습니다. 잠시 후 다시 시도해 주세요.",
+    captchaError: "보안 확인에 실패했습니다. 확인을 완료한 뒤 다시 시도해 주세요.",
     successTitle: "이메일에서 인증을 완료해 주세요",
     successBody:
       "alerts@dlss5.net에서 확인 링크를 보냈습니다. 링크를 클릭하면 알림이 활성화됩니다.",
@@ -117,10 +181,12 @@ const COPY: Record<
     button: "M'avertir",
     submitting: "Envoi de la confirmation...",
     privacyNote: "Envoyé via Cloudflare Email Service depuis dlss5.net. Voir la ",
-    privacyLink: "Politique de confidentialité",
+    privacyLink: "Politique de confidentialité (en anglais)",
     topicError: "Sélectionnez au moins un sujet d'alerte.",
     emailError: "Veuillez saisir une adresse e-mail valide.",
     genericError: "Impossible d'enregistrer votre alerte pour le moment. Réessayez bientôt.",
+    rateLimitError: "Trop de tentatives. Patientez un peu avant de réessayer.",
+    captchaError: "La vérification a échoué. Terminez la vérification et réessayez.",
     successTitle: "Vérifiez votre boîte de réception",
     successBody:
       "Nous avons envoyé un lien de confirmation depuis alerts@dlss5.net. Cliquez dessus une fois pour activer vos alertes.",
@@ -141,6 +207,41 @@ export default function UpdateAlertForm({
   const [topics, setTopics] = useState<AlertTopic[]>(defaultTopics);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    return () => {
+      const id = widgetIdRef.current;
+      if (id && id !== "loading") window.turnstile?.remove(id);
+    };
+  }, []);
+
+  function ensureTurnstile() {
+    if (!TURNSTILE_SITE_KEY || widgetIdRef.current || !turnstileRef.current) return;
+    widgetIdRef.current = "loading";
+    loadTurnstile()
+      .then((api) => {
+        if (!turnstileRef.current) return;
+        widgetIdRef.current = api.render(turnstileRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          language: TURNSTILE_LANG[locale],
+          callback: setTurnstileToken,
+          "expired-callback": () => setTurnstileToken(""),
+          "error-callback": () => setTurnstileToken(""),
+        });
+      })
+      .catch(() => {
+        widgetIdRef.current = null;
+      });
+  }
+
+  function resetTurnstile() {
+    const id = widgetIdRef.current;
+    if (id && id !== "loading") window.turnstile?.reset(id);
+    setTurnstileToken("");
+  }
 
   function toggleTopic(topic: AlertTopic) {
     setTopics((prev) =>
@@ -163,6 +264,12 @@ export default function UpdateAlertForm({
       setStatus("error");
       return;
     }
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      ensureTurnstile();
+      setErrorMsg(t.captchaError);
+      setStatus("error");
+      return;
+    }
 
     setStatus("submitting");
     try {
@@ -175,14 +282,19 @@ export default function UpdateAlertForm({
           locale,
           sourcePage,
           website,
+          ...(TURNSTILE_SITE_KEY ? { turnstileToken } : {}),
         }),
       });
       const payload = (await response.json().catch(() => ({}))) as {
         ok?: boolean;
-        error?: string;
+        code?: string;
       };
+      // Turnstile tokens are single-use; always request a fresh one after a submit.
+      if (TURNSTILE_SITE_KEY) resetTurnstile();
       if (!response.ok || !payload.ok) {
-        setErrorMsg(payload.error || t.genericError);
+        // Show localized copy only; server error strings are English diagnostics.
+        const key = payload.code ? ERROR_COPY_KEYS[payload.code as keyof typeof ERROR_COPY_KEYS] : undefined;
+        setErrorMsg(key ? t[key] : t.genericError);
         setStatus("error");
         return;
       }
@@ -230,7 +342,7 @@ export default function UpdateAlertForm({
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="mt-4 space-y-3" noValidate>
+            <form onSubmit={handleSubmit} onFocus={ensureTurnstile} className="mt-4 space-y-3" noValidate>
               <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-foreground/90">
                 <label className="inline-flex cursor-pointer items-center gap-2">
                   <input
@@ -287,6 +399,8 @@ export default function UpdateAlertForm({
                   <span>{status === "submitting" ? t.submitting : t.button}</span>
                 </button>
               </div>
+
+              {TURNSTILE_SITE_KEY ? <div ref={turnstileRef} className="min-h-0" /> : null}
 
               {status === "error" && errorMsg && (
                 <p role="alert" className="text-xs text-red-400">

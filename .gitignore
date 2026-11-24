@@ -40,6 +40,9 @@ yarn-error.log*
 # Cloudflare local preview
 .wrangler/
 
+# IndexNow ownership key: publish it, but never commit it.
+/public/indexnow-key.txt
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

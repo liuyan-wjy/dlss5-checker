@@ -20,7 +20,6 @@ const AMAZON_HOSTS: Record<RetailerLocale, { host: string; tag: string | undefin
 
 const NEWEGG_AFF_PREFIX = process.env.NEXT_PUBLIC_NEWEGG_AFF_URL;
 const GEFORCE_NOW_AFF_URL = process.env.NEXT_PUBLIC_GEFORCE_NOW_AFF_URL;
-const GAME_STORE_AFF_PREFIX = process.env.NEXT_PUBLIC_GAME_STORE_AFF_URL;
 
 function buildAmazonSearchUrl(query: string, locale: RetailerLocale): { href: string; isAffiliate: boolean; region: string } {
   const cfg = AMAZON_HOSTS[locale] ?? AMAZON_HOSTS.en;
@@ -82,36 +81,6 @@ export function getGeForceNowLink(): RetailerLink {
     retailer: "GeForce NOW",
     href: GEFORCE_NOW_AFF_URL || official,
     isAffiliate: Boolean(GEFORCE_NOW_AFF_URL),
-  };
-}
-
-export function getGameStoreLink(gameKey: "nba-2k27" | "hogwarts-legacy" | "where-winds-meet"): RetailerLink {
-  if (gameKey === "where-winds-meet") {
-    return {
-      id: "store-where-winds-meet",
-      label: "Download Where Winds Meet (Official site)",
-      retailer: "Official Site",
-      href: "https://www.wherewindsmeetgame.com/",
-      isAffiliate: false,
-    };
-  }
-  const title = gameKey === "hogwarts-legacy" ? "Hogwarts Legacy PC" : "NBA 2K27 PC";
-  if (GAME_STORE_AFF_PREFIX) {
-    return {
-      id: `partner-${gameKey}`,
-      label: `Compare ${title} store deals`,
-      retailer: "Partner Store",
-      href: `${GAME_STORE_AFF_PREFIX}${encodeURIComponent(title)}`,
-      isAffiliate: true,
-    };
-  }
-  const amazon = buildAmazonSearchUrl(title, "en");
-  return {
-    id: `amazon-${gameKey}`,
-    label: `Check ${title} on Amazon`,
-    retailer: amazon.region,
-    href: amazon.href,
-    isAffiliate: amazon.isAffiliate,
   };
 }
 
