@@ -311,8 +311,8 @@ export default function Dlss5Rtx30SeriesPage() {
         <section className="mb-10 space-y-4 leading-relaxed text-foreground/80">
           <h2 className="text-2xl font-bold text-foreground">Should you upgrade from RTX 30 for DLSS 5?</h2>
           <p>
-            Only three games had DLSS 5 on November 18, 2026: NBA 2K27, Hogwarts Legacy and War Thunder, with Where
-            Winds Meet due on November 23. If none of these is a game you play, DLSS 5 alone is a weak reason to buy a
+            Only four games had DLSS 5 on November 24, 2026: NBA 2K27, Hogwarts Legacy, War Thunder and Where
+            Winds Meet. If none of these is a game you play, DLSS 5 alone is a weak reason to buy a
             card. An upgrade makes more sense when you also want what RTX 40 and RTX 50 already offer: Frame
             Generation, Multi Frame Generation and more VRAM for current games.
           </p>

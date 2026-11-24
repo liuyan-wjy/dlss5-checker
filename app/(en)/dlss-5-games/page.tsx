@@ -221,12 +221,17 @@ const faqItems = [
   {
     question: "Is DLSS 5 available in games now?",
     answer:
-      "Yes, in NBA 2K27 and Hogwarts Legacy on supported RTX 50 desktop and laptop GPUs and RTX Spark PCs. Other announced titles should still be treated as announced or pending verification until their own patch notes and settings are public.",
+      "Yes, in four games: NBA 2K27, Hogwarts Legacy, War Thunder and Where Winds Meet, on supported RTX 50 desktop and laptop GPUs and RTX Spark PCs. Other announced titles should still be treated as announced or pending verification until their own patch notes and settings are public.",
   },
   {
     question: "Is DLSS 5 out in Hogwarts Legacy?",
     answer:
       "Yes. The Hogwarts Legacy DLSS 5 update went live on November 5, 2026 for RTX 50 Series GPUs, RTX Spark PCs, and GeForce NOW Ultimate, using the faster October Neural Rendering model. Enable it in Display Settings after setting Upscale Type to NVIDIA DLSS. RTX 40 is not on the list.",
+  },
+  {
+    question: "Does Where Winds Meet have DLSS 5?",
+    answer:
+      "Yes. The DLSS 5 update went live on November 23, 2026 in North America and November 24 elsewhere, for RTX 50 Series GPUs, RTX Spark PCs, and GeForce NOW Ultimate. Install driver 621.24 or newer, update the game, and turn on Neural Rendering in the graphics settings. RTX 40 is not supported.",
   },
   {
     question: "Does a DLSS 5 game mean every RTX GPU can use it?",
@@ -435,7 +440,7 @@ export default function Dlss5GamesPage() {
               ))}
             </ol>
             <p className="mt-4 text-xs text-muted-foreground">
-              Filled dot: live. Open dot: scheduled. RTX 40 still has no date.
+              All five steps are live. RTX 40 still has no DLSS 5 date.
             </p>
           </figure>
 
@@ -455,7 +460,7 @@ export default function Dlss5GamesPage() {
                   <tr key={game.title} className="border-t border-border/70">
                     <th scope="row" className="px-3 py-3 text-left font-medium sm:px-4">
                       {game.href ? (
-                        <Link href={game.href} className="text-blue-400 hover:underline">{game.title}</Link>
+                        <Link href={game.href} className="inline-flex min-h-11 items-center text-blue-400 hover:underline">{game.title}</Link>
                       ) : (
                         game.title
                       )}
@@ -484,9 +489,9 @@ export default function Dlss5GamesPage() {
                 <p className="mt-2 text-sm text-muted-foreground">{card.toggle}</p>
                 <p className="text-sm text-muted-foreground">{card.driver}</p>
                 {card.href.startsWith("/") ? (
-                  <Link href={card.href} className="mt-3 inline-block text-sm text-blue-400 hover:underline">{card.linkLabel} →</Link>
+                  <Link href={card.href} className="mt-1 inline-flex min-h-11 items-center text-sm text-blue-400 hover:underline">{card.linkLabel} →</Link>
                 ) : (
-                  <a href={card.href} className="mt-3 inline-block text-sm text-blue-400 hover:underline">{card.linkLabel} →</a>
+                  <a href={card.href} className="mt-1 inline-flex min-h-11 items-center text-sm text-blue-400 hover:underline">{card.linkLabel} →</a>
                 )}
               </div>
             ))}
