@@ -16,10 +16,13 @@ export interface ComparisonSliderProps {
     capturedBy: string;
     date: string;
     gpu: string;
-    resolution: string;
-    settings: string;
-    driver: string;
+    resolution?: string;
+    settings?: string;
+    driver?: string;
     gameBuild?: string;
+    sourceLabel?: string;
+    sourceHref?: string;
+    copyrightNotice?: string;
   };
   priority?: boolean;
 }
@@ -149,10 +152,31 @@ export default function ComparisonSlider({
       <figcaption className="space-y-1.5 text-xs leading-relaxed text-muted-foreground">
         <p className="text-sm text-foreground/85">{caption}</p>
         <p>
-          Source: {attribution.capturedBy} · {attribution.date} · {attribution.gpu} ·{" "}
-          {attribution.resolution} · {attribution.settings} · Driver {attribution.driver}
+          Source:{" "}
+          {attribution.sourceHref ? (
+            <a
+              href={attribution.sourceHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:underline"
+            >
+              {attribution.sourceLabel ?? attribution.capturedBy}
+            </a>
+          ) : (
+            (attribution.sourceLabel ?? attribution.capturedBy)
+          )}
+          {" · "}
+          {attribution.date} · {attribution.gpu}
+          {attribution.resolution ? ` · ${attribution.resolution}` : ""}
+          {attribution.settings ? ` · ${attribution.settings}` : ""}
+          {attribution.driver ? ` · Driver ${attribution.driver}` : ""}
           {attribution.gameBuild ? ` · ${attribution.gameBuild}` : ""}
         </p>
+        {attribution.copyrightNotice ? (
+          <p className="text-[11px] text-muted-foreground/80">
+            {attribution.copyrightNotice}
+          </p>
+        ) : null}
       </figcaption>
     </figure>
   );

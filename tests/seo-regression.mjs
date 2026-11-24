@@ -792,4 +792,38 @@ assert.match(readRoute("dlss-5-rtx-40-series"), /placeholder="you@example\.com"/
 assert.match(readRoute("dlss-5-games"), /placeholder="you@example\.com"/, "Games page must render the alert form");
 assert.match(compareSection, /Check RTX 5070 on Amazon/, "GPU comparer must render upgrade retailer options");
 
+// Official press comparison sliders (Option B): verify slider semantics, attribution, and <=200 KB WebP budget.
+for (const [route, expectedPrefix, expectedCopyright] of [
+  [
+    "games/hogwarts-legacy-dlss-5",
+    "/images/comparisons/hogwarts-legacy/",
+    "Warner Bros. Games / Avalanche Software",
+  ],
+  [
+    "games/where-winds-meet-dlss-5",
+    "/images/comparisons/where-winds-meet/",
+    "Everstone Studio / NetEase Games",
+  ],
+]) {
+  const html = readRoute(route);
+  const text = visibleText(html);
+  assert.match(html, /id="visual-comparisons"/, `${route} must render the visual comparisons section`);
+  assert.ok((html.match(/role="slider"/g) || []).length >= 2, `${route} must render 2 comparison sliders`);
+  assert.match(html, /aria-valuenow="50"/, `${route} slider must initialize at 50%`);
+  assert.ok(text.includes(expectedCopyright), `${route} must credit ${expectedCopyright}`);
+  assert.ok(text.includes("NVIDIA, GeForce, and RTX are trademarks of NVIDIA Corporation."), `${route} must include NVIDIA trademark notice`);
+  const comparisonImgs = [...html.matchAll(/src="(\/images\/comparisons\/[^"]+\.webp)"/g)].map((m) => m[1]);
+  assert.equal(comparisonImgs.length, 4, `${route} must reference 4 comparison WebP files (2 pairs)`);
+  let totalBytes = 0;
+  for (const imgPath of comparisonImgs) {
+    assert.ok(imgPath.startsWith(expectedPrefix), `${route} unexpected comparison image ${imgPath}`);
+    const outFile = path.join(appOutput, imgPath.slice(1));
+    assert.ok(fs.existsSync(outFile), `${route} missing exported image ${imgPath}`);
+    const size = fs.statSync(outFile).size;
+    assert.ok(size <= 200_000, `${imgPath} exceeds 200 KB budget (${size} bytes)`);
+    totalBytes += size;
+  }
+  assert.ok(totalBytes <= 800_000, `${route} total comparison images exceed 800 KB (${totalBytes} bytes)`);
+}
+
 console.log("SEO regression checks passed.");

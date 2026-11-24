@@ -3,15 +3,16 @@
   "name": "dlss5-checker",
   "compatibility_date": "2026-11-24",
   "pages_build_output_dir": "out",
-  // Replace database_id after running: npx wrangler d1 create dlss5-alerts
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "dlss5-alerts",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID"
+      "database_id": "0b292a3d-3d49-46d8-8205-f5771f98a397"
     }
   ],
   "vars": {
+    "NODE_VERSION": "22",
+    "CLOUDFLARE_ACCOUNT_ID": "0055078a87a861880dc03e3eb67980a0",
     "SITE_ORIGIN": "https://www.dlss5.net",
     "ALERT_FROM_EMAIL": "alerts@dlss5.net"
   }

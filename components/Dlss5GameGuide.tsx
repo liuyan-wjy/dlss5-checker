@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ComparisonSlider, { type ComparisonSliderProps } from "@/components/ComparisonSlider";
 import VideoEmbed from "@/components/VideoEmbed";
 import UpdateAlertForm from "@/components/UpdateAlertForm";
 import { OG_IMAGE_EN, OG_IMAGE_HOGWARTS, OG_IMAGE_WHERE_WINDS_MEET } from "@/lib/og-image";
@@ -52,6 +53,7 @@ type GameGuide = {
     channel: string;
     caption: string;
   };
+  comparisons?: ComparisonSliderProps[];
   ogImage?: { url: string; width: number; height: number; alt: string };
   faq: Array<{
     question: string;
@@ -354,6 +356,50 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       "The update uses NVIDIA's faster October 2026 model, which NVIDIA says needs about half the GPU time of the launch model.",
       "NVIDIA says Avalanche Software used the DLSS 5 SDK controls to keep the game's art style. Neural Rendering is added alongside the game's existing Super Resolution, Multi Frame Generation, and Ray Reconstruction options rather than replacing them.",
     ],
+    comparisons: [
+      {
+        beforeSrc: "/images/comparisons/hogwarts-legacy/scene1-off.webp",
+        afterSrc: "/images/comparisons/hogwarts-legacy/scene1-on.webp",
+        beforeAlt:
+          "Hogwarts Legacy Hogsmeade village square outside Steepley and Sons tea shop with DLSS 5 Off",
+        afterAlt:
+          "Hogwarts Legacy Hogsmeade village square outside Steepley and Sons tea shop with DLSS 5 On",
+        width: 1440,
+        height: 810,
+        caption:
+          "Hogsmeade village square outside Steepley & Sons tea shop: compare cobblestone highlights, warm string-light bounce on stonework, and shadow depth under the tree and statue.",
+        attribution: {
+          capturedBy: "NVIDIA GeForce News",
+          sourceLabel: "NVIDIA GeForce News (official press comparison)",
+          sourceHref: NVIDIA_HOGWARTS_LAUNCH,
+          date: "November 5, 2026",
+          gpu: "GeForce RTX 50 Series",
+          copyrightNotice:
+            "© 2026 NVIDIA Corporation and Warner Bros. Games / Avalanche Software. Official press comparison shown unmodified for editorial reference. NVIDIA, GeForce, and RTX are trademarks of NVIDIA Corporation.",
+        },
+      },
+      {
+        beforeSrc: "/images/comparisons/hogwarts-legacy/scene2-off.webp",
+        afterSrc: "/images/comparisons/hogwarts-legacy/scene2-on.webp",
+        beforeAlt:
+          "Hogwarts Legacy broomstick flight overlooking Hogwarts Castle towers and lakeside cliffs with DLSS 5 Off",
+        afterAlt:
+          "Hogwarts Legacy broomstick flight overlooking Hogwarts Castle towers and lakeside cliffs with DLSS 5 On",
+        width: 1440,
+        height: 810,
+        caption:
+          "Broomstick flight overlooking Hogwarts Castle: compare weathered stone detail across the spires, cloak fabric shading, and reflections across the shadowed lake surface below.",
+        attribution: {
+          capturedBy: "NVIDIA GeForce News",
+          sourceLabel: "NVIDIA GeForce News (official press comparison)",
+          sourceHref: NVIDIA_HOGWARTS_LAUNCH,
+          date: "November 5, 2026",
+          gpu: "GeForce RTX 50 Series",
+          copyrightNotice:
+            "© 2026 NVIDIA Corporation and Warner Bros. Games / Avalanche Software. Official press comparison shown unmodified for editorial reference. NVIDIA, GeForce, and RTX are trademarks of NVIDIA Corporation.",
+        },
+      },
+    ],
     context: [
       "Hogwarts Legacy is a very different test from NBA 2K27. Instead of a brightly lit arena, most of the game happens in candlelit stone halls, dim dungeons, and changing outdoor weather. Neural Rendering works on lighting and materials, so the places to look are how stone, wood, fabric, and skin respond to warm candlelight, and whether dark scenes keep their mood instead of being flattened or brightened.",
       "Faces were the most criticized part of NVIDIA's March 2026 DLSS 5 demo, because the model visibly reshaped characters. Coverage of NVIDIA's updated Hogwarts Legacy comparison images in October described much smaller changes to faces than in March. That matches what the developer controls are for: studios can mask objects and limit how strongly the effect applies. First reviews of the shipped patch agree: PCWorld described the result as restrained, and DSOGaming found Hogsmeade clearly improved but less transformative than it hoped, with thin white outlines around some characters. Check close-ups and character edges in your own scenes before you keep it on.",
@@ -561,6 +607,50 @@ const gameGuides: Record<Dlss5GameGuideKey, GameGuide> = {
       caption:
         "Official NVIDIA GeForce reveal comparing Wuxia environments, sunlight, materials, and characters with DLSS 5 3D-guided Neural Rendering.",
     },
+    comparisons: [
+      {
+        beforeSrc: "/images/comparisons/where-winds-meet/courtyard-off.webp",
+        afterSrc: "/images/comparisons/where-winds-meet/courtyard-on.webp",
+        beforeAlt:
+          "Where Winds Meet temple courtyard with autumn maple leaves, lit candles, and hanging red wooden plaques with DLSS 5 Off",
+        afterAlt:
+          "Where Winds Meet temple courtyard with autumn maple leaves, lit candles, and hanging red wooden plaques with DLSS 5 On",
+        width: 1440,
+        height: 810,
+        caption:
+          "Temple courtyard with autumn maple leaves and lit candles: compare warm candlelight falloff on the wooden stand, sunlit stone paths, hanging red plaques, and shadow contrast under the tiled eaves.",
+        attribution: {
+          capturedBy: "NVIDIA GeForce News",
+          sourceLabel: "NVIDIA GeForce News (official press comparison)",
+          sourceHref: NVIDIA_HOGWARTS_LAUNCH,
+          date: "November 5, 2026",
+          gpu: "GeForce RTX 50 Series",
+          copyrightNotice:
+            "© 2026 NVIDIA Corporation and Everstone Studio / NetEase Games. Official press comparison shown unmodified for editorial reference. NVIDIA, GeForce, and RTX are trademarks of NVIDIA Corporation.",
+        },
+      },
+      {
+        beforeSrc: "/images/comparisons/where-winds-meet/forest-off.webp",
+        afterSrc: "/images/comparisons/where-winds-meet/forest-on.webp",
+        beforeAlt:
+          "Where Winds Meet sunlit bamboo forest with mossy carved stone shrines and boulders with DLSS 5 Off",
+        afterAlt:
+          "Where Winds Meet sunlit bamboo forest with mossy carved stone shrines and boulders with DLSS 5 On",
+        width: 1440,
+        height: 810,
+        caption:
+          "Sunlit bamboo forest and mossy carved stone shrines: compare dappled light through the canopy, damp rock surface detail, and layered foliage depth across the clearing.",
+        attribution: {
+          capturedBy: "NVIDIA GeForce News",
+          sourceLabel: "NVIDIA GeForce News (official press comparison)",
+          sourceHref: NVIDIA_HOGWARTS_LAUNCH,
+          date: "November 5, 2026",
+          gpu: "GeForce RTX 50 Series",
+          copyrightNotice:
+            "© 2026 NVIDIA Corporation and Everstone Studio / NetEase Games. Official press comparison shown unmodified for editorial reference. NVIDIA, GeForce, and RTX are trademarks of NVIDIA Corporation.",
+        },
+      },
+    ],
     context: [
       "Where Winds Meet presents a distinct test case compared with NBA 2K27's stadium lights or Hogwarts Legacy's stone corridors. Everstone Studio built its open-world Jianghu around misty mountain vistas, rain-washed city alleys, wooden eaves, embroidered silk, leather armor, and shifting sunset lighting. In its November 23 technical post, the studio explicitly framed DLSS 5 around a visual trade-off: adding photorealistic lighting and material depth without erasing the poetic Wuxia art direction.",
       "That emphasis directly addresses the main criticism aimed at early DLSS 5 previews earlier in 2026, when aggressive neural rendering smoothed or reshaped character faces. Everstone Studio says its art team prioritized character identity, facial expression, and distinct material separation across fabric, leather, and metal over raw visual intensity. When an environment adjustment interfered with a character's face or outfit, the team recalibrated the model configuration to restore balance.",
@@ -923,6 +1013,23 @@ export default function Dlss5GameGuide({ gameKey }: { gameKey: Dlss5GameGuideKey
             />
           ) : null}
         </section>
+
+        {guide.comparisons && guide.comparisons.length > 0 ? (
+          <section id="visual-comparisons" className="mb-10">
+            <h2 className="mb-2 text-2xl font-bold">
+              Visual comparisons: DLSS 5 Off vs On
+            </h2>
+            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+              Drag the slider handle or focus it and press the Left/Right arrow keys to
+              compare NVIDIA&apos;s official GeForce RTX 50 Series press captures. Images
+              are displayed unmodified for editorial reference rather than captures from
+              our own test bench.
+            </p>
+            {guide.comparisons.map((comparison) => (
+              <ComparisonSlider key={comparison.beforeSrc} {...comparison} />
+            ))}
+          </section>
+        ) : null}
 
         <section className="mb-10">
           <h2 className="mb-4 text-2xl font-bold">The visual areas worth testing</h2>
