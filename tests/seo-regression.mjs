@@ -410,7 +410,7 @@ assert.equal(visibleText(metadataValue(germanHtml, /<h1[^>]*>([\s\S]*?)<\/h1>/, 
 assert.match(germanHtml, /aria-label="Hauptnavigation"/);
 assert.match(germanHtml, /<meta property="og:locale" content="de_DE"/);
 assert.match(germanHtml, /"inLanguage":"de"/);
-assert.match(germanHtml, /<time dateTime="2026-11-06">/);
+assert.match(germanHtml, /<time dateTime="2026-11-24">/);
 const germanProse = metadataValue(germanHtml, /<article\b[^>]*id="ratgeber"[^>]*>([\s\S]*?)<\/article>/, "authored German article");
 const germanAuthoredText = [...germanProse.matchAll(/<(h[1-3]|p)\b([^>]*)>([\s\S]*?)<\/\1>/g)]
   .filter(([, tag, attributes]) => tag !== "p" || !/\btext-sm\b/.test(attributes))
@@ -545,7 +545,7 @@ assert.match(fs.readFileSync(path.join(appOutput, "sitemap.xml"), "utf8"), /\/ga
 const gamesHtml = readRoute("dlss-5-games");
 assert.match(gamesHtml, /id="live-now"/, "games tracker must show the live-games overview");
 assert.match(gamesHtml, /"@type":"ItemList"/, "games tracker must list live games in structured data");
-for (const game of ["NBA 2K27", "Hogwarts Legacy", "War Thunder"]) {
+for (const game of ["NBA 2K27", "Hogwarts Legacy", "War Thunder", "Where Winds Meet"]) {
   assert.ok(gamesHtml.includes(`"name":"${game}"`), `live games list must include ${game}`);
 }
 assert.match(visibleText(gamesHtml), /War Thunder \(since November 12\)/);
@@ -668,7 +668,7 @@ assert.equal(metadataValue(amdHtml, /<h1[^>]*>([^<]+)<\/h1>/, "AMD H1"), "Can yo
 const releaseHtml = readRoute("dlss-5-release-date");
 assert.match(releaseHtml, /id="by-game"/);
 assert.match(releaseHtml, /id="by-gpu"/);
-assert.match(visibleText(releaseHtml), /Where Winds Meet November 23, 2026 Scheduled/);
+assert.match(visibleText(releaseHtml), /Where Winds Meet November 23, 2026 Live/);
 assert.equal(metadataValue(releaseHtml, /<title>([^<]+)<\/title>/, "release title"), "DLSS 5 Release Date: Out Now on RTX 50 — Dates by Game &amp; GPU");
 assert.match(visibleText(readRoute("privacy")), /youtube-nocookie\.com/);
 

@@ -141,7 +141,7 @@ export default function GpuNextSteps({ gpu }: { gpu: GPU }) {
               {" "}— live since November 5, 2026.
             </li>
             <li>War Thunder — live since November 12, 2026, with the Eagle&apos;s Shadow update.</li>
-            <li>Where Winds Meet — scheduled for November 23, 2026.</li>
+            <li>Where Winds Meet — live since November 23, 2026.</li>
           </ul>
         ) : isNvidia && gpu.dlss5_support !== "none" ? (
           <p className="text-muted-foreground">

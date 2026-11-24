@@ -115,7 +115,7 @@ const evidenceRows: {
   {
     question: "Are the named games final launch support?",
     currentAnswer:
-      "NBA 2K27 and Hogwarts Legacy (live since November 5, 2026) are verified. War Thunder joined on November 12; Where Winds Meet is scheduled for November 23. Other named games still need their own public patch notes, menu settings, and GPU behavior details.",
+      "NBA 2K27 and Hogwarts Legacy (live since November 5, 2026) are verified. War Thunder joined on November 12 and Where Winds Meet on November 23. Other named games still need their own public patch notes, menu settings, and GPU behavior details.",
     evidence: "NVIDIA NBA 2K27 driver note",
     sourceHref: NVIDIA_NBA_DRIVER,
     status: "One verified game; others pending",

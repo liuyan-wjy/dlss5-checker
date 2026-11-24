@@ -194,8 +194,8 @@ export default function PtHome() {
                 <strong>Atualização de outubro de 2026:</strong> em 16 de outubro, a NVIDIA levou ao NBA 2K27 um
             modelo de DLSS 5 mais rápido, para RTX 50, notebooks RTX Spark e GeForce NOW. Segundo
             a NVIDIA, ele usa cerca de metade do tempo de GPU do modelo de setembro e cerca de 20%
-            menos VRAM em 4K. Hogwarts Legacy recebeu DLSS 5 em 5 de novembro e War Thunder em 12 de novembro;
-            Where Winds Meet chega em 23 de novembro. A RTX 40 continua sem data.
+            menos VRAM em 4K. Hogwarts Legacy recebeu DLSS 5 em 5 de novembro, War Thunder em 12 de novembro
+            e Where Winds Meet em 23 de novembro. A RTX 40 continua sem data.
               </p>
             </div>
           </section>

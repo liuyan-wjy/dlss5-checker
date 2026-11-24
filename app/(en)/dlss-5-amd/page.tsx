@@ -26,7 +26,7 @@ const compareRows = [
   { aspect: "Runs on", dlss5: "GeForce RTX 50 and RTX Spark; RTX 40 planned", fsr: "ML features: Radeon RX 9000. Older FSR upscaling and frame generation run on most modern GPUs" },
   { aspect: "Effect on frame rate", dlss5: "Costs frames; NVIDIA pairs it with Super Resolution and frame generation", fsr: "Upscaling and frame generation raise frame rate" },
   { aspect: "Where you turn it on", dlss5: "In each supported game's graphics menu", fsr: "In each supported game's graphics menu, or AMD Software for driver-level options" },
-  { aspect: "Games", dlss5: "NBA 2K27, Hogwarts Legacy, War Thunder; Where Winds Meet on November 23", fsr: "Hundreds of games support some FSR version; ML features in fewer" },
+  { aspect: "Games", dlss5: "NBA 2K27, Hogwarts Legacy, War Thunder, Where Winds Meet", fsr: "Hundreds of games support some FSR version; ML features in fewer" },
 ];
 
 const radeonAdvice = [

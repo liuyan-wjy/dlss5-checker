@@ -189,7 +189,7 @@ export default function Dlss5Rtx40SeriesPage() {
             smaller (around 118 million parameters), and uses about 20% less VRAM at 4K. The
             update went to RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. Hogwarts Legacy,
             which went live on November 5, War Thunder (November 12), and the next dated
-            game, Where Winds Meet on November 23, use the same hardware list.
+            game, Where Winds Meet (November 23), use the same hardware list.
             RTX 40 is not on it.
           </p>
           <p>

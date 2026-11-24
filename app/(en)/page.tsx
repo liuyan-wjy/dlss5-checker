@@ -172,7 +172,7 @@ export default function Home() {
               in NBA 2K27 on October 16 for RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. NVIDIA
               says it needs about half the GPU time of the launch model. On November 5 Hogwarts Legacy
               became the second live DLSS 5 game (<Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">setup guide</Link>);
-              War Thunder followed on November 12 and Where Winds Meet is due on November 23. RTX 40 still
+              War Thunder followed on November 12 and Where Winds Meet on November 23. RTX 40 still
               has no date. See the <Link href="/dlss-5-release-date" className="text-blue-400 hover:underline">DLSS 5 release date timeline</Link>{" "}
               for sources, and the{" "}
               <Link href="/dlss-5-system-requirements" className="text-blue-400 hover:underline">DLSS 5 system requirements</Link>{" "}

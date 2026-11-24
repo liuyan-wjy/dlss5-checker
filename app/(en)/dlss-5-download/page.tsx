@@ -54,10 +54,10 @@ const gameSettings = [
   },
   {
     game: "Where Winds Meet",
-    since: "Scheduled November 23, 2026",
-    path: "Not published until the update ships",
-    toggle: "Not published",
-    driver: "621.24 WHQL prepares for it",
+    since: "November 23, 2026 (November 24 outside North America)",
+    path: "Update the game, then turn on Neural Rendering in the graphics settings",
+    toggle: "Not documented",
+    driver: "621.24 WHQL or newer",
   },
 ];
 
@@ -153,7 +153,7 @@ export default function Dlss5DownloadPage() {
         <p className="text-lg text-muted-foreground leading-relaxed">
           Get the driver from NVIDIA and the DLSS 5 integration through a supported game.
           For official local use, you currently need an RTX 50 desktop or laptop GPU or an RTX Spark laptop.
-          NBA 2K27, Hogwarts Legacy and War Thunder have it now, and Where Winds Meet follows on November 23.
+          NBA 2K27, Hogwarts Legacy, War Thunder and Where Winds Meet have it now.
           There is no universal official installer that adds Neural Rendering to every game.
           This is an independent setup guide, not a download host.
         </p>
