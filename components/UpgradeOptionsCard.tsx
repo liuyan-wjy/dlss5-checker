@@ -33,19 +33,40 @@ export default function UpgradeOptionsCard({
   const isConfirmed = gpu.dlss5_support === "confirmed";
   const targetGpu = isConfirmed ? gpu : DEFAULT_RTX50_TARGET;
   const retailerLinks = getGpuRetailerLinks(targetGpu, locale);
-  const gfn = getGeForceNowLink();
+  const gfn = getGeForceNowLink(locale);
+  const shortName = gpu.name.replace(/^NVIDIA GeForce\s+/i, "");
 
   const cardHeading =
     heading ??
-    (isConfirmed
-      ? `Check ${gpu.name.replace(/^NVIDIA GeForce\s+/i, "")} pricing & availability`
-      : "Want DLSS 5 without guessing? Cloud or RTX 50 options");
+    (locale === "de"
+      ? isConfirmed
+        ? `Aktuelle Preise & Verfügbarkeit für ${shortName}`
+        : "DLSS 5 nutzen: GeForce NOW Ultimate oder RTX-50-Preise vergleichen"
+      : locale === "fr"
+        ? isConfirmed
+          ? `Prix et disponibilité actuels pour la ${shortName}`
+          : "Profiter du DLSS 5 : GeForce NOW Ultimate ou cartes RTX 50"
+        : isConfirmed
+          ? `Check ${shortName} pricing & availability`
+          : "Want DLSS 5 without guessing? Cloud or RTX 50 options");
 
-  const cardBody = isConfirmed
-    ? "Compare current listings before buying. Check exact VRAM capacity, laptop TGP, and return policies on the retailer page."
-    : gpu.dlss5_support === "planned"
-      ? "You do not need to replace an RTX 40 card today. If you want to try DLSS 5 right away, GeForce NOW Ultimate streams live DLSS 5 games without new local hardware; otherwise compare RTX 50 pricing below."
-      : "Your current GPU does not run DLSS 5 locally. You can stream supported titles on GeForce NOW Ultimate or compare RTX 50 series pricing if you are already planning an upgrade.";
+  const cardBody =
+    locale === "de"
+      ? "Vergleiche vor einem Kauf aktuelle Angebote, VRAM-Ausstattung und bei Notebooks die genaue GPU-TGP. Alternativ läuft DLSS 5 ohne Hardware-Upgrade über GeForce NOW Ultimate."
+      : locale === "fr"
+        ? "Comparez les offres actuelles, la capacité de VRAM et le TGP sur PC portable avant d'acheter. Sinon, GeForce NOW Ultimate permet d'essayer DLSS 5 en streaming sans changer de carte."
+        : isConfirmed
+          ? "Compare current listings before buying. Check exact VRAM capacity, laptop TGP, and return policies on the retailer page."
+          : gpu.dlss5_support === "planned"
+            ? "You do not need to replace an RTX 40 card today. If you want to try DLSS 5 right away, GeForce NOW Ultimate streams live DLSS 5 games without new local hardware; otherwise compare RTX 50 pricing below."
+            : "Your current GPU does not run DLSS 5 locally. You can stream supported titles on GeForce NOW Ultimate or compare RTX 50 series pricing if you are already planning an upgrade.";
+
+  const disclosureText =
+    locale === "de"
+      ? "Hinweis (Werbung / Affiliate-Links): Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen keine Mehrkosten. Kompatibilitätsangaben beruhen ausschließlich auf offiziellen NVIDIA- und Publisher-Quellen."
+      : locale === "fr"
+        ? "Transparence (liens affiliés) : En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises, sans surcoût pour vous. Les statuts de compatibilité reposent uniquement sur les sources officielles NVIDIA et éditeurs."
+        : "Disclosure: As an Amazon Associate I earn from qualifying purchases. Some retailer links may earn a commission at no extra cost to you. Compatibility labels are strictly based on official NVIDIA and publisher sources and are never influenced by commercial links.";
 
   return (
     <aside
@@ -82,7 +103,7 @@ export default function UpgradeOptionsCard({
         )}
       </div>
       <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
-        Disclosure: As an Amazon Associate I earn from qualifying purchases. Some retailer links may earn a commission at no extra cost to you. Compatibility labels are strictly based on official NVIDIA and publisher sources and are never influenced by commercial links.
+        {disclosureText}
       </p>
     </aside>
   );

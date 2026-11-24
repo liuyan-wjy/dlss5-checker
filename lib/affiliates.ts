@@ -50,11 +50,18 @@ export function getGpuSearchQuery(gpu: Pick<GPU, "id" | "name">): string {
 
 export function getGpuRetailerLinks(gpu: Pick<GPU, "id" | "name">, locale: RetailerLocale = "en"): RetailerLink[] {
   const query = getGpuSearchQuery(gpu);
+  const shortName = gpu.name.replace(/^NVIDIA GeForce\s+/i, "");
   const amazon = buildAmazonSearchUrl(query, locale);
+  const amazonLabel =
+    locale === "de"
+      ? `${shortName} bei ${amazon.region} ansehen`
+      : locale === "fr"
+        ? `Voir la ${shortName} sur ${amazon.region}`
+        : `Check ${shortName} on ${amazon.region}`;
   const links: RetailerLink[] = [
     {
       id: `amazon-${gpu.id}`,
-      label: `Check ${gpu.name.replace(/^NVIDIA GeForce\s+/i, "")} on ${amazon.region}`,
+      label: amazonLabel,
       retailer: amazon.region,
       href: amazon.href,
       isAffiliate: amazon.isAffiliate,
@@ -73,11 +80,22 @@ export function getGpuRetailerLinks(gpu: Pick<GPU, "id" | "name">, locale: Retai
   return links;
 }
 
-export function getGeForceNowLink(): RetailerLink {
-  const official = "https://www.nvidia.com/en-us/geforce-now/memberships/";
+export function getGeForceNowLink(locale: RetailerLocale = "en"): RetailerLink {
+  const official =
+    locale === "de"
+      ? "https://www.nvidia.com/de-de/geforce-now/memberships/"
+      : locale === "fr"
+        ? "https://www.nvidia.com/fr-fr/geforce-now/memberships/"
+        : "https://www.nvidia.com/en-us/geforce-now/memberships/";
+  const label =
+    locale === "de"
+      ? "GeForce NOW Ultimate-Tarife ansehen"
+      : locale === "fr"
+        ? "Voir les offres GeForce NOW Ultimate"
+        : "Check GeForce NOW Ultimate plans";
   return {
     id: "geforce-now-ultimate",
-    label: "Check GeForce NOW Ultimate plans",
+    label,
     retailer: "GeForce NOW",
     href: GEFORCE_NOW_AFF_URL || official,
     isAffiliate: Boolean(GEFORCE_NOW_AFF_URL),

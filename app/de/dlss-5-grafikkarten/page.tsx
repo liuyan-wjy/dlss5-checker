@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import UpgradeOptionsCard from "@/components/UpgradeOptionsCard";
 import { ALL_GPUS, type DlssSupport } from "@/lib/gpu-search";
 import { OG_IMAGE_DE } from "@/lib/og-image";
 
@@ -498,6 +499,12 @@ export default function GermanSupportedCardsPage() {
             </div>
           </section>
         </article>
+
+        <UpgradeOptionsCard
+          gpu={{ id: "rtx-5070", name: "NVIDIA GeForce RTX 5070", dlss5_support: "confirmed" }}
+          placement="de-cards-guide"
+          locale="de"
+        />
 
         <section id="liste" className="mt-12 scroll-mt-6">
           <h2 className="mb-2 text-2xl font-bold">Alle Grafikkarten im Überblick</h2>

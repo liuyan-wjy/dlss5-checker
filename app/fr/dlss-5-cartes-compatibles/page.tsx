@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ALL_GPUS, type DlssSupport, type GPU } from "@/lib/gpu-search";
 import UpdateAlertForm from "@/components/UpdateAlertForm";
+import UpgradeOptionsCard from "@/components/UpgradeOptionsCard";
 import { OG_IMAGE_FR } from "@/lib/og-image";
 
 const PAGE_URL = "https://www.dlss5.net/fr/dlss-5-cartes-compatibles";
@@ -321,6 +322,12 @@ export default function FrenchSupportedCardsPage() {
               recommande au moins 25 Mbit/s en 1080p60 et la possession du jeu sur PC).
             </p>
           </section>
+
+          <UpgradeOptionsCard
+            gpu={{ id: "rtx-5070", name: "NVIDIA GeForce RTX 5070", dlss5_support: "confirmed" }}
+            placement="fr-cards-guide"
+            locale="fr"
+          />
 
           <UpdateAlertForm
             locale="fr"
