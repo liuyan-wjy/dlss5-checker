@@ -82,7 +82,7 @@ export default function UpgradeOptionsCard({
         )}
       </div>
       <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
-        Disclosure: Some retailer links may earn a commission at no extra cost to you. Compatibility labels are strictly based on official NVIDIA and publisher sources and are never influenced by commercial links.
+        Disclosure: As an Amazon Associate I earn from qualifying purchases. Some retailer links may earn a commission at no extra cost to you. Compatibility labels are strictly based on official NVIDIA and publisher sources and are never influenced by commercial links.
       </p>
     </aside>
   );
