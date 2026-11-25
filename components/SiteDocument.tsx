@@ -45,6 +45,13 @@ export default function SiteDocument({
   const navLocale: NavLocale = locale === "pt-BR" ? "pt" : locale;
   return (
     <html lang={locale} className="dark">
+      <head>
+        <meta
+          name="impact-site-verification"
+          content="7467f4c5-9b5a-4c85-8bbb-4907d2b8df1a"
+          {...({ value: "7467f4c5-9b5a-4c85-8bbb-4907d2b8df1a" } as Record<string, string>)}
+        />
+      </head>
       <body className="antialiased bg-background text-foreground">
         <SiteHeader locale={navLocale} />
         {children}
