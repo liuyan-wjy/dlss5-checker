@@ -154,7 +154,7 @@ const gameDates = [
 const gpuDates = [
   { gpu: "GeForce RTX 50 desktop and laptop", date: "September 3, 2026", note: "Available now in every live DLSS 5 game." },
   { gpu: "RTX Spark laptops", date: "October 2026", note: "Listed by NVIDIA from the faster October model onward." },
-  { gpu: "GeForce NOW Ultimate (cloud RTX 5080)", date: "September 3, 2026", note: "Confirmed for NBA 2K27 and Hogwarts Legacy." },
+  { gpu: "GeForce NOW Ultimate (cloud RTX 5080)", date: "September 3, 2026", note: "Confirmed for NBA 2K27, Hogwarts Legacy, and Where Winds Meet." },
   { gpu: "GeForce RTX 40", date: "No date", note: "Planned by NVIDIA; not in any update so far." },
   { gpu: "RTX 30, RTX 20, GTX, AMD, Intel", date: "None announced", note: "No official plan. See the RTX 30 and AMD guides." },
 ];
@@ -163,7 +163,12 @@ const relatedPages = [
   {
     href: "/dlss-5-games",
     title: "Games tracker",
-    copy: "Check NBA 2K27 as verified and keep other titles separate until their patch notes appear.",
+    copy: "Track all four live DLSS 5 games and keep announced titles separate until patch notes appear.",
+  },
+  {
+    href: "/dlss-5-download",
+    title: "DLSS 5 download and driver setup guide",
+    copy: "Official Game Ready Driver versions, in-game toggles, and why no standalone installer exists.",
   },
   {
     href: "/games/nba-2k27-dlss-5",
@@ -196,12 +201,12 @@ const faqItems = [
   {
     question: "Is DLSS 5 available to download now?",
     answer:
-      "The player-facing route is an official NVIDIA Game Ready Driver (616.64 WHQL or newer; 617.42 was the newest we found on October 18, 2026) plus a supported game. For NBA 2K27, the option appears under Video Settings > DLSS Neural Rendering and F9 toggles it in gameplay or replay.",
+      "There is no standalone DLSS 5 installer. The official route is an NVIDIA Game Ready Driver (616.64 WHQL or newer for NBA 2K27, 621.14+ for Hogwarts Legacy, and 621.24 WHQL+ for Where Winds Meet) plus the game's own update.",
   },
   {
     question: "What changed after the announcement?",
     answer:
-      "DLSS 5 moved from announced to available in one verified game. RTX 50 desktop and laptop GPUs are confirmed, RTX 40 is planned for later, and other games still need their own public patch notes.",
+      "DLSS 5 moved from announced to live in four verified games (NBA 2K27, Hogwarts Legacy, War Thunder, and Where Winds Meet) on the faster October model. RTX 50 desktop and laptop GPUs and RTX Spark are confirmed, RTX 40 is planned without a date, and other announced games still need their own public patch notes.",
   },
   {
     question: "When do more games get DLSS 5?",
@@ -211,12 +216,12 @@ const faqItems = [
   {
     question: "Is there a release date for DLSS 5 on RTX 40?",
     answer:
-      "No. As of November 18, 2026, NVIDIA still describes RTX 40 support as planned without a date, and none of its DLSS 5 updates so far, including the November game launches, include RTX 40 GPUs.",
+      "No. As of November 26, 2026, NVIDIA still describes RTX 40 support as planned without a date, and none of its DLSS 5 updates so far, including the November game launches, include RTX 40 GPUs.",
   },
   {
     question: "When does Starfield or Resident Evil Requiem get DLSS 5?",
     answer:
-      "Neither has a date. Both were named by NVIDIA in March 2026, but as of November 18, 2026 neither game has shipped a DLSS 5 patch or announced one.",
+      "Neither has a date. Both were named by NVIDIA in March 2026, but as of November 26, 2026 neither game has shipped a DLSS 5 patch or announced one.",
   },
 ];
 
@@ -275,15 +280,16 @@ export default function Dlss5ReleaseDatePage() {
 
         <header className="max-w-3xl mb-10">
           <p className="text-sm font-semibold text-blue-400 mb-3">
-            Last checked November 24, 2026
+            Last checked November 26, 2026
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-            DLSS 5 Release Date: September 2026 Launch Status
+            DLSS 5 Release Date: 2026 Launch &amp; Game Rollout Status
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            NVIDIA moved DLSS 5 from an announced Fall 2026 window to a verified player
-            launch in NBA 2K27. This page keeps that launch separate from other announced
-            games that still need their own public patch notes.
+            DLSS 5 launched on September 3, 2026 in NBA 2K27 and is now live in four games
+            (adding Hogwarts Legacy, War Thunder, and Where Winds Meet in November). This page
+            tracks every verified launch date separately from announced titles still waiting on
+            patch notes.
           </p>
         </header>
 
@@ -298,9 +304,9 @@ export default function Dlss5ReleaseDatePage() {
           <div className="rounded-lg border border-border p-5">
             <h2 className="font-bold mb-2">Available now</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
-              NBA 2K27 exposes DLSS Neural Rendering for RTX 50 desktop and laptop GPUs
-              and RTX Spark laptops, using the faster October model since October 16.
-              Hogwarts Legacy joined on November 5 and War Thunder on November 12.
+              Four games expose DLSS Neural Rendering for RTX 50 desktop and laptop GPUs
+              and RTX Spark laptops on the faster October model: NBA 2K27 (Sept 3),
+              Hogwarts Legacy (Nov 5), War Thunder (Nov 12), and Where Winds Meet (Nov 23).
             </p>
           </div>
           <div className="rounded-lg border border-border p-5">
@@ -459,7 +465,7 @@ export default function Dlss5ReleaseDatePage() {
             ))}
           </div>
         </section>
-        <ArticleTrustBlock reviewedAt="2026-11-18" />
+        <ArticleTrustBlock reviewedAt="2026-11-26" />
       </main>
     </>
   );

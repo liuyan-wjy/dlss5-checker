@@ -81,7 +81,7 @@ export default function Home() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              DLSS 5 · Now live in Hogwarts Legacy · NBA 2K27 on the faster October model
+              DLSS 5 · Live in 4 games: NBA 2K27, Hogwarts Legacy, War Thunder &amp; Where Winds Meet
             </div>
 
             {/* H1 */}
@@ -101,11 +101,12 @@ export default function Home() {
             <GPUChecker />
 
             <div className="mt-6 rounded-lg border border-border bg-background/70 p-4 text-left text-sm leading-relaxed">
-              <p className="font-semibold">Example: RTX 5060 Ti · sources checked September 23, 2026</p>
+              <p className="font-semibold">Example: RTX 5060 Ti · sources checked November 26, 2026</p>
               <p className="mt-1 text-muted-foreground">
-                NVIDIA confirms DLSS 5 in NBA 2K27 for RTX 50 GPUs, including this model.
-                RTX 5060 Ti comes in 8GB and 16GB versions: check which one you own before
-                comparing game tests at the same resolution and settings.
+                NVIDIA confirms DLSS 5 for RTX 50 GPUs, including this model, across NBA 2K27,
+                Hogwarts Legacy, War Thunder, and Where Winds Meet. RTX 5060 Ti comes in 8GB
+                and 16GB versions: check which one you own before comparing game tests at the
+                same resolution and settings.
               </p>
               <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
                 <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-3d-guided-neural-rendering/" className="text-blue-400 hover:underline">NVIDIA DLSS 5 launch ↗</a>
@@ -133,7 +134,7 @@ export default function Home() {
               >
                 Evidence tracker
               </Link>
-              <Link href="/dlss-5-download" className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400">Download & setup</Link>
+              <Link href="/dlss-5-download" className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400">DLSS 5 download &amp; setup</Link>
               <Link href="/dlss-5-amd" className="inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 hover:border-blue-400 hover:text-blue-400">DLSS 5 on AMD</Link>
             </div>
           </div>
@@ -161,20 +162,23 @@ export default function Home() {
               while the other DLSS performance settings remain their own choices.
             </p>
             <p>
-              DLSS 5 is <strong>available now</strong> in NBA 2K27 for RTX 50 desktop and
-              laptop GPUs. NVIDIA&apos;s launch article says the shipping path runs on a single
+              DLSS 5 is <strong>available now</strong> in four games (NBA 2K27, Hogwarts Legacy,
+              War Thunder, and Where Winds Meet) for RTX 50 desktop and laptop GPUs and RTX Spark
+              laptops. NVIDIA&apos;s launch article says the shipping path runs on a single
               supported GPU. RTX 40 is in NVIDIA&apos;s follow-up support plan, but there is no
               public date or player setting for RTX 40 yet. Other announced games should stay
               in an announced or pending state until their own patch notes are public.
             </p>
             <p>
-              <strong>Latest update (October 2026):</strong> NVIDIA shipped a faster DLSS 5 model
+              <strong>Latest update (November 2026):</strong> NVIDIA shipped a faster DLSS 5 model
               in NBA 2K27 on October 16 for RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. NVIDIA
               says it needs about half the GPU time of the launch model. On November 5 Hogwarts Legacy
               became the second live DLSS 5 game (<Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">setup guide</Link>);
               War Thunder followed on November 12 and Where Winds Meet on November 23 (<Link href="/games/where-winds-meet-dlss-5" className="text-blue-400 hover:underline">Where Winds Meet guide</Link>). RTX 40 still
               has no date. See the <Link href="/dlss-5-release-date" className="text-blue-400 hover:underline">DLSS 5 release date timeline</Link>{" "}
-              for sources, and the{" "}
+              for sources, the{" "}
+              <Link href="/dlss-5-download" className="text-blue-400 hover:underline">DLSS 5 download and driver setup guide</Link>{" "}
+              for official drivers (no standalone installer exists), and the{" "}
               <Link href="/dlss-5-system-requirements" className="text-blue-400 hover:underline">DLSS 5 system requirements</Link>{" "}
               for the driver and Windows version you need.
             </p>

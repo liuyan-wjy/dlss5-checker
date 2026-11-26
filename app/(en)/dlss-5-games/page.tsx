@@ -7,7 +7,7 @@ import { OG_IMAGE_EN } from "@/lib/og-image";
 export const metadata: Metadata = {
   title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
   description:
-    "Track DLSS 5 games after launch: NBA 2K27 live support, announced titles still waiting on patches, and how to separate game support from GPU support.",
+    "4 live DLSS 5 games now: NBA 2K27, Hogwarts Legacy, War Thunder, and Where Winds Meet on RTX 50. Track announced titles, drivers, and RTX 40 status.",
   alternates: {
     canonical: "/dlss-5-games",
     languages: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     images: [OG_IMAGE_EN],
     title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
     description:
-      "Track DLSS 5 games after launch: NBA 2K27 live support, announced titles still waiting on patches, and how to separate game support from GPU support.",
+      "4 live DLSS 5 games now: NBA 2K27, Hogwarts Legacy, War Thunder, and Where Winds Meet on RTX 50. Track announced titles, drivers, and RTX 40 status.",
     url: "https://www.dlss5.net/dlss-5-games",
     type: "article",
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
     description:
-      "Track DLSS 5 games after launch: NBA 2K27 live support, announced titles still waiting on patches, and how to separate game support from GPU support.",
+      "4 live DLSS 5 games now: NBA 2K27, Hogwarts Legacy, War Thunder, and Where Winds Meet on RTX 50. Track announced titles, drivers, and RTX 40 status.",
   },
 };
 
@@ -416,7 +416,11 @@ export default function Dlss5GamesPage() {
             <h2 className="font-bold mb-2">Why players should check twice</h2>
             <p className="text-sm text-foreground/80 leading-relaxed">
               A game listing can say DLSS 5 while your GPU, driver, or game build still
-              decides whether the option appears for you.
+              decides whether the option appears for you. Follow our{" "}
+              <Link href="/dlss-5-download" className="text-blue-400 hover:underline">
+                DLSS 5 download and driver setup guide
+              </Link>{" "}
+              to verify the official driver path.
             </p>
           </div>
         </section>
