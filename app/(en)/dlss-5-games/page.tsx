@@ -5,7 +5,7 @@ import UpdateAlertForm from "@/components/UpdateAlertForm";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
 export const metadata: Metadata = {
-  title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
+  title: "DLSS 5 Games: 4 Live Titles, Announced List & Driver Status",
   description:
     "4 live DLSS 5 games now: NBA 2K27, Hogwarts Legacy, War Thunder, and Where Winds Meet on RTX 50. Track announced titles, drivers, and RTX 40 status.",
   alternates: {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     images: [OG_IMAGE_EN],
-    title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
+    title: "DLSS 5 Games: 4 Live Titles, Announced List & Driver Status",
     description:
       "4 live DLSS 5 games now: NBA 2K27, Hogwarts Legacy, War Thunder, and Where Winds Meet on RTX 50. Track announced titles, drivers, and RTX 40 status.",
     url: "https://www.dlss5.net/dlss-5-games",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "DLSS 5 Games Tracker: NBA 2K27 Live, Announced Titles, and Verification",
+    title: "DLSS 5 Games: 4 Live Titles, Announced List & Driver Status",
     description:
       "4 live DLSS 5 games now: NBA 2K27, Hogwarts Legacy, War Thunder, and Where Winds Meet on RTX 50. Track announced titles, drivers, and RTX 40 status.",
   },

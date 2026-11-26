@@ -201,7 +201,7 @@ const faqItems = [
   {
     question: "Is DLSS 5 available to download now?",
     answer:
-      "There is no standalone DLSS 5 installer. The official route is an NVIDIA Game Ready Driver (616.64 WHQL or newer for NBA 2K27, 621.14+ for Hogwarts Legacy, and 621.24 WHQL+ for Where Winds Meet) plus the game's own update.",
+      "There is no standalone DLSS 5 installer. The official route is an NVIDIA Game Ready Driver (616.64 WHQL or newer for NBA 2K27, 621.14+ for Hogwarts Legacy, and 621.24 WHQL+ for Where Winds Meet) plus the game's own update. In NBA 2K27, turn it on under Video Settings > DLSS Neural Rendering; F9 toggles it during gameplay or replay.",
   },
   {
     question: "What changed after the announcement?",
@@ -211,7 +211,7 @@ const faqItems = [
   {
     question: "When do more games get DLSS 5?",
     answer:
-      "Hogwarts Legacy got DLSS 5 on November 5, 2026, War Thunder on November 12 and Where Winds Meet on November 23. All use the faster October model on RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. Other announced titles have no public date yet.",
+      "Hogwarts Legacy got DLSS 5 on November 5, 2026, War Thunder on November 12 and Where Winds Meet on November 23. All use the faster October model on RTX 50 GPUs and RTX Spark laptops. GeForce NOW Ultimate is confirmed for NBA 2K27, Hogwarts Legacy, and Where Winds Meet, but not yet for War Thunder. Other announced titles have no public date yet.",
   },
   {
     question: "Is there a release date for DLSS 5 on RTX 40?",

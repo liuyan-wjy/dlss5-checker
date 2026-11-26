@@ -170,12 +170,12 @@ export default function Home() {
               in an announced or pending state until their own patch notes are public.
             </p>
             <p>
-              <strong>Latest update (November 2026):</strong> NVIDIA shipped a faster DLSS 5 model
-              in NBA 2K27 on October 16 for RTX 50 GPUs, RTX Spark laptops, and GeForce NOW. NVIDIA
-              says it needs about half the GPU time of the launch model. On November 5 Hogwarts Legacy
-              became the second live DLSS 5 game (<Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">setup guide</Link>);
-              War Thunder followed on November 12 and Where Winds Meet on November 23 (<Link href="/games/where-winds-meet-dlss-5" className="text-blue-400 hover:underline">Where Winds Meet guide</Link>). RTX 40 still
-              has no date. See the <Link href="/dlss-5-release-date" className="text-blue-400 hover:underline">DLSS 5 release date timeline</Link>{" "}
+              <strong>Latest update (November 2026):</strong> Where Winds Meet became the fourth
+              live DLSS 5 game on November 23 (<Link href="/games/where-winds-meet-dlss-5" className="text-blue-400 hover:underline">Where Winds Meet guide</Link>),
+              after Hogwarts Legacy on November 5 (<Link href="/games/hogwarts-legacy-dlss-5" className="text-blue-400 hover:underline">setup guide</Link>)
+              and War Thunder on November 12. All of them run the faster model NVIDIA first shipped
+              in NBA 2K27 on October 16, which NVIDIA says needs about half the GPU time of the launch
+              model. RTX 40 still has no date. See the <Link href="/dlss-5-release-date" className="text-blue-400 hover:underline">DLSS 5 release date timeline</Link>{" "}
               for sources, the{" "}
               <Link href="/dlss-5-download" className="text-blue-400 hover:underline">DLSS 5 download and driver setup guide</Link>{" "}
               for official drivers (no standalone installer exists), and the{" "}
