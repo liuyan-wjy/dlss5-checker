@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
 import UpdateAlertForm from "@/components/UpdateAlertForm";
+import UpgradeOptionsCard from "@/components/UpgradeOptionsCard";
 import { ALL_GPUS, type GPU } from "@/lib/gpu-search";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
@@ -296,6 +297,10 @@ export default function Dlss5Rtx40SeriesPage() {
               </p>
             </div>
           </div>
+          <UpgradeOptionsCard
+            gpu={{ id: "rtx-4070", name: "NVIDIA GeForce RTX 4070", dlss5_support: "planned" }}
+            placement="rtx-40-series-guide"
+          />
         </section>
 
         <section className="mb-10">

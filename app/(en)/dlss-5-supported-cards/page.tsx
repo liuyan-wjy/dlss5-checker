@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import UpgradeOptionsCard from "@/components/UpgradeOptionsCard";
 import { ALL_GPUS, type DlssSupport, type GPU } from "@/lib/gpu-search";
 import { OG_IMAGE_EN } from "@/lib/og-image";
 
@@ -406,11 +407,19 @@ export default function Dlss5SupportedCardsPage() {
             ))}
           </div>
         </section>
-        <p className="mb-10 text-foreground/80 leading-relaxed">
+        <p className="mb-6 text-foreground/80 leading-relaxed">
           Ready to play? Follow the <Link href="/dlss-5-download" className="text-blue-400 hover:underline">official DLSS 5 download and setup steps</Link>.
           On Radeon hardware, see <Link href="/dlss-5-amd" className="text-blue-400 hover:underline">AMD local support and GeForce NOW options</Link>.
           On a console, Mac or phone, see <Link href="/dlss-5-ps5" className="text-blue-400 hover:underline">DLSS 5 on PS5, Switch 2 and other devices</Link>.
         </p>
+
+        <div className="mb-10">
+          <UpgradeOptionsCard
+            gpu={{ id: "rtx-5070", name: "NVIDIA GeForce RTX 5070", dlss5_support: "confirmed" }}
+            placement="dlss5-supported-cards"
+            heading="Compare confirmed DLSS 5 hardware or try GeForce NOW"
+          />
+        </div>
 
         <StatusTable status="confirmed" />
         <StatusTable status="planned" />

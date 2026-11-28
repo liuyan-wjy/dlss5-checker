@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import UpdateAlertForm from "@/components/UpdateAlertForm";
+import UpgradeOptionsCard from "@/components/UpgradeOptionsCard";
 import { OG_IMAGE_DE } from "@/lib/og-image";
 
 const PAGE_URL = "https://www.dlss5.net/de/dlss-5-spiele";
@@ -250,6 +251,14 @@ export default function GermanGamesPage() {
             ))}
           </div>
         </section>
+
+        <div className="mb-10">
+          <UpgradeOptionsCard
+            gpu={{ id: "rtx-5070", name: "NVIDIA GeForce RTX 5070", dlss5_support: "confirmed" }}
+            placement="de-games-guide"
+            locale="de"
+          />
+        </div>
 
         <UpdateAlertForm
           locale="de"

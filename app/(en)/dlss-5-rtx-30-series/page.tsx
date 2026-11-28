@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleTrustBlock from "@/components/ArticleTrustBlock";
+import UpgradeOptionsCard from "@/components/UpgradeOptionsCard";
 import VideoEmbed from "@/components/VideoEmbed";
 import { ALL_GPUS, getFeatureLabel } from "@/lib/gpu-search";
 import { OG_IMAGE_EN } from "@/lib/og-image";
@@ -352,6 +353,10 @@ export default function Dlss5Rtx30SeriesPage() {
             We do not predict frame rates; for measured numbers see the{" "}
             <Link href="/dlss-5-system-requirements#benchmarks" className="text-blue-400 hover:underline">published DLSS 5 tests</Link>.
           </p>
+          <UpgradeOptionsCard
+            gpu={{ id: "rtx-3060", name: "NVIDIA GeForce RTX 3060", dlss5_support: "unsupported" }}
+            placement="rtx-30-series-guide"
+          />
         </section>
 
         <section className="mb-10 space-y-4 leading-relaxed text-foreground/80">
